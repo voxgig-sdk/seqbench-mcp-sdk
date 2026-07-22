@@ -1,0 +1,72 @@
+# Entity: translate
+
+main: kit: entity: translate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "frame"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "to_stop"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "translate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/translate"
+          parts: [
+            "translate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicSeqfileStatFlow
+
+main: kit: flow: BasicSeqfileStatFlow:
+{
+  entity: "seqfile_stat",
+  kind: "basic",
+  name: "BasicSeqfileStatFlow",
+  step: [
+    {
+      input: {
+        ref: "seqfile_stat_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSeqfileStatFlow"
+}

@@ -1,0 +1,18 @@
+# BasicProteinHydrophobicityFlow
+
+main: kit: flow: BasicProteinHydrophobicityFlow:
+{
+  entity: "protein_hydrophobicity",
+  kind: "basic",
+  name: "BasicProteinHydrophobicityFlow",
+  step: [
+    {
+      input: {
+        ref: "protein_hydrophobicity_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProteinHydrophobicityFlow"
+}

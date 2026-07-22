@@ -1,0 +1,62 @@
+# Entity: id_map_poll
+
+main: kit: entity: id_map_poll: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "job_id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "id_map_poll"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/id_map_poll"
+          parts: [
+            "id_map_poll"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

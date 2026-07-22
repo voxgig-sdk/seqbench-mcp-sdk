@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "find_orf": {
+      "FIND_ORF00": {
+        "gate": "s50",
+        "min_aa_length": "s51",
+        "ok": "s52",
+        "provenance": {},
+        "require_stop": true,
+        "result": {},
+        "sequence": "s56",
+        "tool": "s57",
+        "id": "FIND_ORF00"
+      },
+      "FIND_ORF01": {
+        "gate": "sa0",
+        "min_aa_length": "sa1",
+        "ok": "sa2",
+        "provenance": {},
+        "require_stop": true,
+        "result": {},
+        "sequence": "sa6",
+        "tool": "sa7",
+        "id": "FIND_ORF01"
+      },
+      "FIND_ORF02": {
+        "gate": "sf0",
+        "min_aa_length": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "require_stop": true,
+        "result": {},
+        "sequence": "sf6",
+        "tool": "sf7",
+        "id": "FIND_ORF02"
+      }
+    }
+  },
+  "new": {
+    "find_orf": {
+      "find_orf_ref01": {
+        "gate": "s140",
+        "min_aa_length": "s141",
+        "ok": "s142",
+        "provenance": {},
+        "require_stop": true,
+        "result": {},
+        "sequence": "s146",
+        "tool": "s147"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "save_permalink": {
+      "SAVE_PERMALINK00": {
+        "arg": {},
+        "gate": "s3d",
+        "ok": "s3e",
+        "provenance": {},
+        "result": {},
+        "tool": "s41",
+        "id": "SAVE_PERMALINK00"
+      },
+      "SAVE_PERMALINK01": {
+        "arg": {},
+        "gate": "s79",
+        "ok": "s7a",
+        "provenance": {},
+        "result": {},
+        "tool": "s7d",
+        "id": "SAVE_PERMALINK01"
+      },
+      "SAVE_PERMALINK02": {
+        "arg": {},
+        "gate": "sb5",
+        "ok": "sb6",
+        "provenance": {},
+        "result": {},
+        "tool": "sb9",
+        "id": "SAVE_PERMALINK02"
+      }
+    }
+  },
+  "new": {
+    "save_permalink": {
+      "save_permalink_ref01": {
+        "arg": {},
+        "gate": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "tool": "sf5"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+# Entity: session_set
+
+main: kit: entity: session_set: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "entry"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "session_id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "session_set"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/session_set"
+          parts: [
+            "session_set"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

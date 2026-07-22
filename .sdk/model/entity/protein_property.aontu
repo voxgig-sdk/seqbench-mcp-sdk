@@ -1,0 +1,67 @@
+# Entity: protein_property
+
+main: kit: entity: protein_property: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "charge_step"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "protein_property"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protein_properties"
+          parts: [
+            "protein_properties"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

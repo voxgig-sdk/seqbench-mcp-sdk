@@ -1,0 +1,18 @@
+# BasicIdMapPollFlow
+
+main: kit: flow: BasicIdMapPollFlow:
+{
+  entity: "id_map_poll",
+  kind: "basic",
+  name: "BasicIdMapPollFlow",
+  step: [
+    {
+      input: {
+        ref: "id_map_poll_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicIdMapPollFlow"
+}

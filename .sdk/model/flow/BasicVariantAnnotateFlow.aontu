@@ -1,0 +1,18 @@
+# BasicVariantAnnotateFlow
+
+main: kit: flow: BasicVariantAnnotateFlow:
+{
+  entity: "variant_annotate",
+  kind: "basic",
+  name: "BasicVariantAnnotateFlow",
+  step: [
+    {
+      input: {
+        ref: "variant_annotate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVariantAnnotateFlow"
+}

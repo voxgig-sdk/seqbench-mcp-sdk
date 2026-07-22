@@ -1,0 +1,82 @@
+# Entity: oligo_analysi
+
+main: kit: entity: oligo_analysi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "dntp_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "mg_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "na_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligo_nm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "oligo_analysi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/oligo_analysis"
+          parts: [
+            "oligo_analysis"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

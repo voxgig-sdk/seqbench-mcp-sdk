@@ -1,0 +1,72 @@
+# Entity: reverse_translate
+
+main: kit: entity: reverse_translate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "mode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "protein"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "reverse_translate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/reverse_translate"
+          parts: [
+            "reverse_translate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

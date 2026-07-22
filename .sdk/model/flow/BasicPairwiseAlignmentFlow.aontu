@@ -1,0 +1,18 @@
+# BasicPairwiseAlignmentFlow
+
+main: kit: flow: BasicPairwiseAlignmentFlow:
+{
+  entity: "pairwise_alignment",
+  kind: "basic",
+  name: "BasicPairwiseAlignmentFlow",
+  step: [
+    {
+      input: {
+        ref: "pairwise_alignment_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPairwiseAlignmentFlow"
+}

@@ -1,0 +1,97 @@
+# Entity: kasp_primer_design
+
+main: kit: entity: kasp_primer_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "add_secondary_mismatch"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "allele_a"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "allele_b"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "max_amplicon"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "min_amplicon"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "snp_position"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "target"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "target_core_tm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "kasp_primer_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/kasp_primer_design"
+          parts: [
+            "kasp_primer_design"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,72 @@
+# Entity: find_orf
+
+main: kit: entity: find_orf: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_aa_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "require_stop"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "find_orf"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/find_orfs"
+          parts: [
+            "find_orfs"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

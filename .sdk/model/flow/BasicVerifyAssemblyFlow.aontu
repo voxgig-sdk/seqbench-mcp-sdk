@@ -1,0 +1,18 @@
+# BasicVerifyAssemblyFlow
+
+main: kit: flow: BasicVerifyAssemblyFlow:
+{
+  entity: "verify_assembly",
+  kind: "basic",
+  name: "BasicVerifyAssemblyFlow",
+  step: [
+    {
+      input: {
+        ref: "verify_assembly_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVerifyAssemblyFlow"
+}

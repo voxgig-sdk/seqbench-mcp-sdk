@@ -1,0 +1,72 @@
+# Entity: protein_hydrophobicity
+
+main: kit: entity: protein_hydrophobicity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "scale"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "window"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "protein_hydrophobicity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protein_hydrophobicity"
+          parts: [
+            "protein_hydrophobicity"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,82 @@
+# Entity: functional_enrichment
+
+main: kit: entity: functional_enrichment: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "background"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "collection"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gene"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "max_term_size"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "min_term_size"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "functional_enrichment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/functional_enrichment"
+          parts: [
+            "functional_enrichment"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

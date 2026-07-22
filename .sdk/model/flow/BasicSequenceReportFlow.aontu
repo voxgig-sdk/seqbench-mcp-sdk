@@ -1,0 +1,18 @@
+# BasicSequenceReportFlow
+
+main: kit: flow: BasicSequenceReportFlow:
+{
+  entity: "sequence_report",
+  kind: "basic",
+  name: "BasicSequenceReportFlow",
+  step: [
+    {
+      input: {
+        ref: "sequence_report_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSequenceReportFlow"
+}

@@ -1,0 +1,107 @@
+# Entity: construct_autofix
+
+main: kit: entity: construct_autofix: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avoid_enzyme"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "cryptic_orf_min_aa"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gc_high"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gc_low"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gc_window"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "homopolymer_min"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_pass"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "construct_autofix"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/construct_autofix"
+          parts: [
+            "construct_autofix"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicFunctionalEnrichmentFlow
+
+main: kit: flow: BasicFunctionalEnrichmentFlow:
+{
+  entity: "functional_enrichment",
+  kind: "basic",
+  name: "BasicFunctionalEnrichmentFlow",
+  step: [
+    {
+      input: {
+        ref: "functional_enrichment_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicFunctionalEnrichmentFlow"
+}

@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "motif_finder": {
+      "MOTIF_FINDER00": {
+        "gate": "s5a",
+        "max_mismatch": "s5b",
+        "motif": "s5c",
+        "ok": "s5d",
+        "provenance": {},
+        "result": {},
+        "search_reverse_strand": true,
+        "sequence": "s61",
+        "tool": "s62",
+        "id": "MOTIF_FINDER00"
+      },
+      "MOTIF_FINDER01": {
+        "gate": "sb4",
+        "max_mismatch": "sb5",
+        "motif": "sb6",
+        "ok": "sb7",
+        "provenance": {},
+        "result": {},
+        "search_reverse_strand": true,
+        "sequence": "sbb",
+        "tool": "sbc",
+        "id": "MOTIF_FINDER01"
+      },
+      "MOTIF_FINDER02": {
+        "gate": "s10e",
+        "max_mismatch": "s10f",
+        "motif": "s110",
+        "ok": "s111",
+        "provenance": {},
+        "result": {},
+        "search_reverse_strand": true,
+        "sequence": "s115",
+        "tool": "s116",
+        "id": "MOTIF_FINDER02"
+      }
+    }
+  },
+  "new": {
+    "motif_finder": {
+      "motif_finder_ref01": {
+        "gate": "s168",
+        "max_mismatch": "s169",
+        "motif": "s16a",
+        "ok": "s16b",
+        "provenance": {},
+        "result": {},
+        "search_reverse_strand": true,
+        "sequence": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

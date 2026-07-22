@@ -1,0 +1,72 @@
+# Entity: sequence_fetch
+
+main: kit: entity: sequence_fetch: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "accession"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "db"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "format"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "sequence_fetch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/sequence_fetch"
+          parts: [
+            "sequence_fetch"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

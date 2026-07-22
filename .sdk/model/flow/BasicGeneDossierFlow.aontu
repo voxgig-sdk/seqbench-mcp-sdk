@@ -1,0 +1,18 @@
+# BasicGeneDossierFlow
+
+main: kit: flow: BasicGeneDossierFlow:
+{
+  entity: "gene_dossier",
+  kind: "basic",
+  name: "BasicGeneDossierFlow",
+  step: [
+    {
+      input: {
+        ref: "gene_dossier_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGeneDossierFlow"
+}

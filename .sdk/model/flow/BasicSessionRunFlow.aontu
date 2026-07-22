@@ -1,0 +1,18 @@
+# BasicSessionRunFlow
+
+main: kit: flow: BasicSessionRunFlow:
+{
+  entity: "session_run",
+  kind: "basic",
+  name: "BasicSessionRunFlow",
+  step: [
+    {
+      input: {
+        ref: "session_run_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSessionRunFlow"
+}

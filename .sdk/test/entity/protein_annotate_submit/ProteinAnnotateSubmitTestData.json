@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "protein_annotate_submit": {
+      "PROTEIN_ANNOTATE_SUBMIT00": {
+        "appl": "s50",
+        "gate": "s51",
+        "goterm": true,
+        "ok": "s53",
+        "provenance": {},
+        "result": {},
+        "sequence": "s56",
+        "tool": "s57",
+        "id": "PROTEIN_ANNOTATE_SUBMIT00"
+      },
+      "PROTEIN_ANNOTATE_SUBMIT01": {
+        "appl": "sa0",
+        "gate": "sa1",
+        "goterm": true,
+        "ok": "sa3",
+        "provenance": {},
+        "result": {},
+        "sequence": "sa6",
+        "tool": "sa7",
+        "id": "PROTEIN_ANNOTATE_SUBMIT01"
+      },
+      "PROTEIN_ANNOTATE_SUBMIT02": {
+        "appl": "sf0",
+        "gate": "sf1",
+        "goterm": true,
+        "ok": "sf3",
+        "provenance": {},
+        "result": {},
+        "sequence": "sf6",
+        "tool": "sf7",
+        "id": "PROTEIN_ANNOTATE_SUBMIT02"
+      }
+    }
+  },
+  "new": {
+    "protein_annotate_submit": {
+      "protein_annotate_submit_ref01": {
+        "appl": "s140",
+        "gate": "s141",
+        "goterm": true,
+        "ok": "s143",
+        "provenance": {},
+        "result": {},
+        "sequence": "s146",
+        "tool": "s147"
+      }
+    }
+  }
+}

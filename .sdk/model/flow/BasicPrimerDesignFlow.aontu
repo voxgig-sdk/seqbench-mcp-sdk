@@ -1,0 +1,18 @@
+# BasicPrimerDesignFlow
+
+main: kit: flow: BasicPrimerDesignFlow:
+{
+  entity: "primer_design",
+  kind: "basic",
+  name: "BasicPrimerDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "primer_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPrimerDesignFlow"
+}

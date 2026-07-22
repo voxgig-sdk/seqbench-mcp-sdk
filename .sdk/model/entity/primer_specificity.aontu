@@ -1,0 +1,77 @@
+# Entity: primer_specificity
+
+main: kit: entity: primer_specificity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "forward_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "max_mismatch"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_product_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "reverse_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "primer_specificity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/primer_specificity"
+          parts: [
+            "primer_specificity"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

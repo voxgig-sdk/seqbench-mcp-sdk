@@ -1,0 +1,18 @@
+# BasicSequenceSearchFlow
+
+main: kit: flow: BasicSequenceSearchFlow:
+{
+  entity: "sequence_search",
+  kind: "basic",
+  name: "BasicSequenceSearchFlow",
+  step: [
+    {
+      input: {
+        ref: "sequence_search_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSequenceSearchFlow"
+}

@@ -1,0 +1,72 @@
+# Entity: random_sequence
+
+main: kit: entity: random_sequence: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gc_content"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "kind"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "length"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "random_sequence"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/random_sequence"
+          parts: [
+            "random_sequence"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

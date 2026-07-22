@@ -1,0 +1,18 @@
+# BasicMotifFinderFlow
+
+main: kit: flow: BasicMotifFinderFlow:
+{
+  entity: "motif_finder",
+  kind: "basic",
+  name: "BasicMotifFinderFlow",
+  step: [
+    {
+      input: {
+        ref: "motif_finder_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicMotifFinderFlow"
+}

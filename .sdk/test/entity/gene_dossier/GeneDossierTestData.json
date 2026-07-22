@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "gene_dossier": {
+      "GENE_DOSSIER00": {
+        "gate": "s3c",
+        "gene": "s3d",
+        "ok": "s3e",
+        "provenance": {},
+        "result": {},
+        "tool": "s41",
+        "id": "GENE_DOSSIER00"
+      },
+      "GENE_DOSSIER01": {
+        "gate": "s78",
+        "gene": "s79",
+        "ok": "s7a",
+        "provenance": {},
+        "result": {},
+        "tool": "s7d",
+        "id": "GENE_DOSSIER01"
+      },
+      "GENE_DOSSIER02": {
+        "gate": "sb4",
+        "gene": "sb5",
+        "ok": "sb6",
+        "provenance": {},
+        "result": {},
+        "tool": "sb9",
+        "id": "GENE_DOSSIER02"
+      }
+    }
+  },
+  "new": {
+    "gene_dossier": {
+      "gene_dossier_ref01": {
+        "gate": "sf0",
+        "gene": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "tool": "sf5"
+      }
+    }
+  }
+}

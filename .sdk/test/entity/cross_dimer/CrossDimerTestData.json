@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "cross_dimer": {
+      "CROSS_DIMER00": {
+        "gate": "s46",
+        "ok": "s47",
+        "provenance": {},
+        "result": {},
+        "sequence_a": "s4a",
+        "sequence_b": "s4b",
+        "tool": "s4c",
+        "id": "CROSS_DIMER00"
+      },
+      "CROSS_DIMER01": {
+        "gate": "s8c",
+        "ok": "s8d",
+        "provenance": {},
+        "result": {},
+        "sequence_a": "s90",
+        "sequence_b": "s91",
+        "tool": "s92",
+        "id": "CROSS_DIMER01"
+      },
+      "CROSS_DIMER02": {
+        "gate": "sd2",
+        "ok": "sd3",
+        "provenance": {},
+        "result": {},
+        "sequence_a": "sd6",
+        "sequence_b": "sd7",
+        "tool": "sd8",
+        "id": "CROSS_DIMER02"
+      }
+    }
+  },
+  "new": {
+    "cross_dimer": {
+      "cross_dimer_ref01": {
+        "gate": "s118",
+        "ok": "s119",
+        "provenance": {},
+        "result": {},
+        "sequence_a": "s11c",
+        "sequence_b": "s11d",
+        "tool": "s11e"
+      }
+    }
+  }
+}

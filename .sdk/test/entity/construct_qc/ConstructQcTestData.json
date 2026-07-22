@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "construct_qc": {
+      "CONSTRUCT_QC00": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s83",
+        "frame_start": "s84",
+        "gate": "s85",
+        "gc_high": 134,
+        "gc_low": 135,
+        "gc_window": "s88",
+        "homopolymer_min": "s89",
+        "ok": "s8a",
+        "provenance": {},
+        "result": {},
+        "sequence": "s8d",
+        "tool": "s8e",
+        "id": "CONSTRUCT_QC00"
+      },
+      "CONSTRUCT_QC01": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s105",
+        "frame_start": "s106",
+        "gate": "s107",
+        "gc_high": 264,
+        "gc_low": 265,
+        "gc_window": "s10a",
+        "homopolymer_min": "s10b",
+        "ok": "s10c",
+        "provenance": {},
+        "result": {},
+        "sequence": "s10f",
+        "tool": "s110",
+        "id": "CONSTRUCT_QC01"
+      },
+      "CONSTRUCT_QC02": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s187",
+        "frame_start": "s188",
+        "gate": "s189",
+        "gc_high": 394,
+        "gc_low": 395,
+        "gc_window": "s18c",
+        "homopolymer_min": "s18d",
+        "ok": "s18e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s191",
+        "tool": "s192",
+        "id": "CONSTRUCT_QC02"
+      }
+    }
+  },
+  "new": {
+    "construct_qc": {
+      "construct_qc_ref01": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s209",
+        "frame_start": "s20a",
+        "gate": "s20b",
+        "gc_high": 524,
+        "gc_low": 525,
+        "gc_window": "s20e",
+        "homopolymer_min": "s20f",
+        "ok": "s210",
+        "provenance": {},
+        "result": {},
+        "sequence": "s213",
+        "tool": "s214"
+      }
+    }
+  }
+}

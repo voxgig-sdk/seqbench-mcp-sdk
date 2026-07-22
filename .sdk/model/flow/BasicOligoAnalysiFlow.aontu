@@ -1,0 +1,18 @@
+# BasicOligoAnalysiFlow
+
+main: kit: flow: BasicOligoAnalysiFlow:
+{
+  entity: "oligo_analysi",
+  kind: "basic",
+  name: "BasicOligoAnalysiFlow",
+  step: [
+    {
+      input: {
+        ref: "oligo_analysi_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicOligoAnalysiFlow"
+}

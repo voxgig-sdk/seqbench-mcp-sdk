@@ -1,0 +1,87 @@
+# Entity: protease_digestion
+
+main: kit: entity: protease_digestion: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "max_mass"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "max_peptide"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "min_mass"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "missed_cleavage"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "protease"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "protease_digestion"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protease_digestion"
+          parts: [
+            "protease_digestion"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicPrimeEditingDesignFlow
+
+main: kit: flow: BasicPrimeEditingDesignFlow:
+{
+  entity: "prime_editing_design",
+  kind: "basic",
+  name: "BasicPrimeEditingDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "prime_editing_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPrimeEditingDesignFlow"
+}

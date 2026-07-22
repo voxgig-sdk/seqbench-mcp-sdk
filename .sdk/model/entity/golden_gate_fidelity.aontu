@@ -1,0 +1,77 @@
+# Entity: golden_gate_fidelity
+
+main: kit: entity: golden_gate_fidelity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "compare_to_named_set"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "dataset"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "overhang"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "risk_threshold"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "golden_gate_fidelity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/golden_gate_fidelity"
+          parts: [
+            "golden_gate_fidelity"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

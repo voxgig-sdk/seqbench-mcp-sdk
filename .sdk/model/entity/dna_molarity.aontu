@@ -1,0 +1,82 @@
+# Entity: dna_molarity
+
+main: kit: entity: dna_molarity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "mass_ng"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "volume_ul"
+      req: false
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "dna_molarity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/dna_molarity"
+          parts: [
+            "dna_molarity"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

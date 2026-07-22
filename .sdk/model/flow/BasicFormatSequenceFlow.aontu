@@ -1,0 +1,18 @@
+# BasicFormatSequenceFlow
+
+main: kit: flow: BasicFormatSequenceFlow:
+{
+  entity: "format_sequence",
+  kind: "basic",
+  name: "BasicFormatSequenceFlow",
+  step: [
+    {
+      input: {
+        ref: "format_sequence_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicFormatSequenceFlow"
+}

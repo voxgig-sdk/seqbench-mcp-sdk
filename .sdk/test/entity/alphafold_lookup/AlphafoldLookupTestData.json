@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "alphafold_lookup": {
+      "ALPHAFOLD_LOOKUP00": {
+        "accession": "s3c",
+        "gate": "s3d",
+        "ok": "s3e",
+        "provenance": {},
+        "result": {},
+        "tool": "s41",
+        "id": "ALPHAFOLD_LOOKUP00"
+      },
+      "ALPHAFOLD_LOOKUP01": {
+        "accession": "s78",
+        "gate": "s79",
+        "ok": "s7a",
+        "provenance": {},
+        "result": {},
+        "tool": "s7d",
+        "id": "ALPHAFOLD_LOOKUP01"
+      },
+      "ALPHAFOLD_LOOKUP02": {
+        "accession": "sb4",
+        "gate": "sb5",
+        "ok": "sb6",
+        "provenance": {},
+        "result": {},
+        "tool": "sb9",
+        "id": "ALPHAFOLD_LOOKUP02"
+      }
+    }
+  },
+  "new": {
+    "alphafold_lookup": {
+      "alphafold_lookup_ref01": {
+        "accession": "sf0",
+        "gate": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "tool": "sf5"
+      }
+    }
+  }
+}

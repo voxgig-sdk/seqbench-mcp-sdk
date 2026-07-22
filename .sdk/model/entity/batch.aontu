@@ -1,0 +1,73 @@
+# Entity: batch
+
+main: kit: entity: batch: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "arg"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "input"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "batch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/batch"
+          parts: [
+            "batch"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/batch"
+          parts: [
+            "batch"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

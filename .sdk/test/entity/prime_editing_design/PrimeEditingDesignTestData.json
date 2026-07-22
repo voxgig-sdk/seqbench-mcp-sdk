@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "prime_editing_design": {
+      "PRIME_EDITING_DESIGN00": {
+        "edit_end": "s78",
+        "edit_start": "s79",
+        "frame_start": "s7a",
+        "gate": "s7b",
+        "inserted_seq": "s7c",
+        "ok": "s7d",
+        "pbs_length": "s7e",
+        "provenance": {},
+        "result": {},
+        "rtt_homology": "s81",
+        "target": "s82",
+        "tool": "s83",
+        "id": "PRIME_EDITING_DESIGN00"
+      },
+      "PRIME_EDITING_DESIGN01": {
+        "edit_end": "sf0",
+        "edit_start": "sf1",
+        "frame_start": "sf2",
+        "gate": "sf3",
+        "inserted_seq": "sf4",
+        "ok": "sf5",
+        "pbs_length": "sf6",
+        "provenance": {},
+        "result": {},
+        "rtt_homology": "sf9",
+        "target": "sfa",
+        "tool": "sfb",
+        "id": "PRIME_EDITING_DESIGN01"
+      },
+      "PRIME_EDITING_DESIGN02": {
+        "edit_end": "s168",
+        "edit_start": "s169",
+        "frame_start": "s16a",
+        "gate": "s16b",
+        "inserted_seq": "s16c",
+        "ok": "s16d",
+        "pbs_length": "s16e",
+        "provenance": {},
+        "result": {},
+        "rtt_homology": "s171",
+        "target": "s172",
+        "tool": "s173",
+        "id": "PRIME_EDITING_DESIGN02"
+      }
+    }
+  },
+  "new": {
+    "prime_editing_design": {
+      "prime_editing_design_ref01": {
+        "edit_end": "s1e0",
+        "edit_start": "s1e1",
+        "frame_start": "s1e2",
+        "gate": "s1e3",
+        "inserted_seq": "s1e4",
+        "ok": "s1e5",
+        "pbs_length": "s1e6",
+        "provenance": {},
+        "result": {},
+        "rtt_homology": "s1e9",
+        "target": "s1ea",
+        "tool": "s1eb"
+      }
+    }
+  }
+}

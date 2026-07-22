@@ -1,0 +1,18 @@
+# BasicKaspPrimerDesignFlow
+
+main: kit: flow: BasicKaspPrimerDesignFlow:
+{
+  entity: "kasp_primer_design",
+  kind: "basic",
+  name: "BasicKaspPrimerDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "kasp_primer_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicKaspPrimerDesignFlow"
+}

@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "protein_property": {
+      "PROTEIN_PROPERTY00": {
+        "charge_step": 70,
+        "gate": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "result": {},
+        "sequence": "s4b",
+        "tool": "s4c",
+        "id": "PROTEIN_PROPERTY00"
+      },
+      "PROTEIN_PROPERTY01": {
+        "charge_step": 140,
+        "gate": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s91",
+        "tool": "s92",
+        "id": "PROTEIN_PROPERTY01"
+      },
+      "PROTEIN_PROPERTY02": {
+        "charge_step": 210,
+        "gate": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "result": {},
+        "sequence": "sd7",
+        "tool": "sd8",
+        "id": "PROTEIN_PROPERTY02"
+      }
+    }
+  },
+  "new": {
+    "protein_property": {
+      "protein_property_ref01": {
+        "charge_step": 280,
+        "gate": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "result": {},
+        "sequence": "s11d",
+        "tool": "s11e"
+      }
+    }
+  }
+}

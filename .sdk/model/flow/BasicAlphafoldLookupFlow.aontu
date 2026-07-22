@@ -1,0 +1,18 @@
+# BasicAlphafoldLookupFlow
+
+main: kit: flow: BasicAlphafoldLookupFlow:
+{
+  entity: "alphafold_lookup",
+  kind: "basic",
+  name: "BasicAlphafoldLookupFlow",
+  step: [
+    {
+      input: {
+        ref: "alphafold_lookup_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicAlphafoldLookupFlow"
+}

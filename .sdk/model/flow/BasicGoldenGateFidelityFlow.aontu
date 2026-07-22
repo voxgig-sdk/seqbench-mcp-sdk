@@ -1,0 +1,18 @@
+# BasicGoldenGateFidelityFlow
+
+main: kit: flow: BasicGoldenGateFidelityFlow:
+{
+  entity: "golden_gate_fidelity",
+  kind: "basic",
+  name: "BasicGoldenGateFidelityFlow",
+  step: [
+    {
+      input: {
+        ref: "golden_gate_fidelity_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGoldenGateFidelityFlow"
+}

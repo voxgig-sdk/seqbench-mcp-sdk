@@ -1,0 +1,18 @@
+# BasicParseGenbankFlow
+
+main: kit: flow: BasicParseGenbankFlow:
+{
+  entity: "parse_genbank",
+  kind: "basic",
+  name: "BasicParseGenbankFlow",
+  step: [
+    {
+      input: {
+        ref: "parse_genbank_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicParseGenbankFlow"
+}

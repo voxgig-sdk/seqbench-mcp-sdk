@@ -1,0 +1,18 @@
+# BasicProteinPropertyFlow
+
+main: kit: flow: BasicProteinPropertyFlow:
+{
+  entity: "protein_property",
+  kind: "basic",
+  name: "BasicProteinPropertyFlow",
+  step: [
+    {
+      input: {
+        ref: "protein_property_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProteinPropertyFlow"
+}

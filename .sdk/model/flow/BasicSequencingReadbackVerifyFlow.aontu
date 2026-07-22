@@ -1,0 +1,18 @@
+# BasicSequencingReadbackVerifyFlow
+
+main: kit: flow: BasicSequencingReadbackVerifyFlow:
+{
+  entity: "sequencing_readback_verify",
+  kind: "basic",
+  name: "BasicSequencingReadbackVerifyFlow",
+  step: [
+    {
+      input: {
+        ref: "sequencing_readback_verify_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSequencingReadbackVerifyFlow"
+}

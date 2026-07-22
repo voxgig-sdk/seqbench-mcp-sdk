@@ -1,0 +1,152 @@
+# Entity: primer_design
+
+main: kit: entity: primer_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "amplicon_max"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "amplicon_min"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "dntp_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gc_max"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gc_min"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "len_max"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "len_min"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "len_opt"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "max_return"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "mg_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "na_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligo_nm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "target_end"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "target_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "template"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tm_max"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tm_max_diff"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tm_min"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tm_opt"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "primer_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/primer_design"
+          parts: [
+            "primer_design"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

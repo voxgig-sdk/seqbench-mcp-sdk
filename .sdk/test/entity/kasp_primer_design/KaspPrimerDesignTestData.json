@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "kasp_primer_design": {
+      "KASP_PRIMER_DESIGN00": {
+        "add_secondary_mismatch": true,
+        "allele_a": "s83",
+        "allele_b": "s84",
+        "gate": "s85",
+        "max_amplicon": "s86",
+        "min_amplicon": "s87",
+        "ok": "s88",
+        "provenance": {},
+        "result": {},
+        "snp_position": "s8b",
+        "target": "s8c",
+        "target_core_tm": 141,
+        "tool": "s8e",
+        "id": "KASP_PRIMER_DESIGN00"
+      },
+      "KASP_PRIMER_DESIGN01": {
+        "add_secondary_mismatch": true,
+        "allele_a": "s105",
+        "allele_b": "s106",
+        "gate": "s107",
+        "max_amplicon": "s108",
+        "min_amplicon": "s109",
+        "ok": "s10a",
+        "provenance": {},
+        "result": {},
+        "snp_position": "s10d",
+        "target": "s10e",
+        "target_core_tm": 271,
+        "tool": "s110",
+        "id": "KASP_PRIMER_DESIGN01"
+      },
+      "KASP_PRIMER_DESIGN02": {
+        "add_secondary_mismatch": true,
+        "allele_a": "s187",
+        "allele_b": "s188",
+        "gate": "s189",
+        "max_amplicon": "s18a",
+        "min_amplicon": "s18b",
+        "ok": "s18c",
+        "provenance": {},
+        "result": {},
+        "snp_position": "s18f",
+        "target": "s190",
+        "target_core_tm": 401,
+        "tool": "s192",
+        "id": "KASP_PRIMER_DESIGN02"
+      }
+    }
+  },
+  "new": {
+    "kasp_primer_design": {
+      "kasp_primer_design_ref01": {
+        "add_secondary_mismatch": true,
+        "allele_a": "s209",
+        "allele_b": "s20a",
+        "gate": "s20b",
+        "max_amplicon": "s20c",
+        "min_amplicon": "s20d",
+        "ok": "s20e",
+        "provenance": {},
+        "result": {},
+        "snp_position": "s211",
+        "target": "s212",
+        "target_core_tm": 531,
+        "tool": "s214"
+      }
+    }
+  }
+}

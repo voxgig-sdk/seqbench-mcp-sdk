@@ -1,0 +1,72 @@
+# Entity: plasmid_identify
+
+main: kit: entity: plasmid_identify: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "top_n"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "plasmid_identify"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/plasmid_identify"
+          parts: [
+            "plasmid_identify"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

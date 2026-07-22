@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "seqfile_stat": {
+      "SEQFILE_STAT00": {
+        "gate": "s46",
+        "input": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "quality_offset": "s4a",
+        "result": {},
+        "tool": "s4c",
+        "id": "SEQFILE_STAT00"
+      },
+      "SEQFILE_STAT01": {
+        "gate": "s8c",
+        "input": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "quality_offset": "s90",
+        "result": {},
+        "tool": "s92",
+        "id": "SEQFILE_STAT01"
+      },
+      "SEQFILE_STAT02": {
+        "gate": "sd2",
+        "input": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "quality_offset": "sd6",
+        "result": {},
+        "tool": "sd8",
+        "id": "SEQFILE_STAT02"
+      }
+    }
+  },
+  "new": {
+    "seqfile_stat": {
+      "seqfile_stat_ref01": {
+        "gate": "s118",
+        "input": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "quality_offset": "s11c",
+        "result": {},
+        "tool": "s11e"
+      }
+    }
+  }
+}

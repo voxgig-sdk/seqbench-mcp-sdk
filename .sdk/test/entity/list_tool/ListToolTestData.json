@@ -1,0 +1,20 @@
+{
+  "existing": {
+    "list_tool": {
+      "LIST_TOOL00": {
+        "id": "LIST_TOOL00"
+      },
+      "LIST_TOOL01": {
+        "id": "LIST_TOOL01"
+      },
+      "LIST_TOOL02": {
+        "id": "LIST_TOOL02"
+      }
+    }
+  },
+  "new": {
+    "list_tool": {
+      "list_tool_ref01": {}
+    }
+  }
+}

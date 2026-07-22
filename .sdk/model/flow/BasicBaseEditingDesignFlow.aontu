@@ -1,0 +1,18 @@
+# BasicBaseEditingDesignFlow
+
+main: kit: flow: BasicBaseEditingDesignFlow:
+{
+  entity: "base_editing_design",
+  kind: "basic",
+  name: "BasicBaseEditingDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "base_editing_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicBaseEditingDesignFlow"
+}

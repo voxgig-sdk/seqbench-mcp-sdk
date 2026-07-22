@@ -1,0 +1,18 @@
+# BasicCodonAdaptationIndexFlow
+
+main: kit: flow: BasicCodonAdaptationIndexFlow:
+{
+  entity: "codon_adaptation_index",
+  kind: "basic",
+  name: "BasicCodonAdaptationIndexFlow",
+  step: [
+    {
+      input: {
+        ref: "codon_adaptation_index_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCodonAdaptationIndexFlow"
+}

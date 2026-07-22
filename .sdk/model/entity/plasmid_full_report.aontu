@@ -1,0 +1,72 @@
+# Entity: plasmid_full_report
+
+main: kit: entity: plasmid_full_report: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "top_n"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "plasmid_full_report"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/plasmid_full_report"
+          parts: [
+            "plasmid_full_report"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

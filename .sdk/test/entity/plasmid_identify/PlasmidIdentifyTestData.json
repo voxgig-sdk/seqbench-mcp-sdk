@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "plasmid_identify": {
+      "PLASMID_IDENTIFY00": {
+        "circular": true,
+        "gate": "s51",
+        "ok": "s52",
+        "provenance": {},
+        "result": {},
+        "sequence": "s55",
+        "tool": "s56",
+        "top_n": "s57",
+        "id": "PLASMID_IDENTIFY00"
+      },
+      "PLASMID_IDENTIFY01": {
+        "circular": true,
+        "gate": "sa1",
+        "ok": "sa2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sa5",
+        "tool": "sa6",
+        "top_n": "sa7",
+        "id": "PLASMID_IDENTIFY01"
+      },
+      "PLASMID_IDENTIFY02": {
+        "circular": true,
+        "gate": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sf5",
+        "tool": "sf6",
+        "top_n": "sf7",
+        "id": "PLASMID_IDENTIFY02"
+      }
+    }
+  },
+  "new": {
+    "plasmid_identify": {
+      "plasmid_identify_ref01": {
+        "circular": true,
+        "gate": "s141",
+        "ok": "s142",
+        "provenance": {},
+        "result": {},
+        "sequence": "s145",
+        "tool": "s146",
+        "top_n": "s147"
+      }
+    }
+  }
+}

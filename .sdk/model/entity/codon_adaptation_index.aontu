@@ -1,0 +1,77 @@
+# Entity: codon_adaptation_index
+
+main: kit: entity: codon_adaptation_index: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "rare_threshold"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "codon_adaptation_index"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/codon_adaptation_index"
+          parts: [
+            "codon_adaptation_index"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

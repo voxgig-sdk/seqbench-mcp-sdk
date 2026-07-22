@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "plasmid_deep_annotate": {
+      "PLASMID_DEEP_ANNOTATE00": {
+        "circular": true,
+        "gate": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "result": {},
+        "sequence": "s4b",
+        "tool": "s4c",
+        "id": "PLASMID_DEEP_ANNOTATE00"
+      },
+      "PLASMID_DEEP_ANNOTATE01": {
+        "circular": true,
+        "gate": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s91",
+        "tool": "s92",
+        "id": "PLASMID_DEEP_ANNOTATE01"
+      },
+      "PLASMID_DEEP_ANNOTATE02": {
+        "circular": true,
+        "gate": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "result": {},
+        "sequence": "sd7",
+        "tool": "sd8",
+        "id": "PLASMID_DEEP_ANNOTATE02"
+      }
+    }
+  },
+  "new": {
+    "plasmid_deep_annotate": {
+      "plasmid_deep_annotate_ref01": {
+        "circular": true,
+        "gate": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "result": {},
+        "sequence": "s11d",
+        "tool": "s11e"
+      }
+    }
+  }
+}

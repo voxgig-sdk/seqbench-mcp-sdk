@@ -1,0 +1,18 @@
+# BasicFastqQcReportFlow
+
+main: kit: flow: BasicFastqQcReportFlow:
+{
+  entity: "fastq_qc_report",
+  kind: "basic",
+  name: "BasicFastqQcReportFlow",
+  step: [
+    {
+      input: {
+        ref: "fastq_qc_report_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicFastqQcReportFlow"
+}

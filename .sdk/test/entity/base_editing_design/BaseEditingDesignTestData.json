@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "base_editing_design": {
+      "BASE_EDITING_DESIGN00": {
+        "editor": "s5a",
+        "frame_start": "s5b",
+        "gate": "s5c",
+        "ok": "s5d",
+        "provenance": {},
+        "result": {},
+        "target": "s60",
+        "target_position": "s61",
+        "tool": "s62",
+        "id": "BASE_EDITING_DESIGN00"
+      },
+      "BASE_EDITING_DESIGN01": {
+        "editor": "sb4",
+        "frame_start": "sb5",
+        "gate": "sb6",
+        "ok": "sb7",
+        "provenance": {},
+        "result": {},
+        "target": "sba",
+        "target_position": "sbb",
+        "tool": "sbc",
+        "id": "BASE_EDITING_DESIGN01"
+      },
+      "BASE_EDITING_DESIGN02": {
+        "editor": "s10e",
+        "frame_start": "s10f",
+        "gate": "s110",
+        "ok": "s111",
+        "provenance": {},
+        "result": {},
+        "target": "s114",
+        "target_position": "s115",
+        "tool": "s116",
+        "id": "BASE_EDITING_DESIGN02"
+      }
+    }
+  },
+  "new": {
+    "base_editing_design": {
+      "base_editing_design_ref01": {
+        "editor": "s168",
+        "frame_start": "s169",
+        "gate": "s16a",
+        "ok": "s16b",
+        "provenance": {},
+        "result": {},
+        "target": "s16e",
+        "target_position": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

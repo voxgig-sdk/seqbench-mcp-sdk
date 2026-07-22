@@ -1,0 +1,77 @@
+# Entity: id_map_submit
+
+main: kit: entity: id_map_submit: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "from"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ids"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tax_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "to"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "id_map_submit"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/id_map_submit"
+          parts: [
+            "id_map_submit"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

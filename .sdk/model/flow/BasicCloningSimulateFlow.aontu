@@ -1,0 +1,18 @@
+# BasicCloningSimulateFlow
+
+main: kit: flow: BasicCloningSimulateFlow:
+{
+  entity: "cloning_simulate",
+  kind: "basic",
+  name: "BasicCloningSimulateFlow",
+  step: [
+    {
+      input: {
+        ref: "cloning_simulate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCloningSimulateFlow"
+}

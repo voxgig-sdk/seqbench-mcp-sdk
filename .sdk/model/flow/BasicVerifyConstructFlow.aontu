@@ -1,0 +1,18 @@
+# BasicVerifyConstructFlow
+
+main: kit: flow: BasicVerifyConstructFlow:
+{
+  entity: "verify_construct",
+  kind: "basic",
+  name: "BasicVerifyConstructFlow",
+  step: [
+    {
+      input: {
+        ref: "verify_construct_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVerifyConstructFlow"
+}

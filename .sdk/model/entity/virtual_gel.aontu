@@ -1,0 +1,77 @@
+# Entity: virtual_gel
+
+main: kit: entity: virtual_gel: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "enzyme"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ladder"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "virtual_gel"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/virtual_gel"
+          parts: [
+            "virtual_gel"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

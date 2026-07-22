@@ -1,0 +1,97 @@
+# Entity: construct_qc
+
+main: kit: entity: construct_qc: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avoid_enzyme"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "cryptic_orf_min_aa"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gc_high"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gc_low"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gc_window"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "homopolymer_min"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "construct_qc"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/construct_qc"
+          parts: [
+            "construct_qc"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

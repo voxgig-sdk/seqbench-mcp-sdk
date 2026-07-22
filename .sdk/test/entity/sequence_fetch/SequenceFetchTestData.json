@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "sequence_fetch": {
+      "SEQUENCE_FETCH00": {
+        "accession": "s50",
+        "db": "s51",
+        "format": "s52",
+        "gate": "s53",
+        "ok": "s54",
+        "provenance": {},
+        "result": {},
+        "tool": "s57",
+        "id": "SEQUENCE_FETCH00"
+      },
+      "SEQUENCE_FETCH01": {
+        "accession": "sa0",
+        "db": "sa1",
+        "format": "sa2",
+        "gate": "sa3",
+        "ok": "sa4",
+        "provenance": {},
+        "result": {},
+        "tool": "sa7",
+        "id": "SEQUENCE_FETCH01"
+      },
+      "SEQUENCE_FETCH02": {
+        "accession": "sf0",
+        "db": "sf1",
+        "format": "sf2",
+        "gate": "sf3",
+        "ok": "sf4",
+        "provenance": {},
+        "result": {},
+        "tool": "sf7",
+        "id": "SEQUENCE_FETCH02"
+      }
+    }
+  },
+  "new": {
+    "sequence_fetch": {
+      "sequence_fetch_ref01": {
+        "accession": "s140",
+        "db": "s141",
+        "format": "s142",
+        "gate": "s143",
+        "ok": "s144",
+        "provenance": {},
+        "result": {},
+        "tool": "s147"
+      }
+    }
+  }
+}

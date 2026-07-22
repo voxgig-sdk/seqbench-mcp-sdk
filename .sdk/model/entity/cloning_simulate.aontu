@@ -1,0 +1,112 @@
+# Entity: cloning_simulate
+
+main: kit: entity: cloning_simulate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "arm_tm_target"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "enzyme"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "enzyme3"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "enzyme5"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "fragment"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "insert"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "method"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "overlap_len"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "vector"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "cloning_simulate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/cloning_simulate"
+          parts: [
+            "cloning_simulate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

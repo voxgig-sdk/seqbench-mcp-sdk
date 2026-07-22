@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "parse_sanger_trace": {
+      "PARSE_SANGER_TRACE00": {
+        "file_base64": "s46",
+        "file_name": "s47",
+        "gate": "s48",
+        "ok": "s49",
+        "provenance": {},
+        "result": {},
+        "tool": "s4c",
+        "id": "PARSE_SANGER_TRACE00"
+      },
+      "PARSE_SANGER_TRACE01": {
+        "file_base64": "s8c",
+        "file_name": "s8d",
+        "gate": "s8e",
+        "ok": "s8f",
+        "provenance": {},
+        "result": {},
+        "tool": "s92",
+        "id": "PARSE_SANGER_TRACE01"
+      },
+      "PARSE_SANGER_TRACE02": {
+        "file_base64": "sd2",
+        "file_name": "sd3",
+        "gate": "sd4",
+        "ok": "sd5",
+        "provenance": {},
+        "result": {},
+        "tool": "sd8",
+        "id": "PARSE_SANGER_TRACE02"
+      }
+    }
+  },
+  "new": {
+    "parse_sanger_trace": {
+      "parse_sanger_trace_ref01": {
+        "file_base64": "s118",
+        "file_name": "s119",
+        "gate": "s11a",
+        "ok": "s11b",
+        "provenance": {},
+        "result": {},
+        "tool": "s11e"
+      }
+    }
+  }
+}

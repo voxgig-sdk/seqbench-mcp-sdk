@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "dna_molarity": {
+      "DNA_MOLARITY00": {
+        "gate": "s64",
+        "length": "s65",
+        "mass_ng": 102,
+        "ok": "s67",
+        "provenance": {},
+        "result": {},
+        "sequence": "s6a",
+        "tool": "s6b",
+        "type": "s6c",
+        "volume_ul": 109,
+        "id": "DNA_MOLARITY00"
+      },
+      "DNA_MOLARITY01": {
+        "gate": "sc8",
+        "length": "sc9",
+        "mass_ng": 202,
+        "ok": "scb",
+        "provenance": {},
+        "result": {},
+        "sequence": "sce",
+        "tool": "scf",
+        "type": "sd0",
+        "volume_ul": 209,
+        "id": "DNA_MOLARITY01"
+      },
+      "DNA_MOLARITY02": {
+        "gate": "s12c",
+        "length": "s12d",
+        "mass_ng": 302,
+        "ok": "s12f",
+        "provenance": {},
+        "result": {},
+        "sequence": "s132",
+        "tool": "s133",
+        "type": "s134",
+        "volume_ul": 309,
+        "id": "DNA_MOLARITY02"
+      }
+    }
+  },
+  "new": {
+    "dna_molarity": {
+      "dna_molarity_ref01": {
+        "gate": "s190",
+        "length": "s191",
+        "mass_ng": 402,
+        "ok": "s193",
+        "provenance": {},
+        "result": {},
+        "sequence": "s196",
+        "tool": "s197",
+        "type": "s198",
+        "volume_ul": 409
+      }
+    }
+  }
+}

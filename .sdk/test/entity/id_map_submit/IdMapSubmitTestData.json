@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "id_map_submit": {
+      "ID_MAP_SUBMIT00": {
+        "from": "s5a",
+        "gate": "s5b",
+        "ids": [],
+        "ok": "s5d",
+        "provenance": {},
+        "result": {},
+        "tax_id": "TAX01",
+        "to": "s61",
+        "tool": "s62",
+        "id": "ID_MAP_SUBMIT00"
+      },
+      "ID_MAP_SUBMIT01": {
+        "from": "sb4",
+        "gate": "sb5",
+        "ids": [],
+        "ok": "sb7",
+        "provenance": {},
+        "result": {},
+        "tax_id": "TAX01",
+        "to": "sbb",
+        "tool": "sbc",
+        "id": "ID_MAP_SUBMIT01"
+      },
+      "ID_MAP_SUBMIT02": {
+        "from": "s10e",
+        "gate": "s10f",
+        "ids": [],
+        "ok": "s111",
+        "provenance": {},
+        "result": {},
+        "tax_id": "TAX01",
+        "to": "s115",
+        "tool": "s116",
+        "id": "ID_MAP_SUBMIT02"
+      }
+    }
+  },
+  "new": {
+    "id_map_submit": {
+      "id_map_submit_ref01": {
+        "from": "s168",
+        "gate": "s169",
+        "ids": [],
+        "ok": "s16b",
+        "provenance": {},
+        "result": {},
+        "tax_id": "TAX01",
+        "to": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# BasicHgvsConvertFlow
+
+main: kit: flow: BasicHgvsConvertFlow:
+{
+  entity: "hgvs_convert",
+  kind: "basic",
+  name: "BasicHgvsConvertFlow",
+  step: [
+    {
+      input: {
+        ref: "hgvs_convert_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicHgvsConvertFlow"
+}

@@ -1,0 +1,18 @@
+# BasicParseSangerTraceFlow
+
+main: kit: flow: BasicParseSangerTraceFlow:
+{
+  entity: "parse_sanger_trace",
+  kind: "basic",
+  name: "BasicParseSangerTraceFlow",
+  step: [
+    {
+      input: {
+        ref: "parse_sanger_trace_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicParseSangerTraceFlow"
+}

@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "protein_hydrophobicity": {
+      "PROTEIN_HYDROPHOBICITY00": {
+        "gate": "s50",
+        "ok": "s51",
+        "provenance": {},
+        "result": {},
+        "scale": "s54",
+        "sequence": "s55",
+        "tool": "s56",
+        "window": "s57",
+        "id": "PROTEIN_HYDROPHOBICITY00"
+      },
+      "PROTEIN_HYDROPHOBICITY01": {
+        "gate": "sa0",
+        "ok": "sa1",
+        "provenance": {},
+        "result": {},
+        "scale": "sa4",
+        "sequence": "sa5",
+        "tool": "sa6",
+        "window": "sa7",
+        "id": "PROTEIN_HYDROPHOBICITY01"
+      },
+      "PROTEIN_HYDROPHOBICITY02": {
+        "gate": "sf0",
+        "ok": "sf1",
+        "provenance": {},
+        "result": {},
+        "scale": "sf4",
+        "sequence": "sf5",
+        "tool": "sf6",
+        "window": "sf7",
+        "id": "PROTEIN_HYDROPHOBICITY02"
+      }
+    }
+  },
+  "new": {
+    "protein_hydrophobicity": {
+      "protein_hydrophobicity_ref01": {
+        "gate": "s140",
+        "ok": "s141",
+        "provenance": {},
+        "result": {},
+        "scale": "s144",
+        "sequence": "s145",
+        "tool": "s146",
+        "window": "s147"
+      }
+    }
+  }
+}

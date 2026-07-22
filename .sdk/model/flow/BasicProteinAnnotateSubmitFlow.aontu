@@ -1,0 +1,18 @@
+# BasicProteinAnnotateSubmitFlow
+
+main: kit: flow: BasicProteinAnnotateSubmitFlow:
+{
+  entity: "protein_annotate_submit",
+  kind: "basic",
+  name: "BasicProteinAnnotateSubmitFlow",
+  step: [
+    {
+      input: {
+        ref: "protein_annotate_submit_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProteinAnnotateSubmitFlow"
+}

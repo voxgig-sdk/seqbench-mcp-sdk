@@ -1,0 +1,18 @@
+# BasicOrthologMapFlow
+
+main: kit: flow: BasicOrthologMapFlow:
+{
+  entity: "ortholog_map",
+  kind: "basic",
+  name: "BasicOrthologMapFlow",
+  step: [
+    {
+      input: {
+        ref: "ortholog_map_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicOrthologMapFlow"
+}

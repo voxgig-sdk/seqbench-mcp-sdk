@@ -1,0 +1,87 @@
+# Entity: format_sequence
+
+main: kit: entity: format_sequence: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "case_mode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "convert"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "reverse"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "strip_non_letter"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "width"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "format_sequence"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/format_sequence"
+          parts: [
+            "format_sequence"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

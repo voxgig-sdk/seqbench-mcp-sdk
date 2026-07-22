@@ -1,0 +1,18 @@
+# BasicPrimerSpecificityFlow
+
+main: kit: flow: BasicPrimerSpecificityFlow:
+{
+  entity: "primer_specificity",
+  kind: "basic",
+  name: "BasicPrimerSpecificityFlow",
+  step: [
+    {
+      input: {
+        ref: "primer_specificity_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPrimerSpecificityFlow"
+}

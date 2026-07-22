@@ -1,0 +1,18 @@
+# BasicCrossDimerFlow
+
+main: kit: flow: BasicCrossDimerFlow:
+{
+  entity: "cross_dimer",
+  kind: "basic",
+  name: "BasicCrossDimerFlow",
+  step: [
+    {
+      input: {
+        ref: "cross_dimer_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCrossDimerFlow"
+}

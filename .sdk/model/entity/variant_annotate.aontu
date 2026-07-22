@@ -1,0 +1,67 @@
+# Entity: variant_annotate
+
+main: kit: entity: variant_annotate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "assembly"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "variant"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "variant_annotate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/variant_annotate"
+          parts: [
+            "variant_annotate"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "ortholog_map": {
+      "ORTHOLOG_MAP00": {
+        "gate": "s5a",
+        "ok": "s5b",
+        "provenance": {},
+        "result": {},
+        "source_species": "s5e",
+        "symbol": [],
+        "target_species": "s60",
+        "tool": "s61",
+        "type": "s62",
+        "id": "ORTHOLOG_MAP00"
+      },
+      "ORTHOLOG_MAP01": {
+        "gate": "sb4",
+        "ok": "sb5",
+        "provenance": {},
+        "result": {},
+        "source_species": "sb8",
+        "symbol": [],
+        "target_species": "sba",
+        "tool": "sbb",
+        "type": "sbc",
+        "id": "ORTHOLOG_MAP01"
+      },
+      "ORTHOLOG_MAP02": {
+        "gate": "s10e",
+        "ok": "s10f",
+        "provenance": {},
+        "result": {},
+        "source_species": "s112",
+        "symbol": [],
+        "target_species": "s114",
+        "tool": "s115",
+        "type": "s116",
+        "id": "ORTHOLOG_MAP02"
+      }
+    }
+  },
+  "new": {
+    "ortholog_map": {
+      "ortholog_map_ref01": {
+        "gate": "s168",
+        "ok": "s169",
+        "provenance": {},
+        "result": {},
+        "source_species": "s16c",
+        "symbol": [],
+        "target_species": "s16e",
+        "tool": "s16f",
+        "type": "s170"
+      }
+    }
+  }
+}

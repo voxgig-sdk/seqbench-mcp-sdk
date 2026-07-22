@@ -1,0 +1,18 @@
+# BasicCrisprOfftargetCheckFlow
+
+main: kit: flow: BasicCrisprOfftargetCheckFlow:
+{
+  entity: "crispr_offtarget_check",
+  kind: "basic",
+  name: "BasicCrisprOfftargetCheckFlow",
+  step: [
+    {
+      input: {
+        ref: "crispr_offtarget_check_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCrisprOfftargetCheckFlow"
+}

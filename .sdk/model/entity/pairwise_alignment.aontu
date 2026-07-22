@@ -1,0 +1,87 @@
+# Entity: pairwise_alignment
+
+main: kit: entity: pairwise_alignment: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gap"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "match"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "mismatch"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "mode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "seq_a"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "seq_b"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "pairwise_alignment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/pairwise_alignment"
+          parts: [
+            "pairwise_alignment"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "oligo_analysi": {
+      "OLIGO_ANALYSI00": {
+        "dntp_mm": 100,
+        "gate": "s65",
+        "mg_mm": 102,
+        "na_mm": 103,
+        "ok": "s68",
+        "oligo_nm": 105,
+        "provenance": {},
+        "result": {},
+        "sequence": "s6c",
+        "tool": "s6d",
+        "id": "OLIGO_ANALYSI00"
+      },
+      "OLIGO_ANALYSI01": {
+        "dntp_mm": 200,
+        "gate": "sc9",
+        "mg_mm": 202,
+        "na_mm": 203,
+        "ok": "scc",
+        "oligo_nm": 205,
+        "provenance": {},
+        "result": {},
+        "sequence": "sd0",
+        "tool": "sd1",
+        "id": "OLIGO_ANALYSI01"
+      },
+      "OLIGO_ANALYSI02": {
+        "dntp_mm": 300,
+        "gate": "s12d",
+        "mg_mm": 302,
+        "na_mm": 303,
+        "ok": "s130",
+        "oligo_nm": 305,
+        "provenance": {},
+        "result": {},
+        "sequence": "s134",
+        "tool": "s135",
+        "id": "OLIGO_ANALYSI02"
+      }
+    }
+  },
+  "new": {
+    "oligo_analysi": {
+      "oligo_analysi_ref01": {
+        "dntp_mm": 400,
+        "gate": "s191",
+        "mg_mm": 402,
+        "na_mm": 403,
+        "ok": "s194",
+        "oligo_nm": 405,
+        "provenance": {},
+        "result": {},
+        "sequence": "s198",
+        "tool": "s199"
+      }
+    }
+  }
+}

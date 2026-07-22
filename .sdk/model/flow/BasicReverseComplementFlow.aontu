@@ -1,0 +1,18 @@
+# BasicReverseComplementFlow
+
+main: kit: flow: BasicReverseComplementFlow:
+{
+  entity: "reverse_complement",
+  kind: "basic",
+  name: "BasicReverseComplementFlow",
+  step: [
+    {
+      input: {
+        ref: "reverse_complement_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicReverseComplementFlow"
+}

@@ -1,0 +1,67 @@
+# Entity: double_digest
+
+main: kit: entity: double_digest: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "enzyme_a"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "enzyme_b"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "double_digest"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/double_digest"
+          parts: [
+            "double_digest"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

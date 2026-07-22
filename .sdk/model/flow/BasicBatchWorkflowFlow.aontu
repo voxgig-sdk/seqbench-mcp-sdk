@@ -1,0 +1,36 @@
+# BasicBatchWorkflowFlow
+
+main: kit: flow: BasicBatchWorkflowFlow:
+{
+  entity: "batch__workflow",
+  kind: "basic",
+  name: "BasicBatchWorkflowFlow",
+  step: [
+    {
+      input: {
+        ref: "batch__workflow_ref01"
+      }
+
+      op: "create"
+    }
+
+    {
+      input: {
+        ref: "batch__workflow_ref01",
+        srcdatavar: "batch__workflow_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-batch__workflow_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBatchWorkflowFlow"
+}

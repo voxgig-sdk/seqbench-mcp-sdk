@@ -1,0 +1,18 @@
+# BasicRnaFoldFlow
+
+main: kit: flow: BasicRnaFoldFlow:
+{
+  entity: "rna_fold",
+  kind: "basic",
+  name: "BasicRnaFoldFlow",
+  step: [
+    {
+      input: {
+        ref: "rna_fold_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicRnaFoldFlow"
+}

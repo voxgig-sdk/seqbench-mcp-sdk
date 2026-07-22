@@ -1,0 +1,92 @@
+# Entity: prime_editing_design
+
+main: kit: entity: prime_editing_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "edit_end"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "edit_start"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "inserted_seq"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "pbs_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "rtt_homology"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "target"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "prime_editing_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/prime_editing_design"
+          parts: [
+            "prime_editing_design"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

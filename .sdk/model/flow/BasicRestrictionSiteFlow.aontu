@@ -1,0 +1,18 @@
+# BasicRestrictionSiteFlow
+
+main: kit: flow: BasicRestrictionSiteFlow:
+{
+  entity: "restriction_site",
+  kind: "basic",
+  name: "BasicRestrictionSiteFlow",
+  step: [
+    {
+      input: {
+        ref: "restriction_site_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicRestrictionSiteFlow"
+}

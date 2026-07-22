@@ -1,0 +1,77 @@
+# Entity: base_editing_design
+
+main: kit: entity: base_editing_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "editor"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "target"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "target_position"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "base_editing_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/base_editing_design"
+          parts: [
+            "base_editing_design"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

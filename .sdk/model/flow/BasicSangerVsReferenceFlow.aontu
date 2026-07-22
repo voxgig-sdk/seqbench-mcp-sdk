@@ -1,0 +1,18 @@
+# BasicSangerVsReferenceFlow
+
+main: kit: flow: BasicSangerVsReferenceFlow:
+{
+  entity: "sanger_vs_reference",
+  kind: "basic",
+  name: "BasicSangerVsReferenceFlow",
+  step: [
+    {
+      input: {
+        ref: "sanger_vs_reference_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSangerVsReferenceFlow"
+}

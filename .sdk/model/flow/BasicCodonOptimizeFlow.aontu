@@ -1,0 +1,18 @@
+# BasicCodonOptimizeFlow
+
+main: kit: flow: BasicCodonOptimizeFlow:
+{
+  entity: "codon_optimize",
+  kind: "basic",
+  name: "BasicCodonOptimizeFlow",
+  step: [
+    {
+      input: {
+        ref: "codon_optimize_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCodonOptimizeFlow"
+}

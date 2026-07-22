@@ -1,0 +1,82 @@
+# Entity: sanger_vs_reference
+
+main: kit: entity: sanger_vs_reference: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "file_base64"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "file_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "min_coverage"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "read"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "reference"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "sanger_vs_reference"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/sanger_vs_reference"
+          parts: [
+            "sanger_vs_reference"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

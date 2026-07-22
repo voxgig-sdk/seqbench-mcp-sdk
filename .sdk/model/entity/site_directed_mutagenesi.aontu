@@ -1,0 +1,127 @@
+# Entity: site_directed_mutagenesi
+
+main: kit: entity: site_directed_mutagenesi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "arm_tm_target"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "dntp_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "edit_kind"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "mg_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "na_mm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "new_base"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligo_nm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "organism"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "position"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "residue"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "style"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "target_aa"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "template"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "site_directed_mutagenesi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/site_directed_mutagenesis"
+          parts: [
+            "site_directed_mutagenesis"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

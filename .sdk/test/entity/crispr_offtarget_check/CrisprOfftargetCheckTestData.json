@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "crispr_offtarget_check": {
+      "CRISPR_OFFTARGET_CHECK00": {
+        "gate": "s50",
+        "max_mismatch": "s51",
+        "nuclease": "s52",
+        "ok": "s53",
+        "protospacer": "s54",
+        "provenance": {},
+        "result": {},
+        "tool": "s57",
+        "id": "CRISPR_OFFTARGET_CHECK00"
+      },
+      "CRISPR_OFFTARGET_CHECK01": {
+        "gate": "sa0",
+        "max_mismatch": "sa1",
+        "nuclease": "sa2",
+        "ok": "sa3",
+        "protospacer": "sa4",
+        "provenance": {},
+        "result": {},
+        "tool": "sa7",
+        "id": "CRISPR_OFFTARGET_CHECK01"
+      },
+      "CRISPR_OFFTARGET_CHECK02": {
+        "gate": "sf0",
+        "max_mismatch": "sf1",
+        "nuclease": "sf2",
+        "ok": "sf3",
+        "protospacer": "sf4",
+        "provenance": {},
+        "result": {},
+        "tool": "sf7",
+        "id": "CRISPR_OFFTARGET_CHECK02"
+      }
+    }
+  },
+  "new": {
+    "crispr_offtarget_check": {
+      "crispr_offtarget_check_ref01": {
+        "gate": "s140",
+        "max_mismatch": "s141",
+        "nuclease": "s142",
+        "ok": "s143",
+        "protospacer": "s144",
+        "provenance": {},
+        "result": {},
+        "tool": "s147"
+      }
+    }
+  }
+}

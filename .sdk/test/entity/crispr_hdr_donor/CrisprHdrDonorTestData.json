@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "crispr_hdr_donor": {
+      "CRISPR_HDR_DONOR00": {
+        "arm_length": "saa",
+        "block_pam": false,
+        "design_genotyping_primer": true,
+        "edit_end": "sad",
+        "edit_start": "sae",
+        "frame_start": "saf",
+        "gate": "sb0",
+        "guide_end": "sb1",
+        "guide_start": "sb2",
+        "guide_strand": "sb3",
+        "nuclease": "sb4",
+        "ok": "sb5",
+        "provenance": {},
+        "replacement": "sb7",
+        "result": {},
+        "target_sequence": "sb9",
+        "tool": "sba",
+        "id": "CRISPR_HDR_DONOR00"
+      },
+      "CRISPR_HDR_DONOR01": {
+        "arm_length": "s154",
+        "block_pam": false,
+        "design_genotyping_primer": true,
+        "edit_end": "s157",
+        "edit_start": "s158",
+        "frame_start": "s159",
+        "gate": "s15a",
+        "guide_end": "s15b",
+        "guide_start": "s15c",
+        "guide_strand": "s15d",
+        "nuclease": "s15e",
+        "ok": "s15f",
+        "provenance": {},
+        "replacement": "s161",
+        "result": {},
+        "target_sequence": "s163",
+        "tool": "s164",
+        "id": "CRISPR_HDR_DONOR01"
+      },
+      "CRISPR_HDR_DONOR02": {
+        "arm_length": "s1fe",
+        "block_pam": false,
+        "design_genotyping_primer": true,
+        "edit_end": "s201",
+        "edit_start": "s202",
+        "frame_start": "s203",
+        "gate": "s204",
+        "guide_end": "s205",
+        "guide_start": "s206",
+        "guide_strand": "s207",
+        "nuclease": "s208",
+        "ok": "s209",
+        "provenance": {},
+        "replacement": "s20b",
+        "result": {},
+        "target_sequence": "s20d",
+        "tool": "s20e",
+        "id": "CRISPR_HDR_DONOR02"
+      }
+    }
+  },
+  "new": {
+    "crispr_hdr_donor": {
+      "crispr_hdr_donor_ref01": {
+        "arm_length": "s2a8",
+        "block_pam": false,
+        "design_genotyping_primer": true,
+        "edit_end": "s2ab",
+        "edit_start": "s2ac",
+        "frame_start": "s2ad",
+        "gate": "s2ae",
+        "guide_end": "s2af",
+        "guide_start": "s2b0",
+        "guide_strand": "s2b1",
+        "nuclease": "s2b2",
+        "ok": "s2b3",
+        "provenance": {},
+        "replacement": "s2b5",
+        "result": {},
+        "target_sequence": "s2b7",
+        "tool": "s2b8"
+      }
+    }
+  }
+}

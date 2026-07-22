@@ -1,0 +1,97 @@
+# Entity: expression_heatmap_cluster
+
+main: kit: entity: expression_heatmap_cluster: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "cluster_col"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "cluster_row"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "distance_metric"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "gene"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "linkage"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sample"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "value"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "z_score_row"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  name: "expression_heatmap_cluster"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/expression_heatmap_cluster"
+          parts: [
+            "expression_heatmap_cluster"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

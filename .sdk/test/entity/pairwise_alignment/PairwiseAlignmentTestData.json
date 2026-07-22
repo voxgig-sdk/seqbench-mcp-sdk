@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "pairwise_alignment": {
+      "PAIRWISE_ALIGNMENT00": {
+        "gap": 110,
+        "gate": "s6f",
+        "match": 112,
+        "mismatch": 113,
+        "mode": "s72",
+        "ok": "s73",
+        "provenance": {},
+        "result": {},
+        "seq_a": "s76",
+        "seq_b": "s77",
+        "tool": "s78",
+        "id": "PAIRWISE_ALIGNMENT00"
+      },
+      "PAIRWISE_ALIGNMENT01": {
+        "gap": 220,
+        "gate": "sdd",
+        "match": 222,
+        "mismatch": 223,
+        "mode": "se0",
+        "ok": "se1",
+        "provenance": {},
+        "result": {},
+        "seq_a": "se4",
+        "seq_b": "se5",
+        "tool": "se6",
+        "id": "PAIRWISE_ALIGNMENT01"
+      },
+      "PAIRWISE_ALIGNMENT02": {
+        "gap": 330,
+        "gate": "s14b",
+        "match": 332,
+        "mismatch": 333,
+        "mode": "s14e",
+        "ok": "s14f",
+        "provenance": {},
+        "result": {},
+        "seq_a": "s152",
+        "seq_b": "s153",
+        "tool": "s154",
+        "id": "PAIRWISE_ALIGNMENT02"
+      }
+    }
+  },
+  "new": {
+    "pairwise_alignment": {
+      "pairwise_alignment_ref01": {
+        "gap": 440,
+        "gate": "s1b9",
+        "match": 442,
+        "mismatch": 443,
+        "mode": "s1bc",
+        "ok": "s1bd",
+        "provenance": {},
+        "result": {},
+        "seq_a": "s1c0",
+        "seq_b": "s1c1",
+        "tool": "s1c2"
+      }
+    }
+  }
+}

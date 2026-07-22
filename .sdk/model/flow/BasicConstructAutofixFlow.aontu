@@ -1,0 +1,18 @@
+# BasicConstructAutofixFlow
+
+main: kit: flow: BasicConstructAutofixFlow:
+{
+  entity: "construct_autofix",
+  kind: "basic",
+  name: "BasicConstructAutofixFlow",
+  step: [
+    {
+      input: {
+        ref: "construct_autofix_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicConstructAutofixFlow"
+}

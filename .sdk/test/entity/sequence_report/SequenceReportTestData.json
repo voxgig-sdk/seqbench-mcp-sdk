@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "sequence_report": {
+      "SEQUENCE_REPORT00": {
+        "end_primer_length": "s5a",
+        "gate": "s5b",
+        "max_orf": "s5c",
+        "min_orf_aa": "s5d",
+        "ok": "s5e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s61",
+        "tool": "s62",
+        "id": "SEQUENCE_REPORT00"
+      },
+      "SEQUENCE_REPORT01": {
+        "end_primer_length": "sb4",
+        "gate": "sb5",
+        "max_orf": "sb6",
+        "min_orf_aa": "sb7",
+        "ok": "sb8",
+        "provenance": {},
+        "result": {},
+        "sequence": "sbb",
+        "tool": "sbc",
+        "id": "SEQUENCE_REPORT01"
+      },
+      "SEQUENCE_REPORT02": {
+        "end_primer_length": "s10e",
+        "gate": "s10f",
+        "max_orf": "s110",
+        "min_orf_aa": "s111",
+        "ok": "s112",
+        "provenance": {},
+        "result": {},
+        "sequence": "s115",
+        "tool": "s116",
+        "id": "SEQUENCE_REPORT02"
+      }
+    }
+  },
+  "new": {
+    "sequence_report": {
+      "sequence_report_ref01": {
+        "end_primer_length": "s168",
+        "gate": "s169",
+        "max_orf": "s16a",
+        "min_orf_aa": "s16b",
+        "ok": "s16c",
+        "provenance": {},
+        "result": {},
+        "sequence": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

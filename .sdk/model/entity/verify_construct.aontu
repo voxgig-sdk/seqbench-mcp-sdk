@@ -1,0 +1,92 @@
+# Entity: verify_construct
+
+main: kit: entity: verify_construct: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "claimed_construct"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "expected_frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "insert_forward_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "insert_reverse_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "insert_template"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "max_primer_mismatch"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "template_circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "verify_construct"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/verify_construct"
+          parts: [
+            "verify_construct"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

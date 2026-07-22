@@ -1,0 +1,18 @@
+# BasicGeneExpressionFlow
+
+main: kit: flow: BasicGeneExpressionFlow:
+{
+  entity: "gene_expression",
+  kind: "basic",
+  name: "BasicGeneExpressionFlow",
+  step: [
+    {
+      input: {
+        ref: "gene_expression_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGeneExpressionFlow"
+}

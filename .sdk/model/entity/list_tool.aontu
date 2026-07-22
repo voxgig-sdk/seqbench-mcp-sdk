@@ -1,0 +1,26 @@
+# Entity: list_tool
+
+main: kit: entity: list_tool: {
+
+  alias: field: {}
+
+  name: "list_tool"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

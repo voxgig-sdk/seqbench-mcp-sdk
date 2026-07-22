@@ -1,0 +1,18 @@
+# BasicSavePermalinkFlow
+
+main: kit: flow: BasicSavePermalinkFlow:
+{
+  entity: "save_permalink",
+  kind: "basic",
+  name: "BasicSavePermalinkFlow",
+  step: [
+    {
+      input: {
+        ref: "save_permalink_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSavePermalinkFlow"
+}

@@ -1,0 +1,18 @@
+# BasicWebSearchFlow
+
+main: kit: flow: BasicWebSearchFlow:
+{
+  entity: "web_search",
+  kind: "basic",
+  name: "BasicWebSearchFlow",
+  step: [
+    {
+      input: {
+        ref: "web_search_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicWebSearchFlow"
+}

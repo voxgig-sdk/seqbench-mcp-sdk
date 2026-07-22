@@ -1,0 +1,520 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 85
+  metrics: count: path: 85
+  metrics: count: method: 87
+
+  entity: alphafold_lookup: {
+    path: "/alphafold_lookup": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: aso_design: {
+    path: "/aso_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: base_editing_design: {
+    path: "/base_editing_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: batch: {
+    path: "/batch": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: batch__workflow: {
+    path: "/workflow": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: characterize_sequence: {
+    path: "/characterize_sequence": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: cloning_simulate: {
+    path: "/cloning_simulate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: codon_adaptation_index: {
+    path: "/codon_adaptation_index": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: codon_optimize: {
+    path: "/codon_optimize": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: construct_autofix: {
+    path: "/construct_autofix": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: construct_qc: {
+    path: "/construct_qc": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: crispr_grna_design: {
+    path: "/crispr_grna_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: crispr_hdr_donor: {
+    path: "/crispr_hdr_donor": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: crispr_offtarget_check: {
+    path: "/crispr_offtarget_check": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: cross_dimer: {
+    path: "/cross_dimer": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: dna_molarity: {
+    path: "/dna_molarity": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: double_digest: {
+    path: "/double_digest": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: export_echo_picklist: {
+    path: "/export_echo_picklist": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: export_opentrons_protocol: {
+    path: "/export_opentrons_protocol": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: export_plate_layout: {
+    path: "/export_plate_layout": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: expression_heatmap_cluster: {
+    path: "/expression_heatmap_cluster": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: fastq_qc_report: {
+    path: "/fastq_qc_report": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: fastq_trim: {
+    path: "/fastq_trim": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: find_orf: {
+    path: "/find_orfs": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: format_sequence: {
+    path: "/format_sequence": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: functional_enrichment: {
+    path: "/functional_enrichment": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: gc_content: {
+    path: "/gc_content": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: gene_dossier: {
+    path: "/gene_dossier": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: gene_expression: {
+    path: "/gene_expression": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: gene_model: {
+    path: "/gene_model": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: golden_gate_fidelity: {
+    path: "/golden_gate_fidelity": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: hgvs_convert: {
+    path: "/hgvs_convert": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: id_map_poll: {
+    path: "/id_map_poll": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: id_map_submit: {
+    path: "/id_map_submit": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: in_silico_pcr: {
+    path: "/in_silico_pcr": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: kasp_primer_design: {
+    path: "/kasp_primer_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: list_tool: {
+    path: "/": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: melting_temperature: {
+    path: "/melting_temperature": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: motif_finder: {
+    path: "/motif_finder": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: multiple_sequence_alignment: {
+    path: "/multiple_sequence_alignment": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: oligo_analysi: {
+    path: "/oligo_analysis": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: ortholog_map: {
+    path: "/ortholog_map": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: pairwise_alignment: {
+    path: "/pairwise_alignment": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: parse_genbank: {
+    path: "/parse_genbank": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: parse_sanger_trace: {
+    path: "/parse_sanger_trace": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: plasmid_annotate: {
+    path: "/plasmid_annotate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: plasmid_deep_annotate: {
+    path: "/plasmid_deep_annotate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: plasmid_full_report: {
+    path: "/plasmid_full_report": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: plasmid_identify: {
+    path: "/plasmid_identify": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: prime_editing_design: {
+    path: "/prime_editing_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: prime_editing_twin_design: {
+    path: "/prime_editing_twin_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: primer_design: {
+    path: "/primer_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: primer_specificity: {
+    path: "/primer_specificity": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: protease_digestion: {
+    path: "/protease_digestion": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: protein_annotate_poll: {
+    path: "/protein_annotate_poll": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: protein_annotate_submit: {
+    path: "/protein_annotate_submit": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: protein_hydrophobicity: {
+    path: "/protein_hydrophobicity": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: protein_property: {
+    path: "/protein_properties": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: random_sequence: {
+    path: "/random_sequence": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: restriction_site: {
+    path: "/restriction_sites": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: reverse_complement: {
+    path: "/reverse_complement": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: reverse_translate: {
+    path: "/reverse_translate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: rna_fold: {
+    path: "/rna_fold": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sanger_vs_reference: {
+    path: "/sanger_vs_reference": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: save_permalink: {
+    path: "/save_permalink": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: seqfile_stat: {
+    path: "/seqfile_stats": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sequence_fetch: {
+    path: "/sequence_fetch": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sequence_format_convert: {
+    path: "/sequence_format_convert": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sequence_report: {
+    path: "/sequence_report": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sequence_search: {
+    path: "/sequence_search": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sequencing_readback_verify: {
+    path: "/sequencing_readback_verify": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: session_create: {
+    path: "/session_create": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: session_get: {
+    path: "/session_get": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: session_run: {
+    path: "/session_run": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: session_set: {
+    path: "/session_set": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sirna_design: {
+    path: "/sirna_design": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: site_directed_mutagenesi: {
+    path: "/site_directed_mutagenesis": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: translate: {
+    path: "/translate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: variant_annotate: {
+    path: "/variant_annotate": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: variant_comparator: {
+    path: "/variant_comparator": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: verify_assembly: {
+    path: "/verify_assembly": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: verify_construct: {
+    path: "/verify_construct": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: virtual_gel: {
+    path: "/virtual_gel": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: volcano_plot_data: {
+    path: "/volcano_plot_data": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: web_search: {
+    path: "/web_search": {
+      op: create: method: *POST
+    }
+  }
+
+}

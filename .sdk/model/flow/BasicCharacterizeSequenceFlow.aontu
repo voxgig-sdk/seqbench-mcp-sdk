@@ -1,0 +1,18 @@
+# BasicCharacterizeSequenceFlow
+
+main: kit: flow: BasicCharacterizeSequenceFlow:
+{
+  entity: "characterize_sequence",
+  kind: "basic",
+  name: "BasicCharacterizeSequenceFlow",
+  step: [
+    {
+      input: {
+        ref: "characterize_sequence_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCharacterizeSequenceFlow"
+}

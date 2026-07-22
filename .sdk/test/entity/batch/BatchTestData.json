@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "batch": {
+      "BATCH00": {
+        "arg": {},
+        "input": "s33",
+        "ok": "s34",
+        "result": {},
+        "tool": "s36",
+        "id": "BATCH00"
+      },
+      "BATCH01": {
+        "arg": {},
+        "input": "s65",
+        "ok": "s66",
+        "result": {},
+        "tool": "s68",
+        "id": "BATCH01"
+      },
+      "BATCH02": {
+        "arg": {},
+        "input": "s97",
+        "ok": "s98",
+        "result": {},
+        "tool": "s9a",
+        "id": "BATCH02"
+      }
+    }
+  },
+  "new": {
+    "batch": {
+      "batch_ref01": {
+        "arg": {},
+        "input": "sc9",
+        "ok": "sca",
+        "result": {},
+        "tool": "scc"
+      }
+    }
+  }
+}

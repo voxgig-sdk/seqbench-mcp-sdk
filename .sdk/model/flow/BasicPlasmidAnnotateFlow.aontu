@@ -1,0 +1,18 @@
+# BasicPlasmidAnnotateFlow
+
+main: kit: flow: BasicPlasmidAnnotateFlow:
+{
+  entity: "plasmid_annotate",
+  kind: "basic",
+  name: "BasicPlasmidAnnotateFlow",
+  step: [
+    {
+      input: {
+        ref: "plasmid_annotate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPlasmidAnnotateFlow"
+}

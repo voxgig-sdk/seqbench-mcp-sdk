@@ -1,0 +1,18 @@
+# BasicPrimeEditingTwinDesignFlow
+
+main: kit: flow: BasicPrimeEditingTwinDesignFlow:
+{
+  entity: "prime_editing_twin_design",
+  kind: "basic",
+  name: "BasicPrimeEditingTwinDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "prime_editing_twin_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPrimeEditingTwinDesignFlow"
+}

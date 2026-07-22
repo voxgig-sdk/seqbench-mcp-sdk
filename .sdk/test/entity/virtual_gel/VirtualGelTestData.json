@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "virtual_gel": {
+      "VIRTUAL_GEL00": {
+        "circular": true,
+        "enzyme": [],
+        "gate": "s5c",
+        "ladder": "s5d",
+        "ok": "s5e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s61",
+        "tool": "s62",
+        "id": "VIRTUAL_GEL00"
+      },
+      "VIRTUAL_GEL01": {
+        "circular": true,
+        "enzyme": [],
+        "gate": "sb6",
+        "ladder": "sb7",
+        "ok": "sb8",
+        "provenance": {},
+        "result": {},
+        "sequence": "sbb",
+        "tool": "sbc",
+        "id": "VIRTUAL_GEL01"
+      },
+      "VIRTUAL_GEL02": {
+        "circular": true,
+        "enzyme": [],
+        "gate": "s110",
+        "ladder": "s111",
+        "ok": "s112",
+        "provenance": {},
+        "result": {},
+        "sequence": "s115",
+        "tool": "s116",
+        "id": "VIRTUAL_GEL02"
+      }
+    }
+  },
+  "new": {
+    "virtual_gel": {
+      "virtual_gel_ref01": {
+        "circular": true,
+        "enzyme": [],
+        "gate": "s16a",
+        "ladder": "s16b",
+        "ok": "s16c",
+        "provenance": {},
+        "result": {},
+        "sequence": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

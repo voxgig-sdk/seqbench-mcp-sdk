@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "session_get": {
+      "SESSION_GET00": {
+        "gate": "s46",
+        "name": [],
+        "ok": "s48",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s4c",
+        "id": "SESSION_GET00"
+      },
+      "SESSION_GET01": {
+        "gate": "s8c",
+        "name": [],
+        "ok": "s8e",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s92",
+        "id": "SESSION_GET01"
+      },
+      "SESSION_GET02": {
+        "gate": "sd2",
+        "name": [],
+        "ok": "sd4",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "sd8",
+        "id": "SESSION_GET02"
+      }
+    }
+  },
+  "new": {
+    "session_get": {
+      "session_get_ref01": {
+        "gate": "s118",
+        "name": [],
+        "ok": "s11a",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s11e"
+      }
+    }
+  }
+}

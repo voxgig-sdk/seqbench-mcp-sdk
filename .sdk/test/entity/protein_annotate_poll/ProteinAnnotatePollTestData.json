@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "protein_annotate_poll": {
+      "PROTEIN_ANNOTATE_POLL00": {
+        "gate": "s3c",
+        "job_id": "JOB01",
+        "ok": "s3e",
+        "provenance": {},
+        "result": {},
+        "tool": "s41",
+        "id": "PROTEIN_ANNOTATE_POLL00"
+      },
+      "PROTEIN_ANNOTATE_POLL01": {
+        "gate": "s78",
+        "job_id": "JOB01",
+        "ok": "s7a",
+        "provenance": {},
+        "result": {},
+        "tool": "s7d",
+        "id": "PROTEIN_ANNOTATE_POLL01"
+      },
+      "PROTEIN_ANNOTATE_POLL02": {
+        "gate": "sb4",
+        "job_id": "JOB01",
+        "ok": "sb6",
+        "provenance": {},
+        "result": {},
+        "tool": "sb9",
+        "id": "PROTEIN_ANNOTATE_POLL02"
+      }
+    }
+  },
+  "new": {
+    "protein_annotate_poll": {
+      "protein_annotate_poll_ref01": {
+        "gate": "sf0",
+        "job_id": "JOB01",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "tool": "sf5"
+      }
+    }
+  }
+}

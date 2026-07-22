@@ -1,0 +1,18 @@
+# BasicExportOpentronsProtocolFlow
+
+main: kit: flow: BasicExportOpentronsProtocolFlow:
+{
+  entity: "export_opentrons_protocol",
+  kind: "basic",
+  name: "BasicExportOpentronsProtocolFlow",
+  step: [
+    {
+      input: {
+        ref: "export_opentrons_protocol_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicExportOpentronsProtocolFlow"
+}

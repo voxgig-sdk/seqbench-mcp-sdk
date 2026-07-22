@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "variant_annotate": {
+      "VARIANT_ANNOTATE00": {
+        "assembly": "s46",
+        "gate": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "result": {},
+        "tool": "s4b",
+        "variant": "s4c",
+        "id": "VARIANT_ANNOTATE00"
+      },
+      "VARIANT_ANNOTATE01": {
+        "assembly": "s8c",
+        "gate": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "result": {},
+        "tool": "s91",
+        "variant": "s92",
+        "id": "VARIANT_ANNOTATE01"
+      },
+      "VARIANT_ANNOTATE02": {
+        "assembly": "sd2",
+        "gate": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "result": {},
+        "tool": "sd7",
+        "variant": "sd8",
+        "id": "VARIANT_ANNOTATE02"
+      }
+    }
+  },
+  "new": {
+    "variant_annotate": {
+      "variant_annotate_ref01": {
+        "assembly": "s118",
+        "gate": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "result": {},
+        "tool": "s11d",
+        "variant": "s11e"
+      }
+    }
+  }
+}

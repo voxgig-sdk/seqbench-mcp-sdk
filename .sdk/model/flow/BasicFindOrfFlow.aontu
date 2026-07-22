@@ -1,0 +1,18 @@
+# BasicFindOrfFlow
+
+main: kit: flow: BasicFindOrfFlow:
+{
+  entity: "find_orf",
+  kind: "basic",
+  name: "BasicFindOrfFlow",
+  step: [
+    {
+      input: {
+        ref: "find_orf_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicFindOrfFlow"
+}

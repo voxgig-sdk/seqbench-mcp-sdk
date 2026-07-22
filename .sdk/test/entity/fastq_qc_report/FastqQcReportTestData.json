@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "fastq_qc_report": {
+      "FASTQ_QC_REPORT00": {
+        "gate": "s46",
+        "input": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "quality_offset": "s4a",
+        "result": {},
+        "tool": "s4c",
+        "id": "FASTQ_QC_REPORT00"
+      },
+      "FASTQ_QC_REPORT01": {
+        "gate": "s8c",
+        "input": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "quality_offset": "s90",
+        "result": {},
+        "tool": "s92",
+        "id": "FASTQ_QC_REPORT01"
+      },
+      "FASTQ_QC_REPORT02": {
+        "gate": "sd2",
+        "input": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "quality_offset": "sd6",
+        "result": {},
+        "tool": "sd8",
+        "id": "FASTQ_QC_REPORT02"
+      }
+    }
+  },
+  "new": {
+    "fastq_qc_report": {
+      "fastq_qc_report_ref01": {
+        "gate": "s118",
+        "input": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "quality_offset": "s11c",
+        "result": {},
+        "tool": "s11e"
+      }
+    }
+  }
+}

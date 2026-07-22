@@ -1,0 +1,67 @@
+# Entity: parse_sanger_trace
+
+main: kit: entity: parse_sanger_trace: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "file_base64"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "file_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "parse_sanger_trace"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/parse_sanger_trace"
+          parts: [
+            "parse_sanger_trace"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicRandomSequenceFlow
+
+main: kit: flow: BasicRandomSequenceFlow:
+{
+  entity: "random_sequence",
+  kind: "basic",
+  name: "BasicRandomSequenceFlow",
+  step: [
+    {
+      input: {
+        ref: "random_sequence_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicRandomSequenceFlow"
+}

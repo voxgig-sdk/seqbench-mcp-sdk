@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "batch__workflow": {
+      "BATCH__WORKFLOW00": {
+        "input": "s28",
+        "ok": "s29",
+        "result": {},
+        "step": [],
+        "id": "BATCH__WORKFLOW00"
+      },
+      "BATCH__WORKFLOW01": {
+        "input": "s50",
+        "ok": "s51",
+        "result": {},
+        "step": [],
+        "id": "BATCH__WORKFLOW01"
+      },
+      "BATCH__WORKFLOW02": {
+        "input": "s78",
+        "ok": "s79",
+        "result": {},
+        "step": [],
+        "id": "BATCH__WORKFLOW02"
+      }
+    }
+  },
+  "new": {
+    "batch__workflow": {
+      "batch__workflow_ref01": {
+        "input": "sa0",
+        "ok": "sa1",
+        "result": {},
+        "step": []
+      }
+    }
+  }
+}

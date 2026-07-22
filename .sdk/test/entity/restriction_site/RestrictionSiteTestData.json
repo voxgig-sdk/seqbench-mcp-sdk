@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "restriction_site": {
+      "RESTRICTION_SITE00": {
+        "enzyme": [],
+        "gate": "s47",
+        "ok": "s48",
+        "provenance": {},
+        "result": {},
+        "sequence": "s4b",
+        "tool": "s4c",
+        "id": "RESTRICTION_SITE00"
+      },
+      "RESTRICTION_SITE01": {
+        "enzyme": [],
+        "gate": "s8d",
+        "ok": "s8e",
+        "provenance": {},
+        "result": {},
+        "sequence": "s91",
+        "tool": "s92",
+        "id": "RESTRICTION_SITE01"
+      },
+      "RESTRICTION_SITE02": {
+        "enzyme": [],
+        "gate": "sd3",
+        "ok": "sd4",
+        "provenance": {},
+        "result": {},
+        "sequence": "sd7",
+        "tool": "sd8",
+        "id": "RESTRICTION_SITE02"
+      }
+    }
+  },
+  "new": {
+    "restriction_site": {
+      "restriction_site_ref01": {
+        "enzyme": [],
+        "gate": "s119",
+        "ok": "s11a",
+        "provenance": {},
+        "result": {},
+        "sequence": "s11d",
+        "tool": "s11e"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# BasicSequenceFormatConvertFlow
+
+main: kit: flow: BasicSequenceFormatConvertFlow:
+{
+  entity: "sequence_format_convert",
+  kind: "basic",
+  name: "BasicSequenceFormatConvertFlow",
+  step: [
+    {
+      input: {
+        ref: "sequence_format_convert_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSequenceFormatConvertFlow"
+}

@@ -1,0 +1,18 @@
+# BasicVirtualGelFlow
+
+main: kit: flow: BasicVirtualGelFlow:
+{
+  entity: "virtual_gel",
+  kind: "basic",
+  name: "BasicVirtualGelFlow",
+  step: [
+    {
+      input: {
+        ref: "virtual_gel_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVirtualGelFlow"
+}

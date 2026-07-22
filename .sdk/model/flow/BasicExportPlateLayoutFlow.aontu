@@ -1,0 +1,18 @@
+# BasicExportPlateLayoutFlow
+
+main: kit: flow: BasicExportPlateLayoutFlow:
+{
+  entity: "export_plate_layout",
+  kind: "basic",
+  name: "BasicExportPlateLayoutFlow",
+  step: [
+    {
+      input: {
+        ref: "export_plate_layout_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicExportPlateLayoutFlow"
+}

@@ -1,0 +1,36 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "seqbench.bio@gmail.com"
+        name: "SeqBench"
+        url: "https://seqbench.com"
+      }
+      description: `The SeqBench REST API exposes every SeqBench tool as a stateless JSON endpoint: primer design and melting-temperature (Tm) calculation, in-silico PCR, cloning simulation (Gibson Assembly, Golden Gate Assembly, restriction digest), CRISPR guide RNA (gRNA) design, ORF finding, restriction-site mapping, codon optimization, sequence alignment and more.
+
+Every tool is callable at \`POST /{tool}\` with a JSON body matching that tool's input schema. \`GET /\` lists all tools and their schemas. \`POST /batch\` runs one tool over a whole multi-FASTA file, and \`POST /workflow\` chains several tools into a pipeline over every record.
+
+Responses share a common envelope: \`{ ok, tool, result, gate, provenance }\`. The optional \`gate\` reports typed pass/fail QC checks plus an honest \`notChecked\` list of what it does not verify.
+
+No authentication or API key is required. CORS is open. The same tools are also available over the Model Context Protocol (MCP) at \`https://seqbench.com/api/mcp\` for AI agents.`
+      license: {
+        name: "Free to use"
+        url: "https://seqbench.com/terms"
+      }
+      servers: [
+        {
+          description: "Production"
+          url: "https://seqbench.com/api/v1"
+        }
+      ]
+      summary: "REST API for DNA, RNA and protein sequence analysis, molecular cloning, primer design and CRISPR guide design."
+      title: "SeqBench API"
+      version: "1.1.0"
+      website: "https://seqbench.com/mcp"
+    }
+  }
+}
+

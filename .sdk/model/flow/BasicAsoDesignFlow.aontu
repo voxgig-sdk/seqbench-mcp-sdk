@@ -1,0 +1,18 @@
+# BasicAsoDesignFlow
+
+main: kit: flow: BasicAsoDesignFlow:
+{
+  entity: "aso_design",
+  kind: "basic",
+  name: "BasicAsoDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "aso_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicAsoDesignFlow"
+}

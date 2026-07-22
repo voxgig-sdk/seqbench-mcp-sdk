@@ -1,0 +1,18 @@
+# BasicMultipleSequenceAlignmentFlow
+
+main: kit: flow: BasicMultipleSequenceAlignmentFlow:
+{
+  entity: "multiple_sequence_alignment",
+  kind: "basic",
+  name: "BasicMultipleSequenceAlignmentFlow",
+  step: [
+    {
+      input: {
+        ref: "multiple_sequence_alignment_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicMultipleSequenceAlignmentFlow"
+}

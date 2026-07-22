@@ -1,0 +1,77 @@
+# Entity: fastq_trim
+
+main: kit: entity: fastq_trim: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "input"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "min_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "quality_offset"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "quality_threshold"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "fastq_trim"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/fastq_trim"
+          parts: [
+            "fastq_trim"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

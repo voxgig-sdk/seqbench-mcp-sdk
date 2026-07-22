@@ -1,0 +1,18 @@
+# BasicPlasmidIdentifyFlow
+
+main: kit: flow: BasicPlasmidIdentifyFlow:
+{
+  entity: "plasmid_identify",
+  kind: "basic",
+  name: "BasicPlasmidIdentifyFlow",
+  step: [
+    {
+      input: {
+        ref: "plasmid_identify_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPlasmidIdentifyFlow"
+}

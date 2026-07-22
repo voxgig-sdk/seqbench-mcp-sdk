@@ -1,0 +1,18 @@
+# BasicProteinAnnotatePollFlow
+
+main: kit: flow: BasicProteinAnnotatePollFlow:
+{
+  entity: "protein_annotate_poll",
+  kind: "basic",
+  name: "BasicProteinAnnotatePollFlow",
+  step: [
+    {
+      input: {
+        ref: "protein_annotate_poll_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProteinAnnotatePollFlow"
+}

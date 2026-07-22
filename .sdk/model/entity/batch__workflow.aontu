@@ -1,0 +1,68 @@
+# Entity: batch__workflow
+
+main: kit: entity: batch__workflow: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "input"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "step"
+      req: true
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "batch__workflow"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/workflow"
+          parts: [
+            "workflow"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/workflow"
+          parts: [
+            "workflow"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

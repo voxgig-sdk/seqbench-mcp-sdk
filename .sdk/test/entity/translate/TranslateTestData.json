@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "translate": {
+      "TRANSLATE00": {
+        "frame": "s50",
+        "gate": "s51",
+        "ok": "s52",
+        "provenance": {},
+        "result": {},
+        "sequence": "s55",
+        "to_stop": true,
+        "tool": "s57",
+        "id": "TRANSLATE00"
+      },
+      "TRANSLATE01": {
+        "frame": "sa0",
+        "gate": "sa1",
+        "ok": "sa2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sa5",
+        "to_stop": true,
+        "tool": "sa7",
+        "id": "TRANSLATE01"
+      },
+      "TRANSLATE02": {
+        "frame": "sf0",
+        "gate": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sf5",
+        "to_stop": true,
+        "tool": "sf7",
+        "id": "TRANSLATE02"
+      }
+    }
+  },
+  "new": {
+    "translate": {
+      "translate_ref01": {
+        "frame": "s140",
+        "gate": "s141",
+        "ok": "s142",
+        "provenance": {},
+        "result": {},
+        "sequence": "s145",
+        "to_stop": true,
+        "tool": "s147"
+      }
+    }
+  }
+}

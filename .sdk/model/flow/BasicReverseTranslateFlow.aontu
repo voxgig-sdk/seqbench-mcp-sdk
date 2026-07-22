@@ -1,0 +1,18 @@
+# BasicReverseTranslateFlow
+
+main: kit: flow: BasicReverseTranslateFlow:
+{
+  entity: "reverse_translate",
+  kind: "basic",
+  name: "BasicReverseTranslateFlow",
+  step: [
+    {
+      input: {
+        ref: "reverse_translate_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicReverseTranslateFlow"
+}

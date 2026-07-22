@@ -1,0 +1,18 @@
+# BasicIdMapSubmitFlow
+
+main: kit: flow: BasicIdMapSubmitFlow:
+{
+  entity: "id_map_submit",
+  kind: "basic",
+  name: "BasicIdMapSubmitFlow",
+  step: [
+    {
+      input: {
+        ref: "id_map_submit_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicIdMapSubmitFlow"
+}

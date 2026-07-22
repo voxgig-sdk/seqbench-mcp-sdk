@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "session_run": {
+      "SESSION_RUN00": {
+        "arg": {},
+        "from_session": {},
+        "gate": "s5c",
+        "ok": "s5d",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s61",
+        "write_back": {},
+        "id": "SESSION_RUN00"
+      },
+      "SESSION_RUN01": {
+        "arg": {},
+        "from_session": {},
+        "gate": "sb6",
+        "ok": "sb7",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "sbb",
+        "write_back": {},
+        "id": "SESSION_RUN01"
+      },
+      "SESSION_RUN02": {
+        "arg": {},
+        "from_session": {},
+        "gate": "s110",
+        "ok": "s111",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s115",
+        "write_back": {},
+        "id": "SESSION_RUN02"
+      }
+    }
+  },
+  "new": {
+    "session_run": {
+      "session_run_ref01": {
+        "arg": {},
+        "from_session": {},
+        "gate": "s16a",
+        "ok": "s16b",
+        "provenance": {},
+        "result": {},
+        "session_id": "SESSION01",
+        "tool": "s16f",
+        "write_back": {}
+      }
+    }
+  }
+}

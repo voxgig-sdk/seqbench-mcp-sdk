@@ -1,0 +1,18 @@
+# BasicCrisprGrnaDesignFlow
+
+main: kit: flow: BasicCrisprGrnaDesignFlow:
+{
+  entity: "crispr_grna_design",
+  kind: "basic",
+  name: "BasicCrisprGrnaDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "crispr_grna_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCrisprGrnaDesignFlow"
+}

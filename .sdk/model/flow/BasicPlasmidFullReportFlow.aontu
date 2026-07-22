@@ -1,0 +1,18 @@
+# BasicPlasmidFullReportFlow
+
+main: kit: flow: BasicPlasmidFullReportFlow:
+{
+  entity: "plasmid_full_report",
+  kind: "basic",
+  name: "BasicPlasmidFullReportFlow",
+  step: [
+    {
+      input: {
+        ref: "plasmid_full_report_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicPlasmidFullReportFlow"
+}

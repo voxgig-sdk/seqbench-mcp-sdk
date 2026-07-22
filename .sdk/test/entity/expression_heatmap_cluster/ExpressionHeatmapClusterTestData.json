@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "expression_heatmap_cluster": {
+      "EXPRESSION_HEATMAP_CLUSTER00": {
+        "cluster_col": true,
+        "cluster_row": false,
+        "distance_metric": "s84",
+        "gate": "s85",
+        "gene": [],
+        "linkage": "s87",
+        "ok": "s88",
+        "provenance": {},
+        "result": {},
+        "sample": [],
+        "tool": "s8c",
+        "value": [],
+        "z_score_row": true,
+        "id": "EXPRESSION_HEATMAP_CLUSTER00"
+      },
+      "EXPRESSION_HEATMAP_CLUSTER01": {
+        "cluster_col": true,
+        "cluster_row": false,
+        "distance_metric": "s106",
+        "gate": "s107",
+        "gene": [],
+        "linkage": "s109",
+        "ok": "s10a",
+        "provenance": {},
+        "result": {},
+        "sample": [],
+        "tool": "s10e",
+        "value": [],
+        "z_score_row": true,
+        "id": "EXPRESSION_HEATMAP_CLUSTER01"
+      },
+      "EXPRESSION_HEATMAP_CLUSTER02": {
+        "cluster_col": true,
+        "cluster_row": false,
+        "distance_metric": "s188",
+        "gate": "s189",
+        "gene": [],
+        "linkage": "s18b",
+        "ok": "s18c",
+        "provenance": {},
+        "result": {},
+        "sample": [],
+        "tool": "s190",
+        "value": [],
+        "z_score_row": true,
+        "id": "EXPRESSION_HEATMAP_CLUSTER02"
+      }
+    }
+  },
+  "new": {
+    "expression_heatmap_cluster": {
+      "expression_heatmap_cluster_ref01": {
+        "cluster_col": true,
+        "cluster_row": false,
+        "distance_metric": "s20a",
+        "gate": "s20b",
+        "gene": [],
+        "linkage": "s20d",
+        "ok": "s20e",
+        "provenance": {},
+        "result": {},
+        "sample": [],
+        "tool": "s212",
+        "value": [],
+        "z_score_row": true
+      }
+    }
+  }
+}

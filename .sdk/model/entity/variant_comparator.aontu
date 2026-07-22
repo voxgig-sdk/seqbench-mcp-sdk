@@ -1,0 +1,77 @@
+# Entity: variant_comparator
+
+main: kit: entity: variant_comparator: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "coding"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "query"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "reference"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "variant_comparator"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/variant_comparator"
+          parts: [
+            "variant_comparator"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

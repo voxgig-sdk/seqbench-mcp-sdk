@@ -1,0 +1,77 @@
+# Entity: session_run
+
+main: kit: entity: session_run: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "arg"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "from_session"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "session_id"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "write_back"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "session_run"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/session_run"
+          parts: [
+            "session_run"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicSirnaDesignFlow
+
+main: kit: flow: BasicSirnaDesignFlow:
+{
+  entity: "sirna_design",
+  kind: "basic",
+  name: "BasicSirnaDesignFlow",
+  step: [
+    {
+      input: {
+        ref: "sirna_design_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSirnaDesignFlow"
+}

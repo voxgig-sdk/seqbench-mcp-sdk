@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "plasmid_full_report": {
+      "PLASMID_FULL_REPORT00": {
+        "circular": true,
+        "gate": "s51",
+        "ok": "s52",
+        "provenance": {},
+        "result": {},
+        "sequence": "s55",
+        "tool": "s56",
+        "top_n": "s57",
+        "id": "PLASMID_FULL_REPORT00"
+      },
+      "PLASMID_FULL_REPORT01": {
+        "circular": true,
+        "gate": "sa1",
+        "ok": "sa2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sa5",
+        "tool": "sa6",
+        "top_n": "sa7",
+        "id": "PLASMID_FULL_REPORT01"
+      },
+      "PLASMID_FULL_REPORT02": {
+        "circular": true,
+        "gate": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "sequence": "sf5",
+        "tool": "sf6",
+        "top_n": "sf7",
+        "id": "PLASMID_FULL_REPORT02"
+      }
+    }
+  },
+  "new": {
+    "plasmid_full_report": {
+      "plasmid_full_report_ref01": {
+        "circular": true,
+        "gate": "s141",
+        "ok": "s142",
+        "provenance": {},
+        "result": {},
+        "sequence": "s145",
+        "tool": "s146",
+        "top_n": "s147"
+      }
+    }
+  }
+}

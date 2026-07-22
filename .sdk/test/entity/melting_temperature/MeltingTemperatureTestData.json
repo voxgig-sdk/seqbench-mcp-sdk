@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "melting_temperature": {
+      "MELTING_TEMPERATURE00": {
+        "dntp_mm": 120,
+        "gate": "s79",
+        "mg_mm": 122,
+        "na_mm": 123,
+        "ok": "s7c",
+        "oligo_nm": 125,
+        "provenance": {},
+        "result": {},
+        "sequence": "s80",
+        "target_tm": 129,
+        "tm_tolerance": 130,
+        "tool": "s83",
+        "id": "MELTING_TEMPERATURE00"
+      },
+      "MELTING_TEMPERATURE01": {
+        "dntp_mm": 240,
+        "gate": "sf1",
+        "mg_mm": 242,
+        "na_mm": 243,
+        "ok": "sf4",
+        "oligo_nm": 245,
+        "provenance": {},
+        "result": {},
+        "sequence": "sf8",
+        "target_tm": 249,
+        "tm_tolerance": 250,
+        "tool": "sfb",
+        "id": "MELTING_TEMPERATURE01"
+      },
+      "MELTING_TEMPERATURE02": {
+        "dntp_mm": 360,
+        "gate": "s169",
+        "mg_mm": 362,
+        "na_mm": 363,
+        "ok": "s16c",
+        "oligo_nm": 365,
+        "provenance": {},
+        "result": {},
+        "sequence": "s170",
+        "target_tm": 369,
+        "tm_tolerance": 370,
+        "tool": "s173",
+        "id": "MELTING_TEMPERATURE02"
+      }
+    }
+  },
+  "new": {
+    "melting_temperature": {
+      "melting_temperature_ref01": {
+        "dntp_mm": 480,
+        "gate": "s1e1",
+        "mg_mm": 482,
+        "na_mm": 483,
+        "ok": "s1e4",
+        "oligo_nm": 485,
+        "provenance": {},
+        "result": {},
+        "sequence": "s1e8",
+        "target_tm": 489,
+        "tm_tolerance": 490,
+        "tool": "s1eb"
+      }
+    }
+  }
+}

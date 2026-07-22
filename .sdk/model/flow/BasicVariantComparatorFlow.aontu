@@ -1,0 +1,18 @@
+# BasicVariantComparatorFlow
+
+main: kit: flow: BasicVariantComparatorFlow:
+{
+  entity: "variant_comparator",
+  kind: "basic",
+  name: "BasicVariantComparatorFlow",
+  step: [
+    {
+      input: {
+        ref: "variant_comparator_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVariantComparatorFlow"
+}

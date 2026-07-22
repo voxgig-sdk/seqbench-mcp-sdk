@@ -1,0 +1,117 @@
+# Entity: crispr_hdr_donor
+
+main: kit: entity: crispr_hdr_donor: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "arm_length"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "block_pam"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "design_genotyping_primer"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "edit_end"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "edit_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frame_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "guide_end"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "guide_start"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "guide_strand"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "nuclease"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "replacement"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "target_sequence"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "crispr_hdr_donor"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/crispr_hdr_donor"
+          parts: [
+            "crispr_hdr_donor"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "prime_editing_twin_design": {
+      "PRIME_EDITING_TWIN_DESIGN00": {
+        "gate": "s6e",
+        "new_sequence": "s6f",
+        "ok": "s70",
+        "overlap_length": "s71",
+        "pbs_length": "s72",
+        "provenance": {},
+        "replace_end": "s74",
+        "replace_start": "s75",
+        "result": {},
+        "target": "s77",
+        "tool": "s78",
+        "id": "PRIME_EDITING_TWIN_DESIGN00"
+      },
+      "PRIME_EDITING_TWIN_DESIGN01": {
+        "gate": "sdc",
+        "new_sequence": "sdd",
+        "ok": "sde",
+        "overlap_length": "sdf",
+        "pbs_length": "se0",
+        "provenance": {},
+        "replace_end": "se2",
+        "replace_start": "se3",
+        "result": {},
+        "target": "se5",
+        "tool": "se6",
+        "id": "PRIME_EDITING_TWIN_DESIGN01"
+      },
+      "PRIME_EDITING_TWIN_DESIGN02": {
+        "gate": "s14a",
+        "new_sequence": "s14b",
+        "ok": "s14c",
+        "overlap_length": "s14d",
+        "pbs_length": "s14e",
+        "provenance": {},
+        "replace_end": "s150",
+        "replace_start": "s151",
+        "result": {},
+        "target": "s153",
+        "tool": "s154",
+        "id": "PRIME_EDITING_TWIN_DESIGN02"
+      }
+    }
+  },
+  "new": {
+    "prime_editing_twin_design": {
+      "prime_editing_twin_design_ref01": {
+        "gate": "s1b8",
+        "new_sequence": "s1b9",
+        "ok": "s1ba",
+        "overlap_length": "s1bb",
+        "pbs_length": "s1bc",
+        "provenance": {},
+        "replace_end": "s1be",
+        "replace_start": "s1bf",
+        "result": {},
+        "target": "s1c1",
+        "tool": "s1c2"
+      }
+    }
+  }
+}

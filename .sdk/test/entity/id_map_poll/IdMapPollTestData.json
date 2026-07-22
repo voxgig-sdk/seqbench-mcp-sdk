@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "id_map_poll": {
+      "ID_MAP_POLL00": {
+        "gate": "s3c",
+        "job_id": "JOB01",
+        "ok": "s3e",
+        "provenance": {},
+        "result": {},
+        "tool": "s41",
+        "id": "ID_MAP_POLL00"
+      },
+      "ID_MAP_POLL01": {
+        "gate": "s78",
+        "job_id": "JOB01",
+        "ok": "s7a",
+        "provenance": {},
+        "result": {},
+        "tool": "s7d",
+        "id": "ID_MAP_POLL01"
+      },
+      "ID_MAP_POLL02": {
+        "gate": "sb4",
+        "job_id": "JOB01",
+        "ok": "sb6",
+        "provenance": {},
+        "result": {},
+        "tool": "sb9",
+        "id": "ID_MAP_POLL02"
+      }
+    }
+  },
+  "new": {
+    "id_map_poll": {
+      "id_map_poll_ref01": {
+        "gate": "sf0",
+        "job_id": "JOB01",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "tool": "sf5"
+      }
+    }
+  }
+}

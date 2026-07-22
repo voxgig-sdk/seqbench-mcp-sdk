@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "reverse_translate": {
+      "REVERSE_TRANSLATE00": {
+        "gate": "s50",
+        "mode": "s51",
+        "ok": "s52",
+        "organism": "s53",
+        "protein": "s54",
+        "provenance": {},
+        "result": {},
+        "tool": "s57",
+        "id": "REVERSE_TRANSLATE00"
+      },
+      "REVERSE_TRANSLATE01": {
+        "gate": "sa0",
+        "mode": "sa1",
+        "ok": "sa2",
+        "organism": "sa3",
+        "protein": "sa4",
+        "provenance": {},
+        "result": {},
+        "tool": "sa7",
+        "id": "REVERSE_TRANSLATE01"
+      },
+      "REVERSE_TRANSLATE02": {
+        "gate": "sf0",
+        "mode": "sf1",
+        "ok": "sf2",
+        "organism": "sf3",
+        "protein": "sf4",
+        "provenance": {},
+        "result": {},
+        "tool": "sf7",
+        "id": "REVERSE_TRANSLATE02"
+      }
+    }
+  },
+  "new": {
+    "reverse_translate": {
+      "reverse_translate_ref01": {
+        "gate": "s140",
+        "mode": "s141",
+        "ok": "s142",
+        "organism": "s143",
+        "protein": "s144",
+        "provenance": {},
+        "result": {},
+        "tool": "s147"
+      }
+    }
+  }
+}

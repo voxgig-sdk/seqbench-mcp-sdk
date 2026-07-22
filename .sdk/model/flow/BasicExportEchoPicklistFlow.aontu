@@ -1,0 +1,18 @@
+# BasicExportEchoPicklistFlow
+
+main: kit: flow: BasicExportEchoPicklistFlow:
+{
+  entity: "export_echo_picklist",
+  kind: "basic",
+  name: "BasicExportEchoPicklistFlow",
+  step: [
+    {
+      input: {
+        ref: "export_echo_picklist_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicExportEchoPicklistFlow"
+}

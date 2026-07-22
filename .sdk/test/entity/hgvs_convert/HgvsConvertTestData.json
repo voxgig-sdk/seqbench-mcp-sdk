@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "hgvs_convert": {
+      "HGVS_CONVERT00": {
+        "gate": "s3c",
+        "ok": "s3d",
+        "provenance": {},
+        "result": {},
+        "tool": "s40",
+        "variant": "s41",
+        "id": "HGVS_CONVERT00"
+      },
+      "HGVS_CONVERT01": {
+        "gate": "s78",
+        "ok": "s79",
+        "provenance": {},
+        "result": {},
+        "tool": "s7c",
+        "variant": "s7d",
+        "id": "HGVS_CONVERT01"
+      },
+      "HGVS_CONVERT02": {
+        "gate": "sb4",
+        "ok": "sb5",
+        "provenance": {},
+        "result": {},
+        "tool": "sb8",
+        "variant": "sb9",
+        "id": "HGVS_CONVERT02"
+      }
+    }
+  },
+  "new": {
+    "hgvs_convert": {
+      "hgvs_convert_ref01": {
+        "gate": "sf0",
+        "ok": "sf1",
+        "provenance": {},
+        "result": {},
+        "tool": "sf4",
+        "variant": "sf5"
+      }
+    }
+  }
+}

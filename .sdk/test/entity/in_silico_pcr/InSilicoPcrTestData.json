@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "in_silico_pcr": {
+      "IN_SILICO_PCR00": {
+        "circular": true,
+        "forward_primer": "s65",
+        "gate": "s66",
+        "max_mismatch": "s67",
+        "ok": "s68",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s6b",
+        "template": "s6c",
+        "tool": "s6d",
+        "id": "IN_SILICO_PCR00"
+      },
+      "IN_SILICO_PCR01": {
+        "circular": true,
+        "forward_primer": "sc9",
+        "gate": "sca",
+        "max_mismatch": "scb",
+        "ok": "scc",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "scf",
+        "template": "sd0",
+        "tool": "sd1",
+        "id": "IN_SILICO_PCR01"
+      },
+      "IN_SILICO_PCR02": {
+        "circular": true,
+        "forward_primer": "s12d",
+        "gate": "s12e",
+        "max_mismatch": "s12f",
+        "ok": "s130",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s133",
+        "template": "s134",
+        "tool": "s135",
+        "id": "IN_SILICO_PCR02"
+      }
+    }
+  },
+  "new": {
+    "in_silico_pcr": {
+      "in_silico_pcr_ref01": {
+        "circular": true,
+        "forward_primer": "s191",
+        "gate": "s192",
+        "max_mismatch": "s193",
+        "ok": "s194",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s197",
+        "template": "s198",
+        "tool": "s199"
+      }
+    }
+  }
+}

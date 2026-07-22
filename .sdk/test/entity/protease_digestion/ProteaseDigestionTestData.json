@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "protease_digestion": {
+      "PROTEASE_DIGESTION00": {
+        "gate": "s6e",
+        "max_mass": 111,
+        "max_peptide": "s70",
+        "min_mass": 113,
+        "missed_cleavage": "s72",
+        "ok": "s73",
+        "protease": "s74",
+        "provenance": {},
+        "result": {},
+        "sequence": "s77",
+        "tool": "s78",
+        "id": "PROTEASE_DIGESTION00"
+      },
+      "PROTEASE_DIGESTION01": {
+        "gate": "sdc",
+        "max_mass": 221,
+        "max_peptide": "sde",
+        "min_mass": 223,
+        "missed_cleavage": "se0",
+        "ok": "se1",
+        "protease": "se2",
+        "provenance": {},
+        "result": {},
+        "sequence": "se5",
+        "tool": "se6",
+        "id": "PROTEASE_DIGESTION01"
+      },
+      "PROTEASE_DIGESTION02": {
+        "gate": "s14a",
+        "max_mass": 331,
+        "max_peptide": "s14c",
+        "min_mass": 333,
+        "missed_cleavage": "s14e",
+        "ok": "s14f",
+        "protease": "s150",
+        "provenance": {},
+        "result": {},
+        "sequence": "s153",
+        "tool": "s154",
+        "id": "PROTEASE_DIGESTION02"
+      }
+    }
+  },
+  "new": {
+    "protease_digestion": {
+      "protease_digestion_ref01": {
+        "gate": "s1b8",
+        "max_mass": 441,
+        "max_peptide": "s1ba",
+        "min_mass": 443,
+        "missed_cleavage": "s1bc",
+        "ok": "s1bd",
+        "protease": "s1be",
+        "provenance": {},
+        "result": {},
+        "sequence": "s1c1",
+        "tool": "s1c2"
+      }
+    }
+  }
+}

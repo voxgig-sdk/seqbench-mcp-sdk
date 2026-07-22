@@ -1,0 +1,18 @@
+# BasicProteaseDigestionFlow
+
+main: kit: flow: BasicProteaseDigestionFlow:
+{
+  entity: "protease_digestion",
+  kind: "basic",
+  name: "BasicProteaseDigestionFlow",
+  step: [
+    {
+      input: {
+        ref: "protease_digestion_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicProteaseDigestionFlow"
+}

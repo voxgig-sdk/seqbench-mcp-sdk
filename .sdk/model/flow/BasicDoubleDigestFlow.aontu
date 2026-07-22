@@ -1,0 +1,18 @@
+# BasicDoubleDigestFlow
+
+main: kit: flow: BasicDoubleDigestFlow:
+{
+  entity: "double_digest",
+  kind: "basic",
+  name: "BasicDoubleDigestFlow",
+  step: [
+    {
+      input: {
+        ref: "double_digest_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicDoubleDigestFlow"
+}

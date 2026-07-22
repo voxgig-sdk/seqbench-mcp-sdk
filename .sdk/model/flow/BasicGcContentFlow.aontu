@@ -1,0 +1,18 @@
+# BasicGcContentFlow
+
+main: kit: flow: BasicGcContentFlow:
+{
+  entity: "gc_content",
+  kind: "basic",
+  name: "BasicGcContentFlow",
+  step: [
+    {
+      input: {
+        ref: "gc_content_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicGcContentFlow"
+}

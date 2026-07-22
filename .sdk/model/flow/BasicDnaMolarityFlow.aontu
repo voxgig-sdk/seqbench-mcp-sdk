@@ -1,0 +1,18 @@
+# BasicDnaMolarityFlow
+
+main: kit: flow: BasicDnaMolarityFlow:
+{
+  entity: "dna_molarity",
+  kind: "basic",
+  name: "BasicDnaMolarityFlow",
+  step: [
+    {
+      input: {
+        ref: "dna_molarity_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicDnaMolarityFlow"
+}

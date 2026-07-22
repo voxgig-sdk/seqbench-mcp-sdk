@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "codon_optimize": {
+      "CODON_OPTIMIZE00": {
+        "gate": "s46",
+        "ok": "s47",
+        "organism": "s48",
+        "protein": "s49",
+        "provenance": {},
+        "result": {},
+        "tool": "s4c",
+        "id": "CODON_OPTIMIZE00"
+      },
+      "CODON_OPTIMIZE01": {
+        "gate": "s8c",
+        "ok": "s8d",
+        "organism": "s8e",
+        "protein": "s8f",
+        "provenance": {},
+        "result": {},
+        "tool": "s92",
+        "id": "CODON_OPTIMIZE01"
+      },
+      "CODON_OPTIMIZE02": {
+        "gate": "sd2",
+        "ok": "sd3",
+        "organism": "sd4",
+        "protein": "sd5",
+        "provenance": {},
+        "result": {},
+        "tool": "sd8",
+        "id": "CODON_OPTIMIZE02"
+      }
+    }
+  },
+  "new": {
+    "codon_optimize": {
+      "codon_optimize_ref01": {
+        "gate": "s118",
+        "ok": "s119",
+        "organism": "s11a",
+        "protein": "s11b",
+        "provenance": {},
+        "result": {},
+        "tool": "s11e"
+      }
+    }
+  }
+}

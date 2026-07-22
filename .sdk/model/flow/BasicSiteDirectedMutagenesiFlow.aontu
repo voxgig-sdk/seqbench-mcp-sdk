@@ -1,0 +1,18 @@
+# BasicSiteDirectedMutagenesiFlow
+
+main: kit: flow: BasicSiteDirectedMutagenesiFlow:
+{
+  entity: "site_directed_mutagenesi",
+  kind: "basic",
+  name: "BasicSiteDirectedMutagenesiFlow",
+  step: [
+    {
+      input: {
+        ref: "site_directed_mutagenesi_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSiteDirectedMutagenesiFlow"
+}

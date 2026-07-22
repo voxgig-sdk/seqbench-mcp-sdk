@@ -1,0 +1,18 @@
+# BasicVolcanoPlotDataFlow
+
+main: kit: flow: BasicVolcanoPlotDataFlow:
+{
+  entity: "volcano_plot_data",
+  kind: "basic",
+  name: "BasicVolcanoPlotDataFlow",
+  step: [
+    {
+      input: {
+        ref: "volcano_plot_data_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicVolcanoPlotDataFlow"
+}

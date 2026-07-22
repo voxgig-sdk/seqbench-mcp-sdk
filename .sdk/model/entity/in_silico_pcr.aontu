@@ -1,0 +1,82 @@
+# Entity: in_silico_pcr
+
+main: kit: entity: in_silico_pcr: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "forward_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      type: "`$ANY`"
+    }
+    {
+      name: "max_mismatch"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "result"
+      req: true
+      type: "`$OBJECT`"
+    }
+    {
+      name: "reverse_primer"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "template"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "in_silico_pcr"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/in_silico_pcr"
+          parts: [
+            "in_silico_pcr"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

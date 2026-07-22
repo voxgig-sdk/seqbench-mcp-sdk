@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "aso_design": {
+      "ASO_DESIGN00": {
+        "gate": "s50",
+        "length": "s51",
+        "ok": "s52",
+        "provenance": {},
+        "result": {},
+        "target": "s55",
+        "tool": "s56",
+        "wing": "s57",
+        "id": "ASO_DESIGN00"
+      },
+      "ASO_DESIGN01": {
+        "gate": "sa0",
+        "length": "sa1",
+        "ok": "sa2",
+        "provenance": {},
+        "result": {},
+        "target": "sa5",
+        "tool": "sa6",
+        "wing": "sa7",
+        "id": "ASO_DESIGN01"
+      },
+      "ASO_DESIGN02": {
+        "gate": "sf0",
+        "length": "sf1",
+        "ok": "sf2",
+        "provenance": {},
+        "result": {},
+        "target": "sf5",
+        "tool": "sf6",
+        "wing": "sf7",
+        "id": "ASO_DESIGN02"
+      }
+    }
+  },
+  "new": {
+    "aso_design": {
+      "aso_design_ref01": {
+        "gate": "s140",
+        "length": "s141",
+        "ok": "s142",
+        "provenance": {},
+        "result": {},
+        "target": "s145",
+        "tool": "s146",
+        "wing": "s147"
+      }
+    }
+  }
+}

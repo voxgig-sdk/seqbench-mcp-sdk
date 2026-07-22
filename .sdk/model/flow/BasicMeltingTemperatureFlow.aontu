@@ -1,0 +1,18 @@
+# BasicMeltingTemperatureFlow
+
+main: kit: flow: BasicMeltingTemperatureFlow:
+{
+  entity: "melting_temperature",
+  kind: "basic",
+  name: "BasicMeltingTemperatureFlow",
+  step: [
+    {
+      input: {
+        ref: "melting_temperature_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicMeltingTemperatureFlow"
+}

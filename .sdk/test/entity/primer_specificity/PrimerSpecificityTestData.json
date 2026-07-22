@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "primer_specificity": {
+      "PRIMER_SPECIFICITY00": {
+        "forward_primer": "s5a",
+        "gate": "s5b",
+        "max_mismatch": "s5c",
+        "max_product_length": "s5d",
+        "ok": "s5e",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s61",
+        "tool": "s62",
+        "id": "PRIMER_SPECIFICITY00"
+      },
+      "PRIMER_SPECIFICITY01": {
+        "forward_primer": "sb4",
+        "gate": "sb5",
+        "max_mismatch": "sb6",
+        "max_product_length": "sb7",
+        "ok": "sb8",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "sbb",
+        "tool": "sbc",
+        "id": "PRIMER_SPECIFICITY01"
+      },
+      "PRIMER_SPECIFICITY02": {
+        "forward_primer": "s10e",
+        "gate": "s10f",
+        "max_mismatch": "s110",
+        "max_product_length": "s111",
+        "ok": "s112",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s115",
+        "tool": "s116",
+        "id": "PRIMER_SPECIFICITY02"
+      }
+    }
+  },
+  "new": {
+    "primer_specificity": {
+      "primer_specificity_ref01": {
+        "forward_primer": "s168",
+        "gate": "s169",
+        "max_mismatch": "s16a",
+        "max_product_length": "s16b",
+        "ok": "s16c",
+        "provenance": {},
+        "result": {},
+        "reverse_primer": "s16f",
+        "tool": "s170"
+      }
+    }
+  }
+}

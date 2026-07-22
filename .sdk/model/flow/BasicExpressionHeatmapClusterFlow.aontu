@@ -1,0 +1,18 @@
+# BasicExpressionHeatmapClusterFlow
+
+main: kit: flow: BasicExpressionHeatmapClusterFlow:
+{
+  entity: "expression_heatmap_cluster",
+  kind: "basic",
+  name: "BasicExpressionHeatmapClusterFlow",
+  step: [
+    {
+      input: {
+        ref: "expression_heatmap_cluster_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicExpressionHeatmapClusterFlow"
+}

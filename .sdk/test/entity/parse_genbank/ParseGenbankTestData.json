@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "parse_genbank": {
+      "PARSE_GENBANK00": {
+        "gate": "s3c",
+        "ok": "s3d",
+        "provenance": {},
+        "result": {},
+        "text": "s40",
+        "tool": "s41",
+        "id": "PARSE_GENBANK00"
+      },
+      "PARSE_GENBANK01": {
+        "gate": "s78",
+        "ok": "s79",
+        "provenance": {},
+        "result": {},
+        "text": "s7c",
+        "tool": "s7d",
+        "id": "PARSE_GENBANK01"
+      },
+      "PARSE_GENBANK02": {
+        "gate": "sb4",
+        "ok": "sb5",
+        "provenance": {},
+        "result": {},
+        "text": "sb8",
+        "tool": "sb9",
+        "id": "PARSE_GENBANK02"
+      }
+    }
+  },
+  "new": {
+    "parse_genbank": {
+      "parse_genbank_ref01": {
+        "gate": "sf0",
+        "ok": "sf1",
+        "provenance": {},
+        "result": {},
+        "text": "sf4",
+        "tool": "sf5"
+      }
+    }
+  }
+}

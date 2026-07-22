@@ -1,0 +1,18 @@
+# BasicInSilicoPcrFlow
+
+main: kit: flow: BasicInSilicoPcrFlow:
+{
+  entity: "in_silico_pcr",
+  kind: "basic",
+  name: "BasicInSilicoPcrFlow",
+  step: [
+    {
+      input: {
+        ref: "in_silico_pcr_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicInSilicoPcrFlow"
+}

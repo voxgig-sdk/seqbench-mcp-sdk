@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "variant_comparator": {
+      "VARIANT_COMPARATOR00": {
+        "coding": true,
+        "frame_start": "s5b",
+        "gate": "s5c",
+        "ok": "s5d",
+        "provenance": {},
+        "query": "s5f",
+        "reference": "s60",
+        "result": {},
+        "tool": "s62",
+        "id": "VARIANT_COMPARATOR00"
+      },
+      "VARIANT_COMPARATOR01": {
+        "coding": true,
+        "frame_start": "sb5",
+        "gate": "sb6",
+        "ok": "sb7",
+        "provenance": {},
+        "query": "sb9",
+        "reference": "sba",
+        "result": {},
+        "tool": "sbc",
+        "id": "VARIANT_COMPARATOR01"
+      },
+      "VARIANT_COMPARATOR02": {
+        "coding": true,
+        "frame_start": "s10f",
+        "gate": "s110",
+        "ok": "s111",
+        "provenance": {},
+        "query": "s113",
+        "reference": "s114",
+        "result": {},
+        "tool": "s116",
+        "id": "VARIANT_COMPARATOR02"
+      }
+    }
+  },
+  "new": {
+    "variant_comparator": {
+      "variant_comparator_ref01": {
+        "coding": true,
+        "frame_start": "s169",
+        "gate": "s16a",
+        "ok": "s16b",
+        "provenance": {},
+        "query": "s16d",
+        "reference": "s16e",
+        "result": {},
+        "tool": "s170"
+      }
+    }
+  }
+}

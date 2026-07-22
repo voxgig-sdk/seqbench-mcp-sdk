@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "sequence_search": {
+      "SEQUENCE_SEARCH00": {
+        "db": "s64",
+        "gate": "s65",
+        "gene": "s66",
+        "max_result": "s67",
+        "ok": "s68",
+        "organism": "s69",
+        "provenance": {},
+        "result": {},
+        "term": "s6c",
+        "tool": "s6d",
+        "id": "SEQUENCE_SEARCH00"
+      },
+      "SEQUENCE_SEARCH01": {
+        "db": "sc8",
+        "gate": "sc9",
+        "gene": "sca",
+        "max_result": "scb",
+        "ok": "scc",
+        "organism": "scd",
+        "provenance": {},
+        "result": {},
+        "term": "sd0",
+        "tool": "sd1",
+        "id": "SEQUENCE_SEARCH01"
+      },
+      "SEQUENCE_SEARCH02": {
+        "db": "s12c",
+        "gate": "s12d",
+        "gene": "s12e",
+        "max_result": "s12f",
+        "ok": "s130",
+        "organism": "s131",
+        "provenance": {},
+        "result": {},
+        "term": "s134",
+        "tool": "s135",
+        "id": "SEQUENCE_SEARCH02"
+      }
+    }
+  },
+  "new": {
+    "sequence_search": {
+      "sequence_search_ref01": {
+        "db": "s190",
+        "gate": "s191",
+        "gene": "s192",
+        "max_result": "s193",
+        "ok": "s194",
+        "organism": "s195",
+        "provenance": {},
+        "result": {},
+        "term": "s198",
+        "tool": "s199"
+      }
+    }
+  }
+}

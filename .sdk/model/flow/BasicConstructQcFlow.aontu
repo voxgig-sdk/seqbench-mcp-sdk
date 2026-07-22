@@ -1,0 +1,18 @@
+# BasicConstructQcFlow
+
+main: kit: flow: BasicConstructQcFlow:
+{
+  entity: "construct_qc",
+  kind: "basic",
+  name: "BasicConstructQcFlow",
+  step: [
+    {
+      input: {
+        ref: "construct_qc_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicConstructQcFlow"
+}

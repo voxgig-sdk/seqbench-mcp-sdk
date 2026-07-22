@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "sequence_format_convert": {
+      "SEQUENCE_FORMAT_CONVERT00": {
+        "from": "s50",
+        "gate": "s51",
+        "input": "s52",
+        "ok": "s53",
+        "provenance": {},
+        "result": {},
+        "to": "s56",
+        "tool": "s57",
+        "id": "SEQUENCE_FORMAT_CONVERT00"
+      },
+      "SEQUENCE_FORMAT_CONVERT01": {
+        "from": "sa0",
+        "gate": "sa1",
+        "input": "sa2",
+        "ok": "sa3",
+        "provenance": {},
+        "result": {},
+        "to": "sa6",
+        "tool": "sa7",
+        "id": "SEQUENCE_FORMAT_CONVERT01"
+      },
+      "SEQUENCE_FORMAT_CONVERT02": {
+        "from": "sf0",
+        "gate": "sf1",
+        "input": "sf2",
+        "ok": "sf3",
+        "provenance": {},
+        "result": {},
+        "to": "sf6",
+        "tool": "sf7",
+        "id": "SEQUENCE_FORMAT_CONVERT02"
+      }
+    }
+  },
+  "new": {
+    "sequence_format_convert": {
+      "sequence_format_convert_ref01": {
+        "from": "s140",
+        "gate": "s141",
+        "input": "s142",
+        "ok": "s143",
+        "provenance": {},
+        "result": {},
+        "to": "s146",
+        "tool": "s147"
+      }
+    }
+  }
+}

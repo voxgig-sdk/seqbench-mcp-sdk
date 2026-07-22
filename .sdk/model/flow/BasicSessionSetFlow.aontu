@@ -1,0 +1,18 @@
+# BasicSessionSetFlow
+
+main: kit: flow: BasicSessionSetFlow:
+{
+  entity: "session_set",
+  kind: "basic",
+  name: "BasicSessionSetFlow",
+  step: [
+    {
+      input: {
+        ref: "session_set_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicSessionSetFlow"
+}

@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "reverse_complement": {
+      "REVERSE_COMPLEMENT00": {
+        "gate": "s46",
+        "ok": "s47",
+        "provenance": {},
+        "result": {},
+        "sequence": "s4a",
+        "tool": "s4b",
+        "type": "s4c",
+        "id": "REVERSE_COMPLEMENT00"
+      },
+      "REVERSE_COMPLEMENT01": {
+        "gate": "s8c",
+        "ok": "s8d",
+        "provenance": {},
+        "result": {},
+        "sequence": "s90",
+        "tool": "s91",
+        "type": "s92",
+        "id": "REVERSE_COMPLEMENT01"
+      },
+      "REVERSE_COMPLEMENT02": {
+        "gate": "sd2",
+        "ok": "sd3",
+        "provenance": {},
+        "result": {},
+        "sequence": "sd6",
+        "tool": "sd7",
+        "type": "sd8",
+        "id": "REVERSE_COMPLEMENT02"
+      }
+    }
+  },
+  "new": {
+    "reverse_complement": {
+      "reverse_complement_ref01": {
+        "gate": "s118",
+        "ok": "s119",
+        "provenance": {},
+        "result": {},
+        "sequence": "s11c",
+        "tool": "s11d",
+        "type": "s11e"
+      }
+    }
+  }
+}

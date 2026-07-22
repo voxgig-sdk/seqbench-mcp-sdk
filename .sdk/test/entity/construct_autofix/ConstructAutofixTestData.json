@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "construct_autofix": {
+      "CONSTRUCT_AUTOFIX00": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s97",
+        "frame_start": "s98",
+        "gate": "s99",
+        "gc_high": 154,
+        "gc_low": 155,
+        "gc_window": "s9c",
+        "homopolymer_min": "s9d",
+        "max_pass": "s9e",
+        "ok": "s9f",
+        "organism": "sa0",
+        "provenance": {},
+        "result": {},
+        "sequence": "sa3",
+        "tool": "sa4",
+        "id": "CONSTRUCT_AUTOFIX00"
+      },
+      "CONSTRUCT_AUTOFIX01": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s12d",
+        "frame_start": "s12e",
+        "gate": "s12f",
+        "gc_high": 304,
+        "gc_low": 305,
+        "gc_window": "s132",
+        "homopolymer_min": "s133",
+        "max_pass": "s134",
+        "ok": "s135",
+        "organism": "s136",
+        "provenance": {},
+        "result": {},
+        "sequence": "s139",
+        "tool": "s13a",
+        "id": "CONSTRUCT_AUTOFIX01"
+      },
+      "CONSTRUCT_AUTOFIX02": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s1c3",
+        "frame_start": "s1c4",
+        "gate": "s1c5",
+        "gc_high": 454,
+        "gc_low": 455,
+        "gc_window": "s1c8",
+        "homopolymer_min": "s1c9",
+        "max_pass": "s1ca",
+        "ok": "s1cb",
+        "organism": "s1cc",
+        "provenance": {},
+        "result": {},
+        "sequence": "s1cf",
+        "tool": "s1d0",
+        "id": "CONSTRUCT_AUTOFIX02"
+      }
+    }
+  },
+  "new": {
+    "construct_autofix": {
+      "construct_autofix_ref01": {
+        "avoid_enzyme": [],
+        "cryptic_orf_min_aa": "s259",
+        "frame_start": "s25a",
+        "gate": "s25b",
+        "gc_high": 604,
+        "gc_low": 605,
+        "gc_window": "s25e",
+        "homopolymer_min": "s25f",
+        "max_pass": "s260",
+        "ok": "s261",
+        "organism": "s262",
+        "provenance": {},
+        "result": {},
+        "sequence": "s265",
+        "tool": "s266"
+      }
+    }
+  }
+}

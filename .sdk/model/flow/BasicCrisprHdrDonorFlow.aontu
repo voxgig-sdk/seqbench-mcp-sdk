@@ -1,0 +1,18 @@
+# BasicCrisprHdrDonorFlow
+
+main: kit: flow: BasicCrisprHdrDonorFlow:
+{
+  entity: "crispr_hdr_donor",
+  kind: "basic",
+  name: "BasicCrisprHdrDonorFlow",
+  step: [
+    {
+      input: {
+        ref: "crispr_hdr_donor_ref01"
+      }
+
+      op: "create"
+    }
+  ],
+  "key$": "BasicCrisprHdrDonorFlow"
+}
