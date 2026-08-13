@@ -16,7 +16,7 @@ main: kit: entity: fastq_trim: {
       type: "`$STRING`"
     }
     {
-      name: "min_length"
+      name: "minLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,12 +31,12 @@ main: kit: entity: fastq_trim: {
       type: "`$OBJECT`"
     }
     {
-      name: "quality_offset"
+      name: "qualityOffset"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "quality_threshold"
+      name: "qualityThreshold"
       req: false
       type: "`$INTEGER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: fastq_trim: {
             "fastq_trim"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              input: "`reqdata.input`"
+              minLength: "`reqdata.min_length`"
+              qualityOffset: "`reqdata.quality_offset`"
+              qualityThreshold: "`reqdata.quality_threshold`"
+            }
             res: "`body`"
           }
         }

@@ -26,8 +26,8 @@ import {
 describe('SavePermalinkEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('SavePermalinkEntity', async () => {
     const save_permalink_ref01_ent = client.SavePermalink()
     let save_permalink_ref01_data = setup.data.new.save_permalink['save_permalink_ref01']
 
-    save_permalink_ref01_data = await save_permalink_ref01_ent.create(save_permalink_ref01_data)
+    save_permalink_ref01_data = (await save_permalink_ref01_ent.create(save_permalink_ref01_data)).data()
     assert(null != save_permalink_ref01_data)
 
 

@@ -59,7 +59,11 @@ main: kit: entity: aso_design: {
             "aso_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              length: "`reqdata.length`"
+              target: "`reqdata.target`"
+              wing: "`reqdata.wing`"
+            }
             res: "`body`"
           }
         }

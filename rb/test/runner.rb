@@ -23,8 +23,8 @@ module SeqbenchMcpTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("SEQBENCHMCP_TEST_LIVE")
-    override = getenv("SEQBENCHMCP_TEST_OVERRIDE")
+    live = getenv("SEQBENCH_MCP_TEST_LIVE")
+    override = getenv("SEQBENCH_MCP_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module SeqbenchMcpTestRunner
       end
     end
 
-    explain = getenv("SEQBENCHMCP_TEST_EXPLAIN")
-    m["SEQBENCHMCP_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("SEQBENCH_MCP_TEST_EXPLAIN")
+    m["SEQBENCH_MCP_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

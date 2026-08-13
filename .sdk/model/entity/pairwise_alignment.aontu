@@ -46,12 +46,12 @@ main: kit: entity: pairwise_alignment: {
       type: "`$OBJECT`"
     }
     {
-      name: "seq_a"
+      name: "seqA"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "seq_b"
+      name: "seqB"
       req: true
       type: "`$STRING`"
     }
@@ -74,7 +74,14 @@ main: kit: entity: pairwise_alignment: {
             "pairwise_alignment"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              gap: "`reqdata.gap`"
+              match: "`reqdata.match`"
+              mismatch: "`reqdata.mismatch`"
+              mode: "`reqdata.mode`"
+              seqA: "`reqdata.seq_a`"
+              seqB: "`reqdata.seq_b`"
+            }
             res: "`body`"
           }
         }

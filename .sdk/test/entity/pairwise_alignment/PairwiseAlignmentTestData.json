@@ -10,8 +10,8 @@
         "ok": "s73",
         "provenance": {},
         "result": {},
-        "seq_a": "s76",
-        "seq_b": "s77",
+        "seqA": "s76",
+        "seqB": "s77",
         "tool": "s78",
         "id": "PAIRWISE_ALIGNMENT00"
       },
@@ -24,8 +24,8 @@
         "ok": "se1",
         "provenance": {},
         "result": {},
-        "seq_a": "se4",
-        "seq_b": "se5",
+        "seqA": "se4",
+        "seqB": "se5",
         "tool": "se6",
         "id": "PAIRWISE_ALIGNMENT01"
       },
@@ -38,8 +38,8 @@
         "ok": "s14f",
         "provenance": {},
         "result": {},
-        "seq_a": "s152",
-        "seq_b": "s153",
+        "seqA": "s152",
+        "seqB": "s153",
         "tool": "s154",
         "id": "PAIRWISE_ALIGNMENT02"
       }
@@ -56,8 +56,8 @@
         "ok": "s1bd",
         "provenance": {},
         "result": {},
-        "seq_a": "s1c0",
-        "seq_b": "s1c1",
+        "seqA": "s1c0",
+        "seqB": "s1c1",
         "tool": "s1c2"
       }
     }

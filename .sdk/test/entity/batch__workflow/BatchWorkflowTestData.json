@@ -2,24 +2,39 @@
   "existing": {
     "batch__workflow": {
       "BATCH__WORKFLOW00": {
-        "input": "s28",
-        "ok": "s29",
-        "result": {},
-        "step": [],
+        "capped": true,
+        "columns": [],
+        "count": "s5c",
+        "errors": "s5d",
+        "input": "s5e",
+        "limit": "s5f",
+        "provenance": {},
+        "rows": [],
+        "steps": [],
         "id": "BATCH__WORKFLOW00"
       },
       "BATCH__WORKFLOW01": {
-        "input": "s50",
-        "ok": "s51",
-        "result": {},
-        "step": [],
+        "capped": true,
+        "columns": [],
+        "count": "sb6",
+        "errors": "sb7",
+        "input": "sb8",
+        "limit": "sb9",
+        "provenance": {},
+        "rows": [],
+        "steps": [],
         "id": "BATCH__WORKFLOW01"
       },
       "BATCH__WORKFLOW02": {
-        "input": "s78",
-        "ok": "s79",
-        "result": {},
-        "step": [],
+        "capped": true,
+        "columns": [],
+        "count": "s110",
+        "errors": "s111",
+        "input": "s112",
+        "limit": "s113",
+        "provenance": {},
+        "rows": [],
+        "steps": [],
         "id": "BATCH__WORKFLOW02"
       }
     }
@@ -27,10 +42,15 @@
   "new": {
     "batch__workflow": {
       "batch__workflow_ref01": {
-        "input": "sa0",
-        "ok": "sa1",
-        "result": {},
-        "step": []
+        "capped": true,
+        "columns": [],
+        "count": "s16a",
+        "errors": "s16b",
+        "input": "s16c",
+        "limit": "s16d",
+        "provenance": {},
+        "rows": [],
+        "steps": []
       }
     }
   }

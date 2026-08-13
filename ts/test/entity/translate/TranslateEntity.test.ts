@@ -26,8 +26,8 @@ import {
 describe('TranslateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('TranslateEntity', async () => {
     const translate_ref01_ent = client.Translate()
     let translate_ref01_data = setup.data.new.translate['translate_ref01']
 
-    translate_ref01_data = await translate_ref01_ent.create(translate_ref01_data)
+    translate_ref01_data = (await translate_ref01_ent.create(translate_ref01_data)).data()
     assert(null != translate_ref01_data)
 
 

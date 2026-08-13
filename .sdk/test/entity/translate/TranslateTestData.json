@@ -8,7 +8,7 @@
         "provenance": {},
         "result": {},
         "sequence": "s55",
-        "to_stop": true,
+        "toStop": true,
         "tool": "s57",
         "id": "TRANSLATE00"
       },
@@ -19,7 +19,7 @@
         "provenance": {},
         "result": {},
         "sequence": "sa5",
-        "to_stop": true,
+        "toStop": true,
         "tool": "sa7",
         "id": "TRANSLATE01"
       },
@@ -30,7 +30,7 @@
         "provenance": {},
         "result": {},
         "sequence": "sf5",
-        "to_stop": true,
+        "toStop": true,
         "tool": "sf7",
         "id": "TRANSLATE02"
       }
@@ -45,7 +45,7 @@
         "provenance": {},
         "result": {},
         "sequence": "s145",
-        "to_stop": true,
+        "toStop": true,
         "tool": "s147"
       }
     }

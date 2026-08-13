@@ -26,7 +26,7 @@ class ProteinHydrophobicityEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set SEQBENCHMCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set SEQBENCH_MCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,7 +37,7 @@ class ProteinHydrophobicityEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.protein_hydrophobicity"), "protein_hydrophobicity_ref01"))
 
     protein_hydrophobicity_ref01_data_result = protein_hydrophobicity_ref01_ent.create(protein_hydrophobicity_ref01_data, nil)
-    protein_hydrophobicity_ref01_data = Helpers.to_map(protein_hydrophobicity_ref01_data_result)
+    protein_hydrophobicity_ref01_data = Helpers.to_map(protein_hydrophobicity_ref01_data_result.respond_to?(:data_get) ? protein_hydrophobicity_ref01_data_result.data_get : protein_hydrophobicity_ref01_data_result)
     assert !protein_hydrophobicity_ref01_data.nil?
 
   end
@@ -69,39 +69,39 @@ def protein_hydrophobicity_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["SEQBENCHMCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID"]
+  entid_env_raw = ENV["SEQBENCH_MCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "SEQBENCHMCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID" => idmap,
-    "SEQBENCHMCP_TEST_LIVE" => "FALSE",
-    "SEQBENCHMCP_TEST_EXPLAIN" => "FALSE",
-    "SEQBENCHMCP_APIKEY" => "NONE",
+    "SEQBENCH_MCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID" => idmap,
+    "SEQBENCH_MCP_TEST_LIVE" => "FALSE",
+    "SEQBENCH_MCP_TEST_EXPLAIN" => "FALSE",
+    "SEQBENCH_MCP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["SEQBENCHMCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID"])
+    env["SEQBENCH_MCP_TEST_PROTEIN_HYDROPHOBICITY_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SEQBENCHMCP_APIKEY"],
+        "apikey" => env["SEQBENCH_MCP_APIKEY"],
       },
       extra || {},
     ])
     client = SeqbenchMcpSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  live = env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["SEQBENCHMCP_TEST_EXPLAIN"] == "TRUE",
+    explain: env["SEQBENCH_MCP_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

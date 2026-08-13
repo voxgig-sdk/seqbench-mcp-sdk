@@ -43,8 +43,8 @@ class SeqbenchMcpTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('SEQBENCHMCP_TEST_LIVE');
-        $override = self::getenv('SEQBENCHMCP_TEST_OVERRIDE');
+        $live = self::getenv('SEQBENCH_MCP_TEST_LIVE');
+        $override = self::getenv('SEQBENCH_MCP_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class SeqbenchMcpTestRunner
             }
         }
 
-        $explain = self::getenv('SEQBENCHMCP_TEST_EXPLAIN');
+        $explain = self::getenv('SEQBENCH_MCP_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['SEQBENCHMCP_TEST_EXPLAIN'] = $explain;
+            $m['SEQBENCH_MCP_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

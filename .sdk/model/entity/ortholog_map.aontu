@@ -26,17 +26,17 @@ main: kit: entity: ortholog_map: {
       type: "`$OBJECT`"
     }
     {
-      name: "source_species"
+      name: "sourceSpecies"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "symbol"
+      name: "symbols"
       req: true
       type: "`$ARRAY`"
     }
     {
-      name: "target_species"
+      name: "targetSpecies"
       req: true
       type: "`$STRING`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: ortholog_map: {
             "ortholog_map"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              sourceSpecies: "`reqdata.source_species`"
+              symbols: "`reqdata.symbol`"
+              targetSpecies: "`reqdata.target_species`"
+              type: "`reqdata.type`"
+            }
             res: "`body`"
           }
         }

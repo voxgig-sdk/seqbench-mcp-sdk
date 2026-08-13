@@ -21,7 +21,7 @@ main: kit: entity: export_echo_picklist: {
       type: "`$OBJECT`"
     }
     {
-      name: "reaction"
+      name: "reactions"
       req: true
       type: "`$ARRAY`"
     }
@@ -49,7 +49,9 @@ main: kit: entity: export_echo_picklist: {
             "export_echo_picklist"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              reactions: "`reqdata.reaction`"
+            }
             res: "`body`"
           }
         }

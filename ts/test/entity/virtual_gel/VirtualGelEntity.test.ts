@@ -26,8 +26,8 @@ import {
 describe('VirtualGelEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('VirtualGelEntity', async () => {
     const virtual_gel_ref01_ent = client.VirtualGel()
     let virtual_gel_ref01_data = setup.data.new.virtual_gel['virtual_gel_ref01']
 
-    virtual_gel_ref01_data = await virtual_gel_ref01_ent.create(virtual_gel_ref01_data)
+    virtual_gel_ref01_data = (await virtual_gel_ref01_ent.create(virtual_gel_ref01_data)).data()
     assert(null != virtual_gel_ref01_data)
 
 

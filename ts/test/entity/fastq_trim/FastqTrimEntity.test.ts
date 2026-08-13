@@ -26,8 +26,8 @@ import {
 describe('FastqTrimEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('FastqTrimEntity', async () => {
     const fastq_trim_ref01_ent = client.FastqTrim()
     let fastq_trim_ref01_data = setup.data.new.fastq_trim['fastq_trim_ref01']
 
-    fastq_trim_ref01_data = await fastq_trim_ref01_ent.create(fastq_trim_ref01_data)
+    fastq_trim_ref01_data = (await fastq_trim_ref01_ent.create(fastq_trim_ref01_data)).data()
     assert(null != fastq_trim_ref01_data)
 
 

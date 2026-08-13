@@ -3,7 +3,7 @@
     "virtual_gel": {
       "VIRTUAL_GEL00": {
         "circular": true,
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s5c",
         "ladder": "s5d",
         "ok": "s5e",
@@ -15,7 +15,7 @@
       },
       "VIRTUAL_GEL01": {
         "circular": true,
-        "enzyme": [],
+        "enzymes": [],
         "gate": "sb6",
         "ladder": "sb7",
         "ok": "sb8",
@@ -27,7 +27,7 @@
       },
       "VIRTUAL_GEL02": {
         "circular": true,
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s110",
         "ladder": "s111",
         "ok": "s112",
@@ -43,7 +43,7 @@
     "virtual_gel": {
       "virtual_gel_ref01": {
         "circular": true,
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s16a",
         "ladder": "s16b",
         "ok": "s16c",

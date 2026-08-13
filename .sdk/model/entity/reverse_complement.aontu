@@ -54,7 +54,10 @@ main: kit: entity: reverse_complement: {
             "reverse_complement"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              sequence: "`reqdata.sequence`"
+              type: "`reqdata.type`"
+            }
             res: "`body`"
           }
         }

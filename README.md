@@ -44,9 +44,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = SeqbenchMcpSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = SeqbenchMcpSDK.test({
+  entity: {
+    batch: {
+      test01: { id: 'test01', capped: true, columns: [], count: 1 },
+    },
+  },
+})
 const batch = await client.Batch().load()
-// batch is a bare Batch populated with mock data
+// batch is the Batch entity, populated with mock data
+// — call batch.data() for the record itself
 console.log(batch)
 ```
 
@@ -422,6 +431,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://seqbench.com](https://seqbench.com)
 

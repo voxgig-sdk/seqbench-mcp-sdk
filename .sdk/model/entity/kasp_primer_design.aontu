@@ -6,17 +6,17 @@ main: kit: entity: kasp_primer_design: {
 
   fields: [
     {
-      name: "add_secondary_mismatch"
+      name: "addSecondaryMismatch"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "allele_a"
+      name: "alleleA"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "allele_b"
+      name: "alleleB"
       req: true
       type: "`$STRING`"
     }
@@ -26,12 +26,12 @@ main: kit: entity: kasp_primer_design: {
       type: "`$ANY`"
     }
     {
-      name: "max_amplicon"
+      name: "maxAmplicon"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "min_amplicon"
+      name: "minAmplicon"
       req: false
       type: "`$INTEGER`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: kasp_primer_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "snp_position"
+      name: "snpPosition"
       req: true
       type: "`$INTEGER`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: kasp_primer_design: {
       type: "`$STRING`"
     }
     {
-      name: "target_core_tm"
+      name: "targetCoreTm"
       req: false
       type: "`$NUMBER`"
     }
@@ -84,7 +84,16 @@ main: kit: entity: kasp_primer_design: {
             "kasp_primer_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              addSecondaryMismatch: "`reqdata.add_secondary_mismatch`"
+              alleleA: "`reqdata.allele_a`"
+              alleleB: "`reqdata.allele_b`"
+              maxAmplicon: "`reqdata.max_amplicon`"
+              minAmplicon: "`reqdata.min_amplicon`"
+              snpPosition: "`reqdata.snp_position`"
+              target: "`reqdata.target`"
+              targetCoreTm: "`reqdata.target_core_tm`"
+            }
             res: "`body`"
           }
         }

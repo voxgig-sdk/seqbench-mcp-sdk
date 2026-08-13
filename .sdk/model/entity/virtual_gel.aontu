@@ -11,7 +11,7 @@ main: kit: entity: virtual_gel: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "enzyme"
+      name: "enzymes"
       req: false
       type: "`$ARRAY`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: virtual_gel: {
             "virtual_gel"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              circular: "`reqdata.circular`"
+              enzymes: "`reqdata.enzyme`"
+              ladder: "`reqdata.ladder`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

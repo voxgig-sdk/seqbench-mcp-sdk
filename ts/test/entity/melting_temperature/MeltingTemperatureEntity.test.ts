@@ -26,8 +26,8 @@ import {
 describe('MeltingTemperatureEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('MeltingTemperatureEntity', async () => {
     const melting_temperature_ref01_ent = client.MeltingTemperature()
     let melting_temperature_ref01_data = setup.data.new.melting_temperature['melting_temperature_ref01']
 
-    melting_temperature_ref01_data = await melting_temperature_ref01_ent.create(melting_temperature_ref01_data)
+    melting_temperature_ref01_data = (await melting_temperature_ref01_ent.create(melting_temperature_ref01_data)).data()
     assert(null != melting_temperature_ref01_data)
 
 

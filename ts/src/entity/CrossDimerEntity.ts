@@ -38,7 +38,7 @@ class CrossDimerEntity extends SeqbenchMcpEntityBase<CrossDimer> {
 
 
 
-  async create(this: any, reqdata?: CrossDimerCreateData, ctrl?: Control): Promise<CrossDimer> {
+  async create(this: any, reqdata?: CrossDimerCreateData, ctrl?: Control): Promise<CrossDimerEntity> {
 
     const utility = this._utility
     const {
@@ -124,7 +124,15 @@ class CrossDimerEntity extends SeqbenchMcpEntityBase<CrossDimer> {
         }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      // An operation resolves to the ENTITY, not the raw data — the record
+      // has just been absorbed into this instance and is reached through
+      // data(). `done` still runs: it completes the pipeline and raises on
+      // failure, and when throwing is disabled it hands back the error
+      // payload, which passes through unchanged. See AGENTS.md "Entity
+      // operations return ENTITIES".
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
 

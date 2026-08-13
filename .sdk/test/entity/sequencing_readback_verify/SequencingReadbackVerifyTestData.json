@@ -3,10 +3,10 @@
     "sequencing_readback_verify": {
       "SEQUENCING_READBACK_VERIFY00": {
         "gate": "s50",
-        "min_supporting_read": "s51",
+        "minSupportingReads": "s51",
         "ok": "s52",
         "provenance": {},
-        "read": "s54",
+        "reads": "s54",
         "reference": "s55",
         "result": {},
         "tool": "s57",
@@ -14,10 +14,10 @@
       },
       "SEQUENCING_READBACK_VERIFY01": {
         "gate": "sa0",
-        "min_supporting_read": "sa1",
+        "minSupportingReads": "sa1",
         "ok": "sa2",
         "provenance": {},
-        "read": "sa4",
+        "reads": "sa4",
         "reference": "sa5",
         "result": {},
         "tool": "sa7",
@@ -25,10 +25,10 @@
       },
       "SEQUENCING_READBACK_VERIFY02": {
         "gate": "sf0",
-        "min_supporting_read": "sf1",
+        "minSupportingReads": "sf1",
         "ok": "sf2",
         "provenance": {},
-        "read": "sf4",
+        "reads": "sf4",
         "reference": "sf5",
         "result": {},
         "tool": "sf7",
@@ -40,10 +40,10 @@
     "sequencing_readback_verify": {
       "sequencing_readback_verify_ref01": {
         "gate": "s140",
-        "min_supporting_read": "s141",
+        "minSupportingReads": "s141",
         "ok": "s142",
         "provenance": {},
-        "read": "s144",
+        "reads": "s144",
         "reference": "s145",
         "result": {},
         "tool": "s147"

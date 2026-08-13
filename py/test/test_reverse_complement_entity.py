@@ -6,9 +6,9 @@ import time
 
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from seqbenchmcp_sdk.utility.voxgig_struct import voxgig_struct as vs
 from seqbenchmcp_sdk import SeqbenchMcpSDK
-from core import helpers
+from seqbenchmcp_sdk.core import helpers
 
 _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
@@ -36,7 +36,7 @@ class TestReverseComplementEntity:
         # without an *_ENTID env override, those IDs hit the live API and 4xx.
         if setup.get("synthetic_only"):
             pytest.skip("live entity test uses synthetic IDs from fixture — "
-                        "set SEQBENCHMCP_TEST_REVERSE_COMPLEMENT_ENTID JSON to run live")
+                        "set SEQBENCH_MCP_TEST_REVERSE_COMPLEMENT_ENTID JSON to run live")
         client = setup["client"]
 
         # CREATE
@@ -44,7 +44,7 @@ class TestReverseComplementEntity:
         reverse_complement_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.reverse_complement"), "reverse_complement_ref01"))
 
-        reverse_complement_ref01_data = helpers.to_map(reverse_complement_ref01_ent.create(reverse_complement_ref01_data, None))
+        reverse_complement_ref01_data = helpers.to_map(runner.entity_data(reverse_complement_ref01_ent.create(reverse_complement_ref01_data, None)))
         assert reverse_complement_ref01_data is not None
 
 
@@ -78,37 +78,37 @@ def _reverse_complement_basic_setup(extra):
     # mode is on without a real override, the basic test runs against synthetic
     # IDs from the fixture and 4xx's. We surface this so the test can skip.
     _entid_env_raw = os.environ.get(
-        "SEQBENCHMCP_TEST_REVERSE_COMPLEMENT_ENTID")
+        "SEQBENCH_MCP_TEST_REVERSE_COMPLEMENT_ENTID")
     _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
 
     env = runner.env_override({
-        "SEQBENCHMCP_TEST_REVERSE_COMPLEMENT_ENTID": idmap,
-        "SEQBENCHMCP_TEST_LIVE": "FALSE",
-        "SEQBENCHMCP_TEST_EXPLAIN": "FALSE",
-        "SEQBENCHMCP_APIKEY": "NONE",
+        "SEQBENCH_MCP_TEST_REVERSE_COMPLEMENT_ENTID": idmap,
+        "SEQBENCH_MCP_TEST_LIVE": "FALSE",
+        "SEQBENCH_MCP_TEST_EXPLAIN": "FALSE",
+        "SEQBENCH_MCP_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
-        env.get("SEQBENCHMCP_TEST_REVERSE_COMPLEMENT_ENTID"))
+        env.get("SEQBENCH_MCP_TEST_REVERSE_COMPLEMENT_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
 
-    if env.get("SEQBENCHMCP_TEST_LIVE") == "TRUE":
+    if env.get("SEQBENCH_MCP_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("SEQBENCHMCP_APIKEY"),
+                "apikey": env.get("SEQBENCH_MCP_APIKEY"),
             },
             extra or {},
         ])
         client = SeqbenchMcpSDK(helpers.to_map(merged_opts))
 
-    _live = env.get("SEQBENCHMCP_TEST_LIVE") == "TRUE"
+    _live = env.get("SEQBENCH_MCP_TEST_LIVE") == "TRUE"
     return {
         "client": client,
         "data": entity_data,
         "idmap": idmap_resolved,
         "env": env,
-        "explain": env.get("SEQBENCHMCP_TEST_EXPLAIN") == "TRUE",
+        "explain": env.get("SEQBENCH_MCP_TEST_EXPLAIN") == "TRUE",
         "live": _live,
         "synthetic_only": _live and not _idmap_overridden,
         "now": int(time.time() * 1000),

@@ -26,8 +26,8 @@ import {
 describe('VerifyConstructEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('VerifyConstructEntity', async () => {
     const verify_construct_ref01_ent = client.VerifyConstruct()
     let verify_construct_ref01_data = setup.data.new.verify_construct['verify_construct_ref01']
 
-    verify_construct_ref01_data = await verify_construct_ref01_ent.create(verify_construct_ref01_data)
+    verify_construct_ref01_data = (await verify_construct_ref01_ent.create(verify_construct_ref01_data)).data()
     assert(null != verify_construct_ref01_data)
 
 

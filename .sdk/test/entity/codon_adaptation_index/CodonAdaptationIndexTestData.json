@@ -2,36 +2,36 @@
   "existing": {
     "codon_adaptation_index": {
       "CODON_ADAPTATION_INDEX00": {
-        "frame_start": "s5a",
+        "frameStart": "s5a",
         "gate": "s5b",
         "ok": "s5c",
         "organism": "s5d",
         "provenance": {},
-        "rare_threshold": 95,
+        "rareThreshold": 95,
         "result": {},
         "sequence": "s61",
         "tool": "s62",
         "id": "CODON_ADAPTATION_INDEX00"
       },
       "CODON_ADAPTATION_INDEX01": {
-        "frame_start": "sb4",
+        "frameStart": "sb4",
         "gate": "sb5",
         "ok": "sb6",
         "organism": "sb7",
         "provenance": {},
-        "rare_threshold": 185,
+        "rareThreshold": 185,
         "result": {},
         "sequence": "sbb",
         "tool": "sbc",
         "id": "CODON_ADAPTATION_INDEX01"
       },
       "CODON_ADAPTATION_INDEX02": {
-        "frame_start": "s10e",
+        "frameStart": "s10e",
         "gate": "s10f",
         "ok": "s110",
         "organism": "s111",
         "provenance": {},
-        "rare_threshold": 275,
+        "rareThreshold": 275,
         "result": {},
         "sequence": "s115",
         "tool": "s116",
@@ -42,12 +42,12 @@
   "new": {
     "codon_adaptation_index": {
       "codon_adaptation_index_ref01": {
-        "frame_start": "s168",
+        "frameStart": "s168",
         "gate": "s169",
         "ok": "s16a",
         "organism": "s16b",
         "provenance": {},
-        "rare_threshold": 365,
+        "rareThreshold": 365,
         "result": {},
         "sequence": "s16f",
         "tool": "s170"

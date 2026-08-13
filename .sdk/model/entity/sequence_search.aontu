@@ -21,7 +21,7 @@ main: kit: entity: sequence_search: {
       type: "`$STRING`"
     }
     {
-      name: "max_result"
+      name: "maxResults"
       req: false
       type: "`$INTEGER`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: sequence_search: {
             "sequence_search"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              db: "`reqdata.db`"
+              gene: "`reqdata.gene`"
+              maxResults: "`reqdata.max_result`"
+              organism: "`reqdata.organism`"
+              term: "`reqdata.term`"
+            }
             res: "`body`"
           }
         }

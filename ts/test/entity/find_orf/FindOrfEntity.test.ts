@@ -26,8 +26,8 @@ import {
 describe('FindOrfEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('FindOrfEntity', async () => {
     const find_orf_ref01_ent = client.FindOrf()
     let find_orf_ref01_data = setup.data.new.find_orf['find_orf_ref01']
 
-    find_orf_ref01_data = await find_orf_ref01_ent.create(find_orf_ref01_data)
+    find_orf_ref01_data = (await find_orf_ref01_ent.create(find_orf_ref01_data)).data()
     assert(null != find_orf_ref01_data)
 
 

@@ -26,8 +26,8 @@ import {
 describe('CodonAdaptationIndexEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('CodonAdaptationIndexEntity', async () => {
     const codon_adaptation_index_ref01_ent = client.CodonAdaptationIndex()
     let codon_adaptation_index_ref01_data = setup.data.new.codon_adaptation_index['codon_adaptation_index_ref01']
 
-    codon_adaptation_index_ref01_data = await codon_adaptation_index_ref01_ent.create(codon_adaptation_index_ref01_data)
+    codon_adaptation_index_ref01_data = (await codon_adaptation_index_ref01_ent.create(codon_adaptation_index_ref01_data)).data()
     assert(null != codon_adaptation_index_ref01_data)
 
 

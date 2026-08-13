@@ -26,7 +26,7 @@ main: kit: entity: seqfile_stat: {
       type: "`$OBJECT`"
     }
     {
-      name: "quality_offset"
+      name: "qualityOffset"
       req: false
       type: "`$INTEGER`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: seqfile_stat: {
             "seqfile_stats"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              input: "`reqdata.input`"
+              qualityOffset: "`reqdata.quality_offset`"
+            }
             res: "`body`"
           }
         }

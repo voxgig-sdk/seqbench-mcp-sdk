@@ -11,7 +11,7 @@ main: kit: entity: web_search: {
       type: "`$ANY`"
     }
     {
-      name: "max_result"
+      name: "max_results"
       req: false
       type: "`$NUMBER`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: web_search: {
             "web_search"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              max_results: "`reqdata.max_result`"
+              query: "`reqdata.query`"
+            }
             res: "`body`"
           }
         }

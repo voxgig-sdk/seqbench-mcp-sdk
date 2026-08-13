@@ -64,13 +64,13 @@ class AsoDesignCreateData
 class BaseEditingDesign
 {
     public ?string $editor = null;
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
     public string $target;
-    public ?int $target_position = null;
+    public ?int $targetPosition = null;
     public string $tool;
 }
 
@@ -78,80 +78,110 @@ class BaseEditingDesign
 class BaseEditingDesignCreateData
 {
     public ?string $editor = null;
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
     public string $target;
-    public ?int $target_position = null;
+    public ?int $targetPosition = null;
     public string $tool;
 }
 
 /** Batch entity data model. */
 class Batch
 {
-    public ?array $arg = null;
+    public ?array $args = null;
+    public bool $capped;
+    public array $columns;
+    public int $count;
+    public int $errors;
     public string $input;
-    public mixed $ok;
-    public array $result;
+    public int $limit;
+    public array $provenance;
+    public array $rows;
     public string $tool;
 }
 
 /** Request payload for Batch#load. */
 class BatchLoadMatch
 {
-    public ?array $arg = null;
+    public ?array $args = null;
+    public ?bool $capped = null;
+    public ?array $columns = null;
+    public ?int $count = null;
+    public ?int $errors = null;
     public ?string $input = null;
-    public mixed $ok = null;
-    public ?array $result = null;
+    public ?int $limit = null;
+    public ?array $provenance = null;
+    public ?array $rows = null;
     public ?string $tool = null;
 }
 
 /** Request payload for Batch#create. */
 class BatchCreateData
 {
-    public ?array $arg = null;
+    public ?array $args = null;
+    public bool $capped;
+    public array $columns;
+    public int $count;
+    public int $errors;
     public string $input;
-    public mixed $ok;
-    public array $result;
+    public int $limit;
+    public array $provenance;
+    public array $rows;
     public string $tool;
 }
 
 /** BatchWorkflow entity data model. */
 class BatchWorkflow
 {
+    public bool $capped;
+    public array $columns;
+    public int $count;
+    public int $errors;
     public string $input;
-    public mixed $ok;
-    public array $result;
-    public array $step;
+    public int $limit;
+    public array $provenance;
+    public array $rows;
+    public array $steps;
 }
 
 /** Request payload for BatchWorkflow#load. */
 class BatchWorkflowLoadMatch
 {
+    public ?bool $capped = null;
+    public ?array $columns = null;
+    public ?int $count = null;
+    public ?int $errors = null;
     public ?string $input = null;
-    public mixed $ok = null;
-    public ?array $result = null;
-    public ?array $step = null;
+    public ?int $limit = null;
+    public ?array $provenance = null;
+    public ?array $rows = null;
+    public ?array $steps = null;
 }
 
 /** Request payload for BatchWorkflow#create. */
 class BatchWorkflowCreateData
 {
+    public bool $capped;
+    public array $columns;
+    public int $count;
+    public int $errors;
     public string $input;
-    public mixed $ok;
-    public array $result;
-    public array $step;
+    public int $limit;
+    public array $provenance;
+    public array $rows;
+    public array $steps;
 }
 
 /** CharacterizeSequence entity data model. */
 class CharacterizeSequence
 {
-    public ?int $end_primer_length = null;
+    public ?int $endPrimerLength = null;
     public mixed $gate = null;
-    public ?int $max_orf = null;
-    public ?int $min_orf_aa = null;
+    public ?int $maxOrfs = null;
+    public ?int $minOrfAa = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -162,10 +192,10 @@ class CharacterizeSequence
 /** Request payload for CharacterizeSequence#create. */
 class CharacterizeSequenceCreateData
 {
-    public ?int $end_primer_length = null;
+    public ?int $endPrimerLength = null;
     public mixed $gate = null;
-    public ?int $max_orf = null;
-    public ?int $min_orf_aa = null;
+    public ?int $maxOrfs = null;
+    public ?int $minOrfAa = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -176,18 +206,18 @@ class CharacterizeSequenceCreateData
 /** CloningSimulate entity data model. */
 class CloningSimulate
 {
-    public ?float $arm_tm_target = null;
+    public ?float $armTmTarget = null;
     public ?bool $circular = null;
     public ?string $enzyme = null;
     public ?string $enzyme3 = null;
     public ?string $enzyme5 = null;
-    public ?array $fragment = null;
+    public ?array $fragments = null;
     public mixed $gate = null;
     public ?string $insert = null;
     public string $method;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
-    public ?int $overlap_len = null;
+    public ?int $overlapLen = null;
     public array $provenance;
     public array $result;
     public string $tool;
@@ -197,18 +227,18 @@ class CloningSimulate
 /** Request payload for CloningSimulate#create. */
 class CloningSimulateCreateData
 {
-    public ?float $arm_tm_target = null;
+    public ?float $armTmTarget = null;
     public ?bool $circular = null;
     public ?string $enzyme = null;
     public ?string $enzyme3 = null;
     public ?string $enzyme5 = null;
-    public ?array $fragment = null;
+    public ?array $fragments = null;
     public mixed $gate = null;
     public ?string $insert = null;
     public string $method;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
-    public ?int $overlap_len = null;
+    public ?int $overlapLen = null;
     public array $provenance;
     public array $result;
     public string $tool;
@@ -218,12 +248,12 @@ class CloningSimulateCreateData
 /** CodonAdaptationIndex entity data model. */
 class CodonAdaptationIndex
 {
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
-    public ?float $rare_threshold = null;
+    public ?float $rareThreshold = null;
     public array $result;
     public string $sequence;
     public string $tool;
@@ -232,12 +262,12 @@ class CodonAdaptationIndex
 /** Request payload for CodonAdaptationIndex#create. */
 class CodonAdaptationIndexCreateData
 {
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
-    public ?float $rare_threshold = null;
+    public ?float $rareThreshold = null;
     public array $result;
     public string $sequence;
     public string $tool;
@@ -270,15 +300,15 @@ class CodonOptimizeCreateData
 /** ConstructAutofix entity data model. */
 class ConstructAutofix
 {
-    public ?array $avoid_enzyme = null;
-    public ?int $cryptic_orf_min_aa = null;
-    public ?int $frame_start = null;
+    public ?array $avoidEnzymes = null;
+    public ?int $crypticOrfMinAa = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $gc_high = null;
-    public ?float $gc_low = null;
-    public ?int $gc_window = null;
-    public ?int $homopolymer_min = null;
-    public ?int $max_pass = null;
+    public ?float $gcHigh = null;
+    public ?float $gcLow = null;
+    public ?int $gcWindow = null;
+    public ?int $homopolymerMin = null;
+    public ?int $maxPasses = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
@@ -290,15 +320,15 @@ class ConstructAutofix
 /** Request payload for ConstructAutofix#create. */
 class ConstructAutofixCreateData
 {
-    public ?array $avoid_enzyme = null;
-    public ?int $cryptic_orf_min_aa = null;
-    public ?int $frame_start = null;
+    public ?array $avoidEnzymes = null;
+    public ?int $crypticOrfMinAa = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $gc_high = null;
-    public ?float $gc_low = null;
-    public ?int $gc_window = null;
-    public ?int $homopolymer_min = null;
-    public ?int $max_pass = null;
+    public ?float $gcHigh = null;
+    public ?float $gcLow = null;
+    public ?int $gcWindow = null;
+    public ?int $homopolymerMin = null;
+    public ?int $maxPasses = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
@@ -310,14 +340,14 @@ class ConstructAutofixCreateData
 /** ConstructQc entity data model. */
 class ConstructQc
 {
-    public ?array $avoid_enzyme = null;
-    public ?int $cryptic_orf_min_aa = null;
-    public ?int $frame_start = null;
+    public ?array $avoidEnzymes = null;
+    public ?int $crypticOrfMinAa = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $gc_high = null;
-    public ?float $gc_low = null;
-    public ?int $gc_window = null;
-    public ?int $homopolymer_min = null;
+    public ?float $gcHigh = null;
+    public ?float $gcLow = null;
+    public ?int $gcWindow = null;
+    public ?int $homopolymerMin = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -328,14 +358,14 @@ class ConstructQc
 /** Request payload for ConstructQc#create. */
 class ConstructQcCreateData
 {
-    public ?array $avoid_enzyme = null;
-    public ?int $cryptic_orf_min_aa = null;
-    public ?int $frame_start = null;
+    public ?array $avoidEnzymes = null;
+    public ?int $crypticOrfMinAa = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $gc_high = null;
-    public ?float $gc_low = null;
-    public ?int $gc_window = null;
-    public ?int $homopolymer_min = null;
+    public ?float $gcHigh = null;
+    public ?float $gcLow = null;
+    public ?int $gcWindow = null;
+    public ?int $homopolymerMin = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -347,12 +377,12 @@ class ConstructQcCreateData
 class CrisprGrnaDesign
 {
     public mixed $gate = null;
-    public ?float $min_score = null;
+    public ?float $minScore = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $search_reverse_strand = null;
+    public ?bool $searchReverseStrand = null;
     public string $sequence;
     public string $tool;
 }
@@ -361,12 +391,12 @@ class CrisprGrnaDesign
 class CrisprGrnaDesignCreateData
 {
     public mixed $gate = null;
-    public ?float $min_score = null;
+    public ?float $minScore = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $search_reverse_strand = null;
+    public ?bool $searchReverseStrand = null;
     public string $sequence;
     public string $tool;
 }
@@ -374,44 +404,44 @@ class CrisprGrnaDesignCreateData
 /** CrisprHdrDonor entity data model. */
 class CrisprHdrDonor
 {
-    public ?int $arm_length = null;
-    public ?bool $block_pam = null;
-    public ?bool $design_genotyping_primer = null;
-    public ?int $edit_end = null;
-    public ?int $edit_start = null;
-    public ?int $frame_start = null;
+    public ?int $armLength = null;
+    public ?bool $blockPam = null;
+    public ?bool $designGenotypingPrimers = null;
+    public ?int $editEnd = null;
+    public ?int $editStart = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?int $guide_end = null;
-    public ?int $guide_start = null;
-    public ?string $guide_strand = null;
+    public ?int $guideEnd = null;
+    public ?int $guideStart = null;
+    public ?string $guideStrand = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public array $provenance;
     public string $replacement;
     public array $result;
-    public string $target_sequence;
+    public string $targetSequence;
     public string $tool;
 }
 
 /** Request payload for CrisprHdrDonor#create. */
 class CrisprHdrDonorCreateData
 {
-    public ?int $arm_length = null;
-    public ?bool $block_pam = null;
-    public ?bool $design_genotyping_primer = null;
-    public ?int $edit_end = null;
-    public ?int $edit_start = null;
-    public ?int $frame_start = null;
+    public ?int $armLength = null;
+    public ?bool $blockPam = null;
+    public ?bool $designGenotypingPrimers = null;
+    public ?int $editEnd = null;
+    public ?int $editStart = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?int $guide_end = null;
-    public ?int $guide_start = null;
-    public ?string $guide_strand = null;
+    public ?int $guideEnd = null;
+    public ?int $guideStart = null;
+    public ?string $guideStrand = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public array $provenance;
     public string $replacement;
     public array $result;
-    public string $target_sequence;
+    public string $targetSequence;
     public string $tool;
 }
 
@@ -419,7 +449,7 @@ class CrisprHdrDonorCreateData
 class CrisprOfftargetCheck
 {
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public string $protospacer;
@@ -432,7 +462,7 @@ class CrisprOfftargetCheck
 class CrisprOfftargetCheckCreateData
 {
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public ?string $nuclease = null;
     public mixed $ok;
     public string $protospacer;
@@ -448,8 +478,8 @@ class CrossDimer
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $sequence_a;
-    public string $sequence_b;
+    public string $sequenceA;
+    public string $sequenceB;
     public string $tool;
 }
 
@@ -460,8 +490,8 @@ class CrossDimerCreateData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $sequence_a;
-    public string $sequence_b;
+    public string $sequenceA;
+    public string $sequenceB;
     public string $tool;
 }
 
@@ -470,14 +500,14 @@ class DnaMolarity
 {
     public mixed $gate = null;
     public ?int $length = null;
-    public ?float $mass_ng = null;
+    public ?float $massNg = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
     public ?string $sequence = null;
     public string $tool;
     public ?string $type = null;
-    public ?float $volume_ul = null;
+    public ?float $volumeUl = null;
 }
 
 /** Request payload for DnaMolarity#create. */
@@ -485,21 +515,21 @@ class DnaMolarityCreateData
 {
     public mixed $gate = null;
     public ?int $length = null;
-    public ?float $mass_ng = null;
+    public ?float $massNg = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
     public ?string $sequence = null;
     public string $tool;
     public ?string $type = null;
-    public ?float $volume_ul = null;
+    public ?float $volumeUl = null;
 }
 
 /** DoubleDigest entity data model. */
 class DoubleDigest
 {
-    public string $enzyme_a;
-    public string $enzyme_b;
+    public string $enzymeA;
+    public string $enzymeB;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -510,8 +540,8 @@ class DoubleDigest
 /** Request payload for DoubleDigest#create. */
 class DoubleDigestCreateData
 {
-    public string $enzyme_a;
-    public string $enzyme_b;
+    public string $enzymeA;
+    public string $enzymeB;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -525,7 +555,7 @@ class ExportEchoPicklist
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -536,7 +566,7 @@ class ExportEchoPicklistCreateData
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -546,9 +576,9 @@ class ExportOpentronsProtocol
 {
     public mixed $gate = null;
     public mixed $ok;
-    public ?string $protocol_name = null;
+    public ?string $protocolName = null;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -558,9 +588,9 @@ class ExportOpentronsProtocolCreateData
 {
     public mixed $gate = null;
     public mixed $ok;
-    public ?string $protocol_name = null;
+    public ?string $protocolName = null;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -571,7 +601,7 @@ class ExportPlateLayout
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -582,7 +612,7 @@ class ExportPlateLayoutCreateData
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
-    public array $reaction;
+    public array $reactions;
     public array $result;
     public string $tool;
 }
@@ -590,37 +620,37 @@ class ExportPlateLayoutCreateData
 /** ExpressionHeatmapCluster entity data model. */
 class ExpressionHeatmapCluster
 {
-    public ?bool $cluster_col = null;
-    public ?bool $cluster_row = null;
-    public ?string $distance_metric = null;
+    public ?bool $clusterCols = null;
+    public ?bool $clusterRows = null;
+    public ?string $distanceMetric = null;
     public mixed $gate = null;
-    public array $gene;
+    public array $genes;
     public ?string $linkage = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public array $sample;
+    public array $samples;
     public string $tool;
-    public array $value;
-    public ?bool $z_score_row = null;
+    public array $values;
+    public ?bool $zScoreRows = null;
 }
 
 /** Request payload for ExpressionHeatmapCluster#create. */
 class ExpressionHeatmapClusterCreateData
 {
-    public ?bool $cluster_col = null;
-    public ?bool $cluster_row = null;
-    public ?string $distance_metric = null;
+    public ?bool $clusterCols = null;
+    public ?bool $clusterRows = null;
+    public ?string $distanceMetric = null;
     public mixed $gate = null;
-    public array $gene;
+    public array $genes;
     public ?string $linkage = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public array $sample;
+    public array $samples;
     public string $tool;
-    public array $value;
-    public ?bool $z_score_row = null;
+    public array $values;
+    public ?bool $zScoreRows = null;
 }
 
 /** FastqQcReport entity data model. */
@@ -630,7 +660,7 @@ class FastqQcReport
     public string $input;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
+    public ?int $qualityOffset = null;
     public array $result;
     public string $tool;
 }
@@ -642,7 +672,7 @@ class FastqQcReportCreateData
     public string $input;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
+    public ?int $qualityOffset = null;
     public array $result;
     public string $tool;
 }
@@ -652,11 +682,11 @@ class FastqTrim
 {
     public mixed $gate = null;
     public string $input;
-    public ?int $min_length = null;
+    public ?int $minLength = null;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
-    public ?int $quality_threshold = null;
+    public ?int $qualityOffset = null;
+    public ?int $qualityThreshold = null;
     public array $result;
     public string $tool;
 }
@@ -666,11 +696,11 @@ class FastqTrimCreateData
 {
     public mixed $gate = null;
     public string $input;
-    public ?int $min_length = null;
+    public ?int $minLength = null;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
-    public ?int $quality_threshold = null;
+    public ?int $qualityOffset = null;
+    public ?int $qualityThreshold = null;
     public array $result;
     public string $tool;
 }
@@ -679,10 +709,10 @@ class FastqTrimCreateData
 class FindOrf
 {
     public mixed $gate = null;
-    public ?int $min_aa_length = null;
+    public ?int $minAaLength = null;
     public mixed $ok;
     public array $provenance;
-    public ?bool $require_stop = null;
+    public ?bool $requireStop = null;
     public array $result;
     public string $sequence;
     public string $tool;
@@ -692,10 +722,10 @@ class FindOrf
 class FindOrfCreateData
 {
     public mixed $gate = null;
-    public ?int $min_aa_length = null;
+    public ?int $minAaLength = null;
     public mixed $ok;
     public array $provenance;
-    public ?bool $require_stop = null;
+    public ?bool $requireStop = null;
     public array $result;
     public string $sequence;
     public string $tool;
@@ -704,7 +734,7 @@ class FindOrfCreateData
 /** FormatSequence entity data model. */
 class FormatSequence
 {
-    public ?string $case_mode = null;
+    public ?string $caseMode = null;
     public ?string $convert = null;
     public mixed $gate = null;
     public mixed $ok;
@@ -712,7 +742,7 @@ class FormatSequence
     public array $result;
     public ?bool $reverse = null;
     public string $sequence;
-    public ?bool $strip_non_letter = null;
+    public ?bool $stripNonLetters = null;
     public string $tool;
     public ?int $width = null;
 }
@@ -720,7 +750,7 @@ class FormatSequence
 /** Request payload for FormatSequence#create. */
 class FormatSequenceCreateData
 {
-    public ?string $case_mode = null;
+    public ?string $caseMode = null;
     public ?string $convert = null;
     public mixed $gate = null;
     public mixed $ok;
@@ -728,7 +758,7 @@ class FormatSequenceCreateData
     public array $result;
     public ?bool $reverse = null;
     public string $sequence;
-    public ?bool $strip_non_letter = null;
+    public ?bool $stripNonLetters = null;
     public string $tool;
     public ?int $width = null;
 }
@@ -737,11 +767,11 @@ class FormatSequenceCreateData
 class FunctionalEnrichment
 {
     public ?array $background = null;
-    public ?array $collection = null;
+    public ?array $collections = null;
     public mixed $gate = null;
-    public array $gene;
-    public ?int $max_term_size = null;
-    public ?int $min_term_size = null;
+    public array $genes;
+    public ?int $maxTermSize = null;
+    public ?int $minTermSize = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -752,11 +782,11 @@ class FunctionalEnrichment
 class FunctionalEnrichmentCreateData
 {
     public ?array $background = null;
-    public ?array $collection = null;
+    public ?array $collections = null;
     public mixed $gate = null;
-    public array $gene;
-    public ?int $max_term_size = null;
-    public ?int $min_term_size = null;
+    public array $genes;
+    public ?int $maxTermSize = null;
+    public ?int $minTermSize = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -854,28 +884,28 @@ class GeneModelCreateData
 /** GoldenGateFidelity entity data model. */
 class GoldenGateFidelity
 {
-    public ?string $compare_to_named_set = null;
+    public ?string $compareToNamedSet = null;
     public ?string $dataset = null;
     public mixed $gate = null;
     public mixed $ok;
-    public array $overhang;
+    public array $overhangs;
     public array $provenance;
     public array $result;
-    public ?float $risk_threshold = null;
+    public ?float $riskThreshold = null;
     public string $tool;
 }
 
 /** Request payload for GoldenGateFidelity#create. */
 class GoldenGateFidelityCreateData
 {
-    public ?string $compare_to_named_set = null;
+    public ?string $compareToNamedSet = null;
     public ?string $dataset = null;
     public mixed $gate = null;
     public mixed $ok;
-    public array $overhang;
+    public array $overhangs;
     public array $provenance;
     public array $result;
-    public ?float $risk_threshold = null;
+    public ?float $riskThreshold = null;
     public string $tool;
 }
 
@@ -905,7 +935,7 @@ class HgvsConvertCreateData
 class IdMapPoll
 {
     public mixed $gate = null;
-    public string $job_id;
+    public string $jobId;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -916,7 +946,7 @@ class IdMapPoll
 class IdMapPollCreateData
 {
     public mixed $gate = null;
-    public string $job_id;
+    public string $jobId;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -932,7 +962,7 @@ class IdMapSubmit
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $tax_id = null;
+    public ?string $taxId = null;
     public string $to;
     public string $tool;
 }
@@ -946,7 +976,7 @@ class IdMapSubmitCreateData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $tax_id = null;
+    public ?string $taxId = null;
     public string $to;
     public string $tool;
 }
@@ -955,13 +985,13 @@ class IdMapSubmitCreateData
 class InSilicoPcr
 {
     public ?bool $circular = null;
-    public string $forward_primer;
+    public string $forwardPrimer;
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $reverse_primer;
+    public string $reversePrimer;
     public string $template;
     public string $tool;
 }
@@ -970,13 +1000,13 @@ class InSilicoPcr
 class InSilicoPcrCreateData
 {
     public ?bool $circular = null;
-    public string $forward_primer;
+    public string $forwardPrimer;
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $reverse_primer;
+    public string $reversePrimer;
     public string $template;
     public string $tool;
 }
@@ -984,36 +1014,36 @@ class InSilicoPcrCreateData
 /** KaspPrimerDesign entity data model. */
 class KaspPrimerDesign
 {
-    public ?bool $add_secondary_mismatch = null;
-    public string $allele_a;
-    public string $allele_b;
+    public ?bool $addSecondaryMismatch = null;
+    public string $alleleA;
+    public string $alleleB;
     public mixed $gate = null;
-    public ?int $max_amplicon = null;
-    public ?int $min_amplicon = null;
+    public ?int $maxAmplicon = null;
+    public ?int $minAmplicon = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public int $snp_position;
+    public int $snpPosition;
     public string $target;
-    public ?float $target_core_tm = null;
+    public ?float $targetCoreTm = null;
     public string $tool;
 }
 
 /** Request payload for KaspPrimerDesign#create. */
 class KaspPrimerDesignCreateData
 {
-    public ?bool $add_secondary_mismatch = null;
-    public string $allele_a;
-    public string $allele_b;
+    public ?bool $addSecondaryMismatch = null;
+    public string $alleleA;
+    public string $alleleB;
     public mixed $gate = null;
-    public ?int $max_amplicon = null;
-    public ?int $min_amplicon = null;
+    public ?int $maxAmplicon = null;
+    public ?int $minAmplicon = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public int $snp_position;
+    public int $snpPosition;
     public string $target;
-    public ?float $target_core_tm = null;
+    public ?float $targetCoreTm = null;
     public string $tool;
 }
 
@@ -1030,34 +1060,34 @@ class ListToolLoadMatch
 /** MeltingTemperature entity data model. */
 class MeltingTemperature
 {
-    public ?float $dntp_mm = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
     public string $sequence;
-    public ?float $target_tm = null;
-    public ?float $tm_tolerance = null;
+    public ?float $targetTm = null;
+    public ?float $tmTolerance = null;
     public string $tool;
 }
 
 /** Request payload for MeltingTemperature#create. */
 class MeltingTemperatureCreateData
 {
-    public ?float $dntp_mm = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
     public string $sequence;
-    public ?float $target_tm = null;
-    public ?float $tm_tolerance = null;
+    public ?float $targetTm = null;
+    public ?float $tmTolerance = null;
     public string $tool;
 }
 
@@ -1065,12 +1095,12 @@ class MeltingTemperatureCreateData
 class MotifFinder
 {
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public string $motif;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $search_reverse_strand = null;
+    public ?bool $searchReverseStrand = null;
     public string $sequence;
     public string $tool;
 }
@@ -1079,12 +1109,12 @@ class MotifFinder
 class MotifFinderCreateData
 {
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
+    public ?int $maxMismatches = null;
     public string $motif;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $search_reverse_strand = null;
+    public ?bool $searchReverseStrand = null;
     public string $sequence;
     public string $tool;
 }
@@ -1114,12 +1144,12 @@ class MultipleSequenceAlignmentCreateData
 /** OligoAnalysi entity data model. */
 class OligoAnalysi
 {
-    public ?float $dntp_mm = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
     public string $sequence;
@@ -1129,12 +1159,12 @@ class OligoAnalysi
 /** Request payload for OligoAnalysi#create. */
 class OligoAnalysiCreateData
 {
-    public ?float $dntp_mm = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
     public string $sequence;
@@ -1148,9 +1178,9 @@ class OrthologMap
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $source_species = null;
-    public array $symbol;
-    public string $target_species;
+    public ?string $sourceSpecies = null;
+    public array $symbols;
+    public string $targetSpecies;
     public string $tool;
     public ?string $type = null;
 }
@@ -1162,9 +1192,9 @@ class OrthologMapCreateData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $source_species = null;
-    public array $symbol;
-    public string $target_species;
+    public ?string $sourceSpecies = null;
+    public array $symbols;
+    public string $targetSpecies;
     public string $tool;
     public ?string $type = null;
 }
@@ -1180,8 +1210,8 @@ class PairwiseAlignment
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $seq_a;
-    public string $seq_b;
+    public string $seqA;
+    public string $seqB;
     public string $tool;
 }
 
@@ -1196,8 +1226,8 @@ class PairwiseAlignmentCreateData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $seq_a;
-    public string $seq_b;
+    public string $seqA;
+    public string $seqB;
     public string $tool;
 }
 
@@ -1226,8 +1256,8 @@ class ParseGenbankCreateData
 /** ParseSangerTrace entity data model. */
 class ParseSangerTrace
 {
-    public string $file_base64;
-    public ?string $file_name = null;
+    public string $fileBase64;
+    public ?string $fileName = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1238,8 +1268,8 @@ class ParseSangerTrace
 /** Request payload for ParseSangerTrace#create. */
 class ParseSangerTraceCreateData
 {
-    public string $file_base64;
-    public ?string $file_name = null;
+    public string $fileBase64;
+    public ?string $fileName = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1303,7 +1333,7 @@ class PlasmidFullReport
     public array $result;
     public string $sequence;
     public string $tool;
-    public ?int $top_n = null;
+    public ?int $topN = null;
 }
 
 /** Request payload for PlasmidFullReport#create. */
@@ -1316,7 +1346,7 @@ class PlasmidFullReportCreateData
     public array $result;
     public string $sequence;
     public string $tool;
-    public ?int $top_n = null;
+    public ?int $topN = null;
 }
 
 /** PlasmidIdentify entity data model. */
@@ -1329,7 +1359,7 @@ class PlasmidIdentify
     public array $result;
     public string $sequence;
     public string $tool;
-    public ?int $top_n = null;
+    public ?int $topN = null;
 }
 
 /** Request payload for PlasmidIdentify#create. */
@@ -1342,22 +1372,22 @@ class PlasmidIdentifyCreateData
     public array $result;
     public string $sequence;
     public string $tool;
-    public ?int $top_n = null;
+    public ?int $topN = null;
 }
 
 /** PrimeEditingDesign entity data model. */
 class PrimeEditingDesign
 {
-    public int $edit_end;
-    public int $edit_start;
-    public ?int $frame_start = null;
+    public int $editEnd;
+    public int $editStart;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?string $inserted_seq = null;
+    public ?string $insertedSeq = null;
     public mixed $ok;
-    public ?int $pbs_length = null;
+    public ?int $pbsLength = null;
     public array $provenance;
     public array $result;
-    public ?int $rtt_homology = null;
+    public ?int $rttHomology = null;
     public string $target;
     public string $tool;
 }
@@ -1365,16 +1395,16 @@ class PrimeEditingDesign
 /** Request payload for PrimeEditingDesign#create. */
 class PrimeEditingDesignCreateData
 {
-    public int $edit_end;
-    public int $edit_start;
-    public ?int $frame_start = null;
+    public int $editEnd;
+    public int $editStart;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?string $inserted_seq = null;
+    public ?string $insertedSeq = null;
     public mixed $ok;
-    public ?int $pbs_length = null;
+    public ?int $pbsLength = null;
     public array $provenance;
     public array $result;
-    public ?int $rtt_homology = null;
+    public ?int $rttHomology = null;
     public string $target;
     public string $tool;
 }
@@ -1383,13 +1413,13 @@ class PrimeEditingDesignCreateData
 class PrimeEditingTwinDesign
 {
     public mixed $gate = null;
-    public string $new_sequence;
+    public string $newSequence;
     public mixed $ok;
-    public ?int $overlap_length = null;
-    public ?int $pbs_length = null;
+    public ?int $overlapLength = null;
+    public ?int $pbsLength = null;
     public array $provenance;
-    public int $replace_end;
-    public int $replace_start;
+    public int $replaceEnd;
+    public int $replaceStart;
     public array $result;
     public string $target;
     public string $tool;
@@ -1399,13 +1429,13 @@ class PrimeEditingTwinDesign
 class PrimeEditingTwinDesignCreateData
 {
     public mixed $gate = null;
-    public string $new_sequence;
+    public string $newSequence;
     public mixed $ok;
-    public ?int $overlap_length = null;
-    public ?int $pbs_length = null;
+    public ?int $overlapLength = null;
+    public ?int $pbsLength = null;
     public array $provenance;
-    public int $replace_end;
-    public int $replace_start;
+    public int $replaceEnd;
+    public int $replaceStart;
     public array $result;
     public string $target;
     public string $tool;
@@ -1414,86 +1444,86 @@ class PrimeEditingTwinDesignCreateData
 /** PrimerDesign entity data model. */
 class PrimerDesign
 {
-    public ?int $amplicon_max = null;
-    public ?int $amplicon_min = null;
-    public ?float $dntp_mm = null;
+    public ?int $ampliconMax = null;
+    public ?int $ampliconMin = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $gc_max = null;
-    public ?float $gc_min = null;
-    public ?int $len_max = null;
-    public ?int $len_min = null;
-    public ?int $len_opt = null;
-    public ?int $max_return = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $gcMax = null;
+    public ?float $gcMin = null;
+    public ?int $lenMax = null;
+    public ?int $lenMin = null;
+    public ?int $lenOpt = null;
+    public ?int $maxReturn = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
-    public ?int $target_end = null;
-    public ?int $target_start = null;
+    public ?int $targetEnd = null;
+    public ?int $targetStart = null;
     public string $template;
-    public ?float $tm_max = null;
-    public ?float $tm_max_diff = null;
-    public ?float $tm_min = null;
-    public ?float $tm_opt = null;
+    public ?float $tmMax = null;
+    public ?float $tmMaxDiff = null;
+    public ?float $tmMin = null;
+    public ?float $tmOpt = null;
     public string $tool;
 }
 
 /** Request payload for PrimerDesign#create. */
 class PrimerDesignCreateData
 {
-    public ?int $amplicon_max = null;
-    public ?int $amplicon_min = null;
-    public ?float $dntp_mm = null;
+    public ?int $ampliconMax = null;
+    public ?int $ampliconMin = null;
+    public ?float $dntpMM = null;
     public mixed $gate = null;
-    public ?float $gc_max = null;
-    public ?float $gc_min = null;
-    public ?int $len_max = null;
-    public ?int $len_min = null;
-    public ?int $len_opt = null;
-    public ?int $max_return = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
+    public ?float $gcMax = null;
+    public ?float $gcMin = null;
+    public ?int $lenMax = null;
+    public ?int $lenMin = null;
+    public ?int $lenOpt = null;
+    public ?int $maxReturn = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public array $provenance;
     public array $result;
-    public ?int $target_end = null;
-    public ?int $target_start = null;
+    public ?int $targetEnd = null;
+    public ?int $targetStart = null;
     public string $template;
-    public ?float $tm_max = null;
-    public ?float $tm_max_diff = null;
-    public ?float $tm_min = null;
-    public ?float $tm_opt = null;
+    public ?float $tmMax = null;
+    public ?float $tmMaxDiff = null;
+    public ?float $tmMin = null;
+    public ?float $tmOpt = null;
     public string $tool;
 }
 
 /** PrimerSpecificity entity data model. */
 class PrimerSpecificity
 {
-    public string $forward_primer;
+    public string $forwardPrimer;
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
-    public ?int $max_product_length = null;
+    public ?int $maxMismatches = null;
+    public ?int $maxProductLength = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $reverse_primer;
+    public string $reversePrimer;
     public string $tool;
 }
 
 /** Request payload for PrimerSpecificity#create. */
 class PrimerSpecificityCreateData
 {
-    public string $forward_primer;
+    public string $forwardPrimer;
     public mixed $gate = null;
-    public ?int $max_mismatch = null;
-    public ?int $max_product_length = null;
+    public ?int $maxMismatches = null;
+    public ?int $maxProductLength = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $reverse_primer;
+    public string $reversePrimer;
     public string $tool;
 }
 
@@ -1501,10 +1531,10 @@ class PrimerSpecificityCreateData
 class ProteaseDigestion
 {
     public mixed $gate = null;
-    public ?float $max_mass = null;
-    public ?int $max_peptide = null;
-    public ?float $min_mass = null;
-    public ?int $missed_cleavage = null;
+    public ?float $maxMass = null;
+    public ?int $maxPeptides = null;
+    public ?float $minMass = null;
+    public ?int $missedCleavages = null;
     public mixed $ok;
     public ?string $protease = null;
     public array $provenance;
@@ -1517,10 +1547,10 @@ class ProteaseDigestion
 class ProteaseDigestionCreateData
 {
     public mixed $gate = null;
-    public ?float $max_mass = null;
-    public ?int $max_peptide = null;
-    public ?float $min_mass = null;
-    public ?int $missed_cleavage = null;
+    public ?float $maxMass = null;
+    public ?int $maxPeptides = null;
+    public ?float $minMass = null;
+    public ?int $missedCleavages = null;
     public mixed $ok;
     public ?string $protease = null;
     public array $provenance;
@@ -1533,7 +1563,7 @@ class ProteaseDigestionCreateData
 class ProteinAnnotatePoll
 {
     public mixed $gate = null;
-    public string $job_id;
+    public string $jobId;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1544,7 +1574,7 @@ class ProteinAnnotatePoll
 class ProteinAnnotatePollCreateData
 {
     public mixed $gate = null;
-    public string $job_id;
+    public string $jobId;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1556,7 +1586,7 @@ class ProteinAnnotateSubmit
 {
     public ?string $appl = null;
     public mixed $gate = null;
-    public ?bool $goterm = null;
+    public ?bool $goterms = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1569,7 +1599,7 @@ class ProteinAnnotateSubmitCreateData
 {
     public ?string $appl = null;
     public mixed $gate = null;
-    public ?bool $goterm = null;
+    public ?bool $goterms = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1606,7 +1636,7 @@ class ProteinHydrophobicityCreateData
 /** ProteinProperty entity data model. */
 class ProteinProperty
 {
-    public ?float $charge_step = null;
+    public ?float $chargeStep = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1618,7 +1648,7 @@ class ProteinProperty
 /** Request payload for ProteinProperty#create. */
 class ProteinPropertyCreateData
 {
-    public ?float $charge_step = null;
+    public ?float $chargeStep = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1631,7 +1661,7 @@ class ProteinPropertyCreateData
 class RandomSequence
 {
     public mixed $gate = null;
-    public ?float $gc_content = null;
+    public ?float $gcContent = null;
     public ?string $kind = null;
     public int $length;
     public mixed $ok;
@@ -1644,7 +1674,7 @@ class RandomSequence
 class RandomSequenceCreateData
 {
     public mixed $gate = null;
-    public ?float $gc_content = null;
+    public ?float $gcContent = null;
     public ?string $kind = null;
     public int $length;
     public mixed $ok;
@@ -1656,7 +1686,7 @@ class RandomSequenceCreateData
 /** RestrictionSite entity data model. */
 class RestrictionSite
 {
-    public ?array $enzyme = null;
+    public ?array $enzymes = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1668,7 +1698,7 @@ class RestrictionSite
 /** Request payload for RestrictionSite#create. */
 class RestrictionSiteCreateData
 {
-    public ?array $enzyme = null;
+    public ?array $enzymes = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1752,10 +1782,10 @@ class RnaFoldCreateData
 /** SangerVsReference entity data model. */
 class SangerVsReference
 {
-    public ?string $file_base64 = null;
-    public ?string $file_name = null;
+    public ?string $fileBase64 = null;
+    public ?string $fileName = null;
     public mixed $gate = null;
-    public ?float $min_coverage = null;
+    public ?float $minCoverage = null;
     public mixed $ok;
     public array $provenance;
     public ?string $read = null;
@@ -1767,10 +1797,10 @@ class SangerVsReference
 /** Request payload for SangerVsReference#create. */
 class SangerVsReferenceCreateData
 {
-    public ?string $file_base64 = null;
-    public ?string $file_name = null;
+    public ?string $fileBase64 = null;
+    public ?string $fileName = null;
     public mixed $gate = null;
-    public ?float $min_coverage = null;
+    public ?float $minCoverage = null;
     public mixed $ok;
     public array $provenance;
     public ?string $read = null;
@@ -1782,7 +1812,7 @@ class SangerVsReferenceCreateData
 /** SavePermalink entity data model. */
 class SavePermalink
 {
-    public array $arg;
+    public array $args;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1793,7 +1823,7 @@ class SavePermalink
 /** Request payload for SavePermalink#create. */
 class SavePermalinkCreateData
 {
-    public array $arg;
+    public array $args;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1808,7 +1838,7 @@ class SeqfileStat
     public string $input;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
+    public ?int $qualityOffset = null;
     public array $result;
     public string $tool;
 }
@@ -1820,7 +1850,7 @@ class SeqfileStatCreateData
     public string $input;
     public mixed $ok;
     public array $provenance;
-    public ?int $quality_offset = null;
+    public ?int $qualityOffset = null;
     public array $result;
     public string $tool;
 }
@@ -1880,10 +1910,10 @@ class SequenceFormatConvertCreateData
 /** SequenceReport entity data model. */
 class SequenceReport
 {
-    public ?int $end_primer_length = null;
+    public ?int $endPrimerLength = null;
     public mixed $gate = null;
-    public ?int $max_orf = null;
-    public ?int $min_orf_aa = null;
+    public ?int $maxOrfs = null;
+    public ?int $minOrfAa = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1894,10 +1924,10 @@ class SequenceReport
 /** Request payload for SequenceReport#create. */
 class SequenceReportCreateData
 {
-    public ?int $end_primer_length = null;
+    public ?int $endPrimerLength = null;
     public mixed $gate = null;
-    public ?int $max_orf = null;
-    public ?int $min_orf_aa = null;
+    public ?int $maxOrfs = null;
+    public ?int $minOrfAa = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
@@ -1911,7 +1941,7 @@ class SequenceSearch
     public ?string $db = null;
     public mixed $gate = null;
     public ?string $gene = null;
-    public ?int $max_result = null;
+    public ?int $maxResults = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
@@ -1926,7 +1956,7 @@ class SequenceSearchCreateData
     public ?string $db = null;
     public mixed $gate = null;
     public ?string $gene = null;
-    public ?int $max_result = null;
+    public ?int $maxResults = null;
     public mixed $ok;
     public ?string $organism = null;
     public array $provenance;
@@ -1939,10 +1969,10 @@ class SequenceSearchCreateData
 class SequencingReadbackVerify
 {
     public mixed $gate = null;
-    public ?int $min_supporting_read = null;
+    public ?int $minSupportingReads = null;
     public mixed $ok;
     public array $provenance;
-    public string $read;
+    public string $reads;
     public string $reference;
     public array $result;
     public string $tool;
@@ -1952,10 +1982,10 @@ class SequencingReadbackVerify
 class SequencingReadbackVerifyCreateData
 {
     public mixed $gate = null;
-    public ?int $min_supporting_read = null;
+    public ?int $minSupportingReads = null;
     public mixed $ok;
     public array $provenance;
-    public string $read;
+    public string $reads;
     public string $reference;
     public array $result;
     public string $tool;
@@ -1964,7 +1994,7 @@ class SequencingReadbackVerifyCreateData
 /** SessionCreate entity data model. */
 class SessionCreate
 {
-    public ?array $entry = null;
+    public ?array $entries = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1975,7 +2005,7 @@ class SessionCreate
 /** Request payload for SessionCreate#create. */
 class SessionCreateCreateData
 {
-    public ?array $entry = null;
+    public ?array $entries = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -1987,11 +2017,11 @@ class SessionCreateCreateData
 class SessionGet
 {
     public mixed $gate = null;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
 }
 
@@ -1999,63 +2029,63 @@ class SessionGet
 class SessionGetCreateData
 {
     public mixed $gate = null;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
 }
 
 /** SessionRun entity data model. */
 class SessionRun
 {
-    public ?array $arg = null;
-    public ?array $from_session = null;
+    public ?array $args = null;
+    public ?array $fromSession = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
-    public ?array $write_back = null;
+    public ?array $writeBack = null;
 }
 
 /** Request payload for SessionRun#create. */
 class SessionRunCreateData
 {
-    public ?array $arg = null;
-    public ?array $from_session = null;
+    public ?array $args = null;
+    public ?array $fromSession = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
-    public ?array $write_back = null;
+    public ?array $writeBack = null;
 }
 
 /** SessionSet entity data model. */
 class SessionSet
 {
-    public array $entry;
+    public array $entries;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
 }
 
 /** Request payload for SessionSet#create. */
 class SessionSetCreateData
 {
-    public array $entry;
+    public array $entries;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public string $session_id;
+    public string $sessionId;
     public string $tool;
 }
 
@@ -2063,11 +2093,11 @@ class SessionSetCreateData
 class SirnaDesign
 {
     public mixed $gate = null;
-    public ?int $min_reynold = null;
+    public ?int $minReynolds = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $sh_rna_loop = null;
+    public ?string $shRnaLoop = null;
     public string $target;
     public string $tool;
 }
@@ -2076,11 +2106,11 @@ class SirnaDesign
 class SirnaDesignCreateData
 {
     public mixed $gate = null;
-    public ?int $min_reynold = null;
+    public ?int $minReynolds = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?string $sh_rna_loop = null;
+    public ?string $shRnaLoop = null;
     public string $target;
     public string $tool;
 }
@@ -2088,23 +2118,23 @@ class SirnaDesignCreateData
 /** SiteDirectedMutagenesi entity data model. */
 class SiteDirectedMutagenesi
 {
-    public ?float $arm_tm_target = null;
-    public ?float $dntp_mm = null;
-    public ?string $edit_kind = null;
-    public ?int $frame_start = null;
+    public ?float $armTmTarget = null;
+    public ?float $dntpMM = null;
+    public ?string $editKind = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
-    public ?string $new_base = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
+    public ?string $newBase = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public ?string $organism = null;
     public ?int $position = null;
     public array $provenance;
     public ?int $residue = null;
     public array $result;
     public ?string $style = null;
-    public ?string $target_aa = null;
+    public ?string $targetAa = null;
     public string $template;
     public string $tool;
 }
@@ -2112,23 +2142,23 @@ class SiteDirectedMutagenesi
 /** Request payload for SiteDirectedMutagenesi#create. */
 class SiteDirectedMutagenesiCreateData
 {
-    public ?float $arm_tm_target = null;
-    public ?float $dntp_mm = null;
-    public ?string $edit_kind = null;
-    public ?int $frame_start = null;
+    public ?float $armTmTarget = null;
+    public ?float $dntpMM = null;
+    public ?string $editKind = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
-    public ?float $mg_mm = null;
-    public ?float $na_mm = null;
-    public ?string $new_base = null;
+    public ?float $mgMM = null;
+    public ?float $naMM = null;
+    public ?string $newBase = null;
     public mixed $ok;
-    public ?float $oligo_nm = null;
+    public ?float $oligoNM = null;
     public ?string $organism = null;
     public ?int $position = null;
     public array $provenance;
     public ?int $residue = null;
     public array $result;
     public ?string $style = null;
-    public ?string $target_aa = null;
+    public ?string $targetAa = null;
     public string $template;
     public string $tool;
 }
@@ -2142,7 +2172,7 @@ class Translate
     public array $provenance;
     public array $result;
     public string $sequence;
-    public ?bool $to_stop = null;
+    public ?bool $toStop = null;
     public string $tool;
 }
 
@@ -2155,7 +2185,7 @@ class TranslateCreateData
     public array $provenance;
     public array $result;
     public string $sequence;
-    public ?bool $to_stop = null;
+    public ?bool $toStop = null;
     public string $tool;
 }
 
@@ -2187,7 +2217,7 @@ class VariantAnnotateCreateData
 class VariantComparator
 {
     public ?bool $coding = null;
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -2201,7 +2231,7 @@ class VariantComparator
 class VariantComparatorCreateData
 {
     public ?bool $coding = null;
-    public ?int $frame_start = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public mixed $ok;
     public array $provenance;
@@ -2214,88 +2244,88 @@ class VariantComparatorCreateData
 /** VerifyAssembly entity data model. */
 class VerifyAssembly
 {
-    public ?float $arm_tm_target = null;
+    public ?float $armTmTarget = null;
     public ?bool $circular = null;
-    public string $claimed_construct;
+    public string $claimedConstruct;
     public ?bool $coding = null;
     public ?string $enzyme = null;
     public ?string $enzyme3 = null;
     public ?string $enzyme5 = null;
-    public ?array $fragment = null;
-    public ?array $fragment_pcr = null;
-    public ?int $frame_start = null;
+    public ?array $fragmentPcrs = null;
+    public ?array $fragments = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public ?string $insert = null;
-    public ?array $insert_pcr = null;
+    public ?array $insertPcr = null;
     public string $method;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
-    public ?int $overlap_len = null;
+    public ?int $overlapLen = null;
     public array $provenance;
     public array $result;
     public string $tool;
     public ?string $vector = null;
-    public ?array $vector_pcr = null;
+    public ?array $vectorPcr = null;
 }
 
 /** Request payload for VerifyAssembly#create. */
 class VerifyAssemblyCreateData
 {
-    public ?float $arm_tm_target = null;
+    public ?float $armTmTarget = null;
     public ?bool $circular = null;
-    public string $claimed_construct;
+    public string $claimedConstruct;
     public ?bool $coding = null;
     public ?string $enzyme = null;
     public ?string $enzyme3 = null;
     public ?string $enzyme5 = null;
-    public ?array $fragment = null;
-    public ?array $fragment_pcr = null;
-    public ?int $frame_start = null;
+    public ?array $fragmentPcrs = null;
+    public ?array $fragments = null;
+    public ?int $frameStart = null;
     public mixed $gate = null;
     public ?string $insert = null;
-    public ?array $insert_pcr = null;
+    public ?array $insertPcr = null;
     public string $method;
-    public ?array $name = null;
+    public ?array $names = null;
     public mixed $ok;
-    public ?int $overlap_len = null;
+    public ?int $overlapLen = null;
     public array $provenance;
     public array $result;
     public string $tool;
     public ?string $vector = null;
-    public ?array $vector_pcr = null;
+    public ?array $vectorPcr = null;
 }
 
 /** VerifyConstruct entity data model. */
 class VerifyConstruct
 {
-    public string $claimed_construct;
-    public ?int $expected_frame_start = null;
+    public string $claimedConstruct;
+    public ?int $expectedFrameStart = null;
     public mixed $gate = null;
-    public string $insert_forward_primer;
-    public string $insert_reverse_primer;
-    public string $insert_template;
-    public ?int $max_primer_mismatch = null;
+    public string $insertForwardPrimer;
+    public string $insertReversePrimer;
+    public string $insertTemplate;
+    public ?int $maxPrimerMismatches = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $template_circular = null;
+    public ?bool $templateCircular = null;
     public string $tool;
 }
 
 /** Request payload for VerifyConstruct#create. */
 class VerifyConstructCreateData
 {
-    public string $claimed_construct;
-    public ?int $expected_frame_start = null;
+    public string $claimedConstruct;
+    public ?int $expectedFrameStart = null;
     public mixed $gate = null;
-    public string $insert_forward_primer;
-    public string $insert_reverse_primer;
-    public string $insert_template;
-    public ?int $max_primer_mismatch = null;
+    public string $insertForwardPrimer;
+    public string $insertReversePrimer;
+    public string $insertTemplate;
+    public ?int $maxPrimerMismatches = null;
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public ?bool $template_circular = null;
+    public ?bool $templateCircular = null;
     public string $tool;
 }
 
@@ -2303,7 +2333,7 @@ class VerifyConstructCreateData
 class VirtualGel
 {
     public ?bool $circular = null;
-    public ?array $enzyme = null;
+    public ?array $enzymes = null;
     public mixed $gate = null;
     public ?string $ladder = null;
     public mixed $ok;
@@ -2317,7 +2347,7 @@ class VirtualGel
 class VirtualGelCreateData
 {
     public ?bool $circular = null;
-    public ?array $enzyme = null;
+    public ?array $enzymes = null;
     public mixed $gate = null;
     public ?string $ladder = null;
     public mixed $ok;
@@ -2334,7 +2364,7 @@ class VolcanoPlotData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public array $row;
+    public array $rows;
     public string $tool;
 }
 
@@ -2345,7 +2375,7 @@ class VolcanoPlotDataCreateData
     public mixed $ok;
     public array $provenance;
     public array $result;
-    public array $row;
+    public array $rows;
     public string $tool;
 }
 
@@ -2353,7 +2383,7 @@ class VolcanoPlotDataCreateData
 class WebSearch
 {
     public mixed $gate = null;
-    public ?float $max_result = null;
+    public ?float $max_results = null;
     public mixed $ok;
     public array $provenance;
     public string $query;
@@ -2365,7 +2395,7 @@ class WebSearch
 class WebSearchCreateData
 {
     public mixed $gate = null;
-    public ?float $max_result = null;
+    public ?float $max_results = null;
     public mixed $ok;
     public array $provenance;
     public string $query;

@@ -26,8 +26,8 @@ import {
 describe('SessionSetEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('SessionSetEntity', async () => {
     const session_set_ref01_ent = client.SessionSet()
     let session_set_ref01_data = setup.data.new.session_set['session_set_ref01']
 
-    session_set_ref01_data = await session_set_ref01_ent.create(session_set_ref01_data)
+    session_set_ref01_data = (await session_set_ref01_ent.create(session_set_ref01_data)).data()
     assert(null != session_set_ref01_data)
 
 

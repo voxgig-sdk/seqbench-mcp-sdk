@@ -26,8 +26,8 @@ import {
 describe('KaspPrimerDesignEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('KaspPrimerDesignEntity', async () => {
     const kasp_primer_design_ref01_ent = client.KaspPrimerDesign()
     let kasp_primer_design_ref01_data = setup.data.new.kasp_primer_design['kasp_primer_design_ref01']
 
-    kasp_primer_design_ref01_data = await kasp_primer_design_ref01_ent.create(kasp_primer_design_ref01_data)
+    kasp_primer_design_ref01_data = (await kasp_primer_design_ref01_ent.create(kasp_primer_design_ref01_data)).data()
     assert(null != kasp_primer_design_ref01_data)
 
 

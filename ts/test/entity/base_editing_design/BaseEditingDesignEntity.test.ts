@@ -26,8 +26,8 @@ import {
 describe('BaseEditingDesignEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('BaseEditingDesignEntity', async () => {
     const base_editing_design_ref01_ent = client.BaseEditingDesign()
     let base_editing_design_ref01_data = setup.data.new.base_editing_design['base_editing_design_ref01']
 
-    base_editing_design_ref01_data = await base_editing_design_ref01_ent.create(base_editing_design_ref01_data)
+    base_editing_design_ref01_data = (await base_editing_design_ref01_ent.create(base_editing_design_ref01_data)).data()
     assert(null != base_editing_design_ref01_data)
 
 

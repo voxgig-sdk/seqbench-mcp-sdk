@@ -6,17 +6,17 @@ main: kit: entity: prime_editing_design: {
 
   fields: [
     {
-      name: "edit_end"
+      name: "editEnd"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "edit_start"
+      name: "editStart"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: prime_editing_design: {
       type: "`$ANY`"
     }
     {
-      name: "inserted_seq"
+      name: "insertedSeq"
       req: false
       type: "`$STRING`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: prime_editing_design: {
       type: "`$ANY`"
     }
     {
-      name: "pbs_length"
+      name: "pbsLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: prime_editing_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "rtt_homology"
+      name: "rttHomology"
       req: false
       type: "`$INTEGER`"
     }
@@ -79,7 +79,15 @@ main: kit: entity: prime_editing_design: {
             "prime_editing_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              editEnd: "`reqdata.edit_end`"
+              editStart: "`reqdata.edit_start`"
+              frameStart: "`reqdata.frame_start`"
+              insertedSeq: "`reqdata.inserted_seq`"
+              pbsLength: "`reqdata.pbs_length`"
+              rttHomology: "`reqdata.rtt_homology`"
+              target: "`reqdata.target`"
+            }
             res: "`body`"
           }
         }

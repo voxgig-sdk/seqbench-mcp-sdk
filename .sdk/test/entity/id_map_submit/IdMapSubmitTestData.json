@@ -8,7 +8,7 @@
         "ok": "s5d",
         "provenance": {},
         "result": {},
-        "tax_id": "TAX01",
+        "taxId": "s60",
         "to": "s61",
         "tool": "s62",
         "id": "ID_MAP_SUBMIT00"
@@ -20,7 +20,7 @@
         "ok": "sb7",
         "provenance": {},
         "result": {},
-        "tax_id": "TAX01",
+        "taxId": "sba",
         "to": "sbb",
         "tool": "sbc",
         "id": "ID_MAP_SUBMIT01"
@@ -32,7 +32,7 @@
         "ok": "s111",
         "provenance": {},
         "result": {},
-        "tax_id": "TAX01",
+        "taxId": "s114",
         "to": "s115",
         "tool": "s116",
         "id": "ID_MAP_SUBMIT02"
@@ -48,7 +48,7 @@
         "ok": "s16b",
         "provenance": {},
         "result": {},
-        "tax_id": "TAX01",
+        "taxId": "s16e",
         "to": "s16f",
         "tool": "s170"
       }

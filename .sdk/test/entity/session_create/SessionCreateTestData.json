@@ -2,7 +2,7 @@
   "existing": {
     "session_create": {
       "SESSION_CREATE00": {
-        "entry": {},
+        "entries": {},
         "gate": "s3d",
         "ok": "s3e",
         "provenance": {},
@@ -11,7 +11,7 @@
         "id": "SESSION_CREATE00"
       },
       "SESSION_CREATE01": {
-        "entry": {},
+        "entries": {},
         "gate": "s79",
         "ok": "s7a",
         "provenance": {},
@@ -20,7 +20,7 @@
         "id": "SESSION_CREATE01"
       },
       "SESSION_CREATE02": {
-        "entry": {},
+        "entries": {},
         "gate": "sb5",
         "ok": "sb6",
         "provenance": {},
@@ -33,7 +33,7 @@
   "new": {
     "session_create": {
       "session_create_ref01": {
-        "entry": {},
+        "entries": {},
         "gate": "sf1",
         "ok": "sf2",
         "provenance": {},

@@ -2,32 +2,32 @@
   "existing": {
     "session_set": {
       "SESSION_SET00": {
-        "entry": {},
+        "entries": {},
         "gate": "s47",
         "ok": "s48",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s4b",
         "tool": "s4c",
         "id": "SESSION_SET00"
       },
       "SESSION_SET01": {
-        "entry": {},
+        "entries": {},
         "gate": "s8d",
         "ok": "s8e",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s91",
         "tool": "s92",
         "id": "SESSION_SET01"
       },
       "SESSION_SET02": {
-        "entry": {},
+        "entries": {},
         "gate": "sd3",
         "ok": "sd4",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "sd7",
         "tool": "sd8",
         "id": "SESSION_SET02"
       }
@@ -36,12 +36,12 @@
   "new": {
     "session_set": {
       "session_set_ref01": {
-        "entry": {},
+        "entries": {},
         "gate": "s119",
         "ok": "s11a",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s11d",
         "tool": "s11e"
       }
     }

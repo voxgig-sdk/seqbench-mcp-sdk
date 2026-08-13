@@ -26,8 +26,8 @@ import {
 describe('HgvsConvertEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('HgvsConvertEntity', async () => {
     const hgvs_convert_ref01_ent = client.HgvsConvert()
     let hgvs_convert_ref01_data = setup.data.new.hgvs_convert['hgvs_convert_ref01']
 
-    hgvs_convert_ref01_data = await hgvs_convert_ref01_ent.create(hgvs_convert_ref01_data)
+    hgvs_convert_ref01_data = (await hgvs_convert_ref01_ent.create(hgvs_convert_ref01_data)).data()
     assert(null != hgvs_convert_ref01_data)
 
 

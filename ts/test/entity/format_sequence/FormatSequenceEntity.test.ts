@@ -26,8 +26,8 @@ import {
 describe('FormatSequenceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('FormatSequenceEntity', async () => {
     const format_sequence_ref01_ent = client.FormatSequence()
     let format_sequence_ref01_data = setup.data.new.format_sequence['format_sequence_ref01']
 
-    format_sequence_ref01_data = await format_sequence_ref01_ent.create(format_sequence_ref01_data)
+    format_sequence_ref01_data = (await format_sequence_ref01_ent.create(format_sequence_ref01_data)).data()
     assert(null != format_sequence_ref01_data)
 
 

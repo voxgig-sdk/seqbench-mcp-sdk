@@ -11,7 +11,7 @@ main: kit: entity: find_orf: {
       type: "`$ANY`"
     }
     {
-      name: "min_aa_length"
+      name: "minAaLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: find_orf: {
       type: "`$OBJECT`"
     }
     {
-      name: "require_stop"
+      name: "requireStop"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: find_orf: {
             "find_orfs"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              minAaLength: "`reqdata.min_aa_length`"
+              requireStop: "`reqdata.require_stop`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

@@ -26,8 +26,8 @@ import {
 describe('SequenceReportEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('SequenceReportEntity', async () => {
     const sequence_report_ref01_ent = client.SequenceReport()
     let sequence_report_ref01_data = setup.data.new.sequence_report['sequence_report_ref01']
 
-    sequence_report_ref01_data = await sequence_report_ref01_ent.create(sequence_report_ref01_data)
+    sequence_report_ref01_data = (await sequence_report_ref01_ent.create(sequence_report_ref01_data)).data()
     assert(null != sequence_report_ref01_data)
 
 

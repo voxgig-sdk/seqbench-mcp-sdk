@@ -44,70 +44,100 @@
 
 ---@class BaseEditingDesign
 ---@field editor? string
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
 ---@field target string
----@field target_position? number
+---@field targetPosition? number
 ---@field tool string
 
 ---@class BaseEditingDesignCreateData
 ---@field editor? string
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
 ---@field target string
----@field target_position? number
+---@field targetPosition? number
 ---@field tool string
 
 ---@class Batch
----@field arg? table
+---@field args? table
+---@field capped boolean
+---@field columns table
+---@field count number
+---@field errors number
 ---@field input string
----@field ok any
----@field result table
+---@field limit number
+---@field provenance table
+---@field rows table
 ---@field tool string
 
 ---@class BatchLoadMatch
----@field arg? table
+---@field args? table
+---@field capped? boolean
+---@field columns? table
+---@field count? number
+---@field errors? number
 ---@field input? string
----@field ok? any
----@field result? table
+---@field limit? number
+---@field provenance? table
+---@field rows? table
 ---@field tool? string
 
 ---@class BatchCreateData
----@field arg? table
+---@field args? table
+---@field capped boolean
+---@field columns table
+---@field count number
+---@field errors number
 ---@field input string
----@field ok any
----@field result table
+---@field limit number
+---@field provenance table
+---@field rows table
 ---@field tool string
 
 ---@class BatchWorkflow
+---@field capped boolean
+---@field columns table
+---@field count number
+---@field errors number
 ---@field input string
----@field ok any
----@field result table
----@field step table
+---@field limit number
+---@field provenance table
+---@field rows table
+---@field steps table
 
 ---@class BatchWorkflowLoadMatch
+---@field capped? boolean
+---@field columns? table
+---@field count? number
+---@field errors? number
 ---@field input? string
----@field ok? any
----@field result? table
----@field step? table
+---@field limit? number
+---@field provenance? table
+---@field rows? table
+---@field steps? table
 
 ---@class BatchWorkflowCreateData
+---@field capped boolean
+---@field columns table
+---@field count number
+---@field errors number
 ---@field input string
----@field ok any
----@field result table
----@field step table
+---@field limit number
+---@field provenance table
+---@field rows table
+---@field steps table
 
 ---@class CharacterizeSequence
----@field end_primer_length? number
+---@field endPrimerLength? number
 ---@field gate? any
----@field max_orf? number
----@field min_orf_aa? number
+---@field maxOrfs? number
+---@field minOrfAa? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -115,10 +145,10 @@
 ---@field tool string
 
 ---@class CharacterizeSequenceCreateData
----@field end_primer_length? number
+---@field endPrimerLength? number
 ---@field gate? any
----@field max_orf? number
----@field min_orf_aa? number
+---@field maxOrfs? number
+---@field minOrfAa? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -126,59 +156,59 @@
 ---@field tool string
 
 ---@class CloningSimulate
----@field arm_tm_target? number
+---@field armTmTarget? number
 ---@field circular? boolean
 ---@field enzyme? string
 ---@field enzyme3? string
 ---@field enzyme5? string
----@field fragment? table
+---@field fragments? table
 ---@field gate? any
 ---@field insert? string
 ---@field method string
----@field name? table
+---@field names? table
 ---@field ok any
----@field overlap_len? number
+---@field overlapLen? number
 ---@field provenance table
 ---@field result table
 ---@field tool string
 ---@field vector? string
 
 ---@class CloningSimulateCreateData
----@field arm_tm_target? number
+---@field armTmTarget? number
 ---@field circular? boolean
 ---@field enzyme? string
 ---@field enzyme3? string
 ---@field enzyme5? string
----@field fragment? table
+---@field fragments? table
 ---@field gate? any
 ---@field insert? string
 ---@field method string
----@field name? table
+---@field names? table
 ---@field ok any
----@field overlap_len? number
+---@field overlapLen? number
 ---@field provenance table
 ---@field result table
 ---@field tool string
 ---@field vector? string
 
 ---@class CodonAdaptationIndex
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
----@field rare_threshold? number
+---@field rareThreshold? number
 ---@field result table
 ---@field sequence string
 ---@field tool string
 
 ---@class CodonAdaptationIndexCreateData
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
----@field rare_threshold? number
+---@field rareThreshold? number
 ---@field result table
 ---@field sequence string
 ---@field tool string
@@ -202,15 +232,15 @@
 ---@field tool string
 
 ---@class ConstructAutofix
----@field avoid_enzyme? table
----@field cryptic_orf_min_aa? number
----@field frame_start? number
+---@field avoidEnzymes? table
+---@field crypticOrfMinAa? number
+---@field frameStart? number
 ---@field gate? any
----@field gc_high? number
----@field gc_low? number
----@field gc_window? number
----@field homopolymer_min? number
----@field max_pass? number
+---@field gcHigh? number
+---@field gcLow? number
+---@field gcWindow? number
+---@field homopolymerMin? number
+---@field maxPasses? number
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
@@ -219,15 +249,15 @@
 ---@field tool string
 
 ---@class ConstructAutofixCreateData
----@field avoid_enzyme? table
----@field cryptic_orf_min_aa? number
----@field frame_start? number
+---@field avoidEnzymes? table
+---@field crypticOrfMinAa? number
+---@field frameStart? number
 ---@field gate? any
----@field gc_high? number
----@field gc_low? number
----@field gc_window? number
----@field homopolymer_min? number
----@field max_pass? number
+---@field gcHigh? number
+---@field gcLow? number
+---@field gcWindow? number
+---@field homopolymerMin? number
+---@field maxPasses? number
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
@@ -236,14 +266,14 @@
 ---@field tool string
 
 ---@class ConstructQc
----@field avoid_enzyme? table
----@field cryptic_orf_min_aa? number
----@field frame_start? number
+---@field avoidEnzymes? table
+---@field crypticOrfMinAa? number
+---@field frameStart? number
 ---@field gate? any
----@field gc_high? number
----@field gc_low? number
----@field gc_window? number
----@field homopolymer_min? number
+---@field gcHigh? number
+---@field gcLow? number
+---@field gcWindow? number
+---@field homopolymerMin? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -251,14 +281,14 @@
 ---@field tool string
 
 ---@class ConstructQcCreateData
----@field avoid_enzyme? table
----@field cryptic_orf_min_aa? number
----@field frame_start? number
+---@field avoidEnzymes? table
+---@field crypticOrfMinAa? number
+---@field frameStart? number
 ---@field gate? any
----@field gc_high? number
----@field gc_low? number
----@field gc_window? number
----@field homopolymer_min? number
+---@field gcHigh? number
+---@field gcLow? number
+---@field gcWindow? number
+---@field homopolymerMin? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -267,67 +297,67 @@
 
 ---@class CrisprGrnaDesign
 ---@field gate? any
----@field min_score? number
+---@field minScore? number
 ---@field nuclease? string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field search_reverse_strand? boolean
+---@field searchReverseStrand? boolean
 ---@field sequence string
 ---@field tool string
 
 ---@class CrisprGrnaDesignCreateData
 ---@field gate? any
----@field min_score? number
+---@field minScore? number
 ---@field nuclease? string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field search_reverse_strand? boolean
+---@field searchReverseStrand? boolean
 ---@field sequence string
 ---@field tool string
 
 ---@class CrisprHdrDonor
----@field arm_length? number
----@field block_pam? boolean
----@field design_genotyping_primer? boolean
----@field edit_end? number
----@field edit_start? number
----@field frame_start? number
+---@field armLength? number
+---@field blockPam? boolean
+---@field designGenotypingPrimers? boolean
+---@field editEnd? number
+---@field editStart? number
+---@field frameStart? number
 ---@field gate? any
----@field guide_end? number
----@field guide_start? number
----@field guide_strand? string
+---@field guideEnd? number
+---@field guideStart? number
+---@field guideStrand? string
 ---@field nuclease? string
 ---@field ok any
 ---@field provenance table
 ---@field replacement string
 ---@field result table
----@field target_sequence string
+---@field targetSequence string
 ---@field tool string
 
 ---@class CrisprHdrDonorCreateData
----@field arm_length? number
----@field block_pam? boolean
----@field design_genotyping_primer? boolean
----@field edit_end? number
----@field edit_start? number
----@field frame_start? number
+---@field armLength? number
+---@field blockPam? boolean
+---@field designGenotypingPrimers? boolean
+---@field editEnd? number
+---@field editStart? number
+---@field frameStart? number
 ---@field gate? any
----@field guide_end? number
----@field guide_start? number
----@field guide_strand? string
+---@field guideEnd? number
+---@field guideStart? number
+---@field guideStrand? string
 ---@field nuclease? string
 ---@field ok any
 ---@field provenance table
 ---@field replacement string
 ---@field result table
----@field target_sequence string
+---@field targetSequence string
 ---@field tool string
 
 ---@class CrisprOfftargetCheck
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field nuclease? string
 ---@field ok any
 ---@field protospacer string
@@ -337,7 +367,7 @@
 
 ---@class CrisprOfftargetCheckCreateData
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field nuclease? string
 ---@field ok any
 ---@field protospacer string
@@ -350,8 +380,8 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sequence_a string
----@field sequence_b string
+---@field sequenceA string
+---@field sequenceB string
 ---@field tool string
 
 ---@class CrossDimerCreateData
@@ -359,37 +389,37 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sequence_a string
----@field sequence_b string
+---@field sequenceA string
+---@field sequenceB string
 ---@field tool string
 
 ---@class DnaMolarity
 ---@field gate? any
 ---@field length? number
----@field mass_ng? number
+---@field massNg? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
 ---@field sequence? string
 ---@field tool string
 ---@field type? string
----@field volume_ul? number
+---@field volumeUl? number
 
 ---@class DnaMolarityCreateData
 ---@field gate? any
 ---@field length? number
----@field mass_ng? number
+---@field massNg? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
 ---@field sequence? string
 ---@field tool string
 ---@field type? string
----@field volume_ul? number
+---@field volumeUl? number
 
 ---@class DoubleDigest
----@field enzyme_a string
----@field enzyme_b string
+---@field enzymeA string
+---@field enzymeB string
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -397,8 +427,8 @@
 ---@field tool string
 
 ---@class DoubleDigestCreateData
----@field enzyme_a string
----@field enzyme_b string
+---@field enzymeA string
+---@field enzymeB string
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -409,7 +439,7 @@
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
@@ -417,25 +447,25 @@
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
 ---@class ExportOpentronsProtocol
 ---@field gate? any
 ---@field ok any
----@field protocol_name? string
+---@field protocolName? string
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
 ---@class ExportOpentronsProtocolCreateData
 ---@field gate? any
 ---@field ok any
----@field protocol_name? string
+---@field protocolName? string
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
@@ -443,7 +473,7 @@
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
@@ -451,46 +481,46 @@
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
----@field reaction table
+---@field reactions table
 ---@field result table
 ---@field tool string
 
 ---@class ExpressionHeatmapCluster
----@field cluster_col? boolean
----@field cluster_row? boolean
----@field distance_metric? string
+---@field clusterCols? boolean
+---@field clusterRows? boolean
+---@field distanceMetric? string
 ---@field gate? any
----@field gene table
+---@field genes table
 ---@field linkage? string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sample table
+---@field samples table
 ---@field tool string
----@field value table
----@field z_score_row? boolean
+---@field values table
+---@field zScoreRows? boolean
 
 ---@class ExpressionHeatmapClusterCreateData
----@field cluster_col? boolean
----@field cluster_row? boolean
----@field distance_metric? string
+---@field clusterCols? boolean
+---@field clusterRows? boolean
+---@field distanceMetric? string
 ---@field gate? any
----@field gene table
+---@field genes table
 ---@field linkage? string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sample table
+---@field samples table
 ---@field tool string
----@field value table
----@field z_score_row? boolean
+---@field values table
+---@field zScoreRows? boolean
 
 ---@class FastqQcReport
 ---@field gate? any
 ---@field input string
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
+---@field qualityOffset? number
 ---@field result table
 ---@field tool string
 
@@ -499,54 +529,54 @@
 ---@field input string
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
+---@field qualityOffset? number
 ---@field result table
 ---@field tool string
 
 ---@class FastqTrim
 ---@field gate? any
 ---@field input string
----@field min_length? number
+---@field minLength? number
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
----@field quality_threshold? number
+---@field qualityOffset? number
+---@field qualityThreshold? number
 ---@field result table
 ---@field tool string
 
 ---@class FastqTrimCreateData
 ---@field gate? any
 ---@field input string
----@field min_length? number
+---@field minLength? number
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
----@field quality_threshold? number
+---@field qualityOffset? number
+---@field qualityThreshold? number
 ---@field result table
 ---@field tool string
 
 ---@class FindOrf
 ---@field gate? any
----@field min_aa_length? number
+---@field minAaLength? number
 ---@field ok any
 ---@field provenance table
----@field require_stop? boolean
+---@field requireStop? boolean
 ---@field result table
 ---@field sequence string
 ---@field tool string
 
 ---@class FindOrfCreateData
 ---@field gate? any
----@field min_aa_length? number
+---@field minAaLength? number
 ---@field ok any
 ---@field provenance table
----@field require_stop? boolean
+---@field requireStop? boolean
 ---@field result table
 ---@field sequence string
 ---@field tool string
 
 ---@class FormatSequence
----@field case_mode? string
+---@field caseMode? string
 ---@field convert? string
 ---@field gate? any
 ---@field ok any
@@ -554,12 +584,12 @@
 ---@field result table
 ---@field reverse? boolean
 ---@field sequence string
----@field strip_non_letter? boolean
+---@field stripNonLetters? boolean
 ---@field tool string
 ---@field width? number
 
 ---@class FormatSequenceCreateData
----@field case_mode? string
+---@field caseMode? string
 ---@field convert? string
 ---@field gate? any
 ---@field ok any
@@ -567,17 +597,17 @@
 ---@field result table
 ---@field reverse? boolean
 ---@field sequence string
----@field strip_non_letter? boolean
+---@field stripNonLetters? boolean
 ---@field tool string
 ---@field width? number
 
 ---@class FunctionalEnrichment
 ---@field background? table
----@field collection? table
+---@field collections? table
 ---@field gate? any
----@field gene table
----@field max_term_size? number
----@field min_term_size? number
+---@field genes table
+---@field maxTermSize? number
+---@field minTermSize? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -585,11 +615,11 @@
 
 ---@class FunctionalEnrichmentCreateData
 ---@field background? table
----@field collection? table
+---@field collections? table
 ---@field gate? any
----@field gene table
----@field max_term_size? number
----@field min_term_size? number
+---@field genes table
+---@field maxTermSize? number
+---@field minTermSize? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -660,25 +690,25 @@
 ---@field tool string
 
 ---@class GoldenGateFidelity
----@field compare_to_named_set? string
+---@field compareToNamedSet? string
 ---@field dataset? string
 ---@field gate? any
 ---@field ok any
----@field overhang table
+---@field overhangs table
 ---@field provenance table
 ---@field result table
----@field risk_threshold? number
+---@field riskThreshold? number
 ---@field tool string
 
 ---@class GoldenGateFidelityCreateData
----@field compare_to_named_set? string
+---@field compareToNamedSet? string
 ---@field dataset? string
 ---@field gate? any
 ---@field ok any
----@field overhang table
+---@field overhangs table
 ---@field provenance table
 ---@field result table
----@field risk_threshold? number
+---@field riskThreshold? number
 ---@field tool string
 
 ---@class HgvsConvert
@@ -699,7 +729,7 @@
 
 ---@class IdMapPoll
 ---@field gate? any
----@field job_id string
+---@field jobId string
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -707,7 +737,7 @@
 
 ---@class IdMapPollCreateData
 ---@field gate? any
----@field job_id string
+---@field jobId string
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -720,7 +750,7 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field tax_id? string
+---@field taxId? string
 ---@field to string
 ---@field tool string
 
@@ -731,62 +761,62 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field tax_id? string
+---@field taxId? string
 ---@field to string
 ---@field tool string
 
 ---@class InSilicoPcr
 ---@field circular? boolean
----@field forward_primer string
+---@field forwardPrimer string
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field reverse_primer string
+---@field reversePrimer string
 ---@field template string
 ---@field tool string
 
 ---@class InSilicoPcrCreateData
 ---@field circular? boolean
----@field forward_primer string
+---@field forwardPrimer string
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field reverse_primer string
+---@field reversePrimer string
 ---@field template string
 ---@field tool string
 
 ---@class KaspPrimerDesign
----@field add_secondary_mismatch? boolean
----@field allele_a string
----@field allele_b string
+---@field addSecondaryMismatch? boolean
+---@field alleleA string
+---@field alleleB string
 ---@field gate? any
----@field max_amplicon? number
----@field min_amplicon? number
+---@field maxAmplicon? number
+---@field minAmplicon? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field snp_position number
+---@field snpPosition number
 ---@field target string
----@field target_core_tm? number
+---@field targetCoreTm? number
 ---@field tool string
 
 ---@class KaspPrimerDesignCreateData
----@field add_secondary_mismatch? boolean
----@field allele_a string
----@field allele_b string
+---@field addSecondaryMismatch? boolean
+---@field alleleA string
+---@field alleleB string
 ---@field gate? any
----@field max_amplicon? number
----@field min_amplicon? number
+---@field maxAmplicon? number
+---@field minAmplicon? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field snp_position number
+---@field snpPosition number
 ---@field target string
----@field target_core_tm? number
+---@field targetCoreTm? number
 ---@field tool string
 
 ---@class ListTool
@@ -794,52 +824,52 @@
 ---@class ListToolLoadMatch
 
 ---@class MeltingTemperature
----@field dntp_mm? number
+---@field dntpMM? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
 ---@field sequence string
----@field target_tm? number
----@field tm_tolerance? number
+---@field targetTm? number
+---@field tmTolerance? number
 ---@field tool string
 
 ---@class MeltingTemperatureCreateData
----@field dntp_mm? number
+---@field dntpMM? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
 ---@field sequence string
----@field target_tm? number
----@field tm_tolerance? number
+---@field targetTm? number
+---@field tmTolerance? number
 ---@field tool string
 
 ---@class MotifFinder
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field motif string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field search_reverse_strand? boolean
+---@field searchReverseStrand? boolean
 ---@field sequence string
 ---@field tool string
 
 ---@class MotifFinderCreateData
 ---@field gate? any
----@field max_mismatch? number
+---@field maxMismatches? number
 ---@field motif string
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field search_reverse_strand? boolean
+---@field searchReverseStrand? boolean
 ---@field sequence string
 ---@field tool string
 
@@ -860,24 +890,24 @@
 ---@field tool string
 
 ---@class OligoAnalysi
----@field dntp_mm? number
+---@field dntpMM? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
 ---@field sequence string
 ---@field tool string
 
 ---@class OligoAnalysiCreateData
----@field dntp_mm? number
+---@field dntpMM? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
 ---@field sequence string
@@ -888,9 +918,9 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field source_species? string
----@field symbol table
----@field target_species string
+---@field sourceSpecies? string
+---@field symbols table
+---@field targetSpecies string
 ---@field tool string
 ---@field type? string
 
@@ -899,9 +929,9 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field source_species? string
----@field symbol table
----@field target_species string
+---@field sourceSpecies? string
+---@field symbols table
+---@field targetSpecies string
 ---@field tool string
 ---@field type? string
 
@@ -914,8 +944,8 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field seq_a string
----@field seq_b string
+---@field seqA string
+---@field seqB string
 ---@field tool string
 
 ---@class PairwiseAlignmentCreateData
@@ -927,8 +957,8 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field seq_a string
----@field seq_b string
+---@field seqA string
+---@field seqB string
 ---@field tool string
 
 ---@class ParseGenbank
@@ -948,8 +978,8 @@
 ---@field tool string
 
 ---@class ParseSangerTrace
----@field file_base64 string
----@field file_name? string
+---@field fileBase64 string
+---@field fileName? string
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -957,8 +987,8 @@
 ---@field tool string
 
 ---@class ParseSangerTraceCreateData
----@field file_base64 string
----@field file_name? string
+---@field fileBase64 string
+---@field fileName? string
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1007,7 +1037,7 @@
 ---@field result table
 ---@field sequence string
 ---@field tool string
----@field top_n? number
+---@field topN? number
 
 ---@class PlasmidFullReportCreateData
 ---@field circular? boolean
@@ -1017,7 +1047,7 @@
 ---@field result table
 ---@field sequence string
 ---@field tool string
----@field top_n? number
+---@field topN? number
 
 ---@class PlasmidIdentify
 ---@field circular? boolean
@@ -1027,7 +1057,7 @@
 ---@field result table
 ---@field sequence string
 ---@field tool string
----@field top_n? number
+---@field topN? number
 
 ---@class PlasmidIdentifyCreateData
 ---@field circular? boolean
@@ -1037,142 +1067,142 @@
 ---@field result table
 ---@field sequence string
 ---@field tool string
----@field top_n? number
+---@field topN? number
 
 ---@class PrimeEditingDesign
----@field edit_end number
----@field edit_start number
----@field frame_start? number
+---@field editEnd number
+---@field editStart number
+---@field frameStart? number
 ---@field gate? any
----@field inserted_seq? string
+---@field insertedSeq? string
 ---@field ok any
----@field pbs_length? number
+---@field pbsLength? number
 ---@field provenance table
 ---@field result table
----@field rtt_homology? number
+---@field rttHomology? number
 ---@field target string
 ---@field tool string
 
 ---@class PrimeEditingDesignCreateData
----@field edit_end number
----@field edit_start number
----@field frame_start? number
+---@field editEnd number
+---@field editStart number
+---@field frameStart? number
 ---@field gate? any
----@field inserted_seq? string
+---@field insertedSeq? string
 ---@field ok any
----@field pbs_length? number
+---@field pbsLength? number
 ---@field provenance table
 ---@field result table
----@field rtt_homology? number
+---@field rttHomology? number
 ---@field target string
 ---@field tool string
 
 ---@class PrimeEditingTwinDesign
 ---@field gate? any
----@field new_sequence string
+---@field newSequence string
 ---@field ok any
----@field overlap_length? number
----@field pbs_length? number
+---@field overlapLength? number
+---@field pbsLength? number
 ---@field provenance table
----@field replace_end number
----@field replace_start number
+---@field replaceEnd number
+---@field replaceStart number
 ---@field result table
 ---@field target string
 ---@field tool string
 
 ---@class PrimeEditingTwinDesignCreateData
 ---@field gate? any
----@field new_sequence string
+---@field newSequence string
 ---@field ok any
----@field overlap_length? number
----@field pbs_length? number
+---@field overlapLength? number
+---@field pbsLength? number
 ---@field provenance table
----@field replace_end number
----@field replace_start number
+---@field replaceEnd number
+---@field replaceStart number
 ---@field result table
 ---@field target string
 ---@field tool string
 
 ---@class PrimerDesign
----@field amplicon_max? number
----@field amplicon_min? number
----@field dntp_mm? number
+---@field ampliconMax? number
+---@field ampliconMin? number
+---@field dntpMM? number
 ---@field gate? any
----@field gc_max? number
----@field gc_min? number
----@field len_max? number
----@field len_min? number
----@field len_opt? number
----@field max_return? number
----@field mg_mm? number
----@field na_mm? number
+---@field gcMax? number
+---@field gcMin? number
+---@field lenMax? number
+---@field lenMin? number
+---@field lenOpt? number
+---@field maxReturn? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
----@field target_end? number
----@field target_start? number
+---@field targetEnd? number
+---@field targetStart? number
 ---@field template string
----@field tm_max? number
----@field tm_max_diff? number
----@field tm_min? number
----@field tm_opt? number
+---@field tmMax? number
+---@field tmMaxDiff? number
+---@field tmMin? number
+---@field tmOpt? number
 ---@field tool string
 
 ---@class PrimerDesignCreateData
----@field amplicon_max? number
----@field amplicon_min? number
----@field dntp_mm? number
+---@field ampliconMax? number
+---@field ampliconMin? number
+---@field dntpMM? number
 ---@field gate? any
----@field gc_max? number
----@field gc_min? number
----@field len_max? number
----@field len_min? number
----@field len_opt? number
----@field max_return? number
----@field mg_mm? number
----@field na_mm? number
+---@field gcMax? number
+---@field gcMin? number
+---@field lenMax? number
+---@field lenMin? number
+---@field lenOpt? number
+---@field maxReturn? number
+---@field mgMM? number
+---@field naMM? number
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field provenance table
 ---@field result table
----@field target_end? number
----@field target_start? number
+---@field targetEnd? number
+---@field targetStart? number
 ---@field template string
----@field tm_max? number
----@field tm_max_diff? number
----@field tm_min? number
----@field tm_opt? number
+---@field tmMax? number
+---@field tmMaxDiff? number
+---@field tmMin? number
+---@field tmOpt? number
 ---@field tool string
 
 ---@class PrimerSpecificity
----@field forward_primer string
+---@field forwardPrimer string
 ---@field gate? any
----@field max_mismatch? number
----@field max_product_length? number
+---@field maxMismatches? number
+---@field maxProductLength? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field reverse_primer string
+---@field reversePrimer string
 ---@field tool string
 
 ---@class PrimerSpecificityCreateData
----@field forward_primer string
+---@field forwardPrimer string
 ---@field gate? any
----@field max_mismatch? number
----@field max_product_length? number
+---@field maxMismatches? number
+---@field maxProductLength? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field reverse_primer string
+---@field reversePrimer string
 ---@field tool string
 
 ---@class ProteaseDigestion
 ---@field gate? any
----@field max_mass? number
----@field max_peptide? number
----@field min_mass? number
----@field missed_cleavage? number
+---@field maxMass? number
+---@field maxPeptides? number
+---@field minMass? number
+---@field missedCleavages? number
 ---@field ok any
 ---@field protease? string
 ---@field provenance table
@@ -1182,10 +1212,10 @@
 
 ---@class ProteaseDigestionCreateData
 ---@field gate? any
----@field max_mass? number
----@field max_peptide? number
----@field min_mass? number
----@field missed_cleavage? number
+---@field maxMass? number
+---@field maxPeptides? number
+---@field minMass? number
+---@field missedCleavages? number
 ---@field ok any
 ---@field protease? string
 ---@field provenance table
@@ -1195,7 +1225,7 @@
 
 ---@class ProteinAnnotatePoll
 ---@field gate? any
----@field job_id string
+---@field jobId string
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1203,7 +1233,7 @@
 
 ---@class ProteinAnnotatePollCreateData
 ---@field gate? any
----@field job_id string
+---@field jobId string
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1212,7 +1242,7 @@
 ---@class ProteinAnnotateSubmit
 ---@field appl? string
 ---@field gate? any
----@field goterm? boolean
+---@field goterms? boolean
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1222,7 +1252,7 @@
 ---@class ProteinAnnotateSubmitCreateData
 ---@field appl? string
 ---@field gate? any
----@field goterm? boolean
+---@field goterms? boolean
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1250,7 +1280,7 @@
 ---@field window? number
 
 ---@class ProteinProperty
----@field charge_step? number
+---@field chargeStep? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1259,7 +1289,7 @@
 ---@field tool string
 
 ---@class ProteinPropertyCreateData
----@field charge_step? number
+---@field chargeStep? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1269,7 +1299,7 @@
 
 ---@class RandomSequence
 ---@field gate? any
----@field gc_content? number
+---@field gcContent? number
 ---@field kind? string
 ---@field length number
 ---@field ok any
@@ -1279,7 +1309,7 @@
 
 ---@class RandomSequenceCreateData
 ---@field gate? any
----@field gc_content? number
+---@field gcContent? number
 ---@field kind? string
 ---@field length number
 ---@field ok any
@@ -1288,7 +1318,7 @@
 ---@field tool string
 
 ---@class RestrictionSite
----@field enzyme? table
+---@field enzymes? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1297,7 +1327,7 @@
 ---@field tool string
 
 ---@class RestrictionSiteCreateData
----@field enzyme? table
+---@field enzymes? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1360,10 +1390,10 @@
 ---@field tool string
 
 ---@class SangerVsReference
----@field file_base64? string
----@field file_name? string
+---@field fileBase64? string
+---@field fileName? string
 ---@field gate? any
----@field min_coverage? number
+---@field minCoverage? number
 ---@field ok any
 ---@field provenance table
 ---@field read? string
@@ -1372,10 +1402,10 @@
 ---@field tool string
 
 ---@class SangerVsReferenceCreateData
----@field file_base64? string
----@field file_name? string
+---@field fileBase64? string
+---@field fileName? string
 ---@field gate? any
----@field min_coverage? number
+---@field minCoverage? number
 ---@field ok any
 ---@field provenance table
 ---@field read? string
@@ -1384,7 +1414,7 @@
 ---@field tool string
 
 ---@class SavePermalink
----@field arg table
+---@field args table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1392,7 +1422,7 @@
 ---@field tool string
 
 ---@class SavePermalinkCreateData
----@field arg table
+---@field args table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1404,7 +1434,7 @@
 ---@field input string
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
+---@field qualityOffset? number
 ---@field result table
 ---@field tool string
 
@@ -1413,7 +1443,7 @@
 ---@field input string
 ---@field ok any
 ---@field provenance table
----@field quality_offset? number
+---@field qualityOffset? number
 ---@field result table
 ---@field tool string
 
@@ -1458,10 +1488,10 @@
 ---@field tool string
 
 ---@class SequenceReport
----@field end_primer_length? number
+---@field endPrimerLength? number
 ---@field gate? any
----@field max_orf? number
----@field min_orf_aa? number
+---@field maxOrfs? number
+---@field minOrfAa? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1469,10 +1499,10 @@
 ---@field tool string
 
 ---@class SequenceReportCreateData
----@field end_primer_length? number
+---@field endPrimerLength? number
 ---@field gate? any
----@field max_orf? number
----@field min_orf_aa? number
+---@field maxOrfs? number
+---@field minOrfAa? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
@@ -1483,7 +1513,7 @@
 ---@field db? string
 ---@field gate? any
 ---@field gene? string
----@field max_result? number
+---@field maxResults? number
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
@@ -1495,7 +1525,7 @@
 ---@field db? string
 ---@field gate? any
 ---@field gene? string
----@field max_result? number
+---@field maxResults? number
 ---@field ok any
 ---@field organism? string
 ---@field provenance table
@@ -1505,26 +1535,26 @@
 
 ---@class SequencingReadbackVerify
 ---@field gate? any
----@field min_supporting_read? number
+---@field minSupportingReads? number
 ---@field ok any
 ---@field provenance table
----@field read string
+---@field reads string
 ---@field reference string
 ---@field result table
 ---@field tool string
 
 ---@class SequencingReadbackVerifyCreateData
 ---@field gate? any
----@field min_supporting_read? number
+---@field minSupportingReads? number
 ---@field ok any
 ---@field provenance table
----@field read string
+---@field reads string
 ---@field reference string
 ---@field result table
 ---@field tool string
 
 ---@class SessionCreate
----@field entry? table
+---@field entries? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1532,7 +1562,7 @@
 ---@field tool string
 
 ---@class SessionCreateCreateData
----@field entry? table
+---@field entries? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1541,121 +1571,121 @@
 
 ---@class SessionGet
 ---@field gate? any
----@field name? table
+---@field names? table
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
 
 ---@class SessionGetCreateData
 ---@field gate? any
----@field name? table
+---@field names? table
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
 
 ---@class SessionRun
----@field arg? table
----@field from_session? table
+---@field args? table
+---@field fromSession? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
----@field write_back? table
+---@field writeBack? table
 
 ---@class SessionRunCreateData
----@field arg? table
----@field from_session? table
+---@field args? table
+---@field fromSession? table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
----@field write_back? table
+---@field writeBack? table
 
 ---@class SessionSet
----@field entry table
+---@field entries table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
 
 ---@class SessionSetCreateData
----@field entry table
+---@field entries table
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field session_id string
+---@field sessionId string
 ---@field tool string
 
 ---@class SirnaDesign
 ---@field gate? any
----@field min_reynold? number
+---@field minReynolds? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sh_rna_loop? string
+---@field shRnaLoop? string
 ---@field target string
 ---@field tool string
 
 ---@class SirnaDesignCreateData
 ---@field gate? any
----@field min_reynold? number
+---@field minReynolds? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field sh_rna_loop? string
+---@field shRnaLoop? string
 ---@field target string
 ---@field tool string
 
 ---@class SiteDirectedMutagenesi
----@field arm_tm_target? number
----@field dntp_mm? number
----@field edit_kind? string
----@field frame_start? number
+---@field armTmTarget? number
+---@field dntpMM? number
+---@field editKind? string
+---@field frameStart? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
----@field new_base? string
+---@field mgMM? number
+---@field naMM? number
+---@field newBase? string
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field organism? string
 ---@field position? number
 ---@field provenance table
 ---@field residue? number
 ---@field result table
 ---@field style? string
----@field target_aa? string
+---@field targetAa? string
 ---@field template string
 ---@field tool string
 
 ---@class SiteDirectedMutagenesiCreateData
----@field arm_tm_target? number
----@field dntp_mm? number
----@field edit_kind? string
----@field frame_start? number
+---@field armTmTarget? number
+---@field dntpMM? number
+---@field editKind? string
+---@field frameStart? number
 ---@field gate? any
----@field mg_mm? number
----@field na_mm? number
----@field new_base? string
+---@field mgMM? number
+---@field naMM? number
+---@field newBase? string
 ---@field ok any
----@field oligo_nm? number
+---@field oligoNM? number
 ---@field organism? string
 ---@field position? number
 ---@field provenance table
 ---@field residue? number
 ---@field result table
 ---@field style? string
----@field target_aa? string
+---@field targetAa? string
 ---@field template string
 ---@field tool string
 
@@ -1666,7 +1696,7 @@
 ---@field provenance table
 ---@field result table
 ---@field sequence string
----@field to_stop? boolean
+---@field toStop? boolean
 ---@field tool string
 
 ---@class TranslateCreateData
@@ -1676,7 +1706,7 @@
 ---@field provenance table
 ---@field result table
 ---@field sequence string
----@field to_stop? boolean
+---@field toStop? boolean
 ---@field tool string
 
 ---@class VariantAnnotate
@@ -1699,7 +1729,7 @@
 
 ---@class VariantComparator
 ---@field coding? boolean
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1710,7 +1740,7 @@
 
 ---@class VariantComparatorCreateData
 ---@field coding? boolean
----@field frame_start? number
+---@field frameStart? number
 ---@field gate? any
 ---@field ok any
 ---@field provenance table
@@ -1720,84 +1750,84 @@
 ---@field tool string
 
 ---@class VerifyAssembly
----@field arm_tm_target? number
+---@field armTmTarget? number
 ---@field circular? boolean
----@field claimed_construct string
+---@field claimedConstruct string
 ---@field coding? boolean
 ---@field enzyme? string
 ---@field enzyme3? string
 ---@field enzyme5? string
----@field fragment? table
----@field fragment_pcr? table
----@field frame_start? number
+---@field fragmentPcrs? table
+---@field fragments? table
+---@field frameStart? number
 ---@field gate? any
 ---@field insert? string
----@field insert_pcr? table
+---@field insertPcr? table
 ---@field method string
----@field name? table
+---@field names? table
 ---@field ok any
----@field overlap_len? number
+---@field overlapLen? number
 ---@field provenance table
 ---@field result table
 ---@field tool string
 ---@field vector? string
----@field vector_pcr? table
+---@field vectorPcr? table
 
 ---@class VerifyAssemblyCreateData
----@field arm_tm_target? number
+---@field armTmTarget? number
 ---@field circular? boolean
----@field claimed_construct string
+---@field claimedConstruct string
 ---@field coding? boolean
 ---@field enzyme? string
 ---@field enzyme3? string
 ---@field enzyme5? string
----@field fragment? table
----@field fragment_pcr? table
----@field frame_start? number
+---@field fragmentPcrs? table
+---@field fragments? table
+---@field frameStart? number
 ---@field gate? any
 ---@field insert? string
----@field insert_pcr? table
+---@field insertPcr? table
 ---@field method string
----@field name? table
+---@field names? table
 ---@field ok any
----@field overlap_len? number
+---@field overlapLen? number
 ---@field provenance table
 ---@field result table
 ---@field tool string
 ---@field vector? string
----@field vector_pcr? table
+---@field vectorPcr? table
 
 ---@class VerifyConstruct
----@field claimed_construct string
----@field expected_frame_start? number
+---@field claimedConstruct string
+---@field expectedFrameStart? number
 ---@field gate? any
----@field insert_forward_primer string
----@field insert_reverse_primer string
----@field insert_template string
----@field max_primer_mismatch? number
+---@field insertForwardPrimer string
+---@field insertReversePrimer string
+---@field insertTemplate string
+---@field maxPrimerMismatches? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field template_circular? boolean
+---@field templateCircular? boolean
 ---@field tool string
 
 ---@class VerifyConstructCreateData
----@field claimed_construct string
----@field expected_frame_start? number
+---@field claimedConstruct string
+---@field expectedFrameStart? number
 ---@field gate? any
----@field insert_forward_primer string
----@field insert_reverse_primer string
----@field insert_template string
----@field max_primer_mismatch? number
+---@field insertForwardPrimer string
+---@field insertReversePrimer string
+---@field insertTemplate string
+---@field maxPrimerMismatches? number
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field template_circular? boolean
+---@field templateCircular? boolean
 ---@field tool string
 
 ---@class VirtualGel
 ---@field circular? boolean
----@field enzyme? table
+---@field enzymes? table
 ---@field gate? any
 ---@field ladder? string
 ---@field ok any
@@ -1808,7 +1838,7 @@
 
 ---@class VirtualGelCreateData
 ---@field circular? boolean
----@field enzyme? table
+---@field enzymes? table
 ---@field gate? any
 ---@field ladder? string
 ---@field ok any
@@ -1822,7 +1852,7 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field row table
+---@field rows table
 ---@field tool string
 
 ---@class VolcanoPlotDataCreateData
@@ -1830,12 +1860,12 @@
 ---@field ok any
 ---@field provenance table
 ---@field result table
----@field row table
+---@field rows table
 ---@field tool string
 
 ---@class WebSearch
 ---@field gate? any
----@field max_result? number
+---@field max_results? number
 ---@field ok any
 ---@field provenance table
 ---@field query string
@@ -1844,7 +1874,7 @@
 
 ---@class WebSearchCreateData
 ---@field gate? any
----@field max_result? number
+---@field max_results? number
 ---@field ok any
 ---@field provenance table
 ---@field query string

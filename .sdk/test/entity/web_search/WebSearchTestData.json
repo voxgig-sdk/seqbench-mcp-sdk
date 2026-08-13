@@ -3,7 +3,7 @@
     "web_search": {
       "WEB_SEARCH00": {
         "gate": "s46",
-        "max_result": 71,
+        "max_results": 71,
         "ok": "s48",
         "provenance": {},
         "query": "s4a",
@@ -13,7 +13,7 @@
       },
       "WEB_SEARCH01": {
         "gate": "s8c",
-        "max_result": 141,
+        "max_results": 141,
         "ok": "s8e",
         "provenance": {},
         "query": "s90",
@@ -23,7 +23,7 @@
       },
       "WEB_SEARCH02": {
         "gate": "sd2",
-        "max_result": 211,
+        "max_results": 211,
         "ok": "sd4",
         "provenance": {},
         "query": "sd6",
@@ -37,7 +37,7 @@
     "web_search": {
       "web_search_ref01": {
         "gate": "s118",
-        "max_result": 281,
+        "max_results": 281,
         "ok": "s11a",
         "provenance": {},
         "query": "s11c",

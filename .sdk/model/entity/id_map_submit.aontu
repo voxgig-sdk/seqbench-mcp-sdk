@@ -36,7 +36,7 @@ main: kit: entity: id_map_submit: {
       type: "`$OBJECT`"
     }
     {
-      name: "tax_id"
+      name: "taxId"
       req: false
       type: "`$STRING`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: id_map_submit: {
             "id_map_submit"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              from: "`reqdata.from`"
+              ids: "`reqdata.ids`"
+              taxId: "`reqdata.tax_id`"
+              to: "`reqdata.to`"
+            }
             res: "`body`"
           }
         }

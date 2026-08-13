@@ -11,7 +11,7 @@ main: kit: entity: session_get: {
       type: "`$ANY`"
     }
     {
-      name: "name"
+      name: "names"
       req: false
       type: "`$ARRAY`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: session_get: {
       type: "`$OBJECT`"
     }
     {
-      name: "session_id"
+      name: "sessionId"
       req: true
       type: "`$STRING`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: session_get: {
             "session_get"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              names: "`reqdata.name`"
+              sessionId: "`reqdata.session_id`"
+            }
             res: "`body`"
           }
         }

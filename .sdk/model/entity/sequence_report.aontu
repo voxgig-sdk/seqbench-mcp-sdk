@@ -6,7 +6,7 @@ main: kit: entity: sequence_report: {
 
   fields: [
     {
-      name: "end_primer_length"
+      name: "endPrimerLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: sequence_report: {
       type: "`$ANY`"
     }
     {
-      name: "max_orf"
+      name: "maxOrfs"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "min_orf_aa"
+      name: "minOrfAa"
       req: false
       type: "`$INTEGER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: sequence_report: {
             "sequence_report"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              endPrimerLength: "`reqdata.end_primer_length`"
+              maxOrfs: "`reqdata.max_orf`"
+              minOrfAa: "`reqdata.min_orf_aa`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

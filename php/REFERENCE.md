@@ -558,13 +558,13 @@ $base_editing_design = $client->BaseEditingDesign();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `string` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_position` | `int` | No |  |
+| `targetPosition` | `int` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -623,10 +623,15 @@ $batch = $client->Batch();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `array` | No |  |
+| `args` | `array` | No |  |
+| `capped` | `bool` | Yes |  |
+| `columns` | `array` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `mixed` | Yes |  |
-| `result` | `array` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `array` | Yes |  |
+| `rows` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -637,9 +642,14 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->Batch()->create([
+  "capped" => null, // bool
+  "columns" => null, // array
+  "count" => null, // int
+  "errors" => null, // int
   "input" => null, // string
-  "ok" => null, // mixed
-  "result" => null, // array
+  "limit" => null, // int
+  "provenance" => null, // array
+  "rows" => null, // array
   "tool" => null, // string
 ]);
 ```
@@ -692,10 +702,15 @@ $batch__workflow = $client->BatchWorkflow();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `bool` | Yes |  |
+| `columns` | `array` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `mixed` | Yes |  |
-| `result` | `array` | Yes |  |
-| `step` | `array` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `array` | Yes |  |
+| `rows` | `array` | Yes |  |
+| `steps` | `array` | Yes |  |
 
 ### Operations
 
@@ -705,10 +720,15 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->BatchWorkflow()->create([
+  "capped" => null, // bool
+  "columns" => null, // array
+  "count" => null, // int
+  "errors" => null, // int
   "input" => null, // string
-  "ok" => null, // mixed
-  "result" => null, // array
-  "step" => null, // array
+  "limit" => null, // int
+  "provenance" => null, // array
+  "rows" => null, // array
+  "steps" => null, // array
 ]);
 ```
 
@@ -760,10 +780,10 @@ $characterize_sequence = $client->CharacterizeSequence();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -826,18 +846,18 @@ $cloning_simulate = $client->CloningSimulate();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
+| `armTmTarget` | `float` | No |  |
 | `circular` | `bool` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `array` | No |  |
+| `fragments` | `array` | No |  |
 | `gate` | `mixed` | No |  |
 | `insert` | `string` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `array` | No |  |
+| `names` | `array` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -899,12 +919,12 @@ $codon_adaptation_index = $client->CodonAdaptationIndex();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `array` | Yes |  |
-| `rare_threshold` | `float` | No |  |
+| `rareThreshold` | `float` | No |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -1029,15 +1049,15 @@ $construct_autofix = $client->ConstructAutofix();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `array` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `array` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `gc_high` | `float` | No |  |
-| `gc_low` | `float` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
-| `max_pass` | `int` | No |  |
+| `gcHigh` | `float` | No |  |
+| `gcLow` | `float` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
+| `maxPasses` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `array` | Yes |  |
@@ -1101,14 +1121,14 @@ $construct_qc = $client->ConstructQc();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `array` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `array` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `gc_high` | `float` | No |  |
-| `gc_low` | `float` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
+| `gcHigh` | `float` | No |  |
+| `gcLow` | `float` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -1172,12 +1192,12 @@ $crispr_grna_design = $client->CrisprGrnaDesign();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `min_score` | `float` | No |  |
+| `minScore` | `float` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1237,22 +1257,22 @@ $crispr_hdr_donor = $client->CrisprHdrDonor();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `int` | No |  |
-| `block_pam` | `bool` | No |  |
-| `design_genotyping_primer` | `bool` | No |  |
-| `edit_end` | `int` | No |  |
-| `edit_start` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `armLength` | `int` | No |  |
+| `blockPam` | `bool` | No |  |
+| `designGenotypingPrimers` | `bool` | No |  |
+| `editEnd` | `int` | No |  |
+| `editStart` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `guide_end` | `int` | No |  |
-| `guide_start` | `int` | No |  |
-| `guide_strand` | `string` | No |  |
+| `guideEnd` | `int` | No |  |
+| `guideStart` | `int` | No |  |
+| `guideStrand` | `string` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `replacement` | `string` | Yes |  |
 | `result` | `array` | Yes |  |
-| `target_sequence` | `string` | Yes |  |
+| `targetSequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1267,7 +1287,7 @@ $result = $client->CrisprHdrDonor()->create([
   "provenance" => null, // array
   "replacement" => null, // string
   "result" => null, // array
-  "target_sequence" => null, // string
+  "targetSequence" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -1313,7 +1333,7 @@ $crispr_offtarget_check = $client->CrisprOfftargetCheck();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `protospacer` | `string` | Yes |  |
@@ -1381,8 +1401,8 @@ $cross_dimer = $client->CrossDimer();
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `sequence_a` | `string` | Yes |  |
-| `sequence_b` | `string` | Yes |  |
+| `sequenceA` | `string` | Yes |  |
+| `sequenceB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1396,8 +1416,8 @@ $result = $client->CrossDimer()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "sequence_a" => null, // string
-  "sequence_b" => null, // string
+  "sequenceA" => null, // string
+  "sequenceB" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -1444,14 +1464,14 @@ $dna_molarity = $client->DnaMolarity();
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
 | `length` | `int` | No |  |
-| `mass_ng` | `float` | No |  |
+| `massNg` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | No |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
-| `volume_ul` | `float` | No |  |
+| `volumeUl` | `float` | No |  |
 
 ### Operations
 
@@ -1508,8 +1528,8 @@ $double_digest = $client->DoubleDigest();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `string` | Yes |  |
-| `enzyme_b` | `string` | Yes |  |
+| `enzymeA` | `string` | Yes |  |
+| `enzymeB` | `string` | Yes |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -1524,8 +1544,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->DoubleDigest()->create([
-  "enzyme_a" => null, // string
-  "enzyme_b" => null, // string
+  "enzymeA" => null, // string
+  "enzymeB" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -1576,7 +1596,7 @@ $export_echo_picklist = $client->ExportEchoPicklist();
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `reaction` | `array` | Yes |  |
+| `reactions` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1590,7 +1610,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ExportEchoPicklist()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
-  "reaction" => null, // array
+  "reactions" => null, // array
   "result" => null, // array
   "tool" => null, // string
 ]);
@@ -1638,9 +1658,9 @@ $export_opentrons_protocol = $client->ExportOpentronsProtocol();
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `protocol_name` | `string` | No |  |
+| `protocolName` | `string` | No |  |
 | `provenance` | `array` | Yes |  |
-| `reaction` | `array` | Yes |  |
+| `reactions` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1654,7 +1674,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ExportOpentronsProtocol()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
-  "reaction" => null, // array
+  "reactions" => null, // array
   "result" => null, // array
   "tool" => null, // string
 ]);
@@ -1703,7 +1723,7 @@ $export_plate_layout = $client->ExportPlateLayout();
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `reaction` | `array` | Yes |  |
+| `reactions` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1717,7 +1737,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->ExportPlateLayout()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
-  "reaction" => null, // array
+  "reactions" => null, // array
   "result" => null, // array
   "tool" => null, // string
 ]);
@@ -1763,19 +1783,19 @@ $expression_heatmap_cluster = $client->ExpressionHeatmapCluster();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `bool` | No |  |
-| `cluster_row` | `bool` | No |  |
-| `distance_metric` | `string` | No |  |
+| `clusterCols` | `bool` | No |  |
+| `clusterRows` | `bool` | No |  |
+| `distanceMetric` | `string` | No |  |
 | `gate` | `mixed` | No |  |
-| `gene` | `array` | Yes |  |
+| `genes` | `array` | Yes |  |
 | `linkage` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `sample` | `array` | Yes |  |
+| `samples` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `value` | `array` | Yes |  |
-| `z_score_row` | `bool` | No |  |
+| `values` | `array` | Yes |  |
+| `zScoreRows` | `bool` | No |  |
 
 ### Operations
 
@@ -1785,13 +1805,13 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ExpressionHeatmapCluster()->create([
-  "gene" => null, // array
+  "genes" => null, // array
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "sample" => null, // array
+  "samples" => null, // array
   "tool" => null, // string
-  "value" => null, // array
+  "values" => null, // array
 ]);
 ```
 
@@ -1839,7 +1859,7 @@ $fastq_qc_report = $client->FastqQcReport();
 | `input` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1901,11 +1921,11 @@ $fastq_trim = $client->FastqTrim();
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
 | `input` | `string` | Yes |  |
-| `min_length` | `int` | No |  |
+| `minLength` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `quality_offset` | `int` | No |  |
-| `quality_threshold` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
+| `qualityThreshold` | `int` | No |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1966,10 +1986,10 @@ $find_orf = $client->FindOrf();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `min_aa_length` | `int` | No |  |
+| `minAaLength` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `require_stop` | `bool` | No |  |
+| `requireStop` | `bool` | No |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -2030,7 +2050,7 @@ $format_sequence = $client->FormatSequence();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `string` | No |  |
+| `caseMode` | `string` | No |  |
 | `convert` | `string` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
@@ -2038,7 +2058,7 @@ $format_sequence = $client->FormatSequence();
 | `result` | `array` | Yes |  |
 | `reverse` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
-| `strip_non_letter` | `bool` | No |  |
+| `stripNonLetters` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 | `width` | `int` | No |  |
 
@@ -2099,11 +2119,11 @@ $functional_enrichment = $client->FunctionalEnrichment();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `array` | No |  |
-| `collection` | `array` | No |  |
+| `collections` | `array` | No |  |
 | `gate` | `mixed` | No |  |
-| `gene` | `array` | Yes |  |
-| `max_term_size` | `int` | No |  |
-| `min_term_size` | `int` | No |  |
+| `genes` | `array` | Yes |  |
+| `maxTermSize` | `int` | No |  |
+| `minTermSize` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -2117,7 +2137,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->FunctionalEnrichment()->create([
-  "gene" => null, // array
+  "genes" => null, // array
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -2417,14 +2437,14 @@ $golden_gate_fidelity = $client->GoldenGateFidelity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `string` | No |  |
+| `compareToNamedSet` | `string` | No |  |
 | `dataset` | `string` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `overhang` | `array` | Yes |  |
+| `overhangs` | `array` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `risk_threshold` | `float` | No |  |
+| `riskThreshold` | `float` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2436,7 +2456,7 @@ Create a new entity with the given data. Throws on error.
 ```php
 $result = $client->GoldenGateFidelity()->create([
   "ok" => null, // mixed
-  "overhang" => null, // array
+  "overhangs" => null, // array
   "provenance" => null, // array
   "result" => null, // array
   "tool" => null, // string
@@ -2547,7 +2567,7 @@ $id_map_poll = $client->IdMapPoll();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -2561,7 +2581,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->IdMapPoll()->create([
-  "job_id" => null, // string
+  "jobId" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -2615,7 +2635,7 @@ $id_map_submit = $client->IdMapSubmit();
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `tax_id` | `string` | No |  |
+| `taxId` | `string` | No |  |
 | `to` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2678,13 +2698,13 @@ $in_silico_pcr = $client->InSilicoPcr();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `mixed` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2696,11 +2716,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->InSilicoPcr()->create([
-  "forward_primer" => null, // string
+  "forwardPrimer" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "reverse_primer" => null, // string
+  "reversePrimer" => null, // string
   "template" => null, // string
   "tool" => null, // string
 ]);
@@ -2746,18 +2766,18 @@ $kasp_primer_design = $client->KaspPrimerDesign();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `bool` | No |  |
-| `allele_a` | `string` | Yes |  |
-| `allele_b` | `string` | Yes |  |
+| `addSecondaryMismatch` | `bool` | No |  |
+| `alleleA` | `string` | Yes |  |
+| `alleleB` | `string` | Yes |  |
 | `gate` | `mixed` | No |  |
-| `max_amplicon` | `int` | No |  |
-| `min_amplicon` | `int` | No |  |
+| `maxAmplicon` | `int` | No |  |
+| `minAmplicon` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `snp_position` | `int` | Yes |  |
+| `snpPosition` | `int` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_core_tm` | `float` | No |  |
+| `targetCoreTm` | `float` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2768,12 +2788,12 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->KaspPrimerDesign()->create([
-  "allele_a" => null, // string
-  "allele_b" => null, // string
+  "alleleA" => null, // string
+  "alleleB" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "snp_position" => null, // int
+  "snpPosition" => null, // int
   "target" => null, // string
   "tool" => null, // string
 ]);
@@ -2865,17 +2885,17 @@ $melting_temperature = $client->MeltingTemperature();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `mixed` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `target_tm` | `float` | No |  |
-| `tm_tolerance` | `float` | No |  |
+| `targetTm` | `float` | No |  |
+| `tmTolerance` | `float` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2935,12 +2955,12 @@ $motif_finder = $client->MotifFinder();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `motif` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3064,12 +3084,12 @@ $oligo_analysi = $client->OligoAnalysi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `mixed` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
@@ -3135,9 +3155,9 @@ $ortholog_map = $client->OrthologMap();
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `source_species` | `string` | No |  |
-| `symbol` | `array` | Yes |  |
-| `target_species` | `string` | Yes |  |
+| `sourceSpecies` | `string` | No |  |
+| `symbols` | `array` | Yes |  |
+| `targetSpecies` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
 
@@ -3152,8 +3172,8 @@ $result = $client->OrthologMap()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "symbol" => null, // array
-  "target_species" => null, // string
+  "symbols" => null, // array
+  "targetSpecies" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -3206,8 +3226,8 @@ $pairwise_alignment = $client->PairwiseAlignment();
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `seq_a` | `string` | Yes |  |
-| `seq_b` | `string` | Yes |  |
+| `seqA` | `string` | Yes |  |
+| `seqB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3221,8 +3241,8 @@ $result = $client->PairwiseAlignment()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "seq_a" => null, // string
-  "seq_b" => null, // string
+  "seqA" => null, // string
+  "seqB" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -3330,8 +3350,8 @@ $parse_sanger_trace = $client->ParseSangerTrace();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | Yes |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | Yes |  |
+| `fileName` | `string` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -3346,7 +3366,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ParseSangerTrace()->create([
-  "file_base64" => null, // string
+  "fileBase64" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -3528,7 +3548,7 @@ $plasmid_full_report = $client->PlasmidFullReport();
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3593,7 +3613,7 @@ $plasmid_identify = $client->PlasmidIdentify();
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3651,16 +3671,16 @@ $prime_editing_design = $client->PrimeEditingDesign();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `int` | Yes |  |
-| `edit_start` | `int` | Yes |  |
-| `frame_start` | `int` | No |  |
+| `editEnd` | `int` | Yes |  |
+| `editStart` | `int` | Yes |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `inserted_seq` | `string` | No |  |
+| `insertedSeq` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `pbs_length` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `rtt_homology` | `int` | No |  |
+| `rttHomology` | `int` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3672,8 +3692,8 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->PrimeEditingDesign()->create([
-  "edit_end" => null, // int
-  "edit_start" => null, // int
+  "editEnd" => null, // int
+  "editStart" => null, // int
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -3723,13 +3743,13 @@ $prime_editing_twin_design = $client->PrimeEditingTwinDesign();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `new_sequence` | `string` | Yes |  |
+| `newSequence` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
-| `overlap_length` | `int` | No |  |
-| `pbs_length` | `int` | No |  |
+| `overlapLength` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `array` | Yes |  |
-| `replace_end` | `int` | Yes |  |
-| `replace_start` | `int` | Yes |  |
+| `replaceEnd` | `int` | Yes |  |
+| `replaceStart` | `int` | Yes |  |
 | `result` | `array` | Yes |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -3742,11 +3762,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->PrimeEditingTwinDesign()->create([
-  "new_sequence" => null, // string
+  "newSequence" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
-  "replace_end" => null, // int
-  "replace_start" => null, // int
+  "replaceEnd" => null, // int
+  "replaceStart" => null, // int
   "result" => null, // array
   "target" => null, // string
   "tool" => null, // string
@@ -3793,29 +3813,29 @@ $primer_design = $client->PrimerDesign();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `int` | No |  |
-| `amplicon_min` | `int` | No |  |
-| `dntp_mm` | `float` | No |  |
+| `ampliconMax` | `int` | No |  |
+| `ampliconMin` | `int` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `mixed` | No |  |
-| `gc_max` | `float` | No |  |
-| `gc_min` | `float` | No |  |
-| `len_max` | `int` | No |  |
-| `len_min` | `int` | No |  |
-| `len_opt` | `int` | No |  |
-| `max_return` | `int` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `gcMax` | `float` | No |  |
+| `gcMin` | `float` | No |  |
+| `lenMax` | `int` | No |  |
+| `lenMin` | `int` | No |  |
+| `lenOpt` | `int` | No |  |
+| `maxReturn` | `int` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `target_end` | `int` | No |  |
-| `target_start` | `int` | No |  |
+| `targetEnd` | `int` | No |  |
+| `targetStart` | `int` | No |  |
 | `template` | `string` | Yes |  |
-| `tm_max` | `float` | No |  |
-| `tm_max_diff` | `float` | No |  |
-| `tm_min` | `float` | No |  |
-| `tm_opt` | `float` | No |  |
+| `tmMax` | `float` | No |  |
+| `tmMaxDiff` | `float` | No |  |
+| `tmMin` | `float` | No |  |
+| `tmOpt` | `float` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3874,14 +3894,14 @@ $primer_specificity = $client->PrimerSpecificity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `mixed` | No |  |
-| `max_mismatch` | `int` | No |  |
-| `max_product_length` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
+| `maxProductLength` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3892,11 +3912,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->PrimerSpecificity()->create([
-  "forward_primer" => null, // string
+  "forwardPrimer" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "reverse_primer" => null, // string
+  "reversePrimer" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -3942,10 +3962,10 @@ $protease_digestion = $client->ProteaseDigestion();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `max_mass` | `float` | No |  |
-| `max_peptide` | `int` | No |  |
-| `min_mass` | `float` | No |  |
-| `missed_cleavage` | `int` | No |  |
+| `maxMass` | `float` | No |  |
+| `maxPeptides` | `int` | No |  |
+| `minMass` | `float` | No |  |
+| `missedCleavages` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `protease` | `string` | No |  |
 | `provenance` | `array` | Yes |  |
@@ -4010,7 +4030,7 @@ $protein_annotate_poll = $client->ProteinAnnotatePoll();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -4024,7 +4044,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->ProteinAnnotatePoll()->create([
-  "job_id" => null, // string
+  "jobId" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -4074,7 +4094,7 @@ $protein_annotate_submit = $client->ProteinAnnotateSubmit();
 | --- | --- | --- | --- |
 | `appl` | `string` | No |  |
 | `gate` | `mixed` | No |  |
-| `goterm` | `bool` | No |  |
+| `goterms` | `bool` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -4202,7 +4222,7 @@ $protein_property = $client->ProteinProperty();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `float` | No |  |
+| `chargeStep` | `float` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -4267,7 +4287,7 @@ $random_sequence = $client->RandomSequence();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `gc_content` | `float` | No |  |
+| `gcContent` | `float` | No |  |
 | `kind` | `string` | No |  |
 | `length` | `int` | Yes |  |
 | `ok` | `mixed` | Yes |  |
@@ -4331,7 +4351,7 @@ $restriction_site = $client->RestrictionSite();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `array` | No |  |
+| `enzymes` | `array` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -4587,10 +4607,10 @@ $sanger_vs_reference = $client->SangerVsReference();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | No |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | No |  |
+| `fileName` | `string` | No |  |
 | `gate` | `mixed` | No |  |
-| `min_coverage` | `float` | No |  |
+| `minCoverage` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `read` | `string` | No |  |
@@ -4654,7 +4674,7 @@ $save_permalink = $client->SavePermalink();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `array` | Yes |  |
+| `args` | `array` | Yes |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -4669,7 +4689,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->SavePermalink()->create([
-  "arg" => null, // array
+  "args" => null, // array
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -4721,7 +4741,7 @@ $seqfile_stat = $client->SeqfileStat();
 | `input` | `string` | Yes |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -4911,10 +4931,10 @@ $sequence_report = $client->SequenceReport();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
@@ -4980,7 +5000,7 @@ $sequence_search = $client->SequenceSearch();
 | `db` | `string` | No |  |
 | `gate` | `mixed` | No |  |
 | `gene` | `string` | No |  |
-| `max_result` | `int` | No |  |
+| `maxResults` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `array` | Yes |  |
@@ -5044,10 +5064,10 @@ $sequencing_readback_verify = $client->SequencingReadbackVerify();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `min_supporting_read` | `int` | No |  |
+| `minSupportingReads` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
-| `read` | `string` | Yes |  |
+| `reads` | `string` | Yes |  |
 | `reference` | `string` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -5062,7 +5082,7 @@ Create a new entity with the given data. Throws on error.
 $result = $client->SequencingReadbackVerify()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
-  "read" => null, // string
+  "reads" => null, // string
   "reference" => null, // string
   "result" => null, // array
   "tool" => null, // string
@@ -5109,7 +5129,7 @@ $session_create = $client->SessionCreate();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `array` | No |  |
+| `entries` | `array` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -5172,11 +5192,11 @@ $session_get = $client->SessionGet();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `name` | `array` | No |  |
+| `names` | `array` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5190,7 +5210,7 @@ $result = $client->SessionGet()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "session_id" => null, // string
+  "sessionId" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -5235,15 +5255,15 @@ $session_run = $client->SessionRun();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `array` | No |  |
-| `from_session` | `array` | No |  |
+| `args` | `array` | No |  |
+| `fromSession` | `array` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `write_back` | `array` | No |  |
+| `writeBack` | `array` | No |  |
 
 ### Operations
 
@@ -5256,7 +5276,7 @@ $result = $client->SessionRun()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "session_id" => null, // string
+  "sessionId" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -5301,12 +5321,12 @@ $session_set = $client->SessionSet();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `array` | Yes |  |
+| `entries` | `array` | Yes |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5317,11 +5337,11 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->SessionSet()->create([
-  "entry" => null, // array
+  "entries" => null, // array
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "session_id" => null, // string
+  "sessionId" => null, // string
   "tool" => null, // string
 ]);
 ```
@@ -5367,11 +5387,11 @@ $sirna_design = $client->SirnaDesign();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `min_reynold` | `int` | No |  |
+| `minReynolds` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `sh_rna_loop` | `string` | No |  |
+| `shRnaLoop` | `string` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5431,23 +5451,23 @@ $site_directed_mutagenesi = $client->SiteDirectedMutagenesi();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
-| `dntp_mm` | `float` | No |  |
-| `edit_kind` | `string` | No |  |
-| `frame_start` | `int` | No |  |
+| `armTmTarget` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
+| `editKind` | `string` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
-| `new_base` | `string` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
+| `newBase` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `organism` | `string` | No |  |
 | `position` | `int` | No |  |
 | `provenance` | `array` | Yes |  |
 | `residue` | `int` | No |  |
 | `result` | `array` | Yes |  |
 | `style` | `string` | No |  |
-| `target_aa` | `string` | No |  |
+| `targetAa` | `string` | No |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5513,7 +5533,7 @@ $translate = $client->Translate();
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `to_stop` | `bool` | No |  |
+| `toStop` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5637,7 +5657,7 @@ $variant_comparator = $client->VariantComparator();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `bool` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
@@ -5703,28 +5723,28 @@ $verify_assembly = $client->VerifyAssembly();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
+| `armTmTarget` | `float` | No |  |
 | `circular` | `bool` | No |  |
-| `claimed_construct` | `string` | Yes |  |
+| `claimedConstruct` | `string` | Yes |  |
 | `coding` | `bool` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `array` | No |  |
-| `fragment_pcr` | `array` | No |  |
-| `frame_start` | `int` | No |  |
+| `fragmentPcrs` | `array` | No |  |
+| `fragments` | `array` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
 | `insert` | `string` | No |  |
-| `insert_pcr` | `array` | No |  |
+| `insertPcr` | `array` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `array` | No |  |
+| `names` | `array` | No |  |
 | `ok` | `mixed` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `vector` | `string` | No |  |
-| `vector_pcr` | `array` | No |  |
+| `vectorPcr` | `array` | No |  |
 
 ### Operations
 
@@ -5734,7 +5754,7 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->VerifyAssembly()->create([
-  "claimed_construct" => null, // string
+  "claimedConstruct" => null, // string
   "method" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
@@ -5783,17 +5803,17 @@ $verify_construct = $client->VerifyConstruct();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `string` | Yes |  |
-| `expected_frame_start` | `int` | No |  |
+| `claimedConstruct` | `string` | Yes |  |
+| `expectedFrameStart` | `int` | No |  |
 | `gate` | `mixed` | No |  |
-| `insert_forward_primer` | `string` | Yes |  |
-| `insert_reverse_primer` | `string` | Yes |  |
-| `insert_template` | `string` | Yes |  |
-| `max_primer_mismatch` | `int` | No |  |
+| `insertForwardPrimer` | `string` | Yes |  |
+| `insertReversePrimer` | `string` | Yes |  |
+| `insertTemplate` | `string` | Yes |  |
+| `maxPrimerMismatches` | `int` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `template_circular` | `bool` | No |  |
+| `templateCircular` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5804,10 +5824,10 @@ Create a new entity with the given data. Throws on error.
 
 ```php
 $result = $client->VerifyConstruct()->create([
-  "claimed_construct" => null, // string
-  "insert_forward_primer" => null, // string
-  "insert_reverse_primer" => null, // string
-  "insert_template" => null, // string
+  "claimedConstruct" => null, // string
+  "insertForwardPrimer" => null, // string
+  "insertReversePrimer" => null, // string
+  "insertTemplate" => null, // string
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
@@ -5856,7 +5876,7 @@ $virtual_gel = $client->VirtualGel();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `enzyme` | `array` | No |  |
+| `enzymes` | `array` | No |  |
 | `gate` | `mixed` | No |  |
 | `ladder` | `string` | No |  |
 | `ok` | `mixed` | Yes |  |
@@ -5925,7 +5945,7 @@ $volcano_plot_data = $client->VolcanoPlotData();
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `result` | `array` | Yes |  |
-| `row` | `array` | Yes |  |
+| `rows` | `array` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5939,7 +5959,7 @@ $result = $client->VolcanoPlotData()->create([
   "ok" => null, // mixed
   "provenance" => null, // array
   "result" => null, // array
-  "row" => null, // array
+  "rows" => null, // array
   "tool" => null, // string
 ]);
 ```
@@ -5985,7 +6005,7 @@ $web_search = $client->WebSearch();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `mixed` | No |  |
-| `max_result` | `float` | No |  |
+| `max_results` | `float` | No |  |
 | `ok` | `mixed` | Yes |  |
 | `provenance` | `array` | Yes |  |
 | `query` | `string` | Yes |  |

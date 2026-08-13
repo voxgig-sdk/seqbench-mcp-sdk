@@ -302,9 +302,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local alphafold_lookup, err = client:AlphafoldLookup():load()
+    local batch, err = client:Batch():load()
     if err then error(err) end
-    -- alphafold_lookup is the loaded record
+    -- batch is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -348,13 +348,13 @@ API path: `/aso_design`
 | Field | Description |
 | --- | --- |
 | `editor` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `target` |  |
-| `target_position` |  |
+| `targetPosition` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -365,10 +365,15 @@ API path: `/base_editing_design`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create, Load.
@@ -379,10 +384,15 @@ API path: `/batch`
 
 | Field | Description |
 | --- | --- |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
-| `step` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
+| `steps` |  |
 
 Operations: Create, Load.
 
@@ -392,10 +402,10 @@ API path: `/workflow`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -410,18 +420,18 @@ API path: `/characterize_sequence`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
+| `fragments` |  |
 | `gate` |  |
 | `insert` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
@@ -435,12 +445,12 @@ API path: `/cloning_simulate`
 
 | Field | Description |
 | --- | --- |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
-| `rare_threshold` |  |
+| `rareThreshold` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -469,15 +479,15 @@ API path: `/codon_optimize`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
-| `max_pass` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
+| `maxPasses` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -493,14 +503,14 @@ API path: `/construct_autofix`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -516,12 +526,12 @@ API path: `/construct_qc`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_score` |  |
+| `minScore` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -533,22 +543,22 @@ API path: `/crispr_grna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_length` |  |
-| `block_pam` |  |
-| `design_genotyping_primer` |  |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `armLength` |  |
+| `blockPam` |  |
+| `designGenotypingPrimers` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `guide_end` |  |
-| `guide_start` |  |
-| `guide_strand` |  |
+| `guideEnd` |  |
+| `guideStart` |  |
+| `guideStrand` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `replacement` |  |
 | `result` |  |
-| `target_sequence` |  |
+| `targetSequence` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -560,7 +570,7 @@ API path: `/crispr_hdr_donor`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `protospacer` |  |
@@ -580,8 +590,8 @@ API path: `/crispr_offtarget_check`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sequence_a` |  |
-| `sequence_b` |  |
+| `sequenceA` |  |
+| `sequenceB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -594,14 +604,14 @@ API path: `/cross_dimer`
 | --- | --- |
 | `gate` |  |
 | `length` |  |
-| `mass_ng` |  |
+| `massNg` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
 | `type` |  |
-| `volume_ul` |  |
+| `volumeUl` |  |
 
 Operations: Create.
 
@@ -611,8 +621,8 @@ API path: `/dna_molarity`
 
 | Field | Description |
 | --- | --- |
-| `enzyme_a` |  |
-| `enzyme_b` |  |
+| `enzymeA` |  |
+| `enzymeB` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -630,7 +640,7 @@ API path: `/double_digest`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -644,9 +654,9 @@ API path: `/export_echo_picklist`
 | --- | --- |
 | `gate` |  |
 | `ok` |  |
-| `protocol_name` |  |
+| `protocolName` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -661,7 +671,7 @@ API path: `/export_opentrons_protocol`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -673,19 +683,19 @@ API path: `/export_plate_layout`
 
 | Field | Description |
 | --- | --- |
-| `cluster_col` |  |
-| `cluster_row` |  |
-| `distance_metric` |  |
+| `clusterCols` |  |
+| `clusterRows` |  |
+| `distanceMetric` |  |
 | `gate` |  |
-| `gene` |  |
+| `genes` |  |
 | `linkage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sample` |  |
+| `samples` |  |
 | `tool` |  |
-| `value` |  |
-| `z_score_row` |  |
+| `values` |  |
+| `zScoreRows` |  |
 
 Operations: Create.
 
@@ -699,7 +709,7 @@ API path: `/expression_heatmap_cluster`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -713,11 +723,11 @@ API path: `/fastq_qc_report`
 | --- | --- |
 | `gate` |  |
 | `input` |  |
-| `min_length` |  |
+| `minLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
-| `quality_threshold` |  |
+| `qualityOffset` |  |
+| `qualityThreshold` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -730,10 +740,10 @@ API path: `/fastq_trim`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_aa_length` |  |
+| `minAaLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `require_stop` |  |
+| `requireStop` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -746,7 +756,7 @@ API path: `/find_orfs`
 
 | Field | Description |
 | --- | --- |
-| `case_mode` |  |
+| `caseMode` |  |
 | `convert` |  |
 | `gate` |  |
 | `ok` |  |
@@ -754,7 +764,7 @@ API path: `/find_orfs`
 | `result` |  |
 | `reverse` |  |
 | `sequence` |  |
-| `strip_non_letter` |  |
+| `stripNonLetters` |  |
 | `tool` |  |
 | `width` |  |
 
@@ -767,11 +777,11 @@ API path: `/format_sequence`
 | Field | Description |
 | --- | --- |
 | `background` |  |
-| `collection` |  |
+| `collections` |  |
 | `gate` |  |
-| `gene` |  |
-| `max_term_size` |  |
-| `min_term_size` |  |
+| `genes` |  |
+| `maxTermSize` |  |
+| `minTermSize` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -845,14 +855,14 @@ API path: `/gene_model`
 
 | Field | Description |
 | --- | --- |
-| `compare_to_named_set` |  |
+| `compareToNamedSet` |  |
 | `dataset` |  |
 | `gate` |  |
 | `ok` |  |
-| `overhang` |  |
+| `overhangs` |  |
 | `provenance` |  |
 | `result` |  |
-| `risk_threshold` |  |
+| `riskThreshold` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -879,7 +889,7 @@ API path: `/hgvs_convert`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -899,7 +909,7 @@ API path: `/id_map_poll`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `tax_id` |  |
+| `taxId` |  |
 | `to` |  |
 | `tool` |  |
 
@@ -912,13 +922,13 @@ API path: `/id_map_submit`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -930,18 +940,18 @@ API path: `/in_silico_pcr`
 
 | Field | Description |
 | --- | --- |
-| `add_secondary_mismatch` |  |
-| `allele_a` |  |
-| `allele_b` |  |
+| `addSecondaryMismatch` |  |
+| `alleleA` |  |
+| `alleleB` |  |
 | `gate` |  |
-| `max_amplicon` |  |
-| `min_amplicon` |  |
+| `maxAmplicon` |  |
+| `minAmplicon` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `snp_position` |  |
+| `snpPosition` |  |
 | `target` |  |
-| `target_core_tm` |  |
+| `targetCoreTm` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -961,17 +971,17 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `target_tm` |  |
-| `tm_tolerance` |  |
+| `targetTm` |  |
+| `tmTolerance` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -983,12 +993,12 @@ API path: `/melting_temperature`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `motif` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -1015,12 +1025,12 @@ API path: `/multiple_sequence_alignment`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
@@ -1038,9 +1048,9 @@ API path: `/oligo_analysis`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `source_species` |  |
-| `symbol` |  |
-| `target_species` |  |
+| `sourceSpecies` |  |
+| `symbols` |  |
+| `targetSpecies` |  |
 | `tool` |  |
 | `type` |  |
 
@@ -1060,8 +1070,8 @@ API path: `/ortholog_map`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `seq_a` |  |
-| `seq_b` |  |
+| `seqA` |  |
+| `seqB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1087,8 +1097,8 @@ API path: `/parse_genbank`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1141,7 +1151,7 @@ API path: `/plasmid_deep_annotate`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1158,7 +1168,7 @@ API path: `/plasmid_full_report`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1168,16 +1178,16 @@ API path: `/plasmid_identify`
 
 | Field | Description |
 | --- | --- |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `inserted_seq` |  |
+| `insertedSeq` |  |
 | `ok` |  |
-| `pbs_length` |  |
+| `pbsLength` |  |
 | `provenance` |  |
 | `result` |  |
-| `rtt_homology` |  |
+| `rttHomology` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1190,13 +1200,13 @@ API path: `/prime_editing_design`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `new_sequence` |  |
+| `newSequence` |  |
 | `ok` |  |
-| `overlap_length` |  |
-| `pbs_length` |  |
+| `overlapLength` |  |
+| `pbsLength` |  |
 | `provenance` |  |
-| `replace_end` |  |
-| `replace_start` |  |
+| `replaceEnd` |  |
+| `replaceStart` |  |
 | `result` |  |
 | `target` |  |
 | `tool` |  |
@@ -1209,29 +1219,29 @@ API path: `/prime_editing_twin_design`
 
 | Field | Description |
 | --- | --- |
-| `amplicon_max` |  |
-| `amplicon_min` |  |
-| `dntp_mm` |  |
+| `ampliconMax` |  |
+| `ampliconMin` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `gc_max` |  |
-| `gc_min` |  |
-| `len_max` |  |
-| `len_min` |  |
-| `len_opt` |  |
-| `max_return` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `gcMax` |  |
+| `gcMin` |  |
+| `lenMax` |  |
+| `lenMin` |  |
+| `lenOpt` |  |
+| `maxReturn` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
-| `target_end` |  |
-| `target_start` |  |
+| `targetEnd` |  |
+| `targetStart` |  |
 | `template` |  |
-| `tm_max` |  |
-| `tm_max_diff` |  |
-| `tm_min` |  |
-| `tm_opt` |  |
+| `tmMax` |  |
+| `tmMaxDiff` |  |
+| `tmMin` |  |
+| `tmOpt` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1242,14 +1252,14 @@ API path: `/primer_design`
 
 | Field | Description |
 | --- | --- |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
-| `max_product_length` |  |
+| `maxMismatches` |  |
+| `maxProductLength` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1261,10 +1271,10 @@ API path: `/primer_specificity`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mass` |  |
-| `max_peptide` |  |
-| `min_mass` |  |
-| `missed_cleavage` |  |
+| `maxMass` |  |
+| `maxPeptides` |  |
+| `minMass` |  |
+| `missedCleavages` |  |
 | `ok` |  |
 | `protease` |  |
 | `provenance` |  |
@@ -1281,7 +1291,7 @@ API path: `/protease_digestion`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1297,7 +1307,7 @@ API path: `/protein_annotate_poll`
 | --- | --- |
 | `appl` |  |
 | `gate` |  |
-| `goterm` |  |
+| `goterms` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1329,7 +1339,7 @@ API path: `/protein_hydrophobicity`
 
 | Field | Description |
 | --- | --- |
-| `charge_step` |  |
+| `chargeStep` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1346,7 +1356,7 @@ API path: `/protein_properties`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `gc_content` |  |
+| `gcContent` |  |
 | `kind` |  |
 | `length` |  |
 | `ok` |  |
@@ -1362,7 +1372,7 @@ API path: `/random_sequence`
 
 | Field | Description |
 | --- | --- |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1426,10 +1436,10 @@ API path: `/rna_fold`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
-| `min_coverage` |  |
+| `minCoverage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `read` |  |
@@ -1445,7 +1455,7 @@ API path: `/sanger_vs_reference`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1464,7 +1474,7 @@ API path: `/save_permalink`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -1510,10 +1520,10 @@ API path: `/sequence_format_convert`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1531,7 +1541,7 @@ API path: `/sequence_report`
 | `db` |  |
 | `gate` |  |
 | `gene` |  |
-| `max_result` |  |
+| `maxResults` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -1548,10 +1558,10 @@ API path: `/sequence_search`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_supporting_read` |  |
+| `minSupportingReads` |  |
 | `ok` |  |
 | `provenance` |  |
-| `read` |  |
+| `reads` |  |
 | `reference` |  |
 | `result` |  |
 | `tool` |  |
@@ -1564,7 +1574,7 @@ API path: `/sequencing_readback_verify`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1580,11 +1590,11 @@ API path: `/session_create`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1595,15 +1605,15 @@ API path: `/session_get`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
-| `from_session` |  |
+| `args` |  |
+| `fromSession` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
-| `write_back` |  |
+| `writeBack` |  |
 
 Operations: Create.
 
@@ -1613,12 +1623,12 @@ API path: `/session_run`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1630,11 +1640,11 @@ API path: `/session_set`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_reynold` |  |
+| `minReynolds` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sh_rna_loop` |  |
+| `shRnaLoop` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1646,23 +1656,23 @@ API path: `/sirna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
-| `dntp_mm` |  |
-| `edit_kind` |  |
-| `frame_start` |  |
+| `armTmTarget` |  |
+| `dntpMM` |  |
+| `editKind` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
-| `new_base` |  |
+| `mgMM` |  |
+| `naMM` |  |
+| `newBase` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `organism` |  |
 | `position` |  |
 | `provenance` |  |
 | `residue` |  |
 | `result` |  |
 | `style` |  |
-| `target_aa` |  |
+| `targetAa` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -1680,7 +1690,7 @@ API path: `/site_directed_mutagenesis`
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `to_stop` |  |
+| `toStop` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1708,7 +1718,7 @@ API path: `/variant_annotate`
 | Field | Description |
 | --- | --- |
 | `coding` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1725,28 +1735,28 @@ API path: `/variant_comparator`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
-| `claimed_construct` |  |
+| `claimedConstruct` |  |
 | `coding` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
-| `fragment_pcr` |  |
-| `frame_start` |  |
+| `fragmentPcrs` |  |
+| `fragments` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `insert` |  |
-| `insert_pcr` |  |
+| `insertPcr` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
 | `vector` |  |
-| `vector_pcr` |  |
+| `vectorPcr` |  |
 
 Operations: Create.
 
@@ -1756,17 +1766,17 @@ API path: `/verify_assembly`
 
 | Field | Description |
 | --- | --- |
-| `claimed_construct` |  |
-| `expected_frame_start` |  |
+| `claimedConstruct` |  |
+| `expectedFrameStart` |  |
 | `gate` |  |
-| `insert_forward_primer` |  |
-| `insert_reverse_primer` |  |
-| `insert_template` |  |
-| `max_primer_mismatch` |  |
+| `insertForwardPrimer` |  |
+| `insertReversePrimer` |  |
+| `insertTemplate` |  |
+| `maxPrimerMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `template_circular` |  |
+| `templateCircular` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1778,7 +1788,7 @@ API path: `/verify_construct`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ladder` |  |
 | `ok` |  |
@@ -1799,7 +1809,7 @@ API path: `/virtual_gel`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `row` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1811,7 +1821,7 @@ API path: `/volcano_plot_data`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_result` |  |
+| `max_results` |  |
 | `ok` |  |
 | `provenance` |  |
 | `query` |  |
@@ -1912,13 +1922,13 @@ Create an instance: `local base_editing_design = client:BaseEditingDesign(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `editor` | `string` |  |
-| `frame_start` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `target` | `string` |  |
-| `target_position` | `number` |  |
+| `targetPosition` | `number` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -1949,10 +1959,15 @@ Create an instance: `local batch = client:Batch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `table` |  |
+| `args` | `table` |  |
+| `capped` | `boolean` |  |
+| `columns` | `table` |  |
+| `count` | `number` |  |
+| `errors` | `number` |  |
 | `input` | `string` |  |
-| `ok` | `any` |  |
-| `result` | `table` |  |
+| `limit` | `number` |  |
+| `provenance` | `table` |  |
+| `rows` | `table` |  |
 | `tool` | `string` |  |
 
 #### Example: Load
@@ -1965,9 +1980,14 @@ local batch, err = client:Batch():load()
 
 ```lua
 local batch, err = client:Batch():create({
+  capped = true, -- boolean
+  columns = {}, -- table
+  count = 1, -- number
+  errors = 1, -- number
   input = "example_input", -- string
-  ok = "example_ok", -- any
-  result = {}, -- table
+  limit = 1, -- number
+  provenance = {}, -- table
+  rows = {}, -- table
   tool = "example_tool", -- string
 })
 ```
@@ -1988,10 +2008,15 @@ Create an instance: `local batch__workflow = client:BatchWorkflow(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `capped` | `boolean` |  |
+| `columns` | `table` |  |
+| `count` | `number` |  |
+| `errors` | `number` |  |
 | `input` | `string` |  |
-| `ok` | `any` |  |
-| `result` | `table` |  |
-| `step` | `table` |  |
+| `limit` | `number` |  |
+| `provenance` | `table` |  |
+| `rows` | `table` |  |
+| `steps` | `table` |  |
 
 #### Example: Load
 
@@ -2003,10 +2028,15 @@ local batch__workflow, err = client:BatchWorkflow():load()
 
 ```lua
 local batch__workflow, err = client:BatchWorkflow():create({
+  capped = true, -- boolean
+  columns = {}, -- table
+  count = 1, -- number
+  errors = 1, -- number
   input = "example_input", -- string
-  ok = "example_ok", -- any
-  result = {}, -- table
-  step = {}, -- table
+  limit = 1, -- number
+  provenance = {}, -- table
+  rows = {}, -- table
+  steps = {}, -- table
 })
 ```
 
@@ -2025,10 +2055,10 @@ Create an instance: `local characterize_sequence = client:CharacterizeSequence(n
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `number` |  |
+| `endPrimerLength` | `number` |  |
 | `gate` | `any` |  |
-| `max_orf` | `number` |  |
-| `min_orf_aa` | `number` |  |
+| `maxOrfs` | `number` |  |
+| `minOrfAa` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -2062,18 +2092,18 @@ Create an instance: `local cloning_simulate = client:CloningSimulate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `number` |  |
+| `armTmTarget` | `number` |  |
 | `circular` | `boolean` |  |
 | `enzyme` | `string` |  |
 | `enzyme3` | `string` |  |
 | `enzyme5` | `string` |  |
-| `fragment` | `table` |  |
+| `fragments` | `table` |  |
 | `gate` | `any` |  |
 | `insert` | `string` |  |
 | `method` | `string` |  |
-| `name` | `table` |  |
+| `names` | `table` |  |
 | `ok` | `any` |  |
-| `overlap_len` | `number` |  |
+| `overlapLen` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
@@ -2106,12 +2136,12 @@ Create an instance: `local codon_adaptation_index = client:CodonAdaptationIndex(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `frame_start` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `organism` | `string` |  |
 | `provenance` | `table` |  |
-| `rare_threshold` | `number` |  |
+| `rareThreshold` | `number` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
@@ -2178,15 +2208,15 @@ Create an instance: `local construct_autofix = client:ConstructAutofix(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `table` |  |
-| `cryptic_orf_min_aa` | `number` |  |
-| `frame_start` | `number` |  |
+| `avoidEnzymes` | `table` |  |
+| `crypticOrfMinAa` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
-| `gc_high` | `number` |  |
-| `gc_low` | `number` |  |
-| `gc_window` | `number` |  |
-| `homopolymer_min` | `number` |  |
-| `max_pass` | `number` |  |
+| `gcHigh` | `number` |  |
+| `gcLow` | `number` |  |
+| `gcWindow` | `number` |  |
+| `homopolymerMin` | `number` |  |
+| `maxPasses` | `number` |  |
 | `ok` | `any` |  |
 | `organism` | `string` |  |
 | `provenance` | `table` |  |
@@ -2221,14 +2251,14 @@ Create an instance: `local construct_qc = client:ConstructQc(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `table` |  |
-| `cryptic_orf_min_aa` | `number` |  |
-| `frame_start` | `number` |  |
+| `avoidEnzymes` | `table` |  |
+| `crypticOrfMinAa` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
-| `gc_high` | `number` |  |
-| `gc_low` | `number` |  |
-| `gc_window` | `number` |  |
-| `homopolymer_min` | `number` |  |
+| `gcHigh` | `number` |  |
+| `gcLow` | `number` |  |
+| `gcWindow` | `number` |  |
+| `homopolymerMin` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -2263,12 +2293,12 @@ Create an instance: `local crispr_grna_design = client:CrisprGrnaDesign(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `min_score` | `number` |  |
+| `minScore` | `number` |  |
 | `nuclease` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `search_reverse_strand` | `boolean` |  |
+| `searchReverseStrand` | `boolean` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 
@@ -2299,22 +2329,22 @@ Create an instance: `local crispr_hdr_donor = client:CrisprHdrDonor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_length` | `number` |  |
-| `block_pam` | `boolean` |  |
-| `design_genotyping_primer` | `boolean` |  |
-| `edit_end` | `number` |  |
-| `edit_start` | `number` |  |
-| `frame_start` | `number` |  |
+| `armLength` | `number` |  |
+| `blockPam` | `boolean` |  |
+| `designGenotypingPrimers` | `boolean` |  |
+| `editEnd` | `number` |  |
+| `editStart` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
-| `guide_end` | `number` |  |
-| `guide_start` | `number` |  |
-| `guide_strand` | `string` |  |
+| `guideEnd` | `number` |  |
+| `guideStart` | `number` |  |
+| `guideStrand` | `string` |  |
 | `nuclease` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `replacement` | `string` |  |
 | `result` | `table` |  |
-| `target_sequence` | `string` |  |
+| `targetSequence` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2325,7 +2355,7 @@ local crispr_hdr_donor, err = client:CrisprHdrDonor():create({
   provenance = {}, -- table
   replacement = "example_replacement", -- string
   result = {}, -- table
-  target_sequence = "example_target_sequence", -- string
+  targetSequence = "example_targetSequence", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -2346,7 +2376,7 @@ Create an instance: `local crispr_offtarget_check = client:CrisprOfftargetCheck(
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `max_mismatch` | `number` |  |
+| `maxMismatches` | `number` |  |
 | `nuclease` | `string` |  |
 | `ok` | `any` |  |
 | `protospacer` | `string` |  |
@@ -2385,8 +2415,8 @@ Create an instance: `local cross_dimer = client:CrossDimer(nil)`
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `sequence_a` | `string` |  |
-| `sequence_b` | `string` |  |
+| `sequenceA` | `string` |  |
+| `sequenceB` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2396,8 +2426,8 @@ local cross_dimer, err = client:CrossDimer():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  sequence_a = "example_sequence_a", -- string
-  sequence_b = "example_sequence_b", -- string
+  sequenceA = "example_sequenceA", -- string
+  sequenceB = "example_sequenceB", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -2419,14 +2449,14 @@ Create an instance: `local dna_molarity = client:DnaMolarity(nil)`
 | --- | --- | --- |
 | `gate` | `any` |  |
 | `length` | `number` |  |
-| `mass_ng` | `number` |  |
+| `massNg` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 | `type` | `string` |  |
-| `volume_ul` | `number` |  |
+| `volumeUl` | `number` |  |
 
 #### Example: Create
 
@@ -2454,8 +2484,8 @@ Create an instance: `local double_digest = client:DoubleDigest(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme_a` | `string` |  |
-| `enzyme_b` | `string` |  |
+| `enzymeA` | `string` |  |
+| `enzymeB` | `string` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -2466,8 +2496,8 @@ Create an instance: `local double_digest = client:DoubleDigest(nil)`
 
 ```lua
 local double_digest, err = client:DoubleDigest():create({
-  enzyme_a = "example_enzyme_a", -- string
-  enzyme_b = "example_enzyme_b", -- string
+  enzymeA = "example_enzymeA", -- string
+  enzymeB = "example_enzymeB", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -2493,7 +2523,7 @@ Create an instance: `local export_echo_picklist = client:ExportEchoPicklist(nil)
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `reaction` | `table` |  |
+| `reactions` | `table` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -2503,7 +2533,7 @@ Create an instance: `local export_echo_picklist = client:ExportEchoPicklist(nil)
 local export_echo_picklist, err = client:ExportEchoPicklist():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
-  reaction = {}, -- table
+  reactions = {}, -- table
   result = {}, -- table
   tool = "example_tool", -- string
 })
@@ -2526,9 +2556,9 @@ Create an instance: `local export_opentrons_protocol = client:ExportOpentronsPro
 | --- | --- | --- |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
-| `protocol_name` | `string` |  |
+| `protocolName` | `string` |  |
 | `provenance` | `table` |  |
-| `reaction` | `table` |  |
+| `reactions` | `table` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -2538,7 +2568,7 @@ Create an instance: `local export_opentrons_protocol = client:ExportOpentronsPro
 local export_opentrons_protocol, err = client:ExportOpentronsProtocol():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
-  reaction = {}, -- table
+  reactions = {}, -- table
   result = {}, -- table
   tool = "example_tool", -- string
 })
@@ -2562,7 +2592,7 @@ Create an instance: `local export_plate_layout = client:ExportPlateLayout(nil)`
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `reaction` | `table` |  |
+| `reactions` | `table` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -2572,7 +2602,7 @@ Create an instance: `local export_plate_layout = client:ExportPlateLayout(nil)`
 local export_plate_layout, err = client:ExportPlateLayout():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
-  reaction = {}, -- table
+  reactions = {}, -- table
   result = {}, -- table
   tool = "example_tool", -- string
 })
@@ -2593,31 +2623,31 @@ Create an instance: `local expression_heatmap_cluster = client:ExpressionHeatmap
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cluster_col` | `boolean` |  |
-| `cluster_row` | `boolean` |  |
-| `distance_metric` | `string` |  |
+| `clusterCols` | `boolean` |  |
+| `clusterRows` | `boolean` |  |
+| `distanceMetric` | `string` |  |
 | `gate` | `any` |  |
-| `gene` | `table` |  |
+| `genes` | `table` |  |
 | `linkage` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `sample` | `table` |  |
+| `samples` | `table` |  |
 | `tool` | `string` |  |
-| `value` | `table` |  |
-| `z_score_row` | `boolean` |  |
+| `values` | `table` |  |
+| `zScoreRows` | `boolean` |  |
 
 #### Example: Create
 
 ```lua
 local expression_heatmap_cluster, err = client:ExpressionHeatmapCluster():create({
-  gene = {}, -- table
+  genes = {}, -- table
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  sample = {}, -- table
+  samples = {}, -- table
   tool = "example_tool", -- string
-  value = {}, -- table
+  values = {}, -- table
 })
 ```
 
@@ -2640,7 +2670,7 @@ Create an instance: `local fastq_qc_report = client:FastqQcReport(nil)`
 | `input` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `quality_offset` | `number` |  |
+| `qualityOffset` | `number` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -2673,11 +2703,11 @@ Create an instance: `local fastq_trim = client:FastqTrim(nil)`
 | --- | --- | --- |
 | `gate` | `any` |  |
 | `input` | `string` |  |
-| `min_length` | `number` |  |
+| `minLength` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `quality_offset` | `number` |  |
-| `quality_threshold` | `number` |  |
+| `qualityOffset` | `number` |  |
+| `qualityThreshold` | `number` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -2709,10 +2739,10 @@ Create an instance: `local find_orf = client:FindOrf(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `min_aa_length` | `number` |  |
+| `minAaLength` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `require_stop` | `boolean` |  |
+| `requireStop` | `boolean` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
@@ -2744,7 +2774,7 @@ Create an instance: `local format_sequence = client:FormatSequence(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case_mode` | `string` |  |
+| `caseMode` | `string` |  |
 | `convert` | `string` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
@@ -2752,7 +2782,7 @@ Create an instance: `local format_sequence = client:FormatSequence(nil)`
 | `result` | `table` |  |
 | `reverse` | `boolean` |  |
 | `sequence` | `string` |  |
-| `strip_non_letter` | `boolean` |  |
+| `stripNonLetters` | `boolean` |  |
 | `tool` | `string` |  |
 | `width` | `number` |  |
 
@@ -2784,11 +2814,11 @@ Create an instance: `local functional_enrichment = client:FunctionalEnrichment(n
 | Field | Type | Description |
 | --- | --- | --- |
 | `background` | `table` |  |
-| `collection` | `table` |  |
+| `collections` | `table` |  |
 | `gate` | `any` |  |
-| `gene` | `table` |  |
-| `max_term_size` | `number` |  |
-| `min_term_size` | `number` |  |
+| `genes` | `table` |  |
+| `maxTermSize` | `number` |  |
+| `minTermSize` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -2798,7 +2828,7 @@ Create an instance: `local functional_enrichment = client:FunctionalEnrichment(n
 
 ```lua
 local functional_enrichment, err = client:FunctionalEnrichment():create({
-  gene = {}, -- table
+  genes = {}, -- table
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -2957,14 +2987,14 @@ Create an instance: `local golden_gate_fidelity = client:GoldenGateFidelity(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compare_to_named_set` | `string` |  |
+| `compareToNamedSet` | `string` |  |
 | `dataset` | `string` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
-| `overhang` | `table` |  |
+| `overhangs` | `table` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `risk_threshold` | `number` |  |
+| `riskThreshold` | `number` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2972,7 +3002,7 @@ Create an instance: `local golden_gate_fidelity = client:GoldenGateFidelity(nil)
 ```lua
 local golden_gate_fidelity, err = client:GoldenGateFidelity():create({
   ok = "example_ok", -- any
-  overhang = {}, -- table
+  overhangs = {}, -- table
   provenance = {}, -- table
   result = {}, -- table
   tool = "example_tool", -- string
@@ -3029,7 +3059,7 @@ Create an instance: `local id_map_poll = client:IdMapPoll(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `job_id` | `string` |  |
+| `jobId` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -3039,7 +3069,7 @@ Create an instance: `local id_map_poll = client:IdMapPoll(nil)`
 
 ```lua
 local id_map_poll, err = client:IdMapPoll():create({
-  job_id = "example_job_id", -- string
+  jobId = "example_jobId", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -3068,7 +3098,7 @@ Create an instance: `local id_map_submit = client:IdMapSubmit(nil)`
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `tax_id` | `string` |  |
+| `taxId` | `string` |  |
 | `to` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3102,13 +3132,13 @@ Create an instance: `local in_silico_pcr = client:InSilicoPcr(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `boolean` |  |
-| `forward_primer` | `string` |  |
+| `forwardPrimer` | `string` |  |
 | `gate` | `any` |  |
-| `max_mismatch` | `number` |  |
+| `maxMismatches` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `reverse_primer` | `string` |  |
+| `reversePrimer` | `string` |  |
 | `template` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3116,11 +3146,11 @@ Create an instance: `local in_silico_pcr = client:InSilicoPcr(nil)`
 
 ```lua
 local in_silico_pcr, err = client:InSilicoPcr():create({
-  forward_primer = "example_forward_primer", -- string
+  forwardPrimer = "example_forwardPrimer", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  reverse_primer = "example_reverse_primer", -- string
+  reversePrimer = "example_reversePrimer", -- string
   template = "example_template", -- string
   tool = "example_tool", -- string
 })
@@ -3141,30 +3171,30 @@ Create an instance: `local kasp_primer_design = client:KaspPrimerDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `add_secondary_mismatch` | `boolean` |  |
-| `allele_a` | `string` |  |
-| `allele_b` | `string` |  |
+| `addSecondaryMismatch` | `boolean` |  |
+| `alleleA` | `string` |  |
+| `alleleB` | `string` |  |
 | `gate` | `any` |  |
-| `max_amplicon` | `number` |  |
-| `min_amplicon` | `number` |  |
+| `maxAmplicon` | `number` |  |
+| `minAmplicon` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `snp_position` | `number` |  |
+| `snpPosition` | `number` |  |
 | `target` | `string` |  |
-| `target_core_tm` | `number` |  |
+| `targetCoreTm` | `number` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local kasp_primer_design, err = client:KaspPrimerDesign():create({
-  allele_a = "example_allele_a", -- string
-  allele_b = "example_allele_b", -- string
+  alleleA = "example_alleleA", -- string
+  alleleB = "example_alleleB", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  snp_position = 1, -- number
+  snpPosition = 1, -- number
   target = "example_target", -- string
   tool = "example_tool", -- string
 })
@@ -3202,17 +3232,17 @@ Create an instance: `local melting_temperature = client:MeltingTemperature(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `number` |  |
+| `dntpMM` | `number` |  |
 | `gate` | `any` |  |
-| `mg_mm` | `number` |  |
-| `na_mm` | `number` |  |
+| `mgMM` | `number` |  |
+| `naMM` | `number` |  |
 | `ok` | `any` |  |
-| `oligo_nm` | `number` |  |
+| `oligoNM` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
-| `target_tm` | `number` |  |
-| `tm_tolerance` | `number` |  |
+| `targetTm` | `number` |  |
+| `tmTolerance` | `number` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3243,12 +3273,12 @@ Create an instance: `local motif_finder = client:MotifFinder(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `max_mismatch` | `number` |  |
+| `maxMismatches` | `number` |  |
 | `motif` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `search_reverse_strand` | `boolean` |  |
+| `searchReverseStrand` | `boolean` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3314,12 +3344,12 @@ Create an instance: `local oligo_analysi = client:OligoAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `number` |  |
+| `dntpMM` | `number` |  |
 | `gate` | `any` |  |
-| `mg_mm` | `number` |  |
-| `na_mm` | `number` |  |
+| `mgMM` | `number` |  |
+| `naMM` | `number` |  |
 | `ok` | `any` |  |
-| `oligo_nm` | `number` |  |
+| `oligoNM` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
@@ -3356,9 +3386,9 @@ Create an instance: `local ortholog_map = client:OrthologMap(nil)`
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `source_species` | `string` |  |
-| `symbol` | `table` |  |
-| `target_species` | `string` |  |
+| `sourceSpecies` | `string` |  |
+| `symbols` | `table` |  |
+| `targetSpecies` | `string` |  |
 | `tool` | `string` |  |
 | `type` | `string` |  |
 
@@ -3369,8 +3399,8 @@ local ortholog_map, err = client:OrthologMap():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  symbol = {}, -- table
-  target_species = "example_target_species", -- string
+  symbols = {}, -- table
+  targetSpecies = "example_targetSpecies", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -3398,8 +3428,8 @@ Create an instance: `local pairwise_alignment = client:PairwiseAlignment(nil)`
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `seq_a` | `string` |  |
-| `seq_b` | `string` |  |
+| `seqA` | `string` |  |
+| `seqB` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3409,8 +3439,8 @@ local pairwise_alignment, err = client:PairwiseAlignment():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  seq_a = "example_seq_a", -- string
-  seq_b = "example_seq_b", -- string
+  seqA = "example_seqA", -- string
+  seqB = "example_seqB", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -3464,8 +3494,8 @@ Create an instance: `local parse_sanger_trace = client:ParseSangerTrace(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `string` |  |
-| `file_name` | `string` |  |
+| `fileBase64` | `string` |  |
+| `fileName` | `string` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -3476,7 +3506,7 @@ Create an instance: `local parse_sanger_trace = client:ParseSangerTrace(nil)`
 
 ```lua
 local parse_sanger_trace, err = client:ParseSangerTrace():create({
-  file_base64 = "example_file_base64", -- string
+  fileBase64 = "example_fileBase64", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -3575,7 +3605,7 @@ Create an instance: `local plasmid_full_report = client:PlasmidFullReport(nil)`
 | `result` | `table` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
-| `top_n` | `number` |  |
+| `topN` | `number` |  |
 
 #### Example: Create
 
@@ -3611,7 +3641,7 @@ Create an instance: `local plasmid_identify = client:PlasmidIdentify(nil)`
 | `result` | `table` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
-| `top_n` | `number` |  |
+| `topN` | `number` |  |
 
 #### Example: Create
 
@@ -3640,16 +3670,16 @@ Create an instance: `local prime_editing_design = client:PrimeEditingDesign(nil)
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `edit_end` | `number` |  |
-| `edit_start` | `number` |  |
-| `frame_start` | `number` |  |
+| `editEnd` | `number` |  |
+| `editStart` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
-| `inserted_seq` | `string` |  |
+| `insertedSeq` | `string` |  |
 | `ok` | `any` |  |
-| `pbs_length` | `number` |  |
+| `pbsLength` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `rtt_homology` | `number` |  |
+| `rttHomology` | `number` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3657,8 +3687,8 @@ Create an instance: `local prime_editing_design = client:PrimeEditingDesign(nil)
 
 ```lua
 local prime_editing_design, err = client:PrimeEditingDesign():create({
-  edit_end = 1, -- number
-  edit_start = 1, -- number
+  editEnd = 1, -- number
+  editStart = 1, -- number
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -3683,13 +3713,13 @@ Create an instance: `local prime_editing_twin_design = client:PrimeEditingTwinDe
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `new_sequence` | `string` |  |
+| `newSequence` | `string` |  |
 | `ok` | `any` |  |
-| `overlap_length` | `number` |  |
-| `pbs_length` | `number` |  |
+| `overlapLength` | `number` |  |
+| `pbsLength` | `number` |  |
 | `provenance` | `table` |  |
-| `replace_end` | `number` |  |
-| `replace_start` | `number` |  |
+| `replaceEnd` | `number` |  |
+| `replaceStart` | `number` |  |
 | `result` | `table` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
@@ -3698,11 +3728,11 @@ Create an instance: `local prime_editing_twin_design = client:PrimeEditingTwinDe
 
 ```lua
 local prime_editing_twin_design, err = client:PrimeEditingTwinDesign():create({
-  new_sequence = "example_new_sequence", -- string
+  newSequence = "example_newSequence", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
-  replace_end = 1, -- number
-  replace_start = 1, -- number
+  replaceEnd = 1, -- number
+  replaceStart = 1, -- number
   result = {}, -- table
   target = "example_target", -- string
   tool = "example_tool", -- string
@@ -3724,29 +3754,29 @@ Create an instance: `local primer_design = client:PrimerDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amplicon_max` | `number` |  |
-| `amplicon_min` | `number` |  |
-| `dntp_mm` | `number` |  |
+| `ampliconMax` | `number` |  |
+| `ampliconMin` | `number` |  |
+| `dntpMM` | `number` |  |
 | `gate` | `any` |  |
-| `gc_max` | `number` |  |
-| `gc_min` | `number` |  |
-| `len_max` | `number` |  |
-| `len_min` | `number` |  |
-| `len_opt` | `number` |  |
-| `max_return` | `number` |  |
-| `mg_mm` | `number` |  |
-| `na_mm` | `number` |  |
+| `gcMax` | `number` |  |
+| `gcMin` | `number` |  |
+| `lenMax` | `number` |  |
+| `lenMin` | `number` |  |
+| `lenOpt` | `number` |  |
+| `maxReturn` | `number` |  |
+| `mgMM` | `number` |  |
+| `naMM` | `number` |  |
 | `ok` | `any` |  |
-| `oligo_nm` | `number` |  |
+| `oligoNM` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `target_end` | `number` |  |
-| `target_start` | `number` |  |
+| `targetEnd` | `number` |  |
+| `targetStart` | `number` |  |
 | `template` | `string` |  |
-| `tm_max` | `number` |  |
-| `tm_max_diff` | `number` |  |
-| `tm_min` | `number` |  |
-| `tm_opt` | `number` |  |
+| `tmMax` | `number` |  |
+| `tmMaxDiff` | `number` |  |
+| `tmMin` | `number` |  |
+| `tmOpt` | `number` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3776,25 +3806,25 @@ Create an instance: `local primer_specificity = client:PrimerSpecificity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `forward_primer` | `string` |  |
+| `forwardPrimer` | `string` |  |
 | `gate` | `any` |  |
-| `max_mismatch` | `number` |  |
-| `max_product_length` | `number` |  |
+| `maxMismatches` | `number` |  |
+| `maxProductLength` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `reverse_primer` | `string` |  |
+| `reversePrimer` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local primer_specificity, err = client:PrimerSpecificity():create({
-  forward_primer = "example_forward_primer", -- string
+  forwardPrimer = "example_forwardPrimer", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  reverse_primer = "example_reverse_primer", -- string
+  reversePrimer = "example_reversePrimer", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -3815,10 +3845,10 @@ Create an instance: `local protease_digestion = client:ProteaseDigestion(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `max_mass` | `number` |  |
-| `max_peptide` | `number` |  |
-| `min_mass` | `number` |  |
-| `missed_cleavage` | `number` |  |
+| `maxMass` | `number` |  |
+| `maxPeptides` | `number` |  |
+| `minMass` | `number` |  |
+| `missedCleavages` | `number` |  |
 | `ok` | `any` |  |
 | `protease` | `string` |  |
 | `provenance` | `table` |  |
@@ -3854,7 +3884,7 @@ Create an instance: `local protein_annotate_poll = client:ProteinAnnotatePoll(ni
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `job_id` | `string` |  |
+| `jobId` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -3864,7 +3894,7 @@ Create an instance: `local protein_annotate_poll = client:ProteinAnnotatePoll(ni
 
 ```lua
 local protein_annotate_poll, err = client:ProteinAnnotatePoll():create({
-  job_id = "example_job_id", -- string
+  jobId = "example_jobId", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -3889,7 +3919,7 @@ Create an instance: `local protein_annotate_submit = client:ProteinAnnotateSubmi
 | --- | --- | --- |
 | `appl` | `string` |  |
 | `gate` | `any` |  |
-| `goterm` | `boolean` |  |
+| `goterms` | `boolean` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -3959,7 +3989,7 @@ Create an instance: `local protein_property = client:ProteinProperty(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `charge_step` | `number` |  |
+| `chargeStep` | `number` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -3995,7 +4025,7 @@ Create an instance: `local random_sequence = client:RandomSequence(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `gc_content` | `number` |  |
+| `gcContent` | `number` |  |
 | `kind` | `string` |  |
 | `length` | `number` |  |
 | `ok` | `any` |  |
@@ -4030,7 +4060,7 @@ Create an instance: `local restriction_site = client:RestrictionSite(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme` | `table` |  |
+| `enzymes` | `table` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -4170,10 +4200,10 @@ Create an instance: `local sanger_vs_reference = client:SangerVsReference(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `string` |  |
-| `file_name` | `string` |  |
+| `fileBase64` | `string` |  |
+| `fileName` | `string` |  |
 | `gate` | `any` |  |
-| `min_coverage` | `number` |  |
+| `minCoverage` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `read` | `string` |  |
@@ -4208,7 +4238,7 @@ Create an instance: `local save_permalink = client:SavePermalink(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `table` |  |
+| `args` | `table` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -4219,7 +4249,7 @@ Create an instance: `local save_permalink = client:SavePermalink(nil)`
 
 ```lua
 local save_permalink, err = client:SavePermalink():create({
-  arg = {}, -- table
+  args = {}, -- table
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -4246,7 +4276,7 @@ Create an instance: `local seqfile_stat = client:SeqfileStat(nil)`
 | `input` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `quality_offset` | `number` |  |
+| `qualityOffset` | `number` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 
@@ -4349,10 +4379,10 @@ Create an instance: `local sequence_report = client:SequenceReport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `number` |  |
+| `endPrimerLength` | `number` |  |
 | `gate` | `any` |  |
-| `max_orf` | `number` |  |
-| `min_orf_aa` | `number` |  |
+| `maxOrfs` | `number` |  |
+| `minOrfAa` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
@@ -4389,7 +4419,7 @@ Create an instance: `local sequence_search = client:SequenceSearch(nil)`
 | `db` | `string` |  |
 | `gate` | `any` |  |
 | `gene` | `string` |  |
-| `max_result` | `number` |  |
+| `maxResults` | `number` |  |
 | `ok` | `any` |  |
 | `organism` | `string` |  |
 | `provenance` | `table` |  |
@@ -4424,10 +4454,10 @@ Create an instance: `local sequencing_readback_verify = client:SequencingReadbac
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `min_supporting_read` | `number` |  |
+| `minSupportingReads` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
-| `read` | `string` |  |
+| `reads` | `string` |  |
 | `reference` | `string` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
@@ -4438,7 +4468,7 @@ Create an instance: `local sequencing_readback_verify = client:SequencingReadbac
 local sequencing_readback_verify, err = client:SequencingReadbackVerify():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
-  read = "example_read", -- string
+  reads = "example_reads", -- string
   reference = "example_reference", -- string
   result = {}, -- table
   tool = "example_tool", -- string
@@ -4460,7 +4490,7 @@ Create an instance: `local session_create = client:SessionCreate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `table` |  |
+| `entries` | `table` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -4494,11 +4524,11 @@ Create an instance: `local session_get = client:SessionGet(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `name` | `table` |  |
+| `names` | `table` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4508,7 +4538,7 @@ local session_get, err = client:SessionGet():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  session_id = "example_session_id", -- string
+  sessionId = "example_sessionId", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -4528,15 +4558,15 @@ Create an instance: `local session_run = client:SessionRun(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `table` |  |
-| `from_session` | `table` |  |
+| `args` | `table` |  |
+| `fromSession` | `table` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
-| `write_back` | `table` |  |
+| `writeBack` | `table` |  |
 
 #### Example: Create
 
@@ -4545,7 +4575,7 @@ local session_run, err = client:SessionRun():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  session_id = "example_session_id", -- string
+  sessionId = "example_sessionId", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -4565,23 +4595,23 @@ Create an instance: `local session_set = client:SessionSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `table` |  |
+| `entries` | `table` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local session_set, err = client:SessionSet():create({
-  entry = {}, -- table
+  entries = {}, -- table
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  session_id = "example_session_id", -- string
+  sessionId = "example_sessionId", -- string
   tool = "example_tool", -- string
 })
 ```
@@ -4602,11 +4632,11 @@ Create an instance: `local sirna_design = client:SirnaDesign(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `min_reynold` | `number` |  |
+| `minReynolds` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `sh_rna_loop` | `string` |  |
+| `shRnaLoop` | `string` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
 
@@ -4637,23 +4667,23 @@ Create an instance: `local site_directed_mutagenesi = client:SiteDirectedMutagen
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `number` |  |
-| `dntp_mm` | `number` |  |
-| `edit_kind` | `string` |  |
-| `frame_start` | `number` |  |
+| `armTmTarget` | `number` |  |
+| `dntpMM` | `number` |  |
+| `editKind` | `string` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
-| `mg_mm` | `number` |  |
-| `na_mm` | `number` |  |
-| `new_base` | `string` |  |
+| `mgMM` | `number` |  |
+| `naMM` | `number` |  |
+| `newBase` | `string` |  |
 | `ok` | `any` |  |
-| `oligo_nm` | `number` |  |
+| `oligoNM` | `number` |  |
 | `organism` | `string` |  |
 | `position` | `number` |  |
 | `provenance` | `table` |  |
 | `residue` | `number` |  |
 | `result` | `table` |  |
 | `style` | `string` |  |
-| `target_aa` | `string` |  |
+| `targetAa` | `string` |  |
 | `template` | `string` |  |
 | `tool` | `string` |  |
 
@@ -4690,7 +4720,7 @@ Create an instance: `local translate = client:Translate(nil)`
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `sequence` | `string` |  |
-| `to_stop` | `boolean` |  |
+| `toStop` | `boolean` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4756,7 +4786,7 @@ Create an instance: `local variant_comparator = client:VariantComparator(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `coding` | `boolean` |  |
-| `frame_start` | `number` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
@@ -4793,34 +4823,34 @@ Create an instance: `local verify_assembly = client:VerifyAssembly(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `number` |  |
+| `armTmTarget` | `number` |  |
 | `circular` | `boolean` |  |
-| `claimed_construct` | `string` |  |
+| `claimedConstruct` | `string` |  |
 | `coding` | `boolean` |  |
 | `enzyme` | `string` |  |
 | `enzyme3` | `string` |  |
 | `enzyme5` | `string` |  |
-| `fragment` | `table` |  |
-| `fragment_pcr` | `table` |  |
-| `frame_start` | `number` |  |
+| `fragmentPcrs` | `table` |  |
+| `fragments` | `table` |  |
+| `frameStart` | `number` |  |
 | `gate` | `any` |  |
 | `insert` | `string` |  |
-| `insert_pcr` | `table` |  |
+| `insertPcr` | `table` |  |
 | `method` | `string` |  |
-| `name` | `table` |  |
+| `names` | `table` |  |
 | `ok` | `any` |  |
-| `overlap_len` | `number` |  |
+| `overlapLen` | `number` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
 | `tool` | `string` |  |
 | `vector` | `string` |  |
-| `vector_pcr` | `table` |  |
+| `vectorPcr` | `table` |  |
 
 #### Example: Create
 
 ```lua
 local verify_assembly, err = client:VerifyAssembly():create({
-  claimed_construct = "example_claimed_construct", -- string
+  claimedConstruct = "example_claimedConstruct", -- string
   method = "example_method", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
@@ -4844,27 +4874,27 @@ Create an instance: `local verify_construct = client:VerifyConstruct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claimed_construct` | `string` |  |
-| `expected_frame_start` | `number` |  |
+| `claimedConstruct` | `string` |  |
+| `expectedFrameStart` | `number` |  |
 | `gate` | `any` |  |
-| `insert_forward_primer` | `string` |  |
-| `insert_reverse_primer` | `string` |  |
-| `insert_template` | `string` |  |
-| `max_primer_mismatch` | `number` |  |
+| `insertForwardPrimer` | `string` |  |
+| `insertReversePrimer` | `string` |  |
+| `insertTemplate` | `string` |  |
+| `maxPrimerMismatches` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `template_circular` | `boolean` |  |
+| `templateCircular` | `boolean` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```lua
 local verify_construct, err = client:VerifyConstruct():create({
-  claimed_construct = "example_claimed_construct", -- string
-  insert_forward_primer = "example_insert_forward_primer", -- string
-  insert_reverse_primer = "example_insert_reverse_primer", -- string
-  insert_template = "example_insert_template", -- string
+  claimedConstruct = "example_claimedConstruct", -- string
+  insertForwardPrimer = "example_insertForwardPrimer", -- string
+  insertReversePrimer = "example_insertReversePrimer", -- string
+  insertTemplate = "example_insertTemplate", -- string
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
@@ -4888,7 +4918,7 @@ Create an instance: `local virtual_gel = client:VirtualGel(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `boolean` |  |
-| `enzyme` | `table` |  |
+| `enzymes` | `table` |  |
 | `gate` | `any` |  |
 | `ladder` | `string` |  |
 | `ok` | `any` |  |
@@ -4928,7 +4958,7 @@ Create an instance: `local volcano_plot_data = client:VolcanoPlotData(nil)`
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `result` | `table` |  |
-| `row` | `table` |  |
+| `rows` | `table` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4938,7 +4968,7 @@ local volcano_plot_data, err = client:VolcanoPlotData():create({
   ok = "example_ok", -- any
   provenance = {}, -- table
   result = {}, -- table
-  row = {}, -- table
+  rows = {}, -- table
   tool = "example_tool", -- string
 })
 ```
@@ -4959,7 +4989,7 @@ Create an instance: `local web_search = client:WebSearch(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `any` |  |
-| `max_result` | `number` |  |
+| `max_results` | `number` |  |
 | `ok` | `any` |  |
 | `provenance` | `table` |  |
 | `query` | `string` |  |

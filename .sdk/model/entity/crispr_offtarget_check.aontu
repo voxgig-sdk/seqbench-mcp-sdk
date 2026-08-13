@@ -11,7 +11,7 @@ main: kit: entity: crispr_offtarget_check: {
       type: "`$ANY`"
     }
     {
-      name: "max_mismatch"
+      name: "maxMismatches"
       req: false
       type: "`$INTEGER`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: crispr_offtarget_check: {
             "crispr_offtarget_check"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              maxMismatches: "`reqdata.max_mismatch`"
+              nuclease: "`reqdata.nuclease`"
+              protospacer: "`reqdata.protospacer`"
+            }
             res: "`body`"
           }
         }

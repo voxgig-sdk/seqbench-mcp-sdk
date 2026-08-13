@@ -2,39 +2,39 @@
   "existing": {
     "session_run": {
       "SESSION_RUN00": {
-        "arg": {},
-        "from_session": {},
+        "args": {},
+        "fromSession": {},
         "gate": "s5c",
         "ok": "s5d",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s60",
         "tool": "s61",
-        "write_back": {},
+        "writeBack": {},
         "id": "SESSION_RUN00"
       },
       "SESSION_RUN01": {
-        "arg": {},
-        "from_session": {},
+        "args": {},
+        "fromSession": {},
         "gate": "sb6",
         "ok": "sb7",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "sba",
         "tool": "sbb",
-        "write_back": {},
+        "writeBack": {},
         "id": "SESSION_RUN01"
       },
       "SESSION_RUN02": {
-        "arg": {},
-        "from_session": {},
+        "args": {},
+        "fromSession": {},
         "gate": "s110",
         "ok": "s111",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s114",
         "tool": "s115",
-        "write_back": {},
+        "writeBack": {},
         "id": "SESSION_RUN02"
       }
     }
@@ -42,15 +42,15 @@
   "new": {
     "session_run": {
       "session_run_ref01": {
-        "arg": {},
-        "from_session": {},
+        "args": {},
+        "fromSession": {},
         "gate": "s16a",
         "ok": "s16b",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s16e",
         "tool": "s16f",
-        "write_back": {}
+        "writeBack": {}
       }
     }
   }

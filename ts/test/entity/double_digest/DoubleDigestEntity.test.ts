@@ -26,8 +26,8 @@ import {
 describe('DoubleDigestEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('DoubleDigestEntity', async () => {
     const double_digest_ref01_ent = client.DoubleDigest()
     let double_digest_ref01_data = setup.data.new.double_digest['double_digest_ref01']
 
-    double_digest_ref01_data = await double_digest_ref01_ent.create(double_digest_ref01_data)
+    double_digest_ref01_data = (await double_digest_ref01_ent.create(double_digest_ref01_data)).data()
     assert(null != double_digest_ref01_data)
 
 

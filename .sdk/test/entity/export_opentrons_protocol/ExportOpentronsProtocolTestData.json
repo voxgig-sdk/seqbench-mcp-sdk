@@ -4,9 +4,9 @@
       "EXPORT_OPENTRONS_PROTOCOL00": {
         "gate": "s46",
         "ok": "s47",
-        "protocol_name": "s48",
+        "protocolName": "s48",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "s4c",
         "id": "EXPORT_OPENTRONS_PROTOCOL00"
@@ -14,9 +14,9 @@
       "EXPORT_OPENTRONS_PROTOCOL01": {
         "gate": "s8c",
         "ok": "s8d",
-        "protocol_name": "s8e",
+        "protocolName": "s8e",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "s92",
         "id": "EXPORT_OPENTRONS_PROTOCOL01"
@@ -24,9 +24,9 @@
       "EXPORT_OPENTRONS_PROTOCOL02": {
         "gate": "sd2",
         "ok": "sd3",
-        "protocol_name": "sd4",
+        "protocolName": "sd4",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "sd8",
         "id": "EXPORT_OPENTRONS_PROTOCOL02"
@@ -38,9 +38,9 @@
       "export_opentrons_protocol_ref01": {
         "gate": "s118",
         "ok": "s119",
-        "protocol_name": "s11a",
+        "protocolName": "s11a",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "s11e"
       }

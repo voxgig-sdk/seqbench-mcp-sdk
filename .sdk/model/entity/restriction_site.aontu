@@ -6,7 +6,7 @@ main: kit: entity: restriction_site: {
 
   fields: [
     {
-      name: "enzyme"
+      name: "enzymes"
       req: false
       type: "`$ARRAY`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: restriction_site: {
             "restriction_sites"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              enzymes: "`reqdata.enzyme`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

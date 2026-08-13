@@ -26,8 +26,8 @@ import {
 describe('CrisprOfftargetCheckEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('CrisprOfftargetCheckEntity', async () => {
     const crispr_offtarget_check_ref01_ent = client.CrisprOfftargetCheck()
     let crispr_offtarget_check_ref01_data = setup.data.new.crispr_offtarget_check['crispr_offtarget_check_ref01']
 
-    crispr_offtarget_check_ref01_data = await crispr_offtarget_check_ref01_ent.create(crispr_offtarget_check_ref01_data)
+    crispr_offtarget_check_ref01_data = (await crispr_offtarget_check_ref01_ent.create(crispr_offtarget_check_ref01_data)).data()
     assert(null != crispr_offtarget_check_ref01_data)
 
 

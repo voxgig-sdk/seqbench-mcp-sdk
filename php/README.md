@@ -36,7 +36,7 @@ $client = new SeqbenchMcpSDK([
 ### 4. Create, update, and remove
 
 ```php
-// create() returns the bare created AlphafoldLookup record.
+// create() returns the ENTITY — call data_get() for the created AlphafoldLookup record.
 $created = $client->AlphafoldLookup()->create(["accession" => "example_accession", "ok" => "example_ok", "provenance" => [], "result" => [], "tool" => "example_tool"]);
 
 ```
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = SeqbenchMcpSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $batch = $client->Batch()->load();
 print_r($batch);
 ```
@@ -307,7 +308,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -362,13 +363,13 @@ API path: `/aso_design`
 | Field | Description |
 | --- | --- |
 | `editor` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `target` |  |
-| `target_position` |  |
+| `targetPosition` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -379,10 +380,15 @@ API path: `/base_editing_design`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create, Load.
@@ -393,10 +399,15 @@ API path: `/batch`
 
 | Field | Description |
 | --- | --- |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
-| `step` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
+| `steps` |  |
 
 Operations: Create, Load.
 
@@ -406,10 +417,10 @@ API path: `/workflow`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -424,18 +435,18 @@ API path: `/characterize_sequence`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
+| `fragments` |  |
 | `gate` |  |
 | `insert` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
@@ -449,12 +460,12 @@ API path: `/cloning_simulate`
 
 | Field | Description |
 | --- | --- |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
-| `rare_threshold` |  |
+| `rareThreshold` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -483,15 +494,15 @@ API path: `/codon_optimize`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
-| `max_pass` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
+| `maxPasses` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -507,14 +518,14 @@ API path: `/construct_autofix`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -530,12 +541,12 @@ API path: `/construct_qc`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_score` |  |
+| `minScore` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -547,22 +558,22 @@ API path: `/crispr_grna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_length` |  |
-| `block_pam` |  |
-| `design_genotyping_primer` |  |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `armLength` |  |
+| `blockPam` |  |
+| `designGenotypingPrimers` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `guide_end` |  |
-| `guide_start` |  |
-| `guide_strand` |  |
+| `guideEnd` |  |
+| `guideStart` |  |
+| `guideStrand` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `replacement` |  |
 | `result` |  |
-| `target_sequence` |  |
+| `targetSequence` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -574,7 +585,7 @@ API path: `/crispr_hdr_donor`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `protospacer` |  |
@@ -594,8 +605,8 @@ API path: `/crispr_offtarget_check`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sequence_a` |  |
-| `sequence_b` |  |
+| `sequenceA` |  |
+| `sequenceB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -608,14 +619,14 @@ API path: `/cross_dimer`
 | --- | --- |
 | `gate` |  |
 | `length` |  |
-| `mass_ng` |  |
+| `massNg` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
 | `type` |  |
-| `volume_ul` |  |
+| `volumeUl` |  |
 
 Operations: Create.
 
@@ -625,8 +636,8 @@ API path: `/dna_molarity`
 
 | Field | Description |
 | --- | --- |
-| `enzyme_a` |  |
-| `enzyme_b` |  |
+| `enzymeA` |  |
+| `enzymeB` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -644,7 +655,7 @@ API path: `/double_digest`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -658,9 +669,9 @@ API path: `/export_echo_picklist`
 | --- | --- |
 | `gate` |  |
 | `ok` |  |
-| `protocol_name` |  |
+| `protocolName` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -675,7 +686,7 @@ API path: `/export_opentrons_protocol`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -687,19 +698,19 @@ API path: `/export_plate_layout`
 
 | Field | Description |
 | --- | --- |
-| `cluster_col` |  |
-| `cluster_row` |  |
-| `distance_metric` |  |
+| `clusterCols` |  |
+| `clusterRows` |  |
+| `distanceMetric` |  |
 | `gate` |  |
-| `gene` |  |
+| `genes` |  |
 | `linkage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sample` |  |
+| `samples` |  |
 | `tool` |  |
-| `value` |  |
-| `z_score_row` |  |
+| `values` |  |
+| `zScoreRows` |  |
 
 Operations: Create.
 
@@ -713,7 +724,7 @@ API path: `/expression_heatmap_cluster`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -727,11 +738,11 @@ API path: `/fastq_qc_report`
 | --- | --- |
 | `gate` |  |
 | `input` |  |
-| `min_length` |  |
+| `minLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
-| `quality_threshold` |  |
+| `qualityOffset` |  |
+| `qualityThreshold` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -744,10 +755,10 @@ API path: `/fastq_trim`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_aa_length` |  |
+| `minAaLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `require_stop` |  |
+| `requireStop` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -760,7 +771,7 @@ API path: `/find_orfs`
 
 | Field | Description |
 | --- | --- |
-| `case_mode` |  |
+| `caseMode` |  |
 | `convert` |  |
 | `gate` |  |
 | `ok` |  |
@@ -768,7 +779,7 @@ API path: `/find_orfs`
 | `result` |  |
 | `reverse` |  |
 | `sequence` |  |
-| `strip_non_letter` |  |
+| `stripNonLetters` |  |
 | `tool` |  |
 | `width` |  |
 
@@ -781,11 +792,11 @@ API path: `/format_sequence`
 | Field | Description |
 | --- | --- |
 | `background` |  |
-| `collection` |  |
+| `collections` |  |
 | `gate` |  |
-| `gene` |  |
-| `max_term_size` |  |
-| `min_term_size` |  |
+| `genes` |  |
+| `maxTermSize` |  |
+| `minTermSize` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -859,14 +870,14 @@ API path: `/gene_model`
 
 | Field | Description |
 | --- | --- |
-| `compare_to_named_set` |  |
+| `compareToNamedSet` |  |
 | `dataset` |  |
 | `gate` |  |
 | `ok` |  |
-| `overhang` |  |
+| `overhangs` |  |
 | `provenance` |  |
 | `result` |  |
-| `risk_threshold` |  |
+| `riskThreshold` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -893,7 +904,7 @@ API path: `/hgvs_convert`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -913,7 +924,7 @@ API path: `/id_map_poll`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `tax_id` |  |
+| `taxId` |  |
 | `to` |  |
 | `tool` |  |
 
@@ -926,13 +937,13 @@ API path: `/id_map_submit`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -944,18 +955,18 @@ API path: `/in_silico_pcr`
 
 | Field | Description |
 | --- | --- |
-| `add_secondary_mismatch` |  |
-| `allele_a` |  |
-| `allele_b` |  |
+| `addSecondaryMismatch` |  |
+| `alleleA` |  |
+| `alleleB` |  |
 | `gate` |  |
-| `max_amplicon` |  |
-| `min_amplicon` |  |
+| `maxAmplicon` |  |
+| `minAmplicon` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `snp_position` |  |
+| `snpPosition` |  |
 | `target` |  |
-| `target_core_tm` |  |
+| `targetCoreTm` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -975,17 +986,17 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `target_tm` |  |
-| `tm_tolerance` |  |
+| `targetTm` |  |
+| `tmTolerance` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -997,12 +1008,12 @@ API path: `/melting_temperature`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `motif` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -1029,12 +1040,12 @@ API path: `/multiple_sequence_alignment`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
@@ -1052,9 +1063,9 @@ API path: `/oligo_analysis`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `source_species` |  |
-| `symbol` |  |
-| `target_species` |  |
+| `sourceSpecies` |  |
+| `symbols` |  |
+| `targetSpecies` |  |
 | `tool` |  |
 | `type` |  |
 
@@ -1074,8 +1085,8 @@ API path: `/ortholog_map`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `seq_a` |  |
-| `seq_b` |  |
+| `seqA` |  |
+| `seqB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1101,8 +1112,8 @@ API path: `/parse_genbank`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1155,7 +1166,7 @@ API path: `/plasmid_deep_annotate`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1172,7 +1183,7 @@ API path: `/plasmid_full_report`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1182,16 +1193,16 @@ API path: `/plasmid_identify`
 
 | Field | Description |
 | --- | --- |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `inserted_seq` |  |
+| `insertedSeq` |  |
 | `ok` |  |
-| `pbs_length` |  |
+| `pbsLength` |  |
 | `provenance` |  |
 | `result` |  |
-| `rtt_homology` |  |
+| `rttHomology` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1204,13 +1215,13 @@ API path: `/prime_editing_design`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `new_sequence` |  |
+| `newSequence` |  |
 | `ok` |  |
-| `overlap_length` |  |
-| `pbs_length` |  |
+| `overlapLength` |  |
+| `pbsLength` |  |
 | `provenance` |  |
-| `replace_end` |  |
-| `replace_start` |  |
+| `replaceEnd` |  |
+| `replaceStart` |  |
 | `result` |  |
 | `target` |  |
 | `tool` |  |
@@ -1223,29 +1234,29 @@ API path: `/prime_editing_twin_design`
 
 | Field | Description |
 | --- | --- |
-| `amplicon_max` |  |
-| `amplicon_min` |  |
-| `dntp_mm` |  |
+| `ampliconMax` |  |
+| `ampliconMin` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `gc_max` |  |
-| `gc_min` |  |
-| `len_max` |  |
-| `len_min` |  |
-| `len_opt` |  |
-| `max_return` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `gcMax` |  |
+| `gcMin` |  |
+| `lenMax` |  |
+| `lenMin` |  |
+| `lenOpt` |  |
+| `maxReturn` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
-| `target_end` |  |
-| `target_start` |  |
+| `targetEnd` |  |
+| `targetStart` |  |
 | `template` |  |
-| `tm_max` |  |
-| `tm_max_diff` |  |
-| `tm_min` |  |
-| `tm_opt` |  |
+| `tmMax` |  |
+| `tmMaxDiff` |  |
+| `tmMin` |  |
+| `tmOpt` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1256,14 +1267,14 @@ API path: `/primer_design`
 
 | Field | Description |
 | --- | --- |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
-| `max_product_length` |  |
+| `maxMismatches` |  |
+| `maxProductLength` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1275,10 +1286,10 @@ API path: `/primer_specificity`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mass` |  |
-| `max_peptide` |  |
-| `min_mass` |  |
-| `missed_cleavage` |  |
+| `maxMass` |  |
+| `maxPeptides` |  |
+| `minMass` |  |
+| `missedCleavages` |  |
 | `ok` |  |
 | `protease` |  |
 | `provenance` |  |
@@ -1295,7 +1306,7 @@ API path: `/protease_digestion`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1311,7 +1322,7 @@ API path: `/protein_annotate_poll`
 | --- | --- |
 | `appl` |  |
 | `gate` |  |
-| `goterm` |  |
+| `goterms` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1343,7 +1354,7 @@ API path: `/protein_hydrophobicity`
 
 | Field | Description |
 | --- | --- |
-| `charge_step` |  |
+| `chargeStep` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1360,7 +1371,7 @@ API path: `/protein_properties`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `gc_content` |  |
+| `gcContent` |  |
 | `kind` |  |
 | `length` |  |
 | `ok` |  |
@@ -1376,7 +1387,7 @@ API path: `/random_sequence`
 
 | Field | Description |
 | --- | --- |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1440,10 +1451,10 @@ API path: `/rna_fold`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
-| `min_coverage` |  |
+| `minCoverage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `read` |  |
@@ -1459,7 +1470,7 @@ API path: `/sanger_vs_reference`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1478,7 +1489,7 @@ API path: `/save_permalink`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -1524,10 +1535,10 @@ API path: `/sequence_format_convert`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1545,7 +1556,7 @@ API path: `/sequence_report`
 | `db` |  |
 | `gate` |  |
 | `gene` |  |
-| `max_result` |  |
+| `maxResults` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -1562,10 +1573,10 @@ API path: `/sequence_search`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_supporting_read` |  |
+| `minSupportingReads` |  |
 | `ok` |  |
 | `provenance` |  |
-| `read` |  |
+| `reads` |  |
 | `reference` |  |
 | `result` |  |
 | `tool` |  |
@@ -1578,7 +1589,7 @@ API path: `/sequencing_readback_verify`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1594,11 +1605,11 @@ API path: `/session_create`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1609,15 +1620,15 @@ API path: `/session_get`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
-| `from_session` |  |
+| `args` |  |
+| `fromSession` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
-| `write_back` |  |
+| `writeBack` |  |
 
 Operations: Create.
 
@@ -1627,12 +1638,12 @@ API path: `/session_run`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1644,11 +1655,11 @@ API path: `/session_set`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_reynold` |  |
+| `minReynolds` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sh_rna_loop` |  |
+| `shRnaLoop` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1660,23 +1671,23 @@ API path: `/sirna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
-| `dntp_mm` |  |
-| `edit_kind` |  |
-| `frame_start` |  |
+| `armTmTarget` |  |
+| `dntpMM` |  |
+| `editKind` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
-| `new_base` |  |
+| `mgMM` |  |
+| `naMM` |  |
+| `newBase` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `organism` |  |
 | `position` |  |
 | `provenance` |  |
 | `residue` |  |
 | `result` |  |
 | `style` |  |
-| `target_aa` |  |
+| `targetAa` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -1694,7 +1705,7 @@ API path: `/site_directed_mutagenesis`
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `to_stop` |  |
+| `toStop` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1722,7 +1733,7 @@ API path: `/variant_annotate`
 | Field | Description |
 | --- | --- |
 | `coding` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1739,28 +1750,28 @@ API path: `/variant_comparator`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
-| `claimed_construct` |  |
+| `claimedConstruct` |  |
 | `coding` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
-| `fragment_pcr` |  |
-| `frame_start` |  |
+| `fragmentPcrs` |  |
+| `fragments` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `insert` |  |
-| `insert_pcr` |  |
+| `insertPcr` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
 | `vector` |  |
-| `vector_pcr` |  |
+| `vectorPcr` |  |
 
 Operations: Create.
 
@@ -1770,17 +1781,17 @@ API path: `/verify_assembly`
 
 | Field | Description |
 | --- | --- |
-| `claimed_construct` |  |
-| `expected_frame_start` |  |
+| `claimedConstruct` |  |
+| `expectedFrameStart` |  |
 | `gate` |  |
-| `insert_forward_primer` |  |
-| `insert_reverse_primer` |  |
-| `insert_template` |  |
-| `max_primer_mismatch` |  |
+| `insertForwardPrimer` |  |
+| `insertReversePrimer` |  |
+| `insertTemplate` |  |
+| `maxPrimerMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `template_circular` |  |
+| `templateCircular` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1792,7 +1803,7 @@ API path: `/verify_construct`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ladder` |  |
 | `ok` |  |
@@ -1813,7 +1824,7 @@ API path: `/virtual_gel`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `row` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1825,7 +1836,7 @@ API path: `/volcano_plot_data`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_result` |  |
+| `max_results` |  |
 | `ok` |  |
 | `provenance` |  |
 | `query` |  |
@@ -1926,13 +1937,13 @@ Create an instance: `$base_editing_design = $client->BaseEditingDesign();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `editor` | `string` |  |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `target` | `string` |  |
-| `target_position` | `int` |  |
+| `targetPosition` | `int` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -1963,16 +1974,21 @@ Create an instance: `$batch = $client->Batch();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `array` |  |
+| `args` | `array` |  |
+| `capped` | `bool` |  |
+| `columns` | `array` |  |
+| `count` | `int` |  |
+| `errors` | `int` |  |
 | `input` | `string` |  |
-| `ok` | `mixed` |  |
-| `result` | `array` |  |
+| `limit` | `int` |  |
+| `provenance` | `array` |  |
+| `rows` | `array` |  |
 | `tool` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Batch record (throws on error).
+// load() returns the ENTITY — call data_get() for the Batch record (throws on error).
 $batch = $client->Batch()->load();
 ```
 
@@ -1980,9 +1996,14 @@ $batch = $client->Batch()->load();
 
 ```php
 $batch = $client->Batch()->create([
+    "capped" => null, // bool
+    "columns" => null, // array
+    "count" => null, // int
+    "errors" => null, // int
     "input" => null, // string
-    "ok" => null, // mixed
-    "result" => null, // array
+    "limit" => null, // int
+    "provenance" => null, // array
+    "rows" => null, // array
     "tool" => null, // string
 ]);
 ```
@@ -2003,15 +2024,20 @@ Create an instance: `$batch__workflow = $client->BatchWorkflow();`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `capped` | `bool` |  |
+| `columns` | `array` |  |
+| `count` | `int` |  |
+| `errors` | `int` |  |
 | `input` | `string` |  |
-| `ok` | `mixed` |  |
-| `result` | `array` |  |
-| `step` | `array` |  |
+| `limit` | `int` |  |
+| `provenance` | `array` |  |
+| `rows` | `array` |  |
+| `steps` | `array` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare BatchWorkflow record (throws on error).
+// load() returns the ENTITY — call data_get() for the BatchWorkflow record (throws on error).
 $batch__workflow = $client->BatchWorkflow()->load();
 ```
 
@@ -2019,10 +2045,15 @@ $batch__workflow = $client->BatchWorkflow()->load();
 
 ```php
 $batch__workflow = $client->BatchWorkflow()->create([
+    "capped" => null, // bool
+    "columns" => null, // array
+    "count" => null, // int
+    "errors" => null, // int
     "input" => null, // string
-    "ok" => null, // mixed
-    "result" => null, // array
-    "step" => null, // array
+    "limit" => null, // int
+    "provenance" => null, // array
+    "rows" => null, // array
+    "steps" => null, // array
 ]);
 ```
 
@@ -2041,10 +2072,10 @@ Create an instance: `$characterize_sequence = $client->CharacterizeSequence();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `int` |  |
+| `endPrimerLength` | `int` |  |
 | `gate` | `mixed` |  |
-| `max_orf` | `int` |  |
-| `min_orf_aa` | `int` |  |
+| `maxOrfs` | `int` |  |
+| `minOrfAa` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -2078,18 +2109,18 @@ Create an instance: `$cloning_simulate = $client->CloningSimulate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
+| `armTmTarget` | `float` |  |
 | `circular` | `bool` |  |
 | `enzyme` | `string` |  |
 | `enzyme3` | `string` |  |
 | `enzyme5` | `string` |  |
-| `fragment` | `array` |  |
+| `fragments` | `array` |  |
 | `gate` | `mixed` |  |
 | `insert` | `string` |  |
 | `method` | `string` |  |
-| `name` | `array` |  |
+| `names` | `array` |  |
 | `ok` | `mixed` |  |
-| `overlap_len` | `int` |  |
+| `overlapLen` | `int` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
@@ -2122,12 +2153,12 @@ Create an instance: `$codon_adaptation_index = $client->CodonAdaptationIndex();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `organism` | `string` |  |
 | `provenance` | `array` |  |
-| `rare_threshold` | `float` |  |
+| `rareThreshold` | `float` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
@@ -2194,15 +2225,15 @@ Create an instance: `$construct_autofix = $client->ConstructAutofix();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `array` |  |
-| `cryptic_orf_min_aa` | `int` |  |
-| `frame_start` | `int` |  |
+| `avoidEnzymes` | `array` |  |
+| `crypticOrfMinAa` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `gc_high` | `float` |  |
-| `gc_low` | `float` |  |
-| `gc_window` | `int` |  |
-| `homopolymer_min` | `int` |  |
-| `max_pass` | `int` |  |
+| `gcHigh` | `float` |  |
+| `gcLow` | `float` |  |
+| `gcWindow` | `int` |  |
+| `homopolymerMin` | `int` |  |
+| `maxPasses` | `int` |  |
 | `ok` | `mixed` |  |
 | `organism` | `string` |  |
 | `provenance` | `array` |  |
@@ -2237,14 +2268,14 @@ Create an instance: `$construct_qc = $client->ConstructQc();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `array` |  |
-| `cryptic_orf_min_aa` | `int` |  |
-| `frame_start` | `int` |  |
+| `avoidEnzymes` | `array` |  |
+| `crypticOrfMinAa` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `gc_high` | `float` |  |
-| `gc_low` | `float` |  |
-| `gc_window` | `int` |  |
-| `homopolymer_min` | `int` |  |
+| `gcHigh` | `float` |  |
+| `gcLow` | `float` |  |
+| `gcWindow` | `int` |  |
+| `homopolymerMin` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -2279,12 +2310,12 @@ Create an instance: `$crispr_grna_design = $client->CrisprGrnaDesign();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `min_score` | `float` |  |
+| `minScore` | `float` |  |
 | `nuclease` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `search_reverse_strand` | `bool` |  |
+| `searchReverseStrand` | `bool` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 
@@ -2315,22 +2346,22 @@ Create an instance: `$crispr_hdr_donor = $client->CrisprHdrDonor();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_length` | `int` |  |
-| `block_pam` | `bool` |  |
-| `design_genotyping_primer` | `bool` |  |
-| `edit_end` | `int` |  |
-| `edit_start` | `int` |  |
-| `frame_start` | `int` |  |
+| `armLength` | `int` |  |
+| `blockPam` | `bool` |  |
+| `designGenotypingPrimers` | `bool` |  |
+| `editEnd` | `int` |  |
+| `editStart` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `guide_end` | `int` |  |
-| `guide_start` | `int` |  |
-| `guide_strand` | `string` |  |
+| `guideEnd` | `int` |  |
+| `guideStart` | `int` |  |
+| `guideStrand` | `string` |  |
 | `nuclease` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `replacement` | `string` |  |
 | `result` | `array` |  |
-| `target_sequence` | `string` |  |
+| `targetSequence` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2341,7 +2372,7 @@ $crispr_hdr_donor = $client->CrisprHdrDonor()->create([
     "provenance" => null, // array
     "replacement" => null, // string
     "result" => null, // array
-    "target_sequence" => null, // string
+    "targetSequence" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -2362,7 +2393,7 @@ Create an instance: `$crispr_offtarget_check = $client->CrisprOfftargetCheck();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `nuclease` | `string` |  |
 | `ok` | `mixed` |  |
 | `protospacer` | `string` |  |
@@ -2401,8 +2432,8 @@ Create an instance: `$cross_dimer = $client->CrossDimer();`
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `sequence_a` | `string` |  |
-| `sequence_b` | `string` |  |
+| `sequenceA` | `string` |  |
+| `sequenceB` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2412,8 +2443,8 @@ $cross_dimer = $client->CrossDimer()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "sequence_a" => null, // string
-    "sequence_b" => null, // string
+    "sequenceA" => null, // string
+    "sequenceB" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -2435,14 +2466,14 @@ Create an instance: `$dna_molarity = $client->DnaMolarity();`
 | --- | --- | --- |
 | `gate` | `mixed` |  |
 | `length` | `int` |  |
-| `mass_ng` | `float` |  |
+| `massNg` | `float` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 | `type` | `string` |  |
-| `volume_ul` | `float` |  |
+| `volumeUl` | `float` |  |
 
 #### Example: Create
 
@@ -2470,8 +2501,8 @@ Create an instance: `$double_digest = $client->DoubleDigest();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme_a` | `string` |  |
-| `enzyme_b` | `string` |  |
+| `enzymeA` | `string` |  |
+| `enzymeB` | `string` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -2482,8 +2513,8 @@ Create an instance: `$double_digest = $client->DoubleDigest();`
 
 ```php
 $double_digest = $client->DoubleDigest()->create([
-    "enzyme_a" => null, // string
-    "enzyme_b" => null, // string
+    "enzymeA" => null, // string
+    "enzymeB" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -2509,7 +2540,7 @@ Create an instance: `$export_echo_picklist = $client->ExportEchoPicklist();`
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `reaction` | `array` |  |
+| `reactions` | `array` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -2519,7 +2550,7 @@ Create an instance: `$export_echo_picklist = $client->ExportEchoPicklist();`
 $export_echo_picklist = $client->ExportEchoPicklist()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
-    "reaction" => null, // array
+    "reactions" => null, // array
     "result" => null, // array
     "tool" => null, // string
 ]);
@@ -2542,9 +2573,9 @@ Create an instance: `$export_opentrons_protocol = $client->ExportOpentronsProtoc
 | --- | --- | --- |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
-| `protocol_name` | `string` |  |
+| `protocolName` | `string` |  |
 | `provenance` | `array` |  |
-| `reaction` | `array` |  |
+| `reactions` | `array` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -2554,7 +2585,7 @@ Create an instance: `$export_opentrons_protocol = $client->ExportOpentronsProtoc
 $export_opentrons_protocol = $client->ExportOpentronsProtocol()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
-    "reaction" => null, // array
+    "reactions" => null, // array
     "result" => null, // array
     "tool" => null, // string
 ]);
@@ -2578,7 +2609,7 @@ Create an instance: `$export_plate_layout = $client->ExportPlateLayout();`
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `reaction` | `array` |  |
+| `reactions` | `array` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -2588,7 +2619,7 @@ Create an instance: `$export_plate_layout = $client->ExportPlateLayout();`
 $export_plate_layout = $client->ExportPlateLayout()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
-    "reaction" => null, // array
+    "reactions" => null, // array
     "result" => null, // array
     "tool" => null, // string
 ]);
@@ -2609,31 +2640,31 @@ Create an instance: `$expression_heatmap_cluster = $client->ExpressionHeatmapClu
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cluster_col` | `bool` |  |
-| `cluster_row` | `bool` |  |
-| `distance_metric` | `string` |  |
+| `clusterCols` | `bool` |  |
+| `clusterRows` | `bool` |  |
+| `distanceMetric` | `string` |  |
 | `gate` | `mixed` |  |
-| `gene` | `array` |  |
+| `genes` | `array` |  |
 | `linkage` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `sample` | `array` |  |
+| `samples` | `array` |  |
 | `tool` | `string` |  |
-| `value` | `array` |  |
-| `z_score_row` | `bool` |  |
+| `values` | `array` |  |
+| `zScoreRows` | `bool` |  |
 
 #### Example: Create
 
 ```php
 $expression_heatmap_cluster = $client->ExpressionHeatmapCluster()->create([
-    "gene" => null, // array
+    "genes" => null, // array
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "sample" => null, // array
+    "samples" => null, // array
     "tool" => null, // string
-    "value" => null, // array
+    "values" => null, // array
 ]);
 ```
 
@@ -2656,7 +2687,7 @@ Create an instance: `$fastq_qc_report = $client->FastqQcReport();`
 | `input` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `quality_offset` | `int` |  |
+| `qualityOffset` | `int` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -2689,11 +2720,11 @@ Create an instance: `$fastq_trim = $client->FastqTrim();`
 | --- | --- | --- |
 | `gate` | `mixed` |  |
 | `input` | `string` |  |
-| `min_length` | `int` |  |
+| `minLength` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `quality_offset` | `int` |  |
-| `quality_threshold` | `int` |  |
+| `qualityOffset` | `int` |  |
+| `qualityThreshold` | `int` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -2725,10 +2756,10 @@ Create an instance: `$find_orf = $client->FindOrf();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `min_aa_length` | `int` |  |
+| `minAaLength` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `require_stop` | `bool` |  |
+| `requireStop` | `bool` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
@@ -2760,7 +2791,7 @@ Create an instance: `$format_sequence = $client->FormatSequence();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case_mode` | `string` |  |
+| `caseMode` | `string` |  |
 | `convert` | `string` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
@@ -2768,7 +2799,7 @@ Create an instance: `$format_sequence = $client->FormatSequence();`
 | `result` | `array` |  |
 | `reverse` | `bool` |  |
 | `sequence` | `string` |  |
-| `strip_non_letter` | `bool` |  |
+| `stripNonLetters` | `bool` |  |
 | `tool` | `string` |  |
 | `width` | `int` |  |
 
@@ -2800,11 +2831,11 @@ Create an instance: `$functional_enrichment = $client->FunctionalEnrichment();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `background` | `array` |  |
-| `collection` | `array` |  |
+| `collections` | `array` |  |
 | `gate` | `mixed` |  |
-| `gene` | `array` |  |
-| `max_term_size` | `int` |  |
-| `min_term_size` | `int` |  |
+| `genes` | `array` |  |
+| `maxTermSize` | `int` |  |
+| `minTermSize` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -2814,7 +2845,7 @@ Create an instance: `$functional_enrichment = $client->FunctionalEnrichment();`
 
 ```php
 $functional_enrichment = $client->FunctionalEnrichment()->create([
-    "gene" => null, // array
+    "genes" => null, // array
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -2973,14 +3004,14 @@ Create an instance: `$golden_gate_fidelity = $client->GoldenGateFidelity();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compare_to_named_set` | `string` |  |
+| `compareToNamedSet` | `string` |  |
 | `dataset` | `string` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
-| `overhang` | `array` |  |
+| `overhangs` | `array` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `risk_threshold` | `float` |  |
+| `riskThreshold` | `float` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -2988,7 +3019,7 @@ Create an instance: `$golden_gate_fidelity = $client->GoldenGateFidelity();`
 ```php
 $golden_gate_fidelity = $client->GoldenGateFidelity()->create([
     "ok" => null, // mixed
-    "overhang" => null, // array
+    "overhangs" => null, // array
     "provenance" => null, // array
     "result" => null, // array
     "tool" => null, // string
@@ -3045,7 +3076,7 @@ Create an instance: `$id_map_poll = $client->IdMapPoll();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `job_id` | `string` |  |
+| `jobId` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -3055,7 +3086,7 @@ Create an instance: `$id_map_poll = $client->IdMapPoll();`
 
 ```php
 $id_map_poll = $client->IdMapPoll()->create([
-    "job_id" => null, // string
+    "jobId" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -3084,7 +3115,7 @@ Create an instance: `$id_map_submit = $client->IdMapSubmit();`
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `tax_id` | `string` |  |
+| `taxId` | `string` |  |
 | `to` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3118,13 +3149,13 @@ Create an instance: `$in_silico_pcr = $client->InSilicoPcr();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `bool` |  |
-| `forward_primer` | `string` |  |
+| `forwardPrimer` | `string` |  |
 | `gate` | `mixed` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `reverse_primer` | `string` |  |
+| `reversePrimer` | `string` |  |
 | `template` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3132,11 +3163,11 @@ Create an instance: `$in_silico_pcr = $client->InSilicoPcr();`
 
 ```php
 $in_silico_pcr = $client->InSilicoPcr()->create([
-    "forward_primer" => null, // string
+    "forwardPrimer" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "reverse_primer" => null, // string
+    "reversePrimer" => null, // string
     "template" => null, // string
     "tool" => null, // string
 ]);
@@ -3157,30 +3188,30 @@ Create an instance: `$kasp_primer_design = $client->KaspPrimerDesign();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `add_secondary_mismatch` | `bool` |  |
-| `allele_a` | `string` |  |
-| `allele_b` | `string` |  |
+| `addSecondaryMismatch` | `bool` |  |
+| `alleleA` | `string` |  |
+| `alleleB` | `string` |  |
 | `gate` | `mixed` |  |
-| `max_amplicon` | `int` |  |
-| `min_amplicon` | `int` |  |
+| `maxAmplicon` | `int` |  |
+| `minAmplicon` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `snp_position` | `int` |  |
+| `snpPosition` | `int` |  |
 | `target` | `string` |  |
-| `target_core_tm` | `float` |  |
+| `targetCoreTm` | `float` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```php
 $kasp_primer_design = $client->KaspPrimerDesign()->create([
-    "allele_a" => null, // string
-    "allele_b" => null, // string
+    "alleleA" => null, // string
+    "alleleB" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "snp_position" => null, // int
+    "snpPosition" => null, // int
     "target" => null, // string
     "tool" => null, // string
 ]);
@@ -3200,7 +3231,7 @@ Create an instance: `$list_tool = $client->ListTool();`
 #### Example: Load
 
 ```php
-// load() returns the bare ListTool record (throws on error).
+// load() returns the ENTITY — call data_get() for the ListTool record (throws on error).
 $list_tool = $client->ListTool()->load();
 ```
 
@@ -3219,17 +3250,17 @@ Create an instance: `$melting_temperature = $client->MeltingTemperature();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `float` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `mixed` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `mixed` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
-| `target_tm` | `float` |  |
-| `tm_tolerance` | `float` |  |
+| `targetTm` | `float` |  |
+| `tmTolerance` | `float` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3260,12 +3291,12 @@ Create an instance: `$motif_finder = $client->MotifFinder();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `motif` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `search_reverse_strand` | `bool` |  |
+| `searchReverseStrand` | `bool` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3331,12 +3362,12 @@ Create an instance: `$oligo_analysi = $client->OligoAnalysi();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `float` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `mixed` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `mixed` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
@@ -3373,9 +3404,9 @@ Create an instance: `$ortholog_map = $client->OrthologMap();`
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `source_species` | `string` |  |
-| `symbol` | `array` |  |
-| `target_species` | `string` |  |
+| `sourceSpecies` | `string` |  |
+| `symbols` | `array` |  |
+| `targetSpecies` | `string` |  |
 | `tool` | `string` |  |
 | `type` | `string` |  |
 
@@ -3386,8 +3417,8 @@ $ortholog_map = $client->OrthologMap()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "symbol" => null, // array
-    "target_species" => null, // string
+    "symbols" => null, // array
+    "targetSpecies" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -3415,8 +3446,8 @@ Create an instance: `$pairwise_alignment = $client->PairwiseAlignment();`
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `seq_a` | `string` |  |
-| `seq_b` | `string` |  |
+| `seqA` | `string` |  |
+| `seqB` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3426,8 +3457,8 @@ $pairwise_alignment = $client->PairwiseAlignment()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "seq_a" => null, // string
-    "seq_b" => null, // string
+    "seqA" => null, // string
+    "seqB" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -3481,8 +3512,8 @@ Create an instance: `$parse_sanger_trace = $client->ParseSangerTrace();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `string` |  |
-| `file_name` | `string` |  |
+| `fileBase64` | `string` |  |
+| `fileName` | `string` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -3493,7 +3524,7 @@ Create an instance: `$parse_sanger_trace = $client->ParseSangerTrace();`
 
 ```php
 $parse_sanger_trace = $client->ParseSangerTrace()->create([
-    "file_base64" => null, // string
+    "fileBase64" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -3592,7 +3623,7 @@ Create an instance: `$plasmid_full_report = $client->PlasmidFullReport();`
 | `result` | `array` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
-| `top_n` | `int` |  |
+| `topN` | `int` |  |
 
 #### Example: Create
 
@@ -3628,7 +3659,7 @@ Create an instance: `$plasmid_identify = $client->PlasmidIdentify();`
 | `result` | `array` |  |
 | `sequence` | `string` |  |
 | `tool` | `string` |  |
-| `top_n` | `int` |  |
+| `topN` | `int` |  |
 
 #### Example: Create
 
@@ -3657,16 +3688,16 @@ Create an instance: `$prime_editing_design = $client->PrimeEditingDesign();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `edit_end` | `int` |  |
-| `edit_start` | `int` |  |
-| `frame_start` | `int` |  |
+| `editEnd` | `int` |  |
+| `editStart` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `inserted_seq` | `string` |  |
+| `insertedSeq` | `string` |  |
 | `ok` | `mixed` |  |
-| `pbs_length` | `int` |  |
+| `pbsLength` | `int` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `rtt_homology` | `int` |  |
+| `rttHomology` | `int` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
 
@@ -3674,8 +3705,8 @@ Create an instance: `$prime_editing_design = $client->PrimeEditingDesign();`
 
 ```php
 $prime_editing_design = $client->PrimeEditingDesign()->create([
-    "edit_end" => null, // int
-    "edit_start" => null, // int
+    "editEnd" => null, // int
+    "editStart" => null, // int
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -3700,13 +3731,13 @@ Create an instance: `$prime_editing_twin_design = $client->PrimeEditingTwinDesig
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `new_sequence` | `string` |  |
+| `newSequence` | `string` |  |
 | `ok` | `mixed` |  |
-| `overlap_length` | `int` |  |
-| `pbs_length` | `int` |  |
+| `overlapLength` | `int` |  |
+| `pbsLength` | `int` |  |
 | `provenance` | `array` |  |
-| `replace_end` | `int` |  |
-| `replace_start` | `int` |  |
+| `replaceEnd` | `int` |  |
+| `replaceStart` | `int` |  |
 | `result` | `array` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
@@ -3715,11 +3746,11 @@ Create an instance: `$prime_editing_twin_design = $client->PrimeEditingTwinDesig
 
 ```php
 $prime_editing_twin_design = $client->PrimeEditingTwinDesign()->create([
-    "new_sequence" => null, // string
+    "newSequence" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
-    "replace_end" => null, // int
-    "replace_start" => null, // int
+    "replaceEnd" => null, // int
+    "replaceStart" => null, // int
     "result" => null, // array
     "target" => null, // string
     "tool" => null, // string
@@ -3741,29 +3772,29 @@ Create an instance: `$primer_design = $client->PrimerDesign();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amplicon_max` | `int` |  |
-| `amplicon_min` | `int` |  |
-| `dntp_mm` | `float` |  |
+| `ampliconMax` | `int` |  |
+| `ampliconMin` | `int` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `mixed` |  |
-| `gc_max` | `float` |  |
-| `gc_min` | `float` |  |
-| `len_max` | `int` |  |
-| `len_min` | `int` |  |
-| `len_opt` | `int` |  |
-| `max_return` | `int` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `gcMax` | `float` |  |
+| `gcMin` | `float` |  |
+| `lenMax` | `int` |  |
+| `lenMin` | `int` |  |
+| `lenOpt` | `int` |  |
+| `maxReturn` | `int` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `mixed` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `target_end` | `int` |  |
-| `target_start` | `int` |  |
+| `targetEnd` | `int` |  |
+| `targetStart` | `int` |  |
 | `template` | `string` |  |
-| `tm_max` | `float` |  |
-| `tm_max_diff` | `float` |  |
-| `tm_min` | `float` |  |
-| `tm_opt` | `float` |  |
+| `tmMax` | `float` |  |
+| `tmMaxDiff` | `float` |  |
+| `tmMin` | `float` |  |
+| `tmOpt` | `float` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -3793,25 +3824,25 @@ Create an instance: `$primer_specificity = $client->PrimerSpecificity();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `forward_primer` | `string` |  |
+| `forwardPrimer` | `string` |  |
 | `gate` | `mixed` |  |
-| `max_mismatch` | `int` |  |
-| `max_product_length` | `int` |  |
+| `maxMismatches` | `int` |  |
+| `maxProductLength` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `reverse_primer` | `string` |  |
+| `reversePrimer` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```php
 $primer_specificity = $client->PrimerSpecificity()->create([
-    "forward_primer" => null, // string
+    "forwardPrimer" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "reverse_primer" => null, // string
+    "reversePrimer" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -3832,10 +3863,10 @@ Create an instance: `$protease_digestion = $client->ProteaseDigestion();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `max_mass` | `float` |  |
-| `max_peptide` | `int` |  |
-| `min_mass` | `float` |  |
-| `missed_cleavage` | `int` |  |
+| `maxMass` | `float` |  |
+| `maxPeptides` | `int` |  |
+| `minMass` | `float` |  |
+| `missedCleavages` | `int` |  |
 | `ok` | `mixed` |  |
 | `protease` | `string` |  |
 | `provenance` | `array` |  |
@@ -3871,7 +3902,7 @@ Create an instance: `$protein_annotate_poll = $client->ProteinAnnotatePoll();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `job_id` | `string` |  |
+| `jobId` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -3881,7 +3912,7 @@ Create an instance: `$protein_annotate_poll = $client->ProteinAnnotatePoll();`
 
 ```php
 $protein_annotate_poll = $client->ProteinAnnotatePoll()->create([
-    "job_id" => null, // string
+    "jobId" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -3906,7 +3937,7 @@ Create an instance: `$protein_annotate_submit = $client->ProteinAnnotateSubmit()
 | --- | --- | --- |
 | `appl` | `string` |  |
 | `gate` | `mixed` |  |
-| `goterm` | `bool` |  |
+| `goterms` | `bool` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -3976,7 +4007,7 @@ Create an instance: `$protein_property = $client->ProteinProperty();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `charge_step` | `float` |  |
+| `chargeStep` | `float` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -4012,7 +4043,7 @@ Create an instance: `$random_sequence = $client->RandomSequence();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `gc_content` | `float` |  |
+| `gcContent` | `float` |  |
 | `kind` | `string` |  |
 | `length` | `int` |  |
 | `ok` | `mixed` |  |
@@ -4047,7 +4078,7 @@ Create an instance: `$restriction_site = $client->RestrictionSite();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme` | `array` |  |
+| `enzymes` | `array` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -4187,10 +4218,10 @@ Create an instance: `$sanger_vs_reference = $client->SangerVsReference();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `string` |  |
-| `file_name` | `string` |  |
+| `fileBase64` | `string` |  |
+| `fileName` | `string` |  |
 | `gate` | `mixed` |  |
-| `min_coverage` | `float` |  |
+| `minCoverage` | `float` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `read` | `string` |  |
@@ -4225,7 +4256,7 @@ Create an instance: `$save_permalink = $client->SavePermalink();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `array` |  |
+| `args` | `array` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -4236,7 +4267,7 @@ Create an instance: `$save_permalink = $client->SavePermalink();`
 
 ```php
 $save_permalink = $client->SavePermalink()->create([
-    "arg" => null, // array
+    "args" => null, // array
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -4263,7 +4294,7 @@ Create an instance: `$seqfile_stat = $client->SeqfileStat();`
 | `input` | `string` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `quality_offset` | `int` |  |
+| `qualityOffset` | `int` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 
@@ -4366,10 +4397,10 @@ Create an instance: `$sequence_report = $client->SequenceReport();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `int` |  |
+| `endPrimerLength` | `int` |  |
 | `gate` | `mixed` |  |
-| `max_orf` | `int` |  |
-| `min_orf_aa` | `int` |  |
+| `maxOrfs` | `int` |  |
+| `minOrfAa` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
@@ -4406,7 +4437,7 @@ Create an instance: `$sequence_search = $client->SequenceSearch();`
 | `db` | `string` |  |
 | `gate` | `mixed` |  |
 | `gene` | `string` |  |
-| `max_result` | `int` |  |
+| `maxResults` | `int` |  |
 | `ok` | `mixed` |  |
 | `organism` | `string` |  |
 | `provenance` | `array` |  |
@@ -4441,10 +4472,10 @@ Create an instance: `$sequencing_readback_verify = $client->SequencingReadbackVe
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `min_supporting_read` | `int` |  |
+| `minSupportingReads` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
-| `read` | `string` |  |
+| `reads` | `string` |  |
 | `reference` | `string` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
@@ -4455,7 +4486,7 @@ Create an instance: `$sequencing_readback_verify = $client->SequencingReadbackVe
 $sequencing_readback_verify = $client->SequencingReadbackVerify()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
-    "read" => null, // string
+    "reads" => null, // string
     "reference" => null, // string
     "result" => null, // array
     "tool" => null, // string
@@ -4477,7 +4508,7 @@ Create an instance: `$session_create = $client->SessionCreate();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `array` |  |
+| `entries` | `array` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -4511,11 +4542,11 @@ Create an instance: `$session_get = $client->SessionGet();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `name` | `array` |  |
+| `names` | `array` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4525,7 +4556,7 @@ $session_get = $client->SessionGet()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "session_id" => null, // string
+    "sessionId" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -4545,15 +4576,15 @@ Create an instance: `$session_run = $client->SessionRun();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `array` |  |
-| `from_session` | `array` |  |
+| `args` | `array` |  |
+| `fromSession` | `array` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
-| `write_back` | `array` |  |
+| `writeBack` | `array` |  |
 
 #### Example: Create
 
@@ -4562,7 +4593,7 @@ $session_run = $client->SessionRun()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "session_id" => null, // string
+    "sessionId" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -4582,23 +4613,23 @@ Create an instance: `$session_set = $client->SessionSet();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `array` |  |
+| `entries` | `array` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `session_id` | `string` |  |
+| `sessionId` | `string` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```php
 $session_set = $client->SessionSet()->create([
-    "entry" => null, // array
+    "entries" => null, // array
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "session_id" => null, // string
+    "sessionId" => null, // string
     "tool" => null, // string
 ]);
 ```
@@ -4619,11 +4650,11 @@ Create an instance: `$sirna_design = $client->SirnaDesign();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `min_reynold` | `int` |  |
+| `minReynolds` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `sh_rna_loop` | `string` |  |
+| `shRnaLoop` | `string` |  |
 | `target` | `string` |  |
 | `tool` | `string` |  |
 
@@ -4654,23 +4685,23 @@ Create an instance: `$site_directed_mutagenesi = $client->SiteDirectedMutagenesi
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
-| `dntp_mm` | `float` |  |
-| `edit_kind` | `string` |  |
-| `frame_start` | `int` |  |
+| `armTmTarget` | `float` |  |
+| `dntpMM` | `float` |  |
+| `editKind` | `string` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
-| `new_base` | `string` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
+| `newBase` | `string` |  |
 | `ok` | `mixed` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `organism` | `string` |  |
 | `position` | `int` |  |
 | `provenance` | `array` |  |
 | `residue` | `int` |  |
 | `result` | `array` |  |
 | `style` | `string` |  |
-| `target_aa` | `string` |  |
+| `targetAa` | `string` |  |
 | `template` | `string` |  |
 | `tool` | `string` |  |
 
@@ -4707,7 +4738,7 @@ Create an instance: `$translate = $client->Translate();`
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `sequence` | `string` |  |
-| `to_stop` | `bool` |  |
+| `toStop` | `bool` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4773,7 +4804,7 @@ Create an instance: `$variant_comparator = $client->VariantComparator();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `coding` | `bool` |  |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
@@ -4810,34 +4841,34 @@ Create an instance: `$verify_assembly = $client->VerifyAssembly();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
+| `armTmTarget` | `float` |  |
 | `circular` | `bool` |  |
-| `claimed_construct` | `string` |  |
+| `claimedConstruct` | `string` |  |
 | `coding` | `bool` |  |
 | `enzyme` | `string` |  |
 | `enzyme3` | `string` |  |
 | `enzyme5` | `string` |  |
-| `fragment` | `array` |  |
-| `fragment_pcr` | `array` |  |
-| `frame_start` | `int` |  |
+| `fragmentPcrs` | `array` |  |
+| `fragments` | `array` |  |
+| `frameStart` | `int` |  |
 | `gate` | `mixed` |  |
 | `insert` | `string` |  |
-| `insert_pcr` | `array` |  |
+| `insertPcr` | `array` |  |
 | `method` | `string` |  |
-| `name` | `array` |  |
+| `names` | `array` |  |
 | `ok` | `mixed` |  |
-| `overlap_len` | `int` |  |
+| `overlapLen` | `int` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
 | `tool` | `string` |  |
 | `vector` | `string` |  |
-| `vector_pcr` | `array` |  |
+| `vectorPcr` | `array` |  |
 
 #### Example: Create
 
 ```php
 $verify_assembly = $client->VerifyAssembly()->create([
-    "claimed_construct" => null, // string
+    "claimedConstruct" => null, // string
     "method" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
@@ -4861,27 +4892,27 @@ Create an instance: `$verify_construct = $client->VerifyConstruct();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claimed_construct` | `string` |  |
-| `expected_frame_start` | `int` |  |
+| `claimedConstruct` | `string` |  |
+| `expectedFrameStart` | `int` |  |
 | `gate` | `mixed` |  |
-| `insert_forward_primer` | `string` |  |
-| `insert_reverse_primer` | `string` |  |
-| `insert_template` | `string` |  |
-| `max_primer_mismatch` | `int` |  |
+| `insertForwardPrimer` | `string` |  |
+| `insertReversePrimer` | `string` |  |
+| `insertTemplate` | `string` |  |
+| `maxPrimerMismatches` | `int` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `template_circular` | `bool` |  |
+| `templateCircular` | `bool` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
 
 ```php
 $verify_construct = $client->VerifyConstruct()->create([
-    "claimed_construct" => null, // string
-    "insert_forward_primer" => null, // string
-    "insert_reverse_primer" => null, // string
-    "insert_template" => null, // string
+    "claimedConstruct" => null, // string
+    "insertForwardPrimer" => null, // string
+    "insertReversePrimer" => null, // string
+    "insertTemplate" => null, // string
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
@@ -4905,7 +4936,7 @@ Create an instance: `$virtual_gel = $client->VirtualGel();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `bool` |  |
-| `enzyme` | `array` |  |
+| `enzymes` | `array` |  |
 | `gate` | `mixed` |  |
 | `ladder` | `string` |  |
 | `ok` | `mixed` |  |
@@ -4945,7 +4976,7 @@ Create an instance: `$volcano_plot_data = $client->VolcanoPlotData();`
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `result` | `array` |  |
-| `row` | `array` |  |
+| `rows` | `array` |  |
 | `tool` | `string` |  |
 
 #### Example: Create
@@ -4955,7 +4986,7 @@ $volcano_plot_data = $client->VolcanoPlotData()->create([
     "ok" => null, // mixed
     "provenance" => null, // array
     "result" => null, // array
-    "row" => null, // array
+    "rows" => null, // array
     "tool" => null, // string
 ]);
 ```
@@ -4976,7 +5007,7 @@ Create an instance: `$web_search = $client->WebSearch();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `mixed` |  |
-| `max_result` | `float` |  |
+| `max_results` | `float` |  |
 | `ok` | `mixed` |  |
 | `provenance` | `array` |  |
 | `query` | `string` |  |

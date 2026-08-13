@@ -9,7 +9,7 @@
         "result": {},
         "sequence": "s55",
         "tool": "s56",
-        "top_n": "s57",
+        "topN": "s57",
         "id": "PLASMID_FULL_REPORT00"
       },
       "PLASMID_FULL_REPORT01": {
@@ -20,7 +20,7 @@
         "result": {},
         "sequence": "sa5",
         "tool": "sa6",
-        "top_n": "sa7",
+        "topN": "sa7",
         "id": "PLASMID_FULL_REPORT01"
       },
       "PLASMID_FULL_REPORT02": {
@@ -31,7 +31,7 @@
         "result": {},
         "sequence": "sf5",
         "tool": "sf6",
-        "top_n": "sf7",
+        "topN": "sf7",
         "id": "PLASMID_FULL_REPORT02"
       }
     }
@@ -46,7 +46,7 @@
         "result": {},
         "sequence": "s145",
         "tool": "s146",
-        "top_n": "s147"
+        "topN": "s147"
       }
     }
   }

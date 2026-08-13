@@ -11,22 +11,22 @@ main: kit: entity: protease_digestion: {
       type: "`$ANY`"
     }
     {
-      name: "max_mass"
+      name: "maxMass"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "max_peptide"
+      name: "maxPeptides"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "min_mass"
+      name: "minMass"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "missed_cleavage"
+      name: "missedCleavages"
       req: false
       type: "`$INTEGER`"
     }
@@ -74,7 +74,14 @@ main: kit: entity: protease_digestion: {
             "protease_digestion"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              maxMass: "`reqdata.max_mass`"
+              maxPeptides: "`reqdata.max_peptide`"
+              minMass: "`reqdata.min_mass`"
+              missedCleavages: "`reqdata.missed_cleavage`"
+              protease: "`reqdata.protease`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

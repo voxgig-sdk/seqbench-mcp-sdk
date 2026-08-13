@@ -6,12 +6,12 @@ main: kit: entity: sanger_vs_reference: {
 
   fields: [
     {
-      name: "file_base64"
+      name: "fileBase64"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "file_name"
+      name: "fileName"
       req: false
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: sanger_vs_reference: {
       type: "`$ANY`"
     }
     {
-      name: "min_coverage"
+      name: "minCoverage"
       req: false
       type: "`$NUMBER`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: sanger_vs_reference: {
             "sanger_vs_reference"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              fileBase64: "`reqdata.file_base64`"
+              fileName: "`reqdata.file_name`"
+              minCoverage: "`reqdata.min_coverage`"
+              read: "`reqdata.read`"
+              reference: "`reqdata.reference`"
+            }
             res: "`body`"
           }
         }

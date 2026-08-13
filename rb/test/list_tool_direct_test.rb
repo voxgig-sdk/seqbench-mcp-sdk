@@ -59,16 +59,16 @@ def list_tool_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "SEQBENCHMCP_TEST_LIST_TOOL_ENTID" => {},
-    "SEQBENCHMCP_TEST_LIVE" => "FALSE",
-    "SEQBENCHMCP_APIKEY" => "NONE",
+    "SEQBENCH_MCP_TEST_LIST_TOOL_ENTID" => {},
+    "SEQBENCH_MCP_TEST_LIVE" => "FALSE",
+    "SEQBENCH_MCP_APIKEY" => "NONE",
   })
 
-  live = env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  live = env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["SEQBENCHMCP_APIKEY"],
+      "apikey" => env["SEQBENCH_MCP_APIKEY"],
     }
     client = SeqbenchMcpSDK.new(merged_opts)
     return {

@@ -6,22 +6,22 @@ main: kit: entity: site_directed_mutagenesi: {
 
   fields: [
     {
-      name: "arm_tm_target"
+      name: "armTmTarget"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "dntp_mm"
+      name: "dntpMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "edit_kind"
+      name: "editKind"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,17 +31,17 @@ main: kit: entity: site_directed_mutagenesi: {
       type: "`$ANY`"
     }
     {
-      name: "mg_mm"
+      name: "mgMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "na_mm"
+      name: "naMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "new_base"
+      name: "newBase"
       req: false
       type: "`$STRING`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: site_directed_mutagenesi: {
       type: "`$ANY`"
     }
     {
-      name: "oligo_nm"
+      name: "oligoNM"
       req: false
       type: "`$NUMBER`"
     }
@@ -86,7 +86,7 @@ main: kit: entity: site_directed_mutagenesi: {
       type: "`$STRING`"
     }
     {
-      name: "target_aa"
+      name: "targetAa"
       req: false
       type: "`$STRING`"
     }
@@ -114,7 +114,22 @@ main: kit: entity: site_directed_mutagenesi: {
             "site_directed_mutagenesis"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              armTmTarget: "`reqdata.arm_tm_target`"
+              dntpMM: "`reqdata.dntp_mm`"
+              editKind: "`reqdata.edit_kind`"
+              frameStart: "`reqdata.frame_start`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              newBase: "`reqdata.new_base`"
+              oligoNM: "`reqdata.oligo_nm`"
+              organism: "`reqdata.organism`"
+              position: "`reqdata.position`"
+              residue: "`reqdata.residue`"
+              style: "`reqdata.style`"
+              targetAa: "`reqdata.target_aa`"
+              template: "`reqdata.template`"
+            }
             res: "`body`"
           }
         }

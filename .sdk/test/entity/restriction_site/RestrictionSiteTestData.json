@@ -2,7 +2,7 @@
   "existing": {
     "restriction_site": {
       "RESTRICTION_SITE00": {
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s47",
         "ok": "s48",
         "provenance": {},
@@ -12,7 +12,7 @@
         "id": "RESTRICTION_SITE00"
       },
       "RESTRICTION_SITE01": {
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s8d",
         "ok": "s8e",
         "provenance": {},
@@ -22,7 +22,7 @@
         "id": "RESTRICTION_SITE01"
       },
       "RESTRICTION_SITE02": {
-        "enzyme": [],
+        "enzymes": [],
         "gate": "sd3",
         "ok": "sd4",
         "provenance": {},
@@ -36,7 +36,7 @@
   "new": {
     "restriction_site": {
       "restriction_site_ref01": {
-        "enzyme": [],
+        "enzymes": [],
         "gate": "s119",
         "ok": "s11a",
         "provenance": {},

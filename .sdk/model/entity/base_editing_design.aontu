@@ -11,7 +11,7 @@ main: kit: entity: base_editing_design: {
       type: "`$STRING`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: base_editing_design: {
       type: "`$STRING`"
     }
     {
-      name: "target_position"
+      name: "targetPosition"
       req: false
       type: "`$INTEGER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: base_editing_design: {
             "base_editing_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              editor: "`reqdata.editor`"
+              frameStart: "`reqdata.frame_start`"
+              target: "`reqdata.target`"
+              targetPosition: "`reqdata.target_position`"
+            }
             res: "`body`"
           }
         }

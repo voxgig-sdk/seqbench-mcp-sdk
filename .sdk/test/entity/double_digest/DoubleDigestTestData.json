@@ -2,8 +2,8 @@
   "existing": {
     "double_digest": {
       "DOUBLE_DIGEST00": {
-        "enzyme_a": "s46",
-        "enzyme_b": "s47",
+        "enzymeA": "s46",
+        "enzymeB": "s47",
         "gate": "s48",
         "ok": "s49",
         "provenance": {},
@@ -12,8 +12,8 @@
         "id": "DOUBLE_DIGEST00"
       },
       "DOUBLE_DIGEST01": {
-        "enzyme_a": "s8c",
-        "enzyme_b": "s8d",
+        "enzymeA": "s8c",
+        "enzymeB": "s8d",
         "gate": "s8e",
         "ok": "s8f",
         "provenance": {},
@@ -22,8 +22,8 @@
         "id": "DOUBLE_DIGEST01"
       },
       "DOUBLE_DIGEST02": {
-        "enzyme_a": "sd2",
-        "enzyme_b": "sd3",
+        "enzymeA": "sd2",
+        "enzymeB": "sd3",
         "gate": "sd4",
         "ok": "sd5",
         "provenance": {},
@@ -36,8 +36,8 @@
   "new": {
     "double_digest": {
       "double_digest_ref01": {
-        "enzyme_a": "s118",
-        "enzyme_b": "s119",
+        "enzymeA": "s118",
+        "enzymeB": "s119",
         "gate": "s11a",
         "ok": "s11b",
         "provenance": {},

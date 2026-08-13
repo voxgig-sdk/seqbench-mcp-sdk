@@ -6,17 +6,17 @@ main: kit: entity: expression_heatmap_cluster: {
 
   fields: [
     {
-      name: "cluster_col"
+      name: "clusterCols"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "cluster_row"
+      name: "clusterRows"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "distance_metric"
+      name: "distanceMetric"
       req: false
       type: "`$STRING`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: expression_heatmap_cluster: {
       type: "`$ANY`"
     }
     {
-      name: "gene"
+      name: "genes"
       req: true
       type: "`$ARRAY`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: expression_heatmap_cluster: {
       type: "`$OBJECT`"
     }
     {
-      name: "sample"
+      name: "samples"
       req: true
       type: "`$ARRAY`"
     }
@@ -61,12 +61,12 @@ main: kit: entity: expression_heatmap_cluster: {
       type: "`$STRING`"
     }
     {
-      name: "value"
+      name: "values"
       req: true
       type: "`$ARRAY`"
     }
     {
-      name: "z_score_row"
+      name: "zScoreRows"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -84,7 +84,16 @@ main: kit: entity: expression_heatmap_cluster: {
             "expression_heatmap_cluster"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              clusterCols: "`reqdata.cluster_col`"
+              clusterRows: "`reqdata.cluster_row`"
+              distanceMetric: "`reqdata.distance_metric`"
+              genes: "`reqdata.gene`"
+              linkage: "`reqdata.linkage`"
+              samples: "`reqdata.sample`"
+              values: "`reqdata.value`"
+              zScoreRows: "`reqdata.z_score_row`"
+            }
             res: "`body`"
           }
         }

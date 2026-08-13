@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import SeqbenchMcpControl
-from core.error import SeqbenchMcpError
-from core.result import SeqbenchMcpResult
-from core.spec import SeqbenchMcpSpec
+from seqbenchmcp_sdk.config import make_config
+from seqbenchmcp_sdk.features import _make_feature
+from seqbenchmcp_sdk.core.control import SeqbenchMcpControl
+from seqbenchmcp_sdk.core.error import SeqbenchMcpError
+from seqbenchmcp_sdk.core.result import SeqbenchMcpResult
+from seqbenchmcp_sdk.core.spec import SeqbenchMcpSpec
 
 
 # True when this SDK was generated with the named feature.

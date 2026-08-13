@@ -3,33 +3,33 @@
     "sirna_design": {
       "SIRNA_DESIGN00": {
         "gate": "s50",
-        "min_reynold": "s51",
+        "minReynolds": "s51",
         "ok": "s52",
         "provenance": {},
         "result": {},
-        "sh_rna_loop": "s55",
+        "shRnaLoop": "s55",
         "target": "s56",
         "tool": "s57",
         "id": "SIRNA_DESIGN00"
       },
       "SIRNA_DESIGN01": {
         "gate": "sa0",
-        "min_reynold": "sa1",
+        "minReynolds": "sa1",
         "ok": "sa2",
         "provenance": {},
         "result": {},
-        "sh_rna_loop": "sa5",
+        "shRnaLoop": "sa5",
         "target": "sa6",
         "tool": "sa7",
         "id": "SIRNA_DESIGN01"
       },
       "SIRNA_DESIGN02": {
         "gate": "sf0",
-        "min_reynold": "sf1",
+        "minReynolds": "sf1",
         "ok": "sf2",
         "provenance": {},
         "result": {},
-        "sh_rna_loop": "sf5",
+        "shRnaLoop": "sf5",
         "target": "sf6",
         "tool": "sf7",
         "id": "SIRNA_DESIGN02"
@@ -40,11 +40,11 @@
     "sirna_design": {
       "sirna_design_ref01": {
         "gate": "s140",
-        "min_reynold": "s141",
+        "minReynolds": "s141",
         "ok": "s142",
         "provenance": {},
         "result": {},
-        "sh_rna_loop": "s145",
+        "shRnaLoop": "s145",
         "target": "s146",
         "tool": "s147"
       }

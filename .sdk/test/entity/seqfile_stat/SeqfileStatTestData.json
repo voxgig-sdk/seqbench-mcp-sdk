@@ -6,7 +6,7 @@
         "input": "s47",
         "ok": "s48",
         "provenance": {},
-        "quality_offset": "s4a",
+        "qualityOffset": "s4a",
         "result": {},
         "tool": "s4c",
         "id": "SEQFILE_STAT00"
@@ -16,7 +16,7 @@
         "input": "s8d",
         "ok": "s8e",
         "provenance": {},
-        "quality_offset": "s90",
+        "qualityOffset": "s90",
         "result": {},
         "tool": "s92",
         "id": "SEQFILE_STAT01"
@@ -26,7 +26,7 @@
         "input": "sd3",
         "ok": "sd4",
         "provenance": {},
-        "quality_offset": "sd6",
+        "qualityOffset": "sd6",
         "result": {},
         "tool": "sd8",
         "id": "SEQFILE_STAT02"
@@ -40,7 +40,7 @@
         "input": "s119",
         "ok": "s11a",
         "provenance": {},
-        "quality_offset": "s11c",
+        "qualityOffset": "s11c",
         "result": {},
         "tool": "s11e"
       }

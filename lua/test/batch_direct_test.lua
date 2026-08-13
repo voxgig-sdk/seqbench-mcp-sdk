@@ -60,16 +60,16 @@ function batch_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["SEQBENCHMCP_TEST_BATCH_ENTID"] = {},
-    ["SEQBENCHMCP_TEST_LIVE"] = "FALSE",
-    ["SEQBENCHMCP_APIKEY"] = "NONE",
+    ["SEQBENCH_MCP_TEST_BATCH_ENTID"] = {},
+    ["SEQBENCH_MCP_TEST_LIVE"] = "FALSE",
+    ["SEQBENCH_MCP_APIKEY"] = "NONE",
   })
 
-  local live = env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  local live = env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["SEQBENCHMCP_APIKEY"],
+      apikey = env["SEQBENCH_MCP_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

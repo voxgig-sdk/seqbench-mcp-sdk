@@ -11,7 +11,7 @@ main: kit: entity: motif_finder: {
       type: "`$ANY`"
     }
     {
-      name: "max_mismatch"
+      name: "maxMismatches"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: motif_finder: {
       type: "`$OBJECT`"
     }
     {
-      name: "search_reverse_strand"
+      name: "searchReverseStrand"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: motif_finder: {
             "motif_finder"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              maxMismatches: "`reqdata.max_mismatch`"
+              motif: "`reqdata.motif`"
+              searchReverseStrand: "`reqdata.search_reverse_strand`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

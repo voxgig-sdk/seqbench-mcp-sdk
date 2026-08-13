@@ -26,8 +26,8 @@ import {
 describe('PlasmidDeepAnnotateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('PlasmidDeepAnnotateEntity', async () => {
     const plasmid_deep_annotate_ref01_ent = client.PlasmidDeepAnnotate()
     let plasmid_deep_annotate_ref01_data = setup.data.new.plasmid_deep_annotate['plasmid_deep_annotate_ref01']
 
-    plasmid_deep_annotate_ref01_data = await plasmid_deep_annotate_ref01_ent.create(plasmid_deep_annotate_ref01_data)
+    plasmid_deep_annotate_ref01_data = (await plasmid_deep_annotate_ref01_ent.create(plasmid_deep_annotate_ref01_data)).data()
     assert(null != plasmid_deep_annotate_ref01_data)
 
 

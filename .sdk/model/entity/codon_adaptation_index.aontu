@@ -6,7 +6,7 @@ main: kit: entity: codon_adaptation_index: {
 
   fields: [
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: codon_adaptation_index: {
       type: "`$OBJECT`"
     }
     {
-      name: "rare_threshold"
+      name: "rareThreshold"
       req: false
       type: "`$NUMBER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: codon_adaptation_index: {
             "codon_adaptation_index"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              frameStart: "`reqdata.frame_start`"
+              organism: "`reqdata.organism`"
+              rareThreshold: "`reqdata.rare_threshold`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

@@ -59,7 +59,11 @@ main: kit: entity: protein_hydrophobicity: {
             "protein_hydrophobicity"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              scale: "`reqdata.scale`"
+              sequence: "`reqdata.sequence`"
+              window: "`reqdata.window`"
+            }
             res: "`body`"
           }
         }

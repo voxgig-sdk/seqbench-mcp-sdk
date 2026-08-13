@@ -54,7 +54,10 @@ main: kit: entity: plasmid_deep_annotate: {
             "plasmid_deep_annotate"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              circular: "`reqdata.circular`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

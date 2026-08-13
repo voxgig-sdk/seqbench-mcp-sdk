@@ -6,12 +6,12 @@ main: kit: entity: double_digest: {
 
   fields: [
     {
-      name: "enzyme_a"
+      name: "enzymeA"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "enzyme_b"
+      name: "enzymeB"
       req: true
       type: "`$STRING`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: double_digest: {
             "double_digest"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              enzymeA: "`reqdata.enzyme_a`"
+              enzymeB: "`reqdata.enzyme_b`"
+            }
             res: "`body`"
           }
         }

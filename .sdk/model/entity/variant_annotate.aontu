@@ -54,7 +54,10 @@ main: kit: entity: variant_annotate: {
             "variant_annotate"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              assembly: "`reqdata.assembly`"
+              variant: "`reqdata.variant`"
+            }
             res: "`body`"
           }
         }

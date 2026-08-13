@@ -11,7 +11,7 @@ main: kit: entity: id_map_poll: {
       type: "`$ANY`"
     }
     {
-      name: "job_id"
+      name: "jobId"
       req: true
       type: "`$STRING`"
     }
@@ -49,7 +49,9 @@ main: kit: entity: id_map_poll: {
             "id_map_poll"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              jobId: "`reqdata.job_id`"
+            }
             res: "`body`"
           }
         }

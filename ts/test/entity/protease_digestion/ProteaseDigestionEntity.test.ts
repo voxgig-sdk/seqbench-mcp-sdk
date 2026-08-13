@@ -26,8 +26,8 @@ import {
 describe('ProteaseDigestionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ProteaseDigestionEntity', async () => {
     const protease_digestion_ref01_ent = client.ProteaseDigestion()
     let protease_digestion_ref01_data = setup.data.new.protease_digestion['protease_digestion_ref01']
 
-    protease_digestion_ref01_data = await protease_digestion_ref01_ent.create(protease_digestion_ref01_data)
+    protease_digestion_ref01_data = (await protease_digestion_ref01_ent.create(protease_digestion_ref01_data)).data()
     assert(null != protease_digestion_ref01_data)
 
 

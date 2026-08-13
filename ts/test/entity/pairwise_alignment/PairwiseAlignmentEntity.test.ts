@@ -26,8 +26,8 @@ import {
 describe('PairwiseAlignmentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('PairwiseAlignmentEntity', async () => {
     const pairwise_alignment_ref01_ent = client.PairwiseAlignment()
     let pairwise_alignment_ref01_data = setup.data.new.pairwise_alignment['pairwise_alignment_ref01']
 
-    pairwise_alignment_ref01_data = await pairwise_alignment_ref01_ent.create(pairwise_alignment_ref01_data)
+    pairwise_alignment_ref01_data = (await pairwise_alignment_ref01_ent.create(pairwise_alignment_ref01_data)).data()
     assert(null != pairwise_alignment_ref01_data)
 
 

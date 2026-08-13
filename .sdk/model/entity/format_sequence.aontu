@@ -6,7 +6,7 @@ main: kit: entity: format_sequence: {
 
   fields: [
     {
-      name: "case_mode"
+      name: "caseMode"
       req: false
       type: "`$STRING`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: format_sequence: {
       type: "`$STRING`"
     }
     {
-      name: "strip_non_letter"
+      name: "stripNonLetters"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -74,7 +74,14 @@ main: kit: entity: format_sequence: {
             "format_sequence"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              caseMode: "`reqdata.case_mode`"
+              convert: "`reqdata.convert`"
+              reverse: "`reqdata.reverse`"
+              sequence: "`reqdata.sequence`"
+              stripNonLetters: "`reqdata.strip_non_letter`"
+              width: "`reqdata.width`"
+            }
             res: "`body`"
           }
         }

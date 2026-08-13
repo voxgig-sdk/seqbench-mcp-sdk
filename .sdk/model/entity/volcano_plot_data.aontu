@@ -26,7 +26,7 @@ main: kit: entity: volcano_plot_data: {
       type: "`$OBJECT`"
     }
     {
-      name: "row"
+      name: "rows"
       req: true
       type: "`$ARRAY`"
     }
@@ -49,7 +49,9 @@ main: kit: entity: volcano_plot_data: {
             "volcano_plot_data"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              rows: "`reqdata.row`"
+            }
             res: "`body`"
           }
         }

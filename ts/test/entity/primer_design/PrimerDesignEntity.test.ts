@@ -26,8 +26,8 @@ import {
 describe('PrimerDesignEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('PrimerDesignEntity', async () => {
     const primer_design_ref01_ent = client.PrimerDesign()
     let primer_design_ref01_data = setup.data.new.primer_design['primer_design_ref01']
 
-    primer_design_ref01_data = await primer_design_ref01_ent.create(primer_design_ref01_data)
+    primer_design_ref01_data = (await primer_design_ref01_ent.create(primer_design_ref01_data)).data()
     assert(null != primer_design_ref01_data)
 
 

@@ -33,7 +33,7 @@ class SessionRunEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set SEQBENCHMCP_TEST_SESSION_RUN_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set SEQBENCH_MCP_TEST_SESSION_RUN_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -44,7 +44,7 @@ class SessionRunEntityTest extends TestCase
             Vs::getpath($setup["data"], "new.session_run"), "session_run_ref01"));
 
         $session_run_ref01_data_result = $session_run_ref01_ent->create($session_run_ref01_data, null);
-        $session_run_ref01_data = Helpers::to_map($session_run_ref01_data_result);
+        $session_run_ref01_data = Helpers::to_map(is_object($session_run_ref01_data_result) && method_exists($session_run_ref01_data_result, 'data_get') ? $session_run_ref01_data_result->data_get() : $session_run_ref01_data_result);
         $this->assertNotNull($session_run_ref01_data);
 
     }
@@ -72,39 +72,39 @@ function session_run_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("SEQBENCHMCP_TEST_SESSION_RUN_ENTID");
+    $entid_env_raw = getenv("SEQBENCH_MCP_TEST_SESSION_RUN_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "SEQBENCHMCP_TEST_SESSION_RUN_ENTID" => $idmap,
-        "SEQBENCHMCP_TEST_LIVE" => "FALSE",
-        "SEQBENCHMCP_TEST_EXPLAIN" => "FALSE",
-        "SEQBENCHMCP_APIKEY" => "NONE",
+        "SEQBENCH_MCP_TEST_SESSION_RUN_ENTID" => $idmap,
+        "SEQBENCH_MCP_TEST_LIVE" => "FALSE",
+        "SEQBENCH_MCP_TEST_EXPLAIN" => "FALSE",
+        "SEQBENCH_MCP_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["SEQBENCHMCP_TEST_SESSION_RUN_ENTID"]);
+        $env["SEQBENCH_MCP_TEST_SESSION_RUN_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["SEQBENCHMCP_TEST_LIVE"] === "TRUE") {
+    if ($env["SEQBENCH_MCP_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["SEQBENCHMCP_APIKEY"],
+                "apikey" => $env["SEQBENCH_MCP_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new SeqbenchMcpSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["SEQBENCHMCP_TEST_LIVE"] === "TRUE";
+    $live = $env["SEQBENCH_MCP_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["SEQBENCHMCP_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["SEQBENCH_MCP_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

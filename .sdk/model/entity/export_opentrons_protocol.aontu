@@ -16,7 +16,7 @@ main: kit: entity: export_opentrons_protocol: {
       type: "`$ANY`"
     }
     {
-      name: "protocol_name"
+      name: "protocolName"
       req: false
       type: "`$STRING`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: export_opentrons_protocol: {
       type: "`$OBJECT`"
     }
     {
-      name: "reaction"
+      name: "reactions"
       req: true
       type: "`$ARRAY`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: export_opentrons_protocol: {
             "export_opentrons_protocol"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              protocolName: "`reqdata.protocol_name`"
+              reactions: "`reqdata.reaction`"
+            }
             res: "`body`"
           }
         }

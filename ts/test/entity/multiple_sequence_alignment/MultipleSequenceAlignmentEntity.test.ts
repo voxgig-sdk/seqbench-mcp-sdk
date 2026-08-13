@@ -26,8 +26,8 @@ import {
 describe('MultipleSequenceAlignmentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('MultipleSequenceAlignmentEntity', async () => {
     const multiple_sequence_alignment_ref01_ent = client.MultipleSequenceAlignment()
     let multiple_sequence_alignment_ref01_data = setup.data.new.multiple_sequence_alignment['multiple_sequence_alignment_ref01']
 
-    multiple_sequence_alignment_ref01_data = await multiple_sequence_alignment_ref01_ent.create(multiple_sequence_alignment_ref01_data)
+    multiple_sequence_alignment_ref01_data = (await multiple_sequence_alignment_ref01_ent.create(multiple_sequence_alignment_ref01_data)).data()
     assert(null != multiple_sequence_alignment_ref01_data)
 
 

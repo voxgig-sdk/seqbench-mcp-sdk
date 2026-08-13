@@ -26,8 +26,8 @@ import {
 describe('SeqfileStatEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('SeqfileStatEntity', async () => {
     const seqfile_stat_ref01_ent = client.SeqfileStat()
     let seqfile_stat_ref01_data = setup.data.new.seqfile_stat['seqfile_stat_ref01']
 
-    seqfile_stat_ref01_data = await seqfile_stat_ref01_ent.create(seqfile_stat_ref01_data)
+    seqfile_stat_ref01_data = (await seqfile_stat_ref01_ent.create(seqfile_stat_ref01_data)).data()
     assert(null != seqfile_stat_ref01_data)
 
 

@@ -6,7 +6,7 @@ main: kit: entity: cloning_simulate: {
 
   fields: [
     {
-      name: "arm_tm_target"
+      name: "armTmTarget"
       req: false
       type: "`$NUMBER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: cloning_simulate: {
       type: "`$STRING`"
     }
     {
-      name: "fragment"
+      name: "fragments"
       req: false
       type: "`$ARRAY`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: cloning_simulate: {
       type: "`$STRING`"
     }
     {
-      name: "name"
+      name: "names"
       req: false
       type: "`$ARRAY`"
     }
@@ -61,7 +61,7 @@ main: kit: entity: cloning_simulate: {
       type: "`$ANY`"
     }
     {
-      name: "overlap_len"
+      name: "overlapLen"
       req: false
       type: "`$INTEGER`"
     }
@@ -99,7 +99,19 @@ main: kit: entity: cloning_simulate: {
             "cloning_simulate"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              armTmTarget: "`reqdata.arm_tm_target`"
+              circular: "`reqdata.circular`"
+              enzyme: "`reqdata.enzyme`"
+              enzyme3: "`reqdata.enzyme3`"
+              enzyme5: "`reqdata.enzyme5`"
+              fragments: "`reqdata.fragment`"
+              insert: "`reqdata.insert`"
+              method: "`reqdata.method`"
+              names: "`reqdata.name`"
+              overlapLen: "`reqdata.overlap_len`"
+              vector: "`reqdata.vector`"
+            }
             res: "`body`"
           }
         }

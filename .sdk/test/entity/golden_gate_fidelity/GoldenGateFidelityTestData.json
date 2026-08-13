@@ -2,38 +2,38 @@
   "existing": {
     "golden_gate_fidelity": {
       "GOLDEN_GATE_FIDELITY00": {
-        "compare_to_named_set": "s5a",
+        "compareToNamedSet": "s5a",
         "dataset": "s5b",
         "gate": "s5c",
         "ok": "s5d",
-        "overhang": [],
+        "overhangs": [],
         "provenance": {},
         "result": {},
-        "risk_threshold": 97,
+        "riskThreshold": 97,
         "tool": "s62",
         "id": "GOLDEN_GATE_FIDELITY00"
       },
       "GOLDEN_GATE_FIDELITY01": {
-        "compare_to_named_set": "sb4",
+        "compareToNamedSet": "sb4",
         "dataset": "sb5",
         "gate": "sb6",
         "ok": "sb7",
-        "overhang": [],
+        "overhangs": [],
         "provenance": {},
         "result": {},
-        "risk_threshold": 187,
+        "riskThreshold": 187,
         "tool": "sbc",
         "id": "GOLDEN_GATE_FIDELITY01"
       },
       "GOLDEN_GATE_FIDELITY02": {
-        "compare_to_named_set": "s10e",
+        "compareToNamedSet": "s10e",
         "dataset": "s10f",
         "gate": "s110",
         "ok": "s111",
-        "overhang": [],
+        "overhangs": [],
         "provenance": {},
         "result": {},
-        "risk_threshold": 277,
+        "riskThreshold": 277,
         "tool": "s116",
         "id": "GOLDEN_GATE_FIDELITY02"
       }
@@ -42,14 +42,14 @@
   "new": {
     "golden_gate_fidelity": {
       "golden_gate_fidelity_ref01": {
-        "compare_to_named_set": "s168",
+        "compareToNamedSet": "s168",
         "dataset": "s169",
         "gate": "s16a",
         "ok": "s16b",
-        "overhang": [],
+        "overhangs": [],
         "provenance": {},
         "result": {},
-        "risk_threshold": 367,
+        "riskThreshold": 367,
         "tool": "s170"
       }
     }

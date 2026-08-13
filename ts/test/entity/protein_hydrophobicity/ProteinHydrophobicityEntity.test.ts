@@ -26,8 +26,8 @@ import {
 describe('ProteinHydrophobicityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ProteinHydrophobicityEntity', async () => {
     const protein_hydrophobicity_ref01_ent = client.ProteinHydrophobicity()
     let protein_hydrophobicity_ref01_data = setup.data.new.protein_hydrophobicity['protein_hydrophobicity_ref01']
 
-    protein_hydrophobicity_ref01_data = await protein_hydrophobicity_ref01_ent.create(protein_hydrophobicity_ref01_data)
+    protein_hydrophobicity_ref01_data = (await protein_hydrophobicity_ref01_ent.create(protein_hydrophobicity_ref01_data)).data()
     assert(null != protein_hydrophobicity_ref01_data)
 
 

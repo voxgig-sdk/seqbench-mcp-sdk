@@ -230,8 +230,29 @@ class SeqbenchMcpSDK {
   }
 
 
+  // Raw endpoint access is operator-controllable, like every entity op.
+  // Blocking it means denying BOTH the 'direct' and 'graphql' tokens, since
+  // either one reaches the same endpoint.
   async direct(fetchargs?: any) {
+    if (!this._options.allow.op.includes('direct')) {
+      return {
+        ok: false,
+        err: new Error('SeqbenchMcpSDK: direct: operation not allowed by' +
+          ' SDK option allow.op value: "' + this._options.allow.op + '"'),
+      }
+    }
+
+    return this._rawRequest(fetchargs)
+  }
+
+
+  // Ungated request path shared by direct() and graphql(), each of which
+  // checks its own allow.op token first. Private, rather than a flag on
+  // fetchargs: a caller-supplied marker would let anyone opt straight back
+  // out of the gate by passing it.
+  async _rawRequest(fetchargs?: any) {
     const utility = this._utility
+
     const fetcher = utility.fetcher
     const makeContext = utility.makeContext
 
@@ -292,598 +313,822 @@ class SeqbenchMcpSDK {
 
 
 
+  // Raw GraphQL access: the pressure valve that makes the generated
+  // surface's deliberate omissions (per-call selection sets, typed filter
+  // builders, batching, subscriptions) livable — the whole schema stays
+  // reachable.
+  //
+  // Thin wrapper over the same prepare/fetch path `direct` uses, with the
+  // one thing raw `direct` cannot do for GraphQL: a GraphQL failure rides
+  // HTTP 200 as a top-level `errors` array, so status alone would report a
+  // failed query as ok.
+  //
+  // NOTE: like `direct`, this bypasses the feature pipeline — no retry,
+  // ratelimit or paging features apply.
+  async graphql(query: string, variables?: any, ctrl?: any) {
+    const options = this._options
+
+    if (!options.allow.op.includes('graphql')) {
+      return {
+        ok: false,
+        err: new Error('SeqbenchMcpSDK: graphql: operation not allowed by' +
+          ' SDK option allow.op value: "' + options.allow.op + '"'),
+      }
+    }
+
+    const res: any = await this._rawRequest({
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: { query, variables: variables || {} },
+      ctrl,
+    })
+
+    if (res instanceof Error) {
+      return res
+    }
+
+    // Errors are read BEFORE any status check: a GraphQL parse or validation
+    // failure comes back as HTTP 400 carrying the standard { errors: [...] }
+    // body, and the raw path represents a non-2xx as { ok: false } with no
+    // err — so returning early on status would discard the server's own
+    // diagnostics, which are the only useful part of that response.
+    const errors = null == res.data ? undefined : res.data.errors
+
+    if (null != errors && Array.isArray(errors) && 0 < errors.length) {
+      const first = errors[0] || {}
+      const err: any = new Error('SeqbenchMcpSDK: graphql: ' +
+        (first.message || 'graphql error'))
+      err.graphql = errors
+      return { ok: false, status: res.status, headers: res.headers, err, data: res.data }
+    }
+
+    return res
+  }
+
+
+
   // Entity access: `client.AlphafoldLookup().list()` / `client.AlphafoldLookup().load({ id })`.
-  AlphafoldLookup(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AlphafoldLookup(entopts?: Record<string, any>) {
     const self = this
-    return new AlphafoldLookupEntity(self,data)
+    return new AlphafoldLookupEntity(self, entopts)
   }
 
 
   // Entity access: `client.AsoDesign().list()` / `client.AsoDesign().load({ id })`.
-  AsoDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AsoDesign(entopts?: Record<string, any>) {
     const self = this
-    return new AsoDesignEntity(self,data)
+    return new AsoDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.BaseEditingDesign().list()` / `client.BaseEditingDesign().load({ id })`.
-  BaseEditingDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BaseEditingDesign(entopts?: Record<string, any>) {
     const self = this
-    return new BaseEditingDesignEntity(self,data)
+    return new BaseEditingDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.Batch().list()` / `client.Batch().load({ id })`.
-  Batch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Batch(entopts?: Record<string, any>) {
     const self = this
-    return new BatchEntity(self,data)
+    return new BatchEntity(self, entopts)
   }
 
 
   // Entity access: `client.BatchWorkflow().list()` / `client.BatchWorkflow().load({ id })`.
-  BatchWorkflow(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  BatchWorkflow(entopts?: Record<string, any>) {
     const self = this
-    return new BatchWorkflowEntity(self,data)
+    return new BatchWorkflowEntity(self, entopts)
   }
 
 
   // Entity access: `client.CharacterizeSequence().list()` / `client.CharacterizeSequence().load({ id })`.
-  CharacterizeSequence(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CharacterizeSequence(entopts?: Record<string, any>) {
     const self = this
-    return new CharacterizeSequenceEntity(self,data)
+    return new CharacterizeSequenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.CloningSimulate().list()` / `client.CloningSimulate().load({ id })`.
-  CloningSimulate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CloningSimulate(entopts?: Record<string, any>) {
     const self = this
-    return new CloningSimulateEntity(self,data)
+    return new CloningSimulateEntity(self, entopts)
   }
 
 
   // Entity access: `client.CodonAdaptationIndex().list()` / `client.CodonAdaptationIndex().load({ id })`.
-  CodonAdaptationIndex(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CodonAdaptationIndex(entopts?: Record<string, any>) {
     const self = this
-    return new CodonAdaptationIndexEntity(self,data)
+    return new CodonAdaptationIndexEntity(self, entopts)
   }
 
 
   // Entity access: `client.CodonOptimize().list()` / `client.CodonOptimize().load({ id })`.
-  CodonOptimize(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CodonOptimize(entopts?: Record<string, any>) {
     const self = this
-    return new CodonOptimizeEntity(self,data)
+    return new CodonOptimizeEntity(self, entopts)
   }
 
 
   // Entity access: `client.ConstructAutofix().list()` / `client.ConstructAutofix().load({ id })`.
-  ConstructAutofix(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ConstructAutofix(entopts?: Record<string, any>) {
     const self = this
-    return new ConstructAutofixEntity(self,data)
+    return new ConstructAutofixEntity(self, entopts)
   }
 
 
   // Entity access: `client.ConstructQc().list()` / `client.ConstructQc().load({ id })`.
-  ConstructQc(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ConstructQc(entopts?: Record<string, any>) {
     const self = this
-    return new ConstructQcEntity(self,data)
+    return new ConstructQcEntity(self, entopts)
   }
 
 
   // Entity access: `client.CrisprGrnaDesign().list()` / `client.CrisprGrnaDesign().load({ id })`.
-  CrisprGrnaDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CrisprGrnaDesign(entopts?: Record<string, any>) {
     const self = this
-    return new CrisprGrnaDesignEntity(self,data)
+    return new CrisprGrnaDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.CrisprHdrDonor().list()` / `client.CrisprHdrDonor().load({ id })`.
-  CrisprHdrDonor(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CrisprHdrDonor(entopts?: Record<string, any>) {
     const self = this
-    return new CrisprHdrDonorEntity(self,data)
+    return new CrisprHdrDonorEntity(self, entopts)
   }
 
 
   // Entity access: `client.CrisprOfftargetCheck().list()` / `client.CrisprOfftargetCheck().load({ id })`.
-  CrisprOfftargetCheck(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CrisprOfftargetCheck(entopts?: Record<string, any>) {
     const self = this
-    return new CrisprOfftargetCheckEntity(self,data)
+    return new CrisprOfftargetCheckEntity(self, entopts)
   }
 
 
   // Entity access: `client.CrossDimer().list()` / `client.CrossDimer().load({ id })`.
-  CrossDimer(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CrossDimer(entopts?: Record<string, any>) {
     const self = this
-    return new CrossDimerEntity(self,data)
+    return new CrossDimerEntity(self, entopts)
   }
 
 
   // Entity access: `client.DnaMolarity().list()` / `client.DnaMolarity().load({ id })`.
-  DnaMolarity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DnaMolarity(entopts?: Record<string, any>) {
     const self = this
-    return new DnaMolarityEntity(self,data)
+    return new DnaMolarityEntity(self, entopts)
   }
 
 
   // Entity access: `client.DoubleDigest().list()` / `client.DoubleDigest().load({ id })`.
-  DoubleDigest(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DoubleDigest(entopts?: Record<string, any>) {
     const self = this
-    return new DoubleDigestEntity(self,data)
+    return new DoubleDigestEntity(self, entopts)
   }
 
 
   // Entity access: `client.ExportEchoPicklist().list()` / `client.ExportEchoPicklist().load({ id })`.
-  ExportEchoPicklist(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ExportEchoPicklist(entopts?: Record<string, any>) {
     const self = this
-    return new ExportEchoPicklistEntity(self,data)
+    return new ExportEchoPicklistEntity(self, entopts)
   }
 
 
   // Entity access: `client.ExportOpentronsProtocol().list()` / `client.ExportOpentronsProtocol().load({ id })`.
-  ExportOpentronsProtocol(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ExportOpentronsProtocol(entopts?: Record<string, any>) {
     const self = this
-    return new ExportOpentronsProtocolEntity(self,data)
+    return new ExportOpentronsProtocolEntity(self, entopts)
   }
 
 
   // Entity access: `client.ExportPlateLayout().list()` / `client.ExportPlateLayout().load({ id })`.
-  ExportPlateLayout(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ExportPlateLayout(entopts?: Record<string, any>) {
     const self = this
-    return new ExportPlateLayoutEntity(self,data)
+    return new ExportPlateLayoutEntity(self, entopts)
   }
 
 
   // Entity access: `client.ExpressionHeatmapCluster().list()` / `client.ExpressionHeatmapCluster().load({ id })`.
-  ExpressionHeatmapCluster(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ExpressionHeatmapCluster(entopts?: Record<string, any>) {
     const self = this
-    return new ExpressionHeatmapClusterEntity(self,data)
+    return new ExpressionHeatmapClusterEntity(self, entopts)
   }
 
 
   // Entity access: `client.FastqQcReport().list()` / `client.FastqQcReport().load({ id })`.
-  FastqQcReport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FastqQcReport(entopts?: Record<string, any>) {
     const self = this
-    return new FastqQcReportEntity(self,data)
+    return new FastqQcReportEntity(self, entopts)
   }
 
 
   // Entity access: `client.FastqTrim().list()` / `client.FastqTrim().load({ id })`.
-  FastqTrim(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FastqTrim(entopts?: Record<string, any>) {
     const self = this
-    return new FastqTrimEntity(self,data)
+    return new FastqTrimEntity(self, entopts)
   }
 
 
   // Entity access: `client.FindOrf().list()` / `client.FindOrf().load({ id })`.
-  FindOrf(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FindOrf(entopts?: Record<string, any>) {
     const self = this
-    return new FindOrfEntity(self,data)
+    return new FindOrfEntity(self, entopts)
   }
 
 
   // Entity access: `client.FormatSequence().list()` / `client.FormatSequence().load({ id })`.
-  FormatSequence(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FormatSequence(entopts?: Record<string, any>) {
     const self = this
-    return new FormatSequenceEntity(self,data)
+    return new FormatSequenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.FunctionalEnrichment().list()` / `client.FunctionalEnrichment().load({ id })`.
-  FunctionalEnrichment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FunctionalEnrichment(entopts?: Record<string, any>) {
     const self = this
-    return new FunctionalEnrichmentEntity(self,data)
+    return new FunctionalEnrichmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.GcContent().list()` / `client.GcContent().load({ id })`.
-  GcContent(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GcContent(entopts?: Record<string, any>) {
     const self = this
-    return new GcContentEntity(self,data)
+    return new GcContentEntity(self, entopts)
   }
 
 
   // Entity access: `client.GeneDossier().list()` / `client.GeneDossier().load({ id })`.
-  GeneDossier(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GeneDossier(entopts?: Record<string, any>) {
     const self = this
-    return new GeneDossierEntity(self,data)
+    return new GeneDossierEntity(self, entopts)
   }
 
 
   // Entity access: `client.GeneExpression().list()` / `client.GeneExpression().load({ id })`.
-  GeneExpression(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GeneExpression(entopts?: Record<string, any>) {
     const self = this
-    return new GeneExpressionEntity(self,data)
+    return new GeneExpressionEntity(self, entopts)
   }
 
 
   // Entity access: `client.GeneModel().list()` / `client.GeneModel().load({ id })`.
-  GeneModel(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GeneModel(entopts?: Record<string, any>) {
     const self = this
-    return new GeneModelEntity(self,data)
+    return new GeneModelEntity(self, entopts)
   }
 
 
   // Entity access: `client.GoldenGateFidelity().list()` / `client.GoldenGateFidelity().load({ id })`.
-  GoldenGateFidelity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GoldenGateFidelity(entopts?: Record<string, any>) {
     const self = this
-    return new GoldenGateFidelityEntity(self,data)
+    return new GoldenGateFidelityEntity(self, entopts)
   }
 
 
   // Entity access: `client.HgvsConvert().list()` / `client.HgvsConvert().load({ id })`.
-  HgvsConvert(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  HgvsConvert(entopts?: Record<string, any>) {
     const self = this
-    return new HgvsConvertEntity(self,data)
+    return new HgvsConvertEntity(self, entopts)
   }
 
 
   // Entity access: `client.IdMapPoll().list()` / `client.IdMapPoll().load({ id })`.
-  IdMapPoll(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IdMapPoll(entopts?: Record<string, any>) {
     const self = this
-    return new IdMapPollEntity(self,data)
+    return new IdMapPollEntity(self, entopts)
   }
 
 
   // Entity access: `client.IdMapSubmit().list()` / `client.IdMapSubmit().load({ id })`.
-  IdMapSubmit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  IdMapSubmit(entopts?: Record<string, any>) {
     const self = this
-    return new IdMapSubmitEntity(self,data)
+    return new IdMapSubmitEntity(self, entopts)
   }
 
 
   // Entity access: `client.InSilicoPcr().list()` / `client.InSilicoPcr().load({ id })`.
-  InSilicoPcr(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  InSilicoPcr(entopts?: Record<string, any>) {
     const self = this
-    return new InSilicoPcrEntity(self,data)
+    return new InSilicoPcrEntity(self, entopts)
   }
 
 
   // Entity access: `client.KaspPrimerDesign().list()` / `client.KaspPrimerDesign().load({ id })`.
-  KaspPrimerDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  KaspPrimerDesign(entopts?: Record<string, any>) {
     const self = this
-    return new KaspPrimerDesignEntity(self,data)
+    return new KaspPrimerDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.ListTool().list()` / `client.ListTool().load({ id })`.
-  ListTool(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ListTool(entopts?: Record<string, any>) {
     const self = this
-    return new ListToolEntity(self,data)
+    return new ListToolEntity(self, entopts)
   }
 
 
   // Entity access: `client.MeltingTemperature().list()` / `client.MeltingTemperature().load({ id })`.
-  MeltingTemperature(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MeltingTemperature(entopts?: Record<string, any>) {
     const self = this
-    return new MeltingTemperatureEntity(self,data)
+    return new MeltingTemperatureEntity(self, entopts)
   }
 
 
   // Entity access: `client.MotifFinder().list()` / `client.MotifFinder().load({ id })`.
-  MotifFinder(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MotifFinder(entopts?: Record<string, any>) {
     const self = this
-    return new MotifFinderEntity(self,data)
+    return new MotifFinderEntity(self, entopts)
   }
 
 
   // Entity access: `client.MultipleSequenceAlignment().list()` / `client.MultipleSequenceAlignment().load({ id })`.
-  MultipleSequenceAlignment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MultipleSequenceAlignment(entopts?: Record<string, any>) {
     const self = this
-    return new MultipleSequenceAlignmentEntity(self,data)
+    return new MultipleSequenceAlignmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.OligoAnalysi().list()` / `client.OligoAnalysi().load({ id })`.
-  OligoAnalysi(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  OligoAnalysi(entopts?: Record<string, any>) {
     const self = this
-    return new OligoAnalysiEntity(self,data)
+    return new OligoAnalysiEntity(self, entopts)
   }
 
 
   // Entity access: `client.OrthologMap().list()` / `client.OrthologMap().load({ id })`.
-  OrthologMap(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  OrthologMap(entopts?: Record<string, any>) {
     const self = this
-    return new OrthologMapEntity(self,data)
+    return new OrthologMapEntity(self, entopts)
   }
 
 
   // Entity access: `client.PairwiseAlignment().list()` / `client.PairwiseAlignment().load({ id })`.
-  PairwiseAlignment(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PairwiseAlignment(entopts?: Record<string, any>) {
     const self = this
-    return new PairwiseAlignmentEntity(self,data)
+    return new PairwiseAlignmentEntity(self, entopts)
   }
 
 
   // Entity access: `client.ParseGenbank().list()` / `client.ParseGenbank().load({ id })`.
-  ParseGenbank(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ParseGenbank(entopts?: Record<string, any>) {
     const self = this
-    return new ParseGenbankEntity(self,data)
+    return new ParseGenbankEntity(self, entopts)
   }
 
 
   // Entity access: `client.ParseSangerTrace().list()` / `client.ParseSangerTrace().load({ id })`.
-  ParseSangerTrace(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ParseSangerTrace(entopts?: Record<string, any>) {
     const self = this
-    return new ParseSangerTraceEntity(self,data)
+    return new ParseSangerTraceEntity(self, entopts)
   }
 
 
   // Entity access: `client.PlasmidAnnotate().list()` / `client.PlasmidAnnotate().load({ id })`.
-  PlasmidAnnotate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PlasmidAnnotate(entopts?: Record<string, any>) {
     const self = this
-    return new PlasmidAnnotateEntity(self,data)
+    return new PlasmidAnnotateEntity(self, entopts)
   }
 
 
   // Entity access: `client.PlasmidDeepAnnotate().list()` / `client.PlasmidDeepAnnotate().load({ id })`.
-  PlasmidDeepAnnotate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PlasmidDeepAnnotate(entopts?: Record<string, any>) {
     const self = this
-    return new PlasmidDeepAnnotateEntity(self,data)
+    return new PlasmidDeepAnnotateEntity(self, entopts)
   }
 
 
   // Entity access: `client.PlasmidFullReport().list()` / `client.PlasmidFullReport().load({ id })`.
-  PlasmidFullReport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PlasmidFullReport(entopts?: Record<string, any>) {
     const self = this
-    return new PlasmidFullReportEntity(self,data)
+    return new PlasmidFullReportEntity(self, entopts)
   }
 
 
   // Entity access: `client.PlasmidIdentify().list()` / `client.PlasmidIdentify().load({ id })`.
-  PlasmidIdentify(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PlasmidIdentify(entopts?: Record<string, any>) {
     const self = this
-    return new PlasmidIdentifyEntity(self,data)
+    return new PlasmidIdentifyEntity(self, entopts)
   }
 
 
   // Entity access: `client.PrimeEditingDesign().list()` / `client.PrimeEditingDesign().load({ id })`.
-  PrimeEditingDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PrimeEditingDesign(entopts?: Record<string, any>) {
     const self = this
-    return new PrimeEditingDesignEntity(self,data)
+    return new PrimeEditingDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.PrimeEditingTwinDesign().list()` / `client.PrimeEditingTwinDesign().load({ id })`.
-  PrimeEditingTwinDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PrimeEditingTwinDesign(entopts?: Record<string, any>) {
     const self = this
-    return new PrimeEditingTwinDesignEntity(self,data)
+    return new PrimeEditingTwinDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.PrimerDesign().list()` / `client.PrimerDesign().load({ id })`.
-  PrimerDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PrimerDesign(entopts?: Record<string, any>) {
     const self = this
-    return new PrimerDesignEntity(self,data)
+    return new PrimerDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.PrimerSpecificity().list()` / `client.PrimerSpecificity().load({ id })`.
-  PrimerSpecificity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  PrimerSpecificity(entopts?: Record<string, any>) {
     const self = this
-    return new PrimerSpecificityEntity(self,data)
+    return new PrimerSpecificityEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProteaseDigestion().list()` / `client.ProteaseDigestion().load({ id })`.
-  ProteaseDigestion(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProteaseDigestion(entopts?: Record<string, any>) {
     const self = this
-    return new ProteaseDigestionEntity(self,data)
+    return new ProteaseDigestionEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProteinAnnotatePoll().list()` / `client.ProteinAnnotatePoll().load({ id })`.
-  ProteinAnnotatePoll(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProteinAnnotatePoll(entopts?: Record<string, any>) {
     const self = this
-    return new ProteinAnnotatePollEntity(self,data)
+    return new ProteinAnnotatePollEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProteinAnnotateSubmit().list()` / `client.ProteinAnnotateSubmit().load({ id })`.
-  ProteinAnnotateSubmit(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProteinAnnotateSubmit(entopts?: Record<string, any>) {
     const self = this
-    return new ProteinAnnotateSubmitEntity(self,data)
+    return new ProteinAnnotateSubmitEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProteinHydrophobicity().list()` / `client.ProteinHydrophobicity().load({ id })`.
-  ProteinHydrophobicity(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProteinHydrophobicity(entopts?: Record<string, any>) {
     const self = this
-    return new ProteinHydrophobicityEntity(self,data)
+    return new ProteinHydrophobicityEntity(self, entopts)
   }
 
 
   // Entity access: `client.ProteinProperty().list()` / `client.ProteinProperty().load({ id })`.
-  ProteinProperty(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ProteinProperty(entopts?: Record<string, any>) {
     const self = this
-    return new ProteinPropertyEntity(self,data)
+    return new ProteinPropertyEntity(self, entopts)
   }
 
 
   // Entity access: `client.RandomSequence().list()` / `client.RandomSequence().load({ id })`.
-  RandomSequence(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RandomSequence(entopts?: Record<string, any>) {
     const self = this
-    return new RandomSequenceEntity(self,data)
+    return new RandomSequenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.RestrictionSite().list()` / `client.RestrictionSite().load({ id })`.
-  RestrictionSite(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RestrictionSite(entopts?: Record<string, any>) {
     const self = this
-    return new RestrictionSiteEntity(self,data)
+    return new RestrictionSiteEntity(self, entopts)
   }
 
 
   // Entity access: `client.ReverseComplement().list()` / `client.ReverseComplement().load({ id })`.
-  ReverseComplement(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ReverseComplement(entopts?: Record<string, any>) {
     const self = this
-    return new ReverseComplementEntity(self,data)
+    return new ReverseComplementEntity(self, entopts)
   }
 
 
   // Entity access: `client.ReverseTranslate().list()` / `client.ReverseTranslate().load({ id })`.
-  ReverseTranslate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ReverseTranslate(entopts?: Record<string, any>) {
     const self = this
-    return new ReverseTranslateEntity(self,data)
+    return new ReverseTranslateEntity(self, entopts)
   }
 
 
   // Entity access: `client.RnaFold().list()` / `client.RnaFold().load({ id })`.
-  RnaFold(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RnaFold(entopts?: Record<string, any>) {
     const self = this
-    return new RnaFoldEntity(self,data)
+    return new RnaFoldEntity(self, entopts)
   }
 
 
   // Entity access: `client.SangerVsReference().list()` / `client.SangerVsReference().load({ id })`.
-  SangerVsReference(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SangerVsReference(entopts?: Record<string, any>) {
     const self = this
-    return new SangerVsReferenceEntity(self,data)
+    return new SangerVsReferenceEntity(self, entopts)
   }
 
 
   // Entity access: `client.SavePermalink().list()` / `client.SavePermalink().load({ id })`.
-  SavePermalink(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SavePermalink(entopts?: Record<string, any>) {
     const self = this
-    return new SavePermalinkEntity(self,data)
+    return new SavePermalinkEntity(self, entopts)
   }
 
 
   // Entity access: `client.SeqfileStat().list()` / `client.SeqfileStat().load({ id })`.
-  SeqfileStat(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SeqfileStat(entopts?: Record<string, any>) {
     const self = this
-    return new SeqfileStatEntity(self,data)
+    return new SeqfileStatEntity(self, entopts)
   }
 
 
   // Entity access: `client.SequenceFetch().list()` / `client.SequenceFetch().load({ id })`.
-  SequenceFetch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SequenceFetch(entopts?: Record<string, any>) {
     const self = this
-    return new SequenceFetchEntity(self,data)
+    return new SequenceFetchEntity(self, entopts)
   }
 
 
   // Entity access: `client.SequenceFormatConvert().list()` / `client.SequenceFormatConvert().load({ id })`.
-  SequenceFormatConvert(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SequenceFormatConvert(entopts?: Record<string, any>) {
     const self = this
-    return new SequenceFormatConvertEntity(self,data)
+    return new SequenceFormatConvertEntity(self, entopts)
   }
 
 
   // Entity access: `client.SequenceReport().list()` / `client.SequenceReport().load({ id })`.
-  SequenceReport(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SequenceReport(entopts?: Record<string, any>) {
     const self = this
-    return new SequenceReportEntity(self,data)
+    return new SequenceReportEntity(self, entopts)
   }
 
 
   // Entity access: `client.SequenceSearch().list()` / `client.SequenceSearch().load({ id })`.
-  SequenceSearch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SequenceSearch(entopts?: Record<string, any>) {
     const self = this
-    return new SequenceSearchEntity(self,data)
+    return new SequenceSearchEntity(self, entopts)
   }
 
 
   // Entity access: `client.SequencingReadbackVerify().list()` / `client.SequencingReadbackVerify().load({ id })`.
-  SequencingReadbackVerify(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SequencingReadbackVerify(entopts?: Record<string, any>) {
     const self = this
-    return new SequencingReadbackVerifyEntity(self,data)
+    return new SequencingReadbackVerifyEntity(self, entopts)
   }
 
 
   // Entity access: `client.SessionCreate().list()` / `client.SessionCreate().load({ id })`.
-  SessionCreate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SessionCreate(entopts?: Record<string, any>) {
     const self = this
-    return new SessionCreateEntity(self,data)
+    return new SessionCreateEntity(self, entopts)
   }
 
 
   // Entity access: `client.SessionGet().list()` / `client.SessionGet().load({ id })`.
-  SessionGet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SessionGet(entopts?: Record<string, any>) {
     const self = this
-    return new SessionGetEntity(self,data)
+    return new SessionGetEntity(self, entopts)
   }
 
 
   // Entity access: `client.SessionRun().list()` / `client.SessionRun().load({ id })`.
-  SessionRun(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SessionRun(entopts?: Record<string, any>) {
     const self = this
-    return new SessionRunEntity(self,data)
+    return new SessionRunEntity(self, entopts)
   }
 
 
   // Entity access: `client.SessionSet().list()` / `client.SessionSet().load({ id })`.
-  SessionSet(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SessionSet(entopts?: Record<string, any>) {
     const self = this
-    return new SessionSetEntity(self,data)
+    return new SessionSetEntity(self, entopts)
   }
 
 
   // Entity access: `client.SirnaDesign().list()` / `client.SirnaDesign().load({ id })`.
-  SirnaDesign(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SirnaDesign(entopts?: Record<string, any>) {
     const self = this
-    return new SirnaDesignEntity(self,data)
+    return new SirnaDesignEntity(self, entopts)
   }
 
 
   // Entity access: `client.SiteDirectedMutagenesi().list()` / `client.SiteDirectedMutagenesi().load({ id })`.
-  SiteDirectedMutagenesi(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SiteDirectedMutagenesi(entopts?: Record<string, any>) {
     const self = this
-    return new SiteDirectedMutagenesiEntity(self,data)
+    return new SiteDirectedMutagenesiEntity(self, entopts)
   }
 
 
   // Entity access: `client.Translate().list()` / `client.Translate().load({ id })`.
-  Translate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Translate(entopts?: Record<string, any>) {
     const self = this
-    return new TranslateEntity(self,data)
+    return new TranslateEntity(self, entopts)
   }
 
 
   // Entity access: `client.VariantAnnotate().list()` / `client.VariantAnnotate().load({ id })`.
-  VariantAnnotate(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VariantAnnotate(entopts?: Record<string, any>) {
     const self = this
-    return new VariantAnnotateEntity(self,data)
+    return new VariantAnnotateEntity(self, entopts)
   }
 
 
   // Entity access: `client.VariantComparator().list()` / `client.VariantComparator().load({ id })`.
-  VariantComparator(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VariantComparator(entopts?: Record<string, any>) {
     const self = this
-    return new VariantComparatorEntity(self,data)
+    return new VariantComparatorEntity(self, entopts)
   }
 
 
   // Entity access: `client.VerifyAssembly().list()` / `client.VerifyAssembly().load({ id })`.
-  VerifyAssembly(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyAssembly(entopts?: Record<string, any>) {
     const self = this
-    return new VerifyAssemblyEntity(self,data)
+    return new VerifyAssemblyEntity(self, entopts)
   }
 
 
   // Entity access: `client.VerifyConstruct().list()` / `client.VerifyConstruct().load({ id })`.
-  VerifyConstruct(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VerifyConstruct(entopts?: Record<string, any>) {
     const self = this
-    return new VerifyConstructEntity(self,data)
+    return new VerifyConstructEntity(self, entopts)
   }
 
 
   // Entity access: `client.VirtualGel().list()` / `client.VirtualGel().load({ id })`.
-  VirtualGel(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VirtualGel(entopts?: Record<string, any>) {
     const self = this
-    return new VirtualGelEntity(self,data)
+    return new VirtualGelEntity(self, entopts)
   }
 
 
   // Entity access: `client.VolcanoPlotData().list()` / `client.VolcanoPlotData().load({ id })`.
-  VolcanoPlotData(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  VolcanoPlotData(entopts?: Record<string, any>) {
     const self = this
-    return new VolcanoPlotDataEntity(self,data)
+    return new VolcanoPlotDataEntity(self, entopts)
   }
 
 
   // Entity access: `client.WebSearch().list()` / `client.WebSearch().load({ id })`.
-  WebSearch(data?: any) {
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  WebSearch(entopts?: Record<string, any>) {
     const self = this
-    return new WebSearchEntity(self,data)
+    return new WebSearchEntity(self, entopts)
   }
 
 

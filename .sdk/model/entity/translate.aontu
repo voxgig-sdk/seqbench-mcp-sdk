@@ -36,7 +36,7 @@ main: kit: entity: translate: {
       type: "`$STRING`"
     }
     {
-      name: "to_stop"
+      name: "toStop"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: translate: {
             "translate"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              frame: "`reqdata.frame`"
+              sequence: "`reqdata.sequence`"
+              toStop: "`reqdata.to_stop`"
+            }
             res: "`body`"
           }
         }

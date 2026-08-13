@@ -11,7 +11,7 @@ main: kit: entity: crispr_grna_design: {
       type: "`$ANY`"
     }
     {
-      name: "min_score"
+      name: "minScore"
       req: false
       type: "`$NUMBER`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: crispr_grna_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "search_reverse_strand"
+      name: "searchReverseStrand"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: crispr_grna_design: {
             "crispr_grna_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              minScore: "`reqdata.min_score`"
+              nuclease: "`reqdata.nuclease`"
+              searchReverseStrand: "`reqdata.search_reverse_strand`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

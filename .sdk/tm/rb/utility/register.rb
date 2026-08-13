@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ SeqbenchMcpUtility.registrar = ->(u) {
   u.prepare_params = SeqbenchMcpUtilities::PrepareParams
   u.prepare_path = SeqbenchMcpUtilities::PreparePath
   u.prepare_query = SeqbenchMcpUtilities::PrepareQuery
+  u.graphql_body = SeqbenchMcpUtilities::GraphqlBody
+  u.graphql_errors = SeqbenchMcpUtilities::GraphqlErrors
   u.result_basic = SeqbenchMcpUtilities::ResultBasic
   u.result_body = SeqbenchMcpUtilities::ResultBody
   u.result_headers = SeqbenchMcpUtilities::ResultHeaders

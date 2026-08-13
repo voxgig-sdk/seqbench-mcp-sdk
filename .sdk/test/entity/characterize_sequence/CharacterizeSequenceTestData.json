@@ -2,10 +2,10 @@
   "existing": {
     "characterize_sequence": {
       "CHARACTERIZE_SEQUENCE00": {
-        "end_primer_length": "s5a",
+        "endPrimerLength": "s5a",
         "gate": "s5b",
-        "max_orf": "s5c",
-        "min_orf_aa": "s5d",
+        "maxOrfs": "s5c",
+        "minOrfAa": "s5d",
         "ok": "s5e",
         "provenance": {},
         "result": {},
@@ -14,10 +14,10 @@
         "id": "CHARACTERIZE_SEQUENCE00"
       },
       "CHARACTERIZE_SEQUENCE01": {
-        "end_primer_length": "sb4",
+        "endPrimerLength": "sb4",
         "gate": "sb5",
-        "max_orf": "sb6",
-        "min_orf_aa": "sb7",
+        "maxOrfs": "sb6",
+        "minOrfAa": "sb7",
         "ok": "sb8",
         "provenance": {},
         "result": {},
@@ -26,10 +26,10 @@
         "id": "CHARACTERIZE_SEQUENCE01"
       },
       "CHARACTERIZE_SEQUENCE02": {
-        "end_primer_length": "s10e",
+        "endPrimerLength": "s10e",
         "gate": "s10f",
-        "max_orf": "s110",
-        "min_orf_aa": "s111",
+        "maxOrfs": "s110",
+        "minOrfAa": "s111",
         "ok": "s112",
         "provenance": {},
         "result": {},
@@ -42,10 +42,10 @@
   "new": {
     "characterize_sequence": {
       "characterize_sequence_ref01": {
-        "end_primer_length": "s168",
+        "endPrimerLength": "s168",
         "gate": "s169",
-        "max_orf": "s16a",
-        "min_orf_aa": "s16b",
+        "maxOrfs": "s16a",
+        "minOrfAa": "s16b",
         "ok": "s16c",
         "provenance": {},
         "result": {},

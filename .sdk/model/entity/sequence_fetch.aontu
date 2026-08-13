@@ -59,7 +59,11 @@ main: kit: entity: sequence_fetch: {
             "sequence_fetch"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              accession: "`reqdata.accession`"
+              db: "`reqdata.db`"
+              format: "`reqdata.format`"
+            }
             res: "`body`"
           }
         }

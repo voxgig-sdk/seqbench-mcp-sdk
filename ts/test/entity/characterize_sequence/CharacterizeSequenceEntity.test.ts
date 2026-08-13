@@ -26,8 +26,8 @@ import {
 describe('CharacterizeSequenceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('CharacterizeSequenceEntity', async () => {
     const characterize_sequence_ref01_ent = client.CharacterizeSequence()
     let characterize_sequence_ref01_data = setup.data.new.characterize_sequence['characterize_sequence_ref01']
 
-    characterize_sequence_ref01_data = await characterize_sequence_ref01_ent.create(characterize_sequence_ref01_data)
+    characterize_sequence_ref01_data = (await characterize_sequence_ref01_ent.create(characterize_sequence_ref01_data)).data()
     assert(null != characterize_sequence_ref01_data)
 
 

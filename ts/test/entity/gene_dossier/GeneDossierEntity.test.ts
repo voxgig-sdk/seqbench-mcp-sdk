@@ -26,8 +26,8 @@ import {
 describe('GeneDossierEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('GeneDossierEntity', async () => {
     const gene_dossier_ref01_ent = client.GeneDossier()
     let gene_dossier_ref01_data = setup.data.new.gene_dossier['gene_dossier_ref01']
 
-    gene_dossier_ref01_data = await gene_dossier_ref01_ent.create(gene_dossier_ref01_data)
+    gene_dossier_ref01_data = (await gene_dossier_ref01_ent.create(gene_dossier_ref01_data)).data()
     assert(null != gene_dossier_ref01_data)
 
 

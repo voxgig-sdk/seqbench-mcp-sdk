@@ -2,8 +2,8 @@
   "existing": {
     "parse_sanger_trace": {
       "PARSE_SANGER_TRACE00": {
-        "file_base64": "s46",
-        "file_name": "s47",
+        "fileBase64": "s46",
+        "fileName": "s47",
         "gate": "s48",
         "ok": "s49",
         "provenance": {},
@@ -12,8 +12,8 @@
         "id": "PARSE_SANGER_TRACE00"
       },
       "PARSE_SANGER_TRACE01": {
-        "file_base64": "s8c",
-        "file_name": "s8d",
+        "fileBase64": "s8c",
+        "fileName": "s8d",
         "gate": "s8e",
         "ok": "s8f",
         "provenance": {},
@@ -22,8 +22,8 @@
         "id": "PARSE_SANGER_TRACE01"
       },
       "PARSE_SANGER_TRACE02": {
-        "file_base64": "sd2",
-        "file_name": "sd3",
+        "fileBase64": "sd2",
+        "fileName": "sd3",
         "gate": "sd4",
         "ok": "sd5",
         "provenance": {},
@@ -36,8 +36,8 @@
   "new": {
     "parse_sanger_trace": {
       "parse_sanger_trace_ref01": {
-        "file_base64": "s118",
-        "file_name": "s119",
+        "fileBase64": "s118",
+        "fileName": "s119",
         "gate": "s11a",
         "ok": "s11b",
         "provenance": {},

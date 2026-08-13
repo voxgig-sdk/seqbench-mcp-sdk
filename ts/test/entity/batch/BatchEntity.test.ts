@@ -26,8 +26,8 @@ import {
 describe('BatchEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,13 +62,13 @@ describe('BatchEntity', async () => {
     const batch_ref01_ent = client.Batch()
     let batch_ref01_data = setup.data.new.batch['batch_ref01']
 
-    batch_ref01_data = await batch_ref01_ent.create(batch_ref01_data)
+    batch_ref01_data = (await batch_ref01_ent.create(batch_ref01_data)).data()
     assert(null != batch_ref01_data)
 
 
     // LOAD
     const batch_ref01_match_dt0: any = {}
-    const batch_ref01_data_dt0 = await batch_ref01_ent.load(batch_ref01_match_dt0)
+    const batch_ref01_data_dt0 = (await batch_ref01_ent.load(batch_ref01_match_dt0)).data()
     assert(null != batch_ref01_data_dt0)
 
 

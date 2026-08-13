@@ -2,12 +2,12 @@
   "existing": {
     "oligo_analysi": {
       "OLIGO_ANALYSI00": {
-        "dntp_mm": 100,
+        "dntpMM": 100,
         "gate": "s65",
-        "mg_mm": 102,
-        "na_mm": 103,
+        "mgMM": 102,
+        "naMM": 103,
         "ok": "s68",
-        "oligo_nm": 105,
+        "oligoNM": 105,
         "provenance": {},
         "result": {},
         "sequence": "s6c",
@@ -15,12 +15,12 @@
         "id": "OLIGO_ANALYSI00"
       },
       "OLIGO_ANALYSI01": {
-        "dntp_mm": 200,
+        "dntpMM": 200,
         "gate": "sc9",
-        "mg_mm": 202,
-        "na_mm": 203,
+        "mgMM": 202,
+        "naMM": 203,
         "ok": "scc",
-        "oligo_nm": 205,
+        "oligoNM": 205,
         "provenance": {},
         "result": {},
         "sequence": "sd0",
@@ -28,12 +28,12 @@
         "id": "OLIGO_ANALYSI01"
       },
       "OLIGO_ANALYSI02": {
-        "dntp_mm": 300,
+        "dntpMM": 300,
         "gate": "s12d",
-        "mg_mm": 302,
-        "na_mm": 303,
+        "mgMM": 302,
+        "naMM": 303,
         "ok": "s130",
-        "oligo_nm": 305,
+        "oligoNM": 305,
         "provenance": {},
         "result": {},
         "sequence": "s134",
@@ -45,12 +45,12 @@
   "new": {
     "oligo_analysi": {
       "oligo_analysi_ref01": {
-        "dntp_mm": 400,
+        "dntpMM": 400,
         "gate": "s191",
-        "mg_mm": 402,
-        "na_mm": 403,
+        "mgMM": 402,
+        "naMM": 403,
         "ok": "s194",
-        "oligo_nm": 405,
+        "oligoNM": 405,
         "provenance": {},
         "result": {},
         "sequence": "s198",

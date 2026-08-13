@@ -3,31 +3,31 @@
     "session_get": {
       "SESSION_GET00": {
         "gate": "s46",
-        "name": [],
+        "names": [],
         "ok": "s48",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s4b",
         "tool": "s4c",
         "id": "SESSION_GET00"
       },
       "SESSION_GET01": {
         "gate": "s8c",
-        "name": [],
+        "names": [],
         "ok": "s8e",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s91",
         "tool": "s92",
         "id": "SESSION_GET01"
       },
       "SESSION_GET02": {
         "gate": "sd2",
-        "name": [],
+        "names": [],
         "ok": "sd4",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "sd7",
         "tool": "sd8",
         "id": "SESSION_GET02"
       }
@@ -37,11 +37,11 @@
     "session_get": {
       "session_get_ref01": {
         "gate": "s118",
-        "name": [],
+        "names": [],
         "ok": "s11a",
         "provenance": {},
         "result": {},
-        "session_id": "SESSION01",
+        "sessionId": "s11d",
         "tool": "s11e"
       }
     }

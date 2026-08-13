@@ -2,27 +2,42 @@
   "existing": {
     "batch": {
       "BATCH00": {
-        "arg": {},
-        "input": "s33",
-        "ok": "s34",
-        "result": {},
-        "tool": "s36",
+        "args": {},
+        "capped": false,
+        "columns": [],
+        "count": "s67",
+        "errors": "s68",
+        "input": "s69",
+        "limit": "s6a",
+        "provenance": {},
+        "rows": [],
+        "tool": "s6d",
         "id": "BATCH00"
       },
       "BATCH01": {
-        "arg": {},
-        "input": "s65",
-        "ok": "s66",
-        "result": {},
-        "tool": "s68",
+        "args": {},
+        "capped": false,
+        "columns": [],
+        "count": "scb",
+        "errors": "scc",
+        "input": "scd",
+        "limit": "sce",
+        "provenance": {},
+        "rows": [],
+        "tool": "sd1",
         "id": "BATCH01"
       },
       "BATCH02": {
-        "arg": {},
-        "input": "s97",
-        "ok": "s98",
-        "result": {},
-        "tool": "s9a",
+        "args": {},
+        "capped": false,
+        "columns": [],
+        "count": "s12f",
+        "errors": "s130",
+        "input": "s131",
+        "limit": "s132",
+        "provenance": {},
+        "rows": [],
+        "tool": "s135",
         "id": "BATCH02"
       }
     }
@@ -30,11 +45,16 @@
   "new": {
     "batch": {
       "batch_ref01": {
-        "arg": {},
-        "input": "sc9",
-        "ok": "sca",
-        "result": {},
-        "tool": "scc"
+        "args": {},
+        "capped": false,
+        "columns": [],
+        "count": "s193",
+        "errors": "s194",
+        "input": "s195",
+        "limit": "s196",
+        "provenance": {},
+        "rows": [],
+        "tool": "s199"
       }
     }
   }

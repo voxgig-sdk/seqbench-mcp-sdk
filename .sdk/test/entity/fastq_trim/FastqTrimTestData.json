@@ -4,11 +4,11 @@
       "FASTQ_TRIM00": {
         "gate": "s5a",
         "input": "s5b",
-        "min_length": "s5c",
+        "minLength": "s5c",
         "ok": "s5d",
         "provenance": {},
-        "quality_offset": "s5f",
-        "quality_threshold": "s60",
+        "qualityOffset": "s5f",
+        "qualityThreshold": "s60",
         "result": {},
         "tool": "s62",
         "id": "FASTQ_TRIM00"
@@ -16,11 +16,11 @@
       "FASTQ_TRIM01": {
         "gate": "sb4",
         "input": "sb5",
-        "min_length": "sb6",
+        "minLength": "sb6",
         "ok": "sb7",
         "provenance": {},
-        "quality_offset": "sb9",
-        "quality_threshold": "sba",
+        "qualityOffset": "sb9",
+        "qualityThreshold": "sba",
         "result": {},
         "tool": "sbc",
         "id": "FASTQ_TRIM01"
@@ -28,11 +28,11 @@
       "FASTQ_TRIM02": {
         "gate": "s10e",
         "input": "s10f",
-        "min_length": "s110",
+        "minLength": "s110",
         "ok": "s111",
         "provenance": {},
-        "quality_offset": "s113",
-        "quality_threshold": "s114",
+        "qualityOffset": "s113",
+        "qualityThreshold": "s114",
         "result": {},
         "tool": "s116",
         "id": "FASTQ_TRIM02"
@@ -44,11 +44,11 @@
       "fastq_trim_ref01": {
         "gate": "s168",
         "input": "s169",
-        "min_length": "s16a",
+        "minLength": "s16a",
         "ok": "s16b",
         "provenance": {},
-        "quality_offset": "s16d",
-        "quality_threshold": "s16e",
+        "qualityOffset": "s16d",
+        "qualityThreshold": "s16e",
         "result": {},
         "tool": "s170"
       }

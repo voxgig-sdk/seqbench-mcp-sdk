@@ -26,8 +26,8 @@ import {
 describe('ConstructQcEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ConstructQcEntity', async () => {
     const construct_qc_ref01_ent = client.ConstructQc()
     let construct_qc_ref01_data = setup.data.new.construct_qc['construct_qc_ref01']
 
-    construct_qc_ref01_data = await construct_qc_ref01_ent.create(construct_qc_ref01_data)
+    construct_qc_ref01_data = (await construct_qc_ref01_ent.create(construct_qc_ref01_data)).data()
     assert(null != construct_qc_ref01_data)
 
 

@@ -21,7 +21,7 @@ main: kit: entity: export_plate_layout: {
       type: "`$OBJECT`"
     }
     {
-      name: "reaction"
+      name: "reactions"
       req: true
       type: "`$ARRAY`"
     }
@@ -49,7 +49,9 @@ main: kit: entity: export_plate_layout: {
             "export_plate_layout"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              reactions: "`reqdata.reaction`"
+            }
             res: "`body`"
           }
         }

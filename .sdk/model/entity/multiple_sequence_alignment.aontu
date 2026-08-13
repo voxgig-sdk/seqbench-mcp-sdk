@@ -49,7 +49,9 @@ main: kit: entity: multiple_sequence_alignment: {
             "multiple_sequence_alignment"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              input: "`reqdata.input`"
+            }
             res: "`body`"
           }
         }

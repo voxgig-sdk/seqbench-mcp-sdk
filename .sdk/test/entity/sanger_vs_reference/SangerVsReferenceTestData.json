@@ -2,10 +2,10 @@
   "existing": {
     "sanger_vs_reference": {
       "SANGER_VS_REFERENCE00": {
-        "file_base64": "s64",
-        "file_name": "s65",
+        "fileBase64": "s64",
+        "fileName": "s65",
         "gate": "s66",
-        "min_coverage": 103,
+        "minCoverage": 103,
         "ok": "s68",
         "provenance": {},
         "read": "s6a",
@@ -15,10 +15,10 @@
         "id": "SANGER_VS_REFERENCE00"
       },
       "SANGER_VS_REFERENCE01": {
-        "file_base64": "sc8",
-        "file_name": "sc9",
+        "fileBase64": "sc8",
+        "fileName": "sc9",
         "gate": "sca",
-        "min_coverage": 203,
+        "minCoverage": 203,
         "ok": "scc",
         "provenance": {},
         "read": "sce",
@@ -28,10 +28,10 @@
         "id": "SANGER_VS_REFERENCE01"
       },
       "SANGER_VS_REFERENCE02": {
-        "file_base64": "s12c",
-        "file_name": "s12d",
+        "fileBase64": "s12c",
+        "fileName": "s12d",
         "gate": "s12e",
-        "min_coverage": 303,
+        "minCoverage": 303,
         "ok": "s130",
         "provenance": {},
         "read": "s132",
@@ -45,10 +45,10 @@
   "new": {
     "sanger_vs_reference": {
       "sanger_vs_reference_ref01": {
-        "file_base64": "s190",
-        "file_name": "s191",
+        "fileBase64": "s190",
+        "fileName": "s191",
         "gate": "s192",
-        "min_coverage": 403,
+        "minCoverage": 403,
         "ok": "s194",
         "provenance": {},
         "read": "s196",

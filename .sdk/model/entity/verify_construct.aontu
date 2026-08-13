@@ -6,12 +6,12 @@ main: kit: entity: verify_construct: {
 
   fields: [
     {
-      name: "claimed_construct"
+      name: "claimedConstruct"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "expected_frame_start"
+      name: "expectedFrameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -21,22 +21,22 @@ main: kit: entity: verify_construct: {
       type: "`$ANY`"
     }
     {
-      name: "insert_forward_primer"
+      name: "insertForwardPrimer"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "insert_reverse_primer"
+      name: "insertReversePrimer"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "insert_template"
+      name: "insertTemplate"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "max_primer_mismatch"
+      name: "maxPrimerMismatches"
       req: false
       type: "`$INTEGER`"
     }
@@ -56,7 +56,7 @@ main: kit: entity: verify_construct: {
       type: "`$OBJECT`"
     }
     {
-      name: "template_circular"
+      name: "templateCircular"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -79,7 +79,15 @@ main: kit: entity: verify_construct: {
             "verify_construct"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              claimedConstruct: "`reqdata.claimed_construct`"
+              expectedFrameStart: "`reqdata.expected_frame_start`"
+              insertForwardPrimer: "`reqdata.insert_forward_primer`"
+              insertReversePrimer: "`reqdata.insert_reverse_primer`"
+              insertTemplate: "`reqdata.insert_template`"
+              maxPrimerMismatches: "`reqdata.max_primer_mismatch`"
+              templateCircular: "`reqdata.template_circular`"
+            }
             res: "`body`"
           }
         }

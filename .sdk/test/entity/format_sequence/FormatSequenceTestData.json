@@ -2,7 +2,7 @@
   "existing": {
     "format_sequence": {
       "FORMAT_SEQUENCE00": {
-        "case_mode": "s6e",
+        "caseMode": "s6e",
         "convert": "s6f",
         "gate": "s70",
         "ok": "s71",
@@ -10,13 +10,13 @@
         "result": {},
         "reverse": true,
         "sequence": "s75",
-        "strip_non_letter": true,
+        "stripNonLetters": true,
         "tool": "s77",
         "width": "s78",
         "id": "FORMAT_SEQUENCE00"
       },
       "FORMAT_SEQUENCE01": {
-        "case_mode": "sdc",
+        "caseMode": "sdc",
         "convert": "sdd",
         "gate": "sde",
         "ok": "sdf",
@@ -24,13 +24,13 @@
         "result": {},
         "reverse": true,
         "sequence": "se3",
-        "strip_non_letter": true,
+        "stripNonLetters": true,
         "tool": "se5",
         "width": "se6",
         "id": "FORMAT_SEQUENCE01"
       },
       "FORMAT_SEQUENCE02": {
-        "case_mode": "s14a",
+        "caseMode": "s14a",
         "convert": "s14b",
         "gate": "s14c",
         "ok": "s14d",
@@ -38,7 +38,7 @@
         "result": {},
         "reverse": true,
         "sequence": "s151",
-        "strip_non_letter": true,
+        "stripNonLetters": true,
         "tool": "s153",
         "width": "s154",
         "id": "FORMAT_SEQUENCE02"
@@ -48,7 +48,7 @@
   "new": {
     "format_sequence": {
       "format_sequence_ref01": {
-        "case_mode": "s1b8",
+        "caseMode": "s1b8",
         "convert": "s1b9",
         "gate": "s1ba",
         "ok": "s1bb",
@@ -56,7 +56,7 @@
         "result": {},
         "reverse": true,
         "sequence": "s1bf",
-        "strip_non_letter": true,
+        "stripNonLetters": true,
         "tool": "s1c1",
         "width": "s1c2"
       }

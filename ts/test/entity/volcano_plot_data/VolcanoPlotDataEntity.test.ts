@@ -26,8 +26,8 @@ import {
 describe('VolcanoPlotDataEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('VolcanoPlotDataEntity', async () => {
     const volcano_plot_data_ref01_ent = client.VolcanoPlotData()
     let volcano_plot_data_ref01_data = setup.data.new.volcano_plot_data['volcano_plot_data_ref01']
 
-    volcano_plot_data_ref01_data = await volcano_plot_data_ref01_ent.create(volcano_plot_data_ref01_data)
+    volcano_plot_data_ref01_data = (await volcano_plot_data_ref01_ent.create(volcano_plot_data_ref01_data)).data()
     assert(null != volcano_plot_data_ref01_data)
 
 

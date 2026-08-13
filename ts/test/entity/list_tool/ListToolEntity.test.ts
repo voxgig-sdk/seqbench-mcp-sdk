@@ -26,8 +26,8 @@ import {
 describe('ListToolEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ListToolEntity', async () => {
     // LOAD
     const list_tool_ref01_ent = client.ListTool()
     const list_tool_ref01_match_dt0: any = {}
-    const list_tool_ref01_data_dt0 = await list_tool_ref01_ent.load(list_tool_ref01_match_dt0)
+    const list_tool_ref01_data_dt0 = (await list_tool_ref01_ent.load(list_tool_ref01_match_dt0)).data()
     assert(null != list_tool_ref01_data_dt0)
 
 

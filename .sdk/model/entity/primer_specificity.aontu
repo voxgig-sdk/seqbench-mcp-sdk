@@ -6,7 +6,7 @@ main: kit: entity: primer_specificity: {
 
   fields: [
     {
-      name: "forward_primer"
+      name: "forwardPrimer"
       req: true
       type: "`$STRING`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: primer_specificity: {
       type: "`$ANY`"
     }
     {
-      name: "max_mismatch"
+      name: "maxMismatches"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "max_product_length"
+      name: "maxProductLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: primer_specificity: {
       type: "`$OBJECT`"
     }
     {
-      name: "reverse_primer"
+      name: "reversePrimer"
       req: true
       type: "`$STRING`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: primer_specificity: {
             "primer_specificity"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              forwardPrimer: "`reqdata.forward_primer`"
+              maxMismatches: "`reqdata.max_mismatch`"
+              maxProductLength: "`reqdata.max_product_length`"
+              reversePrimer: "`reqdata.reverse_primer`"
+            }
             res: "`body`"
           }
         }

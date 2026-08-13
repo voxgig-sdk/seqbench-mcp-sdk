@@ -49,7 +49,9 @@ main: kit: entity: hgvs_convert: {
             "hgvs_convert"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              variant: "`reqdata.variant`"
+            }
             res: "`body`"
           }
         }

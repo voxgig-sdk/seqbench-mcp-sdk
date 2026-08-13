@@ -11,7 +11,7 @@ main: kit: entity: random_sequence: {
       type: "`$ANY`"
     }
     {
-      name: "gc_content"
+      name: "gcContent"
       req: false
       type: "`$NUMBER`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: random_sequence: {
             "random_sequence"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              gcContent: "`reqdata.gc_content`"
+              kind: "`reqdata.kind`"
+              length: "`reqdata.length`"
+            }
             res: "`body`"
           }
         }

@@ -26,8 +26,8 @@ import {
 describe('VariantComparatorEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('VariantComparatorEntity', async () => {
     const variant_comparator_ref01_ent = client.VariantComparator()
     let variant_comparator_ref01_data = setup.data.new.variant_comparator['variant_comparator_ref01']
 
-    variant_comparator_ref01_data = await variant_comparator_ref01_ent.create(variant_comparator_ref01_data)
+    variant_comparator_ref01_data = (await variant_comparator_ref01_ent.create(variant_comparator_ref01_data)).data()
     assert(null != variant_comparator_ref01_data)
 
 

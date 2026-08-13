@@ -59,7 +59,11 @@ main: kit: entity: reverse_translate: {
             "reverse_translate"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              mode: "`reqdata.mode`"
+              organism: "`reqdata.organism`"
+              protein: "`reqdata.protein`"
+            }
             res: "`body`"
           }
         }

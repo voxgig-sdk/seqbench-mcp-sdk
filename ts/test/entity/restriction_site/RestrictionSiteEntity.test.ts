@@ -26,8 +26,8 @@ import {
 describe('RestrictionSiteEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('RestrictionSiteEntity', async () => {
     const restriction_site_ref01_ent = client.RestrictionSite()
     let restriction_site_ref01_data = setup.data.new.restriction_site['restriction_site_ref01']
 
-    restriction_site_ref01_data = await restriction_site_ref01_ent.create(restriction_site_ref01_data)
+    restriction_site_ref01_data = (await restriction_site_ref01_ent.create(restriction_site_ref01_data)).data()
     assert(null != restriction_site_ref01_data)
 
 

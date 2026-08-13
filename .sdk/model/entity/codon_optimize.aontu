@@ -54,7 +54,10 @@ main: kit: entity: codon_optimize: {
             "codon_optimize"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              organism: "`reqdata.organism`"
+              protein: "`reqdata.protein`"
+            }
             res: "`body`"
           }
         }

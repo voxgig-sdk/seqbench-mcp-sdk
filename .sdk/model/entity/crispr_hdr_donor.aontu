@@ -6,32 +6,32 @@ main: kit: entity: crispr_hdr_donor: {
 
   fields: [
     {
-      name: "arm_length"
+      name: "armLength"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "block_pam"
+      name: "blockPam"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "design_genotyping_primer"
+      name: "designGenotypingPrimers"
       req: false
       type: "`$BOOLEAN`"
     }
     {
-      name: "edit_end"
+      name: "editEnd"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "edit_start"
+      name: "editStart"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -41,17 +41,17 @@ main: kit: entity: crispr_hdr_donor: {
       type: "`$ANY`"
     }
     {
-      name: "guide_end"
+      name: "guideEnd"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "guide_start"
+      name: "guideStart"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "guide_strand"
+      name: "guideStrand"
       req: false
       type: "`$STRING`"
     }
@@ -81,7 +81,7 @@ main: kit: entity: crispr_hdr_donor: {
       type: "`$OBJECT`"
     }
     {
-      name: "target_sequence"
+      name: "targetSequence"
       req: true
       type: "`$STRING`"
     }
@@ -104,7 +104,20 @@ main: kit: entity: crispr_hdr_donor: {
             "crispr_hdr_donor"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              armLength: "`reqdata.arm_length`"
+              blockPam: "`reqdata.block_pam`"
+              designGenotypingPrimers: "`reqdata.design_genotyping_primer`"
+              editEnd: "`reqdata.edit_end`"
+              editStart: "`reqdata.edit_start`"
+              frameStart: "`reqdata.frame_start`"
+              guideEnd: "`reqdata.guide_end`"
+              guideStart: "`reqdata.guide_start`"
+              guideStrand: "`reqdata.guide_strand`"
+              nuclease: "`reqdata.nuclease`"
+              replacement: "`reqdata.replacement`"
+              targetSequence: "`reqdata.target_sequence`"
+            }
             res: "`body`"
           }
         }

@@ -26,8 +26,8 @@ import {
 describe('InSilicoPcrEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('InSilicoPcrEntity', async () => {
     const in_silico_pcr_ref01_ent = client.InSilicoPcr()
     let in_silico_pcr_ref01_data = setup.data.new.in_silico_pcr['in_silico_pcr_ref01']
 
-    in_silico_pcr_ref01_data = await in_silico_pcr_ref01_ent.create(in_silico_pcr_ref01_data)
+    in_silico_pcr_ref01_data = (await in_silico_pcr_ref01_ent.create(in_silico_pcr_ref01_data)).data()
     assert(null != in_silico_pcr_ref01_data)
 
 

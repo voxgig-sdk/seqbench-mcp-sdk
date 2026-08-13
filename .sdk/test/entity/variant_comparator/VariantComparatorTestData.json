@@ -3,7 +3,7 @@
     "variant_comparator": {
       "VARIANT_COMPARATOR00": {
         "coding": true,
-        "frame_start": "s5b",
+        "frameStart": "s5b",
         "gate": "s5c",
         "ok": "s5d",
         "provenance": {},
@@ -15,7 +15,7 @@
       },
       "VARIANT_COMPARATOR01": {
         "coding": true,
-        "frame_start": "sb5",
+        "frameStart": "sb5",
         "gate": "sb6",
         "ok": "sb7",
         "provenance": {},
@@ -27,7 +27,7 @@
       },
       "VARIANT_COMPARATOR02": {
         "coding": true,
-        "frame_start": "s10f",
+        "frameStart": "s10f",
         "gate": "s110",
         "ok": "s111",
         "provenance": {},
@@ -43,7 +43,7 @@
     "variant_comparator": {
       "variant_comparator_ref01": {
         "coding": true,
-        "frame_start": "s169",
+        "frameStart": "s169",
         "gate": "s16a",
         "ok": "s16b",
         "provenance": {},

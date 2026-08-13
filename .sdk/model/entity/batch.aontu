@@ -6,9 +6,29 @@ main: kit: entity: batch: {
 
   fields: [
     {
-      name: "arg"
+      name: "args"
       req: false
       type: "`$OBJECT`"
+    }
+    {
+      name: "capped"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "columns"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "errors"
+      req: true
+      type: "`$INTEGER`"
     }
     {
       name: "input"
@@ -16,14 +36,19 @@ main: kit: entity: batch: {
       type: "`$STRING`"
     }
     {
-      name: "ok"
+      name: "limit"
       req: true
-      type: "`$ANY`"
+      type: "`$INTEGER`"
     }
     {
-      name: "result"
+      name: "provenance"
       req: true
       type: "`$OBJECT`"
+    }
+    {
+      name: "rows"
+      req: true
+      type: "`$ARRAY`"
     }
     {
       name: "tool"
@@ -45,7 +70,7 @@ main: kit: entity: batch: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.result`"
           }
         }
       ]

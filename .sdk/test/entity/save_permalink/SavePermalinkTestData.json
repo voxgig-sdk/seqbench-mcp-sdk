@@ -2,7 +2,7 @@
   "existing": {
     "save_permalink": {
       "SAVE_PERMALINK00": {
-        "arg": {},
+        "args": {},
         "gate": "s3d",
         "ok": "s3e",
         "provenance": {},
@@ -11,7 +11,7 @@
         "id": "SAVE_PERMALINK00"
       },
       "SAVE_PERMALINK01": {
-        "arg": {},
+        "args": {},
         "gate": "s79",
         "ok": "s7a",
         "provenance": {},
@@ -20,7 +20,7 @@
         "id": "SAVE_PERMALINK01"
       },
       "SAVE_PERMALINK02": {
-        "arg": {},
+        "args": {},
         "gate": "sb5",
         "ok": "sb6",
         "provenance": {},
@@ -33,7 +33,7 @@
   "new": {
     "save_permalink": {
       "save_permalink_ref01": {
-        "arg": {},
+        "args": {},
         "gate": "sf1",
         "ok": "sf2",
         "provenance": {},

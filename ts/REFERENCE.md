@@ -1250,13 +1250,13 @@ const base_editing_design = client.BaseEditingDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `string` | No |  |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_position` | `number` | No |  |
+| `targetPosition` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1313,10 +1313,15 @@ const batch = client.Batch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Record<string, any>` | No |  |
+| `args` | `Record<string, any>` | No |  |
+| `capped` | `boolean` | Yes |  |
+| `columns` | `any[]` | Yes |  |
+| `count` | `number` | Yes |  |
+| `errors` | `number` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
+| `limit` | `number` | Yes |  |
+| `provenance` | `Record<string, any>` | Yes |  |
+| `rows` | `any[]` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1327,9 +1332,14 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.Batch().create({
+  capped: true,
+  columns: [],
+  count: 1,
+  errors: 1,
   input: 'example_input',
-  ok: 'example_ok',
-  result: {},
+  limit: 1,
+  provenance: {},
+  rows: [],
   tool: 'example_tool',
 })
 ```
@@ -1380,10 +1390,15 @@ const batch__workflow = client.BatchWorkflow()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `boolean` | Yes |  |
+| `columns` | `any[]` | Yes |  |
+| `count` | `number` | Yes |  |
+| `errors` | `number` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `step` | `any[]` | Yes |  |
+| `limit` | `number` | Yes |  |
+| `provenance` | `Record<string, any>` | Yes |  |
+| `rows` | `any[]` | Yes |  |
+| `steps` | `any[]` | Yes |  |
 
 ### Operations
 
@@ -1393,10 +1408,15 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.BatchWorkflow().create({
+  capped: true,
+  columns: [],
+  count: 1,
+  errors: 1,
   input: 'example_input',
-  ok: 'example_ok',
-  result: {},
-  step: [],
+  limit: 1,
+  provenance: {},
+  rows: [],
+  steps: [],
 })
 ```
 
@@ -1446,10 +1466,10 @@ const characterize_sequence = client.CharacterizeSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `number` | No |  |
+| `endPrimerLength` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `number` | No |  |
-| `min_orf_aa` | `number` | No |  |
+| `maxOrfs` | `number` | No |  |
+| `minOrfAa` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -1510,18 +1530,18 @@ const cloning_simulate = client.CloningSimulate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
 | `circular` | `boolean` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `any[]` | No |  |
+| `fragments` | `any[]` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `any[]` | No |  |
+| `names` | `any[]` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `number` | No |  |
+| `overlapLen` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -1581,12 +1601,12 @@ const codon_adaptation_index = client.CodonAdaptationIndex()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `rare_threshold` | `number` | No |  |
+| `rareThreshold` | `number` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -1707,15 +1727,15 @@ const construct_autofix = client.ConstructAutofix()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `any[]` | No |  |
-| `cryptic_orf_min_aa` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `avoidEnzymes` | `any[]` | No |  |
+| `crypticOrfMinAa` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `number` | No |  |
-| `gc_low` | `number` | No |  |
-| `gc_window` | `number` | No |  |
-| `homopolymer_min` | `number` | No |  |
-| `max_pass` | `number` | No |  |
+| `gcHigh` | `number` | No |  |
+| `gcLow` | `number` | No |  |
+| `gcWindow` | `number` | No |  |
+| `homopolymerMin` | `number` | No |  |
+| `maxPasses` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -1777,14 +1797,14 @@ const construct_qc = client.ConstructQc()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `any[]` | No |  |
-| `cryptic_orf_min_aa` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `avoidEnzymes` | `any[]` | No |  |
+| `crypticOrfMinAa` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `number` | No |  |
-| `gc_low` | `number` | No |  |
-| `gc_window` | `number` | No |  |
-| `homopolymer_min` | `number` | No |  |
+| `gcHigh` | `number` | No |  |
+| `gcLow` | `number` | No |  |
+| `gcWindow` | `number` | No |  |
+| `homopolymerMin` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -1846,12 +1866,12 @@ const crispr_grna_design = client.CrisprGrnaDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_score` | `number` | No |  |
+| `minScore` | `number` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `search_reverse_strand` | `boolean` | No |  |
+| `searchReverseStrand` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1909,22 +1929,22 @@ const crispr_hdr_donor = client.CrisprHdrDonor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `number` | No |  |
-| `block_pam` | `boolean` | No |  |
-| `design_genotyping_primer` | `boolean` | No |  |
-| `edit_end` | `number` | No |  |
-| `edit_start` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `armLength` | `number` | No |  |
+| `blockPam` | `boolean` | No |  |
+| `designGenotypingPrimers` | `boolean` | No |  |
+| `editEnd` | `number` | No |  |
+| `editStart` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `guide_end` | `number` | No |  |
-| `guide_start` | `number` | No |  |
-| `guide_strand` | `string` | No |  |
+| `guideEnd` | `number` | No |  |
+| `guideStart` | `number` | No |  |
+| `guideStrand` | `string` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `replacement` | `string` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `target_sequence` | `string` | Yes |  |
+| `targetSequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1939,7 +1959,7 @@ const result = await client.CrisprHdrDonor().create({
   provenance: {},
   replacement: 'example_replacement',
   result: {},
-  target_sequence: 'example_target_sequence',
+  targetSequence: 'example_targetSequence',
   tool: 'example_tool',
 })
 ```
@@ -1983,7 +2003,7 @@ const crispr_offtarget_check = client.CrisprOfftargetCheck()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `protospacer` | `string` | Yes |  |
@@ -2049,8 +2069,8 @@ const cross_dimer = client.CrossDimer()
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `sequence_a` | `string` | Yes |  |
-| `sequence_b` | `string` | Yes |  |
+| `sequenceA` | `string` | Yes |  |
+| `sequenceB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2064,8 +2084,8 @@ const result = await client.CrossDimer().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  sequence_a: 'example_sequence_a',
-  sequence_b: 'example_sequence_b',
+  sequenceA: 'example_sequenceA',
+  sequenceB: 'example_sequenceB',
   tool: 'example_tool',
 })
 ```
@@ -2110,14 +2130,14 @@ const dna_molarity = client.DnaMolarity()
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `length` | `number` | No |  |
-| `mass_ng` | `number` | No |  |
+| `massNg` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | No |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
-| `volume_ul` | `number` | No |  |
+| `volumeUl` | `number` | No |  |
 
 ### Operations
 
@@ -2172,8 +2192,8 @@ const double_digest = client.DoubleDigest()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `string` | Yes |  |
-| `enzyme_b` | `string` | Yes |  |
+| `enzymeA` | `string` | Yes |  |
+| `enzymeB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -2188,8 +2208,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.DoubleDigest().create({
-  enzyme_a: 'example_enzyme_a',
-  enzyme_b: 'example_enzyme_b',
+  enzymeA: 'example_enzymeA',
+  enzymeB: 'example_enzymeB',
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -2238,7 +2258,7 @@ const export_echo_picklist = client.ExportEchoPicklist()
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reaction` | `any[]` | Yes |  |
+| `reactions` | `any[]` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2252,7 +2272,7 @@ Create a new entity with the given data.
 const result = await client.ExportEchoPicklist().create({
   ok: 'example_ok',
   provenance: {},
-  reaction: [],
+  reactions: [],
   result: {},
   tool: 'example_tool',
 })
@@ -2298,9 +2318,9 @@ const export_opentrons_protocol = client.ExportOpentronsProtocol()
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `protocol_name` | `string` | No |  |
+| `protocolName` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reaction` | `any[]` | Yes |  |
+| `reactions` | `any[]` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2314,7 +2334,7 @@ Create a new entity with the given data.
 const result = await client.ExportOpentronsProtocol().create({
   ok: 'example_ok',
   provenance: {},
-  reaction: [],
+  reactions: [],
   result: {},
   tool: 'example_tool',
 })
@@ -2361,7 +2381,7 @@ const export_plate_layout = client.ExportPlateLayout()
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reaction` | `any[]` | Yes |  |
+| `reactions` | `any[]` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2375,7 +2395,7 @@ Create a new entity with the given data.
 const result = await client.ExportPlateLayout().create({
   ok: 'example_ok',
   provenance: {},
-  reaction: [],
+  reactions: [],
   result: {},
   tool: 'example_tool',
 })
@@ -2419,19 +2439,19 @@ const expression_heatmap_cluster = client.ExpressionHeatmapCluster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `boolean` | No |  |
-| `cluster_row` | `boolean` | No |  |
-| `distance_metric` | `string` | No |  |
+| `clusterCols` | `boolean` | No |  |
+| `clusterRows` | `boolean` | No |  |
+| `distanceMetric` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `any[]` | Yes |  |
+| `genes` | `any[]` | Yes |  |
 | `linkage` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `sample` | `any[]` | Yes |  |
+| `samples` | `any[]` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `value` | `any[]` | Yes |  |
-| `z_score_row` | `boolean` | No |  |
+| `values` | `any[]` | Yes |  |
+| `zScoreRows` | `boolean` | No |  |
 
 ### Operations
 
@@ -2441,13 +2461,13 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ExpressionHeatmapCluster().create({
-  gene: [],
+  genes: [],
   ok: 'example_ok',
   provenance: {},
   result: {},
-  sample: [],
+  samples: [],
   tool: 'example_tool',
-  value: [],
+  values: [],
 })
 ```
 
@@ -2493,7 +2513,7 @@ const fastq_qc_report = client.FastqQcReport()
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `quality_offset` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2553,11 +2573,11 @@ const fastq_trim = client.FastqTrim()
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `input` | `string` | Yes |  |
-| `min_length` | `number` | No |  |
+| `minLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `quality_offset` | `number` | No |  |
-| `quality_threshold` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
+| `qualityThreshold` | `number` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2616,10 +2636,10 @@ const find_orf = client.FindOrf()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_aa_length` | `number` | No |  |
+| `minAaLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `require_stop` | `boolean` | No |  |
+| `requireStop` | `boolean` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -2678,7 +2698,7 @@ const format_sequence = client.FormatSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `string` | No |  |
+| `caseMode` | `string` | No |  |
 | `convert` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
@@ -2686,7 +2706,7 @@ const format_sequence = client.FormatSequence()
 | `result` | `Record<string, any>` | Yes |  |
 | `reverse` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
-| `strip_non_letter` | `boolean` | No |  |
+| `stripNonLetters` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 | `width` | `number` | No |  |
 
@@ -2745,11 +2765,11 @@ const functional_enrichment = client.FunctionalEnrichment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `any[]` | No |  |
-| `collection` | `any[]` | No |  |
+| `collections` | `any[]` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `any[]` | Yes |  |
-| `max_term_size` | `number` | No |  |
-| `min_term_size` | `number` | No |  |
+| `genes` | `any[]` | Yes |  |
+| `maxTermSize` | `number` | No |  |
+| `minTermSize` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -2763,7 +2783,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.FunctionalEnrichment().create({
-  gene: [],
+  genes: [],
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -3053,14 +3073,14 @@ const golden_gate_fidelity = client.GoldenGateFidelity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `string` | No |  |
+| `compareToNamedSet` | `string` | No |  |
 | `dataset` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `overhang` | `any[]` | Yes |  |
+| `overhangs` | `any[]` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `risk_threshold` | `number` | No |  |
+| `riskThreshold` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3072,7 +3092,7 @@ Create a new entity with the given data.
 ```ts
 const result = await client.GoldenGateFidelity().create({
   ok: 'example_ok',
-  overhang: [],
+  overhangs: [],
   provenance: {},
   result: {},
   tool: 'example_tool',
@@ -3179,7 +3199,7 @@ const id_map_poll = client.IdMapPoll()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -3193,7 +3213,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.IdMapPoll().create({
-  job_id: 'example_job_id',
+  jobId: 'example_jobId',
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -3245,7 +3265,7 @@ const id_map_submit = client.IdMapSubmit()
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `tax_id` | `string` | No |  |
+| `taxId` | `string` | No |  |
 | `to` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3306,13 +3326,13 @@ const in_silico_pcr = client.InSilicoPcr()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `boolean` | No |  |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3324,11 +3344,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.InSilicoPcr().create({
-  forward_primer: 'example_forward_primer',
+  forwardPrimer: 'example_forwardPrimer',
   ok: 'example_ok',
   provenance: {},
   result: {},
-  reverse_primer: 'example_reverse_primer',
+  reversePrimer: 'example_reversePrimer',
   template: 'example_template',
   tool: 'example_tool',
 })
@@ -3372,18 +3392,18 @@ const kasp_primer_design = client.KaspPrimerDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `boolean` | No |  |
-| `allele_a` | `string` | Yes |  |
-| `allele_b` | `string` | Yes |  |
+| `addSecondaryMismatch` | `boolean` | No |  |
+| `alleleA` | `string` | Yes |  |
+| `alleleB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_amplicon` | `number` | No |  |
-| `min_amplicon` | `number` | No |  |
+| `maxAmplicon` | `number` | No |  |
+| `minAmplicon` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `snp_position` | `number` | Yes |  |
+| `snpPosition` | `number` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_core_tm` | `number` | No |  |
+| `targetCoreTm` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3394,12 +3414,12 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.KaspPrimerDesign().create({
-  allele_a: 'example_allele_a',
-  allele_b: 'example_allele_b',
+  alleleA: 'example_alleleA',
+  alleleB: 'example_alleleB',
   ok: 'example_ok',
   provenance: {},
   result: {},
-  snp_position: 1,
+  snpPosition: 1,
   target: 'example_target',
   tool: 'example_tool',
 })
@@ -3487,17 +3507,17 @@ const melting_temperature = client.MeltingTemperature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `target_tm` | `number` | No |  |
-| `tm_tolerance` | `number` | No |  |
+| `targetTm` | `number` | No |  |
+| `tmTolerance` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3555,12 +3575,12 @@ const motif_finder = client.MotifFinder()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `motif` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `search_reverse_strand` | `boolean` | No |  |
+| `searchReverseStrand` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3680,12 +3700,12 @@ const oligo_analysi = client.OligoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
@@ -3749,9 +3769,9 @@ const ortholog_map = client.OrthologMap()
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `source_species` | `string` | No |  |
-| `symbol` | `any[]` | Yes |  |
-| `target_species` | `string` | Yes |  |
+| `sourceSpecies` | `string` | No |  |
+| `symbols` | `any[]` | Yes |  |
+| `targetSpecies` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
 
@@ -3766,8 +3786,8 @@ const result = await client.OrthologMap().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  symbol: [],
-  target_species: 'example_target_species',
+  symbols: [],
+  targetSpecies: 'example_targetSpecies',
   tool: 'example_tool',
 })
 ```
@@ -3818,8 +3838,8 @@ const pairwise_alignment = client.PairwiseAlignment()
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `seq_a` | `string` | Yes |  |
-| `seq_b` | `string` | Yes |  |
+| `seqA` | `string` | Yes |  |
+| `seqB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3833,8 +3853,8 @@ const result = await client.PairwiseAlignment().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  seq_a: 'example_seq_a',
-  seq_b: 'example_seq_b',
+  seqA: 'example_seqA',
+  seqB: 'example_seqB',
   tool: 'example_tool',
 })
 ```
@@ -3938,8 +3958,8 @@ const parse_sanger_trace = client.ParseSangerTrace()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | Yes |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | Yes |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -3954,7 +3974,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ParseSangerTrace().create({
-  file_base64: 'example_file_base64',
+  fileBase64: 'example_fileBase64',
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -4130,7 +4150,7 @@ const plasmid_full_report = client.PlasmidFullReport()
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `number` | No |  |
+| `topN` | `number` | No |  |
 
 ### Operations
 
@@ -4193,7 +4213,7 @@ const plasmid_identify = client.PlasmidIdentify()
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `number` | No |  |
+| `topN` | `number` | No |  |
 
 ### Operations
 
@@ -4249,16 +4269,16 @@ const prime_editing_design = client.PrimeEditingDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `number` | Yes |  |
-| `edit_start` | `number` | Yes |  |
-| `frame_start` | `number` | No |  |
+| `editEnd` | `number` | Yes |  |
+| `editStart` | `number` | Yes |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `inserted_seq` | `string` | No |  |
+| `insertedSeq` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `pbs_length` | `number` | No |  |
+| `pbsLength` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `rtt_homology` | `number` | No |  |
+| `rttHomology` | `number` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -4270,8 +4290,8 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PrimeEditingDesign().create({
-  edit_end: 1,
-  edit_start: 1,
+  editEnd: 1,
+  editStart: 1,
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -4319,13 +4339,13 @@ const prime_editing_twin_design = client.PrimeEditingTwinDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `new_sequence` | `string` | Yes |  |
+| `newSequence` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
-| `overlap_length` | `number` | No |  |
-| `pbs_length` | `number` | No |  |
+| `overlapLength` | `number` | No |  |
+| `pbsLength` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `replace_end` | `number` | Yes |  |
-| `replace_start` | `number` | Yes |  |
+| `replaceEnd` | `number` | Yes |  |
+| `replaceStart` | `number` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -4338,11 +4358,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PrimeEditingTwinDesign().create({
-  new_sequence: 'example_new_sequence',
+  newSequence: 'example_newSequence',
   ok: 'example_ok',
   provenance: {},
-  replace_end: 1,
-  replace_start: 1,
+  replaceEnd: 1,
+  replaceStart: 1,
   result: {},
   target: 'example_target',
   tool: 'example_tool',
@@ -4387,29 +4407,29 @@ const primer_design = client.PrimerDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `number` | No |  |
-| `amplicon_min` | `number` | No |  |
-| `dntp_mm` | `number` | No |  |
+| `ampliconMax` | `number` | No |  |
+| `ampliconMin` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_max` | `number` | No |  |
-| `gc_min` | `number` | No |  |
-| `len_max` | `number` | No |  |
-| `len_min` | `number` | No |  |
-| `len_opt` | `number` | No |  |
-| `max_return` | `number` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `gcMax` | `number` | No |  |
+| `gcMin` | `number` | No |  |
+| `lenMax` | `number` | No |  |
+| `lenMin` | `number` | No |  |
+| `lenOpt` | `number` | No |  |
+| `maxReturn` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `target_end` | `number` | No |  |
-| `target_start` | `number` | No |  |
+| `targetEnd` | `number` | No |  |
+| `targetStart` | `number` | No |  |
 | `template` | `string` | Yes |  |
-| `tm_max` | `number` | No |  |
-| `tm_max_diff` | `number` | No |  |
-| `tm_min` | `number` | No |  |
-| `tm_opt` | `number` | No |  |
+| `tmMax` | `number` | No |  |
+| `tmMaxDiff` | `number` | No |  |
+| `tmMin` | `number` | No |  |
+| `tmOpt` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -4466,14 +4486,14 @@ const primer_specificity = client.PrimerSpecificity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
-| `max_product_length` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
+| `maxProductLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -4484,11 +4504,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.PrimerSpecificity().create({
-  forward_primer: 'example_forward_primer',
+  forwardPrimer: 'example_forwardPrimer',
   ok: 'example_ok',
   provenance: {},
   result: {},
-  reverse_primer: 'example_reverse_primer',
+  reversePrimer: 'example_reversePrimer',
   tool: 'example_tool',
 })
 ```
@@ -4532,10 +4552,10 @@ const protease_digestion = client.ProteaseDigestion()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mass` | `number` | No |  |
-| `max_peptide` | `number` | No |  |
-| `min_mass` | `number` | No |  |
-| `missed_cleavage` | `number` | No |  |
+| `maxMass` | `number` | No |  |
+| `maxPeptides` | `number` | No |  |
+| `minMass` | `number` | No |  |
+| `missedCleavages` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `protease` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -4598,7 +4618,7 @@ const protein_annotate_poll = client.ProteinAnnotatePoll()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -4612,7 +4632,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ProteinAnnotatePoll().create({
-  job_id: 'example_job_id',
+  jobId: 'example_jobId',
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -4660,7 +4680,7 @@ const protein_annotate_submit = client.ProteinAnnotateSubmit()
 | --- | --- | --- | --- |
 | `appl` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `goterm` | `boolean` | No |  |
+| `goterms` | `boolean` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -4784,7 +4804,7 @@ const protein_property = client.ProteinProperty()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `number` | No |  |
+| `chargeStep` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -4847,7 +4867,7 @@ const random_sequence = client.RandomSequence()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `gc_content` | `number` | No |  |
+| `gcContent` | `number` | No |  |
 | `kind` | `string` | No |  |
 | `length` | `number` | Yes |  |
 | `ok` | `any` | Yes |  |
@@ -4909,7 +4929,7 @@ const restriction_site = client.RestrictionSite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `any[]` | No |  |
+| `enzymes` | `any[]` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -5157,10 +5177,10 @@ const sanger_vs_reference = client.SangerVsReference()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | No |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | No |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `min_coverage` | `number` | No |  |
+| `minCoverage` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `read` | `string` | No |  |
@@ -5222,7 +5242,7 @@ const save_permalink = client.SavePermalink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Record<string, any>` | Yes |  |
+| `args` | `Record<string, any>` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -5237,7 +5257,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.SavePermalink().create({
-  arg: {},
+  args: {},
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -5287,7 +5307,7 @@ const seqfile_stat = client.SeqfileStat()
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `quality_offset` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5471,10 +5491,10 @@ const sequence_report = client.SequenceReport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `number` | No |  |
+| `endPrimerLength` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `number` | No |  |
-| `min_orf_aa` | `number` | No |  |
+| `maxOrfs` | `number` | No |  |
+| `minOrfAa` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
@@ -5538,7 +5558,7 @@ const sequence_search = client.SequenceSearch()
 | `db` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `gene` | `string` | No |  |
-| `max_result` | `number` | No |  |
+| `maxResults` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -5600,10 +5620,10 @@ const sequencing_readback_verify = client.SequencingReadbackVerify()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_supporting_read` | `number` | No |  |
+| `minSupportingReads` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `read` | `string` | Yes |  |
+| `reads` | `string` | Yes |  |
 | `reference` | `string` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -5618,7 +5638,7 @@ Create a new entity with the given data.
 const result = await client.SequencingReadbackVerify().create({
   ok: 'example_ok',
   provenance: {},
-  read: 'example_read',
+  reads: 'example_reads',
   reference: 'example_reference',
   result: {},
   tool: 'example_tool',
@@ -5663,7 +5683,7 @@ const session_create = client.SessionCreate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `Record<string, any>` | No |  |
+| `entries` | `Record<string, any>` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -5724,11 +5744,11 @@ const session_get = client.SessionGet()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `name` | `any[]` | No |  |
+| `names` | `any[]` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5742,7 +5762,7 @@ const result = await client.SessionGet().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  session_id: 'example_session_id',
+  sessionId: 'example_sessionId',
   tool: 'example_tool',
 })
 ```
@@ -5785,15 +5805,15 @@ const session_run = client.SessionRun()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Record<string, any>` | No |  |
-| `from_session` | `Record<string, any>` | No |  |
+| `args` | `Record<string, any>` | No |  |
+| `fromSession` | `Record<string, any>` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `write_back` | `Record<string, any>` | No |  |
+| `writeBack` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -5806,7 +5826,7 @@ const result = await client.SessionRun().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  session_id: 'example_session_id',
+  sessionId: 'example_sessionId',
   tool: 'example_tool',
 })
 ```
@@ -5849,12 +5869,12 @@ const session_set = client.SessionSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `Record<string, any>` | Yes |  |
+| `entries` | `Record<string, any>` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5865,11 +5885,11 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.SessionSet().create({
-  entry: {},
+  entries: {},
   ok: 'example_ok',
   provenance: {},
   result: {},
-  session_id: 'example_session_id',
+  sessionId: 'example_sessionId',
   tool: 'example_tool',
 })
 ```
@@ -5913,11 +5933,11 @@ const sirna_design = client.SirnaDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_reynold` | `number` | No |  |
+| `minReynolds` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `sh_rna_loop` | `string` | No |  |
+| `shRnaLoop` | `string` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5975,23 +5995,23 @@ const site_directed_mutagenesi = client.SiteDirectedMutagenesi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
-| `dntp_mm` | `number` | No |  |
-| `edit_kind` | `string` | No |  |
-| `frame_start` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
+| `editKind` | `string` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
-| `new_base` | `string` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
+| `newBase` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `organism` | `string` | No |  |
 | `position` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `residue` | `number` | No |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `style` | `string` | No |  |
-| `target_aa` | `string` | No |  |
+| `targetAa` | `string` | No |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -6055,7 +6075,7 @@ const translate = client.Translate()
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `to_stop` | `boolean` | No |  |
+| `toStop` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -6175,7 +6195,7 @@ const variant_comparator = client.VariantComparator()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `boolean` | No |  |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
@@ -6239,28 +6259,28 @@ const verify_assembly = client.VerifyAssembly()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
 | `circular` | `boolean` | No |  |
-| `claimed_construct` | `string` | Yes |  |
+| `claimedConstruct` | `string` | Yes |  |
 | `coding` | `boolean` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `any[]` | No |  |
-| `fragment_pcr` | `any[]` | No |  |
-| `frame_start` | `number` | No |  |
+| `fragmentPcrs` | `any[]` | No |  |
+| `fragments` | `any[]` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
-| `insert_pcr` | `Record<string, any>` | No |  |
+| `insertPcr` | `Record<string, any>` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `any[]` | No |  |
+| `names` | `any[]` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `number` | No |  |
+| `overlapLen` | `number` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `vector` | `string` | No |  |
-| `vector_pcr` | `Record<string, any>` | No |  |
+| `vectorPcr` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -6270,7 +6290,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.VerifyAssembly().create({
-  claimed_construct: 'example_claimed_construct',
+  claimedConstruct: 'example_claimedConstruct',
   method: 'example_method',
   ok: 'example_ok',
   provenance: {},
@@ -6317,17 +6337,17 @@ const verify_construct = client.VerifyConstruct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `string` | Yes |  |
-| `expected_frame_start` | `number` | No |  |
+| `claimedConstruct` | `string` | Yes |  |
+| `expectedFrameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `insert_forward_primer` | `string` | Yes |  |
-| `insert_reverse_primer` | `string` | Yes |  |
-| `insert_template` | `string` | Yes |  |
-| `max_primer_mismatch` | `number` | No |  |
+| `insertForwardPrimer` | `string` | Yes |  |
+| `insertReversePrimer` | `string` | Yes |  |
+| `insertTemplate` | `string` | Yes |  |
+| `maxPrimerMismatches` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `template_circular` | `boolean` | No |  |
+| `templateCircular` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -6338,10 +6358,10 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.VerifyConstruct().create({
-  claimed_construct: 'example_claimed_construct',
-  insert_forward_primer: 'example_insert_forward_primer',
-  insert_reverse_primer: 'example_insert_reverse_primer',
-  insert_template: 'example_insert_template',
+  claimedConstruct: 'example_claimedConstruct',
+  insertForwardPrimer: 'example_insertForwardPrimer',
+  insertReversePrimer: 'example_insertReversePrimer',
+  insertTemplate: 'example_insertTemplate',
   ok: 'example_ok',
   provenance: {},
   result: {},
@@ -6388,7 +6408,7 @@ const virtual_gel = client.VirtualGel()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `boolean` | No |  |
-| `enzyme` | `any[]` | No |  |
+| `enzymes` | `any[]` | No |  |
 | `gate` | `any` | No |  |
 | `ladder` | `string` | No |  |
 | `ok` | `any` | Yes |  |
@@ -6455,7 +6475,7 @@ const volcano_plot_data = client.VolcanoPlotData()
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `result` | `Record<string, any>` | Yes |  |
-| `row` | `any[]` | Yes |  |
+| `rows` | `any[]` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -6469,7 +6489,7 @@ const result = await client.VolcanoPlotData().create({
   ok: 'example_ok',
   provenance: {},
   result: {},
-  row: [],
+  rows: [],
   tool: 'example_tool',
 })
 ```
@@ -6513,7 +6533,7 @@ const web_search = client.WebSearch()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_result` | `number` | No |  |
+| `max_results` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `query` | `string` | Yes |  |

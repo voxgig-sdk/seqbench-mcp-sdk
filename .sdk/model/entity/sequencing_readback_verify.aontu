@@ -11,7 +11,7 @@ main: kit: entity: sequencing_readback_verify: {
       type: "`$ANY`"
     }
     {
-      name: "min_supporting_read"
+      name: "minSupportingReads"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: sequencing_readback_verify: {
       type: "`$OBJECT`"
     }
     {
-      name: "read"
+      name: "reads"
       req: true
       type: "`$STRING`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: sequencing_readback_verify: {
             "sequencing_readback_verify"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              minSupportingReads: "`reqdata.min_supporting_read`"
+              reads: "`reqdata.read`"
+              reference: "`reqdata.reference`"
+            }
             res: "`body`"
           }
         }

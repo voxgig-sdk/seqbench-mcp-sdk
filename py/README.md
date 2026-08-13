@@ -42,7 +42,7 @@ client = SeqbenchMcpSDK({
 ### 4. Create, update, and remove
 
 ```python
-# Create — returns the bare created record (a dict)
+# Create — returns the ENTITY (call data_get() for the record)
 created = client.AlphafoldLookup().create({"accession": "example_accession", "ok": "example_ok", "provenance": {}, "result": {}, "tool": "example_tool"})
 
 ```
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = SeqbenchMcpSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 batch = client.Batch().load()
 # batch contains the mock response record
 ```
@@ -304,7 +305,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -359,13 +360,13 @@ API path: `/aso_design`
 | Field | Description |
 | --- | --- |
 | `editor` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `target` |  |
-| `target_position` |  |
+| `targetPosition` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -376,10 +377,15 @@ API path: `/base_editing_design`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create, Load.
@@ -390,10 +396,15 @@ API path: `/batch`
 
 | Field | Description |
 | --- | --- |
+| `capped` |  |
+| `columns` |  |
+| `count` |  |
+| `errors` |  |
 | `input` |  |
-| `ok` |  |
-| `result` |  |
-| `step` |  |
+| `limit` |  |
+| `provenance` |  |
+| `rows` |  |
+| `steps` |  |
 
 Operations: Create, Load.
 
@@ -403,10 +414,10 @@ API path: `/workflow`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -421,18 +432,18 @@ API path: `/characterize_sequence`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
+| `fragments` |  |
 | `gate` |  |
 | `insert` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
@@ -446,12 +457,12 @@ API path: `/cloning_simulate`
 
 | Field | Description |
 | --- | --- |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
-| `rare_threshold` |  |
+| `rareThreshold` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -480,15 +491,15 @@ API path: `/codon_optimize`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
-| `max_pass` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
+| `maxPasses` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -504,14 +515,14 @@ API path: `/construct_autofix`
 
 | Field | Description |
 | --- | --- |
-| `avoid_enzyme` |  |
-| `cryptic_orf_min_aa` |  |
-| `frame_start` |  |
+| `avoidEnzymes` |  |
+| `crypticOrfMinAa` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `gc_high` |  |
-| `gc_low` |  |
-| `gc_window` |  |
-| `homopolymer_min` |  |
+| `gcHigh` |  |
+| `gcLow` |  |
+| `gcWindow` |  |
+| `homopolymerMin` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -527,12 +538,12 @@ API path: `/construct_qc`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_score` |  |
+| `minScore` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -544,22 +555,22 @@ API path: `/crispr_grna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_length` |  |
-| `block_pam` |  |
-| `design_genotyping_primer` |  |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `armLength` |  |
+| `blockPam` |  |
+| `designGenotypingPrimers` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `guide_end` |  |
-| `guide_start` |  |
-| `guide_strand` |  |
+| `guideEnd` |  |
+| `guideStart` |  |
+| `guideStrand` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `provenance` |  |
 | `replacement` |  |
 | `result` |  |
-| `target_sequence` |  |
+| `targetSequence` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -571,7 +582,7 @@ API path: `/crispr_hdr_donor`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `nuclease` |  |
 | `ok` |  |
 | `protospacer` |  |
@@ -591,8 +602,8 @@ API path: `/crispr_offtarget_check`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sequence_a` |  |
-| `sequence_b` |  |
+| `sequenceA` |  |
+| `sequenceB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -605,14 +616,14 @@ API path: `/cross_dimer`
 | --- | --- |
 | `gate` |  |
 | `length` |  |
-| `mass_ng` |  |
+| `massNg` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
 | `type` |  |
-| `volume_ul` |  |
+| `volumeUl` |  |
 
 Operations: Create.
 
@@ -622,8 +633,8 @@ API path: `/dna_molarity`
 
 | Field | Description |
 | --- | --- |
-| `enzyme_a` |  |
-| `enzyme_b` |  |
+| `enzymeA` |  |
+| `enzymeB` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -641,7 +652,7 @@ API path: `/double_digest`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -655,9 +666,9 @@ API path: `/export_echo_picklist`
 | --- | --- |
 | `gate` |  |
 | `ok` |  |
-| `protocol_name` |  |
+| `protocolName` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -672,7 +683,7 @@ API path: `/export_opentrons_protocol`
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
-| `reaction` |  |
+| `reactions` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -684,19 +695,19 @@ API path: `/export_plate_layout`
 
 | Field | Description |
 | --- | --- |
-| `cluster_col` |  |
-| `cluster_row` |  |
-| `distance_metric` |  |
+| `clusterCols` |  |
+| `clusterRows` |  |
+| `distanceMetric` |  |
 | `gate` |  |
-| `gene` |  |
+| `genes` |  |
 | `linkage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sample` |  |
+| `samples` |  |
 | `tool` |  |
-| `value` |  |
-| `z_score_row` |  |
+| `values` |  |
+| `zScoreRows` |  |
 
 Operations: Create.
 
@@ -710,7 +721,7 @@ API path: `/expression_heatmap_cluster`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -724,11 +735,11 @@ API path: `/fastq_qc_report`
 | --- | --- |
 | `gate` |  |
 | `input` |  |
-| `min_length` |  |
+| `minLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
-| `quality_threshold` |  |
+| `qualityOffset` |  |
+| `qualityThreshold` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -741,10 +752,10 @@ API path: `/fastq_trim`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_aa_length` |  |
+| `minAaLength` |  |
 | `ok` |  |
 | `provenance` |  |
-| `require_stop` |  |
+| `requireStop` |  |
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
@@ -757,7 +768,7 @@ API path: `/find_orfs`
 
 | Field | Description |
 | --- | --- |
-| `case_mode` |  |
+| `caseMode` |  |
 | `convert` |  |
 | `gate` |  |
 | `ok` |  |
@@ -765,7 +776,7 @@ API path: `/find_orfs`
 | `result` |  |
 | `reverse` |  |
 | `sequence` |  |
-| `strip_non_letter` |  |
+| `stripNonLetters` |  |
 | `tool` |  |
 | `width` |  |
 
@@ -778,11 +789,11 @@ API path: `/format_sequence`
 | Field | Description |
 | --- | --- |
 | `background` |  |
-| `collection` |  |
+| `collections` |  |
 | `gate` |  |
-| `gene` |  |
-| `max_term_size` |  |
-| `min_term_size` |  |
+| `genes` |  |
+| `maxTermSize` |  |
+| `minTermSize` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -856,14 +867,14 @@ API path: `/gene_model`
 
 | Field | Description |
 | --- | --- |
-| `compare_to_named_set` |  |
+| `compareToNamedSet` |  |
 | `dataset` |  |
 | `gate` |  |
 | `ok` |  |
-| `overhang` |  |
+| `overhangs` |  |
 | `provenance` |  |
 | `result` |  |
-| `risk_threshold` |  |
+| `riskThreshold` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -890,7 +901,7 @@ API path: `/hgvs_convert`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -910,7 +921,7 @@ API path: `/id_map_poll`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `tax_id` |  |
+| `taxId` |  |
 | `to` |  |
 | `tool` |  |
 
@@ -923,13 +934,13 @@ API path: `/id_map_submit`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -941,18 +952,18 @@ API path: `/in_silico_pcr`
 
 | Field | Description |
 | --- | --- |
-| `add_secondary_mismatch` |  |
-| `allele_a` |  |
-| `allele_b` |  |
+| `addSecondaryMismatch` |  |
+| `alleleA` |  |
+| `alleleB` |  |
 | `gate` |  |
-| `max_amplicon` |  |
-| `min_amplicon` |  |
+| `maxAmplicon` |  |
+| `minAmplicon` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `snp_position` |  |
+| `snpPosition` |  |
 | `target` |  |
-| `target_core_tm` |  |
+| `targetCoreTm` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -972,17 +983,17 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `target_tm` |  |
-| `tm_tolerance` |  |
+| `targetTm` |  |
+| `tmTolerance` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -994,12 +1005,12 @@ API path: `/melting_temperature`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mismatch` |  |
+| `maxMismatches` |  |
 | `motif` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `search_reverse_strand` |  |
+| `searchReverseStrand` |  |
 | `sequence` |  |
 | `tool` |  |
 
@@ -1026,12 +1037,12 @@ API path: `/multiple_sequence_alignment`
 
 | Field | Description |
 | --- | --- |
-| `dntp_mm` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
@@ -1049,9 +1060,9 @@ API path: `/oligo_analysis`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `source_species` |  |
-| `symbol` |  |
-| `target_species` |  |
+| `sourceSpecies` |  |
+| `symbols` |  |
+| `targetSpecies` |  |
 | `tool` |  |
 | `type` |  |
 
@@ -1071,8 +1082,8 @@ API path: `/ortholog_map`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `seq_a` |  |
-| `seq_b` |  |
+| `seqA` |  |
+| `seqB` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1098,8 +1109,8 @@ API path: `/parse_genbank`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1152,7 +1163,7 @@ API path: `/plasmid_deep_annotate`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1169,7 +1180,7 @@ API path: `/plasmid_full_report`
 | `result` |  |
 | `sequence` |  |
 | `tool` |  |
-| `top_n` |  |
+| `topN` |  |
 
 Operations: Create.
 
@@ -1179,16 +1190,16 @@ API path: `/plasmid_identify`
 
 | Field | Description |
 | --- | --- |
-| `edit_end` |  |
-| `edit_start` |  |
-| `frame_start` |  |
+| `editEnd` |  |
+| `editStart` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `inserted_seq` |  |
+| `insertedSeq` |  |
 | `ok` |  |
-| `pbs_length` |  |
+| `pbsLength` |  |
 | `provenance` |  |
 | `result` |  |
-| `rtt_homology` |  |
+| `rttHomology` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1201,13 +1212,13 @@ API path: `/prime_editing_design`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `new_sequence` |  |
+| `newSequence` |  |
 | `ok` |  |
-| `overlap_length` |  |
-| `pbs_length` |  |
+| `overlapLength` |  |
+| `pbsLength` |  |
 | `provenance` |  |
-| `replace_end` |  |
-| `replace_start` |  |
+| `replaceEnd` |  |
+| `replaceStart` |  |
 | `result` |  |
 | `target` |  |
 | `tool` |  |
@@ -1220,29 +1231,29 @@ API path: `/prime_editing_twin_design`
 
 | Field | Description |
 | --- | --- |
-| `amplicon_max` |  |
-| `amplicon_min` |  |
-| `dntp_mm` |  |
+| `ampliconMax` |  |
+| `ampliconMin` |  |
+| `dntpMM` |  |
 | `gate` |  |
-| `gc_max` |  |
-| `gc_min` |  |
-| `len_max` |  |
-| `len_min` |  |
-| `len_opt` |  |
-| `max_return` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
+| `gcMax` |  |
+| `gcMin` |  |
+| `lenMax` |  |
+| `lenMin` |  |
+| `lenOpt` |  |
+| `maxReturn` |  |
+| `mgMM` |  |
+| `naMM` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `provenance` |  |
 | `result` |  |
-| `target_end` |  |
-| `target_start` |  |
+| `targetEnd` |  |
+| `targetStart` |  |
 | `template` |  |
-| `tm_max` |  |
-| `tm_max_diff` |  |
-| `tm_min` |  |
-| `tm_opt` |  |
+| `tmMax` |  |
+| `tmMaxDiff` |  |
+| `tmMin` |  |
+| `tmOpt` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1253,14 +1264,14 @@ API path: `/primer_design`
 
 | Field | Description |
 | --- | --- |
-| `forward_primer` |  |
+| `forwardPrimer` |  |
 | `gate` |  |
-| `max_mismatch` |  |
-| `max_product_length` |  |
+| `maxMismatches` |  |
+| `maxProductLength` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `reverse_primer` |  |
+| `reversePrimer` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1272,10 +1283,10 @@ API path: `/primer_specificity`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_mass` |  |
-| `max_peptide` |  |
-| `min_mass` |  |
-| `missed_cleavage` |  |
+| `maxMass` |  |
+| `maxPeptides` |  |
+| `minMass` |  |
+| `missedCleavages` |  |
 | `ok` |  |
 | `protease` |  |
 | `provenance` |  |
@@ -1292,7 +1303,7 @@ API path: `/protease_digestion`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `job_id` |  |
+| `jobId` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1308,7 +1319,7 @@ API path: `/protein_annotate_poll`
 | --- | --- |
 | `appl` |  |
 | `gate` |  |
-| `goterm` |  |
+| `goterms` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1340,7 +1351,7 @@ API path: `/protein_hydrophobicity`
 
 | Field | Description |
 | --- | --- |
-| `charge_step` |  |
+| `chargeStep` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1357,7 +1368,7 @@ API path: `/protein_properties`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `gc_content` |  |
+| `gcContent` |  |
 | `kind` |  |
 | `length` |  |
 | `ok` |  |
@@ -1373,7 +1384,7 @@ API path: `/random_sequence`
 
 | Field | Description |
 | --- | --- |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1437,10 +1448,10 @@ API path: `/rna_fold`
 
 | Field | Description |
 | --- | --- |
-| `file_base64` |  |
-| `file_name` |  |
+| `fileBase64` |  |
+| `fileName` |  |
 | `gate` |  |
-| `min_coverage` |  |
+| `minCoverage` |  |
 | `ok` |  |
 | `provenance` |  |
 | `read` |  |
@@ -1456,7 +1467,7 @@ API path: `/sanger_vs_reference`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
+| `args` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1475,7 +1486,7 @@ API path: `/save_permalink`
 | `input` |  |
 | `ok` |  |
 | `provenance` |  |
-| `quality_offset` |  |
+| `qualityOffset` |  |
 | `result` |  |
 | `tool` |  |
 
@@ -1521,10 +1532,10 @@ API path: `/sequence_format_convert`
 
 | Field | Description |
 | --- | --- |
-| `end_primer_length` |  |
+| `endPrimerLength` |  |
 | `gate` |  |
-| `max_orf` |  |
-| `min_orf_aa` |  |
+| `maxOrfs` |  |
+| `minOrfAa` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
@@ -1542,7 +1553,7 @@ API path: `/sequence_report`
 | `db` |  |
 | `gate` |  |
 | `gene` |  |
-| `max_result` |  |
+| `maxResults` |  |
 | `ok` |  |
 | `organism` |  |
 | `provenance` |  |
@@ -1559,10 +1570,10 @@ API path: `/sequence_search`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_supporting_read` |  |
+| `minSupportingReads` |  |
 | `ok` |  |
 | `provenance` |  |
-| `read` |  |
+| `reads` |  |
 | `reference` |  |
 | `result` |  |
 | `tool` |  |
@@ -1575,7 +1586,7 @@ API path: `/sequencing_readback_verify`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1591,11 +1602,11 @@ API path: `/session_create`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1606,15 +1617,15 @@ API path: `/session_get`
 
 | Field | Description |
 | --- | --- |
-| `arg` |  |
-| `from_session` |  |
+| `args` |  |
+| `fromSession` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
-| `write_back` |  |
+| `writeBack` |  |
 
 Operations: Create.
 
@@ -1624,12 +1635,12 @@ API path: `/session_run`
 
 | Field | Description |
 | --- | --- |
-| `entry` |  |
+| `entries` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `session_id` |  |
+| `sessionId` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1641,11 +1652,11 @@ API path: `/session_set`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `min_reynold` |  |
+| `minReynolds` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `sh_rna_loop` |  |
+| `shRnaLoop` |  |
 | `target` |  |
 | `tool` |  |
 
@@ -1657,23 +1668,23 @@ API path: `/sirna_design`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
-| `dntp_mm` |  |
-| `edit_kind` |  |
-| `frame_start` |  |
+| `armTmTarget` |  |
+| `dntpMM` |  |
+| `editKind` |  |
+| `frameStart` |  |
 | `gate` |  |
-| `mg_mm` |  |
-| `na_mm` |  |
-| `new_base` |  |
+| `mgMM` |  |
+| `naMM` |  |
+| `newBase` |  |
 | `ok` |  |
-| `oligo_nm` |  |
+| `oligoNM` |  |
 | `organism` |  |
 | `position` |  |
 | `provenance` |  |
 | `residue` |  |
 | `result` |  |
 | `style` |  |
-| `target_aa` |  |
+| `targetAa` |  |
 | `template` |  |
 | `tool` |  |
 
@@ -1691,7 +1702,7 @@ API path: `/site_directed_mutagenesis`
 | `provenance` |  |
 | `result` |  |
 | `sequence` |  |
-| `to_stop` |  |
+| `toStop` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1719,7 +1730,7 @@ API path: `/variant_annotate`
 | Field | Description |
 | --- | --- |
 | `coding` |  |
-| `frame_start` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `ok` |  |
 | `provenance` |  |
@@ -1736,28 +1747,28 @@ API path: `/variant_comparator`
 
 | Field | Description |
 | --- | --- |
-| `arm_tm_target` |  |
+| `armTmTarget` |  |
 | `circular` |  |
-| `claimed_construct` |  |
+| `claimedConstruct` |  |
 | `coding` |  |
 | `enzyme` |  |
 | `enzyme3` |  |
 | `enzyme5` |  |
-| `fragment` |  |
-| `fragment_pcr` |  |
-| `frame_start` |  |
+| `fragmentPcrs` |  |
+| `fragments` |  |
+| `frameStart` |  |
 | `gate` |  |
 | `insert` |  |
-| `insert_pcr` |  |
+| `insertPcr` |  |
 | `method` |  |
-| `name` |  |
+| `names` |  |
 | `ok` |  |
-| `overlap_len` |  |
+| `overlapLen` |  |
 | `provenance` |  |
 | `result` |  |
 | `tool` |  |
 | `vector` |  |
-| `vector_pcr` |  |
+| `vectorPcr` |  |
 
 Operations: Create.
 
@@ -1767,17 +1778,17 @@ API path: `/verify_assembly`
 
 | Field | Description |
 | --- | --- |
-| `claimed_construct` |  |
-| `expected_frame_start` |  |
+| `claimedConstruct` |  |
+| `expectedFrameStart` |  |
 | `gate` |  |
-| `insert_forward_primer` |  |
-| `insert_reverse_primer` |  |
-| `insert_template` |  |
-| `max_primer_mismatch` |  |
+| `insertForwardPrimer` |  |
+| `insertReversePrimer` |  |
+| `insertTemplate` |  |
+| `maxPrimerMismatches` |  |
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `template_circular` |  |
+| `templateCircular` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1789,7 +1800,7 @@ API path: `/verify_construct`
 | Field | Description |
 | --- | --- |
 | `circular` |  |
-| `enzyme` |  |
+| `enzymes` |  |
 | `gate` |  |
 | `ladder` |  |
 | `ok` |  |
@@ -1810,7 +1821,7 @@ API path: `/virtual_gel`
 | `ok` |  |
 | `provenance` |  |
 | `result` |  |
-| `row` |  |
+| `rows` |  |
 | `tool` |  |
 
 Operations: Create.
@@ -1822,7 +1833,7 @@ API path: `/volcano_plot_data`
 | Field | Description |
 | --- | --- |
 | `gate` |  |
-| `max_result` |  |
+| `max_results` |  |
 | `ok` |  |
 | `provenance` |  |
 | `query` |  |
@@ -1923,13 +1934,13 @@ Create an instance: `base_editing_design = client.BaseEditingDesign()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `editor` | `str` |  |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `target` | `str` |  |
-| `target_position` | `int` |  |
+| `targetPosition` | `int` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -1960,10 +1971,15 @@ Create an instance: `batch = client.Batch()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `dict` |  |
+| `args` | `dict` |  |
+| `capped` | `bool` |  |
+| `columns` | `list` |  |
+| `count` | `int` |  |
+| `errors` | `int` |  |
 | `input` | `str` |  |
-| `ok` | `Any` |  |
-| `result` | `dict` |  |
+| `limit` | `int` |  |
+| `provenance` | `dict` |  |
+| `rows` | `list` |  |
 | `tool` | `str` |  |
 
 #### Example: Load
@@ -1976,9 +1992,14 @@ batch = client.Batch().load()
 
 ```python
 batch = client.Batch().create({
+    "capped": True,  # bool
+    "columns": [],  # list
+    "count": 1,  # int
+    "errors": 1,  # int
     "input": "example_input",  # str
-    "ok": "example_ok",  # Any
-    "result": {},  # dict
+    "limit": 1,  # int
+    "provenance": {},  # dict
+    "rows": [],  # list
     "tool": "example_tool",  # str
 })
 ```
@@ -1999,10 +2020,15 @@ Create an instance: `batch__workflow = client.BatchWorkflow()`
 
 | Field | Type | Description |
 | --- | --- | --- |
+| `capped` | `bool` |  |
+| `columns` | `list` |  |
+| `count` | `int` |  |
+| `errors` | `int` |  |
 | `input` | `str` |  |
-| `ok` | `Any` |  |
-| `result` | `dict` |  |
-| `step` | `list` |  |
+| `limit` | `int` |  |
+| `provenance` | `dict` |  |
+| `rows` | `list` |  |
+| `steps` | `list` |  |
 
 #### Example: Load
 
@@ -2014,10 +2040,15 @@ batch__workflow = client.BatchWorkflow().load()
 
 ```python
 batch__workflow = client.BatchWorkflow().create({
+    "capped": True,  # bool
+    "columns": [],  # list
+    "count": 1,  # int
+    "errors": 1,  # int
     "input": "example_input",  # str
-    "ok": "example_ok",  # Any
-    "result": {},  # dict
-    "step": [],  # list
+    "limit": 1,  # int
+    "provenance": {},  # dict
+    "rows": [],  # list
+    "steps": [],  # list
 })
 ```
 
@@ -2036,10 +2067,10 @@ Create an instance: `characterize_sequence = client.CharacterizeSequence()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `int` |  |
+| `endPrimerLength` | `int` |  |
 | `gate` | `Any` |  |
-| `max_orf` | `int` |  |
-| `min_orf_aa` | `int` |  |
+| `maxOrfs` | `int` |  |
+| `minOrfAa` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -2073,18 +2104,18 @@ Create an instance: `cloning_simulate = client.CloningSimulate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
+| `armTmTarget` | `float` |  |
 | `circular` | `bool` |  |
 | `enzyme` | `str` |  |
 | `enzyme3` | `str` |  |
 | `enzyme5` | `str` |  |
-| `fragment` | `list` |  |
+| `fragments` | `list` |  |
 | `gate` | `Any` |  |
 | `insert` | `str` |  |
 | `method` | `str` |  |
-| `name` | `list` |  |
+| `names` | `list` |  |
 | `ok` | `Any` |  |
-| `overlap_len` | `int` |  |
+| `overlapLen` | `int` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
@@ -2117,12 +2148,12 @@ Create an instance: `codon_adaptation_index = client.CodonAdaptationIndex()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `organism` | `str` |  |
 | `provenance` | `dict` |  |
-| `rare_threshold` | `float` |  |
+| `rareThreshold` | `float` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
@@ -2189,15 +2220,15 @@ Create an instance: `construct_autofix = client.ConstructAutofix()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `list` |  |
-| `cryptic_orf_min_aa` | `int` |  |
-| `frame_start` | `int` |  |
+| `avoidEnzymes` | `list` |  |
+| `crypticOrfMinAa` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `gc_high` | `float` |  |
-| `gc_low` | `float` |  |
-| `gc_window` | `int` |  |
-| `homopolymer_min` | `int` |  |
-| `max_pass` | `int` |  |
+| `gcHigh` | `float` |  |
+| `gcLow` | `float` |  |
+| `gcWindow` | `int` |  |
+| `homopolymerMin` | `int` |  |
+| `maxPasses` | `int` |  |
 | `ok` | `Any` |  |
 | `organism` | `str` |  |
 | `provenance` | `dict` |  |
@@ -2232,14 +2263,14 @@ Create an instance: `construct_qc = client.ConstructQc()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoid_enzyme` | `list` |  |
-| `cryptic_orf_min_aa` | `int` |  |
-| `frame_start` | `int` |  |
+| `avoidEnzymes` | `list` |  |
+| `crypticOrfMinAa` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `gc_high` | `float` |  |
-| `gc_low` | `float` |  |
-| `gc_window` | `int` |  |
-| `homopolymer_min` | `int` |  |
+| `gcHigh` | `float` |  |
+| `gcLow` | `float` |  |
+| `gcWindow` | `int` |  |
+| `homopolymerMin` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -2274,12 +2305,12 @@ Create an instance: `crispr_grna_design = client.CrisprGrnaDesign()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `min_score` | `float` |  |
+| `minScore` | `float` |  |
 | `nuclease` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `search_reverse_strand` | `bool` |  |
+| `searchReverseStrand` | `bool` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
 
@@ -2310,22 +2341,22 @@ Create an instance: `crispr_hdr_donor = client.CrisprHdrDonor()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_length` | `int` |  |
-| `block_pam` | `bool` |  |
-| `design_genotyping_primer` | `bool` |  |
-| `edit_end` | `int` |  |
-| `edit_start` | `int` |  |
-| `frame_start` | `int` |  |
+| `armLength` | `int` |  |
+| `blockPam` | `bool` |  |
+| `designGenotypingPrimers` | `bool` |  |
+| `editEnd` | `int` |  |
+| `editStart` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `guide_end` | `int` |  |
-| `guide_start` | `int` |  |
-| `guide_strand` | `str` |  |
+| `guideEnd` | `int` |  |
+| `guideStart` | `int` |  |
+| `guideStrand` | `str` |  |
 | `nuclease` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `replacement` | `str` |  |
 | `result` | `dict` |  |
-| `target_sequence` | `str` |  |
+| `targetSequence` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -2336,7 +2367,7 @@ crispr_hdr_donor = client.CrisprHdrDonor().create({
     "provenance": {},  # dict
     "replacement": "example_replacement",  # str
     "result": {},  # dict
-    "target_sequence": "example_target_sequence",  # str
+    "targetSequence": "example_targetSequence",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -2357,7 +2388,7 @@ Create an instance: `crispr_offtarget_check = client.CrisprOfftargetCheck()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `nuclease` | `str` |  |
 | `ok` | `Any` |  |
 | `protospacer` | `str` |  |
@@ -2396,8 +2427,8 @@ Create an instance: `cross_dimer = client.CrossDimer()`
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `sequence_a` | `str` |  |
-| `sequence_b` | `str` |  |
+| `sequenceA` | `str` |  |
+| `sequenceB` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -2407,8 +2438,8 @@ cross_dimer = client.CrossDimer().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "sequence_a": "example_sequence_a",  # str
-    "sequence_b": "example_sequence_b",  # str
+    "sequenceA": "example_sequenceA",  # str
+    "sequenceB": "example_sequenceB",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -2430,14 +2461,14 @@ Create an instance: `dna_molarity = client.DnaMolarity()`
 | --- | --- | --- |
 | `gate` | `Any` |  |
 | `length` | `int` |  |
-| `mass_ng` | `float` |  |
+| `massNg` | `float` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
 | `type` | `str` |  |
-| `volume_ul` | `float` |  |
+| `volumeUl` | `float` |  |
 
 #### Example: Create
 
@@ -2465,8 +2496,8 @@ Create an instance: `double_digest = client.DoubleDigest()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme_a` | `str` |  |
-| `enzyme_b` | `str` |  |
+| `enzymeA` | `str` |  |
+| `enzymeB` | `str` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -2477,8 +2508,8 @@ Create an instance: `double_digest = client.DoubleDigest()`
 
 ```python
 double_digest = client.DoubleDigest().create({
-    "enzyme_a": "example_enzyme_a",  # str
-    "enzyme_b": "example_enzyme_b",  # str
+    "enzymeA": "example_enzymeA",  # str
+    "enzymeB": "example_enzymeB",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -2504,7 +2535,7 @@ Create an instance: `export_echo_picklist = client.ExportEchoPicklist()`
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `reaction` | `list` |  |
+| `reactions` | `list` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -2514,7 +2545,7 @@ Create an instance: `export_echo_picklist = client.ExportEchoPicklist()`
 export_echo_picklist = client.ExportEchoPicklist().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -2537,9 +2568,9 @@ Create an instance: `export_opentrons_protocol = client.ExportOpentronsProtocol(
 | --- | --- | --- |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
-| `protocol_name` | `str` |  |
+| `protocolName` | `str` |  |
 | `provenance` | `dict` |  |
-| `reaction` | `list` |  |
+| `reactions` | `list` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -2549,7 +2580,7 @@ Create an instance: `export_opentrons_protocol = client.ExportOpentronsProtocol(
 export_opentrons_protocol = client.ExportOpentronsProtocol().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -2573,7 +2604,7 @@ Create an instance: `export_plate_layout = client.ExportPlateLayout()`
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `reaction` | `list` |  |
+| `reactions` | `list` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -2583,7 +2614,7 @@ Create an instance: `export_plate_layout = client.ExportPlateLayout()`
 export_plate_layout = client.ExportPlateLayout().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -2604,31 +2635,31 @@ Create an instance: `expression_heatmap_cluster = client.ExpressionHeatmapCluste
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `cluster_col` | `bool` |  |
-| `cluster_row` | `bool` |  |
-| `distance_metric` | `str` |  |
+| `clusterCols` | `bool` |  |
+| `clusterRows` | `bool` |  |
+| `distanceMetric` | `str` |  |
 | `gate` | `Any` |  |
-| `gene` | `list` |  |
+| `genes` | `list` |  |
 | `linkage` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `sample` | `list` |  |
+| `samples` | `list` |  |
 | `tool` | `str` |  |
-| `value` | `list` |  |
-| `z_score_row` | `bool` |  |
+| `values` | `list` |  |
+| `zScoreRows` | `bool` |  |
 
 #### Example: Create
 
 ```python
 expression_heatmap_cluster = client.ExpressionHeatmapCluster().create({
-    "gene": [],  # list
+    "genes": [],  # list
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "sample": [],  # list
+    "samples": [],  # list
     "tool": "example_tool",  # str
-    "value": [],  # list
+    "values": [],  # list
 })
 ```
 
@@ -2651,7 +2682,7 @@ Create an instance: `fastq_qc_report = client.FastqQcReport()`
 | `input` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `quality_offset` | `int` |  |
+| `qualityOffset` | `int` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -2684,11 +2715,11 @@ Create an instance: `fastq_trim = client.FastqTrim()`
 | --- | --- | --- |
 | `gate` | `Any` |  |
 | `input` | `str` |  |
-| `min_length` | `int` |  |
+| `minLength` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `quality_offset` | `int` |  |
-| `quality_threshold` | `int` |  |
+| `qualityOffset` | `int` |  |
+| `qualityThreshold` | `int` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -2720,10 +2751,10 @@ Create an instance: `find_orf = client.FindOrf()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `min_aa_length` | `int` |  |
+| `minAaLength` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `require_stop` | `bool` |  |
+| `requireStop` | `bool` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
@@ -2755,7 +2786,7 @@ Create an instance: `format_sequence = client.FormatSequence()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `case_mode` | `str` |  |
+| `caseMode` | `str` |  |
 | `convert` | `str` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
@@ -2763,7 +2794,7 @@ Create an instance: `format_sequence = client.FormatSequence()`
 | `result` | `dict` |  |
 | `reverse` | `bool` |  |
 | `sequence` | `str` |  |
-| `strip_non_letter` | `bool` |  |
+| `stripNonLetters` | `bool` |  |
 | `tool` | `str` |  |
 | `width` | `int` |  |
 
@@ -2795,11 +2826,11 @@ Create an instance: `functional_enrichment = client.FunctionalEnrichment()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `background` | `list` |  |
-| `collection` | `list` |  |
+| `collections` | `list` |  |
 | `gate` | `Any` |  |
-| `gene` | `list` |  |
-| `max_term_size` | `int` |  |
-| `min_term_size` | `int` |  |
+| `genes` | `list` |  |
+| `maxTermSize` | `int` |  |
+| `minTermSize` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -2809,7 +2840,7 @@ Create an instance: `functional_enrichment = client.FunctionalEnrichment()`
 
 ```python
 functional_enrichment = client.FunctionalEnrichment().create({
-    "gene": [],  # list
+    "genes": [],  # list
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -2968,14 +2999,14 @@ Create an instance: `golden_gate_fidelity = client.GoldenGateFidelity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compare_to_named_set` | `str` |  |
+| `compareToNamedSet` | `str` |  |
 | `dataset` | `str` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
-| `overhang` | `list` |  |
+| `overhangs` | `list` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `risk_threshold` | `float` |  |
+| `riskThreshold` | `float` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -2983,7 +3014,7 @@ Create an instance: `golden_gate_fidelity = client.GoldenGateFidelity()`
 ```python
 golden_gate_fidelity = client.GoldenGateFidelity().create({
     "ok": "example_ok",  # Any
-    "overhang": [],  # list
+    "overhangs": [],  # list
     "provenance": {},  # dict
     "result": {},  # dict
     "tool": "example_tool",  # str
@@ -3040,7 +3071,7 @@ Create an instance: `id_map_poll = client.IdMapPoll()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `job_id` | `str` |  |
+| `jobId` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -3050,7 +3081,7 @@ Create an instance: `id_map_poll = client.IdMapPoll()`
 
 ```python
 id_map_poll = client.IdMapPoll().create({
-    "job_id": "example_job_id",  # str
+    "jobId": "example_jobId",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3079,7 +3110,7 @@ Create an instance: `id_map_submit = client.IdMapSubmit()`
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `tax_id` | `str` |  |
+| `taxId` | `str` |  |
 | `to` | `str` |  |
 | `tool` | `str` |  |
 
@@ -3113,13 +3144,13 @@ Create an instance: `in_silico_pcr = client.InSilicoPcr()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `bool` |  |
-| `forward_primer` | `str` |  |
+| `forwardPrimer` | `str` |  |
 | `gate` | `Any` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `reverse_primer` | `str` |  |
+| `reversePrimer` | `str` |  |
 | `template` | `str` |  |
 | `tool` | `str` |  |
 
@@ -3127,11 +3158,11 @@ Create an instance: `in_silico_pcr = client.InSilicoPcr()`
 
 ```python
 in_silico_pcr = client.InSilicoPcr().create({
-    "forward_primer": "example_forward_primer",  # str
+    "forwardPrimer": "example_forwardPrimer",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "reverse_primer": "example_reverse_primer",  # str
+    "reversePrimer": "example_reversePrimer",  # str
     "template": "example_template",  # str
     "tool": "example_tool",  # str
 })
@@ -3152,30 +3183,30 @@ Create an instance: `kasp_primer_design = client.KaspPrimerDesign()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `add_secondary_mismatch` | `bool` |  |
-| `allele_a` | `str` |  |
-| `allele_b` | `str` |  |
+| `addSecondaryMismatch` | `bool` |  |
+| `alleleA` | `str` |  |
+| `alleleB` | `str` |  |
 | `gate` | `Any` |  |
-| `max_amplicon` | `int` |  |
-| `min_amplicon` | `int` |  |
+| `maxAmplicon` | `int` |  |
+| `minAmplicon` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `snp_position` | `int` |  |
+| `snpPosition` | `int` |  |
 | `target` | `str` |  |
-| `target_core_tm` | `float` |  |
+| `targetCoreTm` | `float` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
 
 ```python
 kasp_primer_design = client.KaspPrimerDesign().create({
-    "allele_a": "example_allele_a",  # str
-    "allele_b": "example_allele_b",  # str
+    "alleleA": "example_alleleA",  # str
+    "alleleB": "example_alleleB",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "snp_position": 1,  # int
+    "snpPosition": 1,  # int
     "target": "example_target",  # str
     "tool": "example_tool",  # str
 })
@@ -3213,17 +3244,17 @@ Create an instance: `melting_temperature = client.MeltingTemperature()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `float` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `Any` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `Any` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
-| `target_tm` | `float` |  |
-| `tm_tolerance` | `float` |  |
+| `targetTm` | `float` |  |
+| `tmTolerance` | `float` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -3254,12 +3285,12 @@ Create an instance: `motif_finder = client.MotifFinder()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `max_mismatch` | `int` |  |
+| `maxMismatches` | `int` |  |
 | `motif` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `search_reverse_strand` | `bool` |  |
+| `searchReverseStrand` | `bool` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
 
@@ -3325,12 +3356,12 @@ Create an instance: `oligo_analysi = client.OligoAnalysi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntp_mm` | `float` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `Any` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `Any` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
@@ -3367,9 +3398,9 @@ Create an instance: `ortholog_map = client.OrthologMap()`
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `source_species` | `str` |  |
-| `symbol` | `list` |  |
-| `target_species` | `str` |  |
+| `sourceSpecies` | `str` |  |
+| `symbols` | `list` |  |
+| `targetSpecies` | `str` |  |
 | `tool` | `str` |  |
 | `type` | `str` |  |
 
@@ -3380,8 +3411,8 @@ ortholog_map = client.OrthologMap().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "symbol": [],  # list
-    "target_species": "example_target_species",  # str
+    "symbols": [],  # list
+    "targetSpecies": "example_targetSpecies",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3409,8 +3440,8 @@ Create an instance: `pairwise_alignment = client.PairwiseAlignment()`
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `seq_a` | `str` |  |
-| `seq_b` | `str` |  |
+| `seqA` | `str` |  |
+| `seqB` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -3420,8 +3451,8 @@ pairwise_alignment = client.PairwiseAlignment().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "seq_a": "example_seq_a",  # str
-    "seq_b": "example_seq_b",  # str
+    "seqA": "example_seqA",  # str
+    "seqB": "example_seqB",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3475,8 +3506,8 @@ Create an instance: `parse_sanger_trace = client.ParseSangerTrace()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `str` |  |
-| `file_name` | `str` |  |
+| `fileBase64` | `str` |  |
+| `fileName` | `str` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -3487,7 +3518,7 @@ Create an instance: `parse_sanger_trace = client.ParseSangerTrace()`
 
 ```python
 parse_sanger_trace = client.ParseSangerTrace().create({
-    "file_base64": "example_file_base64",  # str
+    "fileBase64": "example_fileBase64",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3586,7 +3617,7 @@ Create an instance: `plasmid_full_report = client.PlasmidFullReport()`
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
-| `top_n` | `int` |  |
+| `topN` | `int` |  |
 
 #### Example: Create
 
@@ -3622,7 +3653,7 @@ Create an instance: `plasmid_identify = client.PlasmidIdentify()`
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
 | `tool` | `str` |  |
-| `top_n` | `int` |  |
+| `topN` | `int` |  |
 
 #### Example: Create
 
@@ -3651,16 +3682,16 @@ Create an instance: `prime_editing_design = client.PrimeEditingDesign()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `edit_end` | `int` |  |
-| `edit_start` | `int` |  |
-| `frame_start` | `int` |  |
+| `editEnd` | `int` |  |
+| `editStart` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `inserted_seq` | `str` |  |
+| `insertedSeq` | `str` |  |
 | `ok` | `Any` |  |
-| `pbs_length` | `int` |  |
+| `pbsLength` | `int` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `rtt_homology` | `int` |  |
+| `rttHomology` | `int` |  |
 | `target` | `str` |  |
 | `tool` | `str` |  |
 
@@ -3668,8 +3699,8 @@ Create an instance: `prime_editing_design = client.PrimeEditingDesign()`
 
 ```python
 prime_editing_design = client.PrimeEditingDesign().create({
-    "edit_end": 1,  # int
-    "edit_start": 1,  # int
+    "editEnd": 1,  # int
+    "editStart": 1,  # int
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3694,13 +3725,13 @@ Create an instance: `prime_editing_twin_design = client.PrimeEditingTwinDesign()
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `new_sequence` | `str` |  |
+| `newSequence` | `str` |  |
 | `ok` | `Any` |  |
-| `overlap_length` | `int` |  |
-| `pbs_length` | `int` |  |
+| `overlapLength` | `int` |  |
+| `pbsLength` | `int` |  |
 | `provenance` | `dict` |  |
-| `replace_end` | `int` |  |
-| `replace_start` | `int` |  |
+| `replaceEnd` | `int` |  |
+| `replaceStart` | `int` |  |
 | `result` | `dict` |  |
 | `target` | `str` |  |
 | `tool` | `str` |  |
@@ -3709,11 +3740,11 @@ Create an instance: `prime_editing_twin_design = client.PrimeEditingTwinDesign()
 
 ```python
 prime_editing_twin_design = client.PrimeEditingTwinDesign().create({
-    "new_sequence": "example_new_sequence",  # str
+    "newSequence": "example_newSequence",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "replace_end": 1,  # int
-    "replace_start": 1,  # int
+    "replaceEnd": 1,  # int
+    "replaceStart": 1,  # int
     "result": {},  # dict
     "target": "example_target",  # str
     "tool": "example_tool",  # str
@@ -3735,29 +3766,29 @@ Create an instance: `primer_design = client.PrimerDesign()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `amplicon_max` | `int` |  |
-| `amplicon_min` | `int` |  |
-| `dntp_mm` | `float` |  |
+| `ampliconMax` | `int` |  |
+| `ampliconMin` | `int` |  |
+| `dntpMM` | `float` |  |
 | `gate` | `Any` |  |
-| `gc_max` | `float` |  |
-| `gc_min` | `float` |  |
-| `len_max` | `int` |  |
-| `len_min` | `int` |  |
-| `len_opt` | `int` |  |
-| `max_return` | `int` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
+| `gcMax` | `float` |  |
+| `gcMin` | `float` |  |
+| `lenMax` | `int` |  |
+| `lenMin` | `int` |  |
+| `lenOpt` | `int` |  |
+| `maxReturn` | `int` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
 | `ok` | `Any` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `target_end` | `int` |  |
-| `target_start` | `int` |  |
+| `targetEnd` | `int` |  |
+| `targetStart` | `int` |  |
 | `template` | `str` |  |
-| `tm_max` | `float` |  |
-| `tm_max_diff` | `float` |  |
-| `tm_min` | `float` |  |
-| `tm_opt` | `float` |  |
+| `tmMax` | `float` |  |
+| `tmMaxDiff` | `float` |  |
+| `tmMin` | `float` |  |
+| `tmOpt` | `float` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -3787,25 +3818,25 @@ Create an instance: `primer_specificity = client.PrimerSpecificity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `forward_primer` | `str` |  |
+| `forwardPrimer` | `str` |  |
 | `gate` | `Any` |  |
-| `max_mismatch` | `int` |  |
-| `max_product_length` | `int` |  |
+| `maxMismatches` | `int` |  |
+| `maxProductLength` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `reverse_primer` | `str` |  |
+| `reversePrimer` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
 
 ```python
 primer_specificity = client.PrimerSpecificity().create({
-    "forward_primer": "example_forward_primer",  # str
+    "forwardPrimer": "example_forwardPrimer",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "reverse_primer": "example_reverse_primer",  # str
+    "reversePrimer": "example_reversePrimer",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3826,10 +3857,10 @@ Create an instance: `protease_digestion = client.ProteaseDigestion()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `max_mass` | `float` |  |
-| `max_peptide` | `int` |  |
-| `min_mass` | `float` |  |
-| `missed_cleavage` | `int` |  |
+| `maxMass` | `float` |  |
+| `maxPeptides` | `int` |  |
+| `minMass` | `float` |  |
+| `missedCleavages` | `int` |  |
 | `ok` | `Any` |  |
 | `protease` | `str` |  |
 | `provenance` | `dict` |  |
@@ -3865,7 +3896,7 @@ Create an instance: `protein_annotate_poll = client.ProteinAnnotatePoll()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `job_id` | `str` |  |
+| `jobId` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -3875,7 +3906,7 @@ Create an instance: `protein_annotate_poll = client.ProteinAnnotatePoll()`
 
 ```python
 protein_annotate_poll = client.ProteinAnnotatePoll().create({
-    "job_id": "example_job_id",  # str
+    "jobId": "example_jobId",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3900,7 +3931,7 @@ Create an instance: `protein_annotate_submit = client.ProteinAnnotateSubmit()`
 | --- | --- | --- |
 | `appl` | `str` |  |
 | `gate` | `Any` |  |
-| `goterm` | `bool` |  |
+| `goterms` | `bool` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -3970,7 +4001,7 @@ Create an instance: `protein_property = client.ProteinProperty()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `charge_step` | `float` |  |
+| `chargeStep` | `float` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -4006,7 +4037,7 @@ Create an instance: `random_sequence = client.RandomSequence()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `gc_content` | `float` |  |
+| `gcContent` | `float` |  |
 | `kind` | `str` |  |
 | `length` | `int` |  |
 | `ok` | `Any` |  |
@@ -4041,7 +4072,7 @@ Create an instance: `restriction_site = client.RestrictionSite()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzyme` | `list` |  |
+| `enzymes` | `list` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -4181,10 +4212,10 @@ Create an instance: `sanger_vs_reference = client.SangerVsReference()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `file_base64` | `str` |  |
-| `file_name` | `str` |  |
+| `fileBase64` | `str` |  |
+| `fileName` | `str` |  |
 | `gate` | `Any` |  |
-| `min_coverage` | `float` |  |
+| `minCoverage` | `float` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `read` | `str` |  |
@@ -4219,7 +4250,7 @@ Create an instance: `save_permalink = client.SavePermalink()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `dict` |  |
+| `args` | `dict` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -4230,7 +4261,7 @@ Create an instance: `save_permalink = client.SavePermalink()`
 
 ```python
 save_permalink = client.SavePermalink().create({
-    "arg": {},  # dict
+    "args": {},  # dict
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -4257,7 +4288,7 @@ Create an instance: `seqfile_stat = client.SeqfileStat()`
 | `input` | `str` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `quality_offset` | `int` |  |
+| `qualityOffset` | `int` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 
@@ -4360,10 +4391,10 @@ Create an instance: `sequence_report = client.SequenceReport()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `end_primer_length` | `int` |  |
+| `endPrimerLength` | `int` |  |
 | `gate` | `Any` |  |
-| `max_orf` | `int` |  |
-| `min_orf_aa` | `int` |  |
+| `maxOrfs` | `int` |  |
+| `minOrfAa` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
@@ -4400,7 +4431,7 @@ Create an instance: `sequence_search = client.SequenceSearch()`
 | `db` | `str` |  |
 | `gate` | `Any` |  |
 | `gene` | `str` |  |
-| `max_result` | `int` |  |
+| `maxResults` | `int` |  |
 | `ok` | `Any` |  |
 | `organism` | `str` |  |
 | `provenance` | `dict` |  |
@@ -4435,10 +4466,10 @@ Create an instance: `sequencing_readback_verify = client.SequencingReadbackVerif
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `min_supporting_read` | `int` |  |
+| `minSupportingReads` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
-| `read` | `str` |  |
+| `reads` | `str` |  |
 | `reference` | `str` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
@@ -4449,7 +4480,7 @@ Create an instance: `sequencing_readback_verify = client.SequencingReadbackVerif
 sequencing_readback_verify = client.SequencingReadbackVerify().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "read": "example_read",  # str
+    "reads": "example_reads",  # str
     "reference": "example_reference",  # str
     "result": {},  # dict
     "tool": "example_tool",  # str
@@ -4471,7 +4502,7 @@ Create an instance: `session_create = client.SessionCreate()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `dict` |  |
+| `entries` | `dict` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -4505,11 +4536,11 @@ Create an instance: `session_get = client.SessionGet()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `name` | `list` |  |
+| `names` | `list` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `session_id` | `str` |  |
+| `sessionId` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -4519,7 +4550,7 @@ session_get = client.SessionGet().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -4539,15 +4570,15 @@ Create an instance: `session_run = client.SessionRun()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arg` | `dict` |  |
-| `from_session` | `dict` |  |
+| `args` | `dict` |  |
+| `fromSession` | `dict` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `session_id` | `str` |  |
+| `sessionId` | `str` |  |
 | `tool` | `str` |  |
-| `write_back` | `dict` |  |
+| `writeBack` | `dict` |  |
 
 #### Example: Create
 
@@ -4556,7 +4587,7 @@ session_run = client.SessionRun().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -4576,23 +4607,23 @@ Create an instance: `session_set = client.SessionSet()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entry` | `dict` |  |
+| `entries` | `dict` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `session_id` | `str` |  |
+| `sessionId` | `str` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
 
 ```python
 session_set = client.SessionSet().create({
-    "entry": {},  # dict
+    "entries": {},  # dict
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -4613,11 +4644,11 @@ Create an instance: `sirna_design = client.SirnaDesign()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `min_reynold` | `int` |  |
+| `minReynolds` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `sh_rna_loop` | `str` |  |
+| `shRnaLoop` | `str` |  |
 | `target` | `str` |  |
 | `tool` | `str` |  |
 
@@ -4648,23 +4679,23 @@ Create an instance: `site_directed_mutagenesi = client.SiteDirectedMutagenesi()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
-| `dntp_mm` | `float` |  |
-| `edit_kind` | `str` |  |
-| `frame_start` | `int` |  |
+| `armTmTarget` | `float` |  |
+| `dntpMM` | `float` |  |
+| `editKind` | `str` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `mg_mm` | `float` |  |
-| `na_mm` | `float` |  |
-| `new_base` | `str` |  |
+| `mgMM` | `float` |  |
+| `naMM` | `float` |  |
+| `newBase` | `str` |  |
 | `ok` | `Any` |  |
-| `oligo_nm` | `float` |  |
+| `oligoNM` | `float` |  |
 | `organism` | `str` |  |
 | `position` | `int` |  |
 | `provenance` | `dict` |  |
 | `residue` | `int` |  |
 | `result` | `dict` |  |
 | `style` | `str` |  |
-| `target_aa` | `str` |  |
+| `targetAa` | `str` |  |
 | `template` | `str` |  |
 | `tool` | `str` |  |
 
@@ -4701,7 +4732,7 @@ Create an instance: `translate = client.Translate()`
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `sequence` | `str` |  |
-| `to_stop` | `bool` |  |
+| `toStop` | `bool` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -4767,7 +4798,7 @@ Create an instance: `variant_comparator = client.VariantComparator()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `coding` | `bool` |  |
-| `frame_start` | `int` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
@@ -4804,34 +4835,34 @@ Create an instance: `verify_assembly = client.VerifyAssembly()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `arm_tm_target` | `float` |  |
+| `armTmTarget` | `float` |  |
 | `circular` | `bool` |  |
-| `claimed_construct` | `str` |  |
+| `claimedConstruct` | `str` |  |
 | `coding` | `bool` |  |
 | `enzyme` | `str` |  |
 | `enzyme3` | `str` |  |
 | `enzyme5` | `str` |  |
-| `fragment` | `list` |  |
-| `fragment_pcr` | `list` |  |
-| `frame_start` | `int` |  |
+| `fragmentPcrs` | `list` |  |
+| `fragments` | `list` |  |
+| `frameStart` | `int` |  |
 | `gate` | `Any` |  |
 | `insert` | `str` |  |
-| `insert_pcr` | `dict` |  |
+| `insertPcr` | `dict` |  |
 | `method` | `str` |  |
-| `name` | `list` |  |
+| `names` | `list` |  |
 | `ok` | `Any` |  |
-| `overlap_len` | `int` |  |
+| `overlapLen` | `int` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
 | `tool` | `str` |  |
 | `vector` | `str` |  |
-| `vector_pcr` | `dict` |  |
+| `vectorPcr` | `dict` |  |
 
 #### Example: Create
 
 ```python
 verify_assembly = client.VerifyAssembly().create({
-    "claimed_construct": "example_claimed_construct",  # str
+    "claimedConstruct": "example_claimedConstruct",  # str
     "method": "example_method",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
@@ -4855,27 +4886,27 @@ Create an instance: `verify_construct = client.VerifyConstruct()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claimed_construct` | `str` |  |
-| `expected_frame_start` | `int` |  |
+| `claimedConstruct` | `str` |  |
+| `expectedFrameStart` | `int` |  |
 | `gate` | `Any` |  |
-| `insert_forward_primer` | `str` |  |
-| `insert_reverse_primer` | `str` |  |
-| `insert_template` | `str` |  |
-| `max_primer_mismatch` | `int` |  |
+| `insertForwardPrimer` | `str` |  |
+| `insertReversePrimer` | `str` |  |
+| `insertTemplate` | `str` |  |
+| `maxPrimerMismatches` | `int` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `template_circular` | `bool` |  |
+| `templateCircular` | `bool` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
 
 ```python
 verify_construct = client.VerifyConstruct().create({
-    "claimed_construct": "example_claimed_construct",  # str
-    "insert_forward_primer": "example_insert_forward_primer",  # str
-    "insert_reverse_primer": "example_insert_reverse_primer",  # str
-    "insert_template": "example_insert_template",  # str
+    "claimedConstruct": "example_claimedConstruct",  # str
+    "insertForwardPrimer": "example_insertForwardPrimer",  # str
+    "insertReversePrimer": "example_insertReversePrimer",  # str
+    "insertTemplate": "example_insertTemplate",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -4899,7 +4930,7 @@ Create an instance: `virtual_gel = client.VirtualGel()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `circular` | `bool` |  |
-| `enzyme` | `list` |  |
+| `enzymes` | `list` |  |
 | `gate` | `Any` |  |
 | `ladder` | `str` |  |
 | `ok` | `Any` |  |
@@ -4939,7 +4970,7 @@ Create an instance: `volcano_plot_data = client.VolcanoPlotData()`
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `result` | `dict` |  |
-| `row` | `list` |  |
+| `rows` | `list` |  |
 | `tool` | `str` |  |
 
 #### Example: Create
@@ -4949,7 +4980,7 @@ volcano_plot_data = client.VolcanoPlotData().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "row": [],  # list
+    "rows": [],  # list
     "tool": "example_tool",  # str
 })
 ```
@@ -4970,7 +5001,7 @@ Create an instance: `web_search = client.WebSearch()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `gate` | `Any` |  |
-| `max_result` | `float` |  |
+| `max_results` | `float` |  |
 | `ok` | `Any` |  |
 | `provenance` | `dict` |  |
 | `query` | `str` |  |

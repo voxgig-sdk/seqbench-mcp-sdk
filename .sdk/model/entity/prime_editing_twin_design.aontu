@@ -11,7 +11,7 @@ main: kit: entity: prime_editing_twin_design: {
       type: "`$ANY`"
     }
     {
-      name: "new_sequence"
+      name: "newSequence"
       req: true
       type: "`$STRING`"
     }
@@ -21,12 +21,12 @@ main: kit: entity: prime_editing_twin_design: {
       type: "`$ANY`"
     }
     {
-      name: "overlap_length"
+      name: "overlapLength"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "pbs_length"
+      name: "pbsLength"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,12 +36,12 @@ main: kit: entity: prime_editing_twin_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "replace_end"
+      name: "replaceEnd"
       req: true
       type: "`$INTEGER`"
     }
     {
-      name: "replace_start"
+      name: "replaceStart"
       req: true
       type: "`$INTEGER`"
     }
@@ -74,7 +74,14 @@ main: kit: entity: prime_editing_twin_design: {
             "prime_editing_twin_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              newSequence: "`reqdata.new_sequence`"
+              overlapLength: "`reqdata.overlap_length`"
+              pbsLength: "`reqdata.pbs_length`"
+              replaceEnd: "`reqdata.replace_end`"
+              replaceStart: "`reqdata.replace_start`"
+              target: "`reqdata.target`"
+            }
             res: "`body`"
           }
         }

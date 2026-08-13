@@ -26,8 +26,8 @@ import {
 describe('FunctionalEnrichmentEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('FunctionalEnrichmentEntity', async () => {
     const functional_enrichment_ref01_ent = client.FunctionalEnrichment()
     let functional_enrichment_ref01_data = setup.data.new.functional_enrichment['functional_enrichment_ref01']
 
-    functional_enrichment_ref01_data = await functional_enrichment_ref01_ent.create(functional_enrichment_ref01_data)
+    functional_enrichment_ref01_data = (await functional_enrichment_ref01_ent.create(functional_enrichment_ref01_data)).data()
     assert(null != functional_enrichment_ref01_data)
 
 

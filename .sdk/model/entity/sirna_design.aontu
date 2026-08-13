@@ -11,7 +11,7 @@ main: kit: entity: sirna_design: {
       type: "`$ANY`"
     }
     {
-      name: "min_reynold"
+      name: "minReynolds"
       req: false
       type: "`$INTEGER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: sirna_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "sh_rna_loop"
+      name: "shRnaLoop"
       req: false
       type: "`$STRING`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: sirna_design: {
             "sirna_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              minReynolds: "`reqdata.min_reynold`"
+              shRnaLoop: "`reqdata.sh_rna_loop`"
+              target: "`reqdata.target`"
+            }
             res: "`body`"
           }
         }

@@ -6,7 +6,7 @@
         "ok": "s3d",
         "provenance": {},
         "result": {},
-        "row": [],
+        "rows": [],
         "tool": "s41",
         "id": "VOLCANO_PLOT_DATA00"
       },
@@ -15,7 +15,7 @@
         "ok": "s79",
         "provenance": {},
         "result": {},
-        "row": [],
+        "rows": [],
         "tool": "s7d",
         "id": "VOLCANO_PLOT_DATA01"
       },
@@ -24,7 +24,7 @@
         "ok": "sb5",
         "provenance": {},
         "result": {},
-        "row": [],
+        "rows": [],
         "tool": "sb9",
         "id": "VOLCANO_PLOT_DATA02"
       }
@@ -37,7 +37,7 @@
         "ok": "sf1",
         "provenance": {},
         "result": {},
-        "row": [],
+        "rows": [],
         "tool": "sf5"
       }
     }

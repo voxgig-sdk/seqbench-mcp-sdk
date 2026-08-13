@@ -6,7 +6,7 @@ main: kit: entity: save_permalink: {
 
   fields: [
     {
-      name: "arg"
+      name: "args"
       req: true
       type: "`$OBJECT`"
     }
@@ -49,7 +49,10 @@ main: kit: entity: save_permalink: {
             "save_permalink"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              args: "`reqdata.arg`"
+              tool: "`reqdata.tool`"
+            }
             res: "`body`"
           }
         }

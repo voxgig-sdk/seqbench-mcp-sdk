@@ -11,7 +11,7 @@ main: kit: entity: variant_comparator: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: variant_comparator: {
             "variant_comparator"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              coding: "`reqdata.coding`"
+              frameStart: "`reqdata.frame_start`"
+              query: "`reqdata.query`"
+              reference: "`reqdata.reference`"
+            }
             res: "`body`"
           }
         }

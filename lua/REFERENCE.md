@@ -556,13 +556,13 @@ local base_editing_design = client:BaseEditingDesign(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `string` | No |  |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_position` | `number` | No |  |
+| `targetPosition` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -621,10 +621,15 @@ local batch = client:Batch(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `table` | No |  |
+| `args` | `table` | No |  |
+| `capped` | `boolean` | Yes |  |
+| `columns` | `table` | Yes |  |
+| `count` | `number` | Yes |  |
+| `errors` | `number` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `table` | Yes |  |
+| `limit` | `number` | Yes |  |
+| `provenance` | `table` | Yes |  |
+| `rows` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -635,9 +640,14 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:Batch():create({
+  capped = --[[ boolean ]],
+  columns = --[[ table ]],
+  count = --[[ number ]],
+  errors = --[[ number ]],
   input = --[[ string ]],
-  ok = --[[ any ]],
-  result = --[[ table ]],
+  limit = --[[ number ]],
+  provenance = --[[ table ]],
+  rows = --[[ table ]],
   tool = --[[ string ]],
 })
 ```
@@ -690,10 +700,15 @@ local batch__workflow = client:BatchWorkflow(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `boolean` | Yes |  |
+| `columns` | `table` | Yes |  |
+| `count` | `number` | Yes |  |
+| `errors` | `number` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `table` | Yes |  |
-| `step` | `table` | Yes |  |
+| `limit` | `number` | Yes |  |
+| `provenance` | `table` | Yes |  |
+| `rows` | `table` | Yes |  |
+| `steps` | `table` | Yes |  |
 
 ### Operations
 
@@ -703,10 +718,15 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:BatchWorkflow():create({
+  capped = --[[ boolean ]],
+  columns = --[[ table ]],
+  count = --[[ number ]],
+  errors = --[[ number ]],
   input = --[[ string ]],
-  ok = --[[ any ]],
-  result = --[[ table ]],
-  step = --[[ table ]],
+  limit = --[[ number ]],
+  provenance = --[[ table ]],
+  rows = --[[ table ]],
+  steps = --[[ table ]],
 })
 ```
 
@@ -758,10 +778,10 @@ local characterize_sequence = client:CharacterizeSequence(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `number` | No |  |
+| `endPrimerLength` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `number` | No |  |
-| `min_orf_aa` | `number` | No |  |
+| `maxOrfs` | `number` | No |  |
+| `minOrfAa` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -824,18 +844,18 @@ local cloning_simulate = client:CloningSimulate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
 | `circular` | `boolean` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `table` | No |  |
+| `fragments` | `table` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `table` | No |  |
+| `names` | `table` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `number` | No |  |
+| `overlapLen` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -897,12 +917,12 @@ local codon_adaptation_index = client:CodonAdaptationIndex(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `table` | Yes |  |
-| `rare_threshold` | `number` | No |  |
+| `rareThreshold` | `number` | No |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -1027,15 +1047,15 @@ local construct_autofix = client:ConstructAutofix(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `table` | No |  |
-| `cryptic_orf_min_aa` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `avoidEnzymes` | `table` | No |  |
+| `crypticOrfMinAa` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `number` | No |  |
-| `gc_low` | `number` | No |  |
-| `gc_window` | `number` | No |  |
-| `homopolymer_min` | `number` | No |  |
-| `max_pass` | `number` | No |  |
+| `gcHigh` | `number` | No |  |
+| `gcLow` | `number` | No |  |
+| `gcWindow` | `number` | No |  |
+| `homopolymerMin` | `number` | No |  |
+| `maxPasses` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `table` | Yes |  |
@@ -1099,14 +1119,14 @@ local construct_qc = client:ConstructQc(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `table` | No |  |
-| `cryptic_orf_min_aa` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `avoidEnzymes` | `table` | No |  |
+| `crypticOrfMinAa` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `number` | No |  |
-| `gc_low` | `number` | No |  |
-| `gc_window` | `number` | No |  |
-| `homopolymer_min` | `number` | No |  |
+| `gcHigh` | `number` | No |  |
+| `gcLow` | `number` | No |  |
+| `gcWindow` | `number` | No |  |
+| `homopolymerMin` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -1170,12 +1190,12 @@ local crispr_grna_design = client:CrisprGrnaDesign(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_score` | `number` | No |  |
+| `minScore` | `number` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `search_reverse_strand` | `boolean` | No |  |
+| `searchReverseStrand` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1235,22 +1255,22 @@ local crispr_hdr_donor = client:CrisprHdrDonor(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `number` | No |  |
-| `block_pam` | `boolean` | No |  |
-| `design_genotyping_primer` | `boolean` | No |  |
-| `edit_end` | `number` | No |  |
-| `edit_start` | `number` | No |  |
-| `frame_start` | `number` | No |  |
+| `armLength` | `number` | No |  |
+| `blockPam` | `boolean` | No |  |
+| `designGenotypingPrimers` | `boolean` | No |  |
+| `editEnd` | `number` | No |  |
+| `editStart` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `guide_end` | `number` | No |  |
-| `guide_start` | `number` | No |  |
-| `guide_strand` | `string` | No |  |
+| `guideEnd` | `number` | No |  |
+| `guideStart` | `number` | No |  |
+| `guideStrand` | `string` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `replacement` | `string` | Yes |  |
 | `result` | `table` | Yes |  |
-| `target_sequence` | `string` | Yes |  |
+| `targetSequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1265,7 +1285,7 @@ local result, err = client:CrisprHdrDonor():create({
   provenance = --[[ table ]],
   replacement = --[[ string ]],
   result = --[[ table ]],
-  target_sequence = --[[ string ]],
+  targetSequence = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -1311,7 +1331,7 @@ local crispr_offtarget_check = client:CrisprOfftargetCheck(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `protospacer` | `string` | Yes |  |
@@ -1379,8 +1399,8 @@ local cross_dimer = client:CrossDimer(nil)
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `sequence_a` | `string` | Yes |  |
-| `sequence_b` | `string` | Yes |  |
+| `sequenceA` | `string` | Yes |  |
+| `sequenceB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1394,8 +1414,8 @@ local result, err = client:CrossDimer():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  sequence_a = --[[ string ]],
-  sequence_b = --[[ string ]],
+  sequenceA = --[[ string ]],
+  sequenceB = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -1442,14 +1462,14 @@ local dna_molarity = client:DnaMolarity(nil)
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `length` | `number` | No |  |
-| `mass_ng` | `number` | No |  |
+| `massNg` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | No |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
-| `volume_ul` | `number` | No |  |
+| `volumeUl` | `number` | No |  |
 
 ### Operations
 
@@ -1506,8 +1526,8 @@ local double_digest = client:DoubleDigest(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `string` | Yes |  |
-| `enzyme_b` | `string` | Yes |  |
+| `enzymeA` | `string` | Yes |  |
+| `enzymeB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -1522,8 +1542,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:DoubleDigest():create({
-  enzyme_a = --[[ string ]],
-  enzyme_b = --[[ string ]],
+  enzymeA = --[[ string ]],
+  enzymeB = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -1574,7 +1594,7 @@ local export_echo_picklist = client:ExportEchoPicklist(nil)
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `reaction` | `table` | Yes |  |
+| `reactions` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1588,7 +1608,7 @@ Create a new entity with the given data.
 local result, err = client:ExportEchoPicklist():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
-  reaction = --[[ table ]],
+  reactions = --[[ table ]],
   result = --[[ table ]],
   tool = --[[ string ]],
 })
@@ -1636,9 +1656,9 @@ local export_opentrons_protocol = client:ExportOpentronsProtocol(nil)
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `protocol_name` | `string` | No |  |
+| `protocolName` | `string` | No |  |
 | `provenance` | `table` | Yes |  |
-| `reaction` | `table` | Yes |  |
+| `reactions` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1652,7 +1672,7 @@ Create a new entity with the given data.
 local result, err = client:ExportOpentronsProtocol():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
-  reaction = --[[ table ]],
+  reactions = --[[ table ]],
   result = --[[ table ]],
   tool = --[[ string ]],
 })
@@ -1701,7 +1721,7 @@ local export_plate_layout = client:ExportPlateLayout(nil)
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `reaction` | `table` | Yes |  |
+| `reactions` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1715,7 +1735,7 @@ Create a new entity with the given data.
 local result, err = client:ExportPlateLayout():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
-  reaction = --[[ table ]],
+  reactions = --[[ table ]],
   result = --[[ table ]],
   tool = --[[ string ]],
 })
@@ -1761,19 +1781,19 @@ local expression_heatmap_cluster = client:ExpressionHeatmapCluster(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `boolean` | No |  |
-| `cluster_row` | `boolean` | No |  |
-| `distance_metric` | `string` | No |  |
+| `clusterCols` | `boolean` | No |  |
+| `clusterRows` | `boolean` | No |  |
+| `distanceMetric` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `table` | Yes |  |
+| `genes` | `table` | Yes |  |
 | `linkage` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `sample` | `table` | Yes |  |
+| `samples` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `value` | `table` | Yes |  |
-| `z_score_row` | `boolean` | No |  |
+| `values` | `table` | Yes |  |
+| `zScoreRows` | `boolean` | No |  |
 
 ### Operations
 
@@ -1783,13 +1803,13 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ExpressionHeatmapCluster():create({
-  gene = --[[ table ]],
+  genes = --[[ table ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  sample = --[[ table ]],
+  samples = --[[ table ]],
   tool = --[[ string ]],
-  value = --[[ table ]],
+  values = --[[ table ]],
 })
 ```
 
@@ -1837,7 +1857,7 @@ local fastq_qc_report = client:FastqQcReport(nil)
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `quality_offset` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1899,11 +1919,11 @@ local fastq_trim = client:FastqTrim(nil)
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `input` | `string` | Yes |  |
-| `min_length` | `number` | No |  |
+| `minLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `quality_offset` | `number` | No |  |
-| `quality_threshold` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
+| `qualityThreshold` | `number` | No |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1964,10 +1984,10 @@ local find_orf = client:FindOrf(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_aa_length` | `number` | No |  |
+| `minAaLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `require_stop` | `boolean` | No |  |
+| `requireStop` | `boolean` | No |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -2028,7 +2048,7 @@ local format_sequence = client:FormatSequence(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `string` | No |  |
+| `caseMode` | `string` | No |  |
 | `convert` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
@@ -2036,7 +2056,7 @@ local format_sequence = client:FormatSequence(nil)
 | `result` | `table` | Yes |  |
 | `reverse` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
-| `strip_non_letter` | `boolean` | No |  |
+| `stripNonLetters` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 | `width` | `number` | No |  |
 
@@ -2097,11 +2117,11 @@ local functional_enrichment = client:FunctionalEnrichment(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `table` | No |  |
-| `collection` | `table` | No |  |
+| `collections` | `table` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `table` | Yes |  |
-| `max_term_size` | `number` | No |  |
-| `min_term_size` | `number` | No |  |
+| `genes` | `table` | Yes |  |
+| `maxTermSize` | `number` | No |  |
+| `minTermSize` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -2115,7 +2135,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:FunctionalEnrichment():create({
-  gene = --[[ table ]],
+  genes = --[[ table ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -2415,14 +2435,14 @@ local golden_gate_fidelity = client:GoldenGateFidelity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `string` | No |  |
+| `compareToNamedSet` | `string` | No |  |
 | `dataset` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `overhang` | `table` | Yes |  |
+| `overhangs` | `table` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `risk_threshold` | `number` | No |  |
+| `riskThreshold` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2434,7 +2454,7 @@ Create a new entity with the given data.
 ```lua
 local result, err = client:GoldenGateFidelity():create({
   ok = --[[ any ]],
-  overhang = --[[ table ]],
+  overhangs = --[[ table ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
   tool = --[[ string ]],
@@ -2545,7 +2565,7 @@ local id_map_poll = client:IdMapPoll(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -2559,7 +2579,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:IdMapPoll():create({
-  job_id = --[[ string ]],
+  jobId = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -2613,7 +2633,7 @@ local id_map_submit = client:IdMapSubmit(nil)
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `tax_id` | `string` | No |  |
+| `taxId` | `string` | No |  |
 | `to` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2676,13 +2696,13 @@ local in_silico_pcr = client:InSilicoPcr(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `boolean` | No |  |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2694,11 +2714,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:InSilicoPcr():create({
-  forward_primer = --[[ string ]],
+  forwardPrimer = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  reverse_primer = --[[ string ]],
+  reversePrimer = --[[ string ]],
   template = --[[ string ]],
   tool = --[[ string ]],
 })
@@ -2744,18 +2764,18 @@ local kasp_primer_design = client:KaspPrimerDesign(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `boolean` | No |  |
-| `allele_a` | `string` | Yes |  |
-| `allele_b` | `string` | Yes |  |
+| `addSecondaryMismatch` | `boolean` | No |  |
+| `alleleA` | `string` | Yes |  |
+| `alleleB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_amplicon` | `number` | No |  |
-| `min_amplicon` | `number` | No |  |
+| `maxAmplicon` | `number` | No |  |
+| `minAmplicon` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `snp_position` | `number` | Yes |  |
+| `snpPosition` | `number` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_core_tm` | `number` | No |  |
+| `targetCoreTm` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2766,12 +2786,12 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:KaspPrimerDesign():create({
-  allele_a = --[[ string ]],
-  allele_b = --[[ string ]],
+  alleleA = --[[ string ]],
+  alleleB = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  snp_position = --[[ number ]],
+  snpPosition = --[[ number ]],
   target = --[[ string ]],
   tool = --[[ string ]],
 })
@@ -2863,17 +2883,17 @@ local melting_temperature = client:MeltingTemperature(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `target_tm` | `number` | No |  |
-| `tm_tolerance` | `number` | No |  |
+| `targetTm` | `number` | No |  |
+| `tmTolerance` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2933,12 +2953,12 @@ local motif_finder = client:MotifFinder(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
 | `motif` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `search_reverse_strand` | `boolean` | No |  |
+| `searchReverseStrand` | `boolean` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3062,12 +3082,12 @@ local oligo_analysi = client:OligoAnalysi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
@@ -3133,9 +3153,9 @@ local ortholog_map = client:OrthologMap(nil)
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `source_species` | `string` | No |  |
-| `symbol` | `table` | Yes |  |
-| `target_species` | `string` | Yes |  |
+| `sourceSpecies` | `string` | No |  |
+| `symbols` | `table` | Yes |  |
+| `targetSpecies` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
 
@@ -3150,8 +3170,8 @@ local result, err = client:OrthologMap():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  symbol = --[[ table ]],
-  target_species = --[[ string ]],
+  symbols = --[[ table ]],
+  targetSpecies = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -3204,8 +3224,8 @@ local pairwise_alignment = client:PairwiseAlignment(nil)
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `seq_a` | `string` | Yes |  |
-| `seq_b` | `string` | Yes |  |
+| `seqA` | `string` | Yes |  |
+| `seqB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3219,8 +3239,8 @@ local result, err = client:PairwiseAlignment():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  seq_a = --[[ string ]],
-  seq_b = --[[ string ]],
+  seqA = --[[ string ]],
+  seqB = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -3328,8 +3348,8 @@ local parse_sanger_trace = client:ParseSangerTrace(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | Yes |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | Yes |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -3344,7 +3364,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ParseSangerTrace():create({
-  file_base64 = --[[ string ]],
+  fileBase64 = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -3526,7 +3546,7 @@ local plasmid_full_report = client:PlasmidFullReport(nil)
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `number` | No |  |
+| `topN` | `number` | No |  |
 
 ### Operations
 
@@ -3591,7 +3611,7 @@ local plasmid_identify = client:PlasmidIdentify(nil)
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `number` | No |  |
+| `topN` | `number` | No |  |
 
 ### Operations
 
@@ -3649,16 +3669,16 @@ local prime_editing_design = client:PrimeEditingDesign(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `number` | Yes |  |
-| `edit_start` | `number` | Yes |  |
-| `frame_start` | `number` | No |  |
+| `editEnd` | `number` | Yes |  |
+| `editStart` | `number` | Yes |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `inserted_seq` | `string` | No |  |
+| `insertedSeq` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `pbs_length` | `number` | No |  |
+| `pbsLength` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `rtt_homology` | `number` | No |  |
+| `rttHomology` | `number` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3670,8 +3690,8 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:PrimeEditingDesign():create({
-  edit_end = --[[ number ]],
-  edit_start = --[[ number ]],
+  editEnd = --[[ number ]],
+  editStart = --[[ number ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -3721,13 +3741,13 @@ local prime_editing_twin_design = client:PrimeEditingTwinDesign(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `new_sequence` | `string` | Yes |  |
+| `newSequence` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
-| `overlap_length` | `number` | No |  |
-| `pbs_length` | `number` | No |  |
+| `overlapLength` | `number` | No |  |
+| `pbsLength` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
-| `replace_end` | `number` | Yes |  |
-| `replace_start` | `number` | Yes |  |
+| `replaceEnd` | `number` | Yes |  |
+| `replaceStart` | `number` | Yes |  |
 | `result` | `table` | Yes |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -3740,11 +3760,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:PrimeEditingTwinDesign():create({
-  new_sequence = --[[ string ]],
+  newSequence = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
-  replace_end = --[[ number ]],
-  replace_start = --[[ number ]],
+  replaceEnd = --[[ number ]],
+  replaceStart = --[[ number ]],
   result = --[[ table ]],
   target = --[[ string ]],
   tool = --[[ string ]],
@@ -3791,29 +3811,29 @@ local primer_design = client:PrimerDesign(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `number` | No |  |
-| `amplicon_min` | `number` | No |  |
-| `dntp_mm` | `number` | No |  |
+| `ampliconMax` | `number` | No |  |
+| `ampliconMin` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `gc_max` | `number` | No |  |
-| `gc_min` | `number` | No |  |
-| `len_max` | `number` | No |  |
-| `len_min` | `number` | No |  |
-| `len_opt` | `number` | No |  |
-| `max_return` | `number` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
+| `gcMax` | `number` | No |  |
+| `gcMin` | `number` | No |  |
+| `lenMax` | `number` | No |  |
+| `lenMin` | `number` | No |  |
+| `lenOpt` | `number` | No |  |
+| `maxReturn` | `number` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `target_end` | `number` | No |  |
-| `target_start` | `number` | No |  |
+| `targetEnd` | `number` | No |  |
+| `targetStart` | `number` | No |  |
 | `template` | `string` | Yes |  |
-| `tm_max` | `number` | No |  |
-| `tm_max_diff` | `number` | No |  |
-| `tm_min` | `number` | No |  |
-| `tm_opt` | `number` | No |  |
+| `tmMax` | `number` | No |  |
+| `tmMaxDiff` | `number` | No |  |
+| `tmMin` | `number` | No |  |
+| `tmOpt` | `number` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3872,14 +3892,14 @@ local primer_specificity = client:PrimerSpecificity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `number` | No |  |
-| `max_product_length` | `number` | No |  |
+| `maxMismatches` | `number` | No |  |
+| `maxProductLength` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3890,11 +3910,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:PrimerSpecificity():create({
-  forward_primer = --[[ string ]],
+  forwardPrimer = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  reverse_primer = --[[ string ]],
+  reversePrimer = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -3940,10 +3960,10 @@ local protease_digestion = client:ProteaseDigestion(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mass` | `number` | No |  |
-| `max_peptide` | `number` | No |  |
-| `min_mass` | `number` | No |  |
-| `missed_cleavage` | `number` | No |  |
+| `maxMass` | `number` | No |  |
+| `maxPeptides` | `number` | No |  |
+| `minMass` | `number` | No |  |
+| `missedCleavages` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `protease` | `string` | No |  |
 | `provenance` | `table` | Yes |  |
@@ -4008,7 +4028,7 @@ local protein_annotate_poll = client:ProteinAnnotatePoll(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -4022,7 +4042,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:ProteinAnnotatePoll():create({
-  job_id = --[[ string ]],
+  jobId = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -4072,7 +4092,7 @@ local protein_annotate_submit = client:ProteinAnnotateSubmit(nil)
 | --- | --- | --- | --- |
 | `appl` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `goterm` | `boolean` | No |  |
+| `goterms` | `boolean` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -4200,7 +4220,7 @@ local protein_property = client:ProteinProperty(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `number` | No |  |
+| `chargeStep` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -4265,7 +4285,7 @@ local random_sequence = client:RandomSequence(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `gc_content` | `number` | No |  |
+| `gcContent` | `number` | No |  |
 | `kind` | `string` | No |  |
 | `length` | `number` | Yes |  |
 | `ok` | `any` | Yes |  |
@@ -4329,7 +4349,7 @@ local restriction_site = client:RestrictionSite(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `table` | No |  |
+| `enzymes` | `table` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -4585,10 +4605,10 @@ local sanger_vs_reference = client:SangerVsReference(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | No |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | No |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `min_coverage` | `number` | No |  |
+| `minCoverage` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `read` | `string` | No |  |
@@ -4652,7 +4672,7 @@ local save_permalink = client:SavePermalink(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `table` | Yes |  |
+| `args` | `table` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -4667,7 +4687,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:SavePermalink():create({
-  arg = --[[ table ]],
+  args = --[[ table ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -4719,7 +4739,7 @@ local seqfile_stat = client:SeqfileStat(nil)
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `quality_offset` | `number` | No |  |
+| `qualityOffset` | `number` | No |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -4909,10 +4929,10 @@ local sequence_report = client:SequenceReport(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `number` | No |  |
+| `endPrimerLength` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `number` | No |  |
-| `min_orf_aa` | `number` | No |  |
+| `maxOrfs` | `number` | No |  |
+| `minOrfAa` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
@@ -4978,7 +4998,7 @@ local sequence_search = client:SequenceSearch(nil)
 | `db` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `gene` | `string` | No |  |
-| `max_result` | `number` | No |  |
+| `maxResults` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `table` | Yes |  |
@@ -5042,10 +5062,10 @@ local sequencing_readback_verify = client:SequencingReadbackVerify(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_supporting_read` | `number` | No |  |
+| `minSupportingReads` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
-| `read` | `string` | Yes |  |
+| `reads` | `string` | Yes |  |
 | `reference` | `string` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -5060,7 +5080,7 @@ Create a new entity with the given data.
 local result, err = client:SequencingReadbackVerify():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
-  read = --[[ string ]],
+  reads = --[[ string ]],
   reference = --[[ string ]],
   result = --[[ table ]],
   tool = --[[ string ]],
@@ -5107,7 +5127,7 @@ local session_create = client:SessionCreate(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `table` | No |  |
+| `entries` | `table` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -5170,11 +5190,11 @@ local session_get = client:SessionGet(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `name` | `table` | No |  |
+| `names` | `table` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5188,7 +5208,7 @@ local result, err = client:SessionGet():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  session_id = --[[ string ]],
+  sessionId = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -5233,15 +5253,15 @@ local session_run = client:SessionRun(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `table` | No |  |
-| `from_session` | `table` | No |  |
+| `args` | `table` | No |  |
+| `fromSession` | `table` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `write_back` | `table` | No |  |
+| `writeBack` | `table` | No |  |
 
 ### Operations
 
@@ -5254,7 +5274,7 @@ local result, err = client:SessionRun():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  session_id = --[[ string ]],
+  sessionId = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -5299,12 +5319,12 @@ local session_set = client:SessionSet(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `table` | Yes |  |
+| `entries` | `table` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5315,11 +5335,11 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:SessionSet():create({
-  entry = --[[ table ]],
+  entries = --[[ table ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  session_id = --[[ string ]],
+  sessionId = --[[ string ]],
   tool = --[[ string ]],
 })
 ```
@@ -5365,11 +5385,11 @@ local sirna_design = client:SirnaDesign(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_reynold` | `number` | No |  |
+| `minReynolds` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `sh_rna_loop` | `string` | No |  |
+| `shRnaLoop` | `string` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5429,23 +5449,23 @@ local site_directed_mutagenesi = client:SiteDirectedMutagenesi(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
-| `dntp_mm` | `number` | No |  |
-| `edit_kind` | `string` | No |  |
-| `frame_start` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
+| `dntpMM` | `number` | No |  |
+| `editKind` | `string` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `number` | No |  |
-| `na_mm` | `number` | No |  |
-| `new_base` | `string` | No |  |
+| `mgMM` | `number` | No |  |
+| `naMM` | `number` | No |  |
+| `newBase` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `number` | No |  |
+| `oligoNM` | `number` | No |  |
 | `organism` | `string` | No |  |
 | `position` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `residue` | `number` | No |  |
 | `result` | `table` | Yes |  |
 | `style` | `string` | No |  |
-| `target_aa` | `string` | No |  |
+| `targetAa` | `string` | No |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5511,7 +5531,7 @@ local translate = client:Translate(nil)
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `to_stop` | `boolean` | No |  |
+| `toStop` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5635,7 +5655,7 @@ local variant_comparator = client:VariantComparator(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `boolean` | No |  |
-| `frame_start` | `number` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
@@ -5701,28 +5721,28 @@ local verify_assembly = client:VerifyAssembly(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `number` | No |  |
+| `armTmTarget` | `number` | No |  |
 | `circular` | `boolean` | No |  |
-| `claimed_construct` | `string` | Yes |  |
+| `claimedConstruct` | `string` | Yes |  |
 | `coding` | `boolean` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `table` | No |  |
-| `fragment_pcr` | `table` | No |  |
-| `frame_start` | `number` | No |  |
+| `fragmentPcrs` | `table` | No |  |
+| `fragments` | `table` | No |  |
+| `frameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
-| `insert_pcr` | `table` | No |  |
+| `insertPcr` | `table` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `table` | No |  |
+| `names` | `table` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `number` | No |  |
+| `overlapLen` | `number` | No |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `vector` | `string` | No |  |
-| `vector_pcr` | `table` | No |  |
+| `vectorPcr` | `table` | No |  |
 
 ### Operations
 
@@ -5732,7 +5752,7 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:VerifyAssembly():create({
-  claimed_construct = --[[ string ]],
+  claimedConstruct = --[[ string ]],
   method = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
@@ -5781,17 +5801,17 @@ local verify_construct = client:VerifyConstruct(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `string` | Yes |  |
-| `expected_frame_start` | `number` | No |  |
+| `claimedConstruct` | `string` | Yes |  |
+| `expectedFrameStart` | `number` | No |  |
 | `gate` | `any` | No |  |
-| `insert_forward_primer` | `string` | Yes |  |
-| `insert_reverse_primer` | `string` | Yes |  |
-| `insert_template` | `string` | Yes |  |
-| `max_primer_mismatch` | `number` | No |  |
+| `insertForwardPrimer` | `string` | Yes |  |
+| `insertReversePrimer` | `string` | Yes |  |
+| `insertTemplate` | `string` | Yes |  |
+| `maxPrimerMismatches` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `template_circular` | `boolean` | No |  |
+| `templateCircular` | `boolean` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5802,10 +5822,10 @@ Create a new entity with the given data.
 
 ```lua
 local result, err = client:VerifyConstruct():create({
-  claimed_construct = --[[ string ]],
-  insert_forward_primer = --[[ string ]],
-  insert_reverse_primer = --[[ string ]],
-  insert_template = --[[ string ]],
+  claimedConstruct = --[[ string ]],
+  insertForwardPrimer = --[[ string ]],
+  insertReversePrimer = --[[ string ]],
+  insertTemplate = --[[ string ]],
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
@@ -5854,7 +5874,7 @@ local virtual_gel = client:VirtualGel(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `boolean` | No |  |
-| `enzyme` | `table` | No |  |
+| `enzymes` | `table` | No |  |
 | `gate` | `any` | No |  |
 | `ladder` | `string` | No |  |
 | `ok` | `any` | Yes |  |
@@ -5923,7 +5943,7 @@ local volcano_plot_data = client:VolcanoPlotData(nil)
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `result` | `table` | Yes |  |
-| `row` | `table` | Yes |  |
+| `rows` | `table` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5937,7 +5957,7 @@ local result, err = client:VolcanoPlotData():create({
   ok = --[[ any ]],
   provenance = --[[ table ]],
   result = --[[ table ]],
-  row = --[[ table ]],
+  rows = --[[ table ]],
   tool = --[[ string ]],
 })
 ```
@@ -5983,7 +6003,7 @@ local web_search = client:WebSearch(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_result` | `number` | No |  |
+| `max_results` | `number` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `table` | Yes |  |
 | `query` | `string` | Yes |  |

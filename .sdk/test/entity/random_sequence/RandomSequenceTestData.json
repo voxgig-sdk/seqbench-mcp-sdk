@@ -3,7 +3,7 @@
     "random_sequence": {
       "RANDOM_SEQUENCE00": {
         "gate": "s50",
-        "gc_content": 81,
+        "gcContent": 81,
         "kind": "s52",
         "length": "s53",
         "ok": "s54",
@@ -14,7 +14,7 @@
       },
       "RANDOM_SEQUENCE01": {
         "gate": "sa0",
-        "gc_content": 161,
+        "gcContent": 161,
         "kind": "sa2",
         "length": "sa3",
         "ok": "sa4",
@@ -25,7 +25,7 @@
       },
       "RANDOM_SEQUENCE02": {
         "gate": "sf0",
-        "gc_content": 241,
+        "gcContent": 241,
         "kind": "sf2",
         "length": "sf3",
         "ok": "sf4",
@@ -40,7 +40,7 @@
     "random_sequence": {
       "random_sequence_ref01": {
         "gate": "s140",
-        "gc_content": 321,
+        "gcContent": 321,
         "kind": "s142",
         "length": "s143",
         "ok": "s144",

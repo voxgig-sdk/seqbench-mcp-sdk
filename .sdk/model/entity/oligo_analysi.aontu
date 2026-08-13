@@ -6,7 +6,7 @@ main: kit: entity: oligo_analysi: {
 
   fields: [
     {
-      name: "dntp_mm"
+      name: "dntpMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: oligo_analysi: {
       type: "`$ANY`"
     }
     {
-      name: "mg_mm"
+      name: "mgMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "na_mm"
+      name: "naMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: oligo_analysi: {
       type: "`$ANY`"
     }
     {
-      name: "oligo_nm"
+      name: "oligoNM"
       req: false
       type: "`$NUMBER`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: oligo_analysi: {
             "oligo_analysis"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              dntpMM: "`reqdata.dntp_mm`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              oligoNM: "`reqdata.oligo_nm`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

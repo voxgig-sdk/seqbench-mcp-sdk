@@ -551,13 +551,13 @@ base_editing_design = client.BaseEditingDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `str` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `target` | `str` | Yes |  |
-| `target_position` | `int` | No |  |
+| `targetPosition` | `int` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -615,10 +615,15 @@ batch = client.Batch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `dict` | No |  |
+| `args` | `dict` | No |  |
+| `capped` | `bool` | Yes |  |
+| `columns` | `list` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `str` | Yes |  |
-| `ok` | `Any` | Yes |  |
-| `result` | `dict` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `dict` | Yes |  |
+| `rows` | `list` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -629,9 +634,14 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.Batch().create({
+    "capped": True,  # bool
+    "columns": [],  # list
+    "count": 1,  # int
+    "errors": 1,  # int
     "input": "example_input",  # str
-    "ok": "example_ok",  # Any
-    "result": {},  # dict
+    "limit": 1,  # int
+    "provenance": {},  # dict
+    "rows": [],  # list
     "tool": "example_tool",  # str
 })
 ```
@@ -683,10 +693,15 @@ batch__workflow = client.BatchWorkflow()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `bool` | Yes |  |
+| `columns` | `list` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `str` | Yes |  |
-| `ok` | `Any` | Yes |  |
-| `result` | `dict` | Yes |  |
-| `step` | `list` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `dict` | Yes |  |
+| `rows` | `list` | Yes |  |
+| `steps` | `list` | Yes |  |
 
 ### Operations
 
@@ -696,10 +711,15 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.BatchWorkflow().create({
+    "capped": True,  # bool
+    "columns": [],  # list
+    "count": 1,  # int
+    "errors": 1,  # int
     "input": "example_input",  # str
-    "ok": "example_ok",  # Any
-    "result": {},  # dict
-    "step": [],  # list
+    "limit": 1,  # int
+    "provenance": {},  # dict
+    "rows": [],  # list
+    "steps": [],  # list
 })
 ```
 
@@ -750,10 +770,10 @@ characterize_sequence = client.CharacterizeSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -815,18 +835,18 @@ cloning_simulate = client.CloningSimulate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
+| `armTmTarget` | `float` | No |  |
 | `circular` | `bool` | No |  |
 | `enzyme` | `str` | No |  |
 | `enzyme3` | `str` | No |  |
 | `enzyme5` | `str` | No |  |
-| `fragment` | `list` | No |  |
+| `fragments` | `list` | No |  |
 | `gate` | `Any` | No |  |
 | `insert` | `str` | No |  |
 | `method` | `str` | Yes |  |
-| `name` | `list` | No |  |
+| `names` | `list` | No |  |
 | `ok` | `Any` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
@@ -887,12 +907,12 @@ codon_adaptation_index = client.CodonAdaptationIndex()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `organism` | `str` | No |  |
 | `provenance` | `dict` | Yes |  |
-| `rare_threshold` | `float` | No |  |
+| `rareThreshold` | `float` | No |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
@@ -1015,15 +1035,15 @@ construct_autofix = client.ConstructAutofix()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `list` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `list` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `gc_high` | `float` | No |  |
-| `gc_low` | `float` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
-| `max_pass` | `int` | No |  |
+| `gcHigh` | `float` | No |  |
+| `gcLow` | `float` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
+| `maxPasses` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `organism` | `str` | No |  |
 | `provenance` | `dict` | Yes |  |
@@ -1086,14 +1106,14 @@ construct_qc = client.ConstructQc()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `list` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `list` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `gc_high` | `float` | No |  |
-| `gc_low` | `float` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
+| `gcHigh` | `float` | No |  |
+| `gcLow` | `float` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -1156,12 +1176,12 @@ crispr_grna_design = client.CrisprGrnaDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `min_score` | `float` | No |  |
+| `minScore` | `float` | No |  |
 | `nuclease` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1220,22 +1240,22 @@ crispr_hdr_donor = client.CrisprHdrDonor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `int` | No |  |
-| `block_pam` | `bool` | No |  |
-| `design_genotyping_primer` | `bool` | No |  |
-| `edit_end` | `int` | No |  |
-| `edit_start` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `armLength` | `int` | No |  |
+| `blockPam` | `bool` | No |  |
+| `designGenotypingPrimers` | `bool` | No |  |
+| `editEnd` | `int` | No |  |
+| `editStart` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `guide_end` | `int` | No |  |
-| `guide_start` | `int` | No |  |
-| `guide_strand` | `str` | No |  |
+| `guideEnd` | `int` | No |  |
+| `guideStart` | `int` | No |  |
+| `guideStrand` | `str` | No |  |
 | `nuclease` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `replacement` | `str` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `target_sequence` | `str` | Yes |  |
+| `targetSequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -1250,7 +1270,7 @@ result = client.CrisprHdrDonor().create({
     "provenance": {},  # dict
     "replacement": "example_replacement",  # str
     "result": {},  # dict
-    "target_sequence": "example_target_sequence",  # str
+    "targetSequence": "example_targetSequence",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -1295,7 +1315,7 @@ crispr_offtarget_check = client.CrisprOfftargetCheck()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `nuclease` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
 | `protospacer` | `str` | Yes |  |
@@ -1362,8 +1382,8 @@ cross_dimer = client.CrossDimer()
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `sequence_a` | `str` | Yes |  |
-| `sequence_b` | `str` | Yes |  |
+| `sequenceA` | `str` | Yes |  |
+| `sequenceB` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -1377,8 +1397,8 @@ result = client.CrossDimer().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "sequence_a": "example_sequence_a",  # str
-    "sequence_b": "example_sequence_b",  # str
+    "sequenceA": "example_sequenceA",  # str
+    "sequenceB": "example_sequenceB",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -1424,14 +1444,14 @@ dna_molarity = client.DnaMolarity()
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
 | `length` | `int` | No |  |
-| `mass_ng` | `float` | No |  |
+| `massNg` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | No |  |
 | `tool` | `str` | Yes |  |
 | `type` | `str` | No |  |
-| `volume_ul` | `float` | No |  |
+| `volumeUl` | `float` | No |  |
 
 ### Operations
 
@@ -1487,8 +1507,8 @@ double_digest = client.DoubleDigest()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `str` | Yes |  |
-| `enzyme_b` | `str` | Yes |  |
+| `enzymeA` | `str` | Yes |  |
+| `enzymeB` | `str` | Yes |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -1503,8 +1523,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.DoubleDigest().create({
-    "enzyme_a": "example_enzyme_a",  # str
-    "enzyme_b": "example_enzyme_b",  # str
+    "enzymeA": "example_enzymeA",  # str
+    "enzymeB": "example_enzymeB",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -1554,7 +1574,7 @@ export_echo_picklist = client.ExportEchoPicklist()
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `reaction` | `list` | Yes |  |
+| `reactions` | `list` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1568,7 +1588,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ExportEchoPicklist().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -1615,9 +1635,9 @@ export_opentrons_protocol = client.ExportOpentronsProtocol()
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
-| `protocol_name` | `str` | No |  |
+| `protocolName` | `str` | No |  |
 | `provenance` | `dict` | Yes |  |
-| `reaction` | `list` | Yes |  |
+| `reactions` | `list` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1631,7 +1651,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ExportOpentronsProtocol().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -1679,7 +1699,7 @@ export_plate_layout = client.ExportPlateLayout()
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `reaction` | `list` | Yes |  |
+| `reactions` | `list` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1693,7 +1713,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.ExportPlateLayout().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "reaction": [],  # list
+    "reactions": [],  # list
     "result": {},  # dict
     "tool": "example_tool",  # str
 })
@@ -1738,19 +1758,19 @@ expression_heatmap_cluster = client.ExpressionHeatmapCluster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `bool` | No |  |
-| `cluster_row` | `bool` | No |  |
-| `distance_metric` | `str` | No |  |
+| `clusterCols` | `bool` | No |  |
+| `clusterRows` | `bool` | No |  |
+| `distanceMetric` | `str` | No |  |
 | `gate` | `Any` | No |  |
-| `gene` | `list` | Yes |  |
+| `genes` | `list` | Yes |  |
 | `linkage` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `sample` | `list` | Yes |  |
+| `samples` | `list` | Yes |  |
 | `tool` | `str` | Yes |  |
-| `value` | `list` | Yes |  |
-| `z_score_row` | `bool` | No |  |
+| `values` | `list` | Yes |  |
+| `zScoreRows` | `bool` | No |  |
 
 ### Operations
 
@@ -1760,13 +1780,13 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ExpressionHeatmapCluster().create({
-    "gene": [],  # list
+    "genes": [],  # list
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "sample": [],  # list
+    "samples": [],  # list
     "tool": "example_tool",  # str
-    "value": [],  # list
+    "values": [],  # list
 })
 ```
 
@@ -1813,7 +1833,7 @@ fastq_qc_report = client.FastqQcReport()
 | `input` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1874,11 +1894,11 @@ fastq_trim = client.FastqTrim()
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
 | `input` | `str` | Yes |  |
-| `min_length` | `int` | No |  |
+| `minLength` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `quality_offset` | `int` | No |  |
-| `quality_threshold` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
+| `qualityThreshold` | `int` | No |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -1938,10 +1958,10 @@ find_orf = client.FindOrf()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `min_aa_length` | `int` | No |  |
+| `minAaLength` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `require_stop` | `bool` | No |  |
+| `requireStop` | `bool` | No |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
@@ -2001,7 +2021,7 @@ format_sequence = client.FormatSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `str` | No |  |
+| `caseMode` | `str` | No |  |
 | `convert` | `str` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
@@ -2009,7 +2029,7 @@ format_sequence = client.FormatSequence()
 | `result` | `dict` | Yes |  |
 | `reverse` | `bool` | No |  |
 | `sequence` | `str` | Yes |  |
-| `strip_non_letter` | `bool` | No |  |
+| `stripNonLetters` | `bool` | No |  |
 | `tool` | `str` | Yes |  |
 | `width` | `int` | No |  |
 
@@ -2069,11 +2089,11 @@ functional_enrichment = client.FunctionalEnrichment()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `list` | No |  |
-| `collection` | `list` | No |  |
+| `collections` | `list` | No |  |
 | `gate` | `Any` | No |  |
-| `gene` | `list` | Yes |  |
-| `max_term_size` | `int` | No |  |
-| `min_term_size` | `int` | No |  |
+| `genes` | `list` | Yes |  |
+| `maxTermSize` | `int` | No |  |
+| `minTermSize` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -2087,7 +2107,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.FunctionalEnrichment().create({
-    "gene": [],  # list
+    "genes": [],  # list
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -2382,14 +2402,14 @@ golden_gate_fidelity = client.GoldenGateFidelity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `str` | No |  |
+| `compareToNamedSet` | `str` | No |  |
 | `dataset` | `str` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
-| `overhang` | `list` | Yes |  |
+| `overhangs` | `list` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `risk_threshold` | `float` | No |  |
+| `riskThreshold` | `float` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -2401,7 +2421,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 ```python
 result = client.GoldenGateFidelity().create({
     "ok": "example_ok",  # Any
-    "overhang": [],  # list
+    "overhangs": [],  # list
     "provenance": {},  # dict
     "result": {},  # dict
     "tool": "example_tool",  # str
@@ -2510,7 +2530,7 @@ id_map_poll = client.IdMapPoll()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `job_id` | `str` | Yes |  |
+| `jobId` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -2524,7 +2544,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.IdMapPoll().create({
-    "job_id": "example_job_id",  # str
+    "jobId": "example_jobId",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -2577,7 +2597,7 @@ id_map_submit = client.IdMapSubmit()
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `tax_id` | `str` | No |  |
+| `taxId` | `str` | No |  |
 | `to` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -2639,13 +2659,13 @@ in_silico_pcr = client.InSilicoPcr()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `forward_primer` | `str` | Yes |  |
+| `forwardPrimer` | `str` | Yes |  |
 | `gate` | `Any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `reverse_primer` | `str` | Yes |  |
+| `reversePrimer` | `str` | Yes |  |
 | `template` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -2657,11 +2677,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.InSilicoPcr().create({
-    "forward_primer": "example_forward_primer",  # str
+    "forwardPrimer": "example_forwardPrimer",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "reverse_primer": "example_reverse_primer",  # str
+    "reversePrimer": "example_reversePrimer",  # str
     "template": "example_template",  # str
     "tool": "example_tool",  # str
 })
@@ -2706,18 +2726,18 @@ kasp_primer_design = client.KaspPrimerDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `bool` | No |  |
-| `allele_a` | `str` | Yes |  |
-| `allele_b` | `str` | Yes |  |
+| `addSecondaryMismatch` | `bool` | No |  |
+| `alleleA` | `str` | Yes |  |
+| `alleleB` | `str` | Yes |  |
 | `gate` | `Any` | No |  |
-| `max_amplicon` | `int` | No |  |
-| `min_amplicon` | `int` | No |  |
+| `maxAmplicon` | `int` | No |  |
+| `minAmplicon` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `snp_position` | `int` | Yes |  |
+| `snpPosition` | `int` | Yes |  |
 | `target` | `str` | Yes |  |
-| `target_core_tm` | `float` | No |  |
+| `targetCoreTm` | `float` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -2728,12 +2748,12 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.KaspPrimerDesign().create({
-    "allele_a": "example_allele_a",  # str
-    "allele_b": "example_allele_b",  # str
+    "alleleA": "example_alleleA",  # str
+    "alleleB": "example_alleleB",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "snp_position": 1,  # int
+    "snpPosition": 1,  # int
     "target": "example_target",  # str
     "tool": "example_tool",  # str
 })
@@ -2823,17 +2843,17 @@ melting_temperature = client.MeltingTemperature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `Any` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
-| `target_tm` | `float` | No |  |
-| `tm_tolerance` | `float` | No |  |
+| `targetTm` | `float` | No |  |
+| `tmTolerance` | `float` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -2892,12 +2912,12 @@ motif_finder = client.MotifFinder()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `motif` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -3019,12 +3039,12 @@ oligo_analysi = client.OligoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `Any` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
@@ -3089,9 +3109,9 @@ ortholog_map = client.OrthologMap()
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `source_species` | `str` | No |  |
-| `symbol` | `list` | Yes |  |
-| `target_species` | `str` | Yes |  |
+| `sourceSpecies` | `str` | No |  |
+| `symbols` | `list` | Yes |  |
+| `targetSpecies` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 | `type` | `str` | No |  |
 
@@ -3106,8 +3126,8 @@ result = client.OrthologMap().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "symbol": [],  # list
-    "target_species": "example_target_species",  # str
+    "symbols": [],  # list
+    "targetSpecies": "example_targetSpecies",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3159,8 +3179,8 @@ pairwise_alignment = client.PairwiseAlignment()
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `seq_a` | `str` | Yes |  |
-| `seq_b` | `str` | Yes |  |
+| `seqA` | `str` | Yes |  |
+| `seqB` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -3174,8 +3194,8 @@ result = client.PairwiseAlignment().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "seq_a": "example_seq_a",  # str
-    "seq_b": "example_seq_b",  # str
+    "seqA": "example_seqA",  # str
+    "seqB": "example_seqB",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3281,8 +3301,8 @@ parse_sanger_trace = client.ParseSangerTrace()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `str` | Yes |  |
-| `file_name` | `str` | No |  |
+| `fileBase64` | `str` | Yes |  |
+| `fileName` | `str` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -3297,7 +3317,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ParseSangerTrace().create({
-    "file_base64": "example_file_base64",  # str
+    "fileBase64": "example_fileBase64",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3476,7 +3496,7 @@ plasmid_full_report = client.PlasmidFullReport()
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3540,7 +3560,7 @@ plasmid_identify = client.PlasmidIdentify()
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3597,16 +3617,16 @@ prime_editing_design = client.PrimeEditingDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `int` | Yes |  |
-| `edit_start` | `int` | Yes |  |
-| `frame_start` | `int` | No |  |
+| `editEnd` | `int` | Yes |  |
+| `editStart` | `int` | Yes |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `inserted_seq` | `str` | No |  |
+| `insertedSeq` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
-| `pbs_length` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `rtt_homology` | `int` | No |  |
+| `rttHomology` | `int` | No |  |
 | `target` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -3618,8 +3638,8 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.PrimeEditingDesign().create({
-    "edit_end": 1,  # int
-    "edit_start": 1,  # int
+    "editEnd": 1,  # int
+    "editStart": 1,  # int
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -3668,13 +3688,13 @@ prime_editing_twin_design = client.PrimeEditingTwinDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `new_sequence` | `str` | Yes |  |
+| `newSequence` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
-| `overlap_length` | `int` | No |  |
-| `pbs_length` | `int` | No |  |
+| `overlapLength` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `dict` | Yes |  |
-| `replace_end` | `int` | Yes |  |
-| `replace_start` | `int` | Yes |  |
+| `replaceEnd` | `int` | Yes |  |
+| `replaceStart` | `int` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `target` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
@@ -3687,11 +3707,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.PrimeEditingTwinDesign().create({
-    "new_sequence": "example_new_sequence",  # str
+    "newSequence": "example_newSequence",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "replace_end": 1,  # int
-    "replace_start": 1,  # int
+    "replaceEnd": 1,  # int
+    "replaceStart": 1,  # int
     "result": {},  # dict
     "target": "example_target",  # str
     "tool": "example_tool",  # str
@@ -3737,29 +3757,29 @@ primer_design = client.PrimerDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `int` | No |  |
-| `amplicon_min` | `int` | No |  |
-| `dntp_mm` | `float` | No |  |
+| `ampliconMax` | `int` | No |  |
+| `ampliconMin` | `int` | No |  |
+| `dntpMM` | `float` | No |  |
 | `gate` | `Any` | No |  |
-| `gc_max` | `float` | No |  |
-| `gc_min` | `float` | No |  |
-| `len_max` | `int` | No |  |
-| `len_min` | `int` | No |  |
-| `len_opt` | `int` | No |  |
-| `max_return` | `int` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
+| `gcMax` | `float` | No |  |
+| `gcMin` | `float` | No |  |
+| `lenMax` | `int` | No |  |
+| `lenMin` | `int` | No |  |
+| `lenOpt` | `int` | No |  |
+| `maxReturn` | `int` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `target_end` | `int` | No |  |
-| `target_start` | `int` | No |  |
+| `targetEnd` | `int` | No |  |
+| `targetStart` | `int` | No |  |
 | `template` | `str` | Yes |  |
-| `tm_max` | `float` | No |  |
-| `tm_max_diff` | `float` | No |  |
-| `tm_min` | `float` | No |  |
-| `tm_opt` | `float` | No |  |
+| `tmMax` | `float` | No |  |
+| `tmMaxDiff` | `float` | No |  |
+| `tmMin` | `float` | No |  |
+| `tmOpt` | `float` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -3817,14 +3837,14 @@ primer_specificity = client.PrimerSpecificity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `str` | Yes |  |
+| `forwardPrimer` | `str` | Yes |  |
 | `gate` | `Any` | No |  |
-| `max_mismatch` | `int` | No |  |
-| `max_product_length` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
+| `maxProductLength` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `reverse_primer` | `str` | Yes |  |
+| `reversePrimer` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -3835,11 +3855,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.PrimerSpecificity().create({
-    "forward_primer": "example_forward_primer",  # str
+    "forwardPrimer": "example_forwardPrimer",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "reverse_primer": "example_reverse_primer",  # str
+    "reversePrimer": "example_reversePrimer",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -3884,10 +3904,10 @@ protease_digestion = client.ProteaseDigestion()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `max_mass` | `float` | No |  |
-| `max_peptide` | `int` | No |  |
-| `min_mass` | `float` | No |  |
-| `missed_cleavage` | `int` | No |  |
+| `maxMass` | `float` | No |  |
+| `maxPeptides` | `int` | No |  |
+| `minMass` | `float` | No |  |
+| `missedCleavages` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `protease` | `str` | No |  |
 | `provenance` | `dict` | Yes |  |
@@ -3951,7 +3971,7 @@ protein_annotate_poll = client.ProteinAnnotatePoll()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `job_id` | `str` | Yes |  |
+| `jobId` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -3965,7 +3985,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ProteinAnnotatePoll().create({
-    "job_id": "example_job_id",  # str
+    "jobId": "example_jobId",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -4014,7 +4034,7 @@ protein_annotate_submit = client.ProteinAnnotateSubmit()
 | --- | --- | --- | --- |
 | `appl` | `str` | No |  |
 | `gate` | `Any` | No |  |
-| `goterm` | `bool` | No |  |
+| `goterms` | `bool` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -4140,7 +4160,7 @@ protein_property = client.ProteinProperty()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `float` | No |  |
+| `chargeStep` | `float` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -4204,7 +4224,7 @@ random_sequence = client.RandomSequence()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `gc_content` | `float` | No |  |
+| `gcContent` | `float` | No |  |
 | `kind` | `str` | No |  |
 | `length` | `int` | Yes |  |
 | `ok` | `Any` | Yes |  |
@@ -4267,7 +4287,7 @@ restriction_site = client.RestrictionSite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `list` | No |  |
+| `enzymes` | `list` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -4519,10 +4539,10 @@ sanger_vs_reference = client.SangerVsReference()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `str` | No |  |
-| `file_name` | `str` | No |  |
+| `fileBase64` | `str` | No |  |
+| `fileName` | `str` | No |  |
 | `gate` | `Any` | No |  |
-| `min_coverage` | `float` | No |  |
+| `minCoverage` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `read` | `str` | No |  |
@@ -4585,7 +4605,7 @@ save_permalink = client.SavePermalink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `dict` | Yes |  |
+| `args` | `dict` | Yes |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -4600,7 +4620,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.SavePermalink().create({
-    "arg": {},  # dict
+    "args": {},  # dict
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -4651,7 +4671,7 @@ seqfile_stat = client.SeqfileStat()
 | `input` | `str` | Yes |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -4838,10 +4858,10 @@ sequence_report = client.SequenceReport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
@@ -4906,7 +4926,7 @@ sequence_search = client.SequenceSearch()
 | `db` | `str` | No |  |
 | `gate` | `Any` | No |  |
 | `gene` | `str` | No |  |
-| `max_result` | `int` | No |  |
+| `maxResults` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `organism` | `str` | No |  |
 | `provenance` | `dict` | Yes |  |
@@ -4969,10 +4989,10 @@ sequencing_readback_verify = client.SequencingReadbackVerify()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `min_supporting_read` | `int` | No |  |
+| `minSupportingReads` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
-| `read` | `str` | Yes |  |
+| `reads` | `str` | Yes |  |
 | `reference` | `str` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
@@ -4987,7 +5007,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 result = client.SequencingReadbackVerify().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
-    "read": "example_read",  # str
+    "reads": "example_reads",  # str
     "reference": "example_reference",  # str
     "result": {},  # dict
     "tool": "example_tool",  # str
@@ -5033,7 +5053,7 @@ session_create = client.SessionCreate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `dict` | No |  |
+| `entries` | `dict` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -5095,11 +5115,11 @@ session_get = client.SessionGet()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `name` | `list` | No |  |
+| `names` | `list` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `session_id` | `str` | Yes |  |
+| `sessionId` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -5113,7 +5133,7 @@ result = client.SessionGet().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -5157,15 +5177,15 @@ session_run = client.SessionRun()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `dict` | No |  |
-| `from_session` | `dict` | No |  |
+| `args` | `dict` | No |  |
+| `fromSession` | `dict` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `session_id` | `str` | Yes |  |
+| `sessionId` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
-| `write_back` | `dict` | No |  |
+| `writeBack` | `dict` | No |  |
 
 ### Operations
 
@@ -5178,7 +5198,7 @@ result = client.SessionRun().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -5222,12 +5242,12 @@ session_set = client.SessionSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `dict` | Yes |  |
+| `entries` | `dict` | Yes |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `session_id` | `str` | Yes |  |
+| `sessionId` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -5238,11 +5258,11 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.SessionSet().create({
-    "entry": {},  # dict
+    "entries": {},  # dict
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "session_id": "example_session_id",  # str
+    "sessionId": "example_sessionId",  # str
     "tool": "example_tool",  # str
 })
 ```
@@ -5287,11 +5307,11 @@ sirna_design = client.SirnaDesign()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `min_reynold` | `int` | No |  |
+| `minReynolds` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `sh_rna_loop` | `str` | No |  |
+| `shRnaLoop` | `str` | No |  |
 | `target` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -5350,23 +5370,23 @@ site_directed_mutagenesi = client.SiteDirectedMutagenesi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
-| `dntp_mm` | `float` | No |  |
-| `edit_kind` | `str` | No |  |
-| `frame_start` | `int` | No |  |
+| `armTmTarget` | `float` | No |  |
+| `dntpMM` | `float` | No |  |
+| `editKind` | `str` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `mg_mm` | `float` | No |  |
-| `na_mm` | `float` | No |  |
-| `new_base` | `str` | No |  |
+| `mgMM` | `float` | No |  |
+| `naMM` | `float` | No |  |
+| `newBase` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
-| `oligo_nm` | `float` | No |  |
+| `oligoNM` | `float` | No |  |
 | `organism` | `str` | No |  |
 | `position` | `int` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `residue` | `int` | No |  |
 | `result` | `dict` | Yes |  |
 | `style` | `str` | No |  |
-| `target_aa` | `str` | No |  |
+| `targetAa` | `str` | No |  |
 | `template` | `str` | Yes |  |
 | `tool` | `str` | Yes |  |
 
@@ -5431,7 +5451,7 @@ translate = client.Translate()
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `sequence` | `str` | Yes |  |
-| `to_stop` | `bool` | No |  |
+| `toStop` | `bool` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -5553,7 +5573,7 @@ variant_comparator = client.VariantComparator()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `bool` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
@@ -5618,28 +5638,28 @@ verify_assembly = client.VerifyAssembly()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float` | No |  |
+| `armTmTarget` | `float` | No |  |
 | `circular` | `bool` | No |  |
-| `claimed_construct` | `str` | Yes |  |
+| `claimedConstruct` | `str` | Yes |  |
 | `coding` | `bool` | No |  |
 | `enzyme` | `str` | No |  |
 | `enzyme3` | `str` | No |  |
 | `enzyme5` | `str` | No |  |
-| `fragment` | `list` | No |  |
-| `fragment_pcr` | `list` | No |  |
-| `frame_start` | `int` | No |  |
+| `fragmentPcrs` | `list` | No |  |
+| `fragments` | `list` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
 | `insert` | `str` | No |  |
-| `insert_pcr` | `dict` | No |  |
+| `insertPcr` | `dict` | No |  |
 | `method` | `str` | Yes |  |
-| `name` | `list` | No |  |
+| `names` | `list` | No |  |
 | `ok` | `Any` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
 | `tool` | `str` | Yes |  |
 | `vector` | `str` | No |  |
-| `vector_pcr` | `dict` | No |  |
+| `vectorPcr` | `dict` | No |  |
 
 ### Operations
 
@@ -5649,7 +5669,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.VerifyAssembly().create({
-    "claimed_construct": "example_claimed_construct",  # str
+    "claimedConstruct": "example_claimedConstruct",  # str
     "method": "example_method",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
@@ -5697,17 +5717,17 @@ verify_construct = client.VerifyConstruct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `str` | Yes |  |
-| `expected_frame_start` | `int` | No |  |
+| `claimedConstruct` | `str` | Yes |  |
+| `expectedFrameStart` | `int` | No |  |
 | `gate` | `Any` | No |  |
-| `insert_forward_primer` | `str` | Yes |  |
-| `insert_reverse_primer` | `str` | Yes |  |
-| `insert_template` | `str` | Yes |  |
-| `max_primer_mismatch` | `int` | No |  |
+| `insertForwardPrimer` | `str` | Yes |  |
+| `insertReversePrimer` | `str` | Yes |  |
+| `insertTemplate` | `str` | Yes |  |
+| `maxPrimerMismatches` | `int` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `template_circular` | `bool` | No |  |
+| `templateCircular` | `bool` | No |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -5718,10 +5738,10 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.VerifyConstruct().create({
-    "claimed_construct": "example_claimed_construct",  # str
-    "insert_forward_primer": "example_insert_forward_primer",  # str
-    "insert_reverse_primer": "example_insert_reverse_primer",  # str
-    "insert_template": "example_insert_template",  # str
+    "claimedConstruct": "example_claimedConstruct",  # str
+    "insertForwardPrimer": "example_insertForwardPrimer",  # str
+    "insertReversePrimer": "example_insertReversePrimer",  # str
+    "insertTemplate": "example_insertTemplate",  # str
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
@@ -5769,7 +5789,7 @@ virtual_gel = client.VirtualGel()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `enzyme` | `list` | No |  |
+| `enzymes` | `list` | No |  |
 | `gate` | `Any` | No |  |
 | `ladder` | `str` | No |  |
 | `ok` | `Any` | Yes |  |
@@ -5837,7 +5857,7 @@ volcano_plot_data = client.VolcanoPlotData()
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `result` | `dict` | Yes |  |
-| `row` | `list` | Yes |  |
+| `rows` | `list` | Yes |  |
 | `tool` | `str` | Yes |  |
 
 ### Operations
@@ -5851,7 +5871,7 @@ result = client.VolcanoPlotData().create({
     "ok": "example_ok",  # Any
     "provenance": {},  # dict
     "result": {},  # dict
-    "row": [],  # list
+    "rows": [],  # list
     "tool": "example_tool",  # str
 })
 ```
@@ -5896,7 +5916,7 @@ web_search = client.WebSearch()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Any` | No |  |
-| `max_result` | `float` | No |  |
+| `max_results` | `float` | No |  |
 | `ok` | `Any` | Yes |  |
 | `provenance` | `dict` | Yes |  |
 | `query` | `str` | Yes |  |

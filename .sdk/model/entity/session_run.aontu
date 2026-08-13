@@ -6,12 +6,12 @@ main: kit: entity: session_run: {
 
   fields: [
     {
-      name: "arg"
+      name: "args"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "from_session"
+      name: "fromSession"
       req: false
       type: "`$OBJECT`"
     }
@@ -36,7 +36,7 @@ main: kit: entity: session_run: {
       type: "`$OBJECT`"
     }
     {
-      name: "session_id"
+      name: "sessionId"
       req: true
       type: "`$STRING`"
     }
@@ -46,7 +46,7 @@ main: kit: entity: session_run: {
       type: "`$STRING`"
     }
     {
-      name: "write_back"
+      name: "writeBack"
       req: false
       type: "`$OBJECT`"
     }
@@ -64,7 +64,13 @@ main: kit: entity: session_run: {
             "session_run"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              args: "`reqdata.arg`"
+              fromSession: "`reqdata.from_session`"
+              sessionId: "`reqdata.session_id`"
+              tool: "`reqdata.tool`"
+              writeBack: "`reqdata.write_back`"
+            }
             res: "`body`"
           }
         }

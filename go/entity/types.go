@@ -6,7 +6,11 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/seqbench-mcp-sdk/go/core"
+)
 
 // AlphafoldLookup is the typed data model for the alphafold_lookup entity.
 type AlphafoldLookup struct {
@@ -55,86 +59,116 @@ type AsoDesignCreateData struct {
 // BaseEditingDesign is the typed data model for the base_editing_design entity.
 type BaseEditingDesign struct {
 	Editor *string `json:"editor,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Target string `json:"target"`
-	TargetPosition *int `json:"target_position,omitempty"`
+	TargetPosition *int `json:"targetPosition,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // BaseEditingDesignCreateData is the typed request payload for BaseEditingDesign.CreateTyped.
 type BaseEditingDesignCreateData struct {
 	Editor *string `json:"editor,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Target string `json:"target"`
-	TargetPosition *int `json:"target_position,omitempty"`
+	TargetPosition *int `json:"targetPosition,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // Batch is the typed data model for the batch entity.
 type Batch struct {
-	Arg *map[string]any `json:"arg,omitempty"`
+	Args *map[string]any `json:"args,omitempty"`
+	Capped bool `json:"capped"`
+	Columns []any `json:"columns"`
+	Count int `json:"count"`
+	Errors int `json:"errors"`
 	Input string `json:"input"`
-	Ok any `json:"ok"`
-	Result map[string]any `json:"result"`
+	Limit int `json:"limit"`
+	Provenance map[string]any `json:"provenance"`
+	Rows []any `json:"rows"`
 	Tool string `json:"tool"`
 }
 
 // BatchLoadMatch is the typed request payload for Batch.LoadTyped.
 type BatchLoadMatch struct {
-	Arg *map[string]any `json:"arg,omitempty"`
+	Args *map[string]any `json:"args,omitempty"`
+	Capped *bool `json:"capped,omitempty"`
+	Columns *[]any `json:"columns,omitempty"`
+	Count *int `json:"count,omitempty"`
+	Errors *int `json:"errors,omitempty"`
 	Input *string `json:"input,omitempty"`
-	Ok *any `json:"ok,omitempty"`
-	Result *map[string]any `json:"result,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Provenance *map[string]any `json:"provenance,omitempty"`
+	Rows *[]any `json:"rows,omitempty"`
 	Tool *string `json:"tool,omitempty"`
 }
 
 // BatchCreateData is the typed request payload for Batch.CreateTyped.
 type BatchCreateData struct {
-	Arg *map[string]any `json:"arg,omitempty"`
+	Args *map[string]any `json:"args,omitempty"`
+	Capped bool `json:"capped"`
+	Columns []any `json:"columns"`
+	Count int `json:"count"`
+	Errors int `json:"errors"`
 	Input string `json:"input"`
-	Ok any `json:"ok"`
-	Result map[string]any `json:"result"`
+	Limit int `json:"limit"`
+	Provenance map[string]any `json:"provenance"`
+	Rows []any `json:"rows"`
 	Tool string `json:"tool"`
 }
 
 // BatchWorkflow is the typed data model for the batch__workflow entity.
 type BatchWorkflow struct {
+	Capped bool `json:"capped"`
+	Columns []any `json:"columns"`
+	Count int `json:"count"`
+	Errors int `json:"errors"`
 	Input string `json:"input"`
-	Ok any `json:"ok"`
-	Result map[string]any `json:"result"`
-	Step []any `json:"step"`
+	Limit int `json:"limit"`
+	Provenance map[string]any `json:"provenance"`
+	Rows []any `json:"rows"`
+	Steps []any `json:"steps"`
 }
 
 // BatchWorkflowLoadMatch is the typed request payload for BatchWorkflow.LoadTyped.
 type BatchWorkflowLoadMatch struct {
+	Capped *bool `json:"capped,omitempty"`
+	Columns *[]any `json:"columns,omitempty"`
+	Count *int `json:"count,omitempty"`
+	Errors *int `json:"errors,omitempty"`
 	Input *string `json:"input,omitempty"`
-	Ok *any `json:"ok,omitempty"`
-	Result *map[string]any `json:"result,omitempty"`
-	Step *[]any `json:"step,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Provenance *map[string]any `json:"provenance,omitempty"`
+	Rows *[]any `json:"rows,omitempty"`
+	Steps *[]any `json:"steps,omitempty"`
 }
 
 // BatchWorkflowCreateData is the typed request payload for BatchWorkflow.CreateTyped.
 type BatchWorkflowCreateData struct {
+	Capped bool `json:"capped"`
+	Columns []any `json:"columns"`
+	Count int `json:"count"`
+	Errors int `json:"errors"`
 	Input string `json:"input"`
-	Ok any `json:"ok"`
-	Result map[string]any `json:"result"`
-	Step []any `json:"step"`
+	Limit int `json:"limit"`
+	Provenance map[string]any `json:"provenance"`
+	Rows []any `json:"rows"`
+	Steps []any `json:"steps"`
 }
 
 // CharacterizeSequence is the typed data model for the characterize_sequence entity.
 type CharacterizeSequence struct {
-	EndPrimerLength *int `json:"end_primer_length,omitempty"`
+	EndPrimerLength *int `json:"endPrimerLength,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MaxOrf *int `json:"max_orf,omitempty"`
-	MinOrfAa *int `json:"min_orf_aa,omitempty"`
+	MaxOrfs *int `json:"maxOrfs,omitempty"`
+	MinOrfAa *int `json:"minOrfAa,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -144,10 +178,10 @@ type CharacterizeSequence struct {
 
 // CharacterizeSequenceCreateData is the typed request payload for CharacterizeSequence.CreateTyped.
 type CharacterizeSequenceCreateData struct {
-	EndPrimerLength *int `json:"end_primer_length,omitempty"`
+	EndPrimerLength *int `json:"endPrimerLength,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MaxOrf *int `json:"max_orf,omitempty"`
-	MinOrfAa *int `json:"min_orf_aa,omitempty"`
+	MaxOrfs *int `json:"maxOrfs,omitempty"`
+	MinOrfAa *int `json:"minOrfAa,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -157,18 +191,18 @@ type CharacterizeSequenceCreateData struct {
 
 // CloningSimulate is the typed data model for the cloning_simulate entity.
 type CloningSimulate struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
 	Circular *bool `json:"circular,omitempty"`
 	Enzyme *string `json:"enzyme,omitempty"`
 	Enzyme3 *string `json:"enzyme3,omitempty"`
 	Enzyme5 *string `json:"enzyme5,omitempty"`
-	Fragment *[]any `json:"fragment,omitempty"`
+	Fragments *[]any `json:"fragments,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Insert *string `json:"insert,omitempty"`
 	Method string `json:"method"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
-	OverlapLen *int `json:"overlap_len,omitempty"`
+	OverlapLen *int `json:"overlapLen,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
@@ -177,18 +211,18 @@ type CloningSimulate struct {
 
 // CloningSimulateCreateData is the typed request payload for CloningSimulate.CreateTyped.
 type CloningSimulateCreateData struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
 	Circular *bool `json:"circular,omitempty"`
 	Enzyme *string `json:"enzyme,omitempty"`
 	Enzyme3 *string `json:"enzyme3,omitempty"`
 	Enzyme5 *string `json:"enzyme5,omitempty"`
-	Fragment *[]any `json:"fragment,omitempty"`
+	Fragments *[]any `json:"fragments,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Insert *string `json:"insert,omitempty"`
 	Method string `json:"method"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
-	OverlapLen *int `json:"overlap_len,omitempty"`
+	OverlapLen *int `json:"overlapLen,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
@@ -197,12 +231,12 @@ type CloningSimulateCreateData struct {
 
 // CodonAdaptationIndex is the typed data model for the codon_adaptation_index entity.
 type CodonAdaptationIndex struct {
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	RareThreshold *float64 `json:"rare_threshold,omitempty"`
+	RareThreshold *float64 `json:"rareThreshold,omitempty"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
@@ -210,12 +244,12 @@ type CodonAdaptationIndex struct {
 
 // CodonAdaptationIndexCreateData is the typed request payload for CodonAdaptationIndex.CreateTyped.
 type CodonAdaptationIndexCreateData struct {
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	RareThreshold *float64 `json:"rare_threshold,omitempty"`
+	RareThreshold *float64 `json:"rareThreshold,omitempty"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
@@ -245,15 +279,15 @@ type CodonOptimizeCreateData struct {
 
 // ConstructAutofix is the typed data model for the construct_autofix entity.
 type ConstructAutofix struct {
-	AvoidEnzyme *[]any `json:"avoid_enzyme,omitempty"`
-	CrypticOrfMinAa *int `json:"cryptic_orf_min_aa,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	AvoidEnzymes *[]any `json:"avoidEnzymes,omitempty"`
+	CrypticOrfMinAa *int `json:"crypticOrfMinAa,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcHigh *float64 `json:"gc_high,omitempty"`
-	GcLow *float64 `json:"gc_low,omitempty"`
-	GcWindow *int `json:"gc_window,omitempty"`
-	HomopolymerMin *int `json:"homopolymer_min,omitempty"`
-	MaxPass *int `json:"max_pass,omitempty"`
+	GcHigh *float64 `json:"gcHigh,omitempty"`
+	GcLow *float64 `json:"gcLow,omitempty"`
+	GcWindow *int `json:"gcWindow,omitempty"`
+	HomopolymerMin *int `json:"homopolymerMin,omitempty"`
+	MaxPasses *int `json:"maxPasses,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -264,15 +298,15 @@ type ConstructAutofix struct {
 
 // ConstructAutofixCreateData is the typed request payload for ConstructAutofix.CreateTyped.
 type ConstructAutofixCreateData struct {
-	AvoidEnzyme *[]any `json:"avoid_enzyme,omitempty"`
-	CrypticOrfMinAa *int `json:"cryptic_orf_min_aa,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	AvoidEnzymes *[]any `json:"avoidEnzymes,omitempty"`
+	CrypticOrfMinAa *int `json:"crypticOrfMinAa,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcHigh *float64 `json:"gc_high,omitempty"`
-	GcLow *float64 `json:"gc_low,omitempty"`
-	GcWindow *int `json:"gc_window,omitempty"`
-	HomopolymerMin *int `json:"homopolymer_min,omitempty"`
-	MaxPass *int `json:"max_pass,omitempty"`
+	GcHigh *float64 `json:"gcHigh,omitempty"`
+	GcLow *float64 `json:"gcLow,omitempty"`
+	GcWindow *int `json:"gcWindow,omitempty"`
+	HomopolymerMin *int `json:"homopolymerMin,omitempty"`
+	MaxPasses *int `json:"maxPasses,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -283,14 +317,14 @@ type ConstructAutofixCreateData struct {
 
 // ConstructQc is the typed data model for the construct_qc entity.
 type ConstructQc struct {
-	AvoidEnzyme *[]any `json:"avoid_enzyme,omitempty"`
-	CrypticOrfMinAa *int `json:"cryptic_orf_min_aa,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	AvoidEnzymes *[]any `json:"avoidEnzymes,omitempty"`
+	CrypticOrfMinAa *int `json:"crypticOrfMinAa,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcHigh *float64 `json:"gc_high,omitempty"`
-	GcLow *float64 `json:"gc_low,omitempty"`
-	GcWindow *int `json:"gc_window,omitempty"`
-	HomopolymerMin *int `json:"homopolymer_min,omitempty"`
+	GcHigh *float64 `json:"gcHigh,omitempty"`
+	GcLow *float64 `json:"gcLow,omitempty"`
+	GcWindow *int `json:"gcWindow,omitempty"`
+	HomopolymerMin *int `json:"homopolymerMin,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -300,14 +334,14 @@ type ConstructQc struct {
 
 // ConstructQcCreateData is the typed request payload for ConstructQc.CreateTyped.
 type ConstructQcCreateData struct {
-	AvoidEnzyme *[]any `json:"avoid_enzyme,omitempty"`
-	CrypticOrfMinAa *int `json:"cryptic_orf_min_aa,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	AvoidEnzymes *[]any `json:"avoidEnzymes,omitempty"`
+	CrypticOrfMinAa *int `json:"crypticOrfMinAa,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcHigh *float64 `json:"gc_high,omitempty"`
-	GcLow *float64 `json:"gc_low,omitempty"`
-	GcWindow *int `json:"gc_window,omitempty"`
-	HomopolymerMin *int `json:"homopolymer_min,omitempty"`
+	GcHigh *float64 `json:"gcHigh,omitempty"`
+	GcLow *float64 `json:"gcLow,omitempty"`
+	GcWindow *int `json:"gcWindow,omitempty"`
+	HomopolymerMin *int `json:"homopolymerMin,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -318,12 +352,12 @@ type ConstructQcCreateData struct {
 // CrisprGrnaDesign is the typed data model for the crispr_grna_design entity.
 type CrisprGrnaDesign struct {
 	Gate *any `json:"gate,omitempty"`
-	MinScore *float64 `json:"min_score,omitempty"`
+	MinScore *float64 `json:"minScore,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SearchReverseStrand *bool `json:"search_reverse_strand,omitempty"`
+	SearchReverseStrand *bool `json:"searchReverseStrand,omitempty"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
 }
@@ -331,62 +365,62 @@ type CrisprGrnaDesign struct {
 // CrisprGrnaDesignCreateData is the typed request payload for CrisprGrnaDesign.CreateTyped.
 type CrisprGrnaDesignCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MinScore *float64 `json:"min_score,omitempty"`
+	MinScore *float64 `json:"minScore,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SearchReverseStrand *bool `json:"search_reverse_strand,omitempty"`
+	SearchReverseStrand *bool `json:"searchReverseStrand,omitempty"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
 }
 
 // CrisprHdrDonor is the typed data model for the crispr_hdr_donor entity.
 type CrisprHdrDonor struct {
-	ArmLength *int `json:"arm_length,omitempty"`
-	BlockPam *bool `json:"block_pam,omitempty"`
-	DesignGenotypingPrimer *bool `json:"design_genotyping_primer,omitempty"`
-	EditEnd *int `json:"edit_end,omitempty"`
-	EditStart *int `json:"edit_start,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	ArmLength *int `json:"armLength,omitempty"`
+	BlockPam *bool `json:"blockPam,omitempty"`
+	DesignGenotypingPrimers *bool `json:"designGenotypingPrimers,omitempty"`
+	EditEnd *int `json:"editEnd,omitempty"`
+	EditStart *int `json:"editStart,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GuideEnd *int `json:"guide_end,omitempty"`
-	GuideStart *int `json:"guide_start,omitempty"`
-	GuideStrand *string `json:"guide_strand,omitempty"`
+	GuideEnd *int `json:"guideEnd,omitempty"`
+	GuideStart *int `json:"guideStart,omitempty"`
+	GuideStrand *string `json:"guideStrand,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Replacement string `json:"replacement"`
 	Result map[string]any `json:"result"`
-	TargetSequence string `json:"target_sequence"`
+	TargetSequence string `json:"targetSequence"`
 	Tool string `json:"tool"`
 }
 
 // CrisprHdrDonorCreateData is the typed request payload for CrisprHdrDonor.CreateTyped.
 type CrisprHdrDonorCreateData struct {
-	ArmLength *int `json:"arm_length,omitempty"`
-	BlockPam *bool `json:"block_pam,omitempty"`
-	DesignGenotypingPrimer *bool `json:"design_genotyping_primer,omitempty"`
-	EditEnd *int `json:"edit_end,omitempty"`
-	EditStart *int `json:"edit_start,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	ArmLength *int `json:"armLength,omitempty"`
+	BlockPam *bool `json:"blockPam,omitempty"`
+	DesignGenotypingPrimers *bool `json:"designGenotypingPrimers,omitempty"`
+	EditEnd *int `json:"editEnd,omitempty"`
+	EditStart *int `json:"editStart,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GuideEnd *int `json:"guide_end,omitempty"`
-	GuideStart *int `json:"guide_start,omitempty"`
-	GuideStrand *string `json:"guide_strand,omitempty"`
+	GuideEnd *int `json:"guideEnd,omitempty"`
+	GuideStart *int `json:"guideStart,omitempty"`
+	GuideStrand *string `json:"guideStrand,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Replacement string `json:"replacement"`
 	Result map[string]any `json:"result"`
-	TargetSequence string `json:"target_sequence"`
+	TargetSequence string `json:"targetSequence"`
 	Tool string `json:"tool"`
 }
 
 // CrisprOfftargetCheck is the typed data model for the crispr_offtarget_check entity.
 type CrisprOfftargetCheck struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Protospacer string `json:"protospacer"`
@@ -398,7 +432,7 @@ type CrisprOfftargetCheck struct {
 // CrisprOfftargetCheckCreateData is the typed request payload for CrisprOfftargetCheck.CreateTyped.
 type CrisprOfftargetCheckCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Nuclease *string `json:"nuclease,omitempty"`
 	Ok any `json:"ok"`
 	Protospacer string `json:"protospacer"`
@@ -413,8 +447,8 @@ type CrossDimer struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SequenceA string `json:"sequence_a"`
-	SequenceB string `json:"sequence_b"`
+	SequenceA string `json:"sequenceA"`
+	SequenceB string `json:"sequenceB"`
 	Tool string `json:"tool"`
 }
 
@@ -424,8 +458,8 @@ type CrossDimerCreateData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SequenceA string `json:"sequence_a"`
-	SequenceB string `json:"sequence_b"`
+	SequenceA string `json:"sequenceA"`
+	SequenceB string `json:"sequenceB"`
 	Tool string `json:"tool"`
 }
 
@@ -433,34 +467,34 @@ type CrossDimerCreateData struct {
 type DnaMolarity struct {
 	Gate *any `json:"gate,omitempty"`
 	Length *int `json:"length,omitempty"`
-	MassNg *float64 `json:"mass_ng,omitempty"`
+	MassNg *float64 `json:"massNg,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence *string `json:"sequence,omitempty"`
 	Tool string `json:"tool"`
 	Type *string `json:"type,omitempty"`
-	VolumeUl *float64 `json:"volume_ul,omitempty"`
+	VolumeUl *float64 `json:"volumeUl,omitempty"`
 }
 
 // DnaMolarityCreateData is the typed request payload for DnaMolarity.CreateTyped.
 type DnaMolarityCreateData struct {
 	Gate *any `json:"gate,omitempty"`
 	Length *int `json:"length,omitempty"`
-	MassNg *float64 `json:"mass_ng,omitempty"`
+	MassNg *float64 `json:"massNg,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence *string `json:"sequence,omitempty"`
 	Tool string `json:"tool"`
 	Type *string `json:"type,omitempty"`
-	VolumeUl *float64 `json:"volume_ul,omitempty"`
+	VolumeUl *float64 `json:"volumeUl,omitempty"`
 }
 
 // DoubleDigest is the typed data model for the double_digest entity.
 type DoubleDigest struct {
-	EnzymeA string `json:"enzyme_a"`
-	EnzymeB string `json:"enzyme_b"`
+	EnzymeA string `json:"enzymeA"`
+	EnzymeB string `json:"enzymeB"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -470,8 +504,8 @@ type DoubleDigest struct {
 
 // DoubleDigestCreateData is the typed request payload for DoubleDigest.CreateTyped.
 type DoubleDigestCreateData struct {
-	EnzymeA string `json:"enzyme_a"`
-	EnzymeB string `json:"enzyme_b"`
+	EnzymeA string `json:"enzymeA"`
+	EnzymeB string `json:"enzymeB"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -484,7 +518,7 @@ type ExportEchoPicklist struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -494,7 +528,7 @@ type ExportEchoPicklistCreateData struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -503,9 +537,9 @@ type ExportEchoPicklistCreateData struct {
 type ExportOpentronsProtocol struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
-	ProtocolName *string `json:"protocol_name,omitempty"`
+	ProtocolName *string `json:"protocolName,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -514,9 +548,9 @@ type ExportOpentronsProtocol struct {
 type ExportOpentronsProtocolCreateData struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
-	ProtocolName *string `json:"protocol_name,omitempty"`
+	ProtocolName *string `json:"protocolName,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -526,7 +560,7 @@ type ExportPlateLayout struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -536,43 +570,43 @@ type ExportPlateLayoutCreateData struct {
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Reaction []any `json:"reaction"`
+	Reactions []any `json:"reactions"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
 
 // ExpressionHeatmapCluster is the typed data model for the expression_heatmap_cluster entity.
 type ExpressionHeatmapCluster struct {
-	ClusterCol *bool `json:"cluster_col,omitempty"`
-	ClusterRow *bool `json:"cluster_row,omitempty"`
-	DistanceMetric *string `json:"distance_metric,omitempty"`
+	ClusterCols *bool `json:"clusterCols,omitempty"`
+	ClusterRows *bool `json:"clusterRows,omitempty"`
+	DistanceMetric *string `json:"distanceMetric,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Gene []any `json:"gene"`
+	Genes []any `json:"genes"`
 	Linkage *string `json:"linkage,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	Sample []any `json:"sample"`
+	Samples []any `json:"samples"`
 	Tool string `json:"tool"`
-	Value []any `json:"value"`
-	ZScoreRow *bool `json:"z_score_row,omitempty"`
+	Values []any `json:"values"`
+	ZScoreRows *bool `json:"zScoreRows,omitempty"`
 }
 
 // ExpressionHeatmapClusterCreateData is the typed request payload for ExpressionHeatmapCluster.CreateTyped.
 type ExpressionHeatmapClusterCreateData struct {
-	ClusterCol *bool `json:"cluster_col,omitempty"`
-	ClusterRow *bool `json:"cluster_row,omitempty"`
-	DistanceMetric *string `json:"distance_metric,omitempty"`
+	ClusterCols *bool `json:"clusterCols,omitempty"`
+	ClusterRows *bool `json:"clusterRows,omitempty"`
+	DistanceMetric *string `json:"distanceMetric,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Gene []any `json:"gene"`
+	Genes []any `json:"genes"`
 	Linkage *string `json:"linkage,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	Sample []any `json:"sample"`
+	Samples []any `json:"samples"`
 	Tool string `json:"tool"`
-	Value []any `json:"value"`
-	ZScoreRow *bool `json:"z_score_row,omitempty"`
+	Values []any `json:"values"`
+	ZScoreRows *bool `json:"zScoreRows,omitempty"`
 }
 
 // FastqQcReport is the typed data model for the fastq_qc_report entity.
@@ -581,7 +615,7 @@ type FastqQcReport struct {
 	Input string `json:"input"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -592,7 +626,7 @@ type FastqQcReportCreateData struct {
 	Input string `json:"input"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -601,11 +635,11 @@ type FastqQcReportCreateData struct {
 type FastqTrim struct {
 	Gate *any `json:"gate,omitempty"`
 	Input string `json:"input"`
-	MinLength *int `json:"min_length,omitempty"`
+	MinLength *int `json:"minLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
-	QualityThreshold *int `json:"quality_threshold,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
+	QualityThreshold *int `json:"qualityThreshold,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -614,11 +648,11 @@ type FastqTrim struct {
 type FastqTrimCreateData struct {
 	Gate *any `json:"gate,omitempty"`
 	Input string `json:"input"`
-	MinLength *int `json:"min_length,omitempty"`
+	MinLength *int `json:"minLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
-	QualityThreshold *int `json:"quality_threshold,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
+	QualityThreshold *int `json:"qualityThreshold,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -626,10 +660,10 @@ type FastqTrimCreateData struct {
 // FindOrf is the typed data model for the find_orf entity.
 type FindOrf struct {
 	Gate *any `json:"gate,omitempty"`
-	MinAaLength *int `json:"min_aa_length,omitempty"`
+	MinAaLength *int `json:"minAaLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	RequireStop *bool `json:"require_stop,omitempty"`
+	RequireStop *bool `json:"requireStop,omitempty"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
@@ -638,10 +672,10 @@ type FindOrf struct {
 // FindOrfCreateData is the typed request payload for FindOrf.CreateTyped.
 type FindOrfCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MinAaLength *int `json:"min_aa_length,omitempty"`
+	MinAaLength *int `json:"minAaLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	RequireStop *bool `json:"require_stop,omitempty"`
+	RequireStop *bool `json:"requireStop,omitempty"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
@@ -649,7 +683,7 @@ type FindOrfCreateData struct {
 
 // FormatSequence is the typed data model for the format_sequence entity.
 type FormatSequence struct {
-	CaseMode *string `json:"case_mode,omitempty"`
+	CaseMode *string `json:"caseMode,omitempty"`
 	Convert *string `json:"convert,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
@@ -657,14 +691,14 @@ type FormatSequence struct {
 	Result map[string]any `json:"result"`
 	Reverse *bool `json:"reverse,omitempty"`
 	Sequence string `json:"sequence"`
-	StripNonLetter *bool `json:"strip_non_letter,omitempty"`
+	StripNonLetters *bool `json:"stripNonLetters,omitempty"`
 	Tool string `json:"tool"`
 	Width *int `json:"width,omitempty"`
 }
 
 // FormatSequenceCreateData is the typed request payload for FormatSequence.CreateTyped.
 type FormatSequenceCreateData struct {
-	CaseMode *string `json:"case_mode,omitempty"`
+	CaseMode *string `json:"caseMode,omitempty"`
 	Convert *string `json:"convert,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
@@ -672,7 +706,7 @@ type FormatSequenceCreateData struct {
 	Result map[string]any `json:"result"`
 	Reverse *bool `json:"reverse,omitempty"`
 	Sequence string `json:"sequence"`
-	StripNonLetter *bool `json:"strip_non_letter,omitempty"`
+	StripNonLetters *bool `json:"stripNonLetters,omitempty"`
 	Tool string `json:"tool"`
 	Width *int `json:"width,omitempty"`
 }
@@ -680,11 +714,11 @@ type FormatSequenceCreateData struct {
 // FunctionalEnrichment is the typed data model for the functional_enrichment entity.
 type FunctionalEnrichment struct {
 	Background *[]any `json:"background,omitempty"`
-	Collection *[]any `json:"collection,omitempty"`
+	Collections *[]any `json:"collections,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Gene []any `json:"gene"`
-	MaxTermSize *int `json:"max_term_size,omitempty"`
-	MinTermSize *int `json:"min_term_size,omitempty"`
+	Genes []any `json:"genes"`
+	MaxTermSize *int `json:"maxTermSize,omitempty"`
+	MinTermSize *int `json:"minTermSize,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -694,11 +728,11 @@ type FunctionalEnrichment struct {
 // FunctionalEnrichmentCreateData is the typed request payload for FunctionalEnrichment.CreateTyped.
 type FunctionalEnrichmentCreateData struct {
 	Background *[]any `json:"background,omitempty"`
-	Collection *[]any `json:"collection,omitempty"`
+	Collections *[]any `json:"collections,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Gene []any `json:"gene"`
-	MaxTermSize *int `json:"max_term_size,omitempty"`
-	MinTermSize *int `json:"min_term_size,omitempty"`
+	Genes []any `json:"genes"`
+	MaxTermSize *int `json:"maxTermSize,omitempty"`
+	MinTermSize *int `json:"minTermSize,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -787,27 +821,27 @@ type GeneModelCreateData struct {
 
 // GoldenGateFidelity is the typed data model for the golden_gate_fidelity entity.
 type GoldenGateFidelity struct {
-	CompareToNamedSet *string `json:"compare_to_named_set,omitempty"`
+	CompareToNamedSet *string `json:"compareToNamedSet,omitempty"`
 	Dataset *string `json:"dataset,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
-	Overhang []any `json:"overhang"`
+	Overhangs []any `json:"overhangs"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	RiskThreshold *float64 `json:"risk_threshold,omitempty"`
+	RiskThreshold *float64 `json:"riskThreshold,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // GoldenGateFidelityCreateData is the typed request payload for GoldenGateFidelity.CreateTyped.
 type GoldenGateFidelityCreateData struct {
-	CompareToNamedSet *string `json:"compare_to_named_set,omitempty"`
+	CompareToNamedSet *string `json:"compareToNamedSet,omitempty"`
 	Dataset *string `json:"dataset,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
-	Overhang []any `json:"overhang"`
+	Overhangs []any `json:"overhangs"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	RiskThreshold *float64 `json:"risk_threshold,omitempty"`
+	RiskThreshold *float64 `json:"riskThreshold,omitempty"`
 	Tool string `json:"tool"`
 }
 
@@ -834,7 +868,7 @@ type HgvsConvertCreateData struct {
 // IdMapPoll is the typed data model for the id_map_poll entity.
 type IdMapPoll struct {
 	Gate *any `json:"gate,omitempty"`
-	JobId string `json:"job_id"`
+	JobId string `json:"jobId"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -844,7 +878,7 @@ type IdMapPoll struct {
 // IdMapPollCreateData is the typed request payload for IdMapPoll.CreateTyped.
 type IdMapPollCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	JobId string `json:"job_id"`
+	JobId string `json:"jobId"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -859,7 +893,7 @@ type IdMapSubmit struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TaxId *string `json:"tax_id,omitempty"`
+	TaxId *string `json:"taxId,omitempty"`
 	To string `json:"to"`
 	Tool string `json:"tool"`
 }
@@ -872,7 +906,7 @@ type IdMapSubmitCreateData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TaxId *string `json:"tax_id,omitempty"`
+	TaxId *string `json:"taxId,omitempty"`
 	To string `json:"to"`
 	Tool string `json:"tool"`
 }
@@ -880,13 +914,13 @@ type IdMapSubmitCreateData struct {
 // InSilicoPcr is the typed data model for the in_silico_pcr entity.
 type InSilicoPcr struct {
 	Circular *bool `json:"circular,omitempty"`
-	ForwardPrimer string `json:"forward_primer"`
+	ForwardPrimer string `json:"forwardPrimer"`
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ReversePrimer string `json:"reverse_primer"`
+	ReversePrimer string `json:"reversePrimer"`
 	Template string `json:"template"`
 	Tool string `json:"tool"`
 }
@@ -894,48 +928,48 @@ type InSilicoPcr struct {
 // InSilicoPcrCreateData is the typed request payload for InSilicoPcr.CreateTyped.
 type InSilicoPcrCreateData struct {
 	Circular *bool `json:"circular,omitempty"`
-	ForwardPrimer string `json:"forward_primer"`
+	ForwardPrimer string `json:"forwardPrimer"`
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ReversePrimer string `json:"reverse_primer"`
+	ReversePrimer string `json:"reversePrimer"`
 	Template string `json:"template"`
 	Tool string `json:"tool"`
 }
 
 // KaspPrimerDesign is the typed data model for the kasp_primer_design entity.
 type KaspPrimerDesign struct {
-	AddSecondaryMismatch *bool `json:"add_secondary_mismatch,omitempty"`
-	AlleleA string `json:"allele_a"`
-	AlleleB string `json:"allele_b"`
+	AddSecondaryMismatch *bool `json:"addSecondaryMismatch,omitempty"`
+	AlleleA string `json:"alleleA"`
+	AlleleB string `json:"alleleB"`
 	Gate *any `json:"gate,omitempty"`
-	MaxAmplicon *int `json:"max_amplicon,omitempty"`
-	MinAmplicon *int `json:"min_amplicon,omitempty"`
+	MaxAmplicon *int `json:"maxAmplicon,omitempty"`
+	MinAmplicon *int `json:"minAmplicon,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SnpPosition int `json:"snp_position"`
+	SnpPosition int `json:"snpPosition"`
 	Target string `json:"target"`
-	TargetCoreTm *float64 `json:"target_core_tm,omitempty"`
+	TargetCoreTm *float64 `json:"targetCoreTm,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // KaspPrimerDesignCreateData is the typed request payload for KaspPrimerDesign.CreateTyped.
 type KaspPrimerDesignCreateData struct {
-	AddSecondaryMismatch *bool `json:"add_secondary_mismatch,omitempty"`
-	AlleleA string `json:"allele_a"`
-	AlleleB string `json:"allele_b"`
+	AddSecondaryMismatch *bool `json:"addSecondaryMismatch,omitempty"`
+	AlleleA string `json:"alleleA"`
+	AlleleB string `json:"alleleB"`
 	Gate *any `json:"gate,omitempty"`
-	MaxAmplicon *int `json:"max_amplicon,omitempty"`
-	MinAmplicon *int `json:"min_amplicon,omitempty"`
+	MaxAmplicon *int `json:"maxAmplicon,omitempty"`
+	MinAmplicon *int `json:"minAmplicon,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SnpPosition int `json:"snp_position"`
+	SnpPosition int `json:"snpPosition"`
 	Target string `json:"target"`
-	TargetCoreTm *float64 `json:"target_core_tm,omitempty"`
+	TargetCoreTm *float64 `json:"targetCoreTm,omitempty"`
 	Tool string `json:"tool"`
 }
 
@@ -949,45 +983,45 @@ type ListToolLoadMatch struct {
 
 // MeltingTemperature is the typed data model for the melting_temperature entity.
 type MeltingTemperature struct {
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
-	TargetTm *float64 `json:"target_tm,omitempty"`
-	TmTolerance *float64 `json:"tm_tolerance,omitempty"`
+	TargetTm *float64 `json:"targetTm,omitempty"`
+	TmTolerance *float64 `json:"tmTolerance,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // MeltingTemperatureCreateData is the typed request payload for MeltingTemperature.CreateTyped.
 type MeltingTemperatureCreateData struct {
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
-	TargetTm *float64 `json:"target_tm,omitempty"`
-	TmTolerance *float64 `json:"tm_tolerance,omitempty"`
+	TargetTm *float64 `json:"targetTm,omitempty"`
+	TmTolerance *float64 `json:"tmTolerance,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // MotifFinder is the typed data model for the motif_finder entity.
 type MotifFinder struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Motif string `json:"motif"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SearchReverseStrand *bool `json:"search_reverse_strand,omitempty"`
+	SearchReverseStrand *bool `json:"searchReverseStrand,omitempty"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
 }
@@ -995,12 +1029,12 @@ type MotifFinder struct {
 // MotifFinderCreateData is the typed request payload for MotifFinder.CreateTyped.
 type MotifFinderCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
 	Motif string `json:"motif"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SearchReverseStrand *bool `json:"search_reverse_strand,omitempty"`
+	SearchReverseStrand *bool `json:"searchReverseStrand,omitempty"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
 }
@@ -1027,12 +1061,12 @@ type MultipleSequenceAlignmentCreateData struct {
 
 // OligoAnalysi is the typed data model for the oligo_analysi entity.
 type OligoAnalysi struct {
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
@@ -1041,12 +1075,12 @@ type OligoAnalysi struct {
 
 // OligoAnalysiCreateData is the typed request payload for OligoAnalysi.CreateTyped.
 type OligoAnalysiCreateData struct {
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
@@ -1059,9 +1093,9 @@ type OrthologMap struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SourceSpecies *string `json:"source_species,omitempty"`
-	Symbol []any `json:"symbol"`
-	TargetSpecies string `json:"target_species"`
+	SourceSpecies *string `json:"sourceSpecies,omitempty"`
+	Symbols []any `json:"symbols"`
+	TargetSpecies string `json:"targetSpecies"`
 	Tool string `json:"tool"`
 	Type *string `json:"type,omitempty"`
 }
@@ -1072,9 +1106,9 @@ type OrthologMapCreateData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SourceSpecies *string `json:"source_species,omitempty"`
-	Symbol []any `json:"symbol"`
-	TargetSpecies string `json:"target_species"`
+	SourceSpecies *string `json:"sourceSpecies,omitempty"`
+	Symbols []any `json:"symbols"`
+	TargetSpecies string `json:"targetSpecies"`
 	Tool string `json:"tool"`
 	Type *string `json:"type,omitempty"`
 }
@@ -1089,8 +1123,8 @@ type PairwiseAlignment struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SeqA string `json:"seq_a"`
-	SeqB string `json:"seq_b"`
+	SeqA string `json:"seqA"`
+	SeqB string `json:"seqB"`
 	Tool string `json:"tool"`
 }
 
@@ -1104,8 +1138,8 @@ type PairwiseAlignmentCreateData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SeqA string `json:"seq_a"`
-	SeqB string `json:"seq_b"`
+	SeqA string `json:"seqA"`
+	SeqB string `json:"seqB"`
 	Tool string `json:"tool"`
 }
 
@@ -1131,8 +1165,8 @@ type ParseGenbankCreateData struct {
 
 // ParseSangerTrace is the typed data model for the parse_sanger_trace entity.
 type ParseSangerTrace struct {
-	FileBase64 string `json:"file_base64"`
-	FileName *string `json:"file_name,omitempty"`
+	FileBase64 string `json:"fileBase64"`
+	FileName *string `json:"fileName,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1142,8 +1176,8 @@ type ParseSangerTrace struct {
 
 // ParseSangerTraceCreateData is the typed request payload for ParseSangerTrace.CreateTyped.
 type ParseSangerTraceCreateData struct {
-	FileBase64 string `json:"file_base64"`
-	FileName *string `json:"file_name,omitempty"`
+	FileBase64 string `json:"fileBase64"`
+	FileName *string `json:"fileName,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1202,7 +1236,7 @@ type PlasmidFullReport struct {
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
-	TopN *int `json:"top_n,omitempty"`
+	TopN *int `json:"topN,omitempty"`
 }
 
 // PlasmidFullReportCreateData is the typed request payload for PlasmidFullReport.CreateTyped.
@@ -1214,7 +1248,7 @@ type PlasmidFullReportCreateData struct {
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
-	TopN *int `json:"top_n,omitempty"`
+	TopN *int `json:"topN,omitempty"`
 }
 
 // PlasmidIdentify is the typed data model for the plasmid_identify entity.
@@ -1226,7 +1260,7 @@ type PlasmidIdentify struct {
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
-	TopN *int `json:"top_n,omitempty"`
+	TopN *int `json:"topN,omitempty"`
 }
 
 // PlasmidIdentifyCreateData is the typed request payload for PlasmidIdentify.CreateTyped.
@@ -1238,37 +1272,37 @@ type PlasmidIdentifyCreateData struct {
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
 	Tool string `json:"tool"`
-	TopN *int `json:"top_n,omitempty"`
+	TopN *int `json:"topN,omitempty"`
 }
 
 // PrimeEditingDesign is the typed data model for the prime_editing_design entity.
 type PrimeEditingDesign struct {
-	EditEnd int `json:"edit_end"`
-	EditStart int `json:"edit_start"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	EditEnd int `json:"editEnd"`
+	EditStart int `json:"editStart"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	InsertedSeq *string `json:"inserted_seq,omitempty"`
+	InsertedSeq *string `json:"insertedSeq,omitempty"`
 	Ok any `json:"ok"`
-	PbsLength *int `json:"pbs_length,omitempty"`
+	PbsLength *int `json:"pbsLength,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	RttHomology *int `json:"rtt_homology,omitempty"`
+	RttHomology *int `json:"rttHomology,omitempty"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
 }
 
 // PrimeEditingDesignCreateData is the typed request payload for PrimeEditingDesign.CreateTyped.
 type PrimeEditingDesignCreateData struct {
-	EditEnd int `json:"edit_end"`
-	EditStart int `json:"edit_start"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	EditEnd int `json:"editEnd"`
+	EditStart int `json:"editStart"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	InsertedSeq *string `json:"inserted_seq,omitempty"`
+	InsertedSeq *string `json:"insertedSeq,omitempty"`
 	Ok any `json:"ok"`
-	PbsLength *int `json:"pbs_length,omitempty"`
+	PbsLength *int `json:"pbsLength,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	RttHomology *int `json:"rtt_homology,omitempty"`
+	RttHomology *int `json:"rttHomology,omitempty"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
 }
@@ -1276,13 +1310,13 @@ type PrimeEditingDesignCreateData struct {
 // PrimeEditingTwinDesign is the typed data model for the prime_editing_twin_design entity.
 type PrimeEditingTwinDesign struct {
 	Gate *any `json:"gate,omitempty"`
-	NewSequence string `json:"new_sequence"`
+	NewSequence string `json:"newSequence"`
 	Ok any `json:"ok"`
-	OverlapLength *int `json:"overlap_length,omitempty"`
-	PbsLength *int `json:"pbs_length,omitempty"`
+	OverlapLength *int `json:"overlapLength,omitempty"`
+	PbsLength *int `json:"pbsLength,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	ReplaceEnd int `json:"replace_end"`
-	ReplaceStart int `json:"replace_start"`
+	ReplaceEnd int `json:"replaceEnd"`
+	ReplaceStart int `json:"replaceStart"`
 	Result map[string]any `json:"result"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
@@ -1291,13 +1325,13 @@ type PrimeEditingTwinDesign struct {
 // PrimeEditingTwinDesignCreateData is the typed request payload for PrimeEditingTwinDesign.CreateTyped.
 type PrimeEditingTwinDesignCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	NewSequence string `json:"new_sequence"`
+	NewSequence string `json:"newSequence"`
 	Ok any `json:"ok"`
-	OverlapLength *int `json:"overlap_length,omitempty"`
-	PbsLength *int `json:"pbs_length,omitempty"`
+	OverlapLength *int `json:"overlapLength,omitempty"`
+	PbsLength *int `json:"pbsLength,omitempty"`
 	Provenance map[string]any `json:"provenance"`
-	ReplaceEnd int `json:"replace_end"`
-	ReplaceStart int `json:"replace_start"`
+	ReplaceEnd int `json:"replaceEnd"`
+	ReplaceStart int `json:"replaceStart"`
 	Result map[string]any `json:"result"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
@@ -1305,93 +1339,93 @@ type PrimeEditingTwinDesignCreateData struct {
 
 // PrimerDesign is the typed data model for the primer_design entity.
 type PrimerDesign struct {
-	AmpliconMax *int `json:"amplicon_max,omitempty"`
-	AmpliconMin *int `json:"amplicon_min,omitempty"`
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	AmpliconMax *int `json:"ampliconMax,omitempty"`
+	AmpliconMin *int `json:"ampliconMin,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcMax *float64 `json:"gc_max,omitempty"`
-	GcMin *float64 `json:"gc_min,omitempty"`
-	LenMax *int `json:"len_max,omitempty"`
-	LenMin *int `json:"len_min,omitempty"`
-	LenOpt *int `json:"len_opt,omitempty"`
-	MaxReturn *int `json:"max_return,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	GcMax *float64 `json:"gcMax,omitempty"`
+	GcMin *float64 `json:"gcMin,omitempty"`
+	LenMax *int `json:"lenMax,omitempty"`
+	LenMin *int `json:"lenMin,omitempty"`
+	LenOpt *int `json:"lenOpt,omitempty"`
+	MaxReturn *int `json:"maxReturn,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TargetEnd *int `json:"target_end,omitempty"`
-	TargetStart *int `json:"target_start,omitempty"`
+	TargetEnd *int `json:"targetEnd,omitempty"`
+	TargetStart *int `json:"targetStart,omitempty"`
 	Template string `json:"template"`
-	TmMax *float64 `json:"tm_max,omitempty"`
-	TmMaxDiff *float64 `json:"tm_max_diff,omitempty"`
-	TmMin *float64 `json:"tm_min,omitempty"`
-	TmOpt *float64 `json:"tm_opt,omitempty"`
+	TmMax *float64 `json:"tmMax,omitempty"`
+	TmMaxDiff *float64 `json:"tmMaxDiff,omitempty"`
+	TmMin *float64 `json:"tmMin,omitempty"`
+	TmOpt *float64 `json:"tmOpt,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // PrimerDesignCreateData is the typed request payload for PrimerDesign.CreateTyped.
 type PrimerDesignCreateData struct {
-	AmpliconMax *int `json:"amplicon_max,omitempty"`
-	AmpliconMin *int `json:"amplicon_min,omitempty"`
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
+	AmpliconMax *int `json:"ampliconMax,omitempty"`
+	AmpliconMin *int `json:"ampliconMin,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	GcMax *float64 `json:"gc_max,omitempty"`
-	GcMin *float64 `json:"gc_min,omitempty"`
-	LenMax *int `json:"len_max,omitempty"`
-	LenMin *int `json:"len_min,omitempty"`
-	LenOpt *int `json:"len_opt,omitempty"`
-	MaxReturn *int `json:"max_return,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
+	GcMax *float64 `json:"gcMax,omitempty"`
+	GcMin *float64 `json:"gcMin,omitempty"`
+	LenMax *int `json:"lenMax,omitempty"`
+	LenMin *int `json:"lenMin,omitempty"`
+	LenOpt *int `json:"lenOpt,omitempty"`
+	MaxReturn *int `json:"maxReturn,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TargetEnd *int `json:"target_end,omitempty"`
-	TargetStart *int `json:"target_start,omitempty"`
+	TargetEnd *int `json:"targetEnd,omitempty"`
+	TargetStart *int `json:"targetStart,omitempty"`
 	Template string `json:"template"`
-	TmMax *float64 `json:"tm_max,omitempty"`
-	TmMaxDiff *float64 `json:"tm_max_diff,omitempty"`
-	TmMin *float64 `json:"tm_min,omitempty"`
-	TmOpt *float64 `json:"tm_opt,omitempty"`
+	TmMax *float64 `json:"tmMax,omitempty"`
+	TmMaxDiff *float64 `json:"tmMaxDiff,omitempty"`
+	TmMin *float64 `json:"tmMin,omitempty"`
+	TmOpt *float64 `json:"tmOpt,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // PrimerSpecificity is the typed data model for the primer_specificity entity.
 type PrimerSpecificity struct {
-	ForwardPrimer string `json:"forward_primer"`
+	ForwardPrimer string `json:"forwardPrimer"`
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
-	MaxProductLength *int `json:"max_product_length,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
+	MaxProductLength *int `json:"maxProductLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ReversePrimer string `json:"reverse_primer"`
+	ReversePrimer string `json:"reversePrimer"`
 	Tool string `json:"tool"`
 }
 
 // PrimerSpecificityCreateData is the typed request payload for PrimerSpecificity.CreateTyped.
 type PrimerSpecificityCreateData struct {
-	ForwardPrimer string `json:"forward_primer"`
+	ForwardPrimer string `json:"forwardPrimer"`
 	Gate *any `json:"gate,omitempty"`
-	MaxMismatch *int `json:"max_mismatch,omitempty"`
-	MaxProductLength *int `json:"max_product_length,omitempty"`
+	MaxMismatches *int `json:"maxMismatches,omitempty"`
+	MaxProductLength *int `json:"maxProductLength,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ReversePrimer string `json:"reverse_primer"`
+	ReversePrimer string `json:"reversePrimer"`
 	Tool string `json:"tool"`
 }
 
 // ProteaseDigestion is the typed data model for the protease_digestion entity.
 type ProteaseDigestion struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMass *float64 `json:"max_mass,omitempty"`
-	MaxPeptide *int `json:"max_peptide,omitempty"`
-	MinMass *float64 `json:"min_mass,omitempty"`
-	MissedCleavage *int `json:"missed_cleavage,omitempty"`
+	MaxMass *float64 `json:"maxMass,omitempty"`
+	MaxPeptides *int `json:"maxPeptides,omitempty"`
+	MinMass *float64 `json:"minMass,omitempty"`
+	MissedCleavages *int `json:"missedCleavages,omitempty"`
 	Ok any `json:"ok"`
 	Protease *string `json:"protease,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -1403,10 +1437,10 @@ type ProteaseDigestion struct {
 // ProteaseDigestionCreateData is the typed request payload for ProteaseDigestion.CreateTyped.
 type ProteaseDigestionCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxMass *float64 `json:"max_mass,omitempty"`
-	MaxPeptide *int `json:"max_peptide,omitempty"`
-	MinMass *float64 `json:"min_mass,omitempty"`
-	MissedCleavage *int `json:"missed_cleavage,omitempty"`
+	MaxMass *float64 `json:"maxMass,omitempty"`
+	MaxPeptides *int `json:"maxPeptides,omitempty"`
+	MinMass *float64 `json:"minMass,omitempty"`
+	MissedCleavages *int `json:"missedCleavages,omitempty"`
 	Ok any `json:"ok"`
 	Protease *string `json:"protease,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -1418,7 +1452,7 @@ type ProteaseDigestionCreateData struct {
 // ProteinAnnotatePoll is the typed data model for the protein_annotate_poll entity.
 type ProteinAnnotatePoll struct {
 	Gate *any `json:"gate,omitempty"`
-	JobId string `json:"job_id"`
+	JobId string `json:"jobId"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1428,7 +1462,7 @@ type ProteinAnnotatePoll struct {
 // ProteinAnnotatePollCreateData is the typed request payload for ProteinAnnotatePoll.CreateTyped.
 type ProteinAnnotatePollCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	JobId string `json:"job_id"`
+	JobId string `json:"jobId"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1439,7 +1473,7 @@ type ProteinAnnotatePollCreateData struct {
 type ProteinAnnotateSubmit struct {
 	Appl *string `json:"appl,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Goterm *bool `json:"goterm,omitempty"`
+	Goterms *bool `json:"goterms,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1451,7 +1485,7 @@ type ProteinAnnotateSubmit struct {
 type ProteinAnnotateSubmitCreateData struct {
 	Appl *string `json:"appl,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	Goterm *bool `json:"goterm,omitempty"`
+	Goterms *bool `json:"goterms,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1485,7 +1519,7 @@ type ProteinHydrophobicityCreateData struct {
 
 // ProteinProperty is the typed data model for the protein_property entity.
 type ProteinProperty struct {
-	ChargeStep *float64 `json:"charge_step,omitempty"`
+	ChargeStep *float64 `json:"chargeStep,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1496,7 +1530,7 @@ type ProteinProperty struct {
 
 // ProteinPropertyCreateData is the typed request payload for ProteinProperty.CreateTyped.
 type ProteinPropertyCreateData struct {
-	ChargeStep *float64 `json:"charge_step,omitempty"`
+	ChargeStep *float64 `json:"chargeStep,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1508,7 +1542,7 @@ type ProteinPropertyCreateData struct {
 // RandomSequence is the typed data model for the random_sequence entity.
 type RandomSequence struct {
 	Gate *any `json:"gate,omitempty"`
-	GcContent *float64 `json:"gc_content,omitempty"`
+	GcContent *float64 `json:"gcContent,omitempty"`
 	Kind *string `json:"kind,omitempty"`
 	Length int `json:"length"`
 	Ok any `json:"ok"`
@@ -1520,7 +1554,7 @@ type RandomSequence struct {
 // RandomSequenceCreateData is the typed request payload for RandomSequence.CreateTyped.
 type RandomSequenceCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	GcContent *float64 `json:"gc_content,omitempty"`
+	GcContent *float64 `json:"gcContent,omitempty"`
 	Kind *string `json:"kind,omitempty"`
 	Length int `json:"length"`
 	Ok any `json:"ok"`
@@ -1531,7 +1565,7 @@ type RandomSequenceCreateData struct {
 
 // RestrictionSite is the typed data model for the restriction_site entity.
 type RestrictionSite struct {
-	Enzyme *[]any `json:"enzyme,omitempty"`
+	Enzymes *[]any `json:"enzymes,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1542,7 +1576,7 @@ type RestrictionSite struct {
 
 // RestrictionSiteCreateData is the typed request payload for RestrictionSite.CreateTyped.
 type RestrictionSiteCreateData struct {
-	Enzyme *[]any `json:"enzyme,omitempty"`
+	Enzymes *[]any `json:"enzymes,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1619,10 +1653,10 @@ type RnaFoldCreateData struct {
 
 // SangerVsReference is the typed data model for the sanger_vs_reference entity.
 type SangerVsReference struct {
-	FileBase64 *string `json:"file_base64,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
+	FileBase64 *string `json:"fileBase64,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MinCoverage *float64 `json:"min_coverage,omitempty"`
+	MinCoverage *float64 `json:"minCoverage,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Read *string `json:"read,omitempty"`
@@ -1633,10 +1667,10 @@ type SangerVsReference struct {
 
 // SangerVsReferenceCreateData is the typed request payload for SangerVsReference.CreateTyped.
 type SangerVsReferenceCreateData struct {
-	FileBase64 *string `json:"file_base64,omitempty"`
-	FileName *string `json:"file_name,omitempty"`
+	FileBase64 *string `json:"fileBase64,omitempty"`
+	FileName *string `json:"fileName,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MinCoverage *float64 `json:"min_coverage,omitempty"`
+	MinCoverage *float64 `json:"minCoverage,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Read *string `json:"read,omitempty"`
@@ -1647,7 +1681,7 @@ type SangerVsReferenceCreateData struct {
 
 // SavePermalink is the typed data model for the save_permalink entity.
 type SavePermalink struct {
-	Arg map[string]any `json:"arg"`
+	Args map[string]any `json:"args"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1657,7 +1691,7 @@ type SavePermalink struct {
 
 // SavePermalinkCreateData is the typed request payload for SavePermalink.CreateTyped.
 type SavePermalinkCreateData struct {
-	Arg map[string]any `json:"arg"`
+	Args map[string]any `json:"args"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1671,7 +1705,7 @@ type SeqfileStat struct {
 	Input string `json:"input"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -1682,7 +1716,7 @@ type SeqfileStatCreateData struct {
 	Input string `json:"input"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	QualityOffset *int `json:"quality_offset,omitempty"`
+	QualityOffset *int `json:"qualityOffset,omitempty"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 }
@@ -1737,10 +1771,10 @@ type SequenceFormatConvertCreateData struct {
 
 // SequenceReport is the typed data model for the sequence_report entity.
 type SequenceReport struct {
-	EndPrimerLength *int `json:"end_primer_length,omitempty"`
+	EndPrimerLength *int `json:"endPrimerLength,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MaxOrf *int `json:"max_orf,omitempty"`
-	MinOrfAa *int `json:"min_orf_aa,omitempty"`
+	MaxOrfs *int `json:"maxOrfs,omitempty"`
+	MinOrfAa *int `json:"minOrfAa,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1750,10 +1784,10 @@ type SequenceReport struct {
 
 // SequenceReportCreateData is the typed request payload for SequenceReport.CreateTyped.
 type SequenceReportCreateData struct {
-	EndPrimerLength *int `json:"end_primer_length,omitempty"`
+	EndPrimerLength *int `json:"endPrimerLength,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MaxOrf *int `json:"max_orf,omitempty"`
-	MinOrfAa *int `json:"min_orf_aa,omitempty"`
+	MaxOrfs *int `json:"maxOrfs,omitempty"`
+	MinOrfAa *int `json:"minOrfAa,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
@@ -1766,7 +1800,7 @@ type SequenceSearch struct {
 	Db *string `json:"db,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Gene *string `json:"gene,omitempty"`
-	MaxResult *int `json:"max_result,omitempty"`
+	MaxResults *int `json:"maxResults,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -1780,7 +1814,7 @@ type SequenceSearchCreateData struct {
 	Db *string `json:"db,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Gene *string `json:"gene,omitempty"`
-	MaxResult *int `json:"max_result,omitempty"`
+	MaxResults *int `json:"maxResults,omitempty"`
 	Ok any `json:"ok"`
 	Organism *string `json:"organism,omitempty"`
 	Provenance map[string]any `json:"provenance"`
@@ -1792,10 +1826,10 @@ type SequenceSearchCreateData struct {
 // SequencingReadbackVerify is the typed data model for the sequencing_readback_verify entity.
 type SequencingReadbackVerify struct {
 	Gate *any `json:"gate,omitempty"`
-	MinSupportingRead *int `json:"min_supporting_read,omitempty"`
+	MinSupportingReads *int `json:"minSupportingReads,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Read string `json:"read"`
+	Reads string `json:"reads"`
 	Reference string `json:"reference"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
@@ -1804,10 +1838,10 @@ type SequencingReadbackVerify struct {
 // SequencingReadbackVerifyCreateData is the typed request payload for SequencingReadbackVerify.CreateTyped.
 type SequencingReadbackVerifyCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MinSupportingRead *int `json:"min_supporting_read,omitempty"`
+	MinSupportingReads *int `json:"minSupportingReads,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
-	Read string `json:"read"`
+	Reads string `json:"reads"`
 	Reference string `json:"reference"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
@@ -1815,7 +1849,7 @@ type SequencingReadbackVerifyCreateData struct {
 
 // SessionCreate is the typed data model for the session_create entity.
 type SessionCreate struct {
-	Entry *map[string]any `json:"entry,omitempty"`
+	Entries *map[string]any `json:"entries,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1825,7 +1859,7 @@ type SessionCreate struct {
 
 // SessionCreateCreateData is the typed request payload for SessionCreate.CreateTyped.
 type SessionCreateCreateData struct {
-	Entry *map[string]any `json:"entry,omitempty"`
+	Entries *map[string]any `json:"entries,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -1836,81 +1870,81 @@ type SessionCreateCreateData struct {
 // SessionGet is the typed data model for the session_get entity.
 type SessionGet struct {
 	Gate *any `json:"gate,omitempty"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
 }
 
 // SessionGetCreateData is the typed request payload for SessionGet.CreateTyped.
 type SessionGetCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
 }
 
 // SessionRun is the typed data model for the session_run entity.
 type SessionRun struct {
-	Arg *map[string]any `json:"arg,omitempty"`
-	FromSession *map[string]any `json:"from_session,omitempty"`
+	Args *map[string]any `json:"args,omitempty"`
+	FromSession *map[string]any `json:"fromSession,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
-	WriteBack *map[string]any `json:"write_back,omitempty"`
+	WriteBack *map[string]any `json:"writeBack,omitempty"`
 }
 
 // SessionRunCreateData is the typed request payload for SessionRun.CreateTyped.
 type SessionRunCreateData struct {
-	Arg *map[string]any `json:"arg,omitempty"`
-	FromSession *map[string]any `json:"from_session,omitempty"`
+	Args *map[string]any `json:"args,omitempty"`
+	FromSession *map[string]any `json:"fromSession,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
-	WriteBack *map[string]any `json:"write_back,omitempty"`
+	WriteBack *map[string]any `json:"writeBack,omitempty"`
 }
 
 // SessionSet is the typed data model for the session_set entity.
 type SessionSet struct {
-	Entry map[string]any `json:"entry"`
+	Entries map[string]any `json:"entries"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
 }
 
 // SessionSetCreateData is the typed request payload for SessionSet.CreateTyped.
 type SessionSetCreateData struct {
-	Entry map[string]any `json:"entry"`
+	Entries map[string]any `json:"entries"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	SessionId string `json:"session_id"`
+	SessionId string `json:"sessionId"`
 	Tool string `json:"tool"`
 }
 
 // SirnaDesign is the typed data model for the sirna_design entity.
 type SirnaDesign struct {
 	Gate *any `json:"gate,omitempty"`
-	MinReynold *int `json:"min_reynold,omitempty"`
+	MinReynolds *int `json:"minReynolds,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ShRnaLoop *string `json:"sh_rna_loop,omitempty"`
+	ShRnaLoop *string `json:"shRnaLoop,omitempty"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
 }
@@ -1918,57 +1952,57 @@ type SirnaDesign struct {
 // SirnaDesignCreateData is the typed request payload for SirnaDesign.CreateTyped.
 type SirnaDesignCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MinReynold *int `json:"min_reynold,omitempty"`
+	MinReynolds *int `json:"minReynolds,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	ShRnaLoop *string `json:"sh_rna_loop,omitempty"`
+	ShRnaLoop *string `json:"shRnaLoop,omitempty"`
 	Target string `json:"target"`
 	Tool string `json:"tool"`
 }
 
 // SiteDirectedMutagenesi is the typed data model for the site_directed_mutagenesi entity.
 type SiteDirectedMutagenesi struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
-	EditKind *string `json:"edit_kind,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
+	EditKind *string `json:"editKind,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
-	NewBase *string `json:"new_base,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
+	NewBase *string `json:"newBase,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Organism *string `json:"organism,omitempty"`
 	Position *int `json:"position,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Residue *int `json:"residue,omitempty"`
 	Result map[string]any `json:"result"`
 	Style *string `json:"style,omitempty"`
-	TargetAa *string `json:"target_aa,omitempty"`
+	TargetAa *string `json:"targetAa,omitempty"`
 	Template string `json:"template"`
 	Tool string `json:"tool"`
 }
 
 // SiteDirectedMutagenesiCreateData is the typed request payload for SiteDirectedMutagenesi.CreateTyped.
 type SiteDirectedMutagenesiCreateData struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
-	DntpMm *float64 `json:"dntp_mm,omitempty"`
-	EditKind *string `json:"edit_kind,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
+	DntpMM *float64 `json:"dntpMM,omitempty"`
+	EditKind *string `json:"editKind,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	MgMm *float64 `json:"mg_mm,omitempty"`
-	NaMm *float64 `json:"na_mm,omitempty"`
-	NewBase *string `json:"new_base,omitempty"`
+	MgMM *float64 `json:"mgMM,omitempty"`
+	NaMM *float64 `json:"naMM,omitempty"`
+	NewBase *string `json:"newBase,omitempty"`
 	Ok any `json:"ok"`
-	OligoNm *float64 `json:"oligo_nm,omitempty"`
+	OligoNM *float64 `json:"oligoNM,omitempty"`
 	Organism *string `json:"organism,omitempty"`
 	Position *int `json:"position,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Residue *int `json:"residue,omitempty"`
 	Result map[string]any `json:"result"`
 	Style *string `json:"style,omitempty"`
-	TargetAa *string `json:"target_aa,omitempty"`
+	TargetAa *string `json:"targetAa,omitempty"`
 	Template string `json:"template"`
 	Tool string `json:"tool"`
 }
@@ -1981,7 +2015,7 @@ type Translate struct {
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
-	ToStop *bool `json:"to_stop,omitempty"`
+	ToStop *bool `json:"toStop,omitempty"`
 	Tool string `json:"tool"`
 }
 
@@ -1993,7 +2027,7 @@ type TranslateCreateData struct {
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Sequence string `json:"sequence"`
-	ToStop *bool `json:"to_stop,omitempty"`
+	ToStop *bool `json:"toStop,omitempty"`
 	Tool string `json:"tool"`
 }
 
@@ -2022,7 +2056,7 @@ type VariantAnnotateCreateData struct {
 // VariantComparator is the typed data model for the variant_comparator entity.
 type VariantComparator struct {
 	Coding *bool `json:"coding,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -2035,7 +2069,7 @@ type VariantComparator struct {
 // VariantComparatorCreateData is the typed request payload for VariantComparator.CreateTyped.
 type VariantComparatorCreateData struct {
 	Coding *bool `json:"coding,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
@@ -2047,92 +2081,92 @@ type VariantComparatorCreateData struct {
 
 // VerifyAssembly is the typed data model for the verify_assembly entity.
 type VerifyAssembly struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
 	Circular *bool `json:"circular,omitempty"`
-	ClaimedConstruct string `json:"claimed_construct"`
+	ClaimedConstruct string `json:"claimedConstruct"`
 	Coding *bool `json:"coding,omitempty"`
 	Enzyme *string `json:"enzyme,omitempty"`
 	Enzyme3 *string `json:"enzyme3,omitempty"`
 	Enzyme5 *string `json:"enzyme5,omitempty"`
-	Fragment *[]any `json:"fragment,omitempty"`
-	FragmentPcr *[]any `json:"fragment_pcr,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FragmentPcrs *[]any `json:"fragmentPcrs,omitempty"`
+	Fragments *[]any `json:"fragments,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Insert *string `json:"insert,omitempty"`
-	InsertPcr *map[string]any `json:"insert_pcr,omitempty"`
+	InsertPcr *map[string]any `json:"insertPcr,omitempty"`
 	Method string `json:"method"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
-	OverlapLen *int `json:"overlap_len,omitempty"`
+	OverlapLen *int `json:"overlapLen,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 	Vector *string `json:"vector,omitempty"`
-	VectorPcr *map[string]any `json:"vector_pcr,omitempty"`
+	VectorPcr *map[string]any `json:"vectorPcr,omitempty"`
 }
 
 // VerifyAssemblyCreateData is the typed request payload for VerifyAssembly.CreateTyped.
 type VerifyAssemblyCreateData struct {
-	ArmTmTarget *float64 `json:"arm_tm_target,omitempty"`
+	ArmTmTarget *float64 `json:"armTmTarget,omitempty"`
 	Circular *bool `json:"circular,omitempty"`
-	ClaimedConstruct string `json:"claimed_construct"`
+	ClaimedConstruct string `json:"claimedConstruct"`
 	Coding *bool `json:"coding,omitempty"`
 	Enzyme *string `json:"enzyme,omitempty"`
 	Enzyme3 *string `json:"enzyme3,omitempty"`
 	Enzyme5 *string `json:"enzyme5,omitempty"`
-	Fragment *[]any `json:"fragment,omitempty"`
-	FragmentPcr *[]any `json:"fragment_pcr,omitempty"`
-	FrameStart *int `json:"frame_start,omitempty"`
+	FragmentPcrs *[]any `json:"fragmentPcrs,omitempty"`
+	Fragments *[]any `json:"fragments,omitempty"`
+	FrameStart *int `json:"frameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Insert *string `json:"insert,omitempty"`
-	InsertPcr *map[string]any `json:"insert_pcr,omitempty"`
+	InsertPcr *map[string]any `json:"insertPcr,omitempty"`
 	Method string `json:"method"`
-	Name *[]any `json:"name,omitempty"`
+	Names *[]any `json:"names,omitempty"`
 	Ok any `json:"ok"`
-	OverlapLen *int `json:"overlap_len,omitempty"`
+	OverlapLen *int `json:"overlapLen,omitempty"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
 	Tool string `json:"tool"`
 	Vector *string `json:"vector,omitempty"`
-	VectorPcr *map[string]any `json:"vector_pcr,omitempty"`
+	VectorPcr *map[string]any `json:"vectorPcr,omitempty"`
 }
 
 // VerifyConstruct is the typed data model for the verify_construct entity.
 type VerifyConstruct struct {
-	ClaimedConstruct string `json:"claimed_construct"`
-	ExpectedFrameStart *int `json:"expected_frame_start,omitempty"`
+	ClaimedConstruct string `json:"claimedConstruct"`
+	ExpectedFrameStart *int `json:"expectedFrameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	InsertForwardPrimer string `json:"insert_forward_primer"`
-	InsertReversePrimer string `json:"insert_reverse_primer"`
-	InsertTemplate string `json:"insert_template"`
-	MaxPrimerMismatch *int `json:"max_primer_mismatch,omitempty"`
+	InsertForwardPrimer string `json:"insertForwardPrimer"`
+	InsertReversePrimer string `json:"insertReversePrimer"`
+	InsertTemplate string `json:"insertTemplate"`
+	MaxPrimerMismatches *int `json:"maxPrimerMismatches,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TemplateCircular *bool `json:"template_circular,omitempty"`
+	TemplateCircular *bool `json:"templateCircular,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // VerifyConstructCreateData is the typed request payload for VerifyConstruct.CreateTyped.
 type VerifyConstructCreateData struct {
-	ClaimedConstruct string `json:"claimed_construct"`
-	ExpectedFrameStart *int `json:"expected_frame_start,omitempty"`
+	ClaimedConstruct string `json:"claimedConstruct"`
+	ExpectedFrameStart *int `json:"expectedFrameStart,omitempty"`
 	Gate *any `json:"gate,omitempty"`
-	InsertForwardPrimer string `json:"insert_forward_primer"`
-	InsertReversePrimer string `json:"insert_reverse_primer"`
-	InsertTemplate string `json:"insert_template"`
-	MaxPrimerMismatch *int `json:"max_primer_mismatch,omitempty"`
+	InsertForwardPrimer string `json:"insertForwardPrimer"`
+	InsertReversePrimer string `json:"insertReversePrimer"`
+	InsertTemplate string `json:"insertTemplate"`
+	MaxPrimerMismatches *int `json:"maxPrimerMismatches,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	TemplateCircular *bool `json:"template_circular,omitempty"`
+	TemplateCircular *bool `json:"templateCircular,omitempty"`
 	Tool string `json:"tool"`
 }
 
 // VirtualGel is the typed data model for the virtual_gel entity.
 type VirtualGel struct {
 	Circular *bool `json:"circular,omitempty"`
-	Enzyme *[]any `json:"enzyme,omitempty"`
+	Enzymes *[]any `json:"enzymes,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ladder *string `json:"ladder,omitempty"`
 	Ok any `json:"ok"`
@@ -2145,7 +2179,7 @@ type VirtualGel struct {
 // VirtualGelCreateData is the typed request payload for VirtualGel.CreateTyped.
 type VirtualGelCreateData struct {
 	Circular *bool `json:"circular,omitempty"`
-	Enzyme *[]any `json:"enzyme,omitempty"`
+	Enzymes *[]any `json:"enzymes,omitempty"`
 	Gate *any `json:"gate,omitempty"`
 	Ladder *string `json:"ladder,omitempty"`
 	Ok any `json:"ok"`
@@ -2161,7 +2195,7 @@ type VolcanoPlotData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	Row []any `json:"row"`
+	Rows []any `json:"rows"`
 	Tool string `json:"tool"`
 }
 
@@ -2171,14 +2205,14 @@ type VolcanoPlotDataCreateData struct {
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Result map[string]any `json:"result"`
-	Row []any `json:"row"`
+	Rows []any `json:"rows"`
 	Tool string `json:"tool"`
 }
 
 // WebSearch is the typed data model for the web_search entity.
 type WebSearch struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxResult *float64 `json:"max_result,omitempty"`
+	MaxResults *float64 `json:"max_results,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Query string `json:"query"`
@@ -2189,7 +2223,7 @@ type WebSearch struct {
 // WebSearchCreateData is the typed request payload for WebSearch.CreateTyped.
 type WebSearchCreateData struct {
 	Gate *any `json:"gate,omitempty"`
-	MaxResult *float64 `json:"max_result,omitempty"`
+	MaxResults *float64 `json:"max_results,omitempty"`
 	Ok any `json:"ok"`
 	Provenance map[string]any `json:"provenance"`
 	Query string `json:"query"`
@@ -2209,12 +2243,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -2226,12 +2274,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

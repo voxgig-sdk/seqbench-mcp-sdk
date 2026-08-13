@@ -49,7 +49,9 @@ main: kit: entity: gene_model: {
             "gene_model"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              gene: "`reqdata.gene`"
+            }
             res: "`body`"
           }
         }

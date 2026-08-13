@@ -26,7 +26,7 @@ class SiteDirectedMutagenesiEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set SEQBENCHMCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -37,7 +37,7 @@ class SiteDirectedMutagenesiEntityTest < Minitest::Test
       Vs.getpath(setup[:data], "new.site_directed_mutagenesi"), "site_directed_mutagenesi_ref01"))
 
     site_directed_mutagenesi_ref01_data_result = site_directed_mutagenesi_ref01_ent.create(site_directed_mutagenesi_ref01_data, nil)
-    site_directed_mutagenesi_ref01_data = Helpers.to_map(site_directed_mutagenesi_ref01_data_result)
+    site_directed_mutagenesi_ref01_data = Helpers.to_map(site_directed_mutagenesi_ref01_data_result.respond_to?(:data_get) ? site_directed_mutagenesi_ref01_data_result.data_get : site_directed_mutagenesi_ref01_data_result)
     assert !site_directed_mutagenesi_ref01_data.nil?
 
   end
@@ -69,39 +69,39 @@ def site_directed_mutagenesi_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["SEQBENCHMCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID"]
+  entid_env_raw = ENV["SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "SEQBENCHMCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID" => idmap,
-    "SEQBENCHMCP_TEST_LIVE" => "FALSE",
-    "SEQBENCHMCP_TEST_EXPLAIN" => "FALSE",
-    "SEQBENCHMCP_APIKEY" => "NONE",
+    "SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID" => idmap,
+    "SEQBENCH_MCP_TEST_LIVE" => "FALSE",
+    "SEQBENCH_MCP_TEST_EXPLAIN" => "FALSE",
+    "SEQBENCH_MCP_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["SEQBENCHMCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID"])
+    env["SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["SEQBENCHMCP_APIKEY"],
+        "apikey" => env["SEQBENCH_MCP_APIKEY"],
       },
       extra || {},
     ])
     client = SeqbenchMcpSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["SEQBENCHMCP_TEST_LIVE"] == "TRUE"
+  live = env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["SEQBENCHMCP_TEST_EXPLAIN"] == "TRUE",
+    explain: env["SEQBENCH_MCP_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

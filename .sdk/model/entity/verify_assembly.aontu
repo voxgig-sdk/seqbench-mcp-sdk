@@ -6,7 +6,7 @@ main: kit: entity: verify_assembly: {
 
   fields: [
     {
-      name: "arm_tm_target"
+      name: "armTmTarget"
       req: false
       type: "`$NUMBER`"
     }
@@ -16,7 +16,7 @@ main: kit: entity: verify_assembly: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "claimed_construct"
+      name: "claimedConstruct"
       req: true
       type: "`$STRING`"
     }
@@ -41,17 +41,17 @@ main: kit: entity: verify_assembly: {
       type: "`$STRING`"
     }
     {
-      name: "fragment"
+      name: "fragmentPcrs"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "fragment_pcr"
+      name: "fragments"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -66,7 +66,7 @@ main: kit: entity: verify_assembly: {
       type: "`$STRING`"
     }
     {
-      name: "insert_pcr"
+      name: "insertPcr"
       req: false
       type: "`$OBJECT`"
     }
@@ -76,7 +76,7 @@ main: kit: entity: verify_assembly: {
       type: "`$STRING`"
     }
     {
-      name: "name"
+      name: "names"
       req: false
       type: "`$ARRAY`"
     }
@@ -86,7 +86,7 @@ main: kit: entity: verify_assembly: {
       type: "`$ANY`"
     }
     {
-      name: "overlap_len"
+      name: "overlapLen"
       req: false
       type: "`$INTEGER`"
     }
@@ -111,7 +111,7 @@ main: kit: entity: verify_assembly: {
       type: "`$STRING`"
     }
     {
-      name: "vector_pcr"
+      name: "vectorPcr"
       req: false
       type: "`$OBJECT`"
     }
@@ -129,7 +129,25 @@ main: kit: entity: verify_assembly: {
             "verify_assembly"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              armTmTarget: "`reqdata.arm_tm_target`"
+              circular: "`reqdata.circular`"
+              claimedConstruct: "`reqdata.claimed_construct`"
+              coding: "`reqdata.coding`"
+              enzyme: "`reqdata.enzyme`"
+              enzyme3: "`reqdata.enzyme3`"
+              enzyme5: "`reqdata.enzyme5`"
+              fragmentPcrs: "`reqdata.fragment_pcr`"
+              fragments: "`reqdata.fragment`"
+              frameStart: "`reqdata.frame_start`"
+              insert: "`reqdata.insert`"
+              insertPcr: "`reqdata.insert_pcr`"
+              method: "`reqdata.method`"
+              names: "`reqdata.name`"
+              overlapLen: "`reqdata.overlap_len`"
+              vector: "`reqdata.vector`"
+              vectorPcr: "`reqdata.vector_pcr`"
+            }
             res: "`body`"
           }
         }

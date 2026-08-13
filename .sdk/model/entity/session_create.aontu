@@ -6,7 +6,7 @@ main: kit: entity: session_create: {
 
   fields: [
     {
-      name: "entry"
+      name: "entries"
       req: false
       type: "`$OBJECT`"
     }
@@ -49,7 +49,9 @@ main: kit: entity: session_create: {
             "session_create"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              entries: "`reqdata.entry`"
+            }
             res: "`body`"
           }
         }

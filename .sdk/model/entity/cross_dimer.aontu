@@ -26,12 +26,12 @@ main: kit: entity: cross_dimer: {
       type: "`$OBJECT`"
     }
     {
-      name: "sequence_a"
+      name: "sequenceA"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "sequence_b"
+      name: "sequenceB"
       req: true
       type: "`$STRING`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: cross_dimer: {
             "cross_dimer"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              sequenceA: "`reqdata.sequence_a`"
+              sequenceB: "`reqdata.sequence_b`"
+            }
             res: "`body`"
           }
         }

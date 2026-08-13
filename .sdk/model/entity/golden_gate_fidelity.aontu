@@ -6,7 +6,7 @@ main: kit: entity: golden_gate_fidelity: {
 
   fields: [
     {
-      name: "compare_to_named_set"
+      name: "compareToNamedSet"
       req: false
       type: "`$STRING`"
     }
@@ -26,7 +26,7 @@ main: kit: entity: golden_gate_fidelity: {
       type: "`$ANY`"
     }
     {
-      name: "overhang"
+      name: "overhangs"
       req: true
       type: "`$ARRAY`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: golden_gate_fidelity: {
       type: "`$OBJECT`"
     }
     {
-      name: "risk_threshold"
+      name: "riskThreshold"
       req: false
       type: "`$NUMBER`"
     }
@@ -64,7 +64,12 @@ main: kit: entity: golden_gate_fidelity: {
             "golden_gate_fidelity"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              compareToNamedSet: "`reqdata.compare_to_named_set`"
+              dataset: "`reqdata.dataset`"
+              overhangs: "`reqdata.overhang`"
+              riskThreshold: "`reqdata.risk_threshold`"
+            }
             res: "`body`"
           }
         }

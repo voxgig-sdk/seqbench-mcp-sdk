@@ -559,13 +559,13 @@ base_editing_design = client.BaseEditingDesign
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `String` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `target` | `String` | Yes |  |
-| `target_position` | `Integer` | No |  |
+| `targetPosition` | `Integer` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -624,10 +624,15 @@ batch = client.Batch
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Hash` | No |  |
+| `args` | `Hash` | No |  |
+| `capped` | `Boolean` | Yes |  |
+| `columns` | `Array` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `errors` | `Integer` | Yes |  |
 | `input` | `String` | Yes |  |
-| `ok` | `Object` | Yes |  |
-| `result` | `Hash` | Yes |  |
+| `limit` | `Integer` | Yes |  |
+| `provenance` | `Hash` | Yes |  |
+| `rows` | `Array` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -638,9 +643,14 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.Batch.create({
+  "capped" => true, # Boolean
+  "columns" => [], # Array
+  "count" => 1, # Integer
+  "errors" => 1, # Integer
   "input" => "example_input", # String
-  "ok" => "example_ok", # Object
-  "result" => {}, # Hash
+  "limit" => 1, # Integer
+  "provenance" => {}, # Hash
+  "rows" => [], # Array
   "tool" => "example_tool", # String
 })
 ```
@@ -693,10 +703,15 @@ batch__workflow = client.BatchWorkflow
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `Boolean` | Yes |  |
+| `columns` | `Array` | Yes |  |
+| `count` | `Integer` | Yes |  |
+| `errors` | `Integer` | Yes |  |
 | `input` | `String` | Yes |  |
-| `ok` | `Object` | Yes |  |
-| `result` | `Hash` | Yes |  |
-| `step` | `Array` | Yes |  |
+| `limit` | `Integer` | Yes |  |
+| `provenance` | `Hash` | Yes |  |
+| `rows` | `Array` | Yes |  |
+| `steps` | `Array` | Yes |  |
 
 ### Operations
 
@@ -706,10 +721,15 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.BatchWorkflow.create({
+  "capped" => true, # Boolean
+  "columns" => [], # Array
+  "count" => 1, # Integer
+  "errors" => 1, # Integer
   "input" => "example_input", # String
-  "ok" => "example_ok", # Object
-  "result" => {}, # Hash
-  "step" => [], # Array
+  "limit" => 1, # Integer
+  "provenance" => {}, # Hash
+  "rows" => [], # Array
+  "steps" => [], # Array
 })
 ```
 
@@ -761,10 +781,10 @@ characterize_sequence = client.CharacterizeSequence
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `Integer` | No |  |
+| `endPrimerLength` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `max_orf` | `Integer` | No |  |
-| `min_orf_aa` | `Integer` | No |  |
+| `maxOrfs` | `Integer` | No |  |
+| `minOrfAa` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -827,18 +847,18 @@ cloning_simulate = client.CloningSimulate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `Float` | No |  |
+| `armTmTarget` | `Float` | No |  |
 | `circular` | `Boolean` | No |  |
 | `enzyme` | `String` | No |  |
 | `enzyme3` | `String` | No |  |
 | `enzyme5` | `String` | No |  |
-| `fragment` | `Array` | No |  |
+| `fragments` | `Array` | No |  |
 | `gate` | `Object` | No |  |
 | `insert` | `String` | No |  |
 | `method` | `String` | Yes |  |
-| `name` | `Array` | No |  |
+| `names` | `Array` | No |  |
 | `ok` | `Object` | Yes |  |
-| `overlap_len` | `Integer` | No |  |
+| `overlapLen` | `Integer` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
@@ -900,12 +920,12 @@ codon_adaptation_index = client.CodonAdaptationIndex
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `organism` | `String` | No |  |
 | `provenance` | `Hash` | Yes |  |
-| `rare_threshold` | `Float` | No |  |
+| `rareThreshold` | `Float` | No |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
@@ -1030,15 +1050,15 @@ construct_autofix = client.ConstructAutofix
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `Array` | No |  |
-| `cryptic_orf_min_aa` | `Integer` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `avoidEnzymes` | `Array` | No |  |
+| `crypticOrfMinAa` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `gc_high` | `Float` | No |  |
-| `gc_low` | `Float` | No |  |
-| `gc_window` | `Integer` | No |  |
-| `homopolymer_min` | `Integer` | No |  |
-| `max_pass` | `Integer` | No |  |
+| `gcHigh` | `Float` | No |  |
+| `gcLow` | `Float` | No |  |
+| `gcWindow` | `Integer` | No |  |
+| `homopolymerMin` | `Integer` | No |  |
+| `maxPasses` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `organism` | `String` | No |  |
 | `provenance` | `Hash` | Yes |  |
@@ -1102,14 +1122,14 @@ construct_qc = client.ConstructQc
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `Array` | No |  |
-| `cryptic_orf_min_aa` | `Integer` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `avoidEnzymes` | `Array` | No |  |
+| `crypticOrfMinAa` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `gc_high` | `Float` | No |  |
-| `gc_low` | `Float` | No |  |
-| `gc_window` | `Integer` | No |  |
-| `homopolymer_min` | `Integer` | No |  |
+| `gcHigh` | `Float` | No |  |
+| `gcLow` | `Float` | No |  |
+| `gcWindow` | `Integer` | No |  |
+| `homopolymerMin` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -1173,12 +1193,12 @@ crispr_grna_design = client.CrisprGrnaDesign
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `min_score` | `Float` | No |  |
+| `minScore` | `Float` | No |  |
 | `nuclease` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `search_reverse_strand` | `Boolean` | No |  |
+| `searchReverseStrand` | `Boolean` | No |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1238,22 +1258,22 @@ crispr_hdr_donor = client.CrisprHdrDonor
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `Integer` | No |  |
-| `block_pam` | `Boolean` | No |  |
-| `design_genotyping_primer` | `Boolean` | No |  |
-| `edit_end` | `Integer` | No |  |
-| `edit_start` | `Integer` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `armLength` | `Integer` | No |  |
+| `blockPam` | `Boolean` | No |  |
+| `designGenotypingPrimers` | `Boolean` | No |  |
+| `editEnd` | `Integer` | No |  |
+| `editStart` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `guide_end` | `Integer` | No |  |
-| `guide_start` | `Integer` | No |  |
-| `guide_strand` | `String` | No |  |
+| `guideEnd` | `Integer` | No |  |
+| `guideStart` | `Integer` | No |  |
+| `guideStrand` | `String` | No |  |
 | `nuclease` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `replacement` | `String` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `target_sequence` | `String` | Yes |  |
+| `targetSequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -1268,7 +1288,7 @@ result = client.CrisprHdrDonor.create({
   "provenance" => {}, # Hash
   "replacement" => "example_replacement", # String
   "result" => {}, # Hash
-  "target_sequence" => "example_target_sequence", # String
+  "targetSequence" => "example_targetSequence", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -1314,7 +1334,7 @@ crispr_offtarget_check = client.CrisprOfftargetCheck
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `max_mismatch` | `Integer` | No |  |
+| `maxMismatches` | `Integer` | No |  |
 | `nuclease` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
 | `protospacer` | `String` | Yes |  |
@@ -1382,8 +1402,8 @@ cross_dimer = client.CrossDimer
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `sequence_a` | `String` | Yes |  |
-| `sequence_b` | `String` | Yes |  |
+| `sequenceA` | `String` | Yes |  |
+| `sequenceB` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -1397,8 +1417,8 @@ result = client.CrossDimer.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "sequence_a" => "example_sequence_a", # String
-  "sequence_b" => "example_sequence_b", # String
+  "sequenceA" => "example_sequenceA", # String
+  "sequenceB" => "example_sequenceB", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -1445,14 +1465,14 @@ dna_molarity = client.DnaMolarity
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
 | `length` | `Integer` | No |  |
-| `mass_ng` | `Float` | No |  |
+| `massNg` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | No |  |
 | `tool` | `String` | Yes |  |
 | `type` | `String` | No |  |
-| `volume_ul` | `Float` | No |  |
+| `volumeUl` | `Float` | No |  |
 
 ### Operations
 
@@ -1509,8 +1529,8 @@ double_digest = client.DoubleDigest
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `String` | Yes |  |
-| `enzyme_b` | `String` | Yes |  |
+| `enzymeA` | `String` | Yes |  |
+| `enzymeB` | `String` | Yes |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -1525,8 +1545,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.DoubleDigest.create({
-  "enzyme_a" => "example_enzyme_a", # String
-  "enzyme_b" => "example_enzyme_b", # String
+  "enzymeA" => "example_enzymeA", # String
+  "enzymeB" => "example_enzymeB", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -1577,7 +1597,7 @@ export_echo_picklist = client.ExportEchoPicklist
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `reaction` | `Array` | Yes |  |
+| `reactions` | `Array` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1591,7 +1611,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ExportEchoPicklist.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
-  "reaction" => [], # Array
+  "reactions" => [], # Array
   "result" => {}, # Hash
   "tool" => "example_tool", # String
 })
@@ -1639,9 +1659,9 @@ export_opentrons_protocol = client.ExportOpentronsProtocol
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
-| `protocol_name` | `String` | No |  |
+| `protocolName` | `String` | No |  |
 | `provenance` | `Hash` | Yes |  |
-| `reaction` | `Array` | Yes |  |
+| `reactions` | `Array` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1655,7 +1675,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ExportOpentronsProtocol.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
-  "reaction" => [], # Array
+  "reactions" => [], # Array
   "result" => {}, # Hash
   "tool" => "example_tool", # String
 })
@@ -1704,7 +1724,7 @@ export_plate_layout = client.ExportPlateLayout
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `reaction` | `Array` | Yes |  |
+| `reactions` | `Array` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1718,7 +1738,7 @@ Create a new entity with the given data. Raises on error.
 result = client.ExportPlateLayout.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
-  "reaction" => [], # Array
+  "reactions" => [], # Array
   "result" => {}, # Hash
   "tool" => "example_tool", # String
 })
@@ -1764,19 +1784,19 @@ expression_heatmap_cluster = client.ExpressionHeatmapCluster
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `Boolean` | No |  |
-| `cluster_row` | `Boolean` | No |  |
-| `distance_metric` | `String` | No |  |
+| `clusterCols` | `Boolean` | No |  |
+| `clusterRows` | `Boolean` | No |  |
+| `distanceMetric` | `String` | No |  |
 | `gate` | `Object` | No |  |
-| `gene` | `Array` | Yes |  |
+| `genes` | `Array` | Yes |  |
 | `linkage` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `sample` | `Array` | Yes |  |
+| `samples` | `Array` | Yes |  |
 | `tool` | `String` | Yes |  |
-| `value` | `Array` | Yes |  |
-| `z_score_row` | `Boolean` | No |  |
+| `values` | `Array` | Yes |  |
+| `zScoreRows` | `Boolean` | No |  |
 
 ### Operations
 
@@ -1786,13 +1806,13 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ExpressionHeatmapCluster.create({
-  "gene" => [], # Array
+  "genes" => [], # Array
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "sample" => [], # Array
+  "samples" => [], # Array
   "tool" => "example_tool", # String
-  "value" => [], # Array
+  "values" => [], # Array
 })
 ```
 
@@ -1840,7 +1860,7 @@ fastq_qc_report = client.FastqQcReport
 | `input` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `quality_offset` | `Integer` | No |  |
+| `qualityOffset` | `Integer` | No |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1902,11 +1922,11 @@ fastq_trim = client.FastqTrim
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
 | `input` | `String` | Yes |  |
-| `min_length` | `Integer` | No |  |
+| `minLength` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `quality_offset` | `Integer` | No |  |
-| `quality_threshold` | `Integer` | No |  |
+| `qualityOffset` | `Integer` | No |  |
+| `qualityThreshold` | `Integer` | No |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -1967,10 +1987,10 @@ find_orf = client.FindOrf
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `min_aa_length` | `Integer` | No |  |
+| `minAaLength` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `require_stop` | `Boolean` | No |  |
+| `requireStop` | `Boolean` | No |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
@@ -2031,7 +2051,7 @@ format_sequence = client.FormatSequence
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `String` | No |  |
+| `caseMode` | `String` | No |  |
 | `convert` | `String` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
@@ -2039,7 +2059,7 @@ format_sequence = client.FormatSequence
 | `result` | `Hash` | Yes |  |
 | `reverse` | `Boolean` | No |  |
 | `sequence` | `String` | Yes |  |
-| `strip_non_letter` | `Boolean` | No |  |
+| `stripNonLetters` | `Boolean` | No |  |
 | `tool` | `String` | Yes |  |
 | `width` | `Integer` | No |  |
 
@@ -2100,11 +2120,11 @@ functional_enrichment = client.FunctionalEnrichment
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `Array` | No |  |
-| `collection` | `Array` | No |  |
+| `collections` | `Array` | No |  |
 | `gate` | `Object` | No |  |
-| `gene` | `Array` | Yes |  |
-| `max_term_size` | `Integer` | No |  |
-| `min_term_size` | `Integer` | No |  |
+| `genes` | `Array` | Yes |  |
+| `maxTermSize` | `Integer` | No |  |
+| `minTermSize` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -2118,7 +2138,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.FunctionalEnrichment.create({
-  "gene" => [], # Array
+  "genes" => [], # Array
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -2418,14 +2438,14 @@ golden_gate_fidelity = client.GoldenGateFidelity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `String` | No |  |
+| `compareToNamedSet` | `String` | No |  |
 | `dataset` | `String` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
-| `overhang` | `Array` | Yes |  |
+| `overhangs` | `Array` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `risk_threshold` | `Float` | No |  |
+| `riskThreshold` | `Float` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -2437,7 +2457,7 @@ Create a new entity with the given data. Raises on error.
 ```ruby
 result = client.GoldenGateFidelity.create({
   "ok" => "example_ok", # Object
-  "overhang" => [], # Array
+  "overhangs" => [], # Array
   "provenance" => {}, # Hash
   "result" => {}, # Hash
   "tool" => "example_tool", # String
@@ -2548,7 +2568,7 @@ id_map_poll = client.IdMapPoll
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `job_id` | `String` | Yes |  |
+| `jobId` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -2562,7 +2582,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.IdMapPoll.create({
-  "job_id" => "example_job_id", # String
+  "jobId" => "example_jobId", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -2616,7 +2636,7 @@ id_map_submit = client.IdMapSubmit
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `tax_id` | `String` | No |  |
+| `taxId` | `String` | No |  |
 | `to` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -2679,13 +2699,13 @@ in_silico_pcr = client.InSilicoPcr
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `Boolean` | No |  |
-| `forward_primer` | `String` | Yes |  |
+| `forwardPrimer` | `String` | Yes |  |
 | `gate` | `Object` | No |  |
-| `max_mismatch` | `Integer` | No |  |
+| `maxMismatches` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `reverse_primer` | `String` | Yes |  |
+| `reversePrimer` | `String` | Yes |  |
 | `template` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -2697,11 +2717,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.InSilicoPcr.create({
-  "forward_primer" => "example_forward_primer", # String
+  "forwardPrimer" => "example_forwardPrimer", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "reverse_primer" => "example_reverse_primer", # String
+  "reversePrimer" => "example_reversePrimer", # String
   "template" => "example_template", # String
   "tool" => "example_tool", # String
 })
@@ -2747,18 +2767,18 @@ kasp_primer_design = client.KaspPrimerDesign
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `Boolean` | No |  |
-| `allele_a` | `String` | Yes |  |
-| `allele_b` | `String` | Yes |  |
+| `addSecondaryMismatch` | `Boolean` | No |  |
+| `alleleA` | `String` | Yes |  |
+| `alleleB` | `String` | Yes |  |
 | `gate` | `Object` | No |  |
-| `max_amplicon` | `Integer` | No |  |
-| `min_amplicon` | `Integer` | No |  |
+| `maxAmplicon` | `Integer` | No |  |
+| `minAmplicon` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `snp_position` | `Integer` | Yes |  |
+| `snpPosition` | `Integer` | Yes |  |
 | `target` | `String` | Yes |  |
-| `target_core_tm` | `Float` | No |  |
+| `targetCoreTm` | `Float` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -2769,12 +2789,12 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.KaspPrimerDesign.create({
-  "allele_a" => "example_allele_a", # String
-  "allele_b" => "example_allele_b", # String
+  "alleleA" => "example_alleleA", # String
+  "alleleB" => "example_alleleB", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "snp_position" => 1, # Integer
+  "snpPosition" => 1, # Integer
   "target" => "example_target", # String
   "tool" => "example_tool", # String
 })
@@ -2866,17 +2886,17 @@ melting_temperature = client.MeltingTemperature
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `Float` | No |  |
+| `dntpMM` | `Float` | No |  |
 | `gate` | `Object` | No |  |
-| `mg_mm` | `Float` | No |  |
-| `na_mm` | `Float` | No |  |
+| `mgMM` | `Float` | No |  |
+| `naMM` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
-| `oligo_nm` | `Float` | No |  |
+| `oligoNM` | `Float` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
-| `target_tm` | `Float` | No |  |
-| `tm_tolerance` | `Float` | No |  |
+| `targetTm` | `Float` | No |  |
+| `tmTolerance` | `Float` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -2936,12 +2956,12 @@ motif_finder = client.MotifFinder
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `max_mismatch` | `Integer` | No |  |
+| `maxMismatches` | `Integer` | No |  |
 | `motif` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `search_reverse_strand` | `Boolean` | No |  |
+| `searchReverseStrand` | `Boolean` | No |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -3065,12 +3085,12 @@ oligo_analysi = client.OligoAnalysi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `Float` | No |  |
+| `dntpMM` | `Float` | No |  |
 | `gate` | `Object` | No |  |
-| `mg_mm` | `Float` | No |  |
-| `na_mm` | `Float` | No |  |
+| `mgMM` | `Float` | No |  |
+| `naMM` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
-| `oligo_nm` | `Float` | No |  |
+| `oligoNM` | `Float` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
@@ -3136,9 +3156,9 @@ ortholog_map = client.OrthologMap
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `source_species` | `String` | No |  |
-| `symbol` | `Array` | Yes |  |
-| `target_species` | `String` | Yes |  |
+| `sourceSpecies` | `String` | No |  |
+| `symbols` | `Array` | Yes |  |
+| `targetSpecies` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 | `type` | `String` | No |  |
 
@@ -3153,8 +3173,8 @@ result = client.OrthologMap.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "symbol" => [], # Array
-  "target_species" => "example_target_species", # String
+  "symbols" => [], # Array
+  "targetSpecies" => "example_targetSpecies", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -3207,8 +3227,8 @@ pairwise_alignment = client.PairwiseAlignment
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `seq_a` | `String` | Yes |  |
-| `seq_b` | `String` | Yes |  |
+| `seqA` | `String` | Yes |  |
+| `seqB` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -3222,8 +3242,8 @@ result = client.PairwiseAlignment.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "seq_a" => "example_seq_a", # String
-  "seq_b" => "example_seq_b", # String
+  "seqA" => "example_seqA", # String
+  "seqB" => "example_seqB", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -3331,8 +3351,8 @@ parse_sanger_trace = client.ParseSangerTrace
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `String` | Yes |  |
-| `file_name` | `String` | No |  |
+| `fileBase64` | `String` | Yes |  |
+| `fileName` | `String` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -3347,7 +3367,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ParseSangerTrace.create({
-  "file_base64" => "example_file_base64", # String
+  "fileBase64" => "example_fileBase64", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -3529,7 +3549,7 @@ plasmid_full_report = client.PlasmidFullReport
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
-| `top_n` | `Integer` | No |  |
+| `topN` | `Integer` | No |  |
 
 ### Operations
 
@@ -3594,7 +3614,7 @@ plasmid_identify = client.PlasmidIdentify
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
-| `top_n` | `Integer` | No |  |
+| `topN` | `Integer` | No |  |
 
 ### Operations
 
@@ -3652,16 +3672,16 @@ prime_editing_design = client.PrimeEditingDesign
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `Integer` | Yes |  |
-| `edit_start` | `Integer` | Yes |  |
-| `frame_start` | `Integer` | No |  |
+| `editEnd` | `Integer` | Yes |  |
+| `editStart` | `Integer` | Yes |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `inserted_seq` | `String` | No |  |
+| `insertedSeq` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
-| `pbs_length` | `Integer` | No |  |
+| `pbsLength` | `Integer` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `rtt_homology` | `Integer` | No |  |
+| `rttHomology` | `Integer` | No |  |
 | `target` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -3673,8 +3693,8 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.PrimeEditingDesign.create({
-  "edit_end" => 1, # Integer
-  "edit_start" => 1, # Integer
+  "editEnd" => 1, # Integer
+  "editStart" => 1, # Integer
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -3724,13 +3744,13 @@ prime_editing_twin_design = client.PrimeEditingTwinDesign
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `new_sequence` | `String` | Yes |  |
+| `newSequence` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
-| `overlap_length` | `Integer` | No |  |
-| `pbs_length` | `Integer` | No |  |
+| `overlapLength` | `Integer` | No |  |
+| `pbsLength` | `Integer` | No |  |
 | `provenance` | `Hash` | Yes |  |
-| `replace_end` | `Integer` | Yes |  |
-| `replace_start` | `Integer` | Yes |  |
+| `replaceEnd` | `Integer` | Yes |  |
+| `replaceStart` | `Integer` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `target` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
@@ -3743,11 +3763,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.PrimeEditingTwinDesign.create({
-  "new_sequence" => "example_new_sequence", # String
+  "newSequence" => "example_newSequence", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
-  "replace_end" => 1, # Integer
-  "replace_start" => 1, # Integer
+  "replaceEnd" => 1, # Integer
+  "replaceStart" => 1, # Integer
   "result" => {}, # Hash
   "target" => "example_target", # String
   "tool" => "example_tool", # String
@@ -3794,29 +3814,29 @@ primer_design = client.PrimerDesign
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `Integer` | No |  |
-| `amplicon_min` | `Integer` | No |  |
-| `dntp_mm` | `Float` | No |  |
+| `ampliconMax` | `Integer` | No |  |
+| `ampliconMin` | `Integer` | No |  |
+| `dntpMM` | `Float` | No |  |
 | `gate` | `Object` | No |  |
-| `gc_max` | `Float` | No |  |
-| `gc_min` | `Float` | No |  |
-| `len_max` | `Integer` | No |  |
-| `len_min` | `Integer` | No |  |
-| `len_opt` | `Integer` | No |  |
-| `max_return` | `Integer` | No |  |
-| `mg_mm` | `Float` | No |  |
-| `na_mm` | `Float` | No |  |
+| `gcMax` | `Float` | No |  |
+| `gcMin` | `Float` | No |  |
+| `lenMax` | `Integer` | No |  |
+| `lenMin` | `Integer` | No |  |
+| `lenOpt` | `Integer` | No |  |
+| `maxReturn` | `Integer` | No |  |
+| `mgMM` | `Float` | No |  |
+| `naMM` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
-| `oligo_nm` | `Float` | No |  |
+| `oligoNM` | `Float` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `target_end` | `Integer` | No |  |
-| `target_start` | `Integer` | No |  |
+| `targetEnd` | `Integer` | No |  |
+| `targetStart` | `Integer` | No |  |
 | `template` | `String` | Yes |  |
-| `tm_max` | `Float` | No |  |
-| `tm_max_diff` | `Float` | No |  |
-| `tm_min` | `Float` | No |  |
-| `tm_opt` | `Float` | No |  |
+| `tmMax` | `Float` | No |  |
+| `tmMaxDiff` | `Float` | No |  |
+| `tmMin` | `Float` | No |  |
+| `tmOpt` | `Float` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -3875,14 +3895,14 @@ primer_specificity = client.PrimerSpecificity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `String` | Yes |  |
+| `forwardPrimer` | `String` | Yes |  |
 | `gate` | `Object` | No |  |
-| `max_mismatch` | `Integer` | No |  |
-| `max_product_length` | `Integer` | No |  |
+| `maxMismatches` | `Integer` | No |  |
+| `maxProductLength` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `reverse_primer` | `String` | Yes |  |
+| `reversePrimer` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -3893,11 +3913,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.PrimerSpecificity.create({
-  "forward_primer" => "example_forward_primer", # String
+  "forwardPrimer" => "example_forwardPrimer", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "reverse_primer" => "example_reverse_primer", # String
+  "reversePrimer" => "example_reversePrimer", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -3943,10 +3963,10 @@ protease_digestion = client.ProteaseDigestion
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `max_mass` | `Float` | No |  |
-| `max_peptide` | `Integer` | No |  |
-| `min_mass` | `Float` | No |  |
-| `missed_cleavage` | `Integer` | No |  |
+| `maxMass` | `Float` | No |  |
+| `maxPeptides` | `Integer` | No |  |
+| `minMass` | `Float` | No |  |
+| `missedCleavages` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `protease` | `String` | No |  |
 | `provenance` | `Hash` | Yes |  |
@@ -4011,7 +4031,7 @@ protein_annotate_poll = client.ProteinAnnotatePoll
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `job_id` | `String` | Yes |  |
+| `jobId` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -4025,7 +4045,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.ProteinAnnotatePoll.create({
-  "job_id" => "example_job_id", # String
+  "jobId" => "example_jobId", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -4075,7 +4095,7 @@ protein_annotate_submit = client.ProteinAnnotateSubmit
 | --- | --- | --- | --- |
 | `appl` | `String` | No |  |
 | `gate` | `Object` | No |  |
-| `goterm` | `Boolean` | No |  |
+| `goterms` | `Boolean` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -4203,7 +4223,7 @@ protein_property = client.ProteinProperty
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `Float` | No |  |
+| `chargeStep` | `Float` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -4268,7 +4288,7 @@ random_sequence = client.RandomSequence
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `gc_content` | `Float` | No |  |
+| `gcContent` | `Float` | No |  |
 | `kind` | `String` | No |  |
 | `length` | `Integer` | Yes |  |
 | `ok` | `Object` | Yes |  |
@@ -4332,7 +4352,7 @@ restriction_site = client.RestrictionSite
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `Array` | No |  |
+| `enzymes` | `Array` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -4588,10 +4608,10 @@ sanger_vs_reference = client.SangerVsReference
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `String` | No |  |
-| `file_name` | `String` | No |  |
+| `fileBase64` | `String` | No |  |
+| `fileName` | `String` | No |  |
 | `gate` | `Object` | No |  |
-| `min_coverage` | `Float` | No |  |
+| `minCoverage` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `read` | `String` | No |  |
@@ -4655,7 +4675,7 @@ save_permalink = client.SavePermalink
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Hash` | Yes |  |
+| `args` | `Hash` | Yes |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -4670,7 +4690,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.SavePermalink.create({
-  "arg" => {}, # Hash
+  "args" => {}, # Hash
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -4722,7 +4742,7 @@ seqfile_stat = client.SeqfileStat
 | `input` | `String` | Yes |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `quality_offset` | `Integer` | No |  |
+| `qualityOffset` | `Integer` | No |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -4912,10 +4932,10 @@ sequence_report = client.SequenceReport
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `Integer` | No |  |
+| `endPrimerLength` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `max_orf` | `Integer` | No |  |
-| `min_orf_aa` | `Integer` | No |  |
+| `maxOrfs` | `Integer` | No |  |
+| `minOrfAa` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
@@ -4981,7 +5001,7 @@ sequence_search = client.SequenceSearch
 | `db` | `String` | No |  |
 | `gate` | `Object` | No |  |
 | `gene` | `String` | No |  |
-| `max_result` | `Integer` | No |  |
+| `maxResults` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `organism` | `String` | No |  |
 | `provenance` | `Hash` | Yes |  |
@@ -5045,10 +5065,10 @@ sequencing_readback_verify = client.SequencingReadbackVerify
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `min_supporting_read` | `Integer` | No |  |
+| `minSupportingReads` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
-| `read` | `String` | Yes |  |
+| `reads` | `String` | Yes |  |
 | `reference` | `String` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
@@ -5063,7 +5083,7 @@ Create a new entity with the given data. Raises on error.
 result = client.SequencingReadbackVerify.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
-  "read" => "example_read", # String
+  "reads" => "example_reads", # String
   "reference" => "example_reference", # String
   "result" => {}, # Hash
   "tool" => "example_tool", # String
@@ -5110,7 +5130,7 @@ session_create = client.SessionCreate
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `Hash` | No |  |
+| `entries` | `Hash` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -5173,11 +5193,11 @@ session_get = client.SessionGet
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `name` | `Array` | No |  |
+| `names` | `Array` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `session_id` | `String` | Yes |  |
+| `sessionId` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -5191,7 +5211,7 @@ result = client.SessionGet.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "session_id" => "example_session_id", # String
+  "sessionId" => "example_sessionId", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -5236,15 +5256,15 @@ session_run = client.SessionRun
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `Hash` | No |  |
-| `from_session` | `Hash` | No |  |
+| `args` | `Hash` | No |  |
+| `fromSession` | `Hash` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `session_id` | `String` | Yes |  |
+| `sessionId` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
-| `write_back` | `Hash` | No |  |
+| `writeBack` | `Hash` | No |  |
 
 ### Operations
 
@@ -5257,7 +5277,7 @@ result = client.SessionRun.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "session_id" => "example_session_id", # String
+  "sessionId" => "example_sessionId", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -5302,12 +5322,12 @@ session_set = client.SessionSet
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `Hash` | Yes |  |
+| `entries` | `Hash` | Yes |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `session_id` | `String` | Yes |  |
+| `sessionId` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -5318,11 +5338,11 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.SessionSet.create({
-  "entry" => {}, # Hash
+  "entries" => {}, # Hash
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "session_id" => "example_session_id", # String
+  "sessionId" => "example_sessionId", # String
   "tool" => "example_tool", # String
 })
 ```
@@ -5368,11 +5388,11 @@ sirna_design = client.SirnaDesign
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `min_reynold` | `Integer` | No |  |
+| `minReynolds` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `sh_rna_loop` | `String` | No |  |
+| `shRnaLoop` | `String` | No |  |
 | `target` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -5432,23 +5452,23 @@ site_directed_mutagenesi = client.SiteDirectedMutagenesi
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `Float` | No |  |
-| `dntp_mm` | `Float` | No |  |
-| `edit_kind` | `String` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `armTmTarget` | `Float` | No |  |
+| `dntpMM` | `Float` | No |  |
+| `editKind` | `String` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `mg_mm` | `Float` | No |  |
-| `na_mm` | `Float` | No |  |
-| `new_base` | `String` | No |  |
+| `mgMM` | `Float` | No |  |
+| `naMM` | `Float` | No |  |
+| `newBase` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
-| `oligo_nm` | `Float` | No |  |
+| `oligoNM` | `Float` | No |  |
 | `organism` | `String` | No |  |
 | `position` | `Integer` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `residue` | `Integer` | No |  |
 | `result` | `Hash` | Yes |  |
 | `style` | `String` | No |  |
-| `target_aa` | `String` | No |  |
+| `targetAa` | `String` | No |  |
 | `template` | `String` | Yes |  |
 | `tool` | `String` | Yes |  |
 
@@ -5514,7 +5534,7 @@ translate = client.Translate
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `sequence` | `String` | Yes |  |
-| `to_stop` | `Boolean` | No |  |
+| `toStop` | `Boolean` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -5638,7 +5658,7 @@ variant_comparator = client.VariantComparator
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `Boolean` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
@@ -5704,28 +5724,28 @@ verify_assembly = client.VerifyAssembly
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `Float` | No |  |
+| `armTmTarget` | `Float` | No |  |
 | `circular` | `Boolean` | No |  |
-| `claimed_construct` | `String` | Yes |  |
+| `claimedConstruct` | `String` | Yes |  |
 | `coding` | `Boolean` | No |  |
 | `enzyme` | `String` | No |  |
 | `enzyme3` | `String` | No |  |
 | `enzyme5` | `String` | No |  |
-| `fragment` | `Array` | No |  |
-| `fragment_pcr` | `Array` | No |  |
-| `frame_start` | `Integer` | No |  |
+| `fragmentPcrs` | `Array` | No |  |
+| `fragments` | `Array` | No |  |
+| `frameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
 | `insert` | `String` | No |  |
-| `insert_pcr` | `Hash` | No |  |
+| `insertPcr` | `Hash` | No |  |
 | `method` | `String` | Yes |  |
-| `name` | `Array` | No |  |
+| `names` | `Array` | No |  |
 | `ok` | `Object` | Yes |  |
-| `overlap_len` | `Integer` | No |  |
+| `overlapLen` | `Integer` | No |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
 | `tool` | `String` | Yes |  |
 | `vector` | `String` | No |  |
-| `vector_pcr` | `Hash` | No |  |
+| `vectorPcr` | `Hash` | No |  |
 
 ### Operations
 
@@ -5735,7 +5755,7 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.VerifyAssembly.create({
-  "claimed_construct" => "example_claimed_construct", # String
+  "claimedConstruct" => "example_claimedConstruct", # String
   "method" => "example_method", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
@@ -5784,17 +5804,17 @@ verify_construct = client.VerifyConstruct
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `String` | Yes |  |
-| `expected_frame_start` | `Integer` | No |  |
+| `claimedConstruct` | `String` | Yes |  |
+| `expectedFrameStart` | `Integer` | No |  |
 | `gate` | `Object` | No |  |
-| `insert_forward_primer` | `String` | Yes |  |
-| `insert_reverse_primer` | `String` | Yes |  |
-| `insert_template` | `String` | Yes |  |
-| `max_primer_mismatch` | `Integer` | No |  |
+| `insertForwardPrimer` | `String` | Yes |  |
+| `insertReversePrimer` | `String` | Yes |  |
+| `insertTemplate` | `String` | Yes |  |
+| `maxPrimerMismatches` | `Integer` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `template_circular` | `Boolean` | No |  |
+| `templateCircular` | `Boolean` | No |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -5805,10 +5825,10 @@ Create a new entity with the given data. Raises on error.
 
 ```ruby
 result = client.VerifyConstruct.create({
-  "claimed_construct" => "example_claimed_construct", # String
-  "insert_forward_primer" => "example_insert_forward_primer", # String
-  "insert_reverse_primer" => "example_insert_reverse_primer", # String
-  "insert_template" => "example_insert_template", # String
+  "claimedConstruct" => "example_claimedConstruct", # String
+  "insertForwardPrimer" => "example_insertForwardPrimer", # String
+  "insertReversePrimer" => "example_insertReversePrimer", # String
+  "insertTemplate" => "example_insertTemplate", # String
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
@@ -5857,7 +5877,7 @@ virtual_gel = client.VirtualGel
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `Boolean` | No |  |
-| `enzyme` | `Array` | No |  |
+| `enzymes` | `Array` | No |  |
 | `gate` | `Object` | No |  |
 | `ladder` | `String` | No |  |
 | `ok` | `Object` | Yes |  |
@@ -5926,7 +5946,7 @@ volcano_plot_data = client.VolcanoPlotData
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `result` | `Hash` | Yes |  |
-| `row` | `Array` | Yes |  |
+| `rows` | `Array` | Yes |  |
 | `tool` | `String` | Yes |  |
 
 ### Operations
@@ -5940,7 +5960,7 @@ result = client.VolcanoPlotData.create({
   "ok" => "example_ok", # Object
   "provenance" => {}, # Hash
   "result" => {}, # Hash
-  "row" => [], # Array
+  "rows" => [], # Array
   "tool" => "example_tool", # String
 })
 ```
@@ -5986,7 +6006,7 @@ web_search = client.WebSearch
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `Object` | No |  |
-| `max_result` | `Float` | No |  |
+| `max_results` | `Float` | No |  |
 | `ok` | `Object` | Yes |  |
 | `provenance` | `Hash` | Yes |  |
 | `query` | `String` | Yes |  |

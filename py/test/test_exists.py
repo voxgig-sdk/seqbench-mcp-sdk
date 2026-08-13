@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# SeqbenchMcp SDK exists test
 
 import pytest
 from seqbenchmcp_sdk import SeqbenchMcpSDK

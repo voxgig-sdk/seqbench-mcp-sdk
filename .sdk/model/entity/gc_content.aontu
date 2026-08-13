@@ -49,7 +49,9 @@ main: kit: entity: gc_content: {
             "gc_content"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

@@ -26,8 +26,8 @@ import {
 describe('CloningSimulateEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('CloningSimulateEntity', async () => {
     const cloning_simulate_ref01_ent = client.CloningSimulate()
     let cloning_simulate_ref01_data = setup.data.new.cloning_simulate['cloning_simulate_ref01']
 
-    cloning_simulate_ref01_data = await cloning_simulate_ref01_ent.create(cloning_simulate_ref01_data)
+    cloning_simulate_ref01_data = (await cloning_simulate_ref01_ent.create(cloning_simulate_ref01_data)).data()
     assert(null != cloning_simulate_ref01_data)
 
 

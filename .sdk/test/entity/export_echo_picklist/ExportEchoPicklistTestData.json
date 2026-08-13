@@ -5,7 +5,7 @@
         "gate": "s3c",
         "ok": "s3d",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "s41",
         "id": "EXPORT_ECHO_PICKLIST00"
@@ -14,7 +14,7 @@
         "gate": "s78",
         "ok": "s79",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "s7d",
         "id": "EXPORT_ECHO_PICKLIST01"
@@ -23,7 +23,7 @@
         "gate": "sb4",
         "ok": "sb5",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "sb9",
         "id": "EXPORT_ECHO_PICKLIST02"
@@ -36,7 +36,7 @@
         "gate": "sf0",
         "ok": "sf1",
         "provenance": {},
-        "reaction": [],
+        "reactions": [],
         "result": {},
         "tool": "sf5"
       }

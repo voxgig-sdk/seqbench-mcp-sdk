@@ -59,7 +59,11 @@ main: kit: entity: sequence_format_convert: {
             "sequence_format_convert"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              from: "`reqdata.from`"
+              input: "`reqdata.input`"
+              to: "`reqdata.to`"
+            }
             res: "`body`"
           }
         }

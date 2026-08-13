@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from seqbenchmcp_sdk.utility.voxgig_struct import voxgig_struct as vs
 from seqbenchmcp_sdk import SeqbenchMcpSDK
-from core import helpers
+from seqbenchmcp_sdk.core import helpers
 from test import runner
 
 
@@ -56,16 +56,16 @@ def _batch_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "SEQBENCHMCP_TEST_BATCH_ENTID": {},
-        "SEQBENCHMCP_TEST_LIVE": "FALSE",
-        "SEQBENCHMCP_APIKEY": "NONE",
+        "SEQBENCH_MCP_TEST_BATCH_ENTID": {},
+        "SEQBENCH_MCP_TEST_LIVE": "FALSE",
+        "SEQBENCH_MCP_APIKEY": "NONE",
     })
 
-    live = env.get("SEQBENCHMCP_TEST_LIVE") == "TRUE"
+    live = env.get("SEQBENCH_MCP_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("SEQBENCHMCP_APIKEY"),
+            "apikey": env.get("SEQBENCH_MCP_APIKEY"),
         }
         client = SeqbenchMcpSDK(merged_opts)
         return {

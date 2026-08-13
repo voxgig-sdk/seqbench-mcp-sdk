@@ -26,8 +26,8 @@ import {
 describe('ParseSangerTraceEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ParseSangerTraceEntity', async () => {
     const parse_sanger_trace_ref01_ent = client.ParseSangerTrace()
     let parse_sanger_trace_ref01_data = setup.data.new.parse_sanger_trace['parse_sanger_trace_ref01']
 
-    parse_sanger_trace_ref01_data = await parse_sanger_trace_ref01_ent.create(parse_sanger_trace_ref01_data)
+    parse_sanger_trace_ref01_data = (await parse_sanger_trace_ref01_ent.create(parse_sanger_trace_ref01_data)).data()
     assert(null != parse_sanger_trace_ref01_data)
 
 

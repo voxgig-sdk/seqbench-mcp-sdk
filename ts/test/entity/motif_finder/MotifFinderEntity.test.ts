@@ -26,8 +26,8 @@ import {
 describe('MotifFinderEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('MotifFinderEntity', async () => {
     const motif_finder_ref01_ent = client.MotifFinder()
     let motif_finder_ref01_data = setup.data.new.motif_finder['motif_finder_ref01']
 
-    motif_finder_ref01_data = await motif_finder_ref01_ent.create(motif_finder_ref01_data)
+    motif_finder_ref01_data = (await motif_finder_ref01_ent.create(motif_finder_ref01_data)).data()
     assert(null != motif_finder_ref01_data)
 
 

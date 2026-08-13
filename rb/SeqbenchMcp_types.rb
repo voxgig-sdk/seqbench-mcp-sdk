@@ -145,7 +145,7 @@ AsoDesignCreateData = Struct.new(
 # @!attribute [rw] editor
 #   @return [String, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -163,20 +163,20 @@ AsoDesignCreateData = Struct.new(
 # @!attribute [rw] target
 #   @return [String]
 #
-# @!attribute [rw] target_position
+# @!attribute [rw] targetPosition
 #   @return [Integer, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 BaseEditingDesign = Struct.new(
   :editor,
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :provenance,
   :result,
   :target,
-  :target_position,
+  :targetPosition,
   :tool,
   keyword_init: true
 )
@@ -186,7 +186,7 @@ BaseEditingDesign = Struct.new(
 # @!attribute [rw] editor
 #   @return [String, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -204,174 +204,294 @@ BaseEditingDesign = Struct.new(
 # @!attribute [rw] target
 #   @return [String]
 #
-# @!attribute [rw] target_position
+# @!attribute [rw] targetPosition
 #   @return [Integer, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 BaseEditingDesignCreateData = Struct.new(
   :editor,
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :provenance,
   :result,
   :target,
-  :target_position,
+  :targetPosition,
   :tool,
   keyword_init: true
 )
 
 # Batch entity data model.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash, nil]
+#
+# @!attribute [rw] capped
+#   @return [Boolean]
+#
+# @!attribute [rw] columns
+#   @return [Array]
+#
+# @!attribute [rw] count
+#   @return [Integer]
+#
+# @!attribute [rw] errors
+#   @return [Integer]
 #
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] ok
-#   @return [Object]
+# @!attribute [rw] limit
+#   @return [Integer]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash]
+#
+# @!attribute [rw] rows
+#   @return [Array]
 #
 # @!attribute [rw] tool
 #   @return [String]
 Batch = Struct.new(
-  :arg,
+  :args,
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
+  :limit,
+  :provenance,
+  :rows,
   :tool,
   keyword_init: true
 )
 
 # Request payload for Batch#load.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash, nil]
+#
+# @!attribute [rw] capped
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] columns
+#   @return [Array, nil]
+#
+# @!attribute [rw] count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] errors
+#   @return [Integer, nil]
 #
 # @!attribute [rw] input
 #   @return [String, nil]
 #
-# @!attribute [rw] ok
-#   @return [Object, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash, nil]
+#
+# @!attribute [rw] rows
+#   @return [Array, nil]
 #
 # @!attribute [rw] tool
 #   @return [String, nil]
 BatchLoadMatch = Struct.new(
-  :arg,
+  :args,
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
+  :limit,
+  :provenance,
+  :rows,
   :tool,
   keyword_init: true
 )
 
 # Request payload for Batch#create.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash, nil]
+#
+# @!attribute [rw] capped
+#   @return [Boolean]
+#
+# @!attribute [rw] columns
+#   @return [Array]
+#
+# @!attribute [rw] count
+#   @return [Integer]
+#
+# @!attribute [rw] errors
+#   @return [Integer]
 #
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] ok
-#   @return [Object]
+# @!attribute [rw] limit
+#   @return [Integer]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash]
+#
+# @!attribute [rw] rows
+#   @return [Array]
 #
 # @!attribute [rw] tool
 #   @return [String]
 BatchCreateData = Struct.new(
-  :arg,
+  :args,
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
+  :limit,
+  :provenance,
+  :rows,
   :tool,
   keyword_init: true
 )
 
 # BatchWorkflow entity data model.
 #
+# @!attribute [rw] capped
+#   @return [Boolean]
+#
+# @!attribute [rw] columns
+#   @return [Array]
+#
+# @!attribute [rw] count
+#   @return [Integer]
+#
+# @!attribute [rw] errors
+#   @return [Integer]
+#
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] ok
-#   @return [Object]
+# @!attribute [rw] limit
+#   @return [Integer]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] step
+# @!attribute [rw] rows
+#   @return [Array]
+#
+# @!attribute [rw] steps
 #   @return [Array]
 BatchWorkflow = Struct.new(
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
-  :step,
+  :limit,
+  :provenance,
+  :rows,
+  :steps,
   keyword_init: true
 )
 
 # Request payload for BatchWorkflow#load.
 #
+# @!attribute [rw] capped
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] columns
+#   @return [Array, nil]
+#
+# @!attribute [rw] count
+#   @return [Integer, nil]
+#
+# @!attribute [rw] errors
+#   @return [Integer, nil]
+#
 # @!attribute [rw] input
 #   @return [String, nil]
 #
-# @!attribute [rw] ok
-#   @return [Object, nil]
+# @!attribute [rw] limit
+#   @return [Integer, nil]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash, nil]
 #
-# @!attribute [rw] step
+# @!attribute [rw] rows
+#   @return [Array, nil]
+#
+# @!attribute [rw] steps
 #   @return [Array, nil]
 BatchWorkflowLoadMatch = Struct.new(
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
-  :step,
+  :limit,
+  :provenance,
+  :rows,
+  :steps,
   keyword_init: true
 )
 
 # Request payload for BatchWorkflow#create.
 #
+# @!attribute [rw] capped
+#   @return [Boolean]
+#
+# @!attribute [rw] columns
+#   @return [Array]
+#
+# @!attribute [rw] count
+#   @return [Integer]
+#
+# @!attribute [rw] errors
+#   @return [Integer]
+#
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] ok
-#   @return [Object]
+# @!attribute [rw] limit
+#   @return [Integer]
 #
-# @!attribute [rw] result
+# @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] step
+# @!attribute [rw] rows
+#   @return [Array]
+#
+# @!attribute [rw] steps
 #   @return [Array]
 BatchWorkflowCreateData = Struct.new(
+  :capped,
+  :columns,
+  :count,
+  :errors,
   :input,
-  :ok,
-  :result,
-  :step,
+  :limit,
+  :provenance,
+  :rows,
+  :steps,
   keyword_init: true
 )
 
 # CharacterizeSequence entity data model.
 #
-# @!attribute [rw] end_primer_length
+# @!attribute [rw] endPrimerLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_orf
+# @!attribute [rw] maxOrfs
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_orf_aa
+# @!attribute [rw] minOrfAa
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -389,10 +509,10 @@ BatchWorkflowCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 CharacterizeSequence = Struct.new(
-  :end_primer_length,
+  :endPrimerLength,
   :gate,
-  :max_orf,
-  :min_orf_aa,
+  :maxOrfs,
+  :minOrfAa,
   :ok,
   :provenance,
   :result,
@@ -403,16 +523,16 @@ CharacterizeSequence = Struct.new(
 
 # Request payload for CharacterizeSequence#create.
 #
-# @!attribute [rw] end_primer_length
+# @!attribute [rw] endPrimerLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_orf
+# @!attribute [rw] maxOrfs
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_orf_aa
+# @!attribute [rw] minOrfAa
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -430,10 +550,10 @@ CharacterizeSequence = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 CharacterizeSequenceCreateData = Struct.new(
-  :end_primer_length,
+  :endPrimerLength,
   :gate,
-  :max_orf,
-  :min_orf_aa,
+  :maxOrfs,
+  :minOrfAa,
   :ok,
   :provenance,
   :result,
@@ -444,7 +564,7 @@ CharacterizeSequenceCreateData = Struct.new(
 
 # CloningSimulate entity data model.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
 # @!attribute [rw] circular
@@ -459,7 +579,7 @@ CharacterizeSequenceCreateData = Struct.new(
 # @!attribute [rw] enzyme5
 #   @return [String, nil]
 #
-# @!attribute [rw] fragment
+# @!attribute [rw] fragments
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -471,13 +591,13 @@ CharacterizeSequenceCreateData = Struct.new(
 # @!attribute [rw] method
 #   @return [String]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_len
+# @!attribute [rw] overlapLen
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -492,18 +612,18 @@ CharacterizeSequenceCreateData = Struct.new(
 # @!attribute [rw] vector
 #   @return [String, nil]
 CloningSimulate = Struct.new(
-  :arm_tm_target,
+  :armTmTarget,
   :circular,
   :enzyme,
   :enzyme3,
   :enzyme5,
-  :fragment,
+  :fragments,
   :gate,
   :insert,
   :method,
-  :name,
+  :names,
   :ok,
-  :overlap_len,
+  :overlapLen,
   :provenance,
   :result,
   :tool,
@@ -513,7 +633,7 @@ CloningSimulate = Struct.new(
 
 # Request payload for CloningSimulate#create.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
 # @!attribute [rw] circular
@@ -528,7 +648,7 @@ CloningSimulate = Struct.new(
 # @!attribute [rw] enzyme5
 #   @return [String, nil]
 #
-# @!attribute [rw] fragment
+# @!attribute [rw] fragments
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -540,13 +660,13 @@ CloningSimulate = Struct.new(
 # @!attribute [rw] method
 #   @return [String]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_len
+# @!attribute [rw] overlapLen
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -561,18 +681,18 @@ CloningSimulate = Struct.new(
 # @!attribute [rw] vector
 #   @return [String, nil]
 CloningSimulateCreateData = Struct.new(
-  :arm_tm_target,
+  :armTmTarget,
   :circular,
   :enzyme,
   :enzyme3,
   :enzyme5,
-  :fragment,
+  :fragments,
   :gate,
   :insert,
   :method,
-  :name,
+  :names,
   :ok,
-  :overlap_len,
+  :overlapLen,
   :provenance,
   :result,
   :tool,
@@ -582,7 +702,7 @@ CloningSimulateCreateData = Struct.new(
 
 # CodonAdaptationIndex entity data model.
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -597,7 +717,7 @@ CloningSimulateCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] rare_threshold
+# @!attribute [rw] rareThreshold
 #   @return [Float, nil]
 #
 # @!attribute [rw] result
@@ -609,12 +729,12 @@ CloningSimulateCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 CodonAdaptationIndex = Struct.new(
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :organism,
   :provenance,
-  :rare_threshold,
+  :rareThreshold,
   :result,
   :sequence,
   :tool,
@@ -623,7 +743,7 @@ CodonAdaptationIndex = Struct.new(
 
 # Request payload for CodonAdaptationIndex#create.
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -638,7 +758,7 @@ CodonAdaptationIndex = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] rare_threshold
+# @!attribute [rw] rareThreshold
 #   @return [Float, nil]
 #
 # @!attribute [rw] result
@@ -650,12 +770,12 @@ CodonAdaptationIndex = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 CodonAdaptationIndexCreateData = Struct.new(
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :organism,
   :provenance,
-  :rare_threshold,
+  :rareThreshold,
   :result,
   :sequence,
   :tool,
@@ -730,31 +850,31 @@ CodonOptimizeCreateData = Struct.new(
 
 # ConstructAutofix entity data model.
 #
-# @!attribute [rw] avoid_enzyme
+# @!attribute [rw] avoidEnzymes
 #   @return [Array, nil]
 #
-# @!attribute [rw] cryptic_orf_min_aa
+# @!attribute [rw] crypticOrfMinAa
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_high
+# @!attribute [rw] gcHigh
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_low
+# @!attribute [rw] gcLow
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_window
+# @!attribute [rw] gcWindow
 #   @return [Integer, nil]
 #
-# @!attribute [rw] homopolymer_min
+# @!attribute [rw] homopolymerMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_pass
+# @!attribute [rw] maxPasses
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -775,15 +895,15 @@ CodonOptimizeCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ConstructAutofix = Struct.new(
-  :avoid_enzyme,
-  :cryptic_orf_min_aa,
-  :frame_start,
+  :avoidEnzymes,
+  :crypticOrfMinAa,
+  :frameStart,
   :gate,
-  :gc_high,
-  :gc_low,
-  :gc_window,
-  :homopolymer_min,
-  :max_pass,
+  :gcHigh,
+  :gcLow,
+  :gcWindow,
+  :homopolymerMin,
+  :maxPasses,
   :ok,
   :organism,
   :provenance,
@@ -795,31 +915,31 @@ ConstructAutofix = Struct.new(
 
 # Request payload for ConstructAutofix#create.
 #
-# @!attribute [rw] avoid_enzyme
+# @!attribute [rw] avoidEnzymes
 #   @return [Array, nil]
 #
-# @!attribute [rw] cryptic_orf_min_aa
+# @!attribute [rw] crypticOrfMinAa
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_high
+# @!attribute [rw] gcHigh
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_low
+# @!attribute [rw] gcLow
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_window
+# @!attribute [rw] gcWindow
 #   @return [Integer, nil]
 #
-# @!attribute [rw] homopolymer_min
+# @!attribute [rw] homopolymerMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_pass
+# @!attribute [rw] maxPasses
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -840,15 +960,15 @@ ConstructAutofix = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ConstructAutofixCreateData = Struct.new(
-  :avoid_enzyme,
-  :cryptic_orf_min_aa,
-  :frame_start,
+  :avoidEnzymes,
+  :crypticOrfMinAa,
+  :frameStart,
   :gate,
-  :gc_high,
-  :gc_low,
-  :gc_window,
-  :homopolymer_min,
-  :max_pass,
+  :gcHigh,
+  :gcLow,
+  :gcWindow,
+  :homopolymerMin,
+  :maxPasses,
   :ok,
   :organism,
   :provenance,
@@ -860,28 +980,28 @@ ConstructAutofixCreateData = Struct.new(
 
 # ConstructQc entity data model.
 #
-# @!attribute [rw] avoid_enzyme
+# @!attribute [rw] avoidEnzymes
 #   @return [Array, nil]
 #
-# @!attribute [rw] cryptic_orf_min_aa
+# @!attribute [rw] crypticOrfMinAa
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_high
+# @!attribute [rw] gcHigh
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_low
+# @!attribute [rw] gcLow
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_window
+# @!attribute [rw] gcWindow
 #   @return [Integer, nil]
 #
-# @!attribute [rw] homopolymer_min
+# @!attribute [rw] homopolymerMin
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -899,14 +1019,14 @@ ConstructAutofixCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ConstructQc = Struct.new(
-  :avoid_enzyme,
-  :cryptic_orf_min_aa,
-  :frame_start,
+  :avoidEnzymes,
+  :crypticOrfMinAa,
+  :frameStart,
   :gate,
-  :gc_high,
-  :gc_low,
-  :gc_window,
-  :homopolymer_min,
+  :gcHigh,
+  :gcLow,
+  :gcWindow,
+  :homopolymerMin,
   :ok,
   :provenance,
   :result,
@@ -917,28 +1037,28 @@ ConstructQc = Struct.new(
 
 # Request payload for ConstructQc#create.
 #
-# @!attribute [rw] avoid_enzyme
+# @!attribute [rw] avoidEnzymes
 #   @return [Array, nil]
 #
-# @!attribute [rw] cryptic_orf_min_aa
+# @!attribute [rw] crypticOrfMinAa
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_high
+# @!attribute [rw] gcHigh
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_low
+# @!attribute [rw] gcLow
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_window
+# @!attribute [rw] gcWindow
 #   @return [Integer, nil]
 #
-# @!attribute [rw] homopolymer_min
+# @!attribute [rw] homopolymerMin
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -956,14 +1076,14 @@ ConstructQc = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ConstructQcCreateData = Struct.new(
-  :avoid_enzyme,
-  :cryptic_orf_min_aa,
-  :frame_start,
+  :avoidEnzymes,
+  :crypticOrfMinAa,
+  :frameStart,
   :gate,
-  :gc_high,
-  :gc_low,
-  :gc_window,
-  :homopolymer_min,
+  :gcHigh,
+  :gcLow,
+  :gcWindow,
+  :homopolymerMin,
   :ok,
   :provenance,
   :result,
@@ -977,7 +1097,7 @@ ConstructQcCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_score
+# @!attribute [rw] minScore
 #   @return [Float, nil]
 #
 # @!attribute [rw] nuclease
@@ -992,7 +1112,7 @@ ConstructQcCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] search_reverse_strand
+# @!attribute [rw] searchReverseStrand
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] sequence
@@ -1002,12 +1122,12 @@ ConstructQcCreateData = Struct.new(
 #   @return [String]
 CrisprGrnaDesign = Struct.new(
   :gate,
-  :min_score,
+  :minScore,
   :nuclease,
   :ok,
   :provenance,
   :result,
-  :search_reverse_strand,
+  :searchReverseStrand,
   :sequence,
   :tool,
   keyword_init: true
@@ -1018,7 +1138,7 @@ CrisprGrnaDesign = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_score
+# @!attribute [rw] minScore
 #   @return [Float, nil]
 #
 # @!attribute [rw] nuclease
@@ -1033,7 +1153,7 @@ CrisprGrnaDesign = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] search_reverse_strand
+# @!attribute [rw] searchReverseStrand
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] sequence
@@ -1043,12 +1163,12 @@ CrisprGrnaDesign = Struct.new(
 #   @return [String]
 CrisprGrnaDesignCreateData = Struct.new(
   :gate,
-  :min_score,
+  :minScore,
   :nuclease,
   :ok,
   :provenance,
   :result,
-  :search_reverse_strand,
+  :searchReverseStrand,
   :sequence,
   :tool,
   keyword_init: true
@@ -1056,34 +1176,34 @@ CrisprGrnaDesignCreateData = Struct.new(
 
 # CrisprHdrDonor entity data model.
 #
-# @!attribute [rw] arm_length
+# @!attribute [rw] armLength
 #   @return [Integer, nil]
 #
-# @!attribute [rw] block_pam
+# @!attribute [rw] blockPam
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] design_genotyping_primer
+# @!attribute [rw] designGenotypingPrimers
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] edit_end
+# @!attribute [rw] editEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] edit_start
+# @!attribute [rw] editStart
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] guide_end
+# @!attribute [rw] guideEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] guide_start
+# @!attribute [rw] guideStart
 #   @return [Integer, nil]
 #
-# @!attribute [rw] guide_strand
+# @!attribute [rw] guideStrand
 #   @return [String, nil]
 #
 # @!attribute [rw] nuclease
@@ -1101,62 +1221,62 @@ CrisprGrnaDesignCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] target_sequence
+# @!attribute [rw] targetSequence
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 CrisprHdrDonor = Struct.new(
-  :arm_length,
-  :block_pam,
-  :design_genotyping_primer,
-  :edit_end,
-  :edit_start,
-  :frame_start,
+  :armLength,
+  :blockPam,
+  :designGenotypingPrimers,
+  :editEnd,
+  :editStart,
+  :frameStart,
   :gate,
-  :guide_end,
-  :guide_start,
-  :guide_strand,
+  :guideEnd,
+  :guideStart,
+  :guideStrand,
   :nuclease,
   :ok,
   :provenance,
   :replacement,
   :result,
-  :target_sequence,
+  :targetSequence,
   :tool,
   keyword_init: true
 )
 
 # Request payload for CrisprHdrDonor#create.
 #
-# @!attribute [rw] arm_length
+# @!attribute [rw] armLength
 #   @return [Integer, nil]
 #
-# @!attribute [rw] block_pam
+# @!attribute [rw] blockPam
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] design_genotyping_primer
+# @!attribute [rw] designGenotypingPrimers
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] edit_end
+# @!attribute [rw] editEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] edit_start
+# @!attribute [rw] editStart
 #   @return [Integer, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] guide_end
+# @!attribute [rw] guideEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] guide_start
+# @!attribute [rw] guideStart
 #   @return [Integer, nil]
 #
-# @!attribute [rw] guide_strand
+# @!attribute [rw] guideStrand
 #   @return [String, nil]
 #
 # @!attribute [rw] nuclease
@@ -1174,28 +1294,28 @@ CrisprHdrDonor = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] target_sequence
+# @!attribute [rw] targetSequence
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 CrisprHdrDonorCreateData = Struct.new(
-  :arm_length,
-  :block_pam,
-  :design_genotyping_primer,
-  :edit_end,
-  :edit_start,
-  :frame_start,
+  :armLength,
+  :blockPam,
+  :designGenotypingPrimers,
+  :editEnd,
+  :editStart,
+  :frameStart,
   :gate,
-  :guide_end,
-  :guide_start,
-  :guide_strand,
+  :guideEnd,
+  :guideStart,
+  :guideStrand,
   :nuclease,
   :ok,
   :provenance,
   :replacement,
   :result,
-  :target_sequence,
+  :targetSequence,
   :tool,
   keyword_init: true
 )
@@ -1205,7 +1325,7 @@ CrisprHdrDonorCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] nuclease
@@ -1227,7 +1347,7 @@ CrisprHdrDonorCreateData = Struct.new(
 #   @return [String]
 CrisprOfftargetCheck = Struct.new(
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :nuclease,
   :ok,
   :protospacer,
@@ -1242,7 +1362,7 @@ CrisprOfftargetCheck = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] nuclease
@@ -1264,7 +1384,7 @@ CrisprOfftargetCheck = Struct.new(
 #   @return [String]
 CrisprOfftargetCheckCreateData = Struct.new(
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :nuclease,
   :ok,
   :protospacer,
@@ -1288,10 +1408,10 @@ CrisprOfftargetCheckCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sequence_a
+# @!attribute [rw] sequenceA
 #   @return [String]
 #
-# @!attribute [rw] sequence_b
+# @!attribute [rw] sequenceB
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -1301,8 +1421,8 @@ CrossDimer = Struct.new(
   :ok,
   :provenance,
   :result,
-  :sequence_a,
-  :sequence_b,
+  :sequenceA,
+  :sequenceB,
   :tool,
   keyword_init: true
 )
@@ -1321,10 +1441,10 @@ CrossDimer = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sequence_a
+# @!attribute [rw] sequenceA
 #   @return [String]
 #
-# @!attribute [rw] sequence_b
+# @!attribute [rw] sequenceB
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -1334,8 +1454,8 @@ CrossDimerCreateData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :sequence_a,
-  :sequence_b,
+  :sequenceA,
+  :sequenceB,
   :tool,
   keyword_init: true
 )
@@ -1348,7 +1468,7 @@ CrossDimerCreateData = Struct.new(
 # @!attribute [rw] length
 #   @return [Integer, nil]
 #
-# @!attribute [rw] mass_ng
+# @!attribute [rw] massNg
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -1369,19 +1489,19 @@ CrossDimerCreateData = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] volume_ul
+# @!attribute [rw] volumeUl
 #   @return [Float, nil]
 DnaMolarity = Struct.new(
   :gate,
   :length,
-  :mass_ng,
+  :massNg,
   :ok,
   :provenance,
   :result,
   :sequence,
   :tool,
   :type,
-  :volume_ul,
+  :volumeUl,
   keyword_init: true
 )
 
@@ -1393,7 +1513,7 @@ DnaMolarity = Struct.new(
 # @!attribute [rw] length
 #   @return [Integer, nil]
 #
-# @!attribute [rw] mass_ng
+# @!attribute [rw] massNg
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -1414,28 +1534,28 @@ DnaMolarity = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] volume_ul
+# @!attribute [rw] volumeUl
 #   @return [Float, nil]
 DnaMolarityCreateData = Struct.new(
   :gate,
   :length,
-  :mass_ng,
+  :massNg,
   :ok,
   :provenance,
   :result,
   :sequence,
   :tool,
   :type,
-  :volume_ul,
+  :volumeUl,
   keyword_init: true
 )
 
 # DoubleDigest entity data model.
 #
-# @!attribute [rw] enzyme_a
+# @!attribute [rw] enzymeA
 #   @return [String]
 #
-# @!attribute [rw] enzyme_b
+# @!attribute [rw] enzymeB
 #   @return [String]
 #
 # @!attribute [rw] gate
@@ -1453,8 +1573,8 @@ DnaMolarityCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 DoubleDigest = Struct.new(
-  :enzyme_a,
-  :enzyme_b,
+  :enzymeA,
+  :enzymeB,
   :gate,
   :ok,
   :provenance,
@@ -1465,10 +1585,10 @@ DoubleDigest = Struct.new(
 
 # Request payload for DoubleDigest#create.
 #
-# @!attribute [rw] enzyme_a
+# @!attribute [rw] enzymeA
 #   @return [String]
 #
-# @!attribute [rw] enzyme_b
+# @!attribute [rw] enzymeB
 #   @return [String]
 #
 # @!attribute [rw] gate
@@ -1486,8 +1606,8 @@ DoubleDigest = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 DoubleDigestCreateData = Struct.new(
-  :enzyme_a,
-  :enzyme_b,
+  :enzymeA,
+  :enzymeB,
   :gate,
   :ok,
   :provenance,
@@ -1507,7 +1627,7 @@ DoubleDigestCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1519,7 +1639,7 @@ ExportEchoPicklist = Struct.new(
   :gate,
   :ok,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1536,7 +1656,7 @@ ExportEchoPicklist = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1548,7 +1668,7 @@ ExportEchoPicklistCreateData = Struct.new(
   :gate,
   :ok,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1562,13 +1682,13 @@ ExportEchoPicklistCreateData = Struct.new(
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] protocol_name
+# @!attribute [rw] protocolName
 #   @return [String, nil]
 #
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1579,9 +1699,9 @@ ExportEchoPicklistCreateData = Struct.new(
 ExportOpentronsProtocol = Struct.new(
   :gate,
   :ok,
-  :protocol_name,
+  :protocolName,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1595,13 +1715,13 @@ ExportOpentronsProtocol = Struct.new(
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] protocol_name
+# @!attribute [rw] protocolName
 #   @return [String, nil]
 #
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1612,9 +1732,9 @@ ExportOpentronsProtocol = Struct.new(
 ExportOpentronsProtocolCreateData = Struct.new(
   :gate,
   :ok,
-  :protocol_name,
+  :protocolName,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1631,7 +1751,7 @@ ExportOpentronsProtocolCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1643,7 +1763,7 @@ ExportPlateLayout = Struct.new(
   :gate,
   :ok,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1660,7 +1780,7 @@ ExportPlateLayout = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] reaction
+# @!attribute [rw] reactions
 #   @return [Array]
 #
 # @!attribute [rw] result
@@ -1672,7 +1792,7 @@ ExportPlateLayoutCreateData = Struct.new(
   :gate,
   :ok,
   :provenance,
-  :reaction,
+  :reactions,
   :result,
   :tool,
   keyword_init: true
@@ -1680,19 +1800,19 @@ ExportPlateLayoutCreateData = Struct.new(
 
 # ExpressionHeatmapCluster entity data model.
 #
-# @!attribute [rw] cluster_col
+# @!attribute [rw] clusterCols
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] cluster_row
+# @!attribute [rw] clusterRows
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] distance_metric
+# @!attribute [rw] distanceMetric
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gene
+# @!attribute [rw] genes
 #   @return [Array]
 #
 # @!attribute [rw] linkage
@@ -1707,49 +1827,49 @@ ExportPlateLayoutCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sample
+# @!attribute [rw] samples
 #   @return [Array]
 #
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] value
+# @!attribute [rw] values
 #   @return [Array]
 #
-# @!attribute [rw] z_score_row
+# @!attribute [rw] zScoreRows
 #   @return [Boolean, nil]
 ExpressionHeatmapCluster = Struct.new(
-  :cluster_col,
-  :cluster_row,
-  :distance_metric,
+  :clusterCols,
+  :clusterRows,
+  :distanceMetric,
   :gate,
-  :gene,
+  :genes,
   :linkage,
   :ok,
   :provenance,
   :result,
-  :sample,
+  :samples,
   :tool,
-  :value,
-  :z_score_row,
+  :values,
+  :zScoreRows,
   keyword_init: true
 )
 
 # Request payload for ExpressionHeatmapCluster#create.
 #
-# @!attribute [rw] cluster_col
+# @!attribute [rw] clusterCols
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] cluster_row
+# @!attribute [rw] clusterRows
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] distance_metric
+# @!attribute [rw] distanceMetric
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gene
+# @!attribute [rw] genes
 #   @return [Array]
 #
 # @!attribute [rw] linkage
@@ -1764,31 +1884,31 @@ ExpressionHeatmapCluster = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sample
+# @!attribute [rw] samples
 #   @return [Array]
 #
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] value
+# @!attribute [rw] values
 #   @return [Array]
 #
-# @!attribute [rw] z_score_row
+# @!attribute [rw] zScoreRows
 #   @return [Boolean, nil]
 ExpressionHeatmapClusterCreateData = Struct.new(
-  :cluster_col,
-  :cluster_row,
-  :distance_metric,
+  :clusterCols,
+  :clusterRows,
+  :distanceMetric,
   :gate,
-  :gene,
+  :genes,
   :linkage,
   :ok,
   :provenance,
   :result,
-  :sample,
+  :samples,
   :tool,
-  :value,
-  :z_score_row,
+  :values,
+  :zScoreRows,
   keyword_init: true
 )
 
@@ -1806,7 +1926,7 @@ ExpressionHeatmapClusterCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -1819,7 +1939,7 @@ FastqQcReport = Struct.new(
   :input,
   :ok,
   :provenance,
-  :quality_offset,
+  :qualityOffset,
   :result,
   :tool,
   keyword_init: true
@@ -1839,7 +1959,7 @@ FastqQcReport = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -1852,7 +1972,7 @@ FastqQcReportCreateData = Struct.new(
   :input,
   :ok,
   :provenance,
-  :quality_offset,
+  :qualityOffset,
   :result,
   :tool,
   keyword_init: true
@@ -1866,7 +1986,7 @@ FastqQcReportCreateData = Struct.new(
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] min_length
+# @!attribute [rw] minLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -1875,10 +1995,10 @@ FastqQcReportCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
-# @!attribute [rw] quality_threshold
+# @!attribute [rw] qualityThreshold
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -1889,11 +2009,11 @@ FastqQcReportCreateData = Struct.new(
 FastqTrim = Struct.new(
   :gate,
   :input,
-  :min_length,
+  :minLength,
   :ok,
   :provenance,
-  :quality_offset,
-  :quality_threshold,
+  :qualityOffset,
+  :qualityThreshold,
   :result,
   :tool,
   keyword_init: true
@@ -1907,7 +2027,7 @@ FastqTrim = Struct.new(
 # @!attribute [rw] input
 #   @return [String]
 #
-# @!attribute [rw] min_length
+# @!attribute [rw] minLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -1916,10 +2036,10 @@ FastqTrim = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
-# @!attribute [rw] quality_threshold
+# @!attribute [rw] qualityThreshold
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -1930,11 +2050,11 @@ FastqTrim = Struct.new(
 FastqTrimCreateData = Struct.new(
   :gate,
   :input,
-  :min_length,
+  :minLength,
   :ok,
   :provenance,
-  :quality_offset,
-  :quality_threshold,
+  :qualityOffset,
+  :qualityThreshold,
   :result,
   :tool,
   keyword_init: true
@@ -1945,7 +2065,7 @@ FastqTrimCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_aa_length
+# @!attribute [rw] minAaLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -1954,7 +2074,7 @@ FastqTrimCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] require_stop
+# @!attribute [rw] requireStop
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] result
@@ -1967,10 +2087,10 @@ FastqTrimCreateData = Struct.new(
 #   @return [String]
 FindOrf = Struct.new(
   :gate,
-  :min_aa_length,
+  :minAaLength,
   :ok,
   :provenance,
-  :require_stop,
+  :requireStop,
   :result,
   :sequence,
   :tool,
@@ -1982,7 +2102,7 @@ FindOrf = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_aa_length
+# @!attribute [rw] minAaLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -1991,7 +2111,7 @@ FindOrf = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] require_stop
+# @!attribute [rw] requireStop
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] result
@@ -2004,10 +2124,10 @@ FindOrf = Struct.new(
 #   @return [String]
 FindOrfCreateData = Struct.new(
   :gate,
-  :min_aa_length,
+  :minAaLength,
   :ok,
   :provenance,
-  :require_stop,
+  :requireStop,
   :result,
   :sequence,
   :tool,
@@ -2016,7 +2136,7 @@ FindOrfCreateData = Struct.new(
 
 # FormatSequence entity data model.
 #
-# @!attribute [rw] case_mode
+# @!attribute [rw] caseMode
 #   @return [String, nil]
 #
 # @!attribute [rw] convert
@@ -2040,7 +2160,7 @@ FindOrfCreateData = Struct.new(
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] strip_non_letter
+# @!attribute [rw] stripNonLetters
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
@@ -2049,7 +2169,7 @@ FindOrfCreateData = Struct.new(
 # @!attribute [rw] width
 #   @return [Integer, nil]
 FormatSequence = Struct.new(
-  :case_mode,
+  :caseMode,
   :convert,
   :gate,
   :ok,
@@ -2057,7 +2177,7 @@ FormatSequence = Struct.new(
   :result,
   :reverse,
   :sequence,
-  :strip_non_letter,
+  :stripNonLetters,
   :tool,
   :width,
   keyword_init: true
@@ -2065,7 +2185,7 @@ FormatSequence = Struct.new(
 
 # Request payload for FormatSequence#create.
 #
-# @!attribute [rw] case_mode
+# @!attribute [rw] caseMode
 #   @return [String, nil]
 #
 # @!attribute [rw] convert
@@ -2089,7 +2209,7 @@ FormatSequence = Struct.new(
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] strip_non_letter
+# @!attribute [rw] stripNonLetters
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
@@ -2098,7 +2218,7 @@ FormatSequence = Struct.new(
 # @!attribute [rw] width
 #   @return [Integer, nil]
 FormatSequenceCreateData = Struct.new(
-  :case_mode,
+  :caseMode,
   :convert,
   :gate,
   :ok,
@@ -2106,7 +2226,7 @@ FormatSequenceCreateData = Struct.new(
   :result,
   :reverse,
   :sequence,
-  :strip_non_letter,
+  :stripNonLetters,
   :tool,
   :width,
   keyword_init: true
@@ -2117,19 +2237,19 @@ FormatSequenceCreateData = Struct.new(
 # @!attribute [rw] background
 #   @return [Array, nil]
 #
-# @!attribute [rw] collection
+# @!attribute [rw] collections
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gene
+# @!attribute [rw] genes
 #   @return [Array]
 #
-# @!attribute [rw] max_term_size
+# @!attribute [rw] maxTermSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_term_size
+# @!attribute [rw] minTermSize
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2145,11 +2265,11 @@ FormatSequenceCreateData = Struct.new(
 #   @return [String]
 FunctionalEnrichment = Struct.new(
   :background,
-  :collection,
+  :collections,
   :gate,
-  :gene,
-  :max_term_size,
-  :min_term_size,
+  :genes,
+  :maxTermSize,
+  :minTermSize,
   :ok,
   :provenance,
   :result,
@@ -2162,19 +2282,19 @@ FunctionalEnrichment = Struct.new(
 # @!attribute [rw] background
 #   @return [Array, nil]
 #
-# @!attribute [rw] collection
+# @!attribute [rw] collections
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gene
+# @!attribute [rw] genes
 #   @return [Array]
 #
-# @!attribute [rw] max_term_size
+# @!attribute [rw] maxTermSize
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_term_size
+# @!attribute [rw] minTermSize
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2190,11 +2310,11 @@ FunctionalEnrichment = Struct.new(
 #   @return [String]
 FunctionalEnrichmentCreateData = Struct.new(
   :background,
-  :collection,
+  :collections,
   :gate,
-  :gene,
-  :max_term_size,
-  :min_term_size,
+  :genes,
+  :maxTermSize,
+  :minTermSize,
   :ok,
   :provenance,
   :result,
@@ -2436,7 +2556,7 @@ GeneModelCreateData = Struct.new(
 
 # GoldenGateFidelity entity data model.
 #
-# @!attribute [rw] compare_to_named_set
+# @!attribute [rw] compareToNamedSet
 #   @return [String, nil]
 #
 # @!attribute [rw] dataset
@@ -2448,7 +2568,7 @@ GeneModelCreateData = Struct.new(
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overhang
+# @!attribute [rw] overhangs
 #   @return [Array]
 #
 # @!attribute [rw] provenance
@@ -2457,27 +2577,27 @@ GeneModelCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] risk_threshold
+# @!attribute [rw] riskThreshold
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 GoldenGateFidelity = Struct.new(
-  :compare_to_named_set,
+  :compareToNamedSet,
   :dataset,
   :gate,
   :ok,
-  :overhang,
+  :overhangs,
   :provenance,
   :result,
-  :risk_threshold,
+  :riskThreshold,
   :tool,
   keyword_init: true
 )
 
 # Request payload for GoldenGateFidelity#create.
 #
-# @!attribute [rw] compare_to_named_set
+# @!attribute [rw] compareToNamedSet
 #   @return [String, nil]
 #
 # @!attribute [rw] dataset
@@ -2489,7 +2609,7 @@ GoldenGateFidelity = Struct.new(
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overhang
+# @!attribute [rw] overhangs
 #   @return [Array]
 #
 # @!attribute [rw] provenance
@@ -2498,20 +2618,20 @@ GoldenGateFidelity = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] risk_threshold
+# @!attribute [rw] riskThreshold
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 GoldenGateFidelityCreateData = Struct.new(
-  :compare_to_named_set,
+  :compareToNamedSet,
   :dataset,
   :gate,
   :ok,
-  :overhang,
+  :overhangs,
   :provenance,
   :result,
-  :risk_threshold,
+  :riskThreshold,
   :tool,
   keyword_init: true
 )
@@ -2579,7 +2699,7 @@ HgvsConvertCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] job_id
+# @!attribute [rw] jobId
 #   @return [String]
 #
 # @!attribute [rw] ok
@@ -2595,7 +2715,7 @@ HgvsConvertCreateData = Struct.new(
 #   @return [String]
 IdMapPoll = Struct.new(
   :gate,
-  :job_id,
+  :jobId,
   :ok,
   :provenance,
   :result,
@@ -2608,7 +2728,7 @@ IdMapPoll = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] job_id
+# @!attribute [rw] jobId
 #   @return [String]
 #
 # @!attribute [rw] ok
@@ -2624,7 +2744,7 @@ IdMapPoll = Struct.new(
 #   @return [String]
 IdMapPollCreateData = Struct.new(
   :gate,
-  :job_id,
+  :jobId,
   :ok,
   :provenance,
   :result,
@@ -2652,7 +2772,7 @@ IdMapPollCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] tax_id
+# @!attribute [rw] taxId
 #   @return [String, nil]
 #
 # @!attribute [rw] to
@@ -2667,7 +2787,7 @@ IdMapSubmit = Struct.new(
   :ok,
   :provenance,
   :result,
-  :tax_id,
+  :taxId,
   :to,
   :tool,
   keyword_init: true
@@ -2693,7 +2813,7 @@ IdMapSubmit = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] tax_id
+# @!attribute [rw] taxId
 #   @return [String, nil]
 #
 # @!attribute [rw] to
@@ -2708,7 +2828,7 @@ IdMapSubmitCreateData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :tax_id,
+  :taxId,
   :to,
   :tool,
   keyword_init: true
@@ -2719,13 +2839,13 @@ IdMapSubmitCreateData = Struct.new(
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] forward_primer
+# @!attribute [rw] forwardPrimer
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2737,7 +2857,7 @@ IdMapSubmitCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] reverse_primer
+# @!attribute [rw] reversePrimer
 #   @return [String]
 #
 # @!attribute [rw] template
@@ -2747,13 +2867,13 @@ IdMapSubmitCreateData = Struct.new(
 #   @return [String]
 InSilicoPcr = Struct.new(
   :circular,
-  :forward_primer,
+  :forwardPrimer,
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :ok,
   :provenance,
   :result,
-  :reverse_primer,
+  :reversePrimer,
   :template,
   :tool,
   keyword_init: true
@@ -2764,13 +2884,13 @@ InSilicoPcr = Struct.new(
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] forward_primer
+# @!attribute [rw] forwardPrimer
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2782,7 +2902,7 @@ InSilicoPcr = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] reverse_primer
+# @!attribute [rw] reversePrimer
 #   @return [String]
 #
 # @!attribute [rw] template
@@ -2792,13 +2912,13 @@ InSilicoPcr = Struct.new(
 #   @return [String]
 InSilicoPcrCreateData = Struct.new(
   :circular,
-  :forward_primer,
+  :forwardPrimer,
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :ok,
   :provenance,
   :result,
-  :reverse_primer,
+  :reversePrimer,
   :template,
   :tool,
   keyword_init: true
@@ -2806,22 +2926,22 @@ InSilicoPcrCreateData = Struct.new(
 
 # KaspPrimerDesign entity data model.
 #
-# @!attribute [rw] add_secondary_mismatch
+# @!attribute [rw] addSecondaryMismatch
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] allele_a
+# @!attribute [rw] alleleA
 #   @return [String]
 #
-# @!attribute [rw] allele_b
+# @!attribute [rw] alleleB
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_amplicon
+# @!attribute [rw] maxAmplicon
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_amplicon
+# @!attribute [rw] minAmplicon
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2833,52 +2953,52 @@ InSilicoPcrCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] snp_position
+# @!attribute [rw] snpPosition
 #   @return [Integer]
 #
 # @!attribute [rw] target
 #   @return [String]
 #
-# @!attribute [rw] target_core_tm
+# @!attribute [rw] targetCoreTm
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 KaspPrimerDesign = Struct.new(
-  :add_secondary_mismatch,
-  :allele_a,
-  :allele_b,
+  :addSecondaryMismatch,
+  :alleleA,
+  :alleleB,
   :gate,
-  :max_amplicon,
-  :min_amplicon,
+  :maxAmplicon,
+  :minAmplicon,
   :ok,
   :provenance,
   :result,
-  :snp_position,
+  :snpPosition,
   :target,
-  :target_core_tm,
+  :targetCoreTm,
   :tool,
   keyword_init: true
 )
 
 # Request payload for KaspPrimerDesign#create.
 #
-# @!attribute [rw] add_secondary_mismatch
+# @!attribute [rw] addSecondaryMismatch
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] allele_a
+# @!attribute [rw] alleleA
 #   @return [String]
 #
-# @!attribute [rw] allele_b
+# @!attribute [rw] alleleB
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_amplicon
+# @!attribute [rw] maxAmplicon
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_amplicon
+# @!attribute [rw] minAmplicon
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -2890,30 +3010,30 @@ KaspPrimerDesign = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] snp_position
+# @!attribute [rw] snpPosition
 #   @return [Integer]
 #
 # @!attribute [rw] target
 #   @return [String]
 #
-# @!attribute [rw] target_core_tm
+# @!attribute [rw] targetCoreTm
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 KaspPrimerDesignCreateData = Struct.new(
-  :add_secondary_mismatch,
-  :allele_a,
-  :allele_b,
+  :addSecondaryMismatch,
+  :alleleA,
+  :alleleB,
   :gate,
-  :max_amplicon,
-  :min_amplicon,
+  :maxAmplicon,
+  :minAmplicon,
   :ok,
   :provenance,
   :result,
-  :snp_position,
+  :snpPosition,
   :target,
-  :target_core_tm,
+  :targetCoreTm,
   :tool,
   keyword_init: true
 )
@@ -2928,22 +3048,22 @@ end
 
 # MeltingTemperature entity data model.
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -2955,48 +3075,48 @@ end
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] target_tm
+# @!attribute [rw] targetTm
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_tolerance
+# @!attribute [rw] tmTolerance
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 MeltingTemperature = Struct.new(
-  :dntp_mm,
+  :dntpMM,
   :gate,
-  :mg_mm,
-  :na_mm,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
   :sequence,
-  :target_tm,
-  :tm_tolerance,
+  :targetTm,
+  :tmTolerance,
   :tool,
   keyword_init: true
 )
 
 # Request payload for MeltingTemperature#create.
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -3008,26 +3128,26 @@ MeltingTemperature = Struct.new(
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] target_tm
+# @!attribute [rw] targetTm
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_tolerance
+# @!attribute [rw] tmTolerance
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 MeltingTemperatureCreateData = Struct.new(
-  :dntp_mm,
+  :dntpMM,
   :gate,
-  :mg_mm,
-  :na_mm,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
   :sequence,
-  :target_tm,
-  :tm_tolerance,
+  :targetTm,
+  :tmTolerance,
   :tool,
   keyword_init: true
 )
@@ -3037,7 +3157,7 @@ MeltingTemperatureCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] motif
@@ -3052,7 +3172,7 @@ MeltingTemperatureCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] search_reverse_strand
+# @!attribute [rw] searchReverseStrand
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] sequence
@@ -3062,12 +3182,12 @@ MeltingTemperatureCreateData = Struct.new(
 #   @return [String]
 MotifFinder = Struct.new(
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :motif,
   :ok,
   :provenance,
   :result,
-  :search_reverse_strand,
+  :searchReverseStrand,
   :sequence,
   :tool,
   keyword_init: true
@@ -3078,7 +3198,7 @@ MotifFinder = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] motif
@@ -3093,7 +3213,7 @@ MotifFinder = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] search_reverse_strand
+# @!attribute [rw] searchReverseStrand
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] sequence
@@ -3103,12 +3223,12 @@ MotifFinder = Struct.new(
 #   @return [String]
 MotifFinderCreateData = Struct.new(
   :gate,
-  :max_mismatch,
+  :maxMismatches,
   :motif,
   :ok,
   :provenance,
   :result,
-  :search_reverse_strand,
+  :searchReverseStrand,
   :sequence,
   :tool,
   keyword_init: true
@@ -3174,22 +3294,22 @@ MultipleSequenceAlignmentCreateData = Struct.new(
 
 # OligoAnalysi entity data model.
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -3204,12 +3324,12 @@ MultipleSequenceAlignmentCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 OligoAnalysi = Struct.new(
-  :dntp_mm,
+  :dntpMM,
   :gate,
-  :mg_mm,
-  :na_mm,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
   :sequence,
@@ -3219,22 +3339,22 @@ OligoAnalysi = Struct.new(
 
 # Request payload for OligoAnalysi#create.
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -3249,12 +3369,12 @@ OligoAnalysi = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 OligoAnalysiCreateData = Struct.new(
-  :dntp_mm,
+  :dntpMM,
   :gate,
-  :mg_mm,
-  :na_mm,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
   :sequence,
@@ -3276,13 +3396,13 @@ OligoAnalysiCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] source_species
+# @!attribute [rw] sourceSpecies
 #   @return [String, nil]
 #
-# @!attribute [rw] symbol
+# @!attribute [rw] symbols
 #   @return [Array]
 #
-# @!attribute [rw] target_species
+# @!attribute [rw] targetSpecies
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -3295,9 +3415,9 @@ OrthologMap = Struct.new(
   :ok,
   :provenance,
   :result,
-  :source_species,
-  :symbol,
-  :target_species,
+  :sourceSpecies,
+  :symbols,
+  :targetSpecies,
   :tool,
   :type,
   keyword_init: true
@@ -3317,13 +3437,13 @@ OrthologMap = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] source_species
+# @!attribute [rw] sourceSpecies
 #   @return [String, nil]
 #
-# @!attribute [rw] symbol
+# @!attribute [rw] symbols
 #   @return [Array]
 #
-# @!attribute [rw] target_species
+# @!attribute [rw] targetSpecies
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -3336,9 +3456,9 @@ OrthologMapCreateData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :source_species,
-  :symbol,
-  :target_species,
+  :sourceSpecies,
+  :symbols,
+  :targetSpecies,
   :tool,
   :type,
   keyword_init: true
@@ -3370,10 +3490,10 @@ OrthologMapCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] seq_a
+# @!attribute [rw] seqA
 #   @return [String]
 #
-# @!attribute [rw] seq_b
+# @!attribute [rw] seqB
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -3387,8 +3507,8 @@ PairwiseAlignment = Struct.new(
   :ok,
   :provenance,
   :result,
-  :seq_a,
-  :seq_b,
+  :seqA,
+  :seqB,
   :tool,
   keyword_init: true
 )
@@ -3419,10 +3539,10 @@ PairwiseAlignment = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] seq_a
+# @!attribute [rw] seqA
 #   @return [String]
 #
-# @!attribute [rw] seq_b
+# @!attribute [rw] seqB
 #   @return [String]
 #
 # @!attribute [rw] tool
@@ -3436,8 +3556,8 @@ PairwiseAlignmentCreateData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :seq_a,
-  :seq_b,
+  :seqA,
+  :seqB,
   :tool,
   keyword_init: true
 )
@@ -3502,10 +3622,10 @@ ParseGenbankCreateData = Struct.new(
 
 # ParseSangerTrace entity data model.
 #
-# @!attribute [rw] file_base64
+# @!attribute [rw] fileBase64
 #   @return [String]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] fileName
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
@@ -3523,8 +3643,8 @@ ParseGenbankCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ParseSangerTrace = Struct.new(
-  :file_base64,
-  :file_name,
+  :fileBase64,
+  :fileName,
   :gate,
   :ok,
   :provenance,
@@ -3535,10 +3655,10 @@ ParseSangerTrace = Struct.new(
 
 # Request payload for ParseSangerTrace#create.
 #
-# @!attribute [rw] file_base64
+# @!attribute [rw] fileBase64
 #   @return [String]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] fileName
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
@@ -3556,8 +3676,8 @@ ParseSangerTrace = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ParseSangerTraceCreateData = Struct.new(
-  :file_base64,
-  :file_name,
+  :fileBase64,
+  :fileName,
   :gate,
   :ok,
   :provenance,
@@ -3713,7 +3833,7 @@ PlasmidDeepAnnotateCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] top_n
+# @!attribute [rw] topN
 #   @return [Integer, nil]
 PlasmidFullReport = Struct.new(
   :circular,
@@ -3723,7 +3843,7 @@ PlasmidFullReport = Struct.new(
   :result,
   :sequence,
   :tool,
-  :top_n,
+  :topN,
   keyword_init: true
 )
 
@@ -3750,7 +3870,7 @@ PlasmidFullReport = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] top_n
+# @!attribute [rw] topN
 #   @return [Integer, nil]
 PlasmidFullReportCreateData = Struct.new(
   :circular,
@@ -3760,7 +3880,7 @@ PlasmidFullReportCreateData = Struct.new(
   :result,
   :sequence,
   :tool,
-  :top_n,
+  :topN,
   keyword_init: true
 )
 
@@ -3787,7 +3907,7 @@ PlasmidFullReportCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] top_n
+# @!attribute [rw] topN
 #   @return [Integer, nil]
 PlasmidIdentify = Struct.new(
   :circular,
@@ -3797,7 +3917,7 @@ PlasmidIdentify = Struct.new(
   :result,
   :sequence,
   :tool,
-  :top_n,
+  :topN,
   keyword_init: true
 )
 
@@ -3824,7 +3944,7 @@ PlasmidIdentify = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] top_n
+# @!attribute [rw] topN
 #   @return [Integer, nil]
 PlasmidIdentifyCreateData = Struct.new(
   :circular,
@@ -3834,31 +3954,31 @@ PlasmidIdentifyCreateData = Struct.new(
   :result,
   :sequence,
   :tool,
-  :top_n,
+  :topN,
   keyword_init: true
 )
 
 # PrimeEditingDesign entity data model.
 #
-# @!attribute [rw] edit_end
+# @!attribute [rw] editEnd
 #   @return [Integer]
 #
-# @!attribute [rw] edit_start
+# @!attribute [rw] editStart
 #   @return [Integer]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] inserted_seq
+# @!attribute [rw] insertedSeq
 #   @return [String, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] pbs_length
+# @!attribute [rw] pbsLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -3867,7 +3987,7 @@ PlasmidIdentifyCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] rtt_homology
+# @!attribute [rw] rttHomology
 #   @return [Integer, nil]
 #
 # @!attribute [rw] target
@@ -3876,16 +3996,16 @@ PlasmidIdentifyCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 PrimeEditingDesign = Struct.new(
-  :edit_end,
-  :edit_start,
-  :frame_start,
+  :editEnd,
+  :editStart,
+  :frameStart,
   :gate,
-  :inserted_seq,
+  :insertedSeq,
   :ok,
-  :pbs_length,
+  :pbsLength,
   :provenance,
   :result,
-  :rtt_homology,
+  :rttHomology,
   :target,
   :tool,
   keyword_init: true
@@ -3893,25 +4013,25 @@ PrimeEditingDesign = Struct.new(
 
 # Request payload for PrimeEditingDesign#create.
 #
-# @!attribute [rw] edit_end
+# @!attribute [rw] editEnd
 #   @return [Integer]
 #
-# @!attribute [rw] edit_start
+# @!attribute [rw] editStart
 #   @return [Integer]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] inserted_seq
+# @!attribute [rw] insertedSeq
 #   @return [String, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] pbs_length
+# @!attribute [rw] pbsLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -3920,7 +4040,7 @@ PrimeEditingDesign = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] rtt_homology
+# @!attribute [rw] rttHomology
 #   @return [Integer, nil]
 #
 # @!attribute [rw] target
@@ -3929,16 +4049,16 @@ PrimeEditingDesign = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 PrimeEditingDesignCreateData = Struct.new(
-  :edit_end,
-  :edit_start,
-  :frame_start,
+  :editEnd,
+  :editStart,
+  :frameStart,
   :gate,
-  :inserted_seq,
+  :insertedSeq,
   :ok,
-  :pbs_length,
+  :pbsLength,
   :provenance,
   :result,
-  :rtt_homology,
+  :rttHomology,
   :target,
   :tool,
   keyword_init: true
@@ -3949,25 +4069,25 @@ PrimeEditingDesignCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] new_sequence
+# @!attribute [rw] newSequence
 #   @return [String]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_length
+# @!attribute [rw] overlapLength
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pbs_length
+# @!attribute [rw] pbsLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] replace_end
+# @!attribute [rw] replaceEnd
 #   @return [Integer]
 #
-# @!attribute [rw] replace_start
+# @!attribute [rw] replaceStart
 #   @return [Integer]
 #
 # @!attribute [rw] result
@@ -3980,13 +4100,13 @@ PrimeEditingDesignCreateData = Struct.new(
 #   @return [String]
 PrimeEditingTwinDesign = Struct.new(
   :gate,
-  :new_sequence,
+  :newSequence,
   :ok,
-  :overlap_length,
-  :pbs_length,
+  :overlapLength,
+  :pbsLength,
   :provenance,
-  :replace_end,
-  :replace_start,
+  :replaceEnd,
+  :replaceStart,
   :result,
   :target,
   :tool,
@@ -3998,25 +4118,25 @@ PrimeEditingTwinDesign = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] new_sequence
+# @!attribute [rw] newSequence
 #   @return [String]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_length
+# @!attribute [rw] overlapLength
 #   @return [Integer, nil]
 #
-# @!attribute [rw] pbs_length
+# @!attribute [rw] pbsLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] replace_end
+# @!attribute [rw] replaceEnd
 #   @return [Integer]
 #
-# @!attribute [rw] replace_start
+# @!attribute [rw] replaceStart
 #   @return [Integer]
 #
 # @!attribute [rw] result
@@ -4029,13 +4149,13 @@ PrimeEditingTwinDesign = Struct.new(
 #   @return [String]
 PrimeEditingTwinDesignCreateData = Struct.new(
   :gate,
-  :new_sequence,
+  :newSequence,
   :ok,
-  :overlap_length,
-  :pbs_length,
+  :overlapLength,
+  :pbsLength,
   :provenance,
-  :replace_end,
-  :replace_start,
+  :replaceEnd,
+  :replaceStart,
   :result,
   :target,
   :tool,
@@ -4044,46 +4164,46 @@ PrimeEditingTwinDesignCreateData = Struct.new(
 
 # PrimerDesign entity data model.
 #
-# @!attribute [rw] amplicon_max
+# @!attribute [rw] ampliconMax
 #   @return [Integer, nil]
 #
-# @!attribute [rw] amplicon_min
+# @!attribute [rw] ampliconMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_max
+# @!attribute [rw] gcMax
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_min
+# @!attribute [rw] gcMin
 #   @return [Float, nil]
 #
-# @!attribute [rw] len_max
+# @!attribute [rw] lenMax
 #   @return [Integer, nil]
 #
-# @!attribute [rw] len_min
+# @!attribute [rw] lenMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] len_opt
+# @!attribute [rw] lenOpt
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_return
+# @!attribute [rw] maxReturn
 #   @return [Integer, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -4092,99 +4212,99 @@ PrimeEditingTwinDesignCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] target_end
+# @!attribute [rw] targetEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] target_start
+# @!attribute [rw] targetStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] template
 #   @return [String]
 #
-# @!attribute [rw] tm_max
+# @!attribute [rw] tmMax
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_max_diff
+# @!attribute [rw] tmMaxDiff
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_min
+# @!attribute [rw] tmMin
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_opt
+# @!attribute [rw] tmOpt
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 PrimerDesign = Struct.new(
-  :amplicon_max,
-  :amplicon_min,
-  :dntp_mm,
+  :ampliconMax,
+  :ampliconMin,
+  :dntpMM,
   :gate,
-  :gc_max,
-  :gc_min,
-  :len_max,
-  :len_min,
-  :len_opt,
-  :max_return,
-  :mg_mm,
-  :na_mm,
+  :gcMax,
+  :gcMin,
+  :lenMax,
+  :lenMin,
+  :lenOpt,
+  :maxReturn,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
-  :target_end,
-  :target_start,
+  :targetEnd,
+  :targetStart,
   :template,
-  :tm_max,
-  :tm_max_diff,
-  :tm_min,
-  :tm_opt,
+  :tmMax,
+  :tmMaxDiff,
+  :tmMin,
+  :tmOpt,
   :tool,
   keyword_init: true
 )
 
 # Request payload for PrimerDesign#create.
 #
-# @!attribute [rw] amplicon_max
+# @!attribute [rw] ampliconMax
 #   @return [Integer, nil]
 #
-# @!attribute [rw] amplicon_min
+# @!attribute [rw] ampliconMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_max
+# @!attribute [rw] gcMax
 #   @return [Float, nil]
 #
-# @!attribute [rw] gc_min
+# @!attribute [rw] gcMin
 #   @return [Float, nil]
 #
-# @!attribute [rw] len_max
+# @!attribute [rw] lenMax
 #   @return [Integer, nil]
 #
-# @!attribute [rw] len_min
+# @!attribute [rw] lenMin
 #   @return [Integer, nil]
 #
-# @!attribute [rw] len_opt
+# @!attribute [rw] lenOpt
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_return
+# @!attribute [rw] maxReturn
 #   @return [Integer, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] provenance
@@ -4193,69 +4313,69 @@ PrimerDesign = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] target_end
+# @!attribute [rw] targetEnd
 #   @return [Integer, nil]
 #
-# @!attribute [rw] target_start
+# @!attribute [rw] targetStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] template
 #   @return [String]
 #
-# @!attribute [rw] tm_max
+# @!attribute [rw] tmMax
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_max_diff
+# @!attribute [rw] tmMaxDiff
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_min
+# @!attribute [rw] tmMin
 #   @return [Float, nil]
 #
-# @!attribute [rw] tm_opt
+# @!attribute [rw] tmOpt
 #   @return [Float, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 PrimerDesignCreateData = Struct.new(
-  :amplicon_max,
-  :amplicon_min,
-  :dntp_mm,
+  :ampliconMax,
+  :ampliconMin,
+  :dntpMM,
   :gate,
-  :gc_max,
-  :gc_min,
-  :len_max,
-  :len_min,
-  :len_opt,
-  :max_return,
-  :mg_mm,
-  :na_mm,
+  :gcMax,
+  :gcMin,
+  :lenMax,
+  :lenMin,
+  :lenOpt,
+  :maxReturn,
+  :mgMM,
+  :naMM,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :provenance,
   :result,
-  :target_end,
-  :target_start,
+  :targetEnd,
+  :targetStart,
   :template,
-  :tm_max,
-  :tm_max_diff,
-  :tm_min,
-  :tm_opt,
+  :tmMax,
+  :tmMaxDiff,
+  :tmMin,
+  :tmOpt,
   :tool,
   keyword_init: true
 )
 
 # PrimerSpecificity entity data model.
 #
-# @!attribute [rw] forward_primer
+# @!attribute [rw] forwardPrimer
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_product_length
+# @!attribute [rw] maxProductLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -4267,36 +4387,36 @@ PrimerDesignCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] reverse_primer
+# @!attribute [rw] reversePrimer
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 PrimerSpecificity = Struct.new(
-  :forward_primer,
+  :forwardPrimer,
   :gate,
-  :max_mismatch,
-  :max_product_length,
+  :maxMismatches,
+  :maxProductLength,
   :ok,
   :provenance,
   :result,
-  :reverse_primer,
+  :reversePrimer,
   :tool,
   keyword_init: true
 )
 
 # Request payload for PrimerSpecificity#create.
 #
-# @!attribute [rw] forward_primer
+# @!attribute [rw] forwardPrimer
 #   @return [String]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mismatch
+# @!attribute [rw] maxMismatches
 #   @return [Integer, nil]
 #
-# @!attribute [rw] max_product_length
+# @!attribute [rw] maxProductLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -4308,20 +4428,20 @@ PrimerSpecificity = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] reverse_primer
+# @!attribute [rw] reversePrimer
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 PrimerSpecificityCreateData = Struct.new(
-  :forward_primer,
+  :forwardPrimer,
   :gate,
-  :max_mismatch,
-  :max_product_length,
+  :maxMismatches,
+  :maxProductLength,
   :ok,
   :provenance,
   :result,
-  :reverse_primer,
+  :reversePrimer,
   :tool,
   keyword_init: true
 )
@@ -4331,16 +4451,16 @@ PrimerSpecificityCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mass
+# @!attribute [rw] maxMass
 #   @return [Float, nil]
 #
-# @!attribute [rw] max_peptide
+# @!attribute [rw] maxPeptides
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_mass
+# @!attribute [rw] minMass
 #   @return [Float, nil]
 #
-# @!attribute [rw] missed_cleavage
+# @!attribute [rw] missedCleavages
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -4362,10 +4482,10 @@ PrimerSpecificityCreateData = Struct.new(
 #   @return [String]
 ProteaseDigestion = Struct.new(
   :gate,
-  :max_mass,
-  :max_peptide,
-  :min_mass,
-  :missed_cleavage,
+  :maxMass,
+  :maxPeptides,
+  :minMass,
+  :missedCleavages,
   :ok,
   :protease,
   :provenance,
@@ -4380,16 +4500,16 @@ ProteaseDigestion = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_mass
+# @!attribute [rw] maxMass
 #   @return [Float, nil]
 #
-# @!attribute [rw] max_peptide
+# @!attribute [rw] maxPeptides
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_mass
+# @!attribute [rw] minMass
 #   @return [Float, nil]
 #
-# @!attribute [rw] missed_cleavage
+# @!attribute [rw] missedCleavages
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -4411,10 +4531,10 @@ ProteaseDigestion = Struct.new(
 #   @return [String]
 ProteaseDigestionCreateData = Struct.new(
   :gate,
-  :max_mass,
-  :max_peptide,
-  :min_mass,
-  :missed_cleavage,
+  :maxMass,
+  :maxPeptides,
+  :minMass,
+  :missedCleavages,
   :ok,
   :protease,
   :provenance,
@@ -4429,7 +4549,7 @@ ProteaseDigestionCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] job_id
+# @!attribute [rw] jobId
 #   @return [String]
 #
 # @!attribute [rw] ok
@@ -4445,7 +4565,7 @@ ProteaseDigestionCreateData = Struct.new(
 #   @return [String]
 ProteinAnnotatePoll = Struct.new(
   :gate,
-  :job_id,
+  :jobId,
   :ok,
   :provenance,
   :result,
@@ -4458,7 +4578,7 @@ ProteinAnnotatePoll = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] job_id
+# @!attribute [rw] jobId
 #   @return [String]
 #
 # @!attribute [rw] ok
@@ -4474,7 +4594,7 @@ ProteinAnnotatePoll = Struct.new(
 #   @return [String]
 ProteinAnnotatePollCreateData = Struct.new(
   :gate,
-  :job_id,
+  :jobId,
   :ok,
   :provenance,
   :result,
@@ -4490,7 +4610,7 @@ ProteinAnnotatePollCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] goterm
+# @!attribute [rw] goterms
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] ok
@@ -4510,7 +4630,7 @@ ProteinAnnotatePollCreateData = Struct.new(
 ProteinAnnotateSubmit = Struct.new(
   :appl,
   :gate,
-  :goterm,
+  :goterms,
   :ok,
   :provenance,
   :result,
@@ -4527,7 +4647,7 @@ ProteinAnnotateSubmit = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] goterm
+# @!attribute [rw] goterms
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] ok
@@ -4547,7 +4667,7 @@ ProteinAnnotateSubmit = Struct.new(
 ProteinAnnotateSubmitCreateData = Struct.new(
   :appl,
   :gate,
-  :goterm,
+  :goterms,
   :ok,
   :provenance,
   :result,
@@ -4632,7 +4752,7 @@ ProteinHydrophobicityCreateData = Struct.new(
 
 # ProteinProperty entity data model.
 #
-# @!attribute [rw] charge_step
+# @!attribute [rw] chargeStep
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
@@ -4653,7 +4773,7 @@ ProteinHydrophobicityCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ProteinProperty = Struct.new(
-  :charge_step,
+  :chargeStep,
   :gate,
   :ok,
   :provenance,
@@ -4665,7 +4785,7 @@ ProteinProperty = Struct.new(
 
 # Request payload for ProteinProperty#create.
 #
-# @!attribute [rw] charge_step
+# @!attribute [rw] chargeStep
 #   @return [Float, nil]
 #
 # @!attribute [rw] gate
@@ -4686,7 +4806,7 @@ ProteinProperty = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 ProteinPropertyCreateData = Struct.new(
-  :charge_step,
+  :chargeStep,
   :gate,
   :ok,
   :provenance,
@@ -4701,7 +4821,7 @@ ProteinPropertyCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_content
+# @!attribute [rw] gcContent
 #   @return [Float, nil]
 #
 # @!attribute [rw] kind
@@ -4723,7 +4843,7 @@ ProteinPropertyCreateData = Struct.new(
 #   @return [String]
 RandomSequence = Struct.new(
   :gate,
-  :gc_content,
+  :gcContent,
   :kind,
   :length,
   :ok,
@@ -4738,7 +4858,7 @@ RandomSequence = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] gc_content
+# @!attribute [rw] gcContent
 #   @return [Float, nil]
 #
 # @!attribute [rw] kind
@@ -4760,7 +4880,7 @@ RandomSequence = Struct.new(
 #   @return [String]
 RandomSequenceCreateData = Struct.new(
   :gate,
-  :gc_content,
+  :gcContent,
   :kind,
   :length,
   :ok,
@@ -4772,7 +4892,7 @@ RandomSequenceCreateData = Struct.new(
 
 # RestrictionSite entity data model.
 #
-# @!attribute [rw] enzyme
+# @!attribute [rw] enzymes
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -4793,7 +4913,7 @@ RandomSequenceCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 RestrictionSite = Struct.new(
-  :enzyme,
+  :enzymes,
   :gate,
   :ok,
   :provenance,
@@ -4805,7 +4925,7 @@ RestrictionSite = Struct.new(
 
 # Request payload for RestrictionSite#create.
 #
-# @!attribute [rw] enzyme
+# @!attribute [rw] enzymes
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -4826,7 +4946,7 @@ RestrictionSite = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 RestrictionSiteCreateData = Struct.new(
-  :enzyme,
+  :enzymes,
   :gate,
   :ok,
   :provenance,
@@ -5036,16 +5156,16 @@ RnaFoldCreateData = Struct.new(
 
 # SangerVsReference entity data model.
 #
-# @!attribute [rw] file_base64
+# @!attribute [rw] fileBase64
 #   @return [String, nil]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] fileName
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_coverage
+# @!attribute [rw] minCoverage
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -5066,10 +5186,10 @@ RnaFoldCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SangerVsReference = Struct.new(
-  :file_base64,
-  :file_name,
+  :fileBase64,
+  :fileName,
   :gate,
-  :min_coverage,
+  :minCoverage,
   :ok,
   :provenance,
   :read,
@@ -5081,16 +5201,16 @@ SangerVsReference = Struct.new(
 
 # Request payload for SangerVsReference#create.
 #
-# @!attribute [rw] file_base64
+# @!attribute [rw] fileBase64
 #   @return [String, nil]
 #
-# @!attribute [rw] file_name
+# @!attribute [rw] fileName
 #   @return [String, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_coverage
+# @!attribute [rw] minCoverage
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -5111,10 +5231,10 @@ SangerVsReference = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SangerVsReferenceCreateData = Struct.new(
-  :file_base64,
-  :file_name,
+  :fileBase64,
+  :fileName,
   :gate,
-  :min_coverage,
+  :minCoverage,
   :ok,
   :provenance,
   :read,
@@ -5126,7 +5246,7 @@ SangerVsReferenceCreateData = Struct.new(
 
 # SavePermalink entity data model.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash]
 #
 # @!attribute [rw] gate
@@ -5144,7 +5264,7 @@ SangerVsReferenceCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SavePermalink = Struct.new(
-  :arg,
+  :args,
   :gate,
   :ok,
   :provenance,
@@ -5155,7 +5275,7 @@ SavePermalink = Struct.new(
 
 # Request payload for SavePermalink#create.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash]
 #
 # @!attribute [rw] gate
@@ -5173,7 +5293,7 @@ SavePermalink = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SavePermalinkCreateData = Struct.new(
-  :arg,
+  :args,
   :gate,
   :ok,
   :provenance,
@@ -5196,7 +5316,7 @@ SavePermalinkCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -5209,7 +5329,7 @@ SeqfileStat = Struct.new(
   :input,
   :ok,
   :provenance,
-  :quality_offset,
+  :qualityOffset,
   :result,
   :tool,
   keyword_init: true
@@ -5229,7 +5349,7 @@ SeqfileStat = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] quality_offset
+# @!attribute [rw] qualityOffset
 #   @return [Integer, nil]
 #
 # @!attribute [rw] result
@@ -5242,7 +5362,7 @@ SeqfileStatCreateData = Struct.new(
   :input,
   :ok,
   :provenance,
-  :quality_offset,
+  :qualityOffset,
   :result,
   :tool,
   keyword_init: true
@@ -5398,16 +5518,16 @@ SequenceFormatConvertCreateData = Struct.new(
 
 # SequenceReport entity data model.
 #
-# @!attribute [rw] end_primer_length
+# @!attribute [rw] endPrimerLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_orf
+# @!attribute [rw] maxOrfs
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_orf_aa
+# @!attribute [rw] minOrfAa
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5425,10 +5545,10 @@ SequenceFormatConvertCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SequenceReport = Struct.new(
-  :end_primer_length,
+  :endPrimerLength,
   :gate,
-  :max_orf,
-  :min_orf_aa,
+  :maxOrfs,
+  :minOrfAa,
   :ok,
   :provenance,
   :result,
@@ -5439,16 +5559,16 @@ SequenceReport = Struct.new(
 
 # Request payload for SequenceReport#create.
 #
-# @!attribute [rw] end_primer_length
+# @!attribute [rw] endPrimerLength
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_orf
+# @!attribute [rw] maxOrfs
 #   @return [Integer, nil]
 #
-# @!attribute [rw] min_orf_aa
+# @!attribute [rw] minOrfAa
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5466,10 +5586,10 @@ SequenceReport = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SequenceReportCreateData = Struct.new(
-  :end_primer_length,
+  :endPrimerLength,
   :gate,
-  :max_orf,
-  :min_orf_aa,
+  :maxOrfs,
+  :minOrfAa,
   :ok,
   :provenance,
   :result,
@@ -5489,7 +5609,7 @@ SequenceReportCreateData = Struct.new(
 # @!attribute [rw] gene
 #   @return [String, nil]
 #
-# @!attribute [rw] max_result
+# @!attribute [rw] maxResults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5513,7 +5633,7 @@ SequenceSearch = Struct.new(
   :db,
   :gate,
   :gene,
-  :max_result,
+  :maxResults,
   :ok,
   :organism,
   :provenance,
@@ -5534,7 +5654,7 @@ SequenceSearch = Struct.new(
 # @!attribute [rw] gene
 #   @return [String, nil]
 #
-# @!attribute [rw] max_result
+# @!attribute [rw] maxResults
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5558,7 +5678,7 @@ SequenceSearchCreateData = Struct.new(
   :db,
   :gate,
   :gene,
-  :max_result,
+  :maxResults,
   :ok,
   :organism,
   :provenance,
@@ -5573,7 +5693,7 @@ SequenceSearchCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_supporting_read
+# @!attribute [rw] minSupportingReads
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5582,7 +5702,7 @@ SequenceSearchCreateData = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] read
+# @!attribute [rw] reads
 #   @return [String]
 #
 # @!attribute [rw] reference
@@ -5595,10 +5715,10 @@ SequenceSearchCreateData = Struct.new(
 #   @return [String]
 SequencingReadbackVerify = Struct.new(
   :gate,
-  :min_supporting_read,
+  :minSupportingReads,
   :ok,
   :provenance,
-  :read,
+  :reads,
   :reference,
   :result,
   :tool,
@@ -5610,7 +5730,7 @@ SequencingReadbackVerify = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_supporting_read
+# @!attribute [rw] minSupportingReads
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5619,7 +5739,7 @@ SequencingReadbackVerify = Struct.new(
 # @!attribute [rw] provenance
 #   @return [Hash]
 #
-# @!attribute [rw] read
+# @!attribute [rw] reads
 #   @return [String]
 #
 # @!attribute [rw] reference
@@ -5632,10 +5752,10 @@ SequencingReadbackVerify = Struct.new(
 #   @return [String]
 SequencingReadbackVerifyCreateData = Struct.new(
   :gate,
-  :min_supporting_read,
+  :minSupportingReads,
   :ok,
   :provenance,
-  :read,
+  :reads,
   :reference,
   :result,
   :tool,
@@ -5644,7 +5764,7 @@ SequencingReadbackVerifyCreateData = Struct.new(
 
 # SessionCreate entity data model.
 #
-# @!attribute [rw] entry
+# @!attribute [rw] entries
 #   @return [Hash, nil]
 #
 # @!attribute [rw] gate
@@ -5662,7 +5782,7 @@ SequencingReadbackVerifyCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SessionCreate = Struct.new(
-  :entry,
+  :entries,
   :gate,
   :ok,
   :provenance,
@@ -5673,7 +5793,7 @@ SessionCreate = Struct.new(
 
 # Request payload for SessionCreate#create.
 #
-# @!attribute [rw] entry
+# @!attribute [rw] entries
 #   @return [Hash, nil]
 #
 # @!attribute [rw] gate
@@ -5691,7 +5811,7 @@ SessionCreate = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SessionCreateCreateData = Struct.new(
-  :entry,
+  :entries,
   :gate,
   :ok,
   :provenance,
@@ -5705,7 +5825,7 @@ SessionCreateCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
@@ -5717,18 +5837,18 @@ SessionCreateCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 SessionGet = Struct.new(
   :gate,
-  :name,
+  :names,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
   keyword_init: true
 )
@@ -5738,7 +5858,7 @@ SessionGet = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
@@ -5750,28 +5870,28 @@ SessionGet = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 SessionGetCreateData = Struct.new(
   :gate,
-  :name,
+  :names,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
   keyword_init: true
 )
 
 # SessionRun entity data model.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash, nil]
 #
-# @!attribute [rw] from_session
+# @!attribute [rw] fromSession
 #   @return [Hash, nil]
 #
 # @!attribute [rw] gate
@@ -5786,33 +5906,33 @@ SessionGetCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] write_back
+# @!attribute [rw] writeBack
 #   @return [Hash, nil]
 SessionRun = Struct.new(
-  :arg,
-  :from_session,
+  :args,
+  :fromSession,
   :gate,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
-  :write_back,
+  :writeBack,
   keyword_init: true
 )
 
 # Request payload for SessionRun#create.
 #
-# @!attribute [rw] arg
+# @!attribute [rw] args
 #   @return [Hash, nil]
 #
-# @!attribute [rw] from_session
+# @!attribute [rw] fromSession
 #   @return [Hash, nil]
 #
 # @!attribute [rw] gate
@@ -5827,30 +5947,30 @@ SessionRun = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 #
-# @!attribute [rw] write_back
+# @!attribute [rw] writeBack
 #   @return [Hash, nil]
 SessionRunCreateData = Struct.new(
-  :arg,
-  :from_session,
+  :args,
+  :fromSession,
   :gate,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
-  :write_back,
+  :writeBack,
   keyword_init: true
 )
 
 # SessionSet entity data model.
 #
-# @!attribute [rw] entry
+# @!attribute [rw] entries
 #   @return [Hash]
 #
 # @!attribute [rw] gate
@@ -5865,25 +5985,25 @@ SessionRunCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 SessionSet = Struct.new(
-  :entry,
+  :entries,
   :gate,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
   keyword_init: true
 )
 
 # Request payload for SessionSet#create.
 #
-# @!attribute [rw] entry
+# @!attribute [rw] entries
 #   @return [Hash]
 #
 # @!attribute [rw] gate
@@ -5898,18 +6018,18 @@ SessionSet = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] session_id
+# @!attribute [rw] sessionId
 #   @return [String]
 #
 # @!attribute [rw] tool
 #   @return [String]
 SessionSetCreateData = Struct.new(
-  :entry,
+  :entries,
   :gate,
   :ok,
   :provenance,
   :result,
-  :session_id,
+  :sessionId,
   :tool,
   keyword_init: true
 )
@@ -5919,7 +6039,7 @@ SessionSetCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_reynold
+# @!attribute [rw] minReynolds
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5931,7 +6051,7 @@ SessionSetCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sh_rna_loop
+# @!attribute [rw] shRnaLoop
 #   @return [String, nil]
 #
 # @!attribute [rw] target
@@ -5941,11 +6061,11 @@ SessionSetCreateData = Struct.new(
 #   @return [String]
 SirnaDesign = Struct.new(
   :gate,
-  :min_reynold,
+  :minReynolds,
   :ok,
   :provenance,
   :result,
-  :sh_rna_loop,
+  :shRnaLoop,
   :target,
   :tool,
   keyword_init: true
@@ -5956,7 +6076,7 @@ SirnaDesign = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] min_reynold
+# @!attribute [rw] minReynolds
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -5968,7 +6088,7 @@ SirnaDesign = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] sh_rna_loop
+# @!attribute [rw] shRnaLoop
 #   @return [String, nil]
 #
 # @!attribute [rw] target
@@ -5978,11 +6098,11 @@ SirnaDesign = Struct.new(
 #   @return [String]
 SirnaDesignCreateData = Struct.new(
   :gate,
-  :min_reynold,
+  :minReynolds,
   :ok,
   :provenance,
   :result,
-  :sh_rna_loop,
+  :shRnaLoop,
   :target,
   :tool,
   keyword_init: true
@@ -5990,34 +6110,34 @@ SirnaDesignCreateData = Struct.new(
 
 # SiteDirectedMutagenesi entity data model.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] edit_kind
+# @!attribute [rw] editKind
 #   @return [String, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] new_base
+# @!attribute [rw] newBase
 #   @return [String, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] organism
@@ -6038,7 +6158,7 @@ SirnaDesignCreateData = Struct.new(
 # @!attribute [rw] style
 #   @return [String, nil]
 #
-# @!attribute [rw] target_aa
+# @!attribute [rw] targetAa
 #   @return [String, nil]
 #
 # @!attribute [rw] template
@@ -6047,23 +6167,23 @@ SirnaDesignCreateData = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SiteDirectedMutagenesi = Struct.new(
-  :arm_tm_target,
-  :dntp_mm,
-  :edit_kind,
-  :frame_start,
+  :armTmTarget,
+  :dntpMM,
+  :editKind,
+  :frameStart,
   :gate,
-  :mg_mm,
-  :na_mm,
-  :new_base,
+  :mgMM,
+  :naMM,
+  :newBase,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :organism,
   :position,
   :provenance,
   :residue,
   :result,
   :style,
-  :target_aa,
+  :targetAa,
   :template,
   :tool,
   keyword_init: true
@@ -6071,34 +6191,34 @@ SiteDirectedMutagenesi = Struct.new(
 
 # Request payload for SiteDirectedMutagenesi#create.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
-# @!attribute [rw] dntp_mm
+# @!attribute [rw] dntpMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] edit_kind
+# @!attribute [rw] editKind
 #   @return [String, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] mg_mm
+# @!attribute [rw] mgMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] na_mm
+# @!attribute [rw] naMM
 #   @return [Float, nil]
 #
-# @!attribute [rw] new_base
+# @!attribute [rw] newBase
 #   @return [String, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] oligo_nm
+# @!attribute [rw] oligoNM
 #   @return [Float, nil]
 #
 # @!attribute [rw] organism
@@ -6119,7 +6239,7 @@ SiteDirectedMutagenesi = Struct.new(
 # @!attribute [rw] style
 #   @return [String, nil]
 #
-# @!attribute [rw] target_aa
+# @!attribute [rw] targetAa
 #   @return [String, nil]
 #
 # @!attribute [rw] template
@@ -6128,23 +6248,23 @@ SiteDirectedMutagenesi = Struct.new(
 # @!attribute [rw] tool
 #   @return [String]
 SiteDirectedMutagenesiCreateData = Struct.new(
-  :arm_tm_target,
-  :dntp_mm,
-  :edit_kind,
-  :frame_start,
+  :armTmTarget,
+  :dntpMM,
+  :editKind,
+  :frameStart,
   :gate,
-  :mg_mm,
-  :na_mm,
-  :new_base,
+  :mgMM,
+  :naMM,
+  :newBase,
   :ok,
-  :oligo_nm,
+  :oligoNM,
   :organism,
   :position,
   :provenance,
   :residue,
   :result,
   :style,
-  :target_aa,
+  :targetAa,
   :template,
   :tool,
   keyword_init: true
@@ -6170,7 +6290,7 @@ SiteDirectedMutagenesiCreateData = Struct.new(
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] to_stop
+# @!attribute [rw] toStop
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
@@ -6182,7 +6302,7 @@ Translate = Struct.new(
   :provenance,
   :result,
   :sequence,
-  :to_stop,
+  :toStop,
   :tool,
   keyword_init: true
 )
@@ -6207,7 +6327,7 @@ Translate = Struct.new(
 # @!attribute [rw] sequence
 #   @return [String]
 #
-# @!attribute [rw] to_stop
+# @!attribute [rw] toStop
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
@@ -6219,7 +6339,7 @@ TranslateCreateData = Struct.new(
   :provenance,
   :result,
   :sequence,
-  :to_stop,
+  :toStop,
   :tool,
   keyword_init: true
 )
@@ -6295,7 +6415,7 @@ VariantAnnotateCreateData = Struct.new(
 # @!attribute [rw] coding
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -6320,7 +6440,7 @@ VariantAnnotateCreateData = Struct.new(
 #   @return [String]
 VariantComparator = Struct.new(
   :coding,
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :provenance,
@@ -6336,7 +6456,7 @@ VariantComparator = Struct.new(
 # @!attribute [rw] coding
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -6361,7 +6481,7 @@ VariantComparator = Struct.new(
 #   @return [String]
 VariantComparatorCreateData = Struct.new(
   :coding,
-  :frame_start,
+  :frameStart,
   :gate,
   :ok,
   :provenance,
@@ -6374,13 +6494,13 @@ VariantComparatorCreateData = Struct.new(
 
 # VerifyAssembly entity data model.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] claimed_construct
+# @!attribute [rw] claimedConstruct
 #   @return [String]
 #
 # @!attribute [rw] coding
@@ -6395,13 +6515,13 @@ VariantComparatorCreateData = Struct.new(
 # @!attribute [rw] enzyme5
 #   @return [String, nil]
 #
-# @!attribute [rw] fragment
+# @!attribute [rw] fragmentPcrs
 #   @return [Array, nil]
 #
-# @!attribute [rw] fragment_pcr
+# @!attribute [rw] fragments
 #   @return [Array, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -6410,19 +6530,19 @@ VariantComparatorCreateData = Struct.new(
 # @!attribute [rw] insert
 #   @return [String, nil]
 #
-# @!attribute [rw] insert_pcr
+# @!attribute [rw] insertPcr
 #   @return [Hash, nil]
 #
 # @!attribute [rw] method
 #   @return [String]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_len
+# @!attribute [rw] overlapLen
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -6437,43 +6557,43 @@ VariantComparatorCreateData = Struct.new(
 # @!attribute [rw] vector
 #   @return [String, nil]
 #
-# @!attribute [rw] vector_pcr
+# @!attribute [rw] vectorPcr
 #   @return [Hash, nil]
 VerifyAssembly = Struct.new(
-  :arm_tm_target,
+  :armTmTarget,
   :circular,
-  :claimed_construct,
+  :claimedConstruct,
   :coding,
   :enzyme,
   :enzyme3,
   :enzyme5,
-  :fragment,
-  :fragment_pcr,
-  :frame_start,
+  :fragmentPcrs,
+  :fragments,
+  :frameStart,
   :gate,
   :insert,
-  :insert_pcr,
+  :insertPcr,
   :method,
-  :name,
+  :names,
   :ok,
-  :overlap_len,
+  :overlapLen,
   :provenance,
   :result,
   :tool,
   :vector,
-  :vector_pcr,
+  :vectorPcr,
   keyword_init: true
 )
 
 # Request payload for VerifyAssembly#create.
 #
-# @!attribute [rw] arm_tm_target
+# @!attribute [rw] armTmTarget
 #   @return [Float, nil]
 #
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] claimed_construct
+# @!attribute [rw] claimedConstruct
 #   @return [String]
 #
 # @!attribute [rw] coding
@@ -6488,13 +6608,13 @@ VerifyAssembly = Struct.new(
 # @!attribute [rw] enzyme5
 #   @return [String, nil]
 #
-# @!attribute [rw] fragment
+# @!attribute [rw] fragmentPcrs
 #   @return [Array, nil]
 #
-# @!attribute [rw] fragment_pcr
+# @!attribute [rw] fragments
 #   @return [Array, nil]
 #
-# @!attribute [rw] frame_start
+# @!attribute [rw] frameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
@@ -6503,19 +6623,19 @@ VerifyAssembly = Struct.new(
 # @!attribute [rw] insert
 #   @return [String, nil]
 #
-# @!attribute [rw] insert_pcr
+# @!attribute [rw] insertPcr
 #   @return [Hash, nil]
 #
 # @!attribute [rw] method
 #   @return [String]
 #
-# @!attribute [rw] name
+# @!attribute [rw] names
 #   @return [Array, nil]
 #
 # @!attribute [rw] ok
 #   @return [Object]
 #
-# @!attribute [rw] overlap_len
+# @!attribute [rw] overlapLen
 #   @return [Integer, nil]
 #
 # @!attribute [rw] provenance
@@ -6530,55 +6650,55 @@ VerifyAssembly = Struct.new(
 # @!attribute [rw] vector
 #   @return [String, nil]
 #
-# @!attribute [rw] vector_pcr
+# @!attribute [rw] vectorPcr
 #   @return [Hash, nil]
 VerifyAssemblyCreateData = Struct.new(
-  :arm_tm_target,
+  :armTmTarget,
   :circular,
-  :claimed_construct,
+  :claimedConstruct,
   :coding,
   :enzyme,
   :enzyme3,
   :enzyme5,
-  :fragment,
-  :fragment_pcr,
-  :frame_start,
+  :fragmentPcrs,
+  :fragments,
+  :frameStart,
   :gate,
   :insert,
-  :insert_pcr,
+  :insertPcr,
   :method,
-  :name,
+  :names,
   :ok,
-  :overlap_len,
+  :overlapLen,
   :provenance,
   :result,
   :tool,
   :vector,
-  :vector_pcr,
+  :vectorPcr,
   keyword_init: true
 )
 
 # VerifyConstruct entity data model.
 #
-# @!attribute [rw] claimed_construct
+# @!attribute [rw] claimedConstruct
 #   @return [String]
 #
-# @!attribute [rw] expected_frame_start
+# @!attribute [rw] expectedFrameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] insert_forward_primer
+# @!attribute [rw] insertForwardPrimer
 #   @return [String]
 #
-# @!attribute [rw] insert_reverse_primer
+# @!attribute [rw] insertReversePrimer
 #   @return [String]
 #
-# @!attribute [rw] insert_template
+# @!attribute [rw] insertTemplate
 #   @return [String]
 #
-# @!attribute [rw] max_primer_mismatch
+# @!attribute [rw] maxPrimerMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -6590,48 +6710,48 @@ VerifyAssemblyCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] template_circular
+# @!attribute [rw] templateCircular
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 VerifyConstruct = Struct.new(
-  :claimed_construct,
-  :expected_frame_start,
+  :claimedConstruct,
+  :expectedFrameStart,
   :gate,
-  :insert_forward_primer,
-  :insert_reverse_primer,
-  :insert_template,
-  :max_primer_mismatch,
+  :insertForwardPrimer,
+  :insertReversePrimer,
+  :insertTemplate,
+  :maxPrimerMismatches,
   :ok,
   :provenance,
   :result,
-  :template_circular,
+  :templateCircular,
   :tool,
   keyword_init: true
 )
 
 # Request payload for VerifyConstruct#create.
 #
-# @!attribute [rw] claimed_construct
+# @!attribute [rw] claimedConstruct
 #   @return [String]
 #
-# @!attribute [rw] expected_frame_start
+# @!attribute [rw] expectedFrameStart
 #   @return [Integer, nil]
 #
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] insert_forward_primer
+# @!attribute [rw] insertForwardPrimer
 #   @return [String]
 #
-# @!attribute [rw] insert_reverse_primer
+# @!attribute [rw] insertReversePrimer
 #   @return [String]
 #
-# @!attribute [rw] insert_template
+# @!attribute [rw] insertTemplate
 #   @return [String]
 #
-# @!attribute [rw] max_primer_mismatch
+# @!attribute [rw] maxPrimerMismatches
 #   @return [Integer, nil]
 #
 # @!attribute [rw] ok
@@ -6643,23 +6763,23 @@ VerifyConstruct = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] template_circular
+# @!attribute [rw] templateCircular
 #   @return [Boolean, nil]
 #
 # @!attribute [rw] tool
 #   @return [String]
 VerifyConstructCreateData = Struct.new(
-  :claimed_construct,
-  :expected_frame_start,
+  :claimedConstruct,
+  :expectedFrameStart,
   :gate,
-  :insert_forward_primer,
-  :insert_reverse_primer,
-  :insert_template,
-  :max_primer_mismatch,
+  :insertForwardPrimer,
+  :insertReversePrimer,
+  :insertTemplate,
+  :maxPrimerMismatches,
   :ok,
   :provenance,
   :result,
-  :template_circular,
+  :templateCircular,
   :tool,
   keyword_init: true
 )
@@ -6669,7 +6789,7 @@ VerifyConstructCreateData = Struct.new(
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] enzyme
+# @!attribute [rw] enzymes
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -6694,7 +6814,7 @@ VerifyConstructCreateData = Struct.new(
 #   @return [String]
 VirtualGel = Struct.new(
   :circular,
-  :enzyme,
+  :enzymes,
   :gate,
   :ladder,
   :ok,
@@ -6710,7 +6830,7 @@ VirtualGel = Struct.new(
 # @!attribute [rw] circular
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] enzyme
+# @!attribute [rw] enzymes
 #   @return [Array, nil]
 #
 # @!attribute [rw] gate
@@ -6735,7 +6855,7 @@ VirtualGel = Struct.new(
 #   @return [String]
 VirtualGelCreateData = Struct.new(
   :circular,
-  :enzyme,
+  :enzymes,
   :gate,
   :ladder,
   :ok,
@@ -6760,7 +6880,7 @@ VirtualGelCreateData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] row
+# @!attribute [rw] rows
 #   @return [Array]
 #
 # @!attribute [rw] tool
@@ -6770,7 +6890,7 @@ VolcanoPlotData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :row,
+  :rows,
   :tool,
   keyword_init: true
 )
@@ -6789,7 +6909,7 @@ VolcanoPlotData = Struct.new(
 # @!attribute [rw] result
 #   @return [Hash]
 #
-# @!attribute [rw] row
+# @!attribute [rw] rows
 #   @return [Array]
 #
 # @!attribute [rw] tool
@@ -6799,7 +6919,7 @@ VolcanoPlotDataCreateData = Struct.new(
   :ok,
   :provenance,
   :result,
-  :row,
+  :rows,
   :tool,
   keyword_init: true
 )
@@ -6809,7 +6929,7 @@ VolcanoPlotDataCreateData = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_result
+# @!attribute [rw] max_results
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -6828,7 +6948,7 @@ VolcanoPlotDataCreateData = Struct.new(
 #   @return [String]
 WebSearch = Struct.new(
   :gate,
-  :max_result,
+  :max_results,
   :ok,
   :provenance,
   :query,
@@ -6842,7 +6962,7 @@ WebSearch = Struct.new(
 # @!attribute [rw] gate
 #   @return [Object, nil]
 #
-# @!attribute [rw] max_result
+# @!attribute [rw] max_results
 #   @return [Float, nil]
 #
 # @!attribute [rw] ok
@@ -6861,7 +6981,7 @@ WebSearch = Struct.new(
 #   @return [String]
 WebSearchCreateData = Struct.new(
   :gate,
-  :max_result,
+  :max_results,
   :ok,
   :provenance,
   :query,

@@ -6,12 +6,12 @@ main: kit: entity: parse_sanger_trace: {
 
   fields: [
     {
-      name: "file_base64"
+      name: "fileBase64"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "file_name"
+      name: "fileName"
       req: false
       type: "`$STRING`"
     }
@@ -54,7 +54,10 @@ main: kit: entity: parse_sanger_trace: {
             "parse_sanger_trace"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              fileBase64: "`reqdata.file_base64`"
+              fileName: "`reqdata.file_name`"
+            }
             res: "`body`"
           }
         }

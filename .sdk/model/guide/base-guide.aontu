@@ -8,24 +8,33 @@ guide: {
   entity: alphafold_lookup: {
     path: "/alphafold_lookup": {
       op: create: method: *POST
+      op: create: transform: req: "accession": *("`reqdata.accession`")|top
     }
   }
 
   entity: aso_design: {
     path: "/aso_design": {
       op: create: method: *POST
+      op: create: transform: req: "length": *("`reqdata.length`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
+      op: create: transform: req: "wing": *("`reqdata.wing`")|top
     }
   }
 
   entity: base_editing_design: {
     path: "/base_editing_design": {
       op: create: method: *POST
+      op: create: transform: req: "editor": *("`reqdata.editor`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
+      op: create: transform: req: "targetPosition": *("`reqdata.target_position`")|top
     }
   }
 
   entity: batch: {
     path: "/batch": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.result`")|top
       op: load: method: *GET
     }
   }
@@ -33,6 +42,7 @@ guide: {
   entity: batch__workflow: {
     path: "/workflow": {
       op: create: method: *POST
+      op: create: transform: res: *("`body.result`")|top
       op: load: method: *GET
     }
   }
@@ -40,186 +50,312 @@ guide: {
   entity: characterize_sequence: {
     path: "/characterize_sequence": {
       op: create: method: *POST
+      op: create: transform: req: "endPrimerLength": *("`reqdata.end_primer_length`")|top
+      op: create: transform: req: "maxOrfs": *("`reqdata.max_orf`")|top
+      op: create: transform: req: "minOrfAa": *("`reqdata.min_orf_aa`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: cloning_simulate: {
     path: "/cloning_simulate": {
       op: create: method: *POST
+      op: create: transform: req: "armTmTarget": *("`reqdata.arm_tm_target`")|top
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "enzyme": *("`reqdata.enzyme`")|top
+      op: create: transform: req: "enzyme3": *("`reqdata.enzyme3`")|top
+      op: create: transform: req: "enzyme5": *("`reqdata.enzyme5`")|top
+      op: create: transform: req: "fragments": *("`reqdata.fragment`")|top
+      op: create: transform: req: "insert": *("`reqdata.insert`")|top
+      op: create: transform: req: "method": *("`reqdata.method`")|top
+      op: create: transform: req: "names": *("`reqdata.name`")|top
+      op: create: transform: req: "overlapLen": *("`reqdata.overlap_len`")|top
+      op: create: transform: req: "vector": *("`reqdata.vector`")|top
     }
   }
 
   entity: codon_adaptation_index: {
     path: "/codon_adaptation_index": {
       op: create: method: *POST
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "rareThreshold": *("`reqdata.rare_threshold`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: codon_optimize: {
     path: "/codon_optimize": {
       op: create: method: *POST
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "protein": *("`reqdata.protein`")|top
     }
   }
 
   entity: construct_autofix: {
     path: "/construct_autofix": {
       op: create: method: *POST
+      op: create: transform: req: "avoidEnzymes": *("`reqdata.avoid_enzyme`")|top
+      op: create: transform: req: "crypticOrfMinAa": *("`reqdata.cryptic_orf_min_aa`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "gcHigh": *("`reqdata.gc_high`")|top
+      op: create: transform: req: "gcLow": *("`reqdata.gc_low`")|top
+      op: create: transform: req: "gcWindow": *("`reqdata.gc_window`")|top
+      op: create: transform: req: "homopolymerMin": *("`reqdata.homopolymer_min`")|top
+      op: create: transform: req: "maxPasses": *("`reqdata.max_pass`")|top
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: construct_qc: {
     path: "/construct_qc": {
       op: create: method: *POST
+      op: create: transform: req: "avoidEnzymes": *("`reqdata.avoid_enzyme`")|top
+      op: create: transform: req: "crypticOrfMinAa": *("`reqdata.cryptic_orf_min_aa`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "gcHigh": *("`reqdata.gc_high`")|top
+      op: create: transform: req: "gcLow": *("`reqdata.gc_low`")|top
+      op: create: transform: req: "gcWindow": *("`reqdata.gc_window`")|top
+      op: create: transform: req: "homopolymerMin": *("`reqdata.homopolymer_min`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: crispr_grna_design: {
     path: "/crispr_grna_design": {
       op: create: method: *POST
+      op: create: transform: req: "minScore": *("`reqdata.min_score`")|top
+      op: create: transform: req: "nuclease": *("`reqdata.nuclease`")|top
+      op: create: transform: req: "searchReverseStrand": *("`reqdata.search_reverse_strand`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: crispr_hdr_donor: {
     path: "/crispr_hdr_donor": {
       op: create: method: *POST
+      op: create: transform: req: "armLength": *("`reqdata.arm_length`")|top
+      op: create: transform: req: "blockPam": *("`reqdata.block_pam`")|top
+      op: create: transform: req: "designGenotypingPrimers": *("`reqdata.design_genotyping_primer`")|top
+      op: create: transform: req: "editEnd": *("`reqdata.edit_end`")|top
+      op: create: transform: req: "editStart": *("`reqdata.edit_start`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "guideEnd": *("`reqdata.guide_end`")|top
+      op: create: transform: req: "guideStart": *("`reqdata.guide_start`")|top
+      op: create: transform: req: "guideStrand": *("`reqdata.guide_strand`")|top
+      op: create: transform: req: "nuclease": *("`reqdata.nuclease`")|top
+      op: create: transform: req: "replacement": *("`reqdata.replacement`")|top
+      op: create: transform: req: "targetSequence": *("`reqdata.target_sequence`")|top
     }
   }
 
   entity: crispr_offtarget_check: {
     path: "/crispr_offtarget_check": {
       op: create: method: *POST
+      op: create: transform: req: "maxMismatches": *("`reqdata.max_mismatch`")|top
+      op: create: transform: req: "nuclease": *("`reqdata.nuclease`")|top
+      op: create: transform: req: "protospacer": *("`reqdata.protospacer`")|top
     }
   }
 
   entity: cross_dimer: {
     path: "/cross_dimer": {
       op: create: method: *POST
+      op: create: transform: req: "sequenceA": *("`reqdata.sequence_a`")|top
+      op: create: transform: req: "sequenceB": *("`reqdata.sequence_b`")|top
     }
   }
 
   entity: dna_molarity: {
     path: "/dna_molarity": {
       op: create: method: *POST
+      op: create: transform: req: "length": *("`reqdata.length`")|top
+      op: create: transform: req: "massNg": *("`reqdata.mass_ng`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "type": *("`reqdata.type`")|top
+      op: create: transform: req: "volumeUl": *("`reqdata.volume_ul`")|top
     }
   }
 
   entity: double_digest: {
     path: "/double_digest": {
       op: create: method: *POST
+      op: create: transform: req: "enzymeA": *("`reqdata.enzyme_a`")|top
+      op: create: transform: req: "enzymeB": *("`reqdata.enzyme_b`")|top
     }
   }
 
   entity: export_echo_picklist: {
     path: "/export_echo_picklist": {
       op: create: method: *POST
+      op: create: transform: req: "reactions": *("`reqdata.reaction`")|top
     }
   }
 
   entity: export_opentrons_protocol: {
     path: "/export_opentrons_protocol": {
       op: create: method: *POST
+      op: create: transform: req: "protocolName": *("`reqdata.protocol_name`")|top
+      op: create: transform: req: "reactions": *("`reqdata.reaction`")|top
     }
   }
 
   entity: export_plate_layout: {
     path: "/export_plate_layout": {
       op: create: method: *POST
+      op: create: transform: req: "reactions": *("`reqdata.reaction`")|top
     }
   }
 
   entity: expression_heatmap_cluster: {
     path: "/expression_heatmap_cluster": {
       op: create: method: *POST
+      op: create: transform: req: "clusterCols": *("`reqdata.cluster_col`")|top
+      op: create: transform: req: "clusterRows": *("`reqdata.cluster_row`")|top
+      op: create: transform: req: "distanceMetric": *("`reqdata.distance_metric`")|top
+      op: create: transform: req: "genes": *("`reqdata.gene`")|top
+      op: create: transform: req: "linkage": *("`reqdata.linkage`")|top
+      op: create: transform: req: "samples": *("`reqdata.sample`")|top
+      op: create: transform: req: "values": *("`reqdata.value`")|top
+      op: create: transform: req: "zScoreRows": *("`reqdata.z_score_row`")|top
     }
   }
 
   entity: fastq_qc_report: {
     path: "/fastq_qc_report": {
       op: create: method: *POST
+      op: create: transform: req: "input": *("`reqdata.input`")|top
+      op: create: transform: req: "qualityOffset": *("`reqdata.quality_offset`")|top
     }
   }
 
   entity: fastq_trim: {
     path: "/fastq_trim": {
       op: create: method: *POST
+      op: create: transform: req: "input": *("`reqdata.input`")|top
+      op: create: transform: req: "minLength": *("`reqdata.min_length`")|top
+      op: create: transform: req: "qualityOffset": *("`reqdata.quality_offset`")|top
+      op: create: transform: req: "qualityThreshold": *("`reqdata.quality_threshold`")|top
     }
   }
 
   entity: find_orf: {
     path: "/find_orfs": {
       op: create: method: *POST
+      op: create: transform: req: "minAaLength": *("`reqdata.min_aa_length`")|top
+      op: create: transform: req: "requireStop": *("`reqdata.require_stop`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: format_sequence: {
     path: "/format_sequence": {
       op: create: method: *POST
+      op: create: transform: req: "caseMode": *("`reqdata.case_mode`")|top
+      op: create: transform: req: "convert": *("`reqdata.convert`")|top
+      op: create: transform: req: "reverse": *("`reqdata.reverse`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "stripNonLetters": *("`reqdata.strip_non_letter`")|top
+      op: create: transform: req: "width": *("`reqdata.width`")|top
     }
   }
 
   entity: functional_enrichment: {
     path: "/functional_enrichment": {
       op: create: method: *POST
+      op: create: transform: req: "background": *("`reqdata.background`")|top
+      op: create: transform: req: "collections": *("`reqdata.collection`")|top
+      op: create: transform: req: "genes": *("`reqdata.gene`")|top
+      op: create: transform: req: "maxTermSize": *("`reqdata.max_term_size`")|top
+      op: create: transform: req: "minTermSize": *("`reqdata.min_term_size`")|top
     }
   }
 
   entity: gc_content: {
     path: "/gc_content": {
       op: create: method: *POST
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: gene_dossier: {
     path: "/gene_dossier": {
       op: create: method: *POST
+      op: create: transform: req: "gene": *("`reqdata.gene`")|top
     }
   }
 
   entity: gene_expression: {
     path: "/gene_expression": {
       op: create: method: *POST
+      op: create: transform: req: "gene": *("`reqdata.gene`")|top
     }
   }
 
   entity: gene_model: {
     path: "/gene_model": {
       op: create: method: *POST
+      op: create: transform: req: "gene": *("`reqdata.gene`")|top
     }
   }
 
   entity: golden_gate_fidelity: {
     path: "/golden_gate_fidelity": {
       op: create: method: *POST
+      op: create: transform: req: "compareToNamedSet": *("`reqdata.compare_to_named_set`")|top
+      op: create: transform: req: "dataset": *("`reqdata.dataset`")|top
+      op: create: transform: req: "overhangs": *("`reqdata.overhang`")|top
+      op: create: transform: req: "riskThreshold": *("`reqdata.risk_threshold`")|top
     }
   }
 
   entity: hgvs_convert: {
     path: "/hgvs_convert": {
       op: create: method: *POST
+      op: create: transform: req: "variant": *("`reqdata.variant`")|top
     }
   }
 
   entity: id_map_poll: {
     path: "/id_map_poll": {
       op: create: method: *POST
+      op: create: transform: req: "jobId": *("`reqdata.job_id`")|top
     }
   }
 
   entity: id_map_submit: {
     path: "/id_map_submit": {
       op: create: method: *POST
+      op: create: transform: req: "from": *("`reqdata.from`")|top
+      op: create: transform: req: "ids": *("`reqdata.ids`")|top
+      op: create: transform: req: "taxId": *("`reqdata.tax_id`")|top
+      op: create: transform: req: "to": *("`reqdata.to`")|top
     }
   }
 
   entity: in_silico_pcr: {
     path: "/in_silico_pcr": {
       op: create: method: *POST
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "forwardPrimer": *("`reqdata.forward_primer`")|top
+      op: create: transform: req: "maxMismatches": *("`reqdata.max_mismatch`")|top
+      op: create: transform: req: "reversePrimer": *("`reqdata.reverse_primer`")|top
+      op: create: transform: req: "template": *("`reqdata.template`")|top
     }
   }
 
   entity: kasp_primer_design: {
     path: "/kasp_primer_design": {
       op: create: method: *POST
+      op: create: transform: req: "addSecondaryMismatch": *("`reqdata.add_secondary_mismatch`")|top
+      op: create: transform: req: "alleleA": *("`reqdata.allele_a`")|top
+      op: create: transform: req: "alleleB": *("`reqdata.allele_b`")|top
+      op: create: transform: req: "maxAmplicon": *("`reqdata.max_amplicon`")|top
+      op: create: transform: req: "minAmplicon": *("`reqdata.min_amplicon`")|top
+      op: create: transform: req: "snpPosition": *("`reqdata.snp_position`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
+      op: create: transform: req: "targetCoreTm": *("`reqdata.target_core_tm`")|top
     }
   }
 
@@ -232,288 +368,483 @@ guide: {
   entity: melting_temperature: {
     path: "/melting_temperature": {
       op: create: method: *POST
+      op: create: transform: req: "dntpMM": *("`reqdata.dntp_mm`")|top
+      op: create: transform: req: "mgMM": *("`reqdata.mg_mm`")|top
+      op: create: transform: req: "naMM": *("`reqdata.na_mm`")|top
+      op: create: transform: req: "oligoNM": *("`reqdata.oligo_nm`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "targetTm": *("`reqdata.target_tm`")|top
+      op: create: transform: req: "tmTolerance": *("`reqdata.tm_tolerance`")|top
     }
   }
 
   entity: motif_finder: {
     path: "/motif_finder": {
       op: create: method: *POST
+      op: create: transform: req: "maxMismatches": *("`reqdata.max_mismatch`")|top
+      op: create: transform: req: "motif": *("`reqdata.motif`")|top
+      op: create: transform: req: "searchReverseStrand": *("`reqdata.search_reverse_strand`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: multiple_sequence_alignment: {
     path: "/multiple_sequence_alignment": {
       op: create: method: *POST
+      op: create: transform: req: "input": *("`reqdata.input`")|top
     }
   }
 
   entity: oligo_analysi: {
     path: "/oligo_analysis": {
       op: create: method: *POST
+      op: create: transform: req: "dntpMM": *("`reqdata.dntp_mm`")|top
+      op: create: transform: req: "mgMM": *("`reqdata.mg_mm`")|top
+      op: create: transform: req: "naMM": *("`reqdata.na_mm`")|top
+      op: create: transform: req: "oligoNM": *("`reqdata.oligo_nm`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: ortholog_map: {
     path: "/ortholog_map": {
       op: create: method: *POST
+      op: create: transform: req: "sourceSpecies": *("`reqdata.source_species`")|top
+      op: create: transform: req: "symbols": *("`reqdata.symbol`")|top
+      op: create: transform: req: "targetSpecies": *("`reqdata.target_species`")|top
+      op: create: transform: req: "type": *("`reqdata.type`")|top
     }
   }
 
   entity: pairwise_alignment: {
     path: "/pairwise_alignment": {
       op: create: method: *POST
+      op: create: transform: req: "gap": *("`reqdata.gap`")|top
+      op: create: transform: req: "match": *("`reqdata.match`")|top
+      op: create: transform: req: "mismatch": *("`reqdata.mismatch`")|top
+      op: create: transform: req: "mode": *("`reqdata.mode`")|top
+      op: create: transform: req: "seqA": *("`reqdata.seq_a`")|top
+      op: create: transform: req: "seqB": *("`reqdata.seq_b`")|top
     }
   }
 
   entity: parse_genbank: {
     path: "/parse_genbank": {
       op: create: method: *POST
+      op: create: transform: req: "text": *("`reqdata.text`")|top
     }
   }
 
   entity: parse_sanger_trace: {
     path: "/parse_sanger_trace": {
       op: create: method: *POST
+      op: create: transform: req: "fileBase64": *("`reqdata.file_base64`")|top
+      op: create: transform: req: "fileName": *("`reqdata.file_name`")|top
     }
   }
 
   entity: plasmid_annotate: {
     path: "/plasmid_annotate": {
       op: create: method: *POST
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: plasmid_deep_annotate: {
     path: "/plasmid_deep_annotate": {
       op: create: method: *POST
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: plasmid_full_report: {
     path: "/plasmid_full_report": {
       op: create: method: *POST
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "topN": *("`reqdata.top_n`")|top
     }
   }
 
   entity: plasmid_identify: {
     path: "/plasmid_identify": {
       op: create: method: *POST
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "topN": *("`reqdata.top_n`")|top
     }
   }
 
   entity: prime_editing_design: {
     path: "/prime_editing_design": {
       op: create: method: *POST
+      op: create: transform: req: "editEnd": *("`reqdata.edit_end`")|top
+      op: create: transform: req: "editStart": *("`reqdata.edit_start`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "insertedSeq": *("`reqdata.inserted_seq`")|top
+      op: create: transform: req: "pbsLength": *("`reqdata.pbs_length`")|top
+      op: create: transform: req: "rttHomology": *("`reqdata.rtt_homology`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
     }
   }
 
   entity: prime_editing_twin_design: {
     path: "/prime_editing_twin_design": {
       op: create: method: *POST
+      op: create: transform: req: "newSequence": *("`reqdata.new_sequence`")|top
+      op: create: transform: req: "overlapLength": *("`reqdata.overlap_length`")|top
+      op: create: transform: req: "pbsLength": *("`reqdata.pbs_length`")|top
+      op: create: transform: req: "replaceEnd": *("`reqdata.replace_end`")|top
+      op: create: transform: req: "replaceStart": *("`reqdata.replace_start`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
     }
   }
 
   entity: primer_design: {
     path: "/primer_design": {
       op: create: method: *POST
+      op: create: transform: req: "ampliconMax": *("`reqdata.amplicon_max`")|top
+      op: create: transform: req: "ampliconMin": *("`reqdata.amplicon_min`")|top
+      op: create: transform: req: "dntpMM": *("`reqdata.dntp_mm`")|top
+      op: create: transform: req: "gcMax": *("`reqdata.gc_max`")|top
+      op: create: transform: req: "gcMin": *("`reqdata.gc_min`")|top
+      op: create: transform: req: "lenMax": *("`reqdata.len_max`")|top
+      op: create: transform: req: "lenMin": *("`reqdata.len_min`")|top
+      op: create: transform: req: "lenOpt": *("`reqdata.len_opt`")|top
+      op: create: transform: req: "maxReturn": *("`reqdata.max_return`")|top
+      op: create: transform: req: "mgMM": *("`reqdata.mg_mm`")|top
+      op: create: transform: req: "naMM": *("`reqdata.na_mm`")|top
+      op: create: transform: req: "oligoNM": *("`reqdata.oligo_nm`")|top
+      op: create: transform: req: "targetEnd": *("`reqdata.target_end`")|top
+      op: create: transform: req: "targetStart": *("`reqdata.target_start`")|top
+      op: create: transform: req: "template": *("`reqdata.template`")|top
+      op: create: transform: req: "tmMax": *("`reqdata.tm_max`")|top
+      op: create: transform: req: "tmMaxDiff": *("`reqdata.tm_max_diff`")|top
+      op: create: transform: req: "tmMin": *("`reqdata.tm_min`")|top
+      op: create: transform: req: "tmOpt": *("`reqdata.tm_opt`")|top
     }
   }
 
   entity: primer_specificity: {
     path: "/primer_specificity": {
       op: create: method: *POST
+      op: create: transform: req: "forwardPrimer": *("`reqdata.forward_primer`")|top
+      op: create: transform: req: "maxMismatches": *("`reqdata.max_mismatch`")|top
+      op: create: transform: req: "maxProductLength": *("`reqdata.max_product_length`")|top
+      op: create: transform: req: "reversePrimer": *("`reqdata.reverse_primer`")|top
     }
   }
 
   entity: protease_digestion: {
     path: "/protease_digestion": {
       op: create: method: *POST
+      op: create: transform: req: "maxMass": *("`reqdata.max_mass`")|top
+      op: create: transform: req: "maxPeptides": *("`reqdata.max_peptide`")|top
+      op: create: transform: req: "minMass": *("`reqdata.min_mass`")|top
+      op: create: transform: req: "missedCleavages": *("`reqdata.missed_cleavage`")|top
+      op: create: transform: req: "protease": *("`reqdata.protease`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: protein_annotate_poll: {
     path: "/protein_annotate_poll": {
       op: create: method: *POST
+      op: create: transform: req: "jobId": *("`reqdata.job_id`")|top
     }
   }
 
   entity: protein_annotate_submit: {
     path: "/protein_annotate_submit": {
       op: create: method: *POST
+      op: create: transform: req: "appl": *("`reqdata.appl`")|top
+      op: create: transform: req: "goterms": *("`reqdata.goterm`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: protein_hydrophobicity: {
     path: "/protein_hydrophobicity": {
       op: create: method: *POST
+      op: create: transform: req: "scale": *("`reqdata.scale`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "window": *("`reqdata.window`")|top
     }
   }
 
   entity: protein_property: {
     path: "/protein_properties": {
       op: create: method: *POST
+      op: create: transform: req: "chargeStep": *("`reqdata.charge_step`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: random_sequence: {
     path: "/random_sequence": {
       op: create: method: *POST
+      op: create: transform: req: "gcContent": *("`reqdata.gc_content`")|top
+      op: create: transform: req: "kind": *("`reqdata.kind`")|top
+      op: create: transform: req: "length": *("`reqdata.length`")|top
     }
   }
 
   entity: restriction_site: {
     path: "/restriction_sites": {
       op: create: method: *POST
+      op: create: transform: req: "enzymes": *("`reqdata.enzyme`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: reverse_complement: {
     path: "/reverse_complement": {
       op: create: method: *POST
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "type": *("`reqdata.type`")|top
     }
   }
 
   entity: reverse_translate: {
     path: "/reverse_translate": {
       op: create: method: *POST
+      op: create: transform: req: "mode": *("`reqdata.mode`")|top
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "protein": *("`reqdata.protein`")|top
     }
   }
 
   entity: rna_fold: {
     path: "/rna_fold": {
       op: create: method: *POST
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: sanger_vs_reference: {
     path: "/sanger_vs_reference": {
       op: create: method: *POST
+      op: create: transform: req: "fileBase64": *("`reqdata.file_base64`")|top
+      op: create: transform: req: "fileName": *("`reqdata.file_name`")|top
+      op: create: transform: req: "minCoverage": *("`reqdata.min_coverage`")|top
+      op: create: transform: req: "read": *("`reqdata.read`")|top
+      op: create: transform: req: "reference": *("`reqdata.reference`")|top
     }
   }
 
   entity: save_permalink: {
     path: "/save_permalink": {
       op: create: method: *POST
+      op: create: transform: req: "args": *("`reqdata.arg`")|top
+      op: create: transform: req: "tool": *("`reqdata.tool`")|top
     }
   }
 
   entity: seqfile_stat: {
     path: "/seqfile_stats": {
       op: create: method: *POST
+      op: create: transform: req: "input": *("`reqdata.input`")|top
+      op: create: transform: req: "qualityOffset": *("`reqdata.quality_offset`")|top
     }
   }
 
   entity: sequence_fetch: {
     path: "/sequence_fetch": {
       op: create: method: *POST
+      op: create: transform: req: "accession": *("`reqdata.accession`")|top
+      op: create: transform: req: "db": *("`reqdata.db`")|top
+      op: create: transform: req: "format": *("`reqdata.format`")|top
     }
   }
 
   entity: sequence_format_convert: {
     path: "/sequence_format_convert": {
       op: create: method: *POST
+      op: create: transform: req: "from": *("`reqdata.from`")|top
+      op: create: transform: req: "input": *("`reqdata.input`")|top
+      op: create: transform: req: "to": *("`reqdata.to`")|top
     }
   }
 
   entity: sequence_report: {
     path: "/sequence_report": {
       op: create: method: *POST
+      op: create: transform: req: "endPrimerLength": *("`reqdata.end_primer_length`")|top
+      op: create: transform: req: "maxOrfs": *("`reqdata.max_orf`")|top
+      op: create: transform: req: "minOrfAa": *("`reqdata.min_orf_aa`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: sequence_search: {
     path: "/sequence_search": {
       op: create: method: *POST
+      op: create: transform: req: "db": *("`reqdata.db`")|top
+      op: create: transform: req: "gene": *("`reqdata.gene`")|top
+      op: create: transform: req: "maxResults": *("`reqdata.max_result`")|top
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "term": *("`reqdata.term`")|top
     }
   }
 
   entity: sequencing_readback_verify: {
     path: "/sequencing_readback_verify": {
       op: create: method: *POST
+      op: create: transform: req: "minSupportingReads": *("`reqdata.min_supporting_read`")|top
+      op: create: transform: req: "reads": *("`reqdata.read`")|top
+      op: create: transform: req: "reference": *("`reqdata.reference`")|top
     }
   }
 
   entity: session_create: {
     path: "/session_create": {
       op: create: method: *POST
+      op: create: transform: req: "entries": *("`reqdata.entry`")|top
     }
   }
 
   entity: session_get: {
     path: "/session_get": {
       op: create: method: *POST
+      op: create: transform: req: "names": *("`reqdata.name`")|top
+      op: create: transform: req: "sessionId": *("`reqdata.session_id`")|top
     }
   }
 
   entity: session_run: {
     path: "/session_run": {
       op: create: method: *POST
+      op: create: transform: req: "args": *("`reqdata.arg`")|top
+      op: create: transform: req: "fromSession": *("`reqdata.from_session`")|top
+      op: create: transform: req: "sessionId": *("`reqdata.session_id`")|top
+      op: create: transform: req: "tool": *("`reqdata.tool`")|top
+      op: create: transform: req: "writeBack": *("`reqdata.write_back`")|top
     }
   }
 
   entity: session_set: {
     path: "/session_set": {
       op: create: method: *POST
+      op: create: transform: req: "entries": *("`reqdata.entry`")|top
+      op: create: transform: req: "sessionId": *("`reqdata.session_id`")|top
     }
   }
 
   entity: sirna_design: {
     path: "/sirna_design": {
       op: create: method: *POST
+      op: create: transform: req: "minReynolds": *("`reqdata.min_reynold`")|top
+      op: create: transform: req: "shRnaLoop": *("`reqdata.sh_rna_loop`")|top
+      op: create: transform: req: "target": *("`reqdata.target`")|top
     }
   }
 
   entity: site_directed_mutagenesi: {
     path: "/site_directed_mutagenesis": {
       op: create: method: *POST
+      op: create: transform: req: "armTmTarget": *("`reqdata.arm_tm_target`")|top
+      op: create: transform: req: "dntpMM": *("`reqdata.dntp_mm`")|top
+      op: create: transform: req: "editKind": *("`reqdata.edit_kind`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "mgMM": *("`reqdata.mg_mm`")|top
+      op: create: transform: req: "naMM": *("`reqdata.na_mm`")|top
+      op: create: transform: req: "newBase": *("`reqdata.new_base`")|top
+      op: create: transform: req: "oligoNM": *("`reqdata.oligo_nm`")|top
+      op: create: transform: req: "organism": *("`reqdata.organism`")|top
+      op: create: transform: req: "position": *("`reqdata.position`")|top
+      op: create: transform: req: "residue": *("`reqdata.residue`")|top
+      op: create: transform: req: "style": *("`reqdata.style`")|top
+      op: create: transform: req: "targetAa": *("`reqdata.target_aa`")|top
+      op: create: transform: req: "template": *("`reqdata.template`")|top
     }
   }
 
   entity: translate: {
     path: "/translate": {
       op: create: method: *POST
+      op: create: transform: req: "frame": *("`reqdata.frame`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
+      op: create: transform: req: "toStop": *("`reqdata.to_stop`")|top
     }
   }
 
   entity: variant_annotate: {
     path: "/variant_annotate": {
       op: create: method: *POST
+      op: create: transform: req: "assembly": *("`reqdata.assembly`")|top
+      op: create: transform: req: "variant": *("`reqdata.variant`")|top
     }
   }
 
   entity: variant_comparator: {
     path: "/variant_comparator": {
       op: create: method: *POST
+      op: create: transform: req: "coding": *("`reqdata.coding`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "query": *("`reqdata.query`")|top
+      op: create: transform: req: "reference": *("`reqdata.reference`")|top
     }
   }
 
   entity: verify_assembly: {
     path: "/verify_assembly": {
       op: create: method: *POST
+      op: create: transform: req: "armTmTarget": *("`reqdata.arm_tm_target`")|top
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "claimedConstruct": *("`reqdata.claimed_construct`")|top
+      op: create: transform: req: "coding": *("`reqdata.coding`")|top
+      op: create: transform: req: "enzyme": *("`reqdata.enzyme`")|top
+      op: create: transform: req: "enzyme3": *("`reqdata.enzyme3`")|top
+      op: create: transform: req: "enzyme5": *("`reqdata.enzyme5`")|top
+      op: create: transform: req: "fragmentPcrs": *("`reqdata.fragment_pcr`")|top
+      op: create: transform: req: "fragments": *("`reqdata.fragment`")|top
+      op: create: transform: req: "frameStart": *("`reqdata.frame_start`")|top
+      op: create: transform: req: "insert": *("`reqdata.insert`")|top
+      op: create: transform: req: "insertPcr": *("`reqdata.insert_pcr`")|top
+      op: create: transform: req: "method": *("`reqdata.method`")|top
+      op: create: transform: req: "names": *("`reqdata.name`")|top
+      op: create: transform: req: "overlapLen": *("`reqdata.overlap_len`")|top
+      op: create: transform: req: "vector": *("`reqdata.vector`")|top
+      op: create: transform: req: "vectorPcr": *("`reqdata.vector_pcr`")|top
     }
   }
 
   entity: verify_construct: {
     path: "/verify_construct": {
       op: create: method: *POST
+      op: create: transform: req: "claimedConstruct": *("`reqdata.claimed_construct`")|top
+      op: create: transform: req: "expectedFrameStart": *("`reqdata.expected_frame_start`")|top
+      op: create: transform: req: "insertForwardPrimer": *("`reqdata.insert_forward_primer`")|top
+      op: create: transform: req: "insertReversePrimer": *("`reqdata.insert_reverse_primer`")|top
+      op: create: transform: req: "insertTemplate": *("`reqdata.insert_template`")|top
+      op: create: transform: req: "maxPrimerMismatches": *("`reqdata.max_primer_mismatch`")|top
+      op: create: transform: req: "templateCircular": *("`reqdata.template_circular`")|top
     }
   }
 
   entity: virtual_gel: {
     path: "/virtual_gel": {
       op: create: method: *POST
+      op: create: transform: req: "circular": *("`reqdata.circular`")|top
+      op: create: transform: req: "enzymes": *("`reqdata.enzyme`")|top
+      op: create: transform: req: "ladder": *("`reqdata.ladder`")|top
+      op: create: transform: req: "sequence": *("`reqdata.sequence`")|top
     }
   }
 
   entity: volcano_plot_data: {
     path: "/volcano_plot_data": {
       op: create: method: *POST
+      op: create: transform: req: "rows": *("`reqdata.row`")|top
     }
   }
 
   entity: web_search: {
     path: "/web_search": {
       op: create: method: *POST
+      op: create: transform: req: "max_results": *("`reqdata.max_result`")|top
+      op: create: transform: req: "query": *("`reqdata.query`")|top
     }
   }
 

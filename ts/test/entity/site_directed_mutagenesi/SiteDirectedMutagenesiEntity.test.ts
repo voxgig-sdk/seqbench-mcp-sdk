@@ -26,8 +26,8 @@ import {
 describe('SiteDirectedMutagenesiEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('SiteDirectedMutagenesiEntity', async () => {
     const site_directed_mutagenesi_ref01_ent = client.SiteDirectedMutagenesi()
     let site_directed_mutagenesi_ref01_data = setup.data.new.site_directed_mutagenesi['site_directed_mutagenesi_ref01']
 
-    site_directed_mutagenesi_ref01_data = await site_directed_mutagenesi_ref01_ent.create(site_directed_mutagenesi_ref01_data)
+    site_directed_mutagenesi_ref01_data = (await site_directed_mutagenesi_ref01_ent.create(site_directed_mutagenesi_ref01_data)).data()
     assert(null != site_directed_mutagenesi_ref01_data)
 
 

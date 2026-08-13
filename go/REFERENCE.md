@@ -562,13 +562,13 @@ fmt.Println(baseEditingDesign.GetName()) // "base_editing_design"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `editor` | `string` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_position` | `int` | No |  |
+| `targetPosition` | `int` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -626,10 +626,15 @@ fmt.Println(batch.GetName()) // "batch"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `map[string]any` | No |  |
+| `args` | `map[string]any` | No |  |
+| `capped` | `bool` | Yes |  |
+| `columns` | `[]any` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `map[string]any` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `map[string]any` | Yes |  |
+| `rows` | `[]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -652,9 +657,14 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.Batch(nil).Create(map[string]any{
+    "capped": true,
+    "columns": []any{},
+    "count": 1,
+    "errors": 1,
     "input": "example_input",
-    "ok": "example_ok",
-    "result": map[string]any{},
+    "limit": 1,
+    "provenance": map[string]any{},
+    "rows": []any{},
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -698,10 +708,15 @@ fmt.Println(batchWorkflow.GetName()) // "batch__workflow"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
+| `capped` | `bool` | Yes |  |
+| `columns` | `[]any` | Yes |  |
+| `count` | `int` | Yes |  |
+| `errors` | `int` | Yes |  |
 | `input` | `string` | Yes |  |
-| `ok` | `any` | Yes |  |
-| `result` | `map[string]any` | Yes |  |
-| `step` | `[]any` | Yes |  |
+| `limit` | `int` | Yes |  |
+| `provenance` | `map[string]any` | Yes |  |
+| `rows` | `[]any` | Yes |  |
+| `steps` | `[]any` | Yes |  |
 
 ### Operations
 
@@ -723,10 +738,15 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.BatchWorkflow(nil).Create(map[string]any{
+    "capped": true,
+    "columns": []any{},
+    "count": 1,
+    "errors": 1,
     "input": "example_input",
-    "ok": "example_ok",
-    "result": map[string]any{},
-    "step": []any{},
+    "limit": 1,
+    "provenance": map[string]any{},
+    "rows": []any{},
+    "steps": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -769,10 +789,10 @@ fmt.Println(characterizeSequence.GetName()) // "characterize_sequence"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -834,18 +854,18 @@ fmt.Println(cloningSimulate.GetName()) // "cloning_simulate"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float64` | No |  |
+| `armTmTarget` | `float64` | No |  |
 | `circular` | `bool` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `[]any` | No |  |
+| `fragments` | `[]any` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `[]any` | No |  |
+| `names` | `[]any` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -906,12 +926,12 @@ fmt.Println(codonAdaptationIndex.GetName()) // "codon_adaptation_index"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `rare_threshold` | `float64` | No |  |
+| `rareThreshold` | `float64` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -1034,15 +1054,15 @@ fmt.Println(constructAutofix.GetName()) // "construct_autofix"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `[]any` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `[]any` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `float64` | No |  |
-| `gc_low` | `float64` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
-| `max_pass` | `int` | No |  |
+| `gcHigh` | `float64` | No |  |
+| `gcLow` | `float64` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
+| `maxPasses` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -1105,14 +1125,14 @@ fmt.Println(constructQc.GetName()) // "construct_qc"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoid_enzyme` | `[]any` | No |  |
-| `cryptic_orf_min_aa` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `avoidEnzymes` | `[]any` | No |  |
+| `crypticOrfMinAa` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `gc_high` | `float64` | No |  |
-| `gc_low` | `float64` | No |  |
-| `gc_window` | `int` | No |  |
-| `homopolymer_min` | `int` | No |  |
+| `gcHigh` | `float64` | No |  |
+| `gcLow` | `float64` | No |  |
+| `gcWindow` | `int` | No |  |
+| `homopolymerMin` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -1175,12 +1195,12 @@ fmt.Println(crisprGrnaDesign.GetName()) // "crispr_grna_design"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_score` | `float64` | No |  |
+| `minScore` | `float64` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1239,22 +1259,22 @@ fmt.Println(crisprHdrDonor.GetName()) // "crispr_hdr_donor"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_length` | `int` | No |  |
-| `block_pam` | `bool` | No |  |
-| `design_genotyping_primer` | `bool` | No |  |
-| `edit_end` | `int` | No |  |
-| `edit_start` | `int` | No |  |
-| `frame_start` | `int` | No |  |
+| `armLength` | `int` | No |  |
+| `blockPam` | `bool` | No |  |
+| `designGenotypingPrimers` | `bool` | No |  |
+| `editEnd` | `int` | No |  |
+| `editStart` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `guide_end` | `int` | No |  |
-| `guide_start` | `int` | No |  |
-| `guide_strand` | `string` | No |  |
+| `guideEnd` | `int` | No |  |
+| `guideStart` | `int` | No |  |
+| `guideStrand` | `string` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `replacement` | `string` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `target_sequence` | `string` | Yes |  |
+| `targetSequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1269,7 +1289,7 @@ result, err := client.CrisprHdrDonor(nil).Create(map[string]any{
     "provenance": map[string]any{},
     "replacement": "example_replacement",
     "result": map[string]any{},
-    "target_sequence": "example_target_sequence",
+    "targetSequence": "example_targetSequence",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -1314,7 +1334,7 @@ fmt.Println(crisprOfftargetCheck.GetName()) // "crispr_offtarget_check"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `nuclease` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `protospacer` | `string` | Yes |  |
@@ -1381,8 +1401,8 @@ fmt.Println(crossDimer.GetName()) // "cross_dimer"
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `sequence_a` | `string` | Yes |  |
-| `sequence_b` | `string` | Yes |  |
+| `sequenceA` | `string` | Yes |  |
+| `sequenceB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -1396,8 +1416,8 @@ result, err := client.CrossDimer(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "sequence_a": "example_sequence_a",
-    "sequence_b": "example_sequence_b",
+    "sequenceA": "example_sequenceA",
+    "sequenceB": "example_sequenceB",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -1443,14 +1463,14 @@ fmt.Println(dnaMolarity.GetName()) // "dna_molarity"
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `length` | `int` | No |  |
-| `mass_ng` | `float64` | No |  |
+| `massNg` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | No |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
-| `volume_ul` | `float64` | No |  |
+| `volumeUl` | `float64` | No |  |
 
 ### Operations
 
@@ -1506,8 +1526,8 @@ fmt.Println(doubleDigest.GetName()) // "double_digest"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme_a` | `string` | Yes |  |
-| `enzyme_b` | `string` | Yes |  |
+| `enzymeA` | `string` | Yes |  |
+| `enzymeB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -1522,8 +1542,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.DoubleDigest(nil).Create(map[string]any{
-    "enzyme_a": "example_enzyme_a",
-    "enzyme_b": "example_enzyme_b",
+    "enzymeA": "example_enzymeA",
+    "enzymeB": "example_enzymeB",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -1573,7 +1593,7 @@ fmt.Println(exportEchoPicklist.GetName()) // "export_echo_picklist"
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `reaction` | `[]any` | Yes |  |
+| `reactions` | `[]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1587,7 +1607,7 @@ Create a new entity with the given data.
 result, err := client.ExportEchoPicklist(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
-    "reaction": []any{},
+    "reactions": []any{},
     "result": map[string]any{},
     "tool": "example_tool",
 }, nil)
@@ -1634,9 +1654,9 @@ fmt.Println(exportOpentronsProtocol.GetName()) // "export_opentrons_protocol"
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `protocol_name` | `string` | No |  |
+| `protocolName` | `string` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `reaction` | `[]any` | Yes |  |
+| `reactions` | `[]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1650,7 +1670,7 @@ Create a new entity with the given data.
 result, err := client.ExportOpentronsProtocol(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
-    "reaction": []any{},
+    "reactions": []any{},
     "result": map[string]any{},
     "tool": "example_tool",
 }, nil)
@@ -1698,7 +1718,7 @@ fmt.Println(exportPlateLayout.GetName()) // "export_plate_layout"
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `reaction` | `[]any` | Yes |  |
+| `reactions` | `[]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1712,7 +1732,7 @@ Create a new entity with the given data.
 result, err := client.ExportPlateLayout(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
-    "reaction": []any{},
+    "reactions": []any{},
     "result": map[string]any{},
     "tool": "example_tool",
 }, nil)
@@ -1757,19 +1777,19 @@ fmt.Println(expressionHeatmapCluster.GetName()) // "expression_heatmap_cluster"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `cluster_col` | `bool` | No |  |
-| `cluster_row` | `bool` | No |  |
-| `distance_metric` | `string` | No |  |
+| `clusterCols` | `bool` | No |  |
+| `clusterRows` | `bool` | No |  |
+| `distanceMetric` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `[]any` | Yes |  |
+| `genes` | `[]any` | Yes |  |
 | `linkage` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `sample` | `[]any` | Yes |  |
+| `samples` | `[]any` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `value` | `[]any` | Yes |  |
-| `z_score_row` | `bool` | No |  |
+| `values` | `[]any` | Yes |  |
+| `zScoreRows` | `bool` | No |  |
 
 ### Operations
 
@@ -1779,13 +1799,13 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ExpressionHeatmapCluster(nil).Create(map[string]any{
-    "gene": []any{},
+    "genes": []any{},
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "sample": []any{},
+    "samples": []any{},
     "tool": "example_tool",
-    "value": []any{},
+    "values": []any{},
 }, nil)
 if err != nil {
     panic(err)
@@ -1832,7 +1852,7 @@ fmt.Println(fastqQcReport.GetName()) // "fastq_qc_report"
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1893,11 +1913,11 @@ fmt.Println(fastqTrim.GetName()) // "fastq_trim"
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
 | `input` | `string` | Yes |  |
-| `min_length` | `int` | No |  |
+| `minLength` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `quality_offset` | `int` | No |  |
-| `quality_threshold` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
+| `qualityThreshold` | `int` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -1957,10 +1977,10 @@ fmt.Println(findOrf.GetName()) // "find_orf"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_aa_length` | `int` | No |  |
+| `minAaLength` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `require_stop` | `bool` | No |  |
+| `requireStop` | `bool` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -2020,7 +2040,7 @@ fmt.Println(formatSequence.GetName()) // "format_sequence"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `case_mode` | `string` | No |  |
+| `caseMode` | `string` | No |  |
 | `convert` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
@@ -2028,7 +2048,7 @@ fmt.Println(formatSequence.GetName()) // "format_sequence"
 | `result` | `map[string]any` | Yes |  |
 | `reverse` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
-| `strip_non_letter` | `bool` | No |  |
+| `stripNonLetters` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 | `width` | `int` | No |  |
 
@@ -2088,11 +2108,11 @@ fmt.Println(functionalEnrichment.GetName()) // "functional_enrichment"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `background` | `[]any` | No |  |
-| `collection` | `[]any` | No |  |
+| `collections` | `[]any` | No |  |
 | `gate` | `any` | No |  |
-| `gene` | `[]any` | Yes |  |
-| `max_term_size` | `int` | No |  |
-| `min_term_size` | `int` | No |  |
+| `genes` | `[]any` | Yes |  |
+| `maxTermSize` | `int` | No |  |
+| `minTermSize` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -2106,7 +2126,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.FunctionalEnrichment(nil).Create(map[string]any{
-    "gene": []any{},
+    "genes": []any{},
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -2401,14 +2421,14 @@ fmt.Println(goldenGateFidelity.GetName()) // "golden_gate_fidelity"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compare_to_named_set` | `string` | No |  |
+| `compareToNamedSet` | `string` | No |  |
 | `dataset` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
-| `overhang` | `[]any` | Yes |  |
+| `overhangs` | `[]any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `risk_threshold` | `float64` | No |  |
+| `riskThreshold` | `float64` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2420,7 +2440,7 @@ Create a new entity with the given data.
 ```go
 result, err := client.GoldenGateFidelity(nil).Create(map[string]any{
     "ok": "example_ok",
-    "overhang": []any{},
+    "overhangs": []any{},
     "provenance": map[string]any{},
     "result": map[string]any{},
     "tool": "example_tool",
@@ -2529,7 +2549,7 @@ fmt.Println(idMapPoll.GetName()) // "id_map_poll"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -2543,7 +2563,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.IdMapPoll(nil).Create(map[string]any{
-    "job_id": "example_job_id",
+    "jobId": "example_jobId",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -2596,7 +2616,7 @@ fmt.Println(idMapSubmit.GetName()) // "id_map_submit"
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `tax_id` | `string` | No |  |
+| `taxId` | `string` | No |  |
 | `to` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2658,13 +2678,13 @@ fmt.Println(inSilicoPcr.GetName()) // "in_silico_pcr"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -2676,11 +2696,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.InSilicoPcr(nil).Create(map[string]any{
-    "forward_primer": "example_forward_primer",
+    "forwardPrimer": "example_forwardPrimer",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "reverse_primer": "example_reverse_primer",
+    "reversePrimer": "example_reversePrimer",
     "template": "example_template",
     "tool": "example_tool",
 }, nil)
@@ -2725,18 +2745,18 @@ fmt.Println(kaspPrimerDesign.GetName()) // "kasp_primer_design"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `add_secondary_mismatch` | `bool` | No |  |
-| `allele_a` | `string` | Yes |  |
-| `allele_b` | `string` | Yes |  |
+| `addSecondaryMismatch` | `bool` | No |  |
+| `alleleA` | `string` | Yes |  |
+| `alleleB` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_amplicon` | `int` | No |  |
-| `min_amplicon` | `int` | No |  |
+| `maxAmplicon` | `int` | No |  |
+| `minAmplicon` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `snp_position` | `int` | Yes |  |
+| `snpPosition` | `int` | Yes |  |
 | `target` | `string` | Yes |  |
-| `target_core_tm` | `float64` | No |  |
+| `targetCoreTm` | `float64` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2747,12 +2767,12 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.KaspPrimerDesign(nil).Create(map[string]any{
-    "allele_a": "example_allele_a",
-    "allele_b": "example_allele_b",
+    "alleleA": "example_alleleA",
+    "alleleB": "example_alleleB",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "snp_position": 1,
+    "snpPosition": 1,
     "target": "example_target",
     "tool": "example_tool",
 }, nil)
@@ -2842,17 +2862,17 @@ fmt.Println(meltingTemperature.GetName()) // "melting_temperature"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float64` | No |  |
+| `dntpMM` | `float64` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `float64` | No |  |
-| `na_mm` | `float64` | No |  |
+| `mgMM` | `float64` | No |  |
+| `naMM` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `float64` | No |  |
+| `oligoNM` | `float64` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `target_tm` | `float64` | No |  |
-| `tm_tolerance` | `float64` | No |  |
+| `targetTm` | `float64` | No |  |
+| `tmTolerance` | `float64` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -2911,12 +2931,12 @@ fmt.Println(motifFinder.GetName()) // "motif_finder"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
 | `motif` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `search_reverse_strand` | `bool` | No |  |
+| `searchReverseStrand` | `bool` | No |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3038,12 +3058,12 @@ fmt.Println(oligoAnalysi.GetName()) // "oligo_analysi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntp_mm` | `float64` | No |  |
+| `dntpMM` | `float64` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `float64` | No |  |
-| `na_mm` | `float64` | No |  |
+| `mgMM` | `float64` | No |  |
+| `naMM` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `float64` | No |  |
+| `oligoNM` | `float64` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
@@ -3108,9 +3128,9 @@ fmt.Println(orthologMap.GetName()) // "ortholog_map"
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `source_species` | `string` | No |  |
-| `symbol` | `[]any` | Yes |  |
-| `target_species` | `string` | Yes |  |
+| `sourceSpecies` | `string` | No |  |
+| `symbols` | `[]any` | Yes |  |
+| `targetSpecies` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `type` | `string` | No |  |
 
@@ -3125,8 +3145,8 @@ result, err := client.OrthologMap(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "symbol": []any{},
-    "target_species": "example_target_species",
+    "symbols": []any{},
+    "targetSpecies": "example_targetSpecies",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -3178,8 +3198,8 @@ fmt.Println(pairwiseAlignment.GetName()) // "pairwise_alignment"
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `seq_a` | `string` | Yes |  |
-| `seq_b` | `string` | Yes |  |
+| `seqA` | `string` | Yes |  |
+| `seqB` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3193,8 +3213,8 @@ result, err := client.PairwiseAlignment(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "seq_a": "example_seq_a",
-    "seq_b": "example_seq_b",
+    "seqA": "example_seqA",
+    "seqB": "example_seqB",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -3300,8 +3320,8 @@ fmt.Println(parseSangerTrace.GetName()) // "parse_sanger_trace"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | Yes |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | Yes |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -3316,7 +3336,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ParseSangerTrace(nil).Create(map[string]any{
-    "file_base64": "example_file_base64",
+    "fileBase64": "example_fileBase64",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -3495,7 +3515,7 @@ fmt.Println(plasmidFullReport.GetName()) // "plasmid_full_report"
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3559,7 +3579,7 @@ fmt.Println(plasmidIdentify.GetName()) // "plasmid_identify"
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `top_n` | `int` | No |  |
+| `topN` | `int` | No |  |
 
 ### Operations
 
@@ -3616,16 +3636,16 @@ fmt.Println(primeEditingDesign.GetName()) // "prime_editing_design"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `edit_end` | `int` | Yes |  |
-| `edit_start` | `int` | Yes |  |
-| `frame_start` | `int` | No |  |
+| `editEnd` | `int` | Yes |  |
+| `editStart` | `int` | Yes |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `inserted_seq` | `string` | No |  |
+| `insertedSeq` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `pbs_length` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `rtt_homology` | `int` | No |  |
+| `rttHomology` | `int` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -3637,8 +3657,8 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PrimeEditingDesign(nil).Create(map[string]any{
-    "edit_end": 1,
-    "edit_start": 1,
+    "editEnd": 1,
+    "editStart": 1,
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -3687,13 +3707,13 @@ fmt.Println(primeEditingTwinDesign.GetName()) // "prime_editing_twin_design"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `new_sequence` | `string` | Yes |  |
+| `newSequence` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
-| `overlap_length` | `int` | No |  |
-| `pbs_length` | `int` | No |  |
+| `overlapLength` | `int` | No |  |
+| `pbsLength` | `int` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `replace_end` | `int` | Yes |  |
-| `replace_start` | `int` | Yes |  |
+| `replaceEnd` | `int` | Yes |  |
+| `replaceStart` | `int` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -3706,11 +3726,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PrimeEditingTwinDesign(nil).Create(map[string]any{
-    "new_sequence": "example_new_sequence",
+    "newSequence": "example_newSequence",
     "ok": "example_ok",
     "provenance": map[string]any{},
-    "replace_end": 1,
-    "replace_start": 1,
+    "replaceEnd": 1,
+    "replaceStart": 1,
     "result": map[string]any{},
     "target": "example_target",
     "tool": "example_tool",
@@ -3756,29 +3776,29 @@ fmt.Println(primerDesign.GetName()) // "primer_design"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `amplicon_max` | `int` | No |  |
-| `amplicon_min` | `int` | No |  |
-| `dntp_mm` | `float64` | No |  |
+| `ampliconMax` | `int` | No |  |
+| `ampliconMin` | `int` | No |  |
+| `dntpMM` | `float64` | No |  |
 | `gate` | `any` | No |  |
-| `gc_max` | `float64` | No |  |
-| `gc_min` | `float64` | No |  |
-| `len_max` | `int` | No |  |
-| `len_min` | `int` | No |  |
-| `len_opt` | `int` | No |  |
-| `max_return` | `int` | No |  |
-| `mg_mm` | `float64` | No |  |
-| `na_mm` | `float64` | No |  |
+| `gcMax` | `float64` | No |  |
+| `gcMin` | `float64` | No |  |
+| `lenMax` | `int` | No |  |
+| `lenMin` | `int` | No |  |
+| `lenOpt` | `int` | No |  |
+| `maxReturn` | `int` | No |  |
+| `mgMM` | `float64` | No |  |
+| `naMM` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `float64` | No |  |
+| `oligoNM` | `float64` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `target_end` | `int` | No |  |
-| `target_start` | `int` | No |  |
+| `targetEnd` | `int` | No |  |
+| `targetStart` | `int` | No |  |
 | `template` | `string` | Yes |  |
-| `tm_max` | `float64` | No |  |
-| `tm_max_diff` | `float64` | No |  |
-| `tm_min` | `float64` | No |  |
-| `tm_opt` | `float64` | No |  |
+| `tmMax` | `float64` | No |  |
+| `tmMaxDiff` | `float64` | No |  |
+| `tmMin` | `float64` | No |  |
+| `tmOpt` | `float64` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3836,14 +3856,14 @@ fmt.Println(primerSpecificity.GetName()) // "primer_specificity"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forward_primer` | `string` | Yes |  |
+| `forwardPrimer` | `string` | Yes |  |
 | `gate` | `any` | No |  |
-| `max_mismatch` | `int` | No |  |
-| `max_product_length` | `int` | No |  |
+| `maxMismatches` | `int` | No |  |
+| `maxProductLength` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `reverse_primer` | `string` | Yes |  |
+| `reversePrimer` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -3854,11 +3874,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.PrimerSpecificity(nil).Create(map[string]any{
-    "forward_primer": "example_forward_primer",
+    "forwardPrimer": "example_forwardPrimer",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "reverse_primer": "example_reverse_primer",
+    "reversePrimer": "example_reversePrimer",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -3903,10 +3923,10 @@ fmt.Println(proteaseDigestion.GetName()) // "protease_digestion"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_mass` | `float64` | No |  |
-| `max_peptide` | `int` | No |  |
-| `min_mass` | `float64` | No |  |
-| `missed_cleavage` | `int` | No |  |
+| `maxMass` | `float64` | No |  |
+| `maxPeptides` | `int` | No |  |
+| `minMass` | `float64` | No |  |
+| `missedCleavages` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `protease` | `string` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -3970,7 +3990,7 @@ fmt.Println(proteinAnnotatePoll.GetName()) // "protein_annotate_poll"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `job_id` | `string` | Yes |  |
+| `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -3984,7 +4004,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.ProteinAnnotatePoll(nil).Create(map[string]any{
-    "job_id": "example_job_id",
+    "jobId": "example_jobId",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -4033,7 +4053,7 @@ fmt.Println(proteinAnnotateSubmit.GetName()) // "protein_annotate_submit"
 | --- | --- | --- | --- |
 | `appl` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `goterm` | `bool` | No |  |
+| `goterms` | `bool` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -4159,7 +4179,7 @@ fmt.Println(proteinProperty.GetName()) // "protein_property"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `charge_step` | `float64` | No |  |
+| `chargeStep` | `float64` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -4223,7 +4243,7 @@ fmt.Println(randomSequence.GetName()) // "random_sequence"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `gc_content` | `float64` | No |  |
+| `gcContent` | `float64` | No |  |
 | `kind` | `string` | No |  |
 | `length` | `int` | Yes |  |
 | `ok` | `any` | Yes |  |
@@ -4286,7 +4306,7 @@ fmt.Println(restrictionSite.GetName()) // "restriction_site"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzyme` | `[]any` | No |  |
+| `enzymes` | `[]any` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -4538,10 +4558,10 @@ fmt.Println(sangerVsReference.GetName()) // "sanger_vs_reference"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `file_base64` | `string` | No |  |
-| `file_name` | `string` | No |  |
+| `fileBase64` | `string` | No |  |
+| `fileName` | `string` | No |  |
 | `gate` | `any` | No |  |
-| `min_coverage` | `float64` | No |  |
+| `minCoverage` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `read` | `string` | No |  |
@@ -4604,7 +4624,7 @@ fmt.Println(savePermalink.GetName()) // "save_permalink"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `map[string]any` | Yes |  |
+| `args` | `map[string]any` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -4619,7 +4639,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.SavePermalink(nil).Create(map[string]any{
-    "arg": map[string]any{},
+    "args": map[string]any{},
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -4670,7 +4690,7 @@ fmt.Println(seqfileStat.GetName()) // "seqfile_stat"
 | `input` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `quality_offset` | `int` | No |  |
+| `qualityOffset` | `int` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -4857,10 +4877,10 @@ fmt.Println(sequenceReport.GetName()) // "sequence_report"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `end_primer_length` | `int` | No |  |
+| `endPrimerLength` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `max_orf` | `int` | No |  |
-| `min_orf_aa` | `int` | No |  |
+| `maxOrfs` | `int` | No |  |
+| `minOrfAa` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
@@ -4925,7 +4945,7 @@ fmt.Println(sequenceSearch.GetName()) // "sequence_search"
 | `db` | `string` | No |  |
 | `gate` | `any` | No |  |
 | `gene` | `string` | No |  |
-| `max_result` | `int` | No |  |
+| `maxResults` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -4988,10 +5008,10 @@ fmt.Println(sequencingReadbackVerify.GetName()) // "sequencing_readback_verify"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_supporting_read` | `int` | No |  |
+| `minSupportingReads` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
-| `read` | `string` | Yes |  |
+| `reads` | `string` | Yes |  |
 | `reference` | `string` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
@@ -5006,7 +5026,7 @@ Create a new entity with the given data.
 result, err := client.SequencingReadbackVerify(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
-    "read": "example_read",
+    "reads": "example_reads",
     "reference": "example_reference",
     "result": map[string]any{},
     "tool": "example_tool",
@@ -5052,7 +5072,7 @@ fmt.Println(sessionCreate.GetName()) // "session_create"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `map[string]any` | No |  |
+| `entries` | `map[string]any` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -5114,11 +5134,11 @@ fmt.Println(sessionGet.GetName()) // "session_get"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `name` | `[]any` | No |  |
+| `names` | `[]any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5132,7 +5152,7 @@ result, err := client.SessionGet(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "session_id": "example_session_id",
+    "sessionId": "example_sessionId",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -5176,15 +5196,15 @@ fmt.Println(sessionRun.GetName()) // "session_run"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arg` | `map[string]any` | No |  |
-| `from_session` | `map[string]any` | No |  |
+| `args` | `map[string]any` | No |  |
+| `fromSession` | `map[string]any` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
-| `write_back` | `map[string]any` | No |  |
+| `writeBack` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -5197,7 +5217,7 @@ result, err := client.SessionRun(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "session_id": "example_session_id",
+    "sessionId": "example_sessionId",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -5241,12 +5261,12 @@ fmt.Println(sessionSet.GetName()) // "session_set"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entry` | `map[string]any` | Yes |  |
+| `entries` | `map[string]any` | Yes |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `session_id` | `string` | Yes |  |
+| `sessionId` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5257,11 +5277,11 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.SessionSet(nil).Create(map[string]any{
-    "entry": map[string]any{},
+    "entries": map[string]any{},
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "session_id": "example_session_id",
+    "sessionId": "example_sessionId",
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -5306,11 +5326,11 @@ fmt.Println(sirnaDesign.GetName()) // "sirna_design"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `min_reynold` | `int` | No |  |
+| `minReynolds` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `sh_rna_loop` | `string` | No |  |
+| `shRnaLoop` | `string` | No |  |
 | `target` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5369,23 +5389,23 @@ fmt.Println(siteDirectedMutagenesi.GetName()) // "site_directed_mutagenesi"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float64` | No |  |
-| `dntp_mm` | `float64` | No |  |
-| `edit_kind` | `string` | No |  |
-| `frame_start` | `int` | No |  |
+| `armTmTarget` | `float64` | No |  |
+| `dntpMM` | `float64` | No |  |
+| `editKind` | `string` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `mg_mm` | `float64` | No |  |
-| `na_mm` | `float64` | No |  |
-| `new_base` | `string` | No |  |
+| `mgMM` | `float64` | No |  |
+| `naMM` | `float64` | No |  |
+| `newBase` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `oligo_nm` | `float64` | No |  |
+| `oligoNM` | `float64` | No |  |
 | `organism` | `string` | No |  |
 | `position` | `int` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `residue` | `int` | No |  |
 | `result` | `map[string]any` | Yes |  |
 | `style` | `string` | No |  |
-| `target_aa` | `string` | No |  |
+| `targetAa` | `string` | No |  |
 | `template` | `string` | Yes |  |
 | `tool` | `string` | Yes |  |
 
@@ -5450,7 +5470,7 @@ fmt.Println(translate.GetName()) // "translate"
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `sequence` | `string` | Yes |  |
-| `to_stop` | `bool` | No |  |
+| `toStop` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5572,7 +5592,7 @@ fmt.Println(variantComparator.GetName()) // "variant_comparator"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `coding` | `bool` | No |  |
-| `frame_start` | `int` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
@@ -5637,28 +5657,28 @@ fmt.Println(verifyAssembly.GetName()) // "verify_assembly"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `arm_tm_target` | `float64` | No |  |
+| `armTmTarget` | `float64` | No |  |
 | `circular` | `bool` | No |  |
-| `claimed_construct` | `string` | Yes |  |
+| `claimedConstruct` | `string` | Yes |  |
 | `coding` | `bool` | No |  |
 | `enzyme` | `string` | No |  |
 | `enzyme3` | `string` | No |  |
 | `enzyme5` | `string` | No |  |
-| `fragment` | `[]any` | No |  |
-| `fragment_pcr` | `[]any` | No |  |
-| `frame_start` | `int` | No |  |
+| `fragmentPcrs` | `[]any` | No |  |
+| `fragments` | `[]any` | No |  |
+| `frameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
 | `insert` | `string` | No |  |
-| `insert_pcr` | `map[string]any` | No |  |
+| `insertPcr` | `map[string]any` | No |  |
 | `method` | `string` | Yes |  |
-| `name` | `[]any` | No |  |
+| `names` | `[]any` | No |  |
 | `ok` | `any` | Yes |  |
-| `overlap_len` | `int` | No |  |
+| `overlapLen` | `int` | No |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 | `vector` | `string` | No |  |
-| `vector_pcr` | `map[string]any` | No |  |
+| `vectorPcr` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -5668,7 +5688,7 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.VerifyAssembly(nil).Create(map[string]any{
-    "claimed_construct": "example_claimed_construct",
+    "claimedConstruct": "example_claimedConstruct",
     "method": "example_method",
     "ok": "example_ok",
     "provenance": map[string]any{},
@@ -5716,17 +5736,17 @@ fmt.Println(verifyConstruct.GetName()) // "verify_construct"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimed_construct` | `string` | Yes |  |
-| `expected_frame_start` | `int` | No |  |
+| `claimedConstruct` | `string` | Yes |  |
+| `expectedFrameStart` | `int` | No |  |
 | `gate` | `any` | No |  |
-| `insert_forward_primer` | `string` | Yes |  |
-| `insert_reverse_primer` | `string` | Yes |  |
-| `insert_template` | `string` | Yes |  |
-| `max_primer_mismatch` | `int` | No |  |
+| `insertForwardPrimer` | `string` | Yes |  |
+| `insertReversePrimer` | `string` | Yes |  |
+| `insertTemplate` | `string` | Yes |  |
+| `maxPrimerMismatches` | `int` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `template_circular` | `bool` | No |  |
+| `templateCircular` | `bool` | No |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5737,10 +5757,10 @@ Create a new entity with the given data.
 
 ```go
 result, err := client.VerifyConstruct(nil).Create(map[string]any{
-    "claimed_construct": "example_claimed_construct",
-    "insert_forward_primer": "example_insert_forward_primer",
-    "insert_reverse_primer": "example_insert_reverse_primer",
-    "insert_template": "example_insert_template",
+    "claimedConstruct": "example_claimedConstruct",
+    "insertForwardPrimer": "example_insertForwardPrimer",
+    "insertReversePrimer": "example_insertReversePrimer",
+    "insertTemplate": "example_insertTemplate",
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
@@ -5788,7 +5808,7 @@ fmt.Println(virtualGel.GetName()) // "virtual_gel"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `circular` | `bool` | No |  |
-| `enzyme` | `[]any` | No |  |
+| `enzymes` | `[]any` | No |  |
 | `gate` | `any` | No |  |
 | `ladder` | `string` | No |  |
 | `ok` | `any` | Yes |  |
@@ -5856,7 +5876,7 @@ fmt.Println(volcanoPlotData.GetName()) // "volcano_plot_data"
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `result` | `map[string]any` | Yes |  |
-| `row` | `[]any` | Yes |  |
+| `rows` | `[]any` | Yes |  |
 | `tool` | `string` | Yes |  |
 
 ### Operations
@@ -5870,7 +5890,7 @@ result, err := client.VolcanoPlotData(nil).Create(map[string]any{
     "ok": "example_ok",
     "provenance": map[string]any{},
     "result": map[string]any{},
-    "row": []any{},
+    "rows": []any{},
     "tool": "example_tool",
 }, nil)
 if err != nil {
@@ -5915,7 +5935,7 @@ fmt.Println(webSearch.GetName()) // "web_search"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `gate` | `any` | No |  |
-| `max_result` | `float64` | No |  |
+| `max_results` | `float64` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `map[string]any` | Yes |  |
 | `query` | `string` | Yes |  |

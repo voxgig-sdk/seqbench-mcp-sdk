@@ -3,36 +3,36 @@
     "crispr_grna_design": {
       "CRISPR_GRNA_DESIGN00": {
         "gate": "s5a",
-        "min_score": 91,
+        "minScore": 91,
         "nuclease": "s5c",
         "ok": "s5d",
         "provenance": {},
         "result": {},
-        "search_reverse_strand": true,
+        "searchReverseStrand": true,
         "sequence": "s61",
         "tool": "s62",
         "id": "CRISPR_GRNA_DESIGN00"
       },
       "CRISPR_GRNA_DESIGN01": {
         "gate": "sb4",
-        "min_score": 181,
+        "minScore": 181,
         "nuclease": "sb6",
         "ok": "sb7",
         "provenance": {},
         "result": {},
-        "search_reverse_strand": true,
+        "searchReverseStrand": true,
         "sequence": "sbb",
         "tool": "sbc",
         "id": "CRISPR_GRNA_DESIGN01"
       },
       "CRISPR_GRNA_DESIGN02": {
         "gate": "s10e",
-        "min_score": 271,
+        "minScore": 271,
         "nuclease": "s110",
         "ok": "s111",
         "provenance": {},
         "result": {},
-        "search_reverse_strand": true,
+        "searchReverseStrand": true,
         "sequence": "s115",
         "tool": "s116",
         "id": "CRISPR_GRNA_DESIGN02"
@@ -43,12 +43,12 @@
     "crispr_grna_design": {
       "crispr_grna_design_ref01": {
         "gate": "s168",
-        "min_score": 361,
+        "minScore": 361,
         "nuclease": "s16a",
         "ok": "s16b",
         "provenance": {},
         "result": {},
-        "search_reverse_strand": true,
+        "searchReverseStrand": true,
         "sequence": "s16f",
         "tool": "s170"
       }

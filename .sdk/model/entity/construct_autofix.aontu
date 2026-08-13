@@ -6,17 +6,17 @@ main: kit: entity: construct_autofix: {
 
   fields: [
     {
-      name: "avoid_enzyme"
+      name: "avoidEnzymes"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "cryptic_orf_min_aa"
+      name: "crypticOrfMinAa"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "frame_start"
+      name: "frameStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -26,27 +26,27 @@ main: kit: entity: construct_autofix: {
       type: "`$ANY`"
     }
     {
-      name: "gc_high"
+      name: "gcHigh"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "gc_low"
+      name: "gcLow"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "gc_window"
+      name: "gcWindow"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "homopolymer_min"
+      name: "homopolymerMin"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "max_pass"
+      name: "maxPasses"
       req: false
       type: "`$INTEGER`"
     }
@@ -94,7 +94,18 @@ main: kit: entity: construct_autofix: {
             "construct_autofix"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              avoidEnzymes: "`reqdata.avoid_enzyme`"
+              crypticOrfMinAa: "`reqdata.cryptic_orf_min_aa`"
+              frameStart: "`reqdata.frame_start`"
+              gcHigh: "`reqdata.gc_high`"
+              gcLow: "`reqdata.gc_low`"
+              gcWindow: "`reqdata.gc_window`"
+              homopolymerMin: "`reqdata.homopolymer_min`"
+              maxPasses: "`reqdata.max_pass`"
+              organism: "`reqdata.organism`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

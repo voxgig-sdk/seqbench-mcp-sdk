@@ -41,7 +41,7 @@ main: kit: entity: plasmid_identify: {
       type: "`$STRING`"
     }
     {
-      name: "top_n"
+      name: "topN"
       req: false
       type: "`$INTEGER`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: plasmid_identify: {
             "plasmid_identify"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              circular: "`reqdata.circular`"
+              sequence: "`reqdata.sequence`"
+              topN: "`reqdata.top_n`"
+            }
             res: "`body`"
           }
         }

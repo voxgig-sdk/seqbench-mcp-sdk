@@ -11,7 +11,7 @@ main: kit: entity: functional_enrichment: {
       type: "`$ARRAY`"
     }
     {
-      name: "collection"
+      name: "collections"
       req: false
       type: "`$ARRAY`"
     }
@@ -21,17 +21,17 @@ main: kit: entity: functional_enrichment: {
       type: "`$ANY`"
     }
     {
-      name: "gene"
+      name: "genes"
       req: true
       type: "`$ARRAY`"
     }
     {
-      name: "max_term_size"
+      name: "maxTermSize"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "min_term_size"
+      name: "minTermSize"
       req: false
       type: "`$INTEGER`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: functional_enrichment: {
             "functional_enrichment"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              background: "`reqdata.background`"
+              collections: "`reqdata.collection`"
+              genes: "`reqdata.gene`"
+              maxTermSize: "`reqdata.max_term_size`"
+              minTermSize: "`reqdata.min_term_size`"
+            }
             res: "`body`"
           }
         }

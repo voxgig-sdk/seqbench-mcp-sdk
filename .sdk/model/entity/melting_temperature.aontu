@@ -6,7 +6,7 @@ main: kit: entity: melting_temperature: {
 
   fields: [
     {
-      name: "dntp_mm"
+      name: "dntpMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -16,12 +16,12 @@ main: kit: entity: melting_temperature: {
       type: "`$ANY`"
     }
     {
-      name: "mg_mm"
+      name: "mgMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "na_mm"
+      name: "naMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: melting_temperature: {
       type: "`$ANY`"
     }
     {
-      name: "oligo_nm"
+      name: "oligoNM"
       req: false
       type: "`$NUMBER`"
     }
@@ -51,12 +51,12 @@ main: kit: entity: melting_temperature: {
       type: "`$STRING`"
     }
     {
-      name: "target_tm"
+      name: "targetTm"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "tm_tolerance"
+      name: "tmTolerance"
       req: false
       type: "`$NUMBER`"
     }
@@ -79,7 +79,15 @@ main: kit: entity: melting_temperature: {
             "melting_temperature"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              dntpMM: "`reqdata.dntp_mm`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              oligoNM: "`reqdata.oligo_nm`"
+              sequence: "`reqdata.sequence`"
+              targetTm: "`reqdata.target_tm`"
+              tmTolerance: "`reqdata.tm_tolerance`"
+            }
             res: "`body`"
           }
         }

@@ -6,22 +6,47 @@ main: kit: entity: batch__workflow: {
 
   fields: [
     {
+      name: "capped"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "columns"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "errors"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
       name: "input"
       req: true
       type: "`$STRING`"
     }
     {
-      name: "ok"
+      name: "limit"
       req: true
-      type: "`$ANY`"
+      type: "`$INTEGER`"
     }
     {
-      name: "result"
+      name: "provenance"
       req: true
       type: "`$OBJECT`"
     }
     {
-      name: "step"
+      name: "rows"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "steps"
       req: true
       type: "`$ARRAY`"
     }
@@ -40,7 +65,7 @@ main: kit: entity: batch__workflow: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.result`"
           }
         }
       ]

@@ -11,7 +11,7 @@ main: kit: entity: in_silico_pcr: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "forward_primer"
+      name: "forwardPrimer"
       req: true
       type: "`$STRING`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: in_silico_pcr: {
       type: "`$ANY`"
     }
     {
-      name: "max_mismatch"
+      name: "maxMismatches"
       req: false
       type: "`$INTEGER`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: in_silico_pcr: {
       type: "`$OBJECT`"
     }
     {
-      name: "reverse_primer"
+      name: "reversePrimer"
       req: true
       type: "`$STRING`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: in_silico_pcr: {
             "in_silico_pcr"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              circular: "`reqdata.circular`"
+              forwardPrimer: "`reqdata.forward_primer`"
+              maxMismatches: "`reqdata.max_mismatch`"
+              reversePrimer: "`reqdata.reverse_primer`"
+              template: "`reqdata.template`"
+            }
             res: "`body`"
           }
         }

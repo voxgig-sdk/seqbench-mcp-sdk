@@ -26,8 +26,8 @@ import {
 describe('ProteinAnnotateSubmitEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ProteinAnnotateSubmitEntity', async () => {
     const protein_annotate_submit_ref01_ent = client.ProteinAnnotateSubmit()
     let protein_annotate_submit_ref01_data = setup.data.new.protein_annotate_submit['protein_annotate_submit_ref01']
 
-    protein_annotate_submit_ref01_data = await protein_annotate_submit_ref01_ent.create(protein_annotate_submit_ref01_data)
+    protein_annotate_submit_ref01_data = (await protein_annotate_submit_ref01_ent.create(protein_annotate_submit_ref01_data)).data()
     assert(null != protein_annotate_submit_ref01_data)
 
 

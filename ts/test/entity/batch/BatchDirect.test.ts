@@ -19,11 +19,15 @@ import {
 describe('BatchDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new SeqbenchMcpSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -72,19 +76,19 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'SEQBENCHMCP_TEST_BATCH_ENTID': {},
-    'SEQBENCHMCP_TEST_LIVE': 'FALSE',
-    'SEQBENCHMCP_APIKEY': 'NONE',
+    'SEQBENCH_MCP_TEST_BATCH_ENTID': {},
+    'SEQBENCH_MCP_TEST_LIVE': 'FALSE',
+    'SEQBENCH_MCP_APIKEY': 'NONE',
   })
 
-  const live = 'TRUE' === env.SEQBENCHMCP_TEST_LIVE
+  const live = 'TRUE' === env.SEQBENCH_MCP_TEST_LIVE
 
   if (live) {
     const client = new SeqbenchMcpSDK({
-      apikey: env.SEQBENCHMCP_APIKEY,
+      apikey: env.SEQBENCH_MCP_APIKEY,
     })
 
-    let idmap: any = env['SEQBENCHMCP_TEST_BATCH_ENTID']
+    let idmap: any = env['SEQBENCH_MCP_TEST_BATCH_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

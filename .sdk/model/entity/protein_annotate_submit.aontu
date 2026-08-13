@@ -16,7 +16,7 @@ main: kit: entity: protein_annotate_submit: {
       type: "`$ANY`"
     }
     {
-      name: "goterm"
+      name: "goterms"
       req: false
       type: "`$BOOLEAN`"
     }
@@ -59,7 +59,11 @@ main: kit: entity: protein_annotate_submit: {
             "protein_annotate_submit"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              appl: "`reqdata.appl`"
+              goterms: "`reqdata.goterm`"
+              sequence: "`reqdata.sequence`"
+            }
             res: "`body`"
           }
         }

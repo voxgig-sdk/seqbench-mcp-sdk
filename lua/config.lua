@@ -163,6 +163,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/alphafold_lookup",
                 ["parts"] = {
@@ -170,7 +171,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["accession"] = "`reqdata.accession`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -251,6 +254,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/aso_design",
                 ["parts"] = {
@@ -258,7 +262,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["length"] = "`reqdata.length`",
+                    ["target"] = "`reqdata.target`",
+                    ["wing"] = "`reqdata.wing`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -282,7 +290,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -324,7 +332,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_position",
+            ["name"] = "targetPosition",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -346,6 +354,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/base_editing_design",
                 ["parts"] = {
@@ -353,7 +362,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["editor"] = "`reqdata.editor`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["target"] = "`reqdata.target`",
+                    ["targetPosition"] = "`reqdata.target_position`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -370,38 +384,73 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arg",
+            ["name"] = "args",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "input",
+            ["name"] = "capped",
             ["req"] = true,
-            ["type"] = "`$STRING`",
+            ["type"] = "`$BOOLEAN`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "ok",
+            ["name"] = "columns",
             ["req"] = true,
-            ["type"] = "`$ANY`",
+            ["type"] = "`$ARRAY`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "result",
+            ["name"] = "count",
+            ["req"] = true,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 3,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "errors",
+            ["req"] = true,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 4,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "input",
+            ["req"] = true,
+            ["type"] = "`$STRING`",
+            ["index$"] = 5,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "limit",
+            ["req"] = true,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 6,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "provenance",
             ["req"] = true,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 3,
+            ["index$"] = 7,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "rows",
+            ["req"] = true,
+            ["type"] = "`$ARRAY`",
+            ["index$"] = 8,
           },
           {
             ["active"] = true,
             ["name"] = "tool",
             ["req"] = true,
             ["type"] = "`$STRING`",
-            ["index$"] = 4,
+            ["index$"] = 9,
           },
         },
         ["name"] = "batch",
@@ -413,6 +462,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/batch",
                 ["parts"] = {
@@ -421,7 +471,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.result`",
                 },
                 ["index$"] = 0,
               },
@@ -435,6 +485,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/batch",
                 ["parts"] = {
@@ -459,31 +510,66 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "input",
+            ["name"] = "capped",
             ["req"] = true,
-            ["type"] = "`$STRING`",
+            ["type"] = "`$BOOLEAN`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "ok",
+            ["name"] = "columns",
             ["req"] = true,
-            ["type"] = "`$ANY`",
+            ["type"] = "`$ARRAY`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "result",
+            ["name"] = "count",
             ["req"] = true,
-            ["type"] = "`$OBJECT`",
+            ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "step",
+            ["name"] = "errors",
+            ["req"] = true,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 3,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "input",
+            ["req"] = true,
+            ["type"] = "`$STRING`",
+            ["index$"] = 4,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "limit",
+            ["req"] = true,
+            ["type"] = "`$INTEGER`",
+            ["index$"] = 5,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "provenance",
+            ["req"] = true,
+            ["type"] = "`$OBJECT`",
+            ["index$"] = 6,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "rows",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
-            ["index$"] = 3,
+            ["index$"] = 7,
+          },
+          {
+            ["active"] = true,
+            ["name"] = "steps",
+            ["req"] = true,
+            ["type"] = "`$ARRAY`",
+            ["index$"] = 8,
           },
         },
         ["name"] = "batch__workflow",
@@ -495,6 +581,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/workflow",
                 ["parts"] = {
@@ -503,7 +590,7 @@ local function make_config()
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body`",
+                  ["res"] = "`body.result`",
                 },
                 ["index$"] = 0,
               },
@@ -517,6 +604,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/workflow",
                 ["parts"] = {
@@ -541,7 +629,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "end_primer_length",
+            ["name"] = "endPrimerLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -555,14 +643,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_orf",
+            ["name"] = "maxOrfs",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "min_orf_aa",
+            ["name"] = "minOrfAa",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -612,6 +700,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/characterize_sequence",
                 ["parts"] = {
@@ -619,7 +708,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["endPrimerLength"] = "`reqdata.end_primer_length`",
+                    ["maxOrfs"] = "`reqdata.max_orf`",
+                    ["minOrfAa"] = "`reqdata.min_orf_aa`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -636,7 +730,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arm_tm_target",
+            ["name"] = "armTmTarget",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
@@ -671,7 +765,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "fragment",
+            ["name"] = "fragments",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 5,
@@ -699,7 +793,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "name",
+            ["name"] = "names",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -713,7 +807,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "overlap_len",
+            ["name"] = "overlapLen",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 11,
@@ -756,6 +850,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/cloning_simulate",
                 ["parts"] = {
@@ -763,7 +858,19 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["armTmTarget"] = "`reqdata.arm_tm_target`",
+                    ["circular"] = "`reqdata.circular`",
+                    ["enzyme"] = "`reqdata.enzyme`",
+                    ["enzyme3"] = "`reqdata.enzyme3`",
+                    ["enzyme5"] = "`reqdata.enzyme5`",
+                    ["fragments"] = "`reqdata.fragment`",
+                    ["insert"] = "`reqdata.insert`",
+                    ["method"] = "`reqdata.method`",
+                    ["names"] = "`reqdata.name`",
+                    ["overlapLen"] = "`reqdata.overlap_len`",
+                    ["vector"] = "`reqdata.vector`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -780,7 +887,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -815,7 +922,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "rare_threshold",
+            ["name"] = "rareThreshold",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
@@ -851,6 +958,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/codon_adaptation_index",
                 ["parts"] = {
@@ -858,7 +966,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["organism"] = "`reqdata.organism`",
+                    ["rareThreshold"] = "`reqdata.rare_threshold`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -932,6 +1045,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/codon_optimize",
                 ["parts"] = {
@@ -939,7 +1053,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["organism"] = "`reqdata.organism`",
+                    ["protein"] = "`reqdata.protein`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -956,21 +1073,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "avoid_enzyme",
+            ["name"] = "avoidEnzymes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "cryptic_orf_min_aa",
+            ["name"] = "crypticOrfMinAa",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -984,35 +1101,35 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gc_high",
+            ["name"] = "gcHigh",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "gc_low",
+            ["name"] = "gcLow",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "gc_window",
+            ["name"] = "gcWindow",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "homopolymer_min",
+            ["name"] = "homopolymerMin",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "max_pass",
+            ["name"] = "maxPasses",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 8,
@@ -1069,6 +1186,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/construct_autofix",
                 ["parts"] = {
@@ -1076,7 +1194,18 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["avoidEnzymes"] = "`reqdata.avoid_enzyme`",
+                    ["crypticOrfMinAa"] = "`reqdata.cryptic_orf_min_aa`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["gcHigh"] = "`reqdata.gc_high`",
+                    ["gcLow"] = "`reqdata.gc_low`",
+                    ["gcWindow"] = "`reqdata.gc_window`",
+                    ["homopolymerMin"] = "`reqdata.homopolymer_min`",
+                    ["maxPasses"] = "`reqdata.max_pass`",
+                    ["organism"] = "`reqdata.organism`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1093,21 +1222,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "avoid_enzyme",
+            ["name"] = "avoidEnzymes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "cryptic_orf_min_aa",
+            ["name"] = "crypticOrfMinAa",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -1121,28 +1250,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gc_high",
+            ["name"] = "gcHigh",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "gc_low",
+            ["name"] = "gcLow",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "gc_window",
+            ["name"] = "gcWindow",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "homopolymer_min",
+            ["name"] = "homopolymerMin",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -1192,6 +1321,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/construct_qc",
                 ["parts"] = {
@@ -1199,7 +1329,16 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["avoidEnzymes"] = "`reqdata.avoid_enzyme`",
+                    ["crypticOrfMinAa"] = "`reqdata.cryptic_orf_min_aa`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["gcHigh"] = "`reqdata.gc_high`",
+                    ["gcLow"] = "`reqdata.gc_low`",
+                    ["gcWindow"] = "`reqdata.gc_window`",
+                    ["homopolymerMin"] = "`reqdata.homopolymer_min`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1223,7 +1362,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_score",
+            ["name"] = "minScore",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 1,
@@ -1258,7 +1397,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "search_reverse_strand",
+            ["name"] = "searchReverseStrand",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 6,
@@ -1287,6 +1426,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/crispr_grna_design",
                 ["parts"] = {
@@ -1294,7 +1434,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["minScore"] = "`reqdata.min_score`",
+                    ["nuclease"] = "`reqdata.nuclease`",
+                    ["searchReverseStrand"] = "`reqdata.search_reverse_strand`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1311,42 +1456,42 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arm_length",
+            ["name"] = "armLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "block_pam",
+            ["name"] = "blockPam",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "design_genotyping_primer",
+            ["name"] = "designGenotypingPrimers",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "edit_end",
+            ["name"] = "editEnd",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "edit_start",
+            ["name"] = "editStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
@@ -1360,21 +1505,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "guide_end",
+            ["name"] = "guideEnd",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "guide_start",
+            ["name"] = "guideStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "guide_strand",
+            ["name"] = "guideStrand",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 9,
@@ -1416,7 +1561,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_sequence",
+            ["name"] = "targetSequence",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 15,
@@ -1438,6 +1583,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/crispr_hdr_donor",
                 ["parts"] = {
@@ -1445,7 +1591,20 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["armLength"] = "`reqdata.arm_length`",
+                    ["blockPam"] = "`reqdata.block_pam`",
+                    ["designGenotypingPrimers"] = "`reqdata.design_genotyping_primer`",
+                    ["editEnd"] = "`reqdata.edit_end`",
+                    ["editStart"] = "`reqdata.edit_start`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["guideEnd"] = "`reqdata.guide_end`",
+                    ["guideStart"] = "`reqdata.guide_start`",
+                    ["guideStrand"] = "`reqdata.guide_strand`",
+                    ["nuclease"] = "`reqdata.nuclease`",
+                    ["replacement"] = "`reqdata.replacement`",
+                    ["targetSequence"] = "`reqdata.target_sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1469,7 +1628,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_mismatch",
+            ["name"] = "maxMismatches",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -1526,6 +1685,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/crispr_offtarget_check",
                 ["parts"] = {
@@ -1533,7 +1693,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["maxMismatches"] = "`reqdata.max_mismatch`",
+                    ["nuclease"] = "`reqdata.nuclease`",
+                    ["protospacer"] = "`reqdata.protospacer`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1578,14 +1742,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "sequence_a",
+            ["name"] = "sequenceA",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "sequence_b",
+            ["name"] = "sequenceB",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -1607,6 +1771,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/cross_dimer",
                 ["parts"] = {
@@ -1614,7 +1779,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sequenceA"] = "`reqdata.sequence_a`",
+                    ["sequenceB"] = "`reqdata.sequence_b`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1645,7 +1813,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "mass_ng",
+            ["name"] = "massNg",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 2,
@@ -1694,7 +1862,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "volume_ul",
+            ["name"] = "volumeUl",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 9,
@@ -1709,6 +1877,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/dna_molarity",
                 ["parts"] = {
@@ -1716,7 +1885,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["length"] = "`reqdata.length`",
+                    ["massNg"] = "`reqdata.mass_ng`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["type"] = "`reqdata.type`",
+                    ["volumeUl"] = "`reqdata.volume_ul`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1733,14 +1908,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "enzyme_a",
+            ["name"] = "enzymeA",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "enzyme_b",
+            ["name"] = "enzymeB",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -1790,6 +1965,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/double_digest",
                 ["parts"] = {
@@ -1797,7 +1973,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["enzymeA"] = "`reqdata.enzyme_a`",
+                    ["enzymeB"] = "`reqdata.enzyme_b`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1835,7 +2014,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "reaction",
+            ["name"] = "reactions",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -1864,6 +2043,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/export_echo_picklist",
                 ["parts"] = {
@@ -1871,7 +2051,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["reactions"] = "`reqdata.reaction`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1902,7 +2084,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "protocol_name",
+            ["name"] = "protocolName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -1916,7 +2098,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "reaction",
+            ["name"] = "reactions",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -1945,6 +2127,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/export_opentrons_protocol",
                 ["parts"] = {
@@ -1952,7 +2135,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["protocolName"] = "`reqdata.protocol_name`",
+                    ["reactions"] = "`reqdata.reaction`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -1990,7 +2176,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "reaction",
+            ["name"] = "reactions",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
@@ -2019,6 +2205,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/export_plate_layout",
                 ["parts"] = {
@@ -2026,7 +2213,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["reactions"] = "`reqdata.reaction`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2043,21 +2232,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "cluster_col",
+            ["name"] = "clusterCols",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "cluster_row",
+            ["name"] = "clusterRows",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "distance_metric",
+            ["name"] = "distanceMetric",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -2071,7 +2260,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gene",
+            ["name"] = "genes",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -2106,7 +2295,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "sample",
+            ["name"] = "samples",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 9,
@@ -2120,14 +2309,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "value",
+            ["name"] = "values",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 11,
           },
           {
             ["active"] = true,
-            ["name"] = "z_score_row",
+            ["name"] = "zScoreRows",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 12,
@@ -2142,6 +2331,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/expression_heatmap_cluster",
                 ["parts"] = {
@@ -2149,7 +2339,16 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["clusterCols"] = "`reqdata.cluster_col`",
+                    ["clusterRows"] = "`reqdata.cluster_row`",
+                    ["distanceMetric"] = "`reqdata.distance_metric`",
+                    ["genes"] = "`reqdata.gene`",
+                    ["linkage"] = "`reqdata.linkage`",
+                    ["samples"] = "`reqdata.sample`",
+                    ["values"] = "`reqdata.value`",
+                    ["zScoreRows"] = "`reqdata.z_score_row`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2194,7 +2393,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "quality_offset",
+            ["name"] = "qualityOffset",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -2223,6 +2422,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/fastq_qc_report",
                 ["parts"] = {
@@ -2230,7 +2430,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["input"] = "`reqdata.input`",
+                    ["qualityOffset"] = "`reqdata.quality_offset`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2261,7 +2464,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_length",
+            ["name"] = "minLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -2282,14 +2485,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "quality_offset",
+            ["name"] = "qualityOffset",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "quality_threshold",
+            ["name"] = "qualityThreshold",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -2318,6 +2521,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/fastq_trim",
                 ["parts"] = {
@@ -2325,7 +2529,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["input"] = "`reqdata.input`",
+                    ["minLength"] = "`reqdata.min_length`",
+                    ["qualityOffset"] = "`reqdata.quality_offset`",
+                    ["qualityThreshold"] = "`reqdata.quality_threshold`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2349,7 +2558,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_aa_length",
+            ["name"] = "minAaLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -2370,7 +2579,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "require_stop",
+            ["name"] = "requireStop",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 4,
@@ -2406,6 +2615,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/find_orfs",
                 ["parts"] = {
@@ -2413,7 +2623,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["minAaLength"] = "`reqdata.min_aa_length`",
+                    ["requireStop"] = "`reqdata.require_stop`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2430,7 +2644,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "case_mode",
+            ["name"] = "caseMode",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -2486,7 +2700,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "strip_non_letter",
+            ["name"] = "stripNonLetters",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 8,
@@ -2515,6 +2729,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/format_sequence",
                 ["parts"] = {
@@ -2522,7 +2737,14 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["caseMode"] = "`reqdata.case_mode`",
+                    ["convert"] = "`reqdata.convert`",
+                    ["reverse"] = "`reqdata.reverse`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["stripNonLetters"] = "`reqdata.strip_non_letter`",
+                    ["width"] = "`reqdata.width`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2546,7 +2768,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "collection",
+            ["name"] = "collections",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -2560,21 +2782,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gene",
+            ["name"] = "genes",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "max_term_size",
+            ["name"] = "maxTermSize",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "min_term_size",
+            ["name"] = "minTermSize",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
@@ -2617,6 +2839,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/functional_enrichment",
                 ["parts"] = {
@@ -2624,7 +2847,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["background"] = "`reqdata.background`",
+                    ["collections"] = "`reqdata.collection`",
+                    ["genes"] = "`reqdata.gene`",
+                    ["maxTermSize"] = "`reqdata.max_term_size`",
+                    ["minTermSize"] = "`reqdata.min_term_size`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2691,6 +2920,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/gc_content",
                 ["parts"] = {
@@ -2698,7 +2928,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2765,6 +2997,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/gene_dossier",
                 ["parts"] = {
@@ -2772,7 +3005,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["gene"] = "`reqdata.gene`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2839,6 +3074,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/gene_expression",
                 ["parts"] = {
@@ -2846,7 +3082,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["gene"] = "`reqdata.gene`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2913,6 +3151,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/gene_model",
                 ["parts"] = {
@@ -2920,7 +3159,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["gene"] = "`reqdata.gene`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -2937,7 +3178,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "compare_to_named_set",
+            ["name"] = "compareToNamedSet",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -2965,7 +3206,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "overhang",
+            ["name"] = "overhangs",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -2986,7 +3227,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "risk_threshold",
+            ["name"] = "riskThreshold",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 7,
@@ -3008,6 +3249,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/golden_gate_fidelity",
                 ["parts"] = {
@@ -3015,7 +3257,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["compareToNamedSet"] = "`reqdata.compare_to_named_set`",
+                    ["dataset"] = "`reqdata.dataset`",
+                    ["overhangs"] = "`reqdata.overhang`",
+                    ["riskThreshold"] = "`reqdata.risk_threshold`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3082,6 +3329,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/hgvs_convert",
                 ["parts"] = {
@@ -3089,7 +3337,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["variant"] = "`reqdata.variant`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3113,7 +3363,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "job_id",
+            ["name"] = "jobId",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -3156,6 +3406,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/id_map_poll",
                 ["parts"] = {
@@ -3163,7 +3414,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["jobId"] = "`reqdata.job_id`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3222,7 +3475,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "tax_id",
+            ["name"] = "taxId",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -3251,6 +3504,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/id_map_submit",
                 ["parts"] = {
@@ -3258,7 +3512,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["from"] = "`reqdata.from`",
+                    ["ids"] = "`reqdata.ids`",
+                    ["taxId"] = "`reqdata.tax_id`",
+                    ["to"] = "`reqdata.to`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3282,7 +3541,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "forward_primer",
+            ["name"] = "forwardPrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -3296,7 +3555,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_mismatch",
+            ["name"] = "maxMismatches",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -3324,7 +3583,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "reverse_primer",
+            ["name"] = "reversePrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 7,
@@ -3353,6 +3612,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/in_silico_pcr",
                 ["parts"] = {
@@ -3360,7 +3620,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["circular"] = "`reqdata.circular`",
+                    ["forwardPrimer"] = "`reqdata.forward_primer`",
+                    ["maxMismatches"] = "`reqdata.max_mismatch`",
+                    ["reversePrimer"] = "`reqdata.reverse_primer`",
+                    ["template"] = "`reqdata.template`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3377,21 +3643,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "add_secondary_mismatch",
+            ["name"] = "addSecondaryMismatch",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "allele_a",
+            ["name"] = "alleleA",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "allele_b",
+            ["name"] = "alleleB",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -3405,14 +3671,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_amplicon",
+            ["name"] = "maxAmplicon",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "min_amplicon",
+            ["name"] = "minAmplicon",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 5,
@@ -3440,7 +3706,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "snp_position",
+            ["name"] = "snpPosition",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
@@ -3454,7 +3720,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_core_tm",
+            ["name"] = "targetCoreTm",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 11,
@@ -3476,6 +3742,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/kasp_primer_design",
                 ["parts"] = {
@@ -3483,7 +3750,16 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["addSecondaryMismatch"] = "`reqdata.add_secondary_mismatch`",
+                    ["alleleA"] = "`reqdata.allele_a`",
+                    ["alleleB"] = "`reqdata.allele_b`",
+                    ["maxAmplicon"] = "`reqdata.max_amplicon`",
+                    ["minAmplicon"] = "`reqdata.min_amplicon`",
+                    ["snpPosition"] = "`reqdata.snp_position`",
+                    ["target"] = "`reqdata.target`",
+                    ["targetCoreTm"] = "`reqdata.target_core_tm`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3507,6 +3783,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["parts"] = {},
@@ -3529,7 +3806,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "dntp_mm",
+            ["name"] = "dntpMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
@@ -3543,14 +3820,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "mg_mm",
+            ["name"] = "mgMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "na_mm",
+            ["name"] = "naMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 3,
@@ -3564,7 +3841,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "oligo_nm",
+            ["name"] = "oligoNM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
@@ -3592,14 +3869,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_tm",
+            ["name"] = "targetTm",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 9,
           },
           {
             ["active"] = true,
-            ["name"] = "tm_tolerance",
+            ["name"] = "tmTolerance",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 10,
@@ -3621,6 +3898,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/melting_temperature",
                 ["parts"] = {
@@ -3628,7 +3906,15 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["dntpMM"] = "`reqdata.dntp_mm`",
+                    ["mgMM"] = "`reqdata.mg_mm`",
+                    ["naMM"] = "`reqdata.na_mm`",
+                    ["oligoNM"] = "`reqdata.oligo_nm`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["targetTm"] = "`reqdata.target_tm`",
+                    ["tmTolerance"] = "`reqdata.tm_tolerance`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3652,7 +3938,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_mismatch",
+            ["name"] = "maxMismatches",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -3687,7 +3973,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "search_reverse_strand",
+            ["name"] = "searchReverseStrand",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 6,
@@ -3716,6 +4002,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/motif_finder",
                 ["parts"] = {
@@ -3723,7 +4010,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["maxMismatches"] = "`reqdata.max_mismatch`",
+                    ["motif"] = "`reqdata.motif`",
+                    ["searchReverseStrand"] = "`reqdata.search_reverse_strand`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3790,6 +4082,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/multiple_sequence_alignment",
                 ["parts"] = {
@@ -3797,7 +4090,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["input"] = "`reqdata.input`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3814,7 +4109,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "dntp_mm",
+            ["name"] = "dntpMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
@@ -3828,14 +4123,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "mg_mm",
+            ["name"] = "mgMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "na_mm",
+            ["name"] = "naMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 3,
@@ -3849,7 +4144,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "oligo_nm",
+            ["name"] = "oligoNM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
@@ -3892,6 +4187,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/oligo_analysis",
                 ["parts"] = {
@@ -3899,7 +4195,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["dntpMM"] = "`reqdata.dntp_mm`",
+                    ["mgMM"] = "`reqdata.mg_mm`",
+                    ["naMM"] = "`reqdata.na_mm`",
+                    ["oligoNM"] = "`reqdata.oligo_nm`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -3944,21 +4246,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "source_species",
+            ["name"] = "sourceSpecies",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "symbol",
+            ["name"] = "symbols",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "target_species",
+            ["name"] = "targetSpecies",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -3987,6 +4289,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/ortholog_map",
                 ["parts"] = {
@@ -3994,7 +4297,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sourceSpecies"] = "`reqdata.source_species`",
+                    ["symbols"] = "`reqdata.symbol`",
+                    ["targetSpecies"] = "`reqdata.target_species`",
+                    ["type"] = "`reqdata.type`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4067,14 +4375,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "seq_a",
+            ["name"] = "seqA",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "seq_b",
+            ["name"] = "seqB",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 9,
@@ -4096,6 +4404,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/pairwise_alignment",
                 ["parts"] = {
@@ -4103,7 +4412,14 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["gap"] = "`reqdata.gap`",
+                    ["match"] = "`reqdata.match`",
+                    ["mismatch"] = "`reqdata.mismatch`",
+                    ["mode"] = "`reqdata.mode`",
+                    ["seqA"] = "`reqdata.seq_a`",
+                    ["seqB"] = "`reqdata.seq_b`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4170,6 +4486,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/parse_genbank",
                 ["parts"] = {
@@ -4177,7 +4494,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["text"] = "`reqdata.text`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4194,14 +4513,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "file_base64",
+            ["name"] = "fileBase64",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "file_name",
+            ["name"] = "fileName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -4251,6 +4570,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/parse_sanger_trace",
                 ["parts"] = {
@@ -4258,7 +4578,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["fileBase64"] = "`reqdata.file_base64`",
+                    ["fileName"] = "`reqdata.file_name`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4325,6 +4648,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/plasmid_annotate",
                 ["parts"] = {
@@ -4332,7 +4656,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4406,6 +4732,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/plasmid_deep_annotate",
                 ["parts"] = {
@@ -4413,7 +4740,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["circular"] = "`reqdata.circular`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4479,7 +4809,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "top_n",
+            ["name"] = "topN",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -4494,6 +4824,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/plasmid_full_report",
                 ["parts"] = {
@@ -4501,7 +4832,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["circular"] = "`reqdata.circular`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["topN"] = "`reqdata.top_n`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4567,7 +4902,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "top_n",
+            ["name"] = "topN",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -4582,6 +4917,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/plasmid_identify",
                 ["parts"] = {
@@ -4589,7 +4925,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["circular"] = "`reqdata.circular`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["topN"] = "`reqdata.top_n`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4606,21 +4946,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "edit_end",
+            ["name"] = "editEnd",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "edit_start",
+            ["name"] = "editStart",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
@@ -4634,7 +4974,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "inserted_seq",
+            ["name"] = "insertedSeq",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -4648,7 +4988,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "pbs_length",
+            ["name"] = "pbsLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -4669,7 +5009,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "rtt_homology",
+            ["name"] = "rttHomology",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
@@ -4698,6 +5038,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/prime_editing_design",
                 ["parts"] = {
@@ -4705,7 +5046,15 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["editEnd"] = "`reqdata.edit_end`",
+                    ["editStart"] = "`reqdata.edit_start`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["insertedSeq"] = "`reqdata.inserted_seq`",
+                    ["pbsLength"] = "`reqdata.pbs_length`",
+                    ["rttHomology"] = "`reqdata.rtt_homology`",
+                    ["target"] = "`reqdata.target`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4729,7 +5078,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "new_sequence",
+            ["name"] = "newSequence",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -4743,14 +5092,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "overlap_length",
+            ["name"] = "overlapLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "pbs_length",
+            ["name"] = "pbsLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -4764,14 +5113,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "replace_end",
+            ["name"] = "replaceEnd",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "replace_start",
+            ["name"] = "replaceStart",
             ["req"] = true,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
@@ -4807,6 +5156,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/prime_editing_twin_design",
                 ["parts"] = {
@@ -4814,7 +5164,14 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["newSequence"] = "`reqdata.new_sequence`",
+                    ["overlapLength"] = "`reqdata.overlap_length`",
+                    ["pbsLength"] = "`reqdata.pbs_length`",
+                    ["replaceEnd"] = "`reqdata.replace_end`",
+                    ["replaceStart"] = "`reqdata.replace_start`",
+                    ["target"] = "`reqdata.target`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -4831,21 +5188,21 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "amplicon_max",
+            ["name"] = "ampliconMax",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "amplicon_min",
+            ["name"] = "ampliconMin",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "dntp_mm",
+            ["name"] = "dntpMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 2,
@@ -4859,56 +5216,56 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gc_max",
+            ["name"] = "gcMax",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "gc_min",
+            ["name"] = "gcMin",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "len_max",
+            ["name"] = "lenMax",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "len_min",
+            ["name"] = "lenMin",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "len_opt",
+            ["name"] = "lenOpt",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "max_return",
+            ["name"] = "maxReturn",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
           },
           {
             ["active"] = true,
-            ["name"] = "mg_mm",
+            ["name"] = "mgMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 10,
           },
           {
             ["active"] = true,
-            ["name"] = "na_mm",
+            ["name"] = "naMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 11,
@@ -4922,7 +5279,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "oligo_nm",
+            ["name"] = "oligoNM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 13,
@@ -4943,14 +5300,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_end",
+            ["name"] = "targetEnd",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 16,
           },
           {
             ["active"] = true,
-            ["name"] = "target_start",
+            ["name"] = "targetStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 17,
@@ -4964,28 +5321,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "tm_max",
+            ["name"] = "tmMax",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 19,
           },
           {
             ["active"] = true,
-            ["name"] = "tm_max_diff",
+            ["name"] = "tmMaxDiff",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 20,
           },
           {
             ["active"] = true,
-            ["name"] = "tm_min",
+            ["name"] = "tmMin",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 21,
           },
           {
             ["active"] = true,
-            ["name"] = "tm_opt",
+            ["name"] = "tmOpt",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 22,
@@ -5007,6 +5364,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/primer_design",
                 ["parts"] = {
@@ -5014,7 +5372,27 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["ampliconMax"] = "`reqdata.amplicon_max`",
+                    ["ampliconMin"] = "`reqdata.amplicon_min`",
+                    ["dntpMM"] = "`reqdata.dntp_mm`",
+                    ["gcMax"] = "`reqdata.gc_max`",
+                    ["gcMin"] = "`reqdata.gc_min`",
+                    ["lenMax"] = "`reqdata.len_max`",
+                    ["lenMin"] = "`reqdata.len_min`",
+                    ["lenOpt"] = "`reqdata.len_opt`",
+                    ["maxReturn"] = "`reqdata.max_return`",
+                    ["mgMM"] = "`reqdata.mg_mm`",
+                    ["naMM"] = "`reqdata.na_mm`",
+                    ["oligoNM"] = "`reqdata.oligo_nm`",
+                    ["targetEnd"] = "`reqdata.target_end`",
+                    ["targetStart"] = "`reqdata.target_start`",
+                    ["template"] = "`reqdata.template`",
+                    ["tmMax"] = "`reqdata.tm_max`",
+                    ["tmMaxDiff"] = "`reqdata.tm_max_diff`",
+                    ["tmMin"] = "`reqdata.tm_min`",
+                    ["tmOpt"] = "`reqdata.tm_opt`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5031,7 +5409,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "forward_primer",
+            ["name"] = "forwardPrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
@@ -5045,14 +5423,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_mismatch",
+            ["name"] = "maxMismatches",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "max_product_length",
+            ["name"] = "maxProductLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -5080,7 +5458,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "reverse_primer",
+            ["name"] = "reversePrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 7,
@@ -5102,6 +5480,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/primer_specificity",
                 ["parts"] = {
@@ -5109,7 +5488,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["forwardPrimer"] = "`reqdata.forward_primer`",
+                    ["maxMismatches"] = "`reqdata.max_mismatch`",
+                    ["maxProductLength"] = "`reqdata.max_product_length`",
+                    ["reversePrimer"] = "`reqdata.reverse_primer`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5133,28 +5517,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_mass",
+            ["name"] = "maxMass",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "max_peptide",
+            ["name"] = "maxPeptides",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "min_mass",
+            ["name"] = "minMass",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "missed_cleavage",
+            ["name"] = "missedCleavages",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -5211,6 +5595,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/protease_digestion",
                 ["parts"] = {
@@ -5218,7 +5603,14 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["maxMass"] = "`reqdata.max_mass`",
+                    ["maxPeptides"] = "`reqdata.max_peptide`",
+                    ["minMass"] = "`reqdata.min_mass`",
+                    ["missedCleavages"] = "`reqdata.missed_cleavage`",
+                    ["protease"] = "`reqdata.protease`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5242,7 +5634,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "job_id",
+            ["name"] = "jobId",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -5285,6 +5677,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/protein_annotate_poll",
                 ["parts"] = {
@@ -5292,7 +5685,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["jobId"] = "`reqdata.job_id`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5323,7 +5718,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "goterm",
+            ["name"] = "goterms",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 2,
@@ -5373,6 +5768,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/protein_annotate_submit",
                 ["parts"] = {
@@ -5380,7 +5776,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["appl"] = "`reqdata.appl`",
+                    ["goterms"] = "`reqdata.goterm`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5461,6 +5861,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/protein_hydrophobicity",
                 ["parts"] = {
@@ -5468,7 +5869,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["scale"] = "`reqdata.scale`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["window"] = "`reqdata.window`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5485,7 +5890,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "charge_step",
+            ["name"] = "chargeStep",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
@@ -5542,6 +5947,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/protein_properties",
                 ["parts"] = {
@@ -5549,7 +5955,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["chargeStep"] = "`reqdata.charge_step`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5573,7 +5982,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "gc_content",
+            ["name"] = "gcContent",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 1,
@@ -5630,6 +6039,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/random_sequence",
                 ["parts"] = {
@@ -5637,7 +6047,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["gcContent"] = "`reqdata.gc_content`",
+                    ["kind"] = "`reqdata.kind`",
+                    ["length"] = "`reqdata.length`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5654,7 +6068,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "enzyme",
+            ["name"] = "enzymes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 0,
@@ -5711,6 +6125,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/restriction_sites",
                 ["parts"] = {
@@ -5718,7 +6133,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["enzymes"] = "`reqdata.enzyme`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5792,6 +6210,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/reverse_complement",
                 ["parts"] = {
@@ -5799,7 +6218,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["type"] = "`reqdata.type`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5880,6 +6302,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/reverse_translate",
                 ["parts"] = {
@@ -5887,7 +6310,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["mode"] = "`reqdata.mode`",
+                    ["organism"] = "`reqdata.organism`",
+                    ["protein"] = "`reqdata.protein`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5954,6 +6381,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/rna_fold",
                 ["parts"] = {
@@ -5961,7 +6389,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -5978,14 +6408,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "file_base64",
+            ["name"] = "fileBase64",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "file_name",
+            ["name"] = "fileName",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -5999,7 +6429,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_coverage",
+            ["name"] = "minCoverage",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 3,
@@ -6056,6 +6486,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sanger_vs_reference",
                 ["parts"] = {
@@ -6063,7 +6494,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["fileBase64"] = "`reqdata.file_base64`",
+                    ["fileName"] = "`reqdata.file_name`",
+                    ["minCoverage"] = "`reqdata.min_coverage`",
+                    ["read"] = "`reqdata.read`",
+                    ["reference"] = "`reqdata.reference`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6080,7 +6517,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arg",
+            ["name"] = "args",
             ["req"] = true,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
@@ -6130,6 +6567,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/save_permalink",
                 ["parts"] = {
@@ -6137,7 +6575,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["args"] = "`reqdata.arg`",
+                    ["tool"] = "`reqdata.tool`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6182,7 +6623,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "quality_offset",
+            ["name"] = "qualityOffset",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 4,
@@ -6211,6 +6652,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/seqfile_stats",
                 ["parts"] = {
@@ -6218,7 +6660,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["input"] = "`reqdata.input`",
+                    ["qualityOffset"] = "`reqdata.quality_offset`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6299,6 +6744,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sequence_fetch",
                 ["parts"] = {
@@ -6306,7 +6752,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["accession"] = "`reqdata.accession`",
+                    ["db"] = "`reqdata.db`",
+                    ["format"] = "`reqdata.format`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6387,6 +6837,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sequence_format_convert",
                 ["parts"] = {
@@ -6394,7 +6845,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["from"] = "`reqdata.from`",
+                    ["input"] = "`reqdata.input`",
+                    ["to"] = "`reqdata.to`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6411,7 +6866,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "end_primer_length",
+            ["name"] = "endPrimerLength",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 0,
@@ -6425,14 +6880,14 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_orf",
+            ["name"] = "maxOrfs",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "min_orf_aa",
+            ["name"] = "minOrfAa",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -6482,6 +6937,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sequence_report",
                 ["parts"] = {
@@ -6489,7 +6945,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["endPrimerLength"] = "`reqdata.end_primer_length`",
+                    ["maxOrfs"] = "`reqdata.max_orf`",
+                    ["minOrfAa"] = "`reqdata.min_orf_aa`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6527,7 +6988,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_result",
+            ["name"] = "maxResults",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -6584,6 +7045,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sequence_search",
                 ["parts"] = {
@@ -6591,7 +7053,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["db"] = "`reqdata.db`",
+                    ["gene"] = "`reqdata.gene`",
+                    ["maxResults"] = "`reqdata.max_result`",
+                    ["organism"] = "`reqdata.organism`",
+                    ["term"] = "`reqdata.term`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6615,7 +7083,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_supporting_read",
+            ["name"] = "minSupportingReads",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -6636,7 +7104,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "read",
+            ["name"] = "reads",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
@@ -6672,6 +7140,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sequencing_readback_verify",
                 ["parts"] = {
@@ -6679,7 +7148,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["minSupportingReads"] = "`reqdata.min_supporting_read`",
+                    ["reads"] = "`reqdata.read`",
+                    ["reference"] = "`reqdata.reference`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6696,7 +7169,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "entry",
+            ["name"] = "entries",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
@@ -6746,6 +7219,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/session_create",
                 ["parts"] = {
@@ -6753,7 +7227,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["entries"] = "`reqdata.entry`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6777,7 +7253,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "name",
+            ["name"] = "names",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -6805,7 +7281,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "session_id",
+            ["name"] = "sessionId",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -6827,6 +7303,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/session_get",
                 ["parts"] = {
@@ -6834,7 +7311,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["names"] = "`reqdata.name`",
+                    ["sessionId"] = "`reqdata.session_id`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6851,14 +7331,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arg",
+            ["name"] = "args",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "from_session",
+            ["name"] = "fromSession",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 1,
@@ -6893,7 +7373,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "session_id",
+            ["name"] = "sessionId",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 6,
@@ -6907,7 +7387,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "write_back",
+            ["name"] = "writeBack",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 8,
@@ -6922,6 +7402,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/session_run",
                 ["parts"] = {
@@ -6929,7 +7410,13 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["args"] = "`reqdata.arg`",
+                    ["fromSession"] = "`reqdata.from_session`",
+                    ["sessionId"] = "`reqdata.session_id`",
+                    ["tool"] = "`reqdata.tool`",
+                    ["writeBack"] = "`reqdata.write_back`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -6946,7 +7433,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "entry",
+            ["name"] = "entries",
             ["req"] = true,
             ["type"] = "`$OBJECT`",
             ["index$"] = 0,
@@ -6981,7 +7468,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "session_id",
+            ["name"] = "sessionId",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -7003,6 +7490,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/session_set",
                 ["parts"] = {
@@ -7010,7 +7498,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["entries"] = "`reqdata.entry`",
+                    ["sessionId"] = "`reqdata.session_id`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7034,7 +7525,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "min_reynold",
+            ["name"] = "minReynolds",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -7062,7 +7553,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "sh_rna_loop",
+            ["name"] = "shRnaLoop",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
@@ -7091,6 +7582,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/sirna_design",
                 ["parts"] = {
@@ -7098,7 +7590,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["minReynolds"] = "`reqdata.min_reynold`",
+                    ["shRnaLoop"] = "`reqdata.sh_rna_loop`",
+                    ["target"] = "`reqdata.target`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7115,28 +7611,28 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arm_tm_target",
+            ["name"] = "armTmTarget",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "dntp_mm",
+            ["name"] = "dntpMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 1,
           },
           {
             ["active"] = true,
-            ["name"] = "edit_kind",
+            ["name"] = "editKind",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 3,
@@ -7150,21 +7646,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "mg_mm",
+            ["name"] = "mgMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "na_mm",
+            ["name"] = "naMM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 6,
           },
           {
             ["active"] = true,
-            ["name"] = "new_base",
+            ["name"] = "newBase",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 7,
@@ -7178,7 +7674,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "oligo_nm",
+            ["name"] = "oligoNM",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 9,
@@ -7227,7 +7723,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "target_aa",
+            ["name"] = "targetAa",
             ["req"] = false,
             ["type"] = "`$STRING`",
             ["index$"] = 16,
@@ -7256,6 +7752,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/site_directed_mutagenesis",
                 ["parts"] = {
@@ -7263,7 +7760,22 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["armTmTarget"] = "`reqdata.arm_tm_target`",
+                    ["dntpMM"] = "`reqdata.dntp_mm`",
+                    ["editKind"] = "`reqdata.edit_kind`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["mgMM"] = "`reqdata.mg_mm`",
+                    ["naMM"] = "`reqdata.na_mm`",
+                    ["newBase"] = "`reqdata.new_base`",
+                    ["oligoNM"] = "`reqdata.oligo_nm`",
+                    ["organism"] = "`reqdata.organism`",
+                    ["position"] = "`reqdata.position`",
+                    ["residue"] = "`reqdata.residue`",
+                    ["style"] = "`reqdata.style`",
+                    ["targetAa"] = "`reqdata.target_aa`",
+                    ["template"] = "`reqdata.template`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7322,7 +7834,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "to_stop",
+            ["name"] = "toStop",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 6,
@@ -7344,6 +7856,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/translate",
                 ["parts"] = {
@@ -7351,7 +7864,11 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["frame"] = "`reqdata.frame`",
+                    ["sequence"] = "`reqdata.sequence`",
+                    ["toStop"] = "`reqdata.to_stop`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7425,6 +7942,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/variant_annotate",
                 ["parts"] = {
@@ -7432,7 +7950,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["assembly"] = "`reqdata.assembly`",
+                    ["variant"] = "`reqdata.variant`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7456,7 +7977,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -7520,6 +8041,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/variant_comparator",
                 ["parts"] = {
@@ -7527,7 +8049,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["coding"] = "`reqdata.coding`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["query"] = "`reqdata.query`",
+                    ["reference"] = "`reqdata.reference`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7544,7 +8071,7 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "arm_tm_target",
+            ["name"] = "armTmTarget",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 0,
@@ -7558,7 +8085,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "claimed_construct",
+            ["name"] = "claimedConstruct",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 2,
@@ -7593,21 +8120,21 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "fragment",
+            ["name"] = "fragmentPcrs",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 7,
           },
           {
             ["active"] = true,
-            ["name"] = "fragment_pcr",
+            ["name"] = "fragments",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 8,
           },
           {
             ["active"] = true,
-            ["name"] = "frame_start",
+            ["name"] = "frameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 9,
@@ -7628,7 +8155,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "insert_pcr",
+            ["name"] = "insertPcr",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 12,
@@ -7642,7 +8169,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "name",
+            ["name"] = "names",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 14,
@@ -7656,7 +8183,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "overlap_len",
+            ["name"] = "overlapLen",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 16,
@@ -7691,7 +8218,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "vector_pcr",
+            ["name"] = "vectorPcr",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 21,
@@ -7706,6 +8233,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/verify_assembly",
                 ["parts"] = {
@@ -7713,7 +8241,25 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["armTmTarget"] = "`reqdata.arm_tm_target`",
+                    ["circular"] = "`reqdata.circular`",
+                    ["claimedConstruct"] = "`reqdata.claimed_construct`",
+                    ["coding"] = "`reqdata.coding`",
+                    ["enzyme"] = "`reqdata.enzyme`",
+                    ["enzyme3"] = "`reqdata.enzyme3`",
+                    ["enzyme5"] = "`reqdata.enzyme5`",
+                    ["fragmentPcrs"] = "`reqdata.fragment_pcr`",
+                    ["fragments"] = "`reqdata.fragment`",
+                    ["frameStart"] = "`reqdata.frame_start`",
+                    ["insert"] = "`reqdata.insert`",
+                    ["insertPcr"] = "`reqdata.insert_pcr`",
+                    ["method"] = "`reqdata.method`",
+                    ["names"] = "`reqdata.name`",
+                    ["overlapLen"] = "`reqdata.overlap_len`",
+                    ["vector"] = "`reqdata.vector`",
+                    ["vectorPcr"] = "`reqdata.vector_pcr`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7730,14 +8276,14 @@ local function make_config()
         ["fields"] = {
           {
             ["active"] = true,
-            ["name"] = "claimed_construct",
+            ["name"] = "claimedConstruct",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 0,
           },
           {
             ["active"] = true,
-            ["name"] = "expected_frame_start",
+            ["name"] = "expectedFrameStart",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 1,
@@ -7751,28 +8297,28 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "insert_forward_primer",
+            ["name"] = "insertForwardPrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 3,
           },
           {
             ["active"] = true,
-            ["name"] = "insert_reverse_primer",
+            ["name"] = "insertReversePrimer",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 4,
           },
           {
             ["active"] = true,
-            ["name"] = "insert_template",
+            ["name"] = "insertTemplate",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 5,
           },
           {
             ["active"] = true,
-            ["name"] = "max_primer_mismatch",
+            ["name"] = "maxPrimerMismatches",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
             ["index$"] = 6,
@@ -7800,7 +8346,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "template_circular",
+            ["name"] = "templateCircular",
             ["req"] = false,
             ["type"] = "`$BOOLEAN`",
             ["index$"] = 10,
@@ -7822,6 +8368,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/verify_construct",
                 ["parts"] = {
@@ -7829,7 +8376,15 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["claimedConstruct"] = "`reqdata.claimed_construct`",
+                    ["expectedFrameStart"] = "`reqdata.expected_frame_start`",
+                    ["insertForwardPrimer"] = "`reqdata.insert_forward_primer`",
+                    ["insertReversePrimer"] = "`reqdata.insert_reverse_primer`",
+                    ["insertTemplate"] = "`reqdata.insert_template`",
+                    ["maxPrimerMismatches"] = "`reqdata.max_primer_mismatch`",
+                    ["templateCircular"] = "`reqdata.template_circular`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7853,7 +8408,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "enzyme",
+            ["name"] = "enzymes",
             ["req"] = false,
             ["type"] = "`$ARRAY`",
             ["index$"] = 1,
@@ -7917,6 +8472,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/virtual_gel",
                 ["parts"] = {
@@ -7924,7 +8480,12 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["circular"] = "`reqdata.circular`",
+                    ["enzymes"] = "`reqdata.enzyme`",
+                    ["ladder"] = "`reqdata.ladder`",
+                    ["sequence"] = "`reqdata.sequence`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -7969,7 +8530,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "row",
+            ["name"] = "rows",
             ["req"] = true,
             ["type"] = "`$ARRAY`",
             ["index$"] = 4,
@@ -7991,6 +8552,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/volcano_plot_data",
                 ["parts"] = {
@@ -7998,7 +8560,9 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["rows"] = "`reqdata.row`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,
@@ -8022,7 +8586,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "max_result",
+            ["name"] = "max_results",
             ["req"] = false,
             ["type"] = "`$NUMBER`",
             ["index$"] = 1,
@@ -8072,6 +8636,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/web_search",
                 ["parts"] = {
@@ -8079,7 +8644,10 @@ local function make_config()
                 },
                 ["select"] = {},
                 ["transform"] = {
-                  ["req"] = "`reqdata`",
+                  ["req"] = {
+                    ["max_results"] = "`reqdata.max_result`",
+                    ["query"] = "`reqdata.query`",
+                  },
                   ["res"] = "`body`",
                 },
                 ["index$"] = 0,

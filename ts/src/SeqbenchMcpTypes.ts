@@ -47,78 +47,108 @@ export interface AsoDesignCreateData {
 
 export interface BaseEditingDesign {
   editor?: string
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
   target: string
-  target_position?: number
+  targetPosition?: number
   tool: string
 }
 
 export interface BaseEditingDesignCreateData {
   editor?: string
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
   target: string
-  target_position?: number
+  targetPosition?: number
   tool: string
 }
 
 export interface Batch {
-  arg?: Record<string, any>
+  args?: Record<string, any>
+  capped: boolean
+  columns: any[]
+  count: number
+  errors: number
   input: string
-  ok: any
-  result: Record<string, any>
+  limit: number
+  provenance: Record<string, any>
+  rows: any[]
   tool: string
 }
 
 export interface BatchLoadMatch {
-  arg?: Record<string, any>
+  args?: Record<string, any>
+  capped?: boolean
+  columns?: any[]
+  count?: number
+  errors?: number
   input?: string
-  ok?: any
-  result?: Record<string, any>
+  limit?: number
+  provenance?: Record<string, any>
+  rows?: any[]
   tool?: string
 }
 
 export interface BatchCreateData {
-  arg?: Record<string, any>
+  args?: Record<string, any>
+  capped: boolean
+  columns: any[]
+  count: number
+  errors: number
   input: string
-  ok: any
-  result: Record<string, any>
+  limit: number
+  provenance: Record<string, any>
+  rows: any[]
   tool: string
 }
 
 export interface BatchWorkflow {
+  capped: boolean
+  columns: any[]
+  count: number
+  errors: number
   input: string
-  ok: any
-  result: Record<string, any>
-  step: any[]
+  limit: number
+  provenance: Record<string, any>
+  rows: any[]
+  steps: any[]
 }
 
 export interface BatchWorkflowLoadMatch {
+  capped?: boolean
+  columns?: any[]
+  count?: number
+  errors?: number
   input?: string
-  ok?: any
-  result?: Record<string, any>
-  step?: any[]
+  limit?: number
+  provenance?: Record<string, any>
+  rows?: any[]
+  steps?: any[]
 }
 
 export interface BatchWorkflowCreateData {
+  capped: boolean
+  columns: any[]
+  count: number
+  errors: number
   input: string
-  ok: any
-  result: Record<string, any>
-  step: any[]
+  limit: number
+  provenance: Record<string, any>
+  rows: any[]
+  steps: any[]
 }
 
 export interface CharacterizeSequence {
-  end_primer_length?: number
+  endPrimerLength?: number
   gate?: any
-  max_orf?: number
-  min_orf_aa?: number
+  maxOrfs?: number
+  minOrfAa?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -127,10 +157,10 @@ export interface CharacterizeSequence {
 }
 
 export interface CharacterizeSequenceCreateData {
-  end_primer_length?: number
+  endPrimerLength?: number
   gate?: any
-  max_orf?: number
-  min_orf_aa?: number
+  maxOrfs?: number
+  minOrfAa?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -139,18 +169,18 @@ export interface CharacterizeSequenceCreateData {
 }
 
 export interface CloningSimulate {
-  arm_tm_target?: number
+  armTmTarget?: number
   circular?: boolean
   enzyme?: string
   enzyme3?: string
   enzyme5?: string
-  fragment?: any[]
+  fragments?: any[]
   gate?: any
   insert?: string
   method: string
-  name?: any[]
+  names?: any[]
   ok: any
-  overlap_len?: number
+  overlapLen?: number
   provenance: Record<string, any>
   result: Record<string, any>
   tool: string
@@ -158,18 +188,18 @@ export interface CloningSimulate {
 }
 
 export interface CloningSimulateCreateData {
-  arm_tm_target?: number
+  armTmTarget?: number
   circular?: boolean
   enzyme?: string
   enzyme3?: string
   enzyme5?: string
-  fragment?: any[]
+  fragments?: any[]
   gate?: any
   insert?: string
   method: string
-  name?: any[]
+  names?: any[]
   ok: any
-  overlap_len?: number
+  overlapLen?: number
   provenance: Record<string, any>
   result: Record<string, any>
   tool: string
@@ -177,24 +207,24 @@ export interface CloningSimulateCreateData {
 }
 
 export interface CodonAdaptationIndex {
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   organism?: string
   provenance: Record<string, any>
-  rare_threshold?: number
+  rareThreshold?: number
   result: Record<string, any>
   sequence: string
   tool: string
 }
 
 export interface CodonAdaptationIndexCreateData {
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   organism?: string
   provenance: Record<string, any>
-  rare_threshold?: number
+  rareThreshold?: number
   result: Record<string, any>
   sequence: string
   tool: string
@@ -221,15 +251,15 @@ export interface CodonOptimizeCreateData {
 }
 
 export interface ConstructAutofix {
-  avoid_enzyme?: any[]
-  cryptic_orf_min_aa?: number
-  frame_start?: number
+  avoidEnzymes?: any[]
+  crypticOrfMinAa?: number
+  frameStart?: number
   gate?: any
-  gc_high?: number
-  gc_low?: number
-  gc_window?: number
-  homopolymer_min?: number
-  max_pass?: number
+  gcHigh?: number
+  gcLow?: number
+  gcWindow?: number
+  homopolymerMin?: number
+  maxPasses?: number
   ok: any
   organism?: string
   provenance: Record<string, any>
@@ -239,15 +269,15 @@ export interface ConstructAutofix {
 }
 
 export interface ConstructAutofixCreateData {
-  avoid_enzyme?: any[]
-  cryptic_orf_min_aa?: number
-  frame_start?: number
+  avoidEnzymes?: any[]
+  crypticOrfMinAa?: number
+  frameStart?: number
   gate?: any
-  gc_high?: number
-  gc_low?: number
-  gc_window?: number
-  homopolymer_min?: number
-  max_pass?: number
+  gcHigh?: number
+  gcLow?: number
+  gcWindow?: number
+  homopolymerMin?: number
+  maxPasses?: number
   ok: any
   organism?: string
   provenance: Record<string, any>
@@ -257,14 +287,14 @@ export interface ConstructAutofixCreateData {
 }
 
 export interface ConstructQc {
-  avoid_enzyme?: any[]
-  cryptic_orf_min_aa?: number
-  frame_start?: number
+  avoidEnzymes?: any[]
+  crypticOrfMinAa?: number
+  frameStart?: number
   gate?: any
-  gc_high?: number
-  gc_low?: number
-  gc_window?: number
-  homopolymer_min?: number
+  gcHigh?: number
+  gcLow?: number
+  gcWindow?: number
+  homopolymerMin?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -273,14 +303,14 @@ export interface ConstructQc {
 }
 
 export interface ConstructQcCreateData {
-  avoid_enzyme?: any[]
-  cryptic_orf_min_aa?: number
-  frame_start?: number
+  avoidEnzymes?: any[]
+  crypticOrfMinAa?: number
+  frameStart?: number
   gate?: any
-  gc_high?: number
-  gc_low?: number
-  gc_window?: number
-  homopolymer_min?: number
+  gcHigh?: number
+  gcLow?: number
+  gcWindow?: number
+  homopolymerMin?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -290,71 +320,71 @@ export interface ConstructQcCreateData {
 
 export interface CrisprGrnaDesign {
   gate?: any
-  min_score?: number
+  minScore?: number
   nuclease?: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  search_reverse_strand?: boolean
+  searchReverseStrand?: boolean
   sequence: string
   tool: string
 }
 
 export interface CrisprGrnaDesignCreateData {
   gate?: any
-  min_score?: number
+  minScore?: number
   nuclease?: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  search_reverse_strand?: boolean
+  searchReverseStrand?: boolean
   sequence: string
   tool: string
 }
 
 export interface CrisprHdrDonor {
-  arm_length?: number
-  block_pam?: boolean
-  design_genotyping_primer?: boolean
-  edit_end?: number
-  edit_start?: number
-  frame_start?: number
+  armLength?: number
+  blockPam?: boolean
+  designGenotypingPrimers?: boolean
+  editEnd?: number
+  editStart?: number
+  frameStart?: number
   gate?: any
-  guide_end?: number
-  guide_start?: number
-  guide_strand?: string
+  guideEnd?: number
+  guideStart?: number
+  guideStrand?: string
   nuclease?: string
   ok: any
   provenance: Record<string, any>
   replacement: string
   result: Record<string, any>
-  target_sequence: string
+  targetSequence: string
   tool: string
 }
 
 export interface CrisprHdrDonorCreateData {
-  arm_length?: number
-  block_pam?: boolean
-  design_genotyping_primer?: boolean
-  edit_end?: number
-  edit_start?: number
-  frame_start?: number
+  armLength?: number
+  blockPam?: boolean
+  designGenotypingPrimers?: boolean
+  editEnd?: number
+  editStart?: number
+  frameStart?: number
   gate?: any
-  guide_end?: number
-  guide_start?: number
-  guide_strand?: string
+  guideEnd?: number
+  guideStart?: number
+  guideStrand?: string
   nuclease?: string
   ok: any
   provenance: Record<string, any>
   replacement: string
   result: Record<string, any>
-  target_sequence: string
+  targetSequence: string
   tool: string
 }
 
 export interface CrisprOfftargetCheck {
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   nuclease?: string
   ok: any
   protospacer: string
@@ -365,7 +395,7 @@ export interface CrisprOfftargetCheck {
 
 export interface CrisprOfftargetCheckCreateData {
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   nuclease?: string
   ok: any
   protospacer: string
@@ -379,8 +409,8 @@ export interface CrossDimer {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sequence_a: string
-  sequence_b: string
+  sequenceA: string
+  sequenceB: string
   tool: string
 }
 
@@ -389,40 +419,40 @@ export interface CrossDimerCreateData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sequence_a: string
-  sequence_b: string
+  sequenceA: string
+  sequenceB: string
   tool: string
 }
 
 export interface DnaMolarity {
   gate?: any
   length?: number
-  mass_ng?: number
+  massNg?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
   sequence?: string
   tool: string
   type?: string
-  volume_ul?: number
+  volumeUl?: number
 }
 
 export interface DnaMolarityCreateData {
   gate?: any
   length?: number
-  mass_ng?: number
+  massNg?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
   sequence?: string
   tool: string
   type?: string
-  volume_ul?: number
+  volumeUl?: number
 }
 
 export interface DoubleDigest {
-  enzyme_a: string
-  enzyme_b: string
+  enzymeA: string
+  enzymeB: string
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -431,8 +461,8 @@ export interface DoubleDigest {
 }
 
 export interface DoubleDigestCreateData {
-  enzyme_a: string
-  enzyme_b: string
+  enzymeA: string
+  enzymeB: string
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -444,7 +474,7 @@ export interface ExportEchoPicklist {
   gate?: any
   ok: any
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
@@ -453,7 +483,7 @@ export interface ExportEchoPicklistCreateData {
   gate?: any
   ok: any
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
@@ -461,9 +491,9 @@ export interface ExportEchoPicklistCreateData {
 export interface ExportOpentronsProtocol {
   gate?: any
   ok: any
-  protocol_name?: string
+  protocolName?: string
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
@@ -471,9 +501,9 @@ export interface ExportOpentronsProtocol {
 export interface ExportOpentronsProtocolCreateData {
   gate?: any
   ok: any
-  protocol_name?: string
+  protocolName?: string
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
@@ -482,7 +512,7 @@ export interface ExportPlateLayout {
   gate?: any
   ok: any
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
@@ -491,41 +521,41 @@ export interface ExportPlateLayoutCreateData {
   gate?: any
   ok: any
   provenance: Record<string, any>
-  reaction: any[]
+  reactions: any[]
   result: Record<string, any>
   tool: string
 }
 
 export interface ExpressionHeatmapCluster {
-  cluster_col?: boolean
-  cluster_row?: boolean
-  distance_metric?: string
+  clusterCols?: boolean
+  clusterRows?: boolean
+  distanceMetric?: string
   gate?: any
-  gene: any[]
+  genes: any[]
   linkage?: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sample: any[]
+  samples: any[]
   tool: string
-  value: any[]
-  z_score_row?: boolean
+  values: any[]
+  zScoreRows?: boolean
 }
 
 export interface ExpressionHeatmapClusterCreateData {
-  cluster_col?: boolean
-  cluster_row?: boolean
-  distance_metric?: string
+  clusterCols?: boolean
+  clusterRows?: boolean
+  distanceMetric?: string
   gate?: any
-  gene: any[]
+  genes: any[]
   linkage?: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sample: any[]
+  samples: any[]
   tool: string
-  value: any[]
-  z_score_row?: boolean
+  values: any[]
+  zScoreRows?: boolean
 }
 
 export interface FastqQcReport {
@@ -533,7 +563,7 @@ export interface FastqQcReport {
   input: string
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
+  qualityOffset?: number
   result: Record<string, any>
   tool: string
 }
@@ -543,7 +573,7 @@ export interface FastqQcReportCreateData {
   input: string
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
+  qualityOffset?: number
   result: Record<string, any>
   tool: string
 }
@@ -551,11 +581,11 @@ export interface FastqQcReportCreateData {
 export interface FastqTrim {
   gate?: any
   input: string
-  min_length?: number
+  minLength?: number
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
-  quality_threshold?: number
+  qualityOffset?: number
+  qualityThreshold?: number
   result: Record<string, any>
   tool: string
 }
@@ -563,21 +593,21 @@ export interface FastqTrim {
 export interface FastqTrimCreateData {
   gate?: any
   input: string
-  min_length?: number
+  minLength?: number
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
-  quality_threshold?: number
+  qualityOffset?: number
+  qualityThreshold?: number
   result: Record<string, any>
   tool: string
 }
 
 export interface FindOrf {
   gate?: any
-  min_aa_length?: number
+  minAaLength?: number
   ok: any
   provenance: Record<string, any>
-  require_stop?: boolean
+  requireStop?: boolean
   result: Record<string, any>
   sequence: string
   tool: string
@@ -585,17 +615,17 @@ export interface FindOrf {
 
 export interface FindOrfCreateData {
   gate?: any
-  min_aa_length?: number
+  minAaLength?: number
   ok: any
   provenance: Record<string, any>
-  require_stop?: boolean
+  requireStop?: boolean
   result: Record<string, any>
   sequence: string
   tool: string
 }
 
 export interface FormatSequence {
-  case_mode?: string
+  caseMode?: string
   convert?: string
   gate?: any
   ok: any
@@ -603,13 +633,13 @@ export interface FormatSequence {
   result: Record<string, any>
   reverse?: boolean
   sequence: string
-  strip_non_letter?: boolean
+  stripNonLetters?: boolean
   tool: string
   width?: number
 }
 
 export interface FormatSequenceCreateData {
-  case_mode?: string
+  caseMode?: string
   convert?: string
   gate?: any
   ok: any
@@ -617,18 +647,18 @@ export interface FormatSequenceCreateData {
   result: Record<string, any>
   reverse?: boolean
   sequence: string
-  strip_non_letter?: boolean
+  stripNonLetters?: boolean
   tool: string
   width?: number
 }
 
 export interface FunctionalEnrichment {
   background?: any[]
-  collection?: any[]
+  collections?: any[]
   gate?: any
-  gene: any[]
-  max_term_size?: number
-  min_term_size?: number
+  genes: any[]
+  maxTermSize?: number
+  minTermSize?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -637,11 +667,11 @@ export interface FunctionalEnrichment {
 
 export interface FunctionalEnrichmentCreateData {
   background?: any[]
-  collection?: any[]
+  collections?: any[]
   gate?: any
-  gene: any[]
-  max_term_size?: number
-  min_term_size?: number
+  genes: any[]
+  maxTermSize?: number
+  minTermSize?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -721,26 +751,26 @@ export interface GeneModelCreateData {
 }
 
 export interface GoldenGateFidelity {
-  compare_to_named_set?: string
+  compareToNamedSet?: string
   dataset?: string
   gate?: any
   ok: any
-  overhang: any[]
+  overhangs: any[]
   provenance: Record<string, any>
   result: Record<string, any>
-  risk_threshold?: number
+  riskThreshold?: number
   tool: string
 }
 
 export interface GoldenGateFidelityCreateData {
-  compare_to_named_set?: string
+  compareToNamedSet?: string
   dataset?: string
   gate?: any
   ok: any
-  overhang: any[]
+  overhangs: any[]
   provenance: Record<string, any>
   result: Record<string, any>
-  risk_threshold?: number
+  riskThreshold?: number
   tool: string
 }
 
@@ -764,7 +794,7 @@ export interface HgvsConvertCreateData {
 
 export interface IdMapPoll {
   gate?: any
-  job_id: string
+  jobId: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -773,7 +803,7 @@ export interface IdMapPoll {
 
 export interface IdMapPollCreateData {
   gate?: any
-  job_id: string
+  jobId: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -787,7 +817,7 @@ export interface IdMapSubmit {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  tax_id?: string
+  taxId?: string
   to: string
   tool: string
 }
@@ -799,66 +829,66 @@ export interface IdMapSubmitCreateData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  tax_id?: string
+  taxId?: string
   to: string
   tool: string
 }
 
 export interface InSilicoPcr {
   circular?: boolean
-  forward_primer: string
+  forwardPrimer: string
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  reverse_primer: string
+  reversePrimer: string
   template: string
   tool: string
 }
 
 export interface InSilicoPcrCreateData {
   circular?: boolean
-  forward_primer: string
+  forwardPrimer: string
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  reverse_primer: string
+  reversePrimer: string
   template: string
   tool: string
 }
 
 export interface KaspPrimerDesign {
-  add_secondary_mismatch?: boolean
-  allele_a: string
-  allele_b: string
+  addSecondaryMismatch?: boolean
+  alleleA: string
+  alleleB: string
   gate?: any
-  max_amplicon?: number
-  min_amplicon?: number
+  maxAmplicon?: number
+  minAmplicon?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  snp_position: number
+  snpPosition: number
   target: string
-  target_core_tm?: number
+  targetCoreTm?: number
   tool: string
 }
 
 export interface KaspPrimerDesignCreateData {
-  add_secondary_mismatch?: boolean
-  allele_a: string
-  allele_b: string
+  addSecondaryMismatch?: boolean
+  alleleA: string
+  alleleB: string
   gate?: any
-  max_amplicon?: number
-  min_amplicon?: number
+  maxAmplicon?: number
+  minAmplicon?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  snp_position: number
+  snpPosition: number
   target: string
-  target_core_tm?: number
+  targetCoreTm?: number
   tool: string
 }
 
@@ -869,55 +899,55 @@ export interface ListToolLoadMatch {
 }
 
 export interface MeltingTemperature {
-  dntp_mm?: number
+  dntpMM?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
-  target_tm?: number
-  tm_tolerance?: number
+  targetTm?: number
+  tmTolerance?: number
   tool: string
 }
 
 export interface MeltingTemperatureCreateData {
-  dntp_mm?: number
+  dntpMM?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
-  target_tm?: number
-  tm_tolerance?: number
+  targetTm?: number
+  tmTolerance?: number
   tool: string
 }
 
 export interface MotifFinder {
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   motif: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  search_reverse_strand?: boolean
+  searchReverseStrand?: boolean
   sequence: string
   tool: string
 }
 
 export interface MotifFinderCreateData {
   gate?: any
-  max_mismatch?: number
+  maxMismatches?: number
   motif: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  search_reverse_strand?: boolean
+  searchReverseStrand?: boolean
   sequence: string
   tool: string
 }
@@ -941,12 +971,12 @@ export interface MultipleSequenceAlignmentCreateData {
 }
 
 export interface OligoAnalysi {
-  dntp_mm?: number
+  dntpMM?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
@@ -954,12 +984,12 @@ export interface OligoAnalysi {
 }
 
 export interface OligoAnalysiCreateData {
-  dntp_mm?: number
+  dntpMM?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
@@ -971,9 +1001,9 @@ export interface OrthologMap {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  source_species?: string
-  symbol: any[]
-  target_species: string
+  sourceSpecies?: string
+  symbols: any[]
+  targetSpecies: string
   tool: string
   type?: string
 }
@@ -983,9 +1013,9 @@ export interface OrthologMapCreateData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  source_species?: string
-  symbol: any[]
-  target_species: string
+  sourceSpecies?: string
+  symbols: any[]
+  targetSpecies: string
   tool: string
   type?: string
 }
@@ -999,8 +1029,8 @@ export interface PairwiseAlignment {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  seq_a: string
-  seq_b: string
+  seqA: string
+  seqB: string
   tool: string
 }
 
@@ -1013,8 +1043,8 @@ export interface PairwiseAlignmentCreateData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  seq_a: string
-  seq_b: string
+  seqA: string
+  seqB: string
   tool: string
 }
 
@@ -1037,8 +1067,8 @@ export interface ParseGenbankCreateData {
 }
 
 export interface ParseSangerTrace {
-  file_base64: string
-  file_name?: string
+  fileBase64: string
+  fileName?: string
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1047,8 +1077,8 @@ export interface ParseSangerTrace {
 }
 
 export interface ParseSangerTraceCreateData {
-  file_base64: string
-  file_name?: string
+  fileBase64: string
+  fileName?: string
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1102,7 +1132,7 @@ export interface PlasmidFullReport {
   result: Record<string, any>
   sequence: string
   tool: string
-  top_n?: number
+  topN?: number
 }
 
 export interface PlasmidFullReportCreateData {
@@ -1113,7 +1143,7 @@ export interface PlasmidFullReportCreateData {
   result: Record<string, any>
   sequence: string
   tool: string
-  top_n?: number
+  topN?: number
 }
 
 export interface PlasmidIdentify {
@@ -1124,7 +1154,7 @@ export interface PlasmidIdentify {
   result: Record<string, any>
   sequence: string
   tool: string
-  top_n?: number
+  topN?: number
 }
 
 export interface PlasmidIdentifyCreateData {
@@ -1135,48 +1165,48 @@ export interface PlasmidIdentifyCreateData {
   result: Record<string, any>
   sequence: string
   tool: string
-  top_n?: number
+  topN?: number
 }
 
 export interface PrimeEditingDesign {
-  edit_end: number
-  edit_start: number
-  frame_start?: number
+  editEnd: number
+  editStart: number
+  frameStart?: number
   gate?: any
-  inserted_seq?: string
+  insertedSeq?: string
   ok: any
-  pbs_length?: number
+  pbsLength?: number
   provenance: Record<string, any>
   result: Record<string, any>
-  rtt_homology?: number
+  rttHomology?: number
   target: string
   tool: string
 }
 
 export interface PrimeEditingDesignCreateData {
-  edit_end: number
-  edit_start: number
-  frame_start?: number
+  editEnd: number
+  editStart: number
+  frameStart?: number
   gate?: any
-  inserted_seq?: string
+  insertedSeq?: string
   ok: any
-  pbs_length?: number
+  pbsLength?: number
   provenance: Record<string, any>
   result: Record<string, any>
-  rtt_homology?: number
+  rttHomology?: number
   target: string
   tool: string
 }
 
 export interface PrimeEditingTwinDesign {
   gate?: any
-  new_sequence: string
+  newSequence: string
   ok: any
-  overlap_length?: number
-  pbs_length?: number
+  overlapLength?: number
+  pbsLength?: number
   provenance: Record<string, any>
-  replace_end: number
-  replace_start: number
+  replaceEnd: number
+  replaceStart: number
   result: Record<string, any>
   target: string
   tool: string
@@ -1184,102 +1214,102 @@ export interface PrimeEditingTwinDesign {
 
 export interface PrimeEditingTwinDesignCreateData {
   gate?: any
-  new_sequence: string
+  newSequence: string
   ok: any
-  overlap_length?: number
-  pbs_length?: number
+  overlapLength?: number
+  pbsLength?: number
   provenance: Record<string, any>
-  replace_end: number
-  replace_start: number
+  replaceEnd: number
+  replaceStart: number
   result: Record<string, any>
   target: string
   tool: string
 }
 
 export interface PrimerDesign {
-  amplicon_max?: number
-  amplicon_min?: number
-  dntp_mm?: number
+  ampliconMax?: number
+  ampliconMin?: number
+  dntpMM?: number
   gate?: any
-  gc_max?: number
-  gc_min?: number
-  len_max?: number
-  len_min?: number
-  len_opt?: number
-  max_return?: number
-  mg_mm?: number
-  na_mm?: number
+  gcMax?: number
+  gcMin?: number
+  lenMax?: number
+  lenMin?: number
+  lenOpt?: number
+  maxReturn?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
-  target_end?: number
-  target_start?: number
+  targetEnd?: number
+  targetStart?: number
   template: string
-  tm_max?: number
-  tm_max_diff?: number
-  tm_min?: number
-  tm_opt?: number
+  tmMax?: number
+  tmMaxDiff?: number
+  tmMin?: number
+  tmOpt?: number
   tool: string
 }
 
 export interface PrimerDesignCreateData {
-  amplicon_max?: number
-  amplicon_min?: number
-  dntp_mm?: number
+  ampliconMax?: number
+  ampliconMin?: number
+  dntpMM?: number
   gate?: any
-  gc_max?: number
-  gc_min?: number
-  len_max?: number
-  len_min?: number
-  len_opt?: number
-  max_return?: number
-  mg_mm?: number
-  na_mm?: number
+  gcMax?: number
+  gcMin?: number
+  lenMax?: number
+  lenMin?: number
+  lenOpt?: number
+  maxReturn?: number
+  mgMM?: number
+  naMM?: number
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   provenance: Record<string, any>
   result: Record<string, any>
-  target_end?: number
-  target_start?: number
+  targetEnd?: number
+  targetStart?: number
   template: string
-  tm_max?: number
-  tm_max_diff?: number
-  tm_min?: number
-  tm_opt?: number
+  tmMax?: number
+  tmMaxDiff?: number
+  tmMin?: number
+  tmOpt?: number
   tool: string
 }
 
 export interface PrimerSpecificity {
-  forward_primer: string
+  forwardPrimer: string
   gate?: any
-  max_mismatch?: number
-  max_product_length?: number
+  maxMismatches?: number
+  maxProductLength?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  reverse_primer: string
+  reversePrimer: string
   tool: string
 }
 
 export interface PrimerSpecificityCreateData {
-  forward_primer: string
+  forwardPrimer: string
   gate?: any
-  max_mismatch?: number
-  max_product_length?: number
+  maxMismatches?: number
+  maxProductLength?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  reverse_primer: string
+  reversePrimer: string
   tool: string
 }
 
 export interface ProteaseDigestion {
   gate?: any
-  max_mass?: number
-  max_peptide?: number
-  min_mass?: number
-  missed_cleavage?: number
+  maxMass?: number
+  maxPeptides?: number
+  minMass?: number
+  missedCleavages?: number
   ok: any
   protease?: string
   provenance: Record<string, any>
@@ -1290,10 +1320,10 @@ export interface ProteaseDigestion {
 
 export interface ProteaseDigestionCreateData {
   gate?: any
-  max_mass?: number
-  max_peptide?: number
-  min_mass?: number
-  missed_cleavage?: number
+  maxMass?: number
+  maxPeptides?: number
+  minMass?: number
+  missedCleavages?: number
   ok: any
   protease?: string
   provenance: Record<string, any>
@@ -1304,7 +1334,7 @@ export interface ProteaseDigestionCreateData {
 
 export interface ProteinAnnotatePoll {
   gate?: any
-  job_id: string
+  jobId: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1313,7 +1343,7 @@ export interface ProteinAnnotatePoll {
 
 export interface ProteinAnnotatePollCreateData {
   gate?: any
-  job_id: string
+  jobId: string
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1323,7 +1353,7 @@ export interface ProteinAnnotatePollCreateData {
 export interface ProteinAnnotateSubmit {
   appl?: string
   gate?: any
-  goterm?: boolean
+  goterms?: boolean
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1334,7 +1364,7 @@ export interface ProteinAnnotateSubmit {
 export interface ProteinAnnotateSubmitCreateData {
   appl?: string
   gate?: any
-  goterm?: boolean
+  goterms?: boolean
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1365,7 +1395,7 @@ export interface ProteinHydrophobicityCreateData {
 }
 
 export interface ProteinProperty {
-  charge_step?: number
+  chargeStep?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1375,7 +1405,7 @@ export interface ProteinProperty {
 }
 
 export interface ProteinPropertyCreateData {
-  charge_step?: number
+  chargeStep?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1386,7 +1416,7 @@ export interface ProteinPropertyCreateData {
 
 export interface RandomSequence {
   gate?: any
-  gc_content?: number
+  gcContent?: number
   kind?: string
   length: number
   ok: any
@@ -1397,7 +1427,7 @@ export interface RandomSequence {
 
 export interface RandomSequenceCreateData {
   gate?: any
-  gc_content?: number
+  gcContent?: number
   kind?: string
   length: number
   ok: any
@@ -1407,7 +1437,7 @@ export interface RandomSequenceCreateData {
 }
 
 export interface RestrictionSite {
-  enzyme?: any[]
+  enzymes?: any[]
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1417,7 +1447,7 @@ export interface RestrictionSite {
 }
 
 export interface RestrictionSiteCreateData {
-  enzyme?: any[]
+  enzymes?: any[]
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1487,10 +1517,10 @@ export interface RnaFoldCreateData {
 }
 
 export interface SangerVsReference {
-  file_base64?: string
-  file_name?: string
+  fileBase64?: string
+  fileName?: string
   gate?: any
-  min_coverage?: number
+  minCoverage?: number
   ok: any
   provenance: Record<string, any>
   read?: string
@@ -1500,10 +1530,10 @@ export interface SangerVsReference {
 }
 
 export interface SangerVsReferenceCreateData {
-  file_base64?: string
-  file_name?: string
+  fileBase64?: string
+  fileName?: string
   gate?: any
-  min_coverage?: number
+  minCoverage?: number
   ok: any
   provenance: Record<string, any>
   read?: string
@@ -1513,7 +1543,7 @@ export interface SangerVsReferenceCreateData {
 }
 
 export interface SavePermalink {
-  arg: Record<string, any>
+  args: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1522,7 +1552,7 @@ export interface SavePermalink {
 }
 
 export interface SavePermalinkCreateData {
-  arg: Record<string, any>
+  args: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1535,7 +1565,7 @@ export interface SeqfileStat {
   input: string
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
+  qualityOffset?: number
   result: Record<string, any>
   tool: string
 }
@@ -1545,7 +1575,7 @@ export interface SeqfileStatCreateData {
   input: string
   ok: any
   provenance: Record<string, any>
-  quality_offset?: number
+  qualityOffset?: number
   result: Record<string, any>
   tool: string
 }
@@ -1595,10 +1625,10 @@ export interface SequenceFormatConvertCreateData {
 }
 
 export interface SequenceReport {
-  end_primer_length?: number
+  endPrimerLength?: number
   gate?: any
-  max_orf?: number
-  min_orf_aa?: number
+  maxOrfs?: number
+  minOrfAa?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1607,10 +1637,10 @@ export interface SequenceReport {
 }
 
 export interface SequenceReportCreateData {
-  end_primer_length?: number
+  endPrimerLength?: number
   gate?: any
-  max_orf?: number
-  min_orf_aa?: number
+  maxOrfs?: number
+  minOrfAa?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
@@ -1622,7 +1652,7 @@ export interface SequenceSearch {
   db?: string
   gate?: any
   gene?: string
-  max_result?: number
+  maxResults?: number
   ok: any
   organism?: string
   provenance: Record<string, any>
@@ -1635,7 +1665,7 @@ export interface SequenceSearchCreateData {
   db?: string
   gate?: any
   gene?: string
-  max_result?: number
+  maxResults?: number
   ok: any
   organism?: string
   provenance: Record<string, any>
@@ -1646,10 +1676,10 @@ export interface SequenceSearchCreateData {
 
 export interface SequencingReadbackVerify {
   gate?: any
-  min_supporting_read?: number
+  minSupportingReads?: number
   ok: any
   provenance: Record<string, any>
-  read: string
+  reads: string
   reference: string
   result: Record<string, any>
   tool: string
@@ -1657,17 +1687,17 @@ export interface SequencingReadbackVerify {
 
 export interface SequencingReadbackVerifyCreateData {
   gate?: any
-  min_supporting_read?: number
+  minSupportingReads?: number
   ok: any
   provenance: Record<string, any>
-  read: string
+  reads: string
   reference: string
   result: Record<string, any>
   tool: string
 }
 
 export interface SessionCreate {
-  entry?: Record<string, any>
+  entries?: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1676,7 +1706,7 @@ export interface SessionCreate {
 }
 
 export interface SessionCreateCreateData {
-  entry?: Record<string, any>
+  entries?: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1686,130 +1716,130 @@ export interface SessionCreateCreateData {
 
 export interface SessionGet {
   gate?: any
-  name?: any[]
+  names?: any[]
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
 }
 
 export interface SessionGetCreateData {
   gate?: any
-  name?: any[]
+  names?: any[]
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
 }
 
 export interface SessionRun {
-  arg?: Record<string, any>
-  from_session?: Record<string, any>
+  args?: Record<string, any>
+  fromSession?: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
-  write_back?: Record<string, any>
+  writeBack?: Record<string, any>
 }
 
 export interface SessionRunCreateData {
-  arg?: Record<string, any>
-  from_session?: Record<string, any>
+  args?: Record<string, any>
+  fromSession?: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
-  write_back?: Record<string, any>
+  writeBack?: Record<string, any>
 }
 
 export interface SessionSet {
-  entry: Record<string, any>
+  entries: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
 }
 
 export interface SessionSetCreateData {
-  entry: Record<string, any>
+  entries: Record<string, any>
   gate?: any
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  session_id: string
+  sessionId: string
   tool: string
 }
 
 export interface SirnaDesign {
   gate?: any
-  min_reynold?: number
+  minReynolds?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sh_rna_loop?: string
+  shRnaLoop?: string
   target: string
   tool: string
 }
 
 export interface SirnaDesignCreateData {
   gate?: any
-  min_reynold?: number
+  minReynolds?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  sh_rna_loop?: string
+  shRnaLoop?: string
   target: string
   tool: string
 }
 
 export interface SiteDirectedMutagenesi {
-  arm_tm_target?: number
-  dntp_mm?: number
-  edit_kind?: string
-  frame_start?: number
+  armTmTarget?: number
+  dntpMM?: number
+  editKind?: string
+  frameStart?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
-  new_base?: string
+  mgMM?: number
+  naMM?: number
+  newBase?: string
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   organism?: string
   position?: number
   provenance: Record<string, any>
   residue?: number
   result: Record<string, any>
   style?: string
-  target_aa?: string
+  targetAa?: string
   template: string
   tool: string
 }
 
 export interface SiteDirectedMutagenesiCreateData {
-  arm_tm_target?: number
-  dntp_mm?: number
-  edit_kind?: string
-  frame_start?: number
+  armTmTarget?: number
+  dntpMM?: number
+  editKind?: string
+  frameStart?: number
   gate?: any
-  mg_mm?: number
-  na_mm?: number
-  new_base?: string
+  mgMM?: number
+  naMM?: number
+  newBase?: string
   ok: any
-  oligo_nm?: number
+  oligoNM?: number
   organism?: string
   position?: number
   provenance: Record<string, any>
   residue?: number
   result: Record<string, any>
   style?: string
-  target_aa?: string
+  targetAa?: string
   template: string
   tool: string
 }
@@ -1821,7 +1851,7 @@ export interface Translate {
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
-  to_stop?: boolean
+  toStop?: boolean
   tool: string
 }
 
@@ -1832,7 +1862,7 @@ export interface TranslateCreateData {
   provenance: Record<string, any>
   result: Record<string, any>
   sequence: string
-  to_stop?: boolean
+  toStop?: boolean
   tool: string
 }
 
@@ -1858,7 +1888,7 @@ export interface VariantAnnotateCreateData {
 
 export interface VariantComparator {
   coding?: boolean
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1870,7 +1900,7 @@ export interface VariantComparator {
 
 export interface VariantComparatorCreateData {
   coding?: boolean
-  frame_start?: number
+  frameStart?: number
   gate?: any
   ok: any
   provenance: Record<string, any>
@@ -1881,88 +1911,88 @@ export interface VariantComparatorCreateData {
 }
 
 export interface VerifyAssembly {
-  arm_tm_target?: number
+  armTmTarget?: number
   circular?: boolean
-  claimed_construct: string
+  claimedConstruct: string
   coding?: boolean
   enzyme?: string
   enzyme3?: string
   enzyme5?: string
-  fragment?: any[]
-  fragment_pcr?: any[]
-  frame_start?: number
+  fragmentPcrs?: any[]
+  fragments?: any[]
+  frameStart?: number
   gate?: any
   insert?: string
-  insert_pcr?: Record<string, any>
+  insertPcr?: Record<string, any>
   method: string
-  name?: any[]
+  names?: any[]
   ok: any
-  overlap_len?: number
+  overlapLen?: number
   provenance: Record<string, any>
   result: Record<string, any>
   tool: string
   vector?: string
-  vector_pcr?: Record<string, any>
+  vectorPcr?: Record<string, any>
 }
 
 export interface VerifyAssemblyCreateData {
-  arm_tm_target?: number
+  armTmTarget?: number
   circular?: boolean
-  claimed_construct: string
+  claimedConstruct: string
   coding?: boolean
   enzyme?: string
   enzyme3?: string
   enzyme5?: string
-  fragment?: any[]
-  fragment_pcr?: any[]
-  frame_start?: number
+  fragmentPcrs?: any[]
+  fragments?: any[]
+  frameStart?: number
   gate?: any
   insert?: string
-  insert_pcr?: Record<string, any>
+  insertPcr?: Record<string, any>
   method: string
-  name?: any[]
+  names?: any[]
   ok: any
-  overlap_len?: number
+  overlapLen?: number
   provenance: Record<string, any>
   result: Record<string, any>
   tool: string
   vector?: string
-  vector_pcr?: Record<string, any>
+  vectorPcr?: Record<string, any>
 }
 
 export interface VerifyConstruct {
-  claimed_construct: string
-  expected_frame_start?: number
+  claimedConstruct: string
+  expectedFrameStart?: number
   gate?: any
-  insert_forward_primer: string
-  insert_reverse_primer: string
-  insert_template: string
-  max_primer_mismatch?: number
+  insertForwardPrimer: string
+  insertReversePrimer: string
+  insertTemplate: string
+  maxPrimerMismatches?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  template_circular?: boolean
+  templateCircular?: boolean
   tool: string
 }
 
 export interface VerifyConstructCreateData {
-  claimed_construct: string
-  expected_frame_start?: number
+  claimedConstruct: string
+  expectedFrameStart?: number
   gate?: any
-  insert_forward_primer: string
-  insert_reverse_primer: string
-  insert_template: string
-  max_primer_mismatch?: number
+  insertForwardPrimer: string
+  insertReversePrimer: string
+  insertTemplate: string
+  maxPrimerMismatches?: number
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  template_circular?: boolean
+  templateCircular?: boolean
   tool: string
 }
 
 export interface VirtualGel {
   circular?: boolean
-  enzyme?: any[]
+  enzymes?: any[]
   gate?: any
   ladder?: string
   ok: any
@@ -1974,7 +2004,7 @@ export interface VirtualGel {
 
 export interface VirtualGelCreateData {
   circular?: boolean
-  enzyme?: any[]
+  enzymes?: any[]
   gate?: any
   ladder?: string
   ok: any
@@ -1989,7 +2019,7 @@ export interface VolcanoPlotData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  row: any[]
+  rows: any[]
   tool: string
 }
 
@@ -1998,13 +2028,13 @@ export interface VolcanoPlotDataCreateData {
   ok: any
   provenance: Record<string, any>
   result: Record<string, any>
-  row: any[]
+  rows: any[]
   tool: string
 }
 
 export interface WebSearch {
   gate?: any
-  max_result?: number
+  max_results?: number
   ok: any
   provenance: Record<string, any>
   query: string
@@ -2014,7 +2044,7 @@ export interface WebSearch {
 
 export interface WebSearchCreateData {
   gate?: any
-  max_result?: number
+  max_results?: number
   ok: any
   provenance: Record<string, any>
   query: string

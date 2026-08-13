@@ -6,17 +6,17 @@ main: kit: entity: primer_design: {
 
   fields: [
     {
-      name: "amplicon_max"
+      name: "ampliconMax"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "amplicon_min"
+      name: "ampliconMin"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "dntp_mm"
+      name: "dntpMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -26,42 +26,42 @@ main: kit: entity: primer_design: {
       type: "`$ANY`"
     }
     {
-      name: "gc_max"
+      name: "gcMax"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "gc_min"
+      name: "gcMin"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "len_max"
+      name: "lenMax"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "len_min"
+      name: "lenMin"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "len_opt"
+      name: "lenOpt"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "max_return"
+      name: "maxReturn"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "mg_mm"
+      name: "mgMM"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "na_mm"
+      name: "naMM"
       req: false
       type: "`$NUMBER`"
     }
@@ -71,7 +71,7 @@ main: kit: entity: primer_design: {
       type: "`$ANY`"
     }
     {
-      name: "oligo_nm"
+      name: "oligoNM"
       req: false
       type: "`$NUMBER`"
     }
@@ -86,12 +86,12 @@ main: kit: entity: primer_design: {
       type: "`$OBJECT`"
     }
     {
-      name: "target_end"
+      name: "targetEnd"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "target_start"
+      name: "targetStart"
       req: false
       type: "`$INTEGER`"
     }
@@ -101,22 +101,22 @@ main: kit: entity: primer_design: {
       type: "`$STRING`"
     }
     {
-      name: "tm_max"
+      name: "tmMax"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "tm_max_diff"
+      name: "tmMaxDiff"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "tm_min"
+      name: "tmMin"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "tm_opt"
+      name: "tmOpt"
       req: false
       type: "`$NUMBER`"
     }
@@ -139,7 +139,27 @@ main: kit: entity: primer_design: {
             "primer_design"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              ampliconMax: "`reqdata.amplicon_max`"
+              ampliconMin: "`reqdata.amplicon_min`"
+              dntpMM: "`reqdata.dntp_mm`"
+              gcMax: "`reqdata.gc_max`"
+              gcMin: "`reqdata.gc_min`"
+              lenMax: "`reqdata.len_max`"
+              lenMin: "`reqdata.len_min`"
+              lenOpt: "`reqdata.len_opt`"
+              maxReturn: "`reqdata.max_return`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              oligoNM: "`reqdata.oligo_nm`"
+              targetEnd: "`reqdata.target_end`"
+              targetStart: "`reqdata.target_start`"
+              template: "`reqdata.template`"
+              tmMax: "`reqdata.tm_max`"
+              tmMaxDiff: "`reqdata.tm_max_diff`"
+              tmMin: "`reqdata.tm_min`"
+              tmOpt: "`reqdata.tm_opt`"
+            }
             res: "`body`"
           }
         }

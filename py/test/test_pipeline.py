@@ -16,11 +16,11 @@
 import pytest
 
 from seqbenchmcp_sdk import SeqbenchMcpSDK
-from core.error import SeqbenchMcpError
-from core.result import SeqbenchMcpResult
-from core.response import SeqbenchMcpResponse
-from core.spec import SeqbenchMcpSpec
-from feature.base_feature import SeqbenchMcpBaseFeature
+from seqbenchmcp_sdk.core.error import SeqbenchMcpError
+from seqbenchmcp_sdk.core.result import SeqbenchMcpResult
+from seqbenchmcp_sdk.core.response import SeqbenchMcpResponse
+from seqbenchmcp_sdk.core.spec import SeqbenchMcpSpec
+from seqbenchmcp_sdk.feature.base_feature import SeqbenchMcpBaseFeature
 
 
 def _client():

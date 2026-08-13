@@ -26,8 +26,8 @@ import {
 describe('CrisprHdrDonorEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('CrisprHdrDonorEntity', async () => {
     const crispr_hdr_donor_ref01_ent = client.CrisprHdrDonor()
     let crispr_hdr_donor_ref01_data = setup.data.new.crispr_hdr_donor['crispr_hdr_donor_ref01']
 
-    crispr_hdr_donor_ref01_data = await crispr_hdr_donor_ref01_ent.create(crispr_hdr_donor_ref01_data)
+    crispr_hdr_donor_ref01_data = (await crispr_hdr_donor_ref01_ent.create(crispr_hdr_donor_ref01_data)).data()
     assert(null != crispr_hdr_donor_ref01_data)
 
 

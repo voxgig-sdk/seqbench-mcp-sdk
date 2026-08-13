@@ -16,7 +16,7 @@ main: kit: entity: dna_molarity: {
       type: "`$INTEGER`"
     }
     {
-      name: "mass_ng"
+      name: "massNg"
       req: false
       type: "`$NUMBER`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: dna_molarity: {
       type: "`$STRING`"
     }
     {
-      name: "volume_ul"
+      name: "volumeUl"
       req: false
       type: "`$NUMBER`"
     }
@@ -69,7 +69,13 @@ main: kit: entity: dna_molarity: {
             "dna_molarity"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              length: "`reqdata.length`"
+              massNg: "`reqdata.mass_ng`"
+              sequence: "`reqdata.sequence`"
+              type: "`reqdata.type`"
+              volumeUl: "`reqdata.volume_ul`"
+            }
             res: "`body`"
           }
         }

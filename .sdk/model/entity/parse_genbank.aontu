@@ -49,7 +49,9 @@ main: kit: entity: parse_genbank: {
             "parse_genbank"
           ]
           transform: {
-            req: "`reqdata`"
+            req: {
+              text: "`reqdata.text`"
+            }
             res: "`body`"
           }
         }

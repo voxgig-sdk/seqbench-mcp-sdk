@@ -26,8 +26,8 @@ import {
 describe('ParseGenbankEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('ParseGenbankEntity', async () => {
     const parse_genbank_ref01_ent = client.ParseGenbank()
     let parse_genbank_ref01_data = setup.data.new.parse_genbank['parse_genbank_ref01']
 
-    parse_genbank_ref01_data = await parse_genbank_ref01_ent.create(parse_genbank_ref01_data)
+    parse_genbank_ref01_data = (await parse_genbank_ref01_ent.create(parse_genbank_ref01_data)).data()
     assert(null != parse_genbank_ref01_data)
 
 

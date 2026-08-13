@@ -26,8 +26,8 @@ import {
 describe('GeneExpressionEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when SEQBENCHMCP_TEST_LIVE=TRUE.
-  afterEach(liveDelay('SEQBENCHMCP_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when SEQBENCH_MCP_TEST_LIVE=TRUE.
+  afterEach(liveDelay('SEQBENCH_MCP_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = SeqbenchMcpSDK.test()
@@ -62,7 +62,7 @@ describe('GeneExpressionEntity', async () => {
     const gene_expression_ref01_ent = client.GeneExpression()
     let gene_expression_ref01_data = setup.data.new.gene_expression['gene_expression_ref01']
 
-    gene_expression_ref01_data = await gene_expression_ref01_ent.create(gene_expression_ref01_data)
+    gene_expression_ref01_data = (await gene_expression_ref01_ent.create(gene_expression_ref01_data)).data()
     assert(null != gene_expression_ref01_data)
 
 
