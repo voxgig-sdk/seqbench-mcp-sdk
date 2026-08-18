@@ -94,6 +94,11 @@ main: kit: entity: verify_assembly: {
       name: "provenance"
       req: true
       type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
     }
     {
       name: "result"

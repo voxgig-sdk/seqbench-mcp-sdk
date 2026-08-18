@@ -15,7 +15,7 @@ require_relative "../SeqbenchMcp_sdk"
 module SeqbenchMcpFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = SeqbenchMcpConfig.make_config["feature"]
+    f = SeqbenchMcpConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

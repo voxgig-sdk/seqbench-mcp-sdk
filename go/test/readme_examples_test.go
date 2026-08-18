@@ -11,10 +11,25 @@ import (
 	"testing"
 )
 
-// testSeed is a test-mode fixture seeded for every entity. It is spliced as
-// literal Go source into fragment wrappers and into the test-mode variant of
-// complete programs, so the offline mock transport has data to return.
+// testSeed is a test-mode fixture seeded for every entity, as Go source, so
+// the offline mock transport has data to return. It is NOT spliced into each
+// snippet: it is written ONCE per generated package as seed.go, and snippets
+// reference it by name (seedRef).
+//
+// Splicing it inline was O(snippets x entities). Every fragment lands in ONE
+// package, so a large API multiplied one ~26 KB composite literal by every
+// ```go block in the docs: gitlab reached 1132 fragments / ~625k literal
+// entries in a single compilation unit, and `compile` grew ~15 MB per fragment
+// to ~16 GB — the same superlinear-composite-literal blowup the L1 config data
+// path fixed for core/config.go. One shared var is O(1) in the snippet count.
 const testSeed = `map[string]any{"entity": map[string]any{"alphafold_lookup": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "aso_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "base_editing_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "batch": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "batch__workflow": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "characterize_sequence": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "cloning_simulate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "codon_adaptation_index": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "codon_optimize": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "construct_autofix": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "construct_qc": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "crispr_grna_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "crispr_hdr_donor": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "crispr_offtarget_check": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "cross_dimer": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "dna_molarity": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "double_digest": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "export_echo_picklist": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "export_opentrons_protocol": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "export_plate_layout": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "expression_heatmap_cluster": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "fastq_qc_report": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "fastq_trim": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "find_orf": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "format_sequence": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "functional_enrichment": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "gc_content": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "gene_dossier": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "gene_expression": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "gene_model": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "golden_gate_fidelity": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "hgvs_convert": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "id_map_poll": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "id_map_submit": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "in_silico_pcr": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "kasp_primer_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "list_tool": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "melting_temperature": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "motif_finder": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "multiple_sequence_alignment": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "oligo_analysi": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "ortholog_map": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "pairwise_alignment": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "parse_genbank": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "parse_sanger_trace": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "plasmid_annotate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "plasmid_deep_annotate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "plasmid_full_report": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "plasmid_identify": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "prime_editing_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "prime_editing_twin_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "primer_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "primer_specificity": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "protease_digestion": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "protein_annotate_poll": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "protein_annotate_submit": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "protein_hydrophobicity": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "protein_property": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "random_sequence": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "restriction_site": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "reverse_complement": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "reverse_translate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "rna_fold": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sanger_vs_reference": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "save_permalink": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "seqfile_stat": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sequence_fetch": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sequence_format_convert": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sequence_report": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sequence_search": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sequencing_readback_verify": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "session_create": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "session_get": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "session_run": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "session_set": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "sirna_design": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "site_directed_mutagenesi": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "translate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "variant_annotate": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "variant_comparator": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "verify_assembly": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "verify_construct": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "virtual_gel": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "volcano_plot_data": map[string]any{"example_id": map[string]any{"id": "example_id"}}, "web_search": map[string]any{"example_id": map[string]any{"id": "example_id"}}}}`
+
+// seedRef is how a snippet names the shared fixture; seedFile declares it.
+const seedRef = "readmeTestSeed"
+
+func seedFile(pkg string) []byte {
+	return []byte("package " + pkg + "\n\nvar " + seedRef + " = " + testSeed + "\n")
+}
 
 // doc names one of the three docs that carry go examples, with its path
 // relative to this test file's directory (which is <repo>/go/test): the root
@@ -53,7 +68,18 @@ func TestReadmeGoSnippets(t *testing.T) {
 		{"go/REFERENCE", filepath.Join(testDir, "..", "REFERENCE.md")},
 	}
 
-	work, err := os.MkdirTemp(moduleRoot, "readmecheck-")
+	// The work dir has to live inside the module (the snippets import the SDK
+	// by module path), but it MUST stay invisible to `go build ./...`. The go
+	// tool skips directories whose name starts with "_" for wildcard matching
+	// while still building them by explicit path — exactly what is needed
+	// here, because `defer os.RemoveAll` does NOT run when the process is
+	// killed. A leftover frag package inside the module made the NEXT plain
+	// `go build ./...` compile every snippet and OOM, which is how a killed
+	// run poisoned later runs (and, once committed, every fresh clone).
+	// Sweeping first lets a repo that already carries one self-heal.
+	sweepStaleWorkDirs(moduleRoot)
+
+	work, err := os.MkdirTemp(moduleRoot, "_readmecheck-")
 	if err != nil {
 		t.Fatalf("mkdir temp: %v", err)
 	}
@@ -123,6 +149,10 @@ func TestReadmeGoSnippets(t *testing.T) {
 					if err := os.WriteFile(filepath.Join(runDir, "main.go"), []byte(variant), 0o644); err != nil {
 						t.Fatal(err)
 					}
+					// The rewritten ctors reference the shared fixture.
+					if err := os.WriteFile(filepath.Join(runDir, "seed.go"), seedFile("main"), 0o644); err != nil {
+						t.Fatal(err)
+					}
 					runDirs = append(runDirs, "./"+rel+"/run"+strconv.Itoa(progCount))
 				}
 
@@ -139,6 +169,10 @@ func TestReadmeGoSnippets(t *testing.T) {
 	fragPkg := ""
 	if len(fragFiles) > 0 {
 		if err := os.MkdirAll(fragDir, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		// One shared fixture for the whole fragment package (see testSeed).
+		if err := os.WriteFile(filepath.Join(fragDir, "seed.go"), seedFile("readmefrag"), 0o644); err != nil {
 			t.Fatal(err)
 		}
 		fragPkg = "./" + rel + "/frag"
@@ -249,7 +283,7 @@ func runProgs(moduleRoot string, dirs []string) string {
 // left-to-right pass with balanced-paren matching; returns the rewritten
 // source and whether any replacement was made.
 func rewriteCtorsToTest(src string) (string, bool) {
-	repl := "sdk.TestSDK(" + testSeed + ", nil)"
+	repl := "sdk.TestSDK(" + seedRef + ", nil)"
 	var b strings.Builder
 	changed := false
 	i := 0
@@ -499,7 +533,7 @@ func wrapFragment(name, block, modulePath string) string {
 	b.WriteString("func " + name + "() {\n")
 	if injectClient {
 		// Seeded test client so the fragment's documented calls have data.
-		b.WriteString("\tclient := sdk.TestSDK(" + testSeed + ", nil)\n")
+		b.WriteString("\tclient := sdk.TestSDK(" + seedRef + ", nil)\n")
 	}
 	b.WriteString(block)
 	b.WriteString("\n}\n")
@@ -606,6 +640,25 @@ func addBlankAssign(content, name string) string {
 		return content
 	}
 	return content[:last] + "\t_ = " + name + "\n" + content[last:]
+}
+
+// sweepStaleWorkDirs removes work dirs abandoned by a killed run, under both
+// the current "_readmecheck-" name and the legacy "readmecheck-" one that
+// `go build ./...` still picks up.
+func sweepStaleWorkDirs(moduleRoot string) {
+	entries, err := os.ReadDir(moduleRoot)
+	if err != nil {
+		return
+	}
+	for _, e := range entries {
+		if !e.IsDir() {
+			continue
+		}
+		if n := e.Name(); strings.HasPrefix(n, "readmecheck-") ||
+			strings.HasPrefix(n, "_readmecheck-") {
+			os.RemoveAll(filepath.Join(moduleRoot, n))
+		}
+	}
 }
 
 func readModulePath(moduleRoot string) string {

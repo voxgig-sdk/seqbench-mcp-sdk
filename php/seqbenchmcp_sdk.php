@@ -40,7 +40,7 @@ class SeqbenchMcpSDK
         $utility = new SeqbenchMcpUtility();
         $this->_utility = $utility;
 
-        $config = SeqbenchMcpConfig::make_config();
+        $config = SeqbenchMcpConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

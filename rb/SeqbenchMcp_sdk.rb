@@ -28,7 +28,7 @@ class SeqbenchMcpSDK
     utility = SeqbenchMcpUtility.new
     @_utility = utility
 
-    config = SeqbenchMcpConfig.make_config
+    config = SeqbenchMcpConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://seqbench.com/api/v1',
+    base: "https://seqbench.com/api/v1",
 
     auth: {
       prefix: 'Bearer',
@@ -311,46 +311,38 @@ class Config {
     "alphafold_lookup": {
       "fields": [
         {
-          "active": true,
           "name": "accession",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "alphafold_lookup",
@@ -360,7 +352,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -374,11 +365,9 @@ class Config {
                   "accession": "`reqdata.accession`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -388,60 +377,46 @@ class Config {
     "aso_design": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "length",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "wing",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "aso_design",
@@ -451,7 +426,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -467,11 +441,9 @@ class Config {
                   "wing": "`reqdata.wing`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -481,67 +453,50 @@ class Config {
     "base_editing_design": {
       "fields": [
         {
-          "active": true,
           "name": "editor",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "targetPosition",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "base_editing_design",
@@ -551,7 +506,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -568,11 +522,9 @@ class Config {
                   "targetPosition": "`reqdata.target_position`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -582,74 +534,58 @@ class Config {
     "batch": {
       "fields": [
         {
-          "active": true,
           "name": "args",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "capped",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "columns",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "count",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "errors",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "limit",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "rows",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "batch",
@@ -659,7 +595,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -671,18 +606,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.result`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -694,11 +626,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -708,67 +638,54 @@ class Config {
     "batch__workflow": {
       "fields": [
         {
-          "active": true,
           "name": "capped",
           "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "columns",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "count",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "errors",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "limit",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 6
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "rows",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 7
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "steps",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         }
       ],
       "name": "batch__workflow",
@@ -778,7 +695,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -790,18 +706,15 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.result`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         },
         "load": {
           "input": "data",
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -813,11 +726,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -827,67 +738,50 @@ class Config {
     "characterize_sequence": {
       "fields": [
         {
-          "active": true,
           "name": "endPrimerLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxOrfs",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "minOrfAa",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "characterize_sequence",
@@ -897,7 +791,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -914,11 +807,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -928,116 +819,78 @@ class Config {
     "cloning_simulate": {
       "fields": [
         {
-          "active": true,
           "name": "armTmTarget",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "enzyme",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "enzyme3",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "enzyme5",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "fragments",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 6
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "insert",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "method",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "names",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 9
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 10
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "overlapLen",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 11
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 12
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 13
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "vector",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         }
       ],
       "name": "cloning_simulate",
@@ -1047,7 +900,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1071,11 +923,9 @@ class Config {
                   "vector": "`reqdata.vector`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1085,67 +935,50 @@ class Config {
     "codon_adaptation_index": {
       "fields": [
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "rareThreshold",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "codon_adaptation_index",
@@ -1155,7 +988,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1172,11 +1004,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1186,53 +1016,42 @@ class Config {
     "codon_optimize": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "protein",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "codon_optimize",
@@ -1242,7 +1061,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1257,11 +1075,9 @@ class Config {
                   "protein": "`reqdata.protein`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1271,109 +1087,74 @@ class Config {
     "construct_autofix": {
       "fields": [
         {
-          "active": true,
           "name": "avoidEnzymes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "crypticOrfMinAa",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gcHigh",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 4
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gcLow",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gcWindow",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "homopolymerMin",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "maxPasses",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 9
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 11
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 12
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 14
+          "type": "`$STRING`"
         }
       ],
       "name": "construct_autofix",
@@ -1383,7 +1164,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1406,11 +1186,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1420,95 +1198,66 @@ class Config {
     "construct_qc": {
       "fields": [
         {
-          "active": true,
           "name": "avoidEnzymes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "crypticOrfMinAa",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gcHigh",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 4
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gcLow",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gcWindow",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "homopolymerMin",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 8
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 9
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 10
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         }
       ],
       "name": "construct_qc",
@@ -1518,7 +1267,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1539,11 +1287,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1553,67 +1299,50 @@ class Config {
     "crispr_grna_design": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "minScore",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "nuclease",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "searchReverseStrand",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "crispr_grna_design",
@@ -1623,7 +1352,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1640,11 +1368,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1654,123 +1380,83 @@ class Config {
     "crispr_hdr_donor": {
       "fields": [
         {
-          "active": true,
           "name": "armLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "blockPam",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "designGenotypingPrimers",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 2
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "editEnd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "editStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 6
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "guideEnd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "guideStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "guideStrand",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "nuclease",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 11
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 12
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "replacement",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 14
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "targetSequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         }
       ],
       "name": "crispr_hdr_donor",
@@ -1780,7 +1466,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1805,11 +1490,9 @@ class Config {
                   "targetSequence": "`reqdata.target_sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1819,60 +1502,46 @@ class Config {
     "crispr_offtarget_check": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxMismatches",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "nuclease",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "protospacer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "crispr_offtarget_check",
@@ -1882,7 +1551,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1898,11 +1566,9 @@ class Config {
                   "protospacer": "`reqdata.protospacer`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1912,53 +1578,43 @@ class Config {
     "cross_dimer": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequenceA",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "sequenceB",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "cross_dimer",
@@ -1968,7 +1624,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -1983,11 +1638,9 @@ class Config {
                   "sequenceB": "`reqdata.sequence_b`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -1997,74 +1650,53 @@ class Config {
     "dna_molarity": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "length",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "massNg",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "volumeUl",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 9
+          "type": "`$NUMBER`"
         }
       ],
       "name": "dna_molarity",
@@ -2074,7 +1706,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2092,11 +1723,9 @@ class Config {
                   "volumeUl": "`reqdata.volume_ul`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2106,53 +1735,43 @@ class Config {
     "double_digest": {
       "fields": [
         {
-          "active": true,
           "name": "enzymeA",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "enzymeB",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "double_digest",
@@ -2162,7 +1781,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2177,11 +1795,9 @@ class Config {
                   "enzymeB": "`reqdata.enzyme_b`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2191,46 +1807,38 @@ class Config {
     "export_echo_picklist": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "reactions",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "export_echo_picklist",
@@ -2240,7 +1848,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2254,11 +1861,9 @@ class Config {
                   "reactions": "`reqdata.reaction`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2268,53 +1873,42 @@ class Config {
     "export_opentrons_protocol": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "protocolName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "reactions",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 4
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "export_opentrons_protocol",
@@ -2324,7 +1918,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2339,11 +1932,9 @@ class Config {
                   "reactions": "`reqdata.reaction`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2353,46 +1944,38 @@ class Config {
     "export_plate_layout": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "reactions",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "export_plate_layout",
@@ -2402,7 +1985,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2416,11 +1998,9 @@ class Config {
                   "reactions": "`reqdata.reaction`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2430,95 +2010,68 @@ class Config {
     "expression_heatmap_cluster": {
       "fields": [
         {
-          "active": true,
           "name": "clusterCols",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "clusterRows",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "distanceMetric",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "genes",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 4
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "linkage",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 6
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "samples",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 9
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "values",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 11
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "zScoreRows",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 12
+          "type": "`$BOOLEAN`"
         }
       ],
       "name": "expression_heatmap_cluster",
@@ -2528,7 +2081,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2549,11 +2101,9 @@ class Config {
                   "zScoreRows": "`reqdata.z_score_row`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2563,53 +2113,42 @@ class Config {
     "fastq_qc_report": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "qualityOffset",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "fastq_qc_report",
@@ -2619,7 +2158,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2634,11 +2172,9 @@ class Config {
                   "qualityOffset": "`reqdata.quality_offset`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2648,67 +2184,50 @@ class Config {
     "fastq_trim": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "minLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "qualityOffset",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "qualityThreshold",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "fastq_trim",
@@ -2718,7 +2237,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2735,11 +2253,9 @@ class Config {
                   "qualityThreshold": "`reqdata.quality_threshold`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2749,60 +2265,46 @@ class Config {
     "find_orf": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "minAaLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "requireStop",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 4
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "find_orf",
@@ -2812,7 +2314,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2828,11 +2329,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2842,81 +2341,58 @@ class Config {
     "format_sequence": {
       "fields": [
         {
-          "active": true,
           "name": "caseMode",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "convert",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "reverse",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "stripNonLetters",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 8
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "width",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 10
+          "type": "`$INTEGER`"
         }
       ],
       "name": "format_sequence",
@@ -2926,7 +2402,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -2945,11 +2420,9 @@ class Config {
                   "width": "`reqdata.width`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -2959,74 +2432,54 @@ class Config {
     "functional_enrichment": {
       "fields": [
         {
-          "active": true,
           "name": "background",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "collections",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "genes",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 3
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "maxTermSize",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "minTermSize",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 6
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "functional_enrichment",
@@ -3036,7 +2489,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3054,11 +2506,9 @@ class Config {
                   "minTermSize": "`reqdata.min_term_size`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3068,46 +2518,38 @@ class Config {
     "gc_content": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "gc_content",
@@ -3117,7 +2559,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3131,11 +2572,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3145,46 +2584,38 @@ class Config {
     "gene_dossier": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gene",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "gene_dossier",
@@ -3194,7 +2625,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3208,11 +2638,9 @@ class Config {
                   "gene": "`reqdata.gene`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3222,46 +2650,38 @@ class Config {
     "gene_expression": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gene",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "gene_expression",
@@ -3271,7 +2691,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3285,11 +2704,9 @@ class Config {
                   "gene": "`reqdata.gene`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3299,46 +2716,38 @@ class Config {
     "gene_model": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gene",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "gene_model",
@@ -3348,7 +2757,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3362,11 +2770,9 @@ class Config {
                   "gene": "`reqdata.gene`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3376,67 +2782,50 @@ class Config {
     "golden_gate_fidelity": {
       "fields": [
         {
-          "active": true,
           "name": "compareToNamedSet",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "dataset",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "overhangs",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 4
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "riskThreshold",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 7
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "golden_gate_fidelity",
@@ -3446,7 +2835,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3463,11 +2851,9 @@ class Config {
                   "riskThreshold": "`reqdata.risk_threshold`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3477,46 +2863,38 @@ class Config {
     "hgvs_convert": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "variant",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "hgvs_convert",
@@ -3526,7 +2904,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3540,11 +2917,9 @@ class Config {
                   "variant": "`reqdata.variant`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3554,46 +2929,38 @@ class Config {
     "id_map_poll": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "jobId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "id_map_poll",
@@ -3603,7 +2970,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3617,11 +2983,9 @@ class Config {
                   "jobId": "`reqdata.job_id`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3631,67 +2995,52 @@ class Config {
     "id_map_submit": {
       "fields": [
         {
-          "active": true,
           "name": "from",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ids",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 2
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "taxId",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "to",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "id_map_submit",
@@ -3701,7 +3050,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3718,11 +3066,9 @@ class Config {
                   "to": "`reqdata.to`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3732,74 +3078,56 @@ class Config {
     "in_silico_pcr": {
       "fields": [
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "forwardPrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxMismatches",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "reversePrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "template",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "in_silico_pcr",
@@ -3809,7 +3137,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3827,11 +3154,9 @@ class Config {
                   "template": "`reqdata.template`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3841,95 +3166,69 @@ class Config {
     "kasp_primer_design": {
       "fields": [
         {
-          "active": true,
           "name": "addSecondaryMismatch",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "alleleA",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "alleleB",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxAmplicon",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "minAmplicon",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 5
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 6
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "snpPosition",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "targetCoreTm",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 11
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 12
+          "type": "`$STRING`"
         }
       ],
       "name": "kasp_primer_design",
@@ -3939,7 +3238,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -3960,11 +3258,9 @@ class Config {
                   "targetCoreTm": "`reqdata.target_core_tm`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -3980,7 +3276,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "GET",
@@ -3990,11 +3285,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -4004,88 +3297,62 @@ class Config {
     "melting_temperature": {
       "fields": [
         {
-          "active": true,
           "name": "dntpMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "mgMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "naMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "oligoNM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 6
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "targetTm",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 9
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tmTolerance",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 10
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         }
       ],
       "name": "melting_temperature",
@@ -4095,7 +3362,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4115,11 +3381,9 @@ class Config {
                   "tmTolerance": "`reqdata.tm_tolerance`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4129,67 +3393,51 @@ class Config {
     "motif_finder": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxMismatches",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "motif",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "searchReverseStrand",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "motif_finder",
@@ -4199,7 +3447,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4216,11 +3463,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4230,46 +3475,38 @@ class Config {
     "multiple_sequence_alignment": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "multiple_sequence_alignment",
@@ -4279,7 +3516,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4293,11 +3529,9 @@ class Config {
                   "input": "`reqdata.input`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4307,74 +3541,54 @@ class Config {
     "oligo_analysi": {
       "fields": [
         {
-          "active": true,
           "name": "dntpMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "mgMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "naMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "oligoNM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 6
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "oligo_analysi",
@@ -4384,7 +3598,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4402,11 +3615,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4416,67 +3627,51 @@ class Config {
     "ortholog_map": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sourceSpecies",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "symbols",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 5
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "targetSpecies",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "ortholog_map",
@@ -4486,7 +3681,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4503,11 +3697,9 @@ class Config {
                   "type": "`reqdata.type`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4517,81 +3709,59 @@ class Config {
     "pairwise_alignment": {
       "fields": [
         {
-          "active": true,
           "name": "gap",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "match",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "mismatch",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "mode",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 5
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 6
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "seqA",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "seqB",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         }
       ],
       "name": "pairwise_alignment",
@@ -4601,7 +3771,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4620,11 +3789,9 @@ class Config {
                   "seqB": "`reqdata.seq_b`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4634,46 +3801,38 @@ class Config {
     "parse_genbank": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "text",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "parse_genbank",
@@ -4683,7 +3842,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4697,11 +3855,9 @@ class Config {
                   "text": "`reqdata.text`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4711,53 +3867,42 @@ class Config {
     "parse_sanger_trace": {
       "fields": [
         {
-          "active": true,
           "name": "fileBase64",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "fileName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "parse_sanger_trace",
@@ -4767,7 +3912,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4782,11 +3926,9 @@ class Config {
                   "fileName": "`reqdata.file_name`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4796,46 +3938,38 @@ class Config {
     "plasmid_annotate": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "plasmid_annotate",
@@ -4845,7 +3979,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4859,11 +3992,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4873,53 +4004,42 @@ class Config {
     "plasmid_deep_annotate": {
       "fields": [
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "plasmid_deep_annotate",
@@ -4929,7 +4049,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -4944,11 +4063,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -4958,60 +4075,46 @@ class Config {
     "plasmid_full_report": {
       "fields": [
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "topN",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "plasmid_full_report",
@@ -5021,7 +4124,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5037,11 +4139,9 @@ class Config {
                   "topN": "`reqdata.top_n`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5051,60 +4151,46 @@ class Config {
     "plasmid_identify": {
       "fields": [
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "topN",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "plasmid_identify",
@@ -5114,7 +4200,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5130,11 +4215,9 @@ class Config {
                   "topN": "`reqdata.top_n`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5144,88 +4227,64 @@ class Config {
     "prime_editing_design": {
       "fields": [
         {
-          "active": true,
           "name": "editEnd",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "editStart",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "insertedSeq",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 5
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "pbsLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "rttHomology",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         }
       ],
       "name": "prime_editing_design",
@@ -5235,7 +4294,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5255,11 +4313,9 @@ class Config {
                   "target": "`reqdata.target`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5269,81 +4325,61 @@ class Config {
     "prime_editing_twin_design": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "newSequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "overlapLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "pbsLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "replaceEnd",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "replaceStart",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         }
       ],
       "name": "prime_editing_twin_design",
@@ -5353,7 +4389,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5372,11 +4407,9 @@ class Config {
                   "target": "`reqdata.target`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5386,172 +4419,110 @@ class Config {
     "primer_design": {
       "fields": [
         {
-          "active": true,
           "name": "ampliconMax",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ampliconMin",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "dntpMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gcMax",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 4
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gcMin",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "lenMax",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "lenMin",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "lenOpt",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 8
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "maxReturn",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "mgMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 10
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "naMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 11
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 12
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "oligoNM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 13
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 14
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 15
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "targetEnd",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "targetStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 17
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "template",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tmMax",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 19
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tmMaxDiff",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 20
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tmMin",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 21
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tmOpt",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 22
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 23
+          "type": "`$STRING`"
         }
       ],
       "name": "primer_design",
@@ -5561,7 +4532,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5593,11 +4563,9 @@ class Config {
                   "tmOpt": "`reqdata.tm_opt`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5607,67 +4575,51 @@ class Config {
     "primer_specificity": {
       "fields": [
         {
-          "active": true,
           "name": "forwardPrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxMismatches",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "maxProductLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "reversePrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "primer_specificity",
@@ -5677,7 +4629,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5694,11 +4645,9 @@ class Config {
                   "reversePrimer": "`reqdata.reverse_primer`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5708,81 +4657,58 @@ class Config {
     "protease_digestion": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxMass",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "maxPeptides",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "minMass",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "missedCleavages",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 5
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "protease",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 7
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         }
       ],
       "name": "protease_digestion",
@@ -5792,7 +4718,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5811,11 +4736,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5825,46 +4748,38 @@ class Config {
     "protein_annotate_poll": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "jobId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "protein_annotate_poll",
@@ -5874,7 +4789,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5888,11 +4802,9 @@ class Config {
                   "jobId": "`reqdata.job_id`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5902,60 +4814,46 @@ class Config {
     "protein_annotate_submit": {
       "fields": [
         {
-          "active": true,
           "name": "appl",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "goterms",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 2
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "protein_annotate_submit",
@@ -5965,7 +4863,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -5981,11 +4878,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -5995,60 +4890,46 @@ class Config {
     "protein_hydrophobicity": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "scale",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "window",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 7
+          "type": "`$INTEGER`"
         }
       ],
       "name": "protein_hydrophobicity",
@@ -6058,7 +4939,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6074,11 +4954,9 @@ class Config {
                   "window": "`reqdata.window`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6088,53 +4966,42 @@ class Config {
     "protein_property": {
       "fields": [
         {
-          "active": true,
           "name": "chargeStep",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "protein_property",
@@ -6144,7 +5011,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6159,11 +5025,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6173,60 +5037,46 @@ class Config {
     "random_sequence": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gcContent",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "kind",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "length",
           "req": true,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "random_sequence",
@@ -6236,7 +5086,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6252,11 +5101,9 @@ class Config {
                   "length": "`reqdata.length`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6266,53 +5113,42 @@ class Config {
     "restriction_site": {
       "fields": [
         {
-          "active": true,
           "name": "enzymes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 0
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "restriction_site",
@@ -6322,7 +5158,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6337,11 +5172,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6351,53 +5184,42 @@ class Config {
     "reverse_complement": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "type",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "reverse_complement",
@@ -6407,7 +5229,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6422,11 +5243,9 @@ class Config {
                   "type": "`reqdata.type`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6436,60 +5255,46 @@ class Config {
     "reverse_translate": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "mode",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "protein",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "reverse_translate",
@@ -6499,7 +5304,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6515,11 +5319,9 @@ class Config {
                   "protein": "`reqdata.protein`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6529,46 +5331,38 @@ class Config {
     "rna_fold": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "rna_fold",
@@ -6578,7 +5372,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6592,11 +5385,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6606,74 +5397,54 @@ class Config {
     "sanger_vs_reference": {
       "fields": [
         {
-          "active": true,
           "name": "fileBase64",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "fileName",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "minCoverage",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 3
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "read",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "reference",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "sanger_vs_reference",
@@ -6683,7 +5454,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6701,11 +5471,9 @@ class Config {
                   "reference": "`reqdata.reference`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6715,46 +5483,38 @@ class Config {
     "save_permalink": {
       "fields": [
         {
-          "active": true,
           "name": "args",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "save_permalink",
@@ -6764,7 +5524,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6779,11 +5538,9 @@ class Config {
                   "tool": "`reqdata.tool`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6793,53 +5550,42 @@ class Config {
     "seqfile_stat": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "qualityOffset",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 4
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "seqfile_stat",
@@ -6849,7 +5595,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6864,11 +5609,9 @@ class Config {
                   "qualityOffset": "`reqdata.quality_offset`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6878,60 +5621,46 @@ class Config {
     "sequence_fetch": {
       "fields": [
         {
-          "active": true,
           "name": "accession",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "db",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "format",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "sequence_fetch",
@@ -6941,7 +5670,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -6957,11 +5685,9 @@ class Config {
                   "format": "`reqdata.format`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -6971,60 +5697,46 @@ class Config {
     "sequence_format_convert": {
       "fields": [
         {
-          "active": true,
           "name": "from",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "input",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "to",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "sequence_format_convert",
@@ -7034,7 +5746,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7050,11 +5761,9 @@ class Config {
                   "to": "`reqdata.to`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7064,67 +5773,50 @@ class Config {
     "sequence_report": {
       "fields": [
         {
-          "active": true,
           "name": "endPrimerLength",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "maxOrfs",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 2
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "minOrfAa",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "sequence_report",
@@ -7134,7 +5826,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7151,11 +5842,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7165,74 +5854,53 @@ class Config {
     "sequence_search": {
       "fields": [
         {
-          "active": true,
           "name": "db",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "gene",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "maxResults",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 6
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "term",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 9
+          "type": "`$STRING`"
         }
       ],
       "name": "sequence_search",
@@ -7242,7 +5910,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7260,11 +5927,9 @@ class Config {
                   "term": "`reqdata.term`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7274,60 +5939,47 @@ class Config {
     "sequencing_readback_verify": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "minSupportingReads",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "reads",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "reference",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "sequencing_readback_verify",
@@ -7337,7 +5989,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7353,11 +6004,9 @@ class Config {
                   "reference": "`reqdata.reference`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7367,46 +6016,37 @@ class Config {
     "session_create": {
       "fields": [
         {
-          "active": true,
           "name": "entries",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "session_create",
@@ -7416,7 +6056,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7430,11 +6069,9 @@ class Config {
                   "entries": "`reqdata.entry`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7444,53 +6081,42 @@ class Config {
     "session_get": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "names",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sessionId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "session_get",
@@ -7500,7 +6126,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7515,11 +6140,9 @@ class Config {
                   "sessionId": "`reqdata.session_id`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7529,67 +6152,50 @@ class Config {
     "session_run": {
       "fields": [
         {
-          "active": true,
           "name": "args",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "fromSession",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sessionId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "writeBack",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 8
+          "type": "`$OBJECT`"
         }
       ],
       "name": "session_run",
@@ -7599,7 +6205,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7617,11 +6222,9 @@ class Config {
                   "writeBack": "`reqdata.write_back`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7631,53 +6234,43 @@ class Config {
     "session_set": {
       "fields": [
         {
-          "active": true,
           "name": "entries",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sessionId",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "session_set",
@@ -7687,7 +6280,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7702,11 +6294,9 @@ class Config {
                   "sessionId": "`reqdata.session_id`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7716,60 +6306,46 @@ class Config {
     "sirna_design": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "minReynolds",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "shRnaLoop",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "target",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "sirna_design",
@@ -7779,7 +6355,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7795,11 +6370,9 @@ class Config {
                   "target": "`reqdata.target`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7809,137 +6382,90 @@ class Config {
     "site_directed_mutagenesi": {
       "fields": [
         {
-          "active": true,
           "name": "armTmTarget",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "dntpMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "editKind",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 3
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "mgMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 5
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "naMM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 6
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "newBase",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 8
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "oligoNM",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 9
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "organism",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "position",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 11
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 12
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "residue",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 13
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 14
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "style",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 15
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "targetAa",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 16
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "template",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 17
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 18
+          "type": "`$STRING`"
         }
       ],
       "name": "site_directed_mutagenesi",
@@ -7949,7 +6475,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -7976,11 +6501,9 @@ class Config {
                   "template": "`reqdata.template`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -7990,60 +6513,46 @@ class Config {
     "translate": {
       "fields": [
         {
-          "active": true,
           "name": "frame",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "toStop",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 6
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         }
       ],
       "name": "translate",
@@ -8053,7 +6562,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8069,11 +6577,9 @@ class Config {
                   "toStop": "`reqdata.to_stop`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8083,53 +6589,42 @@ class Config {
     "variant_annotate": {
       "fields": [
         {
-          "active": true,
           "name": "assembly",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 4
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "variant",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "variant_annotate",
@@ -8139,7 +6634,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8154,11 +6648,9 @@ class Config {
                   "variant": "`reqdata.variant`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8168,67 +6660,51 @@ class Config {
     "variant_comparator": {
       "fields": [
         {
-          "active": true,
           "name": "coding",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 3
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 4
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "query",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "reference",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 7
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "variant_comparator",
@@ -8238,7 +6714,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8255,11 +6730,9 @@ class Config {
                   "reference": "`reqdata.reference`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8269,158 +6742,103 @@ class Config {
     "verify_assembly": {
       "fields": [
         {
-          "active": true,
           "name": "armTmTarget",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 1
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "claimedConstruct",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "coding",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 3
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "enzyme",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "enzyme3",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "enzyme5",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "fragmentPcrs",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 7
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "fragments",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 8
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "frameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 9
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 10
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "insert",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "insertPcr",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 12
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "method",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 13
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "names",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 14
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 15
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "overlapLen",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 16
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 17
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 18
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 19
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "vector",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 20
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "vectorPcr",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 21
+          "type": "`$OBJECT`"
         }
       ],
       "name": "verify_assembly",
@@ -8430,7 +6848,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8460,11 +6877,9 @@ class Config {
                   "vectorPcr": "`reqdata.vector_pcr`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8474,88 +6889,65 @@ class Config {
     "verify_construct": {
       "fields": [
         {
-          "active": true,
           "name": "claimedConstruct",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "expectedFrameStart",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 1
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "insertForwardPrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "insertReversePrimer",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "insertTemplate",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "maxPrimerMismatches",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 6
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 7
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 8
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 9
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "templateCircular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 10
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 11
+          "type": "`$STRING`"
         }
       ],
       "name": "verify_construct",
@@ -8565,7 +6957,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8585,11 +6976,9 @@ class Config {
                   "templateCircular": "`reqdata.template_circular`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8599,67 +6988,50 @@ class Config {
     "virtual_gel": {
       "fields": [
         {
-          "active": true,
           "name": "circular",
-          "req": false,
-          "type": "`$BOOLEAN`",
-          "index$": 0
+          "type": "`$BOOLEAN`"
         },
         {
-          "active": true,
           "name": "enzymes",
-          "req": false,
-          "type": "`$ARRAY`",
-          "index$": 1
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ladder",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 4
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 5
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 6
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "sequence",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 7
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 8
+          "type": "`$STRING`"
         }
       ],
       "name": "virtual_gel",
@@ -8669,7 +7041,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8686,11 +7057,9 @@ class Config {
                   "sequence": "`reqdata.sequence`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8700,46 +7069,38 @@ class Config {
     "volcano_plot_data": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 1
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 2
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "rows",
           "req": true,
-          "type": "`$ARRAY`",
-          "index$": 4
+          "type": "`$ARRAY`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 5
+          "type": "`$STRING`"
         }
       ],
       "name": "volcano_plot_data",
@@ -8749,7 +7110,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8763,11 +7123,9 @@ class Config {
                   "rows": "`reqdata.row`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {
@@ -8777,53 +7135,42 @@ class Config {
     "web_search": {
       "fields": [
         {
-          "active": true,
           "name": "gate",
-          "req": false,
-          "type": "`$ANY`",
-          "index$": 0
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "max_results",
-          "req": false,
-          "type": "`$NUMBER`",
-          "index$": 1
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "ok",
           "req": true,
-          "type": "`$ANY`",
-          "index$": 2
+          "type": "`$ANY`"
         },
         {
-          "active": true,
           "name": "provenance",
           "req": true,
           "type": "`$OBJECT`",
-          "index$": 3
+          "union": {
+            "branches": 2,
+            "count": 1,
+            "depth": 2
+          }
         },
         {
-          "active": true,
           "name": "query",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "result",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tool",
           "req": true,
-          "type": "`$STRING`",
-          "index$": 6
+          "type": "`$STRING`"
         }
       ],
       "name": "web_search",
@@ -8833,7 +7180,6 @@ class Config {
           "name": "create",
           "points": [
             {
-              "active": true,
               "args": {},
               "kind": "http",
               "method": "POST",
@@ -8848,11 +7194,9 @@ class Config {
                   "query": "`reqdata.query`"
                 },
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "create"
+          ]
         }
       },
       "relations": {

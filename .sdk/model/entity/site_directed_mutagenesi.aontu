@@ -69,6 +69,11 @@ main: kit: entity: site_directed_mutagenesi: {
       name: "provenance"
       req: true
       type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
     }
     {
       name: "residue"
