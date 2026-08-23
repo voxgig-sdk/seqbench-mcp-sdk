@@ -1,0 +1,101 @@
+# Entity: oligo_analysi
+
+main: kit: entity: oligo_analysi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "dntpMM"
+      req: false
+      short: "Total [dNTP] (mM), chelates Mg2+."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "mgMM"
+      req: false
+      short: "Divalent cation [Mg2+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "naMM"
+      req: false
+      short: "Monovalent cation [Na+]/[K+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligoNM"
+      req: false
+      short: "Total strand concentration (nM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "oligo_analysi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/oligo_analysis"
+          parts: [
+            "oligo_analysis"
+          ]
+          transform: {
+            req: {
+              dntpMM: "`reqdata.dntp_mm`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              oligoNM: "`reqdata.oligo_nm`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

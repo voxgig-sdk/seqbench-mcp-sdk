@@ -1,0 +1,122 @@
+# Entity: construct_qc
+
+main: kit: entity: construct_qc: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "avoidEnzymes"
+      req: false
+      short: "Enzyme names whose internal sites should be flagged as errors."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "crypticOrfMinAa"
+      req: false
+      short: "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frameStart"
+      req: false
+      short: "1-based nucleotide where the reading frame begins."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "gcHigh"
+      req: false
+      short: "GC% above this flags a GC-rich window."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gcLow"
+      req: false
+      short: "GC% below this flags an AT-rich window."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gcWindow"
+      req: false
+      short: "Sliding-window size (nt) for GC-extreme scanning."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "homopolymerMin"
+      req: false
+      short: "Minimum run length to flag a homopolymer."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "construct_qc"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/construct_qc"
+          parts: [
+            "construct_qc"
+          ]
+          transform: {
+            req: {
+              avoidEnzymes: "`reqdata.avoid_enzyme`"
+              crypticOrfMinAa: "`reqdata.cryptic_orf_min_aa`"
+              frameStart: "`reqdata.frame_start`"
+              gcHigh: "`reqdata.gc_high`"
+              gcLow: "`reqdata.gc_low`"
+              gcWindow: "`reqdata.gc_window`"
+              homopolymerMin: "`reqdata.homopolymer_min`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

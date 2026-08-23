@@ -1,0 +1,80 @@
+# Entity: parse_sanger_trace
+
+main: kit: entity: parse_sanger_trace: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "fileBase64"
+      req: true
+      short: "The binary ABIF (.ab1 / .abi) trace file, base64-encoded."
+      type: "`$STRING`"
+    }
+    {
+      name: "fileName"
+      req: false
+      short: "Optional original file name (echoed back)."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "parse_sanger_trace"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/parse_sanger_trace"
+          parts: [
+            "parse_sanger_trace"
+          ]
+          transform: {
+            req: {
+              fileBase64: "`reqdata.file_base64`"
+              fileName: "`reqdata.file_name`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

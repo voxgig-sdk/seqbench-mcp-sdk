@@ -1,0 +1,101 @@
+# Entity: dna_molarity
+
+main: kit: entity: dna_molarity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "length"
+      req: false
+      short: "Length in bp (dsDNA) or nt (ssDNA/ssRNA)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "massNg"
+      req: false
+      short: "Mass in nanograms."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: false
+      short: "Optional sequence — overrides length and gives an exact molar mass from base composition."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Molecule type."
+      type: "`$STRING`"
+    }
+    {
+      name: "volumeUl"
+      req: false
+      short: "Volume in microlitres (0 = unknown; needed for concentration)."
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "dna_molarity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/dna_molarity"
+          parts: [
+            "dna_molarity"
+          ]
+          transform: {
+            req: {
+              length: "`reqdata.length`"
+              massNg: "`reqdata.mass_ng`"
+              sequence: "`reqdata.sequence`"
+              type: "`reqdata.type`"
+              volumeUl: "`reqdata.volume_ul`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,80 @@
+# Entity: cross_dimer
+
+main: kit: entity: cross_dimer: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequenceA"
+      req: true
+      short: "First oligo (5'→3')."
+      type: "`$STRING`"
+    }
+    {
+      name: "sequenceB"
+      req: true
+      short: "Second oligo (5'→3')."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "cross_dimer"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/cross_dimer"
+          parts: [
+            "cross_dimer"
+          ]
+          transform: {
+            req: {
+              sequenceA: "`reqdata.sequence_a`"
+              sequenceB: "`reqdata.sequence_b`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

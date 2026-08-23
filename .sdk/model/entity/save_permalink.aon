@@ -1,0 +1,74 @@
+# Entity: save_permalink
+
+main: kit: entity: save_permalink: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "args"
+      req: true
+      short: "Arguments for that tool, exactly as you would pass to it directly."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "save_permalink"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/save_permalink"
+          parts: [
+            "save_permalink"
+          ]
+          transform: {
+            req: {
+              args: "`reqdata.arg`"
+              tool: "`reqdata.tool`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

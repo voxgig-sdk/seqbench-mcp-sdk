@@ -1,0 +1,150 @@
+# Entity: crispr_hdr_donor
+
+main: kit: entity: crispr_hdr_donor: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "armLength"
+      req: false
+      short: "Homology arm length (bp) on each side."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "blockPam"
+      req: false
+      short: "When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "designGenotypingPrimers"
+      req: false
+      short: "Also design a primer pair (on the original targetSequence) whose product spans the edit site."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "editEnd"
+      req: false
+      short: "1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "editStart"
+      req: false
+      short: "1-based start of the region being replaced."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frameStart"
+      req: false
+      short: "Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "guideEnd"
+      req: false
+      short: "1-based forward-strand end of the guide's protospacer."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "guideStart"
+      req: false
+      short: "1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "guideStrand"
+      req: false
+      short: "Strand the guide's protospacer is on."
+      type: "`$STRING`"
+    }
+    {
+      name: "nuclease"
+      req: false
+      short: "Needed only when deriving the cut site from guideStart/guideEnd/guideStrand."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "replacement"
+      req: true
+      short: "Sequence to insert/substitute (\"\" for a pure deletion)."
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "targetSequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "crispr_hdr_donor"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/crispr_hdr_donor"
+          parts: [
+            "crispr_hdr_donor"
+          ]
+          transform: {
+            req: {
+              armLength: "`reqdata.arm_length`"
+              blockPam: "`reqdata.block_pam`"
+              designGenotypingPrimers: "`reqdata.design_genotyping_primer`"
+              editEnd: "`reqdata.edit_end`"
+              editStart: "`reqdata.edit_start`"
+              frameStart: "`reqdata.frame_start`"
+              guideEnd: "`reqdata.guide_end`"
+              guideStart: "`reqdata.guide_start`"
+              guideStrand: "`reqdata.guide_strand`"
+              nuclease: "`reqdata.nuclease`"
+              replacement: "`reqdata.replacement`"
+              targetSequence: "`reqdata.target_sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

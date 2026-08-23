@@ -1,0 +1,108 @@
+# Entity: protease_digestion
+
+main: kit: entity: protease_digestion: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "maxMass"
+      req: false
+      short: "Optional upper bound on neutral monoisotopic mass (Da)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "maxPeptides"
+      req: false
+      short: "Cap on the number of returned peptides."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "minMass"
+      req: false
+      short: "Optional lower bound on neutral monoisotopic mass (Da)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "missedCleavages"
+      req: false
+      short: "Allowed missed internal cleavages (0–2)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "protease"
+      req: false
+      short: "Protease or chemical cleavage agent."
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Protein sequence (one-letter amino-acid codes; non-AA characters ignored)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "protease_digestion"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protease_digestion"
+          parts: [
+            "protease_digestion"
+          ]
+          transform: {
+            req: {
+              maxMass: "`reqdata.max_mass`"
+              maxPeptides: "`reqdata.max_peptide`"
+              minMass: "`reqdata.min_mass`"
+              missedCleavages: "`reqdata.missed_cleavage`"
+              protease: "`reqdata.protease`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,80 @@
+# Entity: plasmid_deep_annotate
+
+main: kit: entity: plasmid_deep_annotate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      short: "Treat the sequence as a circular plasmid (vs."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "plasmid_deep_annotate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/plasmid_deep_annotate"
+          parts: [
+            "plasmid_deep_annotate"
+          ]
+          transform: {
+            req: {
+              circular: "`reqdata.circular`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

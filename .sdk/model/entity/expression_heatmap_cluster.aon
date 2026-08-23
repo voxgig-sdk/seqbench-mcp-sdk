@@ -1,0 +1,122 @@
+# Entity: expression_heatmap_cluster
+
+main: kit: entity: expression_heatmap_cluster: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "clusterCols"
+      req: false
+      short: "Cluster (reorder) samples."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "clusterRows"
+      req: false
+      short: "Cluster (reorder) genes."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "distanceMetric"
+      req: false
+      short: "correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "genes"
+      req: true
+      short: "Row (gene) labels."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "linkage"
+      req: false
+      short: "average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "samples"
+      req: true
+      short: "Column (sample) labels."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "values"
+      req: true
+      short: "genes x samples numeric matrix — one row per gene, in the same order as `genes`."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "zScoreRows"
+      req: false
+      short: "Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization)."
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  name: "expression_heatmap_cluster"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/expression_heatmap_cluster"
+          parts: [
+            "expression_heatmap_cluster"
+          ]
+          transform: {
+            req: {
+              clusterCols: "`reqdata.cluster_col`"
+              clusterRows: "`reqdata.cluster_row`"
+              distanceMetric: "`reqdata.distance_metric`"
+              genes: "`reqdata.gene`"
+              linkage: "`reqdata.linkage`"
+              samples: "`reqdata.sample`"
+              values: "`reqdata.value`"
+              zScoreRows: "`reqdata.z_score_row`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

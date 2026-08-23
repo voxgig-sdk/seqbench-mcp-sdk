@@ -1,0 +1,164 @@
+# Entity: site_directed_mutagenesi
+
+main: kit: entity: site_directed_mutagenesi: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "armTmTarget"
+      req: false
+      short: "Target Tm (°C) for each template-binding arm."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "dntpMM"
+      req: false
+      short: "Total [dNTP] (mM), chelates Mg2+."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "editKind"
+      req: false
+      short: "Edit at the nucleotide or amino-acid level."
+      type: "`$STRING`"
+    }
+    {
+      name: "frameStart"
+      req: false
+      short: "1-based position of the first base of codon 1 (editKind='aa')."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "mgMM"
+      req: false
+      short: "Divalent cation [Mg2+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "naMM"
+      req: false
+      short: "Monovalent cation [Na+]/[K+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "newBase"
+      req: false
+      short: "Replacement base (editKind='nt')."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligoNM"
+      req: false
+      short: "Total strand concentration (nM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "organism"
+      req: false
+      short: "Codon-usage table for choosing the new codon (editKind='aa')."
+      type: "`$STRING`"
+    }
+    {
+      name: "position"
+      req: false
+      short: "1-based position to substitute (editKind='nt')."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "residue"
+      req: false
+      short: "1-based residue number to change (editKind='aa')."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "style"
+      req: false
+      short: "Mutagenic primer style."
+      type: "`$STRING`"
+    }
+    {
+      name: "targetAa"
+      req: false
+      short: "Target amino acid, one-letter code incl '*' (editKind='aa')."
+      type: "`$STRING`"
+    }
+    {
+      name: "template"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "site_directed_mutagenesi"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/site_directed_mutagenesis"
+          parts: [
+            "site_directed_mutagenesis"
+          ]
+          transform: {
+            req: {
+              armTmTarget: "`reqdata.arm_tm_target`"
+              dntpMM: "`reqdata.dntp_mm`"
+              editKind: "`reqdata.edit_kind`"
+              frameStart: "`reqdata.frame_start`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              newBase: "`reqdata.new_base`"
+              oligoNM: "`reqdata.oligo_nm`"
+              organism: "`reqdata.organism`"
+              position: "`reqdata.position`"
+              residue: "`reqdata.residue`"
+              style: "`reqdata.style`"
+              targetAa: "`reqdata.target_aa`"
+              template: "`reqdata.template`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

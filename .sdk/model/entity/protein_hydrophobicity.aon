@@ -1,0 +1,87 @@
+# Entity: protein_hydrophobicity
+
+main: kit: entity: protein_hydrophobicity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "scale"
+      req: false
+      short: "Amino-acid scale."
+      type: "`$STRING`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Protein sequence (one-letter amino-acid codes; non-AA characters ignored)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "window"
+      req: false
+      short: "Sliding-window size (clamped to an odd number ≥ 1)."
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "protein_hydrophobicity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protein_hydrophobicity"
+          parts: [
+            "protein_hydrophobicity"
+          ]
+          transform: {
+            req: {
+              scale: "`reqdata.scale`"
+              sequence: "`reqdata.sequence`"
+              window: "`reqdata.window`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

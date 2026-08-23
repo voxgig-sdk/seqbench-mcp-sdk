@@ -1,0 +1,94 @@
+# Entity: ortholog_map
+
+main: kit: entity: ortholog_map: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sourceSpecies"
+      req: false
+      short: "Ensembl species slug the symbols belong to (e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "symbols"
+      req: true
+      short: "Gene symbols to look up, up to 50 (e.g."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "targetSpecies"
+      req: true
+      short: "Ensembl species slug to find homologs in (e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      short: "Homology type to return."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "ortholog_map"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/ortholog_map"
+          parts: [
+            "ortholog_map"
+          ]
+          transform: {
+            req: {
+              sourceSpecies: "`reqdata.source_species`"
+              symbols: "`reqdata.symbol`"
+              targetSpecies: "`reqdata.target_species`"
+              type: "`reqdata.type`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

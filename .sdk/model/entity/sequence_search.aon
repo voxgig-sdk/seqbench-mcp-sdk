@@ -1,0 +1,100 @@
+# Entity: sequence_search
+
+main: kit: entity: sequence_search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "db"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "gene"
+      req: false
+      short: "Gene symbol/name, e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "maxResults"
+      req: false
+      short: "Up to 20."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      short: "Organism name, e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "term"
+      req: false
+      short: "Raw NCBI search term (advanced) — overrides gene/organism when given, e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "sequence_search"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/sequence_search"
+          parts: [
+            "sequence_search"
+          ]
+          transform: {
+            req: {
+              db: "`reqdata.db`"
+              gene: "`reqdata.gene`"
+              maxResults: "`reqdata.max_result`"
+              organism: "`reqdata.organism`"
+              term: "`reqdata.term`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,94 @@
+# Entity: golden_gate_fidelity
+
+main: kit: entity: golden_gate_fidelity: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "compareToNamedSet"
+      req: false
+      short: "Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison."
+      type: "`$STRING`"
+    }
+    {
+      name: "dataset"
+      req: false
+      short: "Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "overhangs"
+      req: true
+      short: "The candidate 4-base overhangs for one assembly (e.g."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "riskThreshold"
+      req: false
+      short: "Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "golden_gate_fidelity"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/golden_gate_fidelity"
+          parts: [
+            "golden_gate_fidelity"
+          ]
+          transform: {
+            req: {
+              compareToNamedSet: "`reqdata.compare_to_named_set`"
+              dataset: "`reqdata.dataset`"
+              overhangs: "`reqdata.overhang`"
+              riskThreshold: "`reqdata.risk_threshold`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

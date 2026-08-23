@@ -1,0 +1,87 @@
+# Entity: protein_annotate_submit
+
+main: kit: entity: protein_annotate_submit: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "appl"
+      req: false
+      short: "Restrict to one member database (e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "goterms"
+      req: false
+      short: "Include GO-term cross-references."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Protein sequence, one-letter code (FASTA header, if any, is stripped)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "protein_annotate_submit"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protein_annotate_submit"
+          parts: [
+            "protein_annotate_submit"
+          ]
+          transform: {
+            req: {
+              appl: "`reqdata.appl`"
+              goterms: "`reqdata.goterm`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

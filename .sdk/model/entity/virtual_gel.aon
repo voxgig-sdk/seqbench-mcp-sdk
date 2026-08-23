@@ -1,0 +1,94 @@
+# Entity: virtual_gel
+
+main: kit: entity: virtual_gel: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "circular"
+      req: false
+      short: "Treat the sequence as circular (plasmid)."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "enzymes"
+      req: false
+      short: "Enzyme names to digest with."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ladder"
+      req: false
+      short: "DNA ladder to plot alongside the sample lane."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "virtual_gel"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/virtual_gel"
+          parts: [
+            "virtual_gel"
+          ]
+          transform: {
+            req: {
+              circular: "`reqdata.circular`"
+              enzymes: "`reqdata.enzyme`"
+              ladder: "`reqdata.ladder`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

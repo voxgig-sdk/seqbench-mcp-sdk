@@ -1,0 +1,115 @@
+# Entity: prime_editing_design
+
+main: kit: entity: prime_editing_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "editEnd"
+      req: true
+      short: "1-based inclusive end of the region being changed."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "editStart"
+      req: true
+      short: "1-based inclusive start of the region being changed."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "frameStart"
+      req: false
+      short: "Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "insertedSeq"
+      req: false
+      short: "Replacement bases (forward strand)."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "pbsLength"
+      req: false
+      short: "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "rttHomology"
+      req: false
+      short: "Homology length (nt) 3' of the edit that the RTT should include (typically 10-16)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "target"
+      req: true
+      short: "Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "prime_editing_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/prime_editing_design"
+          parts: [
+            "prime_editing_design"
+          ]
+          transform: {
+            req: {
+              editEnd: "`reqdata.edit_end`"
+              editStart: "`reqdata.edit_start`"
+              frameStart: "`reqdata.frame_start`"
+              insertedSeq: "`reqdata.inserted_seq`"
+              pbsLength: "`reqdata.pbs_length`"
+              rttHomology: "`reqdata.rtt_homology`"
+              target: "`reqdata.target`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

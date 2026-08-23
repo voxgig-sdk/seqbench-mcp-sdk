@@ -1,0 +1,94 @@
+# Entity: base_editing_design
+
+main: kit: entity: base_editing_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "editor"
+      req: false
+      short: "Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G)."
+      type: "`$STRING`"
+    }
+    {
+      name: "frameStart"
+      req: false
+      short: "Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "target"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "targetPosition"
+      req: false
+      short: "Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "base_editing_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/base_editing_design"
+          parts: [
+            "base_editing_design"
+          ]
+          transform: {
+            req: {
+              editor: "`reqdata.editor`"
+              frameStart: "`reqdata.frame_start`"
+              target: "`reqdata.target`"
+              targetPosition: "`reqdata.target_position`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -36,12 +36,14 @@
               "active": true,
               "name": "accession",
               "req": true,
+              "short": "UniProt accession, e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -65,12 +67,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -114,12 +118,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "length",
               "req": false,
+              "short": "Total gapmer length (nt).",
               "type": "`$INTEGER`"
             },
             {
@@ -143,24 +149,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "wing",
               "req": false,
+              "short": "Modified-wing length on each side (nt); the central gap = length − 2×wing.",
               "type": "`$INTEGER`"
             }
           ],
@@ -206,18 +216,21 @@
               "active": true,
               "name": "editor",
               "req": false,
+              "short": "Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -241,24 +254,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "targetPosition",
               "req": false,
+              "short": "Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -305,12 +322,14 @@
               "active": true,
               "name": "args",
               "req": false,
+              "short": "Shared tool arguments applied to every record.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "capped",
               "req": true,
+              "short": "True if input exceeded the record limit.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -335,12 +354,14 @@
               "active": true,
               "name": "input",
               "req": true,
+              "short": "Multi-FASTA text or one sequence per line (max ~2,000,000 chars).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "limit",
               "req": true,
+              "short": "Maximum records per call (500).",
               "type": "`$INTEGER`"
             },
             {
@@ -364,6 +385,7 @@
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "A batchable tool slug (see `GET /batch`).",
               "type": "`$STRING`"
             }
           ],
@@ -432,6 +454,7 @@
               "active": true,
               "name": "columns",
               "req": true,
+              "short": "Flattened \"<step>·<tool>·<key>\" column headers.",
               "type": "`$ARRAY`"
             },
             {
@@ -450,12 +473,14 @@
               "active": true,
               "name": "input",
               "req": true,
+              "short": "Multi-FASTA text or one sequence per line.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "limit",
               "req": true,
+              "short": "Maximum records per call (200).",
               "type": "`$INTEGER`"
             },
             {
@@ -541,24 +566,28 @@
               "active": true,
               "name": "endPrimerLength",
               "req": false,
+              "short": "Length of the naive end primers taken from each end.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxOrfs",
               "req": false,
+              "short": "Maximum number of ORFs to return, longest first.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "minOrfAa",
               "req": false,
+              "short": "Minimum ORF length in amino acids (nucleotide input only).",
               "type": "`$INTEGER`"
             },
             {
@@ -582,18 +611,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -640,60 +672,70 @@
               "active": true,
               "name": "armTmTarget",
               "req": false,
+              "short": "Target annealing Tm (°C) for primer arms.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Produce a circular product.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "enzyme",
               "req": false,
+              "short": "Type IIS enzyme for Golden Gate (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enzyme3",
               "req": false,
+              "short": "3′ enzyme (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enzyme5",
               "req": false,
+              "short": "5′ enzyme (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fragments",
               "req": false,
+              "short": "Fragments (5′→3′), assembled head-to-tail.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "insert",
               "req": false,
+              "short": "Insert sequence (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "method",
               "req": true,
+              "short": "Assembly method.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "names",
               "req": false,
+              "short": "Optional labels for each fragment.",
               "type": "`$ARRAY`"
             },
             {
@@ -706,6 +748,7 @@
               "active": true,
               "name": "overlapLen",
               "req": false,
+              "short": "Gibson homology-arm length (bp).",
               "type": "`$INTEGER`"
             },
             {
@@ -723,18 +766,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vector",
               "req": false,
+              "short": "Vector sequence (restriction method).",
               "type": "`$STRING`"
             }
           ],
@@ -788,12 +834,14 @@
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based position to start reading codons.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -823,24 +871,28 @@
               "active": true,
               "name": "rareThreshold",
               "req": false,
+              "short": "Relative adaptiveness (w) below this flags a codon as rare.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Coding sequence (DNA/RNA; should start in-frame at ATG).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -887,6 +939,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -905,6 +958,7 @@
               "active": true,
               "name": "protein",
               "req": true,
+              "short": "Protein sequence (one-letter codes).",
               "type": "`$STRING`"
             },
             {
@@ -922,12 +976,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -972,24 +1028,28 @@
               "active": true,
               "name": "avoidEnzymes",
               "req": false,
+              "short": "Enzyme names whose internal sites should be removed (e.g.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "crypticOrfMinAa",
               "req": false,
+              "short": "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based nucleotide where the reading frame begins.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -1020,6 +1080,7 @@
               "active": true,
               "name": "maxPasses",
               "req": false,
+              "short": "Repeat full passes until clean or no further progress.",
               "type": "`$INTEGER`"
             },
             {
@@ -1032,6 +1093,7 @@
               "active": true,
               "name": "organism",
               "req": false,
+              "short": "Codon-usage table to prefer among synonymous options.",
               "type": "`$STRING`"
             },
             {
@@ -1049,18 +1111,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1113,48 +1178,56 @@
               "active": true,
               "name": "avoidEnzymes",
               "req": false,
+              "short": "Enzyme names whose internal sites should be flagged as errors.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "crypticOrfMinAa",
               "req": false,
+              "short": "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based nucleotide where the reading frame begins.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gcHigh",
               "req": false,
+              "short": "GC% above this flags a GC-rich window.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gcLow",
               "req": false,
+              "short": "GC% below this flags an AT-rich window.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gcWindow",
               "req": false,
+              "short": "Sliding-window size (nt) for GC-extreme scanning.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "homopolymerMin",
               "req": false,
+              "short": "Minimum run length to flag a homopolymer.",
               "type": "`$INTEGER`"
             },
             {
@@ -1178,18 +1251,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1240,18 +1316,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "minScore",
               "req": false,
+              "short": "Only return guides with a heuristic score at least this high (0–100).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "nuclease",
               "req": false,
+              "short": "Nuclease id.",
               "type": "`$STRING`"
             },
             {
@@ -1275,24 +1354,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "searchReverseStrand",
               "req": false,
+              "short": "Also scan the reverse strand for guides.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1339,66 +1422,77 @@
               "active": true,
               "name": "armLength",
               "req": false,
+              "short": "Homology arm length (bp) on each side.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "blockPam",
               "req": false,
+              "short": "When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "designGenotypingPrimers",
               "req": false,
+              "short": "Also design a primer pair (on the original targetSequence) whose product spans the edit site.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "editEnd",
               "req": false,
+              "short": "1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "editStart",
               "req": false,
+              "short": "1-based start of the region being replaced.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "guideEnd",
               "req": false,
+              "short": "1-based forward-strand end of the guide's protospacer.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "guideStart",
               "req": false,
+              "short": "1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "guideStrand",
               "req": false,
+              "short": "Strand the guide's protospacer is on.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nuclease",
               "req": false,
+              "short": "Needed only when deriving the cut site from guideStart/guideEnd/guideStrand.",
               "type": "`$STRING`"
             },
             {
@@ -1422,24 +1516,28 @@
               "active": true,
               "name": "replacement",
               "req": true,
+              "short": "Sequence to insert/substitute (\"\" for a pure deletion).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "targetSequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1494,18 +1592,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxMismatches",
               "req": false,
+              "short": "Mismatches tolerated between the protospacer and a candidate genomic site.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "nuclease",
               "req": false,
+              "short": "Nuclease id — determines the PAM pattern/side required at each candidate site.",
               "type": "`$STRING`"
             },
             {
@@ -1518,6 +1619,7 @@
               "active": true,
               "name": "protospacer",
               "req": true,
+              "short": "The guide's protospacer sequence, 5'→3' (no PAM).",
               "type": "`$STRING`"
             },
             {
@@ -1535,12 +1637,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1586,6 +1690,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -1609,24 +1714,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequenceA",
               "req": true,
+              "short": "First oligo (5'→3').",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sequenceB",
               "req": true,
+              "short": "Second oligo (5'→3').",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1671,18 +1780,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "length",
               "req": false,
+              "short": "Length in bp (dsDNA) or nt (ssDNA/ssRNA).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "massNg",
               "req": false,
+              "short": "Mass in nanograms.",
               "type": "`$NUMBER`"
             },
             {
@@ -1706,30 +1818,35 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": false,
+              "short": "Optional sequence — overrides length and gives an exact molar mass from base composition.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Molecule type.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "volumeUl",
               "req": false,
+              "short": "Volume in microlitres (0 = unknown; needed for concentration).",
               "type": "`$NUMBER`"
             }
           ],
@@ -1777,18 +1894,21 @@
               "active": true,
               "name": "enzymeA",
               "req": true,
+              "short": "First enzyme name (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enzymeB",
               "req": true,
+              "short": "Second enzyme name (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -1812,12 +1932,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1862,6 +1984,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -1885,18 +2008,21 @@
               "active": true,
               "name": "reactions",
               "req": true,
+              "short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -1940,6 +2066,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -1952,6 +2079,7 @@
               "active": true,
               "name": "protocolName",
               "req": false,
+              "short": "Optional protocol name (used in the script's metadata).",
               "type": "`$STRING`"
             },
             {
@@ -1969,18 +2097,21 @@
               "active": true,
               "name": "reactions",
               "req": true,
+              "short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2025,6 +2156,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -2048,18 +2180,21 @@
               "active": true,
               "name": "reactions",
               "req": true,
+              "short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2103,36 +2238,42 @@
               "active": true,
               "name": "clusterCols",
               "req": false,
+              "short": "Cluster (reorder) samples.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "clusterRows",
               "req": false,
+              "short": "Cluster (reorder) genes.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "distanceMetric",
               "req": false,
+              "short": "correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "genes",
               "req": true,
+              "short": "Row (gene) labels.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "linkage",
               "req": false,
+              "short": "average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor.",
               "type": "`$STRING`"
             },
             {
@@ -2156,30 +2297,35 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "samples",
               "req": true,
+              "short": "Column (sample) labels.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "values",
               "req": true,
+              "short": "genes x samples numeric matrix — one row per gene, in the same order as `genes`.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "zScoreRows",
               "req": false,
+              "short": "Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization).",
               "type": "`$BOOLEAN`"
             }
           ],
@@ -2230,12 +2376,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
               "type": "`$STRING`"
             },
             {
@@ -2259,18 +2407,21 @@
               "active": true,
               "name": "qualityOffset",
               "req": false,
+              "short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2315,18 +2466,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "minLength",
               "req": false,
+              "short": "Reads shorter than this after trimming are dropped.",
               "type": "`$INTEGER`"
             },
             {
@@ -2350,24 +2504,28 @@
               "active": true,
               "name": "qualityOffset",
               "req": false,
+              "short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "qualityThreshold",
               "req": false,
+              "short": "3' quality-trim threshold (Phred score).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2414,12 +2572,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "minAaLength",
               "req": false,
+              "short": "Minimum protein length (aa) to report.",
               "type": "`$INTEGER`"
             },
             {
@@ -2443,24 +2603,28 @@
               "active": true,
               "name": "requireStop",
               "req": false,
+              "short": "Only report ORFs terminated by a stop codon.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2512,12 +2676,14 @@
               "active": true,
               "name": "convert",
               "req": false,
+              "short": "DNA→RNA (T→U) or RNA→DNA (U→T).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -2541,36 +2707,42 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reverse",
               "req": false,
+              "short": "Reverse the sequence (no complement).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "stripNonLetters",
               "req": false,
+              "short": "Remove digits, spaces and gaps (keep letters only).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "width",
               "req": false,
+              "short": "Line-wrap width; 0 = single line.",
               "type": "`$INTEGER`"
             }
           ],
@@ -2619,36 +2791,42 @@
               "active": true,
               "name": "background",
               "req": false,
+              "short": "Custom background/universe gene symbols.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "collections",
               "req": false,
+              "short": "Which term collections to test.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "genes",
               "req": true,
+              "short": "Query gene symbols (human, e.g.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "maxTermSize",
               "req": false,
+              "short": "Skip terms/pathways with more than this many background genes (matches clusterProfiler's default).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "minTermSize",
               "req": false,
+              "short": "Skip terms/pathways with fewer than this many background genes.",
               "type": "`$INTEGER`"
             },
             {
@@ -2672,12 +2850,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2725,6 +2905,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -2748,18 +2929,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2803,12 +2987,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gene",
               "req": true,
+              "short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type": "`$STRING`"
             },
             {
@@ -2832,12 +3018,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2881,12 +3069,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gene",
               "req": true,
+              "short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type": "`$STRING`"
             },
             {
@@ -2910,12 +3100,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -2959,12 +3151,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gene",
               "req": true,
+              "short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type": "`$STRING`"
             },
             {
@@ -2988,12 +3182,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3037,18 +3233,21 @@
               "active": true,
               "name": "compareToNamedSet",
               "req": false,
+              "short": "Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "dataset",
               "req": false,
+              "short": "Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -3061,6 +3260,7 @@
               "active": true,
               "name": "overhangs",
               "req": true,
+              "short": "The candidate 4-base overhangs for one assembly (e.g.",
               "type": "`$ARRAY`"
             },
             {
@@ -3078,18 +3278,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "riskThreshold",
               "req": false,
+              "short": "Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3136,6 +3339,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -3159,18 +3363,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "variant",
               "req": true,
+              "short": "A full HGVS \"c.\" variant description: \"<accession or gene symbol>:c.<edit>\", e.g.",
               "type": "`$STRING`"
             }
           ],
@@ -3214,6 +3421,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -3243,12 +3451,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3292,18 +3502,21 @@
               "active": true,
               "name": "from",
               "req": true,
+              "short": "Source id type: \"Gene_Name\", \"Ensembl\", \"GeneID\", \"RefSeq_Protein\", or \"UniProtKB_AC-ID\".",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "ids",
               "req": true,
+              "short": "The ids to map, up to 1000 (e.g.",
               "type": "`$ARRAY`"
             },
             {
@@ -3327,24 +3540,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "taxId",
               "req": false,
+              "short": "NCBI taxonomy id to disambiguate a gene symbol (only used when from=\"Gene_Name\").",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "to",
               "req": true,
+              "short": "Target id type.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3391,24 +3608,28 @@
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the template as circular (plasmid).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "forwardPrimer",
               "req": true,
+              "short": "Primer 1, 5'→3'.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxMismatches",
               "req": false,
+              "short": "Mismatches tolerated per primer.",
               "type": "`$INTEGER`"
             },
             {
@@ -3432,24 +3653,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reversePrimer",
               "req": true,
+              "short": "Primer 2, 5'→3' (order does not matter).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "template",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3497,36 +3722,42 @@
               "active": true,
               "name": "addSecondaryMismatch",
               "req": false,
+              "short": "Engineer the internal ARMS destabilising mismatch near the 3' end.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "alleleA",
               "req": true,
+              "short": "First allele (single base) — gets the FAM tail.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "alleleB",
               "req": true,
+              "short": "Second allele (single base) — gets the HEX tail.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxAmplicon",
               "req": false,
+              "short": "Maximum amplicon length for the common reverse primer.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "minAmplicon",
               "req": false,
+              "short": "Minimum amplicon length for the common reverse primer.",
               "type": "`$INTEGER`"
             },
             {
@@ -3550,30 +3781,35 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "snpPosition",
               "req": true,
+              "short": "1-based position of the SNP on the forward strand.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "targetCoreTm",
               "req": false,
+              "short": "Target Tm (°C) for the allele-specific primer core (before the universal tail).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3656,24 +3892,28 @@
               "active": true,
               "name": "dntpMM",
               "req": false,
+              "short": "Total [dNTP] (mM), chelates Mg2+.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "mgMM",
               "req": false,
+              "short": "Divalent cation [Mg2+] (mM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "naMM",
               "req": false,
+              "short": "Monovalent cation [Na+]/[K+] (mM).",
               "type": "`$NUMBER`"
             },
             {
@@ -3686,6 +3926,7 @@
               "active": true,
               "name": "oligoNM",
               "req": false,
+              "short": "Total strand concentration (nM).",
               "type": "`$NUMBER`"
             },
             {
@@ -3703,30 +3944,35 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "targetTm",
               "req": false,
+              "short": "Optional target Tm (°C).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tmTolerance",
               "req": false,
+              "short": "Allowed +/- window (°C) around targetTm for the gate.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3776,18 +4022,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxMismatches",
               "req": false,
+              "short": "Maximum allowed mismatches per match.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "motif",
               "req": true,
+              "short": "Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed.",
               "type": "`$STRING`"
             },
             {
@@ -3811,24 +4060,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "searchReverseStrand",
               "req": false,
+              "short": "Also search the reverse strand.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3875,12 +4128,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "Two or more sequences in multi-FASTA format (>name / sequence).",
               "type": "`$STRING`"
             },
             {
@@ -3904,12 +4159,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -3953,24 +4210,28 @@
               "active": true,
               "name": "dntpMM",
               "req": false,
+              "short": "Total [dNTP] (mM), chelates Mg2+.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "mgMM",
               "req": false,
+              "short": "Divalent cation [Mg2+] (mM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "naMM",
               "req": false,
+              "short": "Monovalent cation [Na+]/[K+] (mM).",
               "type": "`$NUMBER`"
             },
             {
@@ -3983,6 +4244,7 @@
               "active": true,
               "name": "oligoNM",
               "req": false,
+              "short": "Total strand concentration (nM).",
               "type": "`$NUMBER`"
             },
             {
@@ -4000,18 +4262,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4059,6 +4324,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4082,36 +4348,42 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sourceSpecies",
               "req": false,
+              "short": "Ensembl species slug the symbols belong to (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "symbols",
               "req": true,
+              "short": "Gene symbols to look up, up to 50 (e.g.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "targetSpecies",
               "req": true,
+              "short": "Ensembl species slug to find homologs in (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "type",
               "req": false,
+              "short": "Homology type to return.",
               "type": "`$STRING`"
             }
           ],
@@ -4158,24 +4430,28 @@
               "active": true,
               "name": "gap",
               "req": false,
+              "short": "Linear gap penalty (per gap position).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "match",
               "req": false,
+              "short": "Match score.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "mismatch",
               "req": false,
+              "short": "Mismatch penalty.",
               "type": "`$NUMBER`"
             },
             {
@@ -4205,24 +4481,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "seqA",
               "req": true,
+              "short": "First sequence (raw or FASTA; nucleotide or protein).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "seqB",
               "req": true,
+              "short": "Second sequence (raw or FASTA; nucleotide or protein).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4271,6 +4551,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4294,18 +4575,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "text",
               "req": true,
+              "short": "A GenBank flat file (LOCUS … FEATURES … ORIGIN … //).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4349,18 +4633,21 @@
               "active": true,
               "name": "fileBase64",
               "req": true,
+              "short": "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fileName",
               "req": false,
+              "short": "Optional original file name (echoed back).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4384,12 +4671,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4434,6 +4723,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4457,18 +4747,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4512,12 +4805,14 @@
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the sequence as a circular plasmid (vs.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4541,18 +4836,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4597,12 +4895,14 @@
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the query as a circular molecule (most plasmids are).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4626,24 +4926,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "topN",
               "req": false,
+              "short": "How many top-ranked backbone candidates to report.",
               "type": "`$INTEGER`"
             }
           ],
@@ -4689,12 +4993,14 @@
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the query as a circular molecule (most plasmids are).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -4718,24 +5024,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "topN",
               "req": false,
+              "short": "How many top-ranked backbone candidates to report.",
               "type": "`$INTEGER`"
             }
           ],
@@ -4781,30 +5091,35 @@
               "active": true,
               "name": "editEnd",
               "req": true,
+              "short": "1-based inclusive end of the region being changed.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "editStart",
               "req": true,
+              "short": "1-based inclusive start of the region being changed.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "insertedSeq",
               "req": false,
+              "short": "Replacement bases (forward strand).",
               "type": "`$STRING`"
             },
             {
@@ -4817,6 +5132,7 @@
               "active": true,
               "name": "pbsLength",
               "req": false,
+              "short": "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
               "type": "`$INTEGER`"
             },
             {
@@ -4834,24 +5150,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "rttHomology",
               "req": false,
+              "short": "Homology length (nt) 3' of the edit that the RTT should include (typically 10-16).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -4901,12 +5221,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "newSequence",
               "req": true,
+              "short": "New sequence (forward strand) to install in place of [replaceStart, replaceEnd].",
               "type": "`$STRING`"
             },
             {
@@ -4919,12 +5241,14 @@
               "active": true,
               "name": "overlapLength",
               "req": false,
+              "short": "Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "pbsLength",
               "req": false,
+              "short": "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
               "type": "`$INTEGER`"
             },
             {
@@ -4942,30 +5266,35 @@
               "active": true,
               "name": "replaceEnd",
               "req": true,
+              "short": "1-based inclusive end of the region being replaced/deleted.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "replaceStart",
               "req": true,
+              "short": "1-based inclusive start of the region being replaced/deleted.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5026,12 +5355,14 @@
               "active": true,
               "name": "dntpMM",
               "req": false,
+              "short": "Total [dNTP] (mM), chelates Mg2+.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5068,18 +5399,21 @@
               "active": true,
               "name": "maxReturn",
               "req": false,
+              "short": "Number of best pairs to return.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "mgMM",
               "req": false,
+              "short": "Divalent cation [Mg2+] (mM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "naMM",
               "req": false,
+              "short": "Monovalent cation [Na+]/[K+] (mM).",
               "type": "`$NUMBER`"
             },
             {
@@ -5092,6 +5426,7 @@
               "active": true,
               "name": "oligoNM",
               "req": false,
+              "short": "Total strand concentration (nM).",
               "type": "`$NUMBER`"
             },
             {
@@ -5109,24 +5444,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "targetEnd",
               "req": false,
+              "short": "1-based inclusive end of the target region (optional).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "targetStart",
               "req": false,
+              "short": "1-based inclusive start of a region the product must span (optional).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "template",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
@@ -5139,6 +5478,7 @@
               "active": true,
               "name": "tmMaxDiff",
               "req": false,
+              "short": "Max Tm difference within a pair (°C).",
               "type": "`$NUMBER`"
             },
             {
@@ -5157,6 +5497,7 @@
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5218,24 +5559,28 @@
               "active": true,
               "name": "forwardPrimer",
               "req": true,
+              "short": "Forward primer, 5'→3'.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxMismatches",
               "req": false,
+              "short": "Mismatches tolerated per primer against a reference genome.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "maxProductLength",
               "req": false,
+              "short": "Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim.",
               "type": "`$INTEGER`"
             },
             {
@@ -5259,18 +5604,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "reversePrimer",
               "req": true,
+              "short": "Reverse primer, 5'→3'.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5317,30 +5665,35 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxMass",
               "req": false,
+              "short": "Optional upper bound on neutral monoisotopic mass (Da).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "maxPeptides",
               "req": false,
+              "short": "Cap on the number of returned peptides.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "minMass",
               "req": false,
+              "short": "Optional lower bound on neutral monoisotopic mass (Da).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "missedCleavages",
               "req": false,
+              "short": "Allowed missed internal cleavages (0–2).",
               "type": "`$INTEGER`"
             },
             {
@@ -5353,6 +5706,7 @@
               "active": true,
               "name": "protease",
               "req": false,
+              "short": "Protease or chemical cleavage agent.",
               "type": "`$STRING`"
             },
             {
@@ -5370,18 +5724,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5430,6 +5787,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5459,12 +5817,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5508,18 +5868,21 @@
               "active": true,
               "name": "appl",
               "req": false,
+              "short": "Restrict to one member database (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "goterms",
               "req": false,
+              "short": "Include GO-term cross-references.",
               "type": "`$BOOLEAN`"
             },
             {
@@ -5543,18 +5906,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Protein sequence, one-letter code (FASTA header, if any, is stripped).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5600,6 +5966,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5623,30 +5990,35 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "scale",
               "req": false,
+              "short": "Amino-acid scale.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "window",
               "req": false,
+              "short": "Sliding-window size (clamped to an odd number ≥ 1).",
               "type": "`$INTEGER`"
             }
           ],
@@ -5692,12 +6064,14 @@
               "active": true,
               "name": "chargeStep",
               "req": false,
+              "short": "pH step for the net-charge titration curve (0–14).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5721,18 +6095,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5777,12 +6154,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gcContent",
               "req": false,
+              "short": "Target GC percentage 0..100 (dna/rna only); omit for uniform.",
               "type": "`$NUMBER`"
             },
             {
@@ -5795,6 +6174,7 @@
               "active": true,
               "name": "length",
               "req": true,
+              "short": "Number of residues to generate.",
               "type": "`$INTEGER`"
             },
             {
@@ -5818,12 +6198,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5869,12 +6251,14 @@
               "active": true,
               "name": "enzymes",
               "req": false,
+              "short": "Enzyme names to scan; omit to scan all curated enzymes.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5898,18 +6282,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -5954,6 +6341,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -5977,18 +6365,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
@@ -6039,6 +6430,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -6057,12 +6449,14 @@
               "active": true,
               "name": "organism",
               "req": false,
+              "short": "Codon-usage host (ignored in degenerate mode).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "protein",
               "req": true,
+              "short": "Protein sequence (one-letter codes; * for stop).",
               "type": "`$STRING`"
             },
             {
@@ -6080,12 +6474,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6131,6 +6527,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -6154,18 +6551,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6209,24 +6609,28 @@
               "active": true,
               "name": "fileBase64",
               "req": false,
+              "short": "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fileName",
               "req": false,
+              "short": "Optional original file name (echoed back).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "minCoverage",
               "req": false,
+              "short": "Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity.",
               "type": "`$NUMBER`"
             },
             {
@@ -6250,24 +6654,28 @@
               "active": true,
               "name": "read",
               "req": false,
+              "short": "Sanger read as FASTA or raw text (alternative to uploading an ABIF trace).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reference",
               "req": true,
+              "short": "Expected reference sequence (FASTA or raw).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6315,12 +6723,14 @@
               "active": true,
               "name": "args",
               "req": true,
+              "short": "Arguments for that tool, exactly as you would pass to it directly.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -6344,12 +6754,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6394,12 +6806,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "FASTA or FASTQ text (raw sequence is treated as single-record FASTA).",
               "type": "`$STRING`"
             },
             {
@@ -6423,18 +6837,21 @@
               "active": true,
               "name": "qualityOffset",
               "req": false,
+              "short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6479,24 +6896,28 @@
               "active": true,
               "name": "accession",
               "req": true,
+              "short": "GenBank/RefSeq accession (e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "db",
               "req": false,
+              "short": "Database to query; auto-detects from the accession format.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "format",
               "req": false,
+              "short": "Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -6520,12 +6941,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6571,18 +6994,21 @@
               "active": true,
               "name": "from",
               "req": false,
+              "short": "Input format; 'auto' sniffs it from the first meaningful line.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "input",
               "req": true,
+              "short": "A FASTA or GenBank record to convert.",
               "type": "`$STRING`"
             },
             {
@@ -6606,18 +7032,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "to",
               "req": false,
+              "short": "Output format.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6663,24 +7092,28 @@
               "active": true,
               "name": "endPrimerLength",
               "req": false,
+              "short": "Length of the naive end primers taken from each end.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "maxOrfs",
               "req": false,
+              "short": "Maximum number of ORFs to return, longest first.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "minOrfAa",
               "req": false,
+              "short": "Minimum ORF length in amino acids.",
               "type": "`$INTEGER`"
             },
             {
@@ -6704,18 +7137,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6768,18 +7204,21 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "gene",
               "req": false,
+              "short": "Gene symbol/name, e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "maxResults",
               "req": false,
+              "short": "Up to 20.",
               "type": "`$INTEGER`"
             },
             {
@@ -6792,6 +7231,7 @@
               "active": true,
               "name": "organism",
               "req": false,
+              "short": "Organism name, e.g.",
               "type": "`$STRING`"
             },
             {
@@ -6809,18 +7249,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "term",
               "req": false,
+              "short": "Raw NCBI search term (advanced) — overrides gene/organism when given, e.g.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6868,12 +7311,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "minSupportingReads",
               "req": false,
+              "short": "Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise.",
               "type": "`$INTEGER`"
             },
             {
@@ -6897,24 +7342,28 @@
               "active": true,
               "name": "reads",
               "req": true,
+              "short": "Raw reads in FASTA or FASTQ format (auto-detected).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reference",
               "req": true,
+              "short": "The claimed/expected reference sequence.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -6960,12 +7409,14 @@
               "active": true,
               "name": "entries",
               "req": false,
+              "short": "Initial named entries, e.g.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -6989,12 +7440,14 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7038,12 +7491,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "names",
               "req": false,
+              "short": "Only return these entries; omit to return all of them.",
               "type": "`$ARRAY`"
             },
             {
@@ -7067,6 +7522,7 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
@@ -7079,6 +7535,7 @@
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7123,18 +7580,21 @@
               "active": true,
               "name": "args",
               "req": false,
+              "short": "Additional literal arguments, merged with the ones resolved from the session.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "fromSession",
               "req": false,
+              "short": "Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -7158,6 +7618,7 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
@@ -7170,12 +7631,14 @@
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "writeBack",
               "req": false,
+              "short": "Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names.",
               "type": "`$OBJECT`"
             }
           ],
@@ -7223,12 +7686,14 @@
               "active": true,
               "name": "entries",
               "req": true,
+              "short": "Named entries to add/overwrite, e.g.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -7252,6 +7717,7 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
@@ -7264,6 +7730,7 @@
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7308,12 +7775,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "minReynolds",
               "req": false,
+              "short": "Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify.",
               "type": "`$INTEGER`"
             },
             {
@@ -7337,24 +7806,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "shRnaLoop",
               "req": false,
+              "short": "Loop sequence used when assembling the shRNA cassette.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "target",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7400,48 +7873,56 @@
               "active": true,
               "name": "armTmTarget",
               "req": false,
+              "short": "Target Tm (°C) for each template-binding arm.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "dntpMM",
               "req": false,
+              "short": "Total [dNTP] (mM), chelates Mg2+.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "editKind",
               "req": false,
+              "short": "Edit at the nucleotide or amino-acid level.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based position of the first base of codon 1 (editKind='aa').",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "mgMM",
               "req": false,
+              "short": "Divalent cation [Mg2+] (mM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "naMM",
               "req": false,
+              "short": "Monovalent cation [Na+]/[K+] (mM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "newBase",
               "req": false,
+              "short": "Replacement base (editKind='nt').",
               "type": "`$STRING`"
             },
             {
@@ -7454,18 +7935,21 @@
               "active": true,
               "name": "oligoNM",
               "req": false,
+              "short": "Total strand concentration (nM).",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "organism",
               "req": false,
+              "short": "Codon-usage table for choosing the new codon (editKind='aa').",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "position",
               "req": false,
+              "short": "1-based position to substitute (editKind='nt').",
               "type": "`$INTEGER`"
             },
             {
@@ -7483,36 +7967,42 @@
               "active": true,
               "name": "residue",
               "req": false,
+              "short": "1-based residue number to change (editKind='aa').",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "style",
               "req": false,
+              "short": "Mutagenic primer style.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "targetAa",
               "req": false,
+              "short": "Target amino acid, one-letter code incl '*' (editKind='aa').",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "template",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7575,6 +8065,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -7598,24 +8089,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "toStop",
               "req": false,
+              "short": "Stop at the first stop codon.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7661,12 +8156,14 @@
               "active": true,
               "name": "assembly",
               "req": false,
+              "short": "Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -7690,18 +8187,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "variant",
               "req": true,
+              "short": "An rsID (\"rs1042522\"), chrom:pos:ref:alt (\"17:7676154:G:C\", single-base substitutions only), genomic HGVS (\"chr17:g.7676154G>C\" or \"17:g.7676154G>C\"), or transcript HGVS c.",
               "type": "`$STRING`"
             }
           ],
@@ -7746,18 +8246,21 @@
               "active": true,
               "name": "coding",
               "req": false,
+              "short": "Treat as a coding sequence and report amino-acid effects.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based reading-frame start (used when coding is true).",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -7781,24 +8284,28 @@
               "active": true,
               "name": "query",
               "req": true,
+              "short": "Query / variant sequence (raw or FASTA).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "reference",
               "req": true,
+              "short": "Reference / wild-type sequence (raw or FASTA).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -7845,90 +8352,105 @@
               "active": true,
               "name": "armTmTarget",
               "req": false,
+              "short": "Target annealing Tm (°C) for primer arms.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the product/claimed construct as circular (most plasmids are).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "claimedConstruct",
               "req": true,
+              "short": "The sequence you claim you ended up with.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "coding",
               "req": false,
+              "short": "Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "enzyme",
               "req": false,
+              "short": "Type IIS enzyme for Golden Gate.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enzyme3",
               "req": false,
+              "short": "3′ enzyme (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "enzyme5",
               "req": false,
+              "short": "5′ enzyme (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "fragmentPcrs",
               "req": false,
+              "short": "Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "fragments",
               "req": false,
+              "short": "Fragments (5′→3′), assembled head-to-tail (gibson/goldengate).",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "frameStart",
               "req": false,
+              "short": "1-based reading-frame start on claimedConstruct, used when coding is true.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "insert",
               "req": false,
+              "short": "Insert sequence (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "insertPcr",
               "req": false,
+              "short": "Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "method",
               "req": true,
+              "short": "Assembly method used.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "names",
               "req": false,
+              "short": "Optional labels for each fragment.",
               "type": "`$ARRAY`"
             },
             {
@@ -7941,6 +8463,7 @@
               "active": true,
               "name": "overlapLen",
               "req": false,
+              "short": "Gibson homology-arm length (bp).",
               "type": "`$INTEGER`"
             },
             {
@@ -7958,24 +8481,28 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vector",
               "req": false,
+              "short": "Vector sequence (restriction method).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "vectorPcr",
               "req": false,
+              "short": "Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
               "type": "`$OBJECT`"
             }
           ],
@@ -8035,42 +8562,49 @@
               "active": true,
               "name": "claimedConstruct",
               "req": true,
+              "short": "The final sequence claimed to have been built.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "expectedFrameStart",
               "req": false,
+              "short": "1-based position in claimedConstruct where the intended reading frame begins.",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "insertForwardPrimer",
               "req": true,
+              "short": "Forward primer used to amplify the insert, 5'→3'.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "insertReversePrimer",
               "req": true,
+              "short": "Reverse primer used to amplify the insert, 5'→3'.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "insertTemplate",
               "req": true,
+              "short": "PCR template the insert was amplified from.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "maxPrimerMismatches",
               "req": false,
+              "short": "Mismatches tolerated per primer during PCR prediction.",
               "type": "`$INTEGER`"
             },
             {
@@ -8094,18 +8628,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "templateCircular",
               "req": false,
+              "short": "Treat insertTemplate as circular (e.g.",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -8155,24 +8692,28 @@
               "active": true,
               "name": "circular",
               "req": false,
+              "short": "Treat the sequence as circular (plasmid).",
               "type": "`$BOOLEAN`"
             },
             {
               "active": true,
               "name": "enzymes",
               "req": false,
+              "short": "Enzyme names to digest with.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "ladder",
               "req": false,
+              "short": "DNA ladder to plot alongside the sample lane.",
               "type": "`$STRING`"
             },
             {
@@ -8196,18 +8737,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "sequence",
               "req": true,
+              "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -8254,6 +8798,7 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
@@ -8277,18 +8822,21 @@
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "rows",
               "req": true,
+              "short": "Differential expression rows, one per gene.",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],
@@ -8332,12 +8880,14 @@
               "active": true,
               "name": "gate",
               "req": false,
+              "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type": "`$ANY`"
             },
             {
               "active": true,
               "name": "max_results",
               "req": false,
+              "short": "Maximum number of results to return (default 5, max 10).",
               "type": "`$NUMBER`"
             },
             {
@@ -8361,18 +8911,21 @@
               "active": true,
               "name": "query",
               "req": true,
+              "short": "The search query.",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "result",
               "req": true,
+              "short": "Tool-specific output object.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tool",
               "req": true,
+              "short": "The tool slug that ran.",
               "type": "`$STRING`"
             }
           ],

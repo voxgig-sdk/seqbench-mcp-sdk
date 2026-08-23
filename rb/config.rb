@@ -19,6 +19,9 @@ module SeqbenchMcpConfig
     {
       "main" => {
         "name" => "SeqbenchMcp",
+        "slug" => "seqbench-mcp",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -129,10 +132,12 @@ module SeqbenchMcpConfig
             {
               "name" => "accession",
               "req" => true,
+              "short" => "UniProt accession, e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -153,11 +158,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -194,10 +201,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "length",
+              "short" => "Total gapmer length (nt).",
               "type" => "`$INTEGER`",
             },
             {
@@ -218,20 +227,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "wing",
+              "short" => "Modified-wing length on each side (nt); the central gap = length − 2×wing.",
               "type" => "`$INTEGER`",
             },
           ],
@@ -270,14 +283,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "editor",
+              "short" => "Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G).",
               "type" => "`$STRING`",
             },
             {
               "name" => "frameStart",
+              "short" => "Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -298,20 +314,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "targetPosition",
+              "short" => "Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -351,11 +371,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "args",
+              "short" => "Shared tool arguments applied to every record.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "capped",
               "req" => true,
+              "short" => "True if input exceeded the record limit.",
               "type" => "`$BOOLEAN`",
             },
             {
@@ -376,11 +398,13 @@ module SeqbenchMcpConfig
             {
               "name" => "input",
               "req" => true,
+              "short" => "Multi-FASTA text or one sequence per line (max ~2,000,000 chars).",
               "type" => "`$STRING`",
             },
             {
               "name" => "limit",
               "req" => true,
+              "short" => "Maximum records per call (500).",
               "type" => "`$INTEGER`",
             },
             {
@@ -401,6 +425,7 @@ module SeqbenchMcpConfig
             {
               "name" => "tool",
               "req" => true,
+              "short" => "A batchable tool slug (see `GET /batch`).",
               "type" => "`$STRING`",
             },
           ],
@@ -461,6 +486,7 @@ module SeqbenchMcpConfig
             {
               "name" => "columns",
               "req" => true,
+              "short" => "Flattened \"<step>·<tool>·<key>\" column headers.",
               "type" => "`$ARRAY`",
             },
             {
@@ -476,11 +502,13 @@ module SeqbenchMcpConfig
             {
               "name" => "input",
               "req" => true,
+              "short" => "Multi-FASTA text or one sequence per line.",
               "type" => "`$STRING`",
             },
             {
               "name" => "limit",
               "req" => true,
+              "short" => "Maximum records per call (200).",
               "type" => "`$INTEGER`",
             },
             {
@@ -555,18 +583,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "endPrimerLength",
+              "short" => "Length of the naive end primers taken from each end.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxOrfs",
+              "short" => "Maximum number of ORFs to return, longest first.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "minOrfAa",
+              "short" => "Minimum ORF length in amino acids (nucleotide input only).",
               "type" => "`$INTEGER`",
             },
             {
@@ -587,16 +619,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -636,43 +671,53 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "armTmTarget",
+              "short" => "Target annealing Tm (°C) for primer arms.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "circular",
+              "short" => "Produce a circular product.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "enzyme",
+              "short" => "Type IIS enzyme for Golden Gate (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "enzyme3",
+              "short" => "3′ enzyme (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "enzyme5",
+              "short" => "5′ enzyme (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "fragments",
+              "short" => "Fragments (5′→3′), assembled head-to-tail.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "insert",
+              "short" => "Insert sequence (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "method",
               "req" => true,
+              "short" => "Assembly method.",
               "type" => "`$STRING`",
             },
             {
               "name" => "names",
+              "short" => "Optional labels for each fragment.",
               "type" => "`$ARRAY`",
             },
             {
@@ -682,6 +727,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "overlapLen",
+              "short" => "Gibson homology-arm length (bp).",
               "type" => "`$INTEGER`",
             },
             {
@@ -697,15 +743,18 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "vector",
+              "short" => "Vector sequence (restriction method).",
               "type" => "`$STRING`",
             },
           ],
@@ -752,10 +801,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "frameStart",
+              "short" => "1-based position to start reading codons.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -779,21 +830,25 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "rareThreshold",
+              "short" => "Relative adaptiveness (w) below this flags a codon as rare.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Coding sequence (DNA/RNA; should start in-frame at ATG).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -833,6 +888,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -847,6 +903,7 @@ module SeqbenchMcpConfig
             {
               "name" => "protein",
               "req" => true,
+              "short" => "Protein sequence (one-letter codes).",
               "type" => "`$STRING`",
             },
             {
@@ -862,11 +919,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -904,18 +963,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "avoidEnzymes",
+              "short" => "Enzyme names whose internal sites should be removed (e.g.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "crypticOrfMinAa",
+              "short" => "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "frameStart",
+              "short" => "1-based nucleotide where the reading frame begins.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -936,6 +999,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "maxPasses",
+              "short" => "Repeat full passes until clean or no further progress.",
               "type" => "`$INTEGER`",
             },
             {
@@ -945,6 +1009,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "organism",
+              "short" => "Codon-usage table to prefer among synonymous options.",
               "type" => "`$STRING`",
             },
             {
@@ -960,16 +1025,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1015,34 +1083,42 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "avoidEnzymes",
+              "short" => "Enzyme names whose internal sites should be flagged as errors.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "crypticOrfMinAa",
+              "short" => "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "frameStart",
+              "short" => "1-based nucleotide where the reading frame begins.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gcHigh",
+              "short" => "GC% above this flags a GC-rich window.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gcLow",
+              "short" => "GC% below this flags an AT-rich window.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gcWindow",
+              "short" => "Sliding-window size (nt) for GC-extreme scanning.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "homopolymerMin",
+              "short" => "Minimum run length to flag a homopolymer.",
               "type" => "`$INTEGER`",
             },
             {
@@ -1063,16 +1139,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1116,14 +1195,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "minScore",
+              "short" => "Only return guides with a heuristic score at least this high (0–100).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "nuclease",
+              "short" => "Nuclease id.",
               "type" => "`$STRING`",
             },
             {
@@ -1144,20 +1226,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "searchReverseStrand",
+              "short" => "Also scan the reverse strand for guides.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1197,46 +1283,57 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "armLength",
+              "short" => "Homology arm length (bp) on each side.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "blockPam",
+              "short" => "When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "designGenotypingPrimers",
+              "short" => "Also design a primer pair (on the original targetSequence) whose product spans the edit site.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "editEnd",
+              "short" => "1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "editStart",
+              "short" => "1-based start of the region being replaced.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "frameStart",
+              "short" => "Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "guideEnd",
+              "short" => "1-based forward-strand end of the guide's protospacer.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "guideStart",
+              "short" => "1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "guideStrand",
+              "short" => "Strand the guide's protospacer is on.",
               "type" => "`$STRING`",
             },
             {
               "name" => "nuclease",
+              "short" => "Needed only when deriving the cut site from guideStart/guideEnd/guideStrand.",
               "type" => "`$STRING`",
             },
             {
@@ -1257,21 +1354,25 @@ module SeqbenchMcpConfig
             {
               "name" => "replacement",
               "req" => true,
+              "short" => "Sequence to insert/substitute (\"\" for a pure deletion).",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "targetSequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1319,14 +1420,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxMismatches",
+              "short" => "Mismatches tolerated between the protospacer and a candidate genomic site.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "nuclease",
+              "short" => "Nuclease id — determines the PAM pattern/side required at each candidate site.",
               "type" => "`$STRING`",
             },
             {
@@ -1337,6 +1441,7 @@ module SeqbenchMcpConfig
             {
               "name" => "protospacer",
               "req" => true,
+              "short" => "The guide's protospacer sequence, 5'→3' (no PAM).",
               "type" => "`$STRING`",
             },
             {
@@ -1352,11 +1457,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1395,6 +1502,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -1415,21 +1523,25 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequenceA",
               "req" => true,
+              "short" => "First oligo (5'→3').",
               "type" => "`$STRING`",
             },
             {
               "name" => "sequenceB",
               "req" => true,
+              "short" => "Second oligo (5'→3').",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1467,14 +1579,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "length",
+              "short" => "Length in bp (dsDNA) or nt (ssDNA/ssRNA).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "massNg",
+              "short" => "Mass in nanograms.",
               "type" => "`$NUMBER`",
             },
             {
@@ -1495,23 +1610,28 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
+              "short" => "Optional sequence — overrides length and gives an exact molar mass from base composition.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Molecule type.",
               "type" => "`$STRING`",
             },
             {
               "name" => "volumeUl",
+              "short" => "Volume in microlitres (0 = unknown; needed for concentration).",
               "type" => "`$NUMBER`",
             },
           ],
@@ -1553,15 +1673,18 @@ module SeqbenchMcpConfig
             {
               "name" => "enzymeA",
               "req" => true,
+              "short" => "First enzyme name (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "enzymeB",
               "req" => true,
+              "short" => "Second enzyme name (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -1582,11 +1705,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1624,6 +1749,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -1644,16 +1770,19 @@ module SeqbenchMcpConfig
             {
               "name" => "reactions",
               "req" => true,
+              "short" => "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1690,6 +1819,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -1699,6 +1829,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "protocolName",
+              "short" => "Optional protocol name (used in the script's metadata).",
               "type" => "`$STRING`",
             },
             {
@@ -1714,16 +1845,19 @@ module SeqbenchMcpConfig
             {
               "name" => "reactions",
               "req" => true,
+              "short" => "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1761,6 +1895,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -1781,16 +1916,19 @@ module SeqbenchMcpConfig
             {
               "name" => "reactions",
               "req" => true,
+              "short" => "One entry per PCR reaction, up to 96 (a single 96-well plate).",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -1827,27 +1965,33 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "clusterCols",
+              "short" => "Cluster (reorder) samples.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "clusterRows",
+              "short" => "Cluster (reorder) genes.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "distanceMetric",
+              "short" => "correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "genes",
               "req" => true,
+              "short" => "Row (gene) labels.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "linkage",
+              "short" => "average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor.",
               "type" => "`$STRING`",
             },
             {
@@ -1868,25 +2012,30 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "samples",
               "req" => true,
+              "short" => "Column (sample) labels.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "values",
               "req" => true,
+              "short" => "genes x samples numeric matrix — one row per gene, in the same order as `genes`.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "zScoreRows",
+              "short" => "Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization).",
               "type" => "`$BOOLEAN`",
             },
           ],
@@ -1930,11 +2079,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
               "type" => "`$STRING`",
             },
             {
@@ -1954,16 +2105,19 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "qualityOffset",
+              "short" => "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2001,15 +2155,18 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
               "type" => "`$STRING`",
             },
             {
               "name" => "minLength",
+              "short" => "Reads shorter than this after trimming are dropped.",
               "type" => "`$INTEGER`",
             },
             {
@@ -2029,20 +2186,24 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "qualityOffset",
+              "short" => "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "qualityThreshold",
+              "short" => "3' quality-trim threshold (Phred score).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2082,10 +2243,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "minAaLength",
+              "short" => "Minimum protein length (aa) to report.",
               "type" => "`$INTEGER`",
             },
             {
@@ -2105,21 +2268,25 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "requireStop",
+              "short" => "Only report ORFs terminated by a stop codon.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2162,10 +2329,12 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "convert",
+              "short" => "DNA→RNA (T→U) or RNA→DNA (U→T).",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -2186,28 +2355,34 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "reverse",
+              "short" => "Reverse the sequence (no complement).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "stripNonLetters",
+              "short" => "Remove digits, spaces and gaps (keep letters only).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "width",
+              "short" => "Line-wrap width; 0 = single line.",
               "type" => "`$INTEGER`",
             },
           ],
@@ -2249,27 +2424,33 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "background",
+              "short" => "Custom background/universe gene symbols.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "collections",
+              "short" => "Which term collections to test.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "genes",
               "req" => true,
+              "short" => "Query gene symbols (human, e.g.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "maxTermSize",
+              "short" => "Skip terms/pathways with more than this many background genes (matches clusterProfiler's default).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "minTermSize",
+              "short" => "Skip terms/pathways with fewer than this many background genes.",
               "type" => "`$INTEGER`",
             },
             {
@@ -2290,11 +2471,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2335,6 +2518,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -2355,16 +2539,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2401,11 +2588,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gene",
               "req" => true,
+              "short" => "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type" => "`$STRING`",
             },
             {
@@ -2426,11 +2615,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2467,11 +2658,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gene",
               "req" => true,
+              "short" => "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type" => "`$STRING`",
             },
             {
@@ -2492,11 +2685,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2533,11 +2728,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gene",
               "req" => true,
+              "short" => "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
               "type" => "`$STRING`",
             },
             {
@@ -2558,11 +2755,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2599,14 +2798,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "compareToNamedSet",
+              "short" => "Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison.",
               "type" => "`$STRING`",
             },
             {
               "name" => "dataset",
+              "short" => "Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -2617,6 +2819,7 @@ module SeqbenchMcpConfig
             {
               "name" => "overhangs",
               "req" => true,
+              "short" => "The candidate 4-base overhangs for one assembly (e.g.",
               "type" => "`$ARRAY`",
             },
             {
@@ -2632,15 +2835,18 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "riskThreshold",
+              "short" => "Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2680,6 +2886,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -2700,16 +2907,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "variant",
               "req" => true,
+              "short" => "A full HGVS \"c.\" variant description: \"<accession or gene symbol>:c.<edit>\", e.g.",
               "type" => "`$STRING`",
             },
           ],
@@ -2746,6 +2956,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -2771,11 +2982,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2813,15 +3026,18 @@ module SeqbenchMcpConfig
             {
               "name" => "from",
               "req" => true,
+              "short" => "Source id type: \"Gene_Name\", \"Ensembl\", \"GeneID\", \"RefSeq_Protein\", or \"UniProtKB_AC-ID\".",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "ids",
               "req" => true,
+              "short" => "The ids to map, up to 1000 (e.g.",
               "type" => "`$ARRAY`",
             },
             {
@@ -2842,20 +3058,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "taxId",
+              "short" => "NCBI taxonomy id to disambiguate a gene symbol (only used when from=\"Gene_Name\").",
               "type" => "`$STRING`",
             },
             {
               "name" => "to",
               "req" => true,
+              "short" => "Target id type.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2895,19 +3115,23 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "circular",
+              "short" => "Treat the template as circular (plasmid).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "forwardPrimer",
               "req" => true,
+              "short" => "Primer 1, 5'→3'.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxMismatches",
+              "short" => "Mismatches tolerated per primer.",
               "type" => "`$INTEGER`",
             },
             {
@@ -2928,21 +3152,25 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "reversePrimer",
               "req" => true,
+              "short" => "Primer 2, 5'→3' (order does not matter).",
               "type" => "`$STRING`",
             },
             {
               "name" => "template",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -2983,28 +3211,34 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "addSecondaryMismatch",
+              "short" => "Engineer the internal ARMS destabilising mismatch near the 3' end.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "alleleA",
               "req" => true,
+              "short" => "First allele (single base) — gets the FAM tail.",
               "type" => "`$STRING`",
             },
             {
               "name" => "alleleB",
               "req" => true,
+              "short" => "Second allele (single base) — gets the HEX tail.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxAmplicon",
+              "short" => "Maximum amplicon length for the common reverse primer.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "minAmplicon",
+              "short" => "Minimum amplicon length for the common reverse primer.",
               "type" => "`$INTEGER`",
             },
             {
@@ -3025,25 +3259,30 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "snpPosition",
               "req" => true,
+              "short" => "1-based position of the SNP on the forward strand.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "targetCoreTm",
+              "short" => "Target Tm (°C) for the allele-specific primer core (before the universal tail).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3114,18 +3353,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "dntpMM",
+              "short" => "Total [dNTP] (mM), chelates Mg2+.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "mgMM",
+              "short" => "Divalent cation [Mg2+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "naMM",
+              "short" => "Monovalent cation [Na+]/[K+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -3135,6 +3378,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "oligoNM",
+              "short" => "Total strand concentration (nM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -3150,24 +3394,29 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "targetTm",
+              "short" => "Optional target Tm (°C).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tmTolerance",
+              "short" => "Allowed +/- window (°C) around targetTm for the gate.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3210,15 +3459,18 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxMismatches",
+              "short" => "Maximum allowed mismatches per match.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "motif",
               "req" => true,
+              "short" => "Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed.",
               "type" => "`$STRING`",
             },
             {
@@ -3239,20 +3491,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "searchReverseStrand",
+              "short" => "Also search the reverse strand.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3292,11 +3548,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "Two or more sequences in multi-FASTA format (>name / sequence).",
               "type" => "`$STRING`",
             },
             {
@@ -3317,11 +3575,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3358,18 +3618,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "dntpMM",
+              "short" => "Total [dNTP] (mM), chelates Mg2+.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "mgMM",
+              "short" => "Divalent cation [Mg2+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "naMM",
+              "short" => "Monovalent cation [Na+]/[K+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -3379,6 +3643,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "oligoNM",
+              "short" => "Total strand concentration (nM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -3394,16 +3659,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3444,6 +3712,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3464,29 +3733,35 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sourceSpecies",
+              "short" => "Ensembl species slug the symbols belong to (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "symbols",
               "req" => true,
+              "short" => "Gene symbols to look up, up to 50 (e.g.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "targetSpecies",
               "req" => true,
+              "short" => "Ensembl species slug to find homologs in (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "type",
+              "short" => "Homology type to return.",
               "type" => "`$STRING`",
             },
           ],
@@ -3526,18 +3801,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gap",
+              "short" => "Linear gap penalty (per gap position).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "match",
+              "short" => "Match score.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "mismatch",
+              "short" => "Mismatch penalty.",
               "type" => "`$NUMBER`",
             },
             {
@@ -3562,21 +3841,25 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "seqA",
               "req" => true,
+              "short" => "First sequence (raw or FASTA; nucleotide or protein).",
               "type" => "`$STRING`",
             },
             {
               "name" => "seqB",
               "req" => true,
+              "short" => "Second sequence (raw or FASTA; nucleotide or protein).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3618,6 +3901,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3638,16 +3922,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "text",
               "req" => true,
+              "short" => "A GenBank flat file (LOCUS … FEATURES … ORIGIN … //).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3685,14 +3972,17 @@ module SeqbenchMcpConfig
             {
               "name" => "fileBase64",
               "req" => true,
+              "short" => "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
               "type" => "`$STRING`",
             },
             {
               "name" => "fileName",
+              "short" => "Optional original file name (echoed back).",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3713,11 +4003,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3755,6 +4047,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3775,16 +4068,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3821,10 +4117,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "circular",
+              "short" => "Treat the sequence as a circular plasmid (vs.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3845,16 +4143,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -3892,10 +4193,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "circular",
+              "short" => "Treat the query as a circular molecule (most plasmids are).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3916,20 +4219,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "topN",
+              "short" => "How many top-ranked backbone candidates to report.",
               "type" => "`$INTEGER`",
             },
           ],
@@ -3968,10 +4275,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "circular",
+              "short" => "Treat the query as a circular molecule (most plasmids are).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -3992,20 +4301,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "topN",
+              "short" => "How many top-ranked backbone candidates to report.",
               "type" => "`$INTEGER`",
             },
           ],
@@ -4045,23 +4358,28 @@ module SeqbenchMcpConfig
             {
               "name" => "editEnd",
               "req" => true,
+              "short" => "1-based inclusive end of the region being changed.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "editStart",
               "req" => true,
+              "short" => "1-based inclusive start of the region being changed.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "frameStart",
+              "short" => "Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "insertedSeq",
+              "short" => "Replacement bases (forward strand).",
               "type" => "`$STRING`",
             },
             {
@@ -4071,6 +4389,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "pbsLength",
+              "short" => "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
               "type" => "`$INTEGER`",
             },
             {
@@ -4086,20 +4405,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "rttHomology",
+              "short" => "Homology length (nt) 3' of the edit that the RTT should include (typically 10-16).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4142,11 +4465,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "newSequence",
               "req" => true,
+              "short" => "New sequence (forward strand) to install in place of [replaceStart, replaceEnd].",
               "type" => "`$STRING`",
             },
             {
@@ -4156,10 +4481,12 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "overlapLength",
+              "short" => "Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "pbsLength",
+              "short" => "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
               "type" => "`$INTEGER`",
             },
             {
@@ -4175,26 +4502,31 @@ module SeqbenchMcpConfig
             {
               "name" => "replaceEnd",
               "req" => true,
+              "short" => "1-based inclusive end of the region being replaced/deleted.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "replaceStart",
               "req" => true,
+              "short" => "1-based inclusive start of the region being replaced/deleted.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4244,10 +4576,12 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "dntpMM",
+              "short" => "Total [dNTP] (mM), chelates Mg2+.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -4272,14 +4606,17 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "maxReturn",
+              "short" => "Number of best pairs to return.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "mgMM",
+              "short" => "Divalent cation [Mg2+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "naMM",
+              "short" => "Monovalent cation [Na+]/[K+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -4289,6 +4626,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "oligoNM",
+              "short" => "Total strand concentration (nM).",
               "type" => "`$NUMBER`",
             },
             {
@@ -4304,19 +4642,23 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "targetEnd",
+              "short" => "1-based inclusive end of the target region (optional).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "targetStart",
+              "short" => "1-based inclusive start of a region the product must span (optional).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "template",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
@@ -4325,6 +4667,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "tmMaxDiff",
+              "short" => "Max Tm difference within a pair (°C).",
               "type" => "`$NUMBER`",
             },
             {
@@ -4338,6 +4681,7 @@ module SeqbenchMcpConfig
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4393,18 +4737,22 @@ module SeqbenchMcpConfig
             {
               "name" => "forwardPrimer",
               "req" => true,
+              "short" => "Forward primer, 5'→3'.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxMismatches",
+              "short" => "Mismatches tolerated per primer against a reference genome.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "maxProductLength",
+              "short" => "Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim.",
               "type" => "`$INTEGER`",
             },
             {
@@ -4425,16 +4773,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "reversePrimer",
               "req" => true,
+              "short" => "Reverse primer, 5'→3'.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4474,22 +4825,27 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxMass",
+              "short" => "Optional upper bound on neutral monoisotopic mass (Da).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "maxPeptides",
+              "short" => "Cap on the number of returned peptides.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "minMass",
+              "short" => "Optional lower bound on neutral monoisotopic mass (Da).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "missedCleavages",
+              "short" => "Allowed missed internal cleavages (0–2).",
               "type" => "`$INTEGER`",
             },
             {
@@ -4499,6 +4855,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "protease",
+              "short" => "Protease or chemical cleavage agent.",
               "type" => "`$STRING`",
             },
             {
@@ -4514,16 +4871,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4565,6 +4925,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -4590,11 +4951,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4631,14 +4994,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "appl",
+              "short" => "Restrict to one member database (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "goterms",
+              "short" => "Include GO-term cross-references.",
               "type" => "`$BOOLEAN`",
             },
             {
@@ -4659,16 +5025,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Protein sequence, one-letter code (FASTA header, if any, is stripped).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4707,6 +5076,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -4727,24 +5097,29 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "scale",
+              "short" => "Amino-acid scale.",
               "type" => "`$STRING`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "window",
+              "short" => "Sliding-window size (clamped to an odd number ≥ 1).",
               "type" => "`$INTEGER`",
             },
           ],
@@ -4783,10 +5158,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "chargeStep",
+              "short" => "pH step for the net-charge titration curve (0–14).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -4807,16 +5184,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4854,10 +5234,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gcContent",
+              "short" => "Target GC percentage 0..100 (dna/rna only); omit for uniform.",
               "type" => "`$NUMBER`",
             },
             {
@@ -4867,6 +5249,7 @@ module SeqbenchMcpConfig
             {
               "name" => "length",
               "req" => true,
+              "short" => "Number of residues to generate.",
               "type" => "`$INTEGER`",
             },
             {
@@ -4887,11 +5270,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -4930,10 +5315,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "enzymes",
+              "short" => "Enzyme names to scan; omit to scan all curated enzymes.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -4954,16 +5341,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5001,6 +5391,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5021,16 +5412,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
@@ -5072,6 +5466,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5085,11 +5480,13 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "organism",
+              "short" => "Codon-usage host (ignored in degenerate mode).",
               "type" => "`$STRING`",
             },
             {
               "name" => "protein",
               "req" => true,
+              "short" => "Protein sequence (one-letter codes; * for stop).",
               "type" => "`$STRING`",
             },
             {
@@ -5105,11 +5502,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5148,6 +5547,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5168,16 +5568,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5214,18 +5617,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "fileBase64",
+              "short" => "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
               "type" => "`$STRING`",
             },
             {
               "name" => "fileName",
+              "short" => "Optional original file name (echoed back).",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "minCoverage",
+              "short" => "Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity.",
               "type" => "`$NUMBER`",
             },
             {
@@ -5245,21 +5652,25 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "read",
+              "short" => "Sanger read as FASTA or raw text (alternative to uploading an ABIF trace).",
               "type" => "`$STRING`",
             },
             {
               "name" => "reference",
               "req" => true,
+              "short" => "Expected reference sequence (FASTA or raw).",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5301,10 +5712,12 @@ module SeqbenchMcpConfig
             {
               "name" => "args",
               "req" => true,
+              "short" => "Arguments for that tool, exactly as you would pass to it directly.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5325,11 +5738,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5367,11 +5782,13 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "FASTA or FASTQ text (raw sequence is treated as single-record FASTA).",
               "type" => "`$STRING`",
             },
             {
@@ -5391,16 +5808,19 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "qualityOffset",
+              "short" => "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5439,18 +5859,22 @@ module SeqbenchMcpConfig
             {
               "name" => "accession",
               "req" => true,
+              "short" => "GenBank/RefSeq accession (e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "db",
+              "short" => "Database to query; auto-detects from the accession format.",
               "type" => "`$STRING`",
             },
             {
               "name" => "format",
+              "short" => "Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only).",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5471,11 +5895,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5514,15 +5940,18 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "from",
+              "short" => "Input format; 'auto' sniffs it from the first meaningful line.",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "input",
               "req" => true,
+              "short" => "A FASTA or GenBank record to convert.",
               "type" => "`$STRING`",
             },
             {
@@ -5543,15 +5972,18 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "to",
+              "short" => "Output format.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5590,18 +6022,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "endPrimerLength",
+              "short" => "Length of the naive end primers taken from each end.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "maxOrfs",
+              "short" => "Maximum number of ORFs to return, longest first.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "minOrfAa",
+              "short" => "Minimum ORF length in amino acids.",
               "type" => "`$INTEGER`",
             },
             {
@@ -5622,16 +6058,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5675,14 +6114,17 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "gene",
+              "short" => "Gene symbol/name, e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "maxResults",
+              "short" => "Up to 20.",
               "type" => "`$INTEGER`",
             },
             {
@@ -5692,6 +6134,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "organism",
+              "short" => "Organism name, e.g.",
               "type" => "`$STRING`",
             },
             {
@@ -5707,15 +6150,18 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "term",
+              "short" => "Raw NCBI search term (advanced) — overrides gene/organism when given, e.g.",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5756,10 +6202,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "minSupportingReads",
+              "short" => "Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise.",
               "type" => "`$INTEGER`",
             },
             {
@@ -5780,21 +6228,25 @@ module SeqbenchMcpConfig
             {
               "name" => "reads",
               "req" => true,
+              "short" => "Raw reads in FASTA or FASTQ format (auto-detected).",
               "type" => "`$STRING`",
             },
             {
               "name" => "reference",
               "req" => true,
+              "short" => "The claimed/expected reference sequence.",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5833,10 +6285,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "entries",
+              "short" => "Initial named entries, e.g.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5857,11 +6311,13 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5898,10 +6354,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "names",
+              "short" => "Only return these entries; omit to return all of them.",
               "type" => "`$ARRAY`",
             },
             {
@@ -5922,6 +6380,7 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
@@ -5932,6 +6391,7 @@ module SeqbenchMcpConfig
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -5969,14 +6429,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "args",
+              "short" => "Additional literal arguments, merged with the ones resolved from the session.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "fromSession",
+              "short" => "Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -5997,6 +6460,7 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
@@ -6007,10 +6471,12 @@ module SeqbenchMcpConfig
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "writeBack",
+              "short" => "Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names.",
               "type" => "`$OBJECT`",
             },
           ],
@@ -6052,10 +6518,12 @@ module SeqbenchMcpConfig
             {
               "name" => "entries",
               "req" => true,
+              "short" => "Named entries to add/overwrite, e.g.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -6076,6 +6544,7 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
@@ -6086,6 +6555,7 @@ module SeqbenchMcpConfig
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6123,10 +6593,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "minReynolds",
+              "short" => "Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify.",
               "type" => "`$INTEGER`",
             },
             {
@@ -6147,20 +6619,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "shRnaLoop",
+              "short" => "Loop sequence used when assembling the shRNA cassette.",
               "type" => "`$STRING`",
             },
             {
               "name" => "target",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6199,34 +6675,42 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "armTmTarget",
+              "short" => "Target Tm (°C) for each template-binding arm.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "dntpMM",
+              "short" => "Total [dNTP] (mM), chelates Mg2+.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "editKind",
+              "short" => "Edit at the nucleotide or amino-acid level.",
               "type" => "`$STRING`",
             },
             {
               "name" => "frameStart",
+              "short" => "1-based position of the first base of codon 1 (editKind='aa').",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "mgMM",
+              "short" => "Divalent cation [Mg2+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "naMM",
+              "short" => "Monovalent cation [Na+]/[K+] (mM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "newBase",
+              "short" => "Replacement base (editKind='nt').",
               "type" => "`$STRING`",
             },
             {
@@ -6236,14 +6720,17 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "oligoNM",
+              "short" => "Total strand concentration (nM).",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "organism",
+              "short" => "Codon-usage table for choosing the new codon (editKind='aa').",
               "type" => "`$STRING`",
             },
             {
               "name" => "position",
+              "short" => "1-based position to substitute (editKind='nt').",
               "type" => "`$INTEGER`",
             },
             {
@@ -6258,29 +6745,35 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "residue",
+              "short" => "1-based residue number to change (editKind='aa').",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "style",
+              "short" => "Mutagenic primer style.",
               "type" => "`$STRING`",
             },
             {
               "name" => "targetAa",
+              "short" => "Target amino acid, one-letter code incl '*' (editKind='aa').",
               "type" => "`$STRING`",
             },
             {
               "name" => "template",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6334,6 +6827,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -6354,20 +6848,24 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "toStop",
+              "short" => "Stop at the first stop codon.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6406,10 +6904,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "assembly",
+              "short" => "Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19).",
               "type" => "`$STRING`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -6430,16 +6930,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "variant",
               "req" => true,
+              "short" => "An rsID (\"rs1042522\"), chrom:pos:ref:alt (\"17:7676154:G:C\", single-base substitutions only), genomic HGVS (\"chr17:g.7676154G>C\" or \"17:g.7676154G>C\"), or transcript HGVS c.",
               "type" => "`$STRING`",
             },
           ],
@@ -6477,14 +6980,17 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "coding",
+              "short" => "Treat as a coding sequence and report amino-acid effects.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "frameStart",
+              "short" => "1-based reading-frame start (used when coding is true).",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -6505,21 +7011,25 @@ module SeqbenchMcpConfig
             {
               "name" => "query",
               "req" => true,
+              "short" => "Query / variant sequence (raw or FASTA).",
               "type" => "`$STRING`",
             },
             {
               "name" => "reference",
               "req" => true,
+              "short" => "Reference / wild-type sequence (raw or FASTA).",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6559,64 +7069,79 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "armTmTarget",
+              "short" => "Target annealing Tm (°C) for primer arms.",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "circular",
+              "short" => "Treat the product/claimed construct as circular (most plasmids are).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "claimedConstruct",
               "req" => true,
+              "short" => "The sequence you claim you ended up with.",
               "type" => "`$STRING`",
             },
             {
               "name" => "coding",
+              "short" => "Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "enzyme",
+              "short" => "Type IIS enzyme for Golden Gate.",
               "type" => "`$STRING`",
             },
             {
               "name" => "enzyme3",
+              "short" => "3′ enzyme (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "enzyme5",
+              "short" => "5′ enzyme (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "fragmentPcrs",
+              "short" => "Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "fragments",
+              "short" => "Fragments (5′→3′), assembled head-to-tail (gibson/goldengate).",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "frameStart",
+              "short" => "1-based reading-frame start on claimedConstruct, used when coding is true.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "insert",
+              "short" => "Insert sequence (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "insertPcr",
+              "short" => "Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "method",
               "req" => true,
+              "short" => "Assembly method used.",
               "type" => "`$STRING`",
             },
             {
               "name" => "names",
+              "short" => "Optional labels for each fragment.",
               "type" => "`$ARRAY`",
             },
             {
@@ -6626,6 +7151,7 @@ module SeqbenchMcpConfig
             },
             {
               "name" => "overlapLen",
+              "short" => "Gibson homology-arm length (bp).",
               "type" => "`$INTEGER`",
             },
             {
@@ -6641,19 +7167,23 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
             {
               "name" => "vector",
+              "short" => "Vector sequence (restriction method).",
               "type" => "`$STRING`",
             },
             {
               "name" => "vectorPcr",
+              "short" => "Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
               "type" => "`$OBJECT`",
             },
           ],
@@ -6707,33 +7237,40 @@ module SeqbenchMcpConfig
             {
               "name" => "claimedConstruct",
               "req" => true,
+              "short" => "The final sequence claimed to have been built.",
               "type" => "`$STRING`",
             },
             {
               "name" => "expectedFrameStart",
+              "short" => "1-based position in claimedConstruct where the intended reading frame begins.",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "insertForwardPrimer",
               "req" => true,
+              "short" => "Forward primer used to amplify the insert, 5'→3'.",
               "type" => "`$STRING`",
             },
             {
               "name" => "insertReversePrimer",
               "req" => true,
+              "short" => "Reverse primer used to amplify the insert, 5'→3'.",
               "type" => "`$STRING`",
             },
             {
               "name" => "insertTemplate",
               "req" => true,
+              "short" => "PCR template the insert was amplified from.",
               "type" => "`$STRING`",
             },
             {
               "name" => "maxPrimerMismatches",
+              "short" => "Mismatches tolerated per primer during PCR prediction.",
               "type" => "`$INTEGER`",
             },
             {
@@ -6754,15 +7291,18 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "templateCircular",
+              "short" => "Treat insertTemplate as circular (e.g.",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6805,18 +7345,22 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "circular",
+              "short" => "Treat the sequence as circular (plasmid).",
               "type" => "`$BOOLEAN`",
             },
             {
               "name" => "enzymes",
+              "short" => "Enzyme names to digest with.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "ladder",
+              "short" => "DNA ladder to plot alongside the sample lane.",
               "type" => "`$STRING`",
             },
             {
@@ -6837,16 +7381,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "sequence",
               "req" => true,
+              "short" => "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
               "type" => "`$STRING`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6886,6 +7433,7 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
@@ -6906,16 +7454,19 @@ module SeqbenchMcpConfig
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "rows",
               "req" => true,
+              "short" => "Differential expression rows, one per gene.",
               "type" => "`$ARRAY`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],
@@ -6952,10 +7503,12 @@ module SeqbenchMcpConfig
           "fields" => [
             {
               "name" => "gate",
+              "short" => "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
               "type" => "`$ANY`",
             },
             {
               "name" => "max_results",
+              "short" => "Maximum number of results to return (default 5, max 10).",
               "type" => "`$NUMBER`",
             },
             {
@@ -6976,16 +7529,19 @@ module SeqbenchMcpConfig
             {
               "name" => "query",
               "req" => true,
+              "short" => "The search query.",
               "type" => "`$STRING`",
             },
             {
               "name" => "result",
               "req" => true,
+              "short" => "Tool-specific output object.",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tool",
               "req" => true,
+              "short" => "The tool slug that ran.",
               "type" => "`$STRING`",
             },
           ],

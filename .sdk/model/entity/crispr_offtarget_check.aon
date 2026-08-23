@@ -1,0 +1,87 @@
+# Entity: crispr_offtarget_check
+
+main: kit: entity: crispr_offtarget_check: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "maxMismatches"
+      req: false
+      short: "Mismatches tolerated between the protospacer and a candidate genomic site."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "nuclease"
+      req: false
+      short: "Nuclease id — determines the PAM pattern/side required at each candidate site."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "protospacer"
+      req: true
+      short: "The guide's protospacer sequence, 5'→3' (no PAM)."
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "crispr_offtarget_check"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/crispr_offtarget_check"
+          parts: [
+            "crispr_offtarget_check"
+          ]
+          transform: {
+            req: {
+              maxMismatches: "`reqdata.max_mismatch`"
+              nuclease: "`reqdata.nuclease`"
+              protospacer: "`reqdata.protospacer`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

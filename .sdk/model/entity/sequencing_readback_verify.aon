@@ -1,0 +1,87 @@
+# Entity: sequencing_readback_verify
+
+main: kit: entity: sequencing_readback_verify: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "minSupportingReads"
+      req: false
+      short: "Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "reads"
+      req: true
+      short: "Raw reads in FASTA or FASTQ format (auto-detected)."
+      type: "`$STRING`"
+    }
+    {
+      name: "reference"
+      req: true
+      short: "The claimed/expected reference sequence."
+      type: "`$STRING`"
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "sequencing_readback_verify"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/sequencing_readback_verify"
+          parts: [
+            "sequencing_readback_verify"
+          ]
+          transform: {
+            req: {
+              minSupportingReads: "`reqdata.min_supporting_read`"
+              reads: "`reqdata.read`"
+              reference: "`reqdata.reference`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

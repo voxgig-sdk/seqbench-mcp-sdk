@@ -1,0 +1,87 @@
+# Entity: sequence_fetch
+
+main: kit: entity: sequence_fetch: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "accession"
+      req: true
+      short: "GenBank/RefSeq accession (e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "db"
+      req: false
+      short: "Database to query; auto-detects from the accession format."
+      type: "`$STRING`"
+    }
+    {
+      name: "format"
+      req: false
+      short: "Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only)."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "sequence_fetch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/sequence_fetch"
+          parts: [
+            "sequence_fetch"
+          ]
+          transform: {
+            req: {
+              accession: "`reqdata.accession`"
+              db: "`reqdata.db`"
+              format: "`reqdata.format`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

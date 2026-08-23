@@ -1,0 +1,80 @@
+# Entity: export_opentrons_protocol
+
+main: kit: entity: export_opentrons_protocol: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "protocolName"
+      req: false
+      short: "Optional protocol name (used in the script's metadata)."
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "reactions"
+      req: true
+      short: "One entry per PCR reaction, up to 96 (a single 96-well plate)."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "export_opentrons_protocol"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/export_opentrons_protocol"
+          parts: [
+            "export_opentrons_protocol"
+          ]
+          transform: {
+            req: {
+              protocolName: "`reqdata.protocol_name`"
+              reactions: "`reqdata.reaction`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

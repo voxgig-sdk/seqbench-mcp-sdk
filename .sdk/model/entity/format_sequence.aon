@@ -1,0 +1,107 @@
+# Entity: format_sequence
+
+main: kit: entity: format_sequence: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "caseMode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "convert"
+      req: false
+      short: "DNA→RNA (T→U) or RNA→DNA (U→T)."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "reverse"
+      req: false
+      short: "Reverse the sequence (no complement)."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "stripNonLetters"
+      req: false
+      short: "Remove digits, spaces and gaps (keep letters only)."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "width"
+      req: false
+      short: "Line-wrap width; 0 = single line."
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "format_sequence"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/format_sequence"
+          parts: [
+            "format_sequence"
+          ]
+          transform: {
+            req: {
+              caseMode: "`reqdata.case_mode`"
+              convert: "`reqdata.convert`"
+              reverse: "`reqdata.reverse`"
+              sequence: "`reqdata.sequence`"
+              stripNonLetters: "`reqdata.strip_non_letter`"
+              width: "`reqdata.width`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,94 @@
+# Entity: id_map_submit
+
+main: kit: entity: id_map_submit: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "from"
+      req: true
+      short: "Source id type: \"Gene_Name\", \"Ensembl\", \"GeneID\", \"RefSeq_Protein\", or \"UniProtKB_AC-ID\"."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ids"
+      req: true
+      short: "The ids to map, up to 1000 (e.g."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "taxId"
+      req: false
+      short: "NCBI taxonomy id to disambiguate a gene symbol (only used when from=\"Gene_Name\")."
+      type: "`$STRING`"
+    }
+    {
+      name: "to"
+      req: true
+      short: "Target id type."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "id_map_submit"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/id_map_submit"
+          parts: [
+            "id_map_submit"
+          ]
+          transform: {
+            req: {
+              from: "`reqdata.from`"
+              ids: "`reqdata.ids`"
+              taxId: "`reqdata.tax_id`"
+              to: "`reqdata.to`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

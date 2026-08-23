@@ -6,7 +6,7 @@ The Golang SDK for the SeqbenchMcp API — an entity-oriented client using stand
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.AlphafoldLookup(nil)` — each with the same small set of operations (`Load`, `Create`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -348,12 +348,12 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"accession"` |  |
-| `"gate"` |  |
+| `"accession"` | UniProt accession, e.g. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -363,14 +363,14 @@ API path: `/alphafold_lookup`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"length"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"length"` | Total gapmer length (nt). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"target"` |  |
-| `"tool"` |  |
-| `"wing"` |  |
+| `"result"` | Tool-specific output object. |
+| `"target"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
+| `"wing"` | Modified-wing length on each side (nt); the central gap = length − 2×wing. |
 
 Operations: Create.
 
@@ -380,15 +380,15 @@ API path: `/aso_design`
 
 | Field | Description |
 | --- | --- |
-| `"editor"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
+| `"editor"` | Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G). |
+| `"frameStart"` | Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"target"` |  |
-| `"targetPosition"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"target"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"targetPosition"` | Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -398,16 +398,16 @@ API path: `/base_editing_design`
 
 | Field | Description |
 | --- | --- |
-| `"args"` |  |
-| `"capped"` |  |
+| `"args"` | Shared tool arguments applied to every record. |
+| `"capped"` | True if input exceeded the record limit. |
 | `"columns"` |  |
 | `"count"` |  |
 | `"errors"` |  |
-| `"input"` |  |
-| `"limit"` |  |
+| `"input"` | Multi-FASTA text or one sequence per line (max ~2,000,000 chars). |
+| `"limit"` | Maximum records per call (500). |
 | `"provenance"` |  |
 | `"rows"` |  |
-| `"tool"` |  |
+| `"tool"` | A batchable tool slug (see `GET /batch`). |
 
 Operations: Create, Load.
 
@@ -418,11 +418,11 @@ API path: `/batch`
 | Field | Description |
 | --- | --- |
 | `"capped"` |  |
-| `"columns"` |  |
+| `"columns"` | Flattened "<step>·<tool>·<key>" column headers. |
 | `"count"` |  |
 | `"errors"` |  |
-| `"input"` |  |
-| `"limit"` |  |
+| `"input"` | Multi-FASTA text or one sequence per line. |
+| `"limit"` | Maximum records per call (200). |
 | `"provenance"` |  |
 | `"rows"` |  |
 | `"steps"` |  |
@@ -435,15 +435,15 @@ API path: `/workflow`
 
 | Field | Description |
 | --- | --- |
-| `"endPrimerLength"` |  |
-| `"gate"` |  |
-| `"maxOrfs"` |  |
-| `"minOrfAa"` |  |
+| `"endPrimerLength"` | Length of the naive end primers taken from each end. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxOrfs"` | Maximum number of ORFs to return, longest first. |
+| `"minOrfAa"` | Minimum ORF length in amino acids (nucleotide input only). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -453,22 +453,22 @@ API path: `/characterize_sequence`
 
 | Field | Description |
 | --- | --- |
-| `"armTmTarget"` |  |
-| `"circular"` |  |
-| `"enzyme"` |  |
-| `"enzyme3"` |  |
-| `"enzyme5"` |  |
-| `"fragments"` |  |
-| `"gate"` |  |
-| `"insert"` |  |
-| `"method"` |  |
-| `"names"` |  |
+| `"armTmTarget"` | Target annealing Tm (°C) for primer arms. |
+| `"circular"` | Produce a circular product. |
+| `"enzyme"` | Type IIS enzyme for Golden Gate (e.g. |
+| `"enzyme3"` | 3′ enzyme (restriction method). |
+| `"enzyme5"` | 5′ enzyme (restriction method). |
+| `"fragments"` | Fragments (5′→3′), assembled head-to-tail. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"insert"` | Insert sequence (restriction method). |
+| `"method"` | Assembly method. |
+| `"names"` | Optional labels for each fragment. |
 | `"ok"` |  |
-| `"overlapLen"` |  |
+| `"overlapLen"` | Gibson homology-arm length (bp). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
-| `"vector"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
+| `"vector"` | Vector sequence (restriction method). |
 
 Operations: Create.
 
@@ -478,15 +478,15 @@ API path: `/cloning_simulate`
 
 | Field | Description |
 | --- | --- |
-| `"frameStart"` |  |
-| `"gate"` |  |
+| `"frameStart"` | 1-based position to start reading codons. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"organism"` |  |
 | `"provenance"` |  |
-| `"rareThreshold"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"rareThreshold"` | Relative adaptiveness (w) below this flags a codon as rare. |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Coding sequence (DNA/RNA; should start in-frame at ATG). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -496,13 +496,13 @@ API path: `/codon_adaptation_index`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"organism"` |  |
-| `"protein"` |  |
+| `"protein"` | Protein sequence (one-letter codes). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -512,21 +512,21 @@ API path: `/codon_optimize`
 
 | Field | Description |
 | --- | --- |
-| `"avoidEnzymes"` |  |
-| `"crypticOrfMinAa"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
+| `"avoidEnzymes"` | Enzyme names whose internal sites should be removed (e.g. |
+| `"crypticOrfMinAa"` | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `"frameStart"` | 1-based nucleotide where the reading frame begins. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"gcHigh"` |  |
 | `"gcLow"` |  |
 | `"gcWindow"` |  |
 | `"homopolymerMin"` |  |
-| `"maxPasses"` |  |
+| `"maxPasses"` | Repeat full passes until clean or no further progress. |
 | `"ok"` |  |
-| `"organism"` |  |
+| `"organism"` | Codon-usage table to prefer among synonymous options. |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -536,19 +536,19 @@ API path: `/construct_autofix`
 
 | Field | Description |
 | --- | --- |
-| `"avoidEnzymes"` |  |
-| `"crypticOrfMinAa"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
-| `"gcHigh"` |  |
-| `"gcLow"` |  |
-| `"gcWindow"` |  |
-| `"homopolymerMin"` |  |
+| `"avoidEnzymes"` | Enzyme names whose internal sites should be flagged as errors. |
+| `"crypticOrfMinAa"` | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `"frameStart"` | 1-based nucleotide where the reading frame begins. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gcHigh"` | GC% above this flags a GC-rich window. |
+| `"gcLow"` | GC% below this flags an AT-rich window. |
+| `"gcWindow"` | Sliding-window size (nt) for GC-extreme scanning. |
+| `"homopolymerMin"` | Minimum run length to flag a homopolymer. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -558,15 +558,15 @@ API path: `/construct_qc`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"minScore"` |  |
-| `"nuclease"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"minScore"` | Only return guides with a heuristic score at least this high (0–100). |
+| `"nuclease"` | Nuclease id. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"searchReverseStrand"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"searchReverseStrand"` | Also scan the reverse strand for guides. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -576,23 +576,23 @@ API path: `/crispr_grna_design`
 
 | Field | Description |
 | --- | --- |
-| `"armLength"` |  |
-| `"blockPam"` |  |
-| `"designGenotypingPrimers"` |  |
-| `"editEnd"` |  |
-| `"editStart"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
-| `"guideEnd"` |  |
-| `"guideStart"` |  |
-| `"guideStrand"` |  |
-| `"nuclease"` |  |
+| `"armLength"` | Homology arm length (bp) on each side. |
+| `"blockPam"` | When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut. |
+| `"designGenotypingPrimers"` | Also design a primer pair (on the original targetSequence) whose product spans the edit site. |
+| `"editEnd"` | 1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed. |
+| `"editStart"` | 1-based start of the region being replaced. |
+| `"frameStart"` | Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"guideEnd"` | 1-based forward-strand end of the guide's protospacer. |
+| `"guideStart"` | 1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site). |
+| `"guideStrand"` | Strand the guide's protospacer is on. |
+| `"nuclease"` | Needed only when deriving the cut site from guideStart/guideEnd/guideStrand. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"replacement"` |  |
-| `"result"` |  |
-| `"targetSequence"` |  |
-| `"tool"` |  |
+| `"replacement"` | Sequence to insert/substitute ("" for a pure deletion). |
+| `"result"` | Tool-specific output object. |
+| `"targetSequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -602,14 +602,14 @@ API path: `/crispr_hdr_donor`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"maxMismatches"` |  |
-| `"nuclease"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxMismatches"` | Mismatches tolerated between the protospacer and a candidate genomic site. |
+| `"nuclease"` | Nuclease id — determines the PAM pattern/side required at each candidate site. |
 | `"ok"` |  |
-| `"protospacer"` |  |
+| `"protospacer"` | The guide's protospacer sequence, 5'→3' (no PAM). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -619,13 +619,13 @@ API path: `/crispr_offtarget_check`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequenceA"` |  |
-| `"sequenceB"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequenceA"` | First oligo (5'→3'). |
+| `"sequenceB"` | Second oligo (5'→3'). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -635,16 +635,16 @@ API path: `/cross_dimer`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"length"` |  |
-| `"massNg"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"length"` | Length in bp (dsDNA) or nt (ssDNA/ssRNA). |
+| `"massNg"` | Mass in nanograms. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
-| `"type"` |  |
-| `"volumeUl"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Optional sequence — overrides length and gives an exact molar mass from base composition. |
+| `"tool"` | The tool slug that ran. |
+| `"type"` | Molecule type. |
+| `"volumeUl"` | Volume in microlitres (0 = unknown; needed for concentration). |
 
 Operations: Create.
 
@@ -654,13 +654,13 @@ API path: `/dna_molarity`
 
 | Field | Description |
 | --- | --- |
-| `"enzymeA"` |  |
-| `"enzymeB"` |  |
-| `"gate"` |  |
+| `"enzymeA"` | First enzyme name (e.g. |
+| `"enzymeB"` | Second enzyme name (e.g. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -670,12 +670,12 @@ API path: `/double_digest`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"reactions"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"reactions"` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -685,13 +685,13 @@ API path: `/export_echo_picklist`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
-| `"protocolName"` |  |
+| `"protocolName"` | Optional protocol name (used in the script's metadata). |
 | `"provenance"` |  |
-| `"reactions"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"reactions"` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -701,12 +701,12 @@ API path: `/export_opentrons_protocol`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"reactions"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"reactions"` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -716,19 +716,19 @@ API path: `/export_plate_layout`
 
 | Field | Description |
 | --- | --- |
-| `"clusterCols"` |  |
-| `"clusterRows"` |  |
-| `"distanceMetric"` |  |
-| `"gate"` |  |
-| `"genes"` |  |
-| `"linkage"` |  |
+| `"clusterCols"` | Cluster (reorder) samples. |
+| `"clusterRows"` | Cluster (reorder) genes. |
+| `"distanceMetric"` | correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"genes"` | Row (gene) labels. |
+| `"linkage"` | average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"samples"` |  |
-| `"tool"` |  |
-| `"values"` |  |
-| `"zScoreRows"` |  |
+| `"result"` | Tool-specific output object. |
+| `"samples"` | Column (sample) labels. |
+| `"tool"` | The tool slug that ran. |
+| `"values"` | genes x samples numeric matrix — one row per gene, in the same order as `genes`. |
+| `"zScoreRows"` | Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization). |
 
 Operations: Create.
 
@@ -738,13 +738,13 @@ API path: `/expression_heatmap_cluster`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"input"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"input"` | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"qualityOffset"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"qualityOffset"` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -754,15 +754,15 @@ API path: `/fastq_qc_report`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"input"` |  |
-| `"minLength"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"input"` | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
+| `"minLength"` | Reads shorter than this after trimming are dropped. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"qualityOffset"` |  |
-| `"qualityThreshold"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"qualityOffset"` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `"qualityThreshold"` | 3' quality-trim threshold (Phred score). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -772,14 +772,14 @@ API path: `/fastq_trim`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"minAaLength"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"minAaLength"` | Minimum protein length (aa) to report. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"requireStop"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"requireStop"` | Only report ORFs terminated by a stop codon. |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -790,16 +790,16 @@ API path: `/find_orfs`
 | Field | Description |
 | --- | --- |
 | `"caseMode"` |  |
-| `"convert"` |  |
-| `"gate"` |  |
+| `"convert"` | DNA→RNA (T→U) or RNA→DNA (U→T). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"reverse"` |  |
-| `"sequence"` |  |
-| `"stripNonLetters"` |  |
-| `"tool"` |  |
-| `"width"` |  |
+| `"result"` | Tool-specific output object. |
+| `"reverse"` | Reverse the sequence (no complement). |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"stripNonLetters"` | Remove digits, spaces and gaps (keep letters only). |
+| `"tool"` | The tool slug that ran. |
+| `"width"` | Line-wrap width; 0 = single line. |
 
 Operations: Create.
 
@@ -809,16 +809,16 @@ API path: `/format_sequence`
 
 | Field | Description |
 | --- | --- |
-| `"background"` |  |
-| `"collections"` |  |
-| `"gate"` |  |
-| `"genes"` |  |
-| `"maxTermSize"` |  |
-| `"minTermSize"` |  |
+| `"background"` | Custom background/universe gene symbols. |
+| `"collections"` | Which term collections to test. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"genes"` | Query gene symbols (human, e.g. |
+| `"maxTermSize"` | Skip terms/pathways with more than this many background genes (matches clusterProfiler's default). |
+| `"minTermSize"` | Skip terms/pathways with fewer than this many background genes. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -828,12 +828,12 @@ API path: `/functional_enrichment`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -843,12 +843,12 @@ API path: `/gc_content`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"gene"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gene"` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -858,12 +858,12 @@ API path: `/gene_dossier`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"gene"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gene"` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -873,12 +873,12 @@ API path: `/gene_expression`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"gene"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gene"` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -888,15 +888,15 @@ API path: `/gene_model`
 
 | Field | Description |
 | --- | --- |
-| `"compareToNamedSet"` |  |
-| `"dataset"` |  |
-| `"gate"` |  |
+| `"compareToNamedSet"` | Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison. |
+| `"dataset"` | Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
-| `"overhangs"` |  |
+| `"overhangs"` | The candidate 4-base overhangs for one assembly (e.g. |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"riskThreshold"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"riskThreshold"` | Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -906,12 +906,12 @@ API path: `/golden_gate_fidelity`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
-| `"variant"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
+| `"variant"` | A full HGVS "c." variant description: "<accession or gene symbol>:c.<edit>", e.g. |
 
 Operations: Create.
 
@@ -921,12 +921,12 @@ API path: `/hgvs_convert`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"jobId"` |  |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -936,15 +936,15 @@ API path: `/id_map_poll`
 
 | Field | Description |
 | --- | --- |
-| `"from"` |  |
-| `"gate"` |  |
-| `"ids"` |  |
+| `"from"` | Source id type: "Gene_Name", "Ensembl", "GeneID", "RefSeq_Protein", or "UniProtKB_AC-ID". |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"ids"` | The ids to map, up to 1000 (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"taxId"` |  |
-| `"to"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"taxId"` | NCBI taxonomy id to disambiguate a gene symbol (only used when from="Gene_Name"). |
+| `"to"` | Target id type. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -954,16 +954,16 @@ API path: `/id_map_submit`
 
 | Field | Description |
 | --- | --- |
-| `"circular"` |  |
-| `"forwardPrimer"` |  |
-| `"gate"` |  |
-| `"maxMismatches"` |  |
+| `"circular"` | Treat the template as circular (plasmid). |
+| `"forwardPrimer"` | Primer 1, 5'→3'. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxMismatches"` | Mismatches tolerated per primer. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"reversePrimer"` |  |
-| `"template"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"reversePrimer"` | Primer 2, 5'→3' (order does not matter). |
+| `"template"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -973,19 +973,19 @@ API path: `/in_silico_pcr`
 
 | Field | Description |
 | --- | --- |
-| `"addSecondaryMismatch"` |  |
-| `"alleleA"` |  |
-| `"alleleB"` |  |
-| `"gate"` |  |
-| `"maxAmplicon"` |  |
-| `"minAmplicon"` |  |
+| `"addSecondaryMismatch"` | Engineer the internal ARMS destabilising mismatch near the 3' end. |
+| `"alleleA"` | First allele (single base) — gets the FAM tail. |
+| `"alleleB"` | Second allele (single base) — gets the HEX tail. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxAmplicon"` | Maximum amplicon length for the common reverse primer. |
+| `"minAmplicon"` | Minimum amplicon length for the common reverse primer. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"snpPosition"` |  |
-| `"target"` |  |
-| `"targetCoreTm"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"snpPosition"` | 1-based position of the SNP on the forward strand. |
+| `"target"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"targetCoreTm"` | Target Tm (°C) for the allele-specific primer core (before the universal tail). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1004,18 +1004,18 @@ API path: `/`
 
 | Field | Description |
 | --- | --- |
-| `"dntpMM"` |  |
-| `"gate"` |  |
-| `"mgMM"` |  |
-| `"naMM"` |  |
+| `"dntpMM"` | Total [dNTP] (mM), chelates Mg2+. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"mgMM"` | Divalent cation [Mg2+] (mM). |
+| `"naMM"` | Monovalent cation [Na+]/[K+] (mM). |
 | `"ok"` |  |
-| `"oligoNM"` |  |
+| `"oligoNM"` | Total strand concentration (nM). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"targetTm"` |  |
-| `"tmTolerance"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"targetTm"` | Optional target Tm (°C). |
+| `"tmTolerance"` | Allowed +/- window (°C) around targetTm for the gate. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1025,15 +1025,15 @@ API path: `/melting_temperature`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"maxMismatches"` |  |
-| `"motif"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxMismatches"` | Maximum allowed mismatches per match. |
+| `"motif"` | Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"searchReverseStrand"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"searchReverseStrand"` | Also search the reverse strand. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1043,12 +1043,12 @@ API path: `/motif_finder`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"input"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"input"` | Two or more sequences in multi-FASTA format (>name / sequence). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1058,16 +1058,16 @@ API path: `/multiple_sequence_alignment`
 
 | Field | Description |
 | --- | --- |
-| `"dntpMM"` |  |
-| `"gate"` |  |
-| `"mgMM"` |  |
-| `"naMM"` |  |
+| `"dntpMM"` | Total [dNTP] (mM), chelates Mg2+. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"mgMM"` | Divalent cation [Mg2+] (mM). |
+| `"naMM"` | Monovalent cation [Na+]/[K+] (mM). |
 | `"ok"` |  |
-| `"oligoNM"` |  |
+| `"oligoNM"` | Total strand concentration (nM). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1077,15 +1077,15 @@ API path: `/oligo_analysis`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sourceSpecies"` |  |
-| `"symbols"` |  |
-| `"targetSpecies"` |  |
-| `"tool"` |  |
-| `"type"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sourceSpecies"` | Ensembl species slug the symbols belong to (e.g. |
+| `"symbols"` | Gene symbols to look up, up to 50 (e.g. |
+| `"targetSpecies"` | Ensembl species slug to find homologs in (e.g. |
+| `"tool"` | The tool slug that ran. |
+| `"type"` | Homology type to return. |
 
 Operations: Create.
 
@@ -1095,17 +1095,17 @@ API path: `/ortholog_map`
 
 | Field | Description |
 | --- | --- |
-| `"gap"` |  |
-| `"gate"` |  |
-| `"match"` |  |
-| `"mismatch"` |  |
+| `"gap"` | Linear gap penalty (per gap position). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"match"` | Match score. |
+| `"mismatch"` | Mismatch penalty. |
 | `"mode"` |  |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"seqA"` |  |
-| `"seqB"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"seqA"` | First sequence (raw or FASTA; nucleotide or protein). |
+| `"seqB"` | Second sequence (raw or FASTA; nucleotide or protein). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1115,12 +1115,12 @@ API path: `/pairwise_alignment`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"text"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"text"` | A GenBank flat file (LOCUS … FEATURES … ORIGIN … //). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1130,13 +1130,13 @@ API path: `/parse_genbank`
 
 | Field | Description |
 | --- | --- |
-| `"fileBase64"` |  |
-| `"fileName"` |  |
-| `"gate"` |  |
+| `"fileBase64"` | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `"fileName"` | Optional original file name (echoed back). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1146,12 +1146,12 @@ API path: `/parse_sanger_trace`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1161,13 +1161,13 @@ API path: `/plasmid_annotate`
 
 | Field | Description |
 | --- | --- |
-| `"circular"` |  |
-| `"gate"` |  |
+| `"circular"` | Treat the sequence as a circular plasmid (vs. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1177,14 +1177,14 @@ API path: `/plasmid_deep_annotate`
 
 | Field | Description |
 | --- | --- |
-| `"circular"` |  |
-| `"gate"` |  |
+| `"circular"` | Treat the query as a circular molecule (most plasmids are). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
-| `"topN"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
+| `"topN"` | How many top-ranked backbone candidates to report. |
 
 Operations: Create.
 
@@ -1194,14 +1194,14 @@ API path: `/plasmid_full_report`
 
 | Field | Description |
 | --- | --- |
-| `"circular"` |  |
-| `"gate"` |  |
+| `"circular"` | Treat the query as a circular molecule (most plasmids are). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
-| `"topN"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
+| `"topN"` | How many top-ranked backbone candidates to report. |
 
 Operations: Create.
 
@@ -1211,18 +1211,18 @@ API path: `/plasmid_identify`
 
 | Field | Description |
 | --- | --- |
-| `"editEnd"` |  |
-| `"editStart"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
-| `"insertedSeq"` |  |
+| `"editEnd"` | 1-based inclusive end of the region being changed. |
+| `"editStart"` | 1-based inclusive start of the region being changed. |
+| `"frameStart"` | Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"insertedSeq"` | Replacement bases (forward strand). |
 | `"ok"` |  |
-| `"pbsLength"` |  |
+| `"pbsLength"` | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"rttHomology"` |  |
-| `"target"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"rttHomology"` | Homology length (nt) 3' of the edit that the RTT should include (typically 10-16). |
+| `"target"` | Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1232,17 +1232,17 @@ API path: `/prime_editing_design`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"newSequence"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"newSequence"` | New sequence (forward strand) to install in place of [replaceStart, replaceEnd]. |
 | `"ok"` |  |
-| `"overlapLength"` |  |
-| `"pbsLength"` |  |
+| `"overlapLength"` | Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal. |
+| `"pbsLength"` | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `"provenance"` |  |
-| `"replaceEnd"` |  |
-| `"replaceStart"` |  |
-| `"result"` |  |
-| `"target"` |  |
-| `"tool"` |  |
+| `"replaceEnd"` | 1-based inclusive end of the region being replaced/deleted. |
+| `"replaceStart"` | 1-based inclusive start of the region being replaced/deleted. |
+| `"result"` | Tool-specific output object. |
+| `"target"` | Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1254,28 +1254,28 @@ API path: `/prime_editing_twin_design`
 | --- | --- |
 | `"ampliconMax"` |  |
 | `"ampliconMin"` |  |
-| `"dntpMM"` |  |
-| `"gate"` |  |
+| `"dntpMM"` | Total [dNTP] (mM), chelates Mg2+. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"gcMax"` |  |
 | `"gcMin"` |  |
 | `"lenMax"` |  |
 | `"lenMin"` |  |
 | `"lenOpt"` |  |
-| `"maxReturn"` |  |
-| `"mgMM"` |  |
-| `"naMM"` |  |
+| `"maxReturn"` | Number of best pairs to return. |
+| `"mgMM"` | Divalent cation [Mg2+] (mM). |
+| `"naMM"` | Monovalent cation [Na+]/[K+] (mM). |
 | `"ok"` |  |
-| `"oligoNM"` |  |
+| `"oligoNM"` | Total strand concentration (nM). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"targetEnd"` |  |
-| `"targetStart"` |  |
-| `"template"` |  |
+| `"result"` | Tool-specific output object. |
+| `"targetEnd"` | 1-based inclusive end of the target region (optional). |
+| `"targetStart"` | 1-based inclusive start of a region the product must span (optional). |
+| `"template"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
 | `"tmMax"` |  |
-| `"tmMaxDiff"` |  |
+| `"tmMaxDiff"` | Max Tm difference within a pair (°C). |
 | `"tmMin"` |  |
 | `"tmOpt"` |  |
-| `"tool"` |  |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1285,15 +1285,15 @@ API path: `/primer_design`
 
 | Field | Description |
 | --- | --- |
-| `"forwardPrimer"` |  |
-| `"gate"` |  |
-| `"maxMismatches"` |  |
-| `"maxProductLength"` |  |
+| `"forwardPrimer"` | Forward primer, 5'→3'. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxMismatches"` | Mismatches tolerated per primer against a reference genome. |
+| `"maxProductLength"` | Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"reversePrimer"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"reversePrimer"` | Reverse primer, 5'→3'. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1303,17 +1303,17 @@ API path: `/primer_specificity`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"maxMass"` |  |
-| `"maxPeptides"` |  |
-| `"minMass"` |  |
-| `"missedCleavages"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxMass"` | Optional upper bound on neutral monoisotopic mass (Da). |
+| `"maxPeptides"` | Cap on the number of returned peptides. |
+| `"minMass"` | Optional lower bound on neutral monoisotopic mass (Da). |
+| `"missedCleavages"` | Allowed missed internal cleavages (0–2). |
 | `"ok"` |  |
-| `"protease"` |  |
+| `"protease"` | Protease or chemical cleavage agent. |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1323,12 +1323,12 @@ API path: `/protease_digestion`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"jobId"` |  |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1338,14 +1338,14 @@ API path: `/protein_annotate_poll`
 
 | Field | Description |
 | --- | --- |
-| `"appl"` |  |
-| `"gate"` |  |
-| `"goterms"` |  |
+| `"appl"` | Restrict to one member database (e.g. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"goterms"` | Include GO-term cross-references. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Protein sequence, one-letter code (FASTA header, if any, is stripped). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1355,14 +1355,14 @@ API path: `/protein_annotate_submit`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"scale"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
-| `"window"` |  |
+| `"result"` | Tool-specific output object. |
+| `"scale"` | Amino-acid scale. |
+| `"sequence"` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `"tool"` | The tool slug that ran. |
+| `"window"` | Sliding-window size (clamped to an odd number ≥ 1). |
 
 Operations: Create.
 
@@ -1372,13 +1372,13 @@ API path: `/protein_hydrophobicity`
 
 | Field | Description |
 | --- | --- |
-| `"chargeStep"` |  |
-| `"gate"` |  |
+| `"chargeStep"` | pH step for the net-charge titration curve (0–14). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1388,14 +1388,14 @@ API path: `/protein_properties`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"gcContent"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gcContent"` | Target GC percentage 0..100 (dna/rna only); omit for uniform. |
 | `"kind"` |  |
-| `"length"` |  |
+| `"length"` | Number of residues to generate. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1405,13 +1405,13 @@ API path: `/random_sequence`
 
 | Field | Description |
 | --- | --- |
-| `"enzymes"` |  |
-| `"gate"` |  |
+| `"enzymes"` | Enzyme names to scan; omit to scan all curated enzymes. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1421,12 +1421,12 @@ API path: `/restriction_sites`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 | `"type"` |  |
 
 Operations: Create.
@@ -1437,14 +1437,14 @@ API path: `/reverse_complement`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"mode"` |  |
 | `"ok"` |  |
-| `"organism"` |  |
-| `"protein"` |  |
+| `"organism"` | Codon-usage host (ignored in degenerate mode). |
+| `"protein"` | Protein sequence (one-letter codes; * for stop). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1454,12 +1454,12 @@ API path: `/reverse_translate`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1469,16 +1469,16 @@ API path: `/rna_fold`
 
 | Field | Description |
 | --- | --- |
-| `"fileBase64"` |  |
-| `"fileName"` |  |
-| `"gate"` |  |
-| `"minCoverage"` |  |
+| `"fileBase64"` | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `"fileName"` | Optional original file name (echoed back). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"minCoverage"` | Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"read"` |  |
-| `"reference"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"read"` | Sanger read as FASTA or raw text (alternative to uploading an ABIF trace). |
+| `"reference"` | Expected reference sequence (FASTA or raw). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1488,12 +1488,12 @@ API path: `/sanger_vs_reference`
 
 | Field | Description |
 | --- | --- |
-| `"args"` |  |
-| `"gate"` |  |
+| `"args"` | Arguments for that tool, exactly as you would pass to it directly. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1503,13 +1503,13 @@ API path: `/save_permalink`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"input"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"input"` | FASTA or FASTQ text (raw sequence is treated as single-record FASTA). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"qualityOffset"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"qualityOffset"` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1519,14 +1519,14 @@ API path: `/seqfile_stats`
 
 | Field | Description |
 | --- | --- |
-| `"accession"` |  |
-| `"db"` |  |
-| `"format"` |  |
-| `"gate"` |  |
+| `"accession"` | GenBank/RefSeq accession (e.g. |
+| `"db"` | Database to query; auto-detects from the accession format. |
+| `"format"` | Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1536,14 +1536,14 @@ API path: `/sequence_fetch`
 
 | Field | Description |
 | --- | --- |
-| `"from"` |  |
-| `"gate"` |  |
-| `"input"` |  |
+| `"from"` | Input format; 'auto' sniffs it from the first meaningful line. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"input"` | A FASTA or GenBank record to convert. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"to"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"to"` | Output format. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1553,15 +1553,15 @@ API path: `/sequence_format_convert`
 
 | Field | Description |
 | --- | --- |
-| `"endPrimerLength"` |  |
-| `"gate"` |  |
-| `"maxOrfs"` |  |
-| `"minOrfAa"` |  |
+| `"endPrimerLength"` | Length of the naive end primers taken from each end. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"maxOrfs"` | Maximum number of ORFs to return, longest first. |
+| `"minOrfAa"` | Minimum ORF length in amino acids. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1572,15 +1572,15 @@ API path: `/sequence_report`
 | Field | Description |
 | --- | --- |
 | `"db"` |  |
-| `"gate"` |  |
-| `"gene"` |  |
-| `"maxResults"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"gene"` | Gene symbol/name, e.g. |
+| `"maxResults"` | Up to 20. |
 | `"ok"` |  |
-| `"organism"` |  |
+| `"organism"` | Organism name, e.g. |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"term"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"term"` | Raw NCBI search term (advanced) — overrides gene/organism when given, e.g. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1590,14 +1590,14 @@ API path: `/sequence_search`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"minSupportingReads"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"minSupportingReads"` | Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"reads"` |  |
-| `"reference"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"reads"` | Raw reads in FASTA or FASTQ format (auto-detected). |
+| `"reference"` | The claimed/expected reference sequence. |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1607,12 +1607,12 @@ API path: `/sequencing_readback_verify`
 
 | Field | Description |
 | --- | --- |
-| `"entries"` |  |
-| `"gate"` |  |
+| `"entries"` | Initial named entries, e.g. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1622,13 +1622,13 @@ API path: `/session_create`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"names"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"names"` | Only return these entries; omit to return all of them. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
+| `"result"` | Tool-specific output object. |
 | `"sessionId"` |  |
-| `"tool"` |  |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1638,15 +1638,15 @@ API path: `/session_get`
 
 | Field | Description |
 | --- | --- |
-| `"args"` |  |
-| `"fromSession"` |  |
-| `"gate"` |  |
+| `"args"` | Additional literal arguments, merged with the ones resolved from the session. |
+| `"fromSession"` | Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
+| `"result"` | Tool-specific output object. |
 | `"sessionId"` |  |
-| `"tool"` |  |
-| `"writeBack"` |  |
+| `"tool"` | The tool slug that ran. |
+| `"writeBack"` | Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names. |
 
 Operations: Create.
 
@@ -1656,13 +1656,13 @@ API path: `/session_run`
 
 | Field | Description |
 | --- | --- |
-| `"entries"` |  |
-| `"gate"` |  |
+| `"entries"` | Named entries to add/overwrite, e.g. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
+| `"result"` | Tool-specific output object. |
 | `"sessionId"` |  |
-| `"tool"` |  |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1672,14 +1672,14 @@ API path: `/session_set`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"minReynolds"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"minReynolds"` | Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"shRnaLoop"` |  |
-| `"target"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"shRnaLoop"` | Loop sequence used when assembling the shRNA cassette. |
+| `"target"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1689,25 +1689,25 @@ API path: `/sirna_design`
 
 | Field | Description |
 | --- | --- |
-| `"armTmTarget"` |  |
-| `"dntpMM"` |  |
-| `"editKind"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
-| `"mgMM"` |  |
-| `"naMM"` |  |
-| `"newBase"` |  |
+| `"armTmTarget"` | Target Tm (°C) for each template-binding arm. |
+| `"dntpMM"` | Total [dNTP] (mM), chelates Mg2+. |
+| `"editKind"` | Edit at the nucleotide or amino-acid level. |
+| `"frameStart"` | 1-based position of the first base of codon 1 (editKind='aa'). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"mgMM"` | Divalent cation [Mg2+] (mM). |
+| `"naMM"` | Monovalent cation [Na+]/[K+] (mM). |
+| `"newBase"` | Replacement base (editKind='nt'). |
 | `"ok"` |  |
-| `"oligoNM"` |  |
-| `"organism"` |  |
-| `"position"` |  |
+| `"oligoNM"` | Total strand concentration (nM). |
+| `"organism"` | Codon-usage table for choosing the new codon (editKind='aa'). |
+| `"position"` | 1-based position to substitute (editKind='nt'). |
 | `"provenance"` |  |
-| `"residue"` |  |
-| `"result"` |  |
-| `"style"` |  |
-| `"targetAa"` |  |
-| `"template"` |  |
-| `"tool"` |  |
+| `"residue"` | 1-based residue number to change (editKind='aa'). |
+| `"result"` | Tool-specific output object. |
+| `"style"` | Mutagenic primer style. |
+| `"targetAa"` | Target amino acid, one-letter code incl '*' (editKind='aa'). |
+| `"template"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1718,13 +1718,13 @@ API path: `/site_directed_mutagenesis`
 | Field | Description |
 | --- | --- |
 | `"frame"` |  |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"toStop"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"toStop"` | Stop at the first stop codon. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1734,13 +1734,13 @@ API path: `/translate`
 
 | Field | Description |
 | --- | --- |
-| `"assembly"` |  |
-| `"gate"` |  |
+| `"assembly"` | Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
-| `"variant"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
+| `"variant"` | An rsID ("rs1042522"), chrom:pos:ref:alt ("17:7676154:G:C", single-base substitutions only), genomic HGVS ("chr17:g.7676154G>C" or "17:g.7676154G>C"), or transcript HGVS c. |
 
 Operations: Create.
 
@@ -1750,15 +1750,15 @@ API path: `/variant_annotate`
 
 | Field | Description |
 | --- | --- |
-| `"coding"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
+| `"coding"` | Treat as a coding sequence and report amino-acid effects. |
+| `"frameStart"` | 1-based reading-frame start (used when coding is true). |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"query"` |  |
-| `"reference"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"query"` | Query / variant sequence (raw or FASTA). |
+| `"reference"` | Reference / wild-type sequence (raw or FASTA). |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1768,28 +1768,28 @@ API path: `/variant_comparator`
 
 | Field | Description |
 | --- | --- |
-| `"armTmTarget"` |  |
-| `"circular"` |  |
-| `"claimedConstruct"` |  |
-| `"coding"` |  |
-| `"enzyme"` |  |
-| `"enzyme3"` |  |
-| `"enzyme5"` |  |
-| `"fragmentPcrs"` |  |
-| `"fragments"` |  |
-| `"frameStart"` |  |
-| `"gate"` |  |
-| `"insert"` |  |
-| `"insertPcr"` |  |
-| `"method"` |  |
-| `"names"` |  |
+| `"armTmTarget"` | Target annealing Tm (°C) for primer arms. |
+| `"circular"` | Treat the product/claimed construct as circular (most plasmids are). |
+| `"claimedConstruct"` | The sequence you claim you ended up with. |
+| `"coding"` | Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence. |
+| `"enzyme"` | Type IIS enzyme for Golden Gate. |
+| `"enzyme3"` | 3′ enzyme (restriction method). |
+| `"enzyme5"` | 5′ enzyme (restriction method). |
+| `"fragmentPcrs"` | Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead. |
+| `"fragments"` | Fragments (5′→3′), assembled head-to-tail (gibson/goldengate). |
+| `"frameStart"` | 1-based reading-frame start on claimedConstruct, used when coding is true. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"insert"` | Insert sequence (restriction method). |
+| `"insertPcr"` | Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
+| `"method"` | Assembly method used. |
+| `"names"` | Optional labels for each fragment. |
 | `"ok"` |  |
-| `"overlapLen"` |  |
+| `"overlapLen"` | Gibson homology-arm length (bp). |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"tool"` |  |
-| `"vector"` |  |
-| `"vectorPcr"` |  |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
+| `"vector"` | Vector sequence (restriction method). |
+| `"vectorPcr"` | Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
 
 Operations: Create.
 
@@ -1799,18 +1799,18 @@ API path: `/verify_assembly`
 
 | Field | Description |
 | --- | --- |
-| `"claimedConstruct"` |  |
-| `"expectedFrameStart"` |  |
-| `"gate"` |  |
-| `"insertForwardPrimer"` |  |
-| `"insertReversePrimer"` |  |
-| `"insertTemplate"` |  |
-| `"maxPrimerMismatches"` |  |
+| `"claimedConstruct"` | The final sequence claimed to have been built. |
+| `"expectedFrameStart"` | 1-based position in claimedConstruct where the intended reading frame begins. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"insertForwardPrimer"` | Forward primer used to amplify the insert, 5'→3'. |
+| `"insertReversePrimer"` | Reverse primer used to amplify the insert, 5'→3'. |
+| `"insertTemplate"` | PCR template the insert was amplified from. |
+| `"maxPrimerMismatches"` | Mismatches tolerated per primer during PCR prediction. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"templateCircular"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"templateCircular"` | Treat insertTemplate as circular (e.g. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1820,15 +1820,15 @@ API path: `/verify_construct`
 
 | Field | Description |
 | --- | --- |
-| `"circular"` |  |
-| `"enzymes"` |  |
-| `"gate"` |  |
-| `"ladder"` |  |
+| `"circular"` | Treat the sequence as circular (plasmid). |
+| `"enzymes"` | Enzyme names to digest with. |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"ladder"` | DNA ladder to plot alongside the sample lane. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"sequence"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"sequence"` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1838,12 +1838,12 @@ API path: `/virtual_gel`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"result"` |  |
-| `"rows"` |  |
-| `"tool"` |  |
+| `"result"` | Tool-specific output object. |
+| `"rows"` | Differential expression rows, one per gene. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1853,13 +1853,13 @@ API path: `/volcano_plot_data`
 
 | Field | Description |
 | --- | --- |
-| `"gate"` |  |
-| `"max_results"` |  |
+| `"gate"` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `"max_results"` | Maximum number of results to return (default 5, max 10). |
 | `"ok"` |  |
 | `"provenance"` |  |
-| `"query"` |  |
-| `"result"` |  |
-| `"tool"` |  |
+| `"query"` | The search query. |
+| `"result"` | Tool-specific output object. |
+| `"tool"` | The tool slug that ran. |
 
 Operations: Create.
 
@@ -1884,12 +1884,12 @@ Create an instance: `alphafoldLookup := client.AlphafoldLookup(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession` | `string` |  |
-| `gate` | `any` |  |
+| `accession` | `string` | UniProt accession, e.g. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -1922,14 +1922,14 @@ Create an instance: `asoDesign := client.AsoDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `length` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `length` | `int` | Total gapmer length (nt). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `target` | `string` |  |
-| `tool` | `string` |  |
-| `wing` | `int` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `target` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
+| `wing` | `int` | Modified-wing length on each side (nt); the central gap = length − 2×wing. |
 
 #### Example: Create
 
@@ -1962,15 +1962,15 @@ Create an instance: `baseEditingDesign := client.BaseEditingDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `editor` | `string` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
+| `editor` | `string` | Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G). |
+| `frameStart` | `int` | Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `target` | `string` |  |
-| `targetPosition` | `int` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `target` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetPosition` | `int` | Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2004,16 +2004,16 @@ Create an instance: `batch := client.Batch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `args` | `map[string]any` |  |
-| `capped` | `bool` |  |
+| `args` | `map[string]any` | Shared tool arguments applied to every record. |
+| `capped` | `bool` | True if input exceeded the record limit. |
 | `columns` | `[]any` |  |
 | `count` | `int` |  |
 | `errors` | `int` |  |
-| `input` | `string` |  |
-| `limit` | `int` |  |
+| `input` | `string` | Multi-FASTA text or one sequence per line (max ~2,000,000 chars). |
+| `limit` | `int` | Maximum records per call (500). |
 | `provenance` | `map[string]any` |  |
 | `rows` | `[]any` |  |
-| `tool` | `string` |  |
+| `tool` | `string` | A batchable tool slug (see `GET /batch`). |
 
 #### Example: Load
 
@@ -2062,11 +2062,11 @@ Create an instance: `batchWorkflow := client.BatchWorkflow(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `capped` | `bool` |  |
-| `columns` | `[]any` |  |
+| `columns` | `[]any` | Flattened "<step>·<tool>·<key>" column headers. |
 | `count` | `int` |  |
 | `errors` | `int` |  |
-| `input` | `string` |  |
-| `limit` | `int` |  |
+| `input` | `string` | Multi-FASTA text or one sequence per line. |
+| `limit` | `int` | Maximum records per call (200). |
 | `provenance` | `map[string]any` |  |
 | `rows` | `[]any` |  |
 | `steps` | `[]any` |  |
@@ -2116,15 +2116,15 @@ Create an instance: `characterizeSequence := client.CharacterizeSequence(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endPrimerLength` | `int` |  |
-| `gate` | `any` |  |
-| `maxOrfs` | `int` |  |
-| `minOrfAa` | `int` |  |
+| `endPrimerLength` | `int` | Length of the naive end primers taken from each end. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxOrfs` | `int` | Maximum number of ORFs to return, longest first. |
+| `minOrfAa` | `int` | Minimum ORF length in amino acids (nucleotide input only). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2157,22 +2157,22 @@ Create an instance: `cloningSimulate := client.CloningSimulate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armTmTarget` | `float64` |  |
-| `circular` | `bool` |  |
-| `enzyme` | `string` |  |
-| `enzyme3` | `string` |  |
-| `enzyme5` | `string` |  |
-| `fragments` | `[]any` |  |
-| `gate` | `any` |  |
-| `insert` | `string` |  |
-| `method` | `string` |  |
-| `names` | `[]any` |  |
+| `armTmTarget` | `float64` | Target annealing Tm (°C) for primer arms. |
+| `circular` | `bool` | Produce a circular product. |
+| `enzyme` | `string` | Type IIS enzyme for Golden Gate (e.g. |
+| `enzyme3` | `string` | 3′ enzyme (restriction method). |
+| `enzyme5` | `string` | 5′ enzyme (restriction method). |
+| `fragments` | `[]any` | Fragments (5′→3′), assembled head-to-tail. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insert` | `string` | Insert sequence (restriction method). |
+| `method` | `string` | Assembly method. |
+| `names` | `[]any` | Optional labels for each fragment. |
 | `ok` | `any` |  |
-| `overlapLen` | `int` |  |
+| `overlapLen` | `int` | Gibson homology-arm length (bp). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
-| `vector` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
+| `vector` | `string` | Vector sequence (restriction method). |
 
 #### Example: Create
 
@@ -2205,15 +2205,15 @@ Create an instance: `codonAdaptationIndex := client.CodonAdaptationIndex(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
+| `frameStart` | `int` | 1-based position to start reading codons. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `organism` | `string` |  |
 | `provenance` | `map[string]any` |  |
-| `rareThreshold` | `float64` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `rareThreshold` | `float64` | Relative adaptiveness (w) below this flags a codon as rare. |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Coding sequence (DNA/RNA; should start in-frame at ATG). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2246,13 +2246,13 @@ Create an instance: `codonOptimize := client.CodonOptimize(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `organism` | `string` |  |
-| `protein` | `string` |  |
+| `protein` | `string` | Protein sequence (one-letter codes). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2285,21 +2285,21 @@ Create an instance: `constructAutofix := client.ConstructAutofix(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoidEnzymes` | `[]any` |  |
-| `crypticOrfMinAa` | `int` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
+| `avoidEnzymes` | `[]any` | Enzyme names whose internal sites should be removed (e.g. |
+| `crypticOrfMinAa` | `int` | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `frameStart` | `int` | 1-based nucleotide where the reading frame begins. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `gcHigh` | `float64` |  |
 | `gcLow` | `float64` |  |
 | `gcWindow` | `int` |  |
 | `homopolymerMin` | `int` |  |
-| `maxPasses` | `int` |  |
+| `maxPasses` | `int` | Repeat full passes until clean or no further progress. |
 | `ok` | `any` |  |
-| `organism` | `string` |  |
+| `organism` | `string` | Codon-usage table to prefer among synonymous options. |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2332,19 +2332,19 @@ Create an instance: `constructQc := client.ConstructQc(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `avoidEnzymes` | `[]any` |  |
-| `crypticOrfMinAa` | `int` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
-| `gcHigh` | `float64` |  |
-| `gcLow` | `float64` |  |
-| `gcWindow` | `int` |  |
-| `homopolymerMin` | `int` |  |
+| `avoidEnzymes` | `[]any` | Enzyme names whose internal sites should be flagged as errors. |
+| `crypticOrfMinAa` | `int` | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `frameStart` | `int` | 1-based nucleotide where the reading frame begins. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gcHigh` | `float64` | GC% above this flags a GC-rich window. |
+| `gcLow` | `float64` | GC% below this flags an AT-rich window. |
+| `gcWindow` | `int` | Sliding-window size (nt) for GC-extreme scanning. |
+| `homopolymerMin` | `int` | Minimum run length to flag a homopolymer. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2377,15 +2377,15 @@ Create an instance: `crisprGrnaDesign := client.CrisprGrnaDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `minScore` | `float64` |  |
-| `nuclease` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minScore` | `float64` | Only return guides with a heuristic score at least this high (0–100). |
+| `nuclease` | `string` | Nuclease id. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `searchReverseStrand` | `bool` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `searchReverseStrand` | `bool` | Also scan the reverse strand for guides. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2418,23 +2418,23 @@ Create an instance: `crisprHdrDonor := client.CrisprHdrDonor(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armLength` | `int` |  |
-| `blockPam` | `bool` |  |
-| `designGenotypingPrimers` | `bool` |  |
-| `editEnd` | `int` |  |
-| `editStart` | `int` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
-| `guideEnd` | `int` |  |
-| `guideStart` | `int` |  |
-| `guideStrand` | `string` |  |
-| `nuclease` | `string` |  |
+| `armLength` | `int` | Homology arm length (bp) on each side. |
+| `blockPam` | `bool` | When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut. |
+| `designGenotypingPrimers` | `bool` | Also design a primer pair (on the original targetSequence) whose product spans the edit site. |
+| `editEnd` | `int` | 1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed. |
+| `editStart` | `int` | 1-based start of the region being replaced. |
+| `frameStart` | `int` | Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `guideEnd` | `int` | 1-based forward-strand end of the guide's protospacer. |
+| `guideStart` | `int` | 1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site). |
+| `guideStrand` | `string` | Strand the guide's protospacer is on. |
+| `nuclease` | `string` | Needed only when deriving the cut site from guideStart/guideEnd/guideStrand. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `replacement` | `string` |  |
-| `result` | `map[string]any` |  |
-| `targetSequence` | `string` |  |
-| `tool` | `string` |  |
+| `replacement` | `string` | Sequence to insert/substitute ("" for a pure deletion). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `targetSequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2468,14 +2468,14 @@ Create an instance: `crisprOfftargetCheck := client.CrisprOfftargetCheck(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `maxMismatches` | `int` |  |
-| `nuclease` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `int` | Mismatches tolerated between the protospacer and a candidate genomic site. |
+| `nuclease` | `string` | Nuclease id — determines the PAM pattern/side required at each candidate site. |
 | `ok` | `any` |  |
-| `protospacer` | `string` |  |
+| `protospacer` | `string` | The guide's protospacer sequence, 5'→3' (no PAM). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2508,13 +2508,13 @@ Create an instance: `crossDimer := client.CrossDimer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequenceA` | `string` |  |
-| `sequenceB` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequenceA` | `string` | First oligo (5'→3'). |
+| `sequenceB` | `string` | Second oligo (5'→3'). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2548,16 +2548,16 @@ Create an instance: `dnaMolarity := client.DnaMolarity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `length` | `int` |  |
-| `massNg` | `float64` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `length` | `int` | Length in bp (dsDNA) or nt (ssDNA/ssRNA). |
+| `massNg` | `float64` | Mass in nanograms. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
-| `type` | `string` |  |
-| `volumeUl` | `float64` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Optional sequence — overrides length and gives an exact molar mass from base composition. |
+| `tool` | `string` | The tool slug that ran. |
+| `type` | `string` | Molecule type. |
+| `volumeUl` | `float64` | Volume in microlitres (0 = unknown; needed for concentration). |
 
 #### Example: Create
 
@@ -2589,13 +2589,13 @@ Create an instance: `doubleDigest := client.DoubleDigest(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzymeA` | `string` |  |
-| `enzymeB` | `string` |  |
-| `gate` | `any` |  |
+| `enzymeA` | `string` | First enzyme name (e.g. |
+| `enzymeB` | `string` | Second enzyme name (e.g. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2629,12 +2629,12 @@ Create an instance: `exportEchoPicklist := client.ExportEchoPicklist(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `reactions` | `[]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `reactions` | `[]any` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2667,13 +2667,13 @@ Create an instance: `exportOpentronsProtocol := client.ExportOpentronsProtocol(n
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
-| `protocolName` | `string` |  |
+| `protocolName` | `string` | Optional protocol name (used in the script's metadata). |
 | `provenance` | `map[string]any` |  |
-| `reactions` | `[]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `reactions` | `[]any` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2706,12 +2706,12 @@ Create an instance: `exportPlateLayout := client.ExportPlateLayout(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `reactions` | `[]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `reactions` | `[]any` | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2744,19 +2744,19 @@ Create an instance: `expressionHeatmapCluster := client.ExpressionHeatmapCluster
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `clusterCols` | `bool` |  |
-| `clusterRows` | `bool` |  |
-| `distanceMetric` | `string` |  |
-| `gate` | `any` |  |
-| `genes` | `[]any` |  |
-| `linkage` | `string` |  |
+| `clusterCols` | `bool` | Cluster (reorder) samples. |
+| `clusterRows` | `bool` | Cluster (reorder) genes. |
+| `distanceMetric` | `string` | correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `genes` | `[]any` | Row (gene) labels. |
+| `linkage` | `string` | average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `samples` | `[]any` |  |
-| `tool` | `string` |  |
-| `values` | `[]any` |  |
-| `zScoreRows` | `bool` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `samples` | `[]any` | Column (sample) labels. |
+| `tool` | `string` | The tool slug that ran. |
+| `values` | `[]any` | genes x samples numeric matrix — one row per gene, in the same order as `genes`. |
+| `zScoreRows` | `bool` | Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization). |
 
 #### Example: Create
 
@@ -2791,13 +2791,13 @@ Create an instance: `fastqQcReport := client.FastqQcReport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `input` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `qualityOffset` | `int` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `qualityOffset` | `int` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2830,15 +2830,15 @@ Create an instance: `fastqTrim := client.FastqTrim(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `input` | `string` |  |
-| `minLength` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
+| `minLength` | `int` | Reads shorter than this after trimming are dropped. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `qualityOffset` | `int` |  |
-| `qualityThreshold` | `int` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `qualityOffset` | `int` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `qualityThreshold` | `int` | 3' quality-trim threshold (Phred score). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2871,14 +2871,14 @@ Create an instance: `findOrf := client.FindOrf(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `minAaLength` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minAaLength` | `int` | Minimum protein length (aa) to report. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `requireStop` | `bool` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `requireStop` | `bool` | Only report ORFs terminated by a stop codon. |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2912,16 +2912,16 @@ Create an instance: `formatSequence := client.FormatSequence(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `caseMode` | `string` |  |
-| `convert` | `string` |  |
-| `gate` | `any` |  |
+| `convert` | `string` | DNA→RNA (T→U) or RNA→DNA (U→T). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `reverse` | `bool` |  |
-| `sequence` | `string` |  |
-| `stripNonLetters` | `bool` |  |
-| `tool` | `string` |  |
-| `width` | `int` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `reverse` | `bool` | Reverse the sequence (no complement). |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `stripNonLetters` | `bool` | Remove digits, spaces and gaps (keep letters only). |
+| `tool` | `string` | The tool slug that ran. |
+| `width` | `int` | Line-wrap width; 0 = single line. |
 
 #### Example: Create
 
@@ -2954,16 +2954,16 @@ Create an instance: `functionalEnrichment := client.FunctionalEnrichment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `background` | `[]any` |  |
-| `collections` | `[]any` |  |
-| `gate` | `any` |  |
-| `genes` | `[]any` |  |
-| `maxTermSize` | `int` |  |
-| `minTermSize` | `int` |  |
+| `background` | `[]any` | Custom background/universe gene symbols. |
+| `collections` | `[]any` | Which term collections to test. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `genes` | `[]any` | Query gene symbols (human, e.g. |
+| `maxTermSize` | `int` | Skip terms/pathways with more than this many background genes (matches clusterProfiler's default). |
+| `minTermSize` | `int` | Skip terms/pathways with fewer than this many background genes. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -2996,12 +2996,12 @@ Create an instance: `gcContent := client.GcContent(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3034,12 +3034,12 @@ Create an instance: `geneDossier := client.GeneDossier(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `gene` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3072,12 +3072,12 @@ Create an instance: `geneExpression := client.GeneExpression(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `gene` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3110,12 +3110,12 @@ Create an instance: `geneModel := client.GeneModel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `gene` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3148,15 +3148,15 @@ Create an instance: `goldenGateFidelity := client.GoldenGateFidelity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compareToNamedSet` | `string` |  |
-| `dataset` | `string` |  |
-| `gate` | `any` |  |
+| `compareToNamedSet` | `string` | Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison. |
+| `dataset` | `string` | Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
-| `overhangs` | `[]any` |  |
+| `overhangs` | `[]any` | The candidate 4-base overhangs for one assembly (e.g. |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `riskThreshold` | `float64` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `riskThreshold` | `float64` | Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3189,12 +3189,12 @@ Create an instance: `hgvsConvert := client.HgvsConvert(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
-| `variant` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
+| `variant` | `string` | A full HGVS "c." variant description: "<accession or gene symbol>:c.<edit>", e.g. |
 
 #### Example: Create
 
@@ -3227,12 +3227,12 @@ Create an instance: `idMapPoll := client.IdMapPoll(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `jobId` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3265,15 +3265,15 @@ Create an instance: `idMapSubmit := client.IdMapSubmit(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `from` | `string` |  |
-| `gate` | `any` |  |
-| `ids` | `[]any` |  |
+| `from` | `string` | Source id type: "Gene_Name", "Ensembl", "GeneID", "RefSeq_Protein", or "UniProtKB_AC-ID". |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `ids` | `[]any` | The ids to map, up to 1000 (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `taxId` | `string` |  |
-| `to` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `taxId` | `string` | NCBI taxonomy id to disambiguate a gene symbol (only used when from="Gene_Name"). |
+| `to` | `string` | Target id type. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3308,16 +3308,16 @@ Create an instance: `inSilicoPcr := client.InSilicoPcr(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `circular` | `bool` |  |
-| `forwardPrimer` | `string` |  |
-| `gate` | `any` |  |
-| `maxMismatches` | `int` |  |
+| `circular` | `bool` | Treat the template as circular (plasmid). |
+| `forwardPrimer` | `string` | Primer 1, 5'→3'. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `int` | Mismatches tolerated per primer. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `reversePrimer` | `string` |  |
-| `template` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `reversePrimer` | `string` | Primer 2, 5'→3' (order does not matter). |
+| `template` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3352,19 +3352,19 @@ Create an instance: `kaspPrimerDesign := client.KaspPrimerDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `addSecondaryMismatch` | `bool` |  |
-| `alleleA` | `string` |  |
-| `alleleB` | `string` |  |
-| `gate` | `any` |  |
-| `maxAmplicon` | `int` |  |
-| `minAmplicon` | `int` |  |
+| `addSecondaryMismatch` | `bool` | Engineer the internal ARMS destabilising mismatch near the 3' end. |
+| `alleleA` | `string` | First allele (single base) — gets the FAM tail. |
+| `alleleB` | `string` | Second allele (single base) — gets the HEX tail. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxAmplicon` | `int` | Maximum amplicon length for the common reverse primer. |
+| `minAmplicon` | `int` | Minimum amplicon length for the common reverse primer. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `snpPosition` | `int` |  |
-| `target` | `string` |  |
-| `targetCoreTm` | `float64` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `snpPosition` | `int` | 1-based position of the SNP on the forward strand. |
+| `target` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetCoreTm` | `float64` | Target Tm (°C) for the allele-specific primer core (before the universal tail). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3421,18 +3421,18 @@ Create an instance: `meltingTemperature := client.MeltingTemperature(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntpMM` | `float64` |  |
-| `gate` | `any` |  |
-| `mgMM` | `float64` |  |
-| `naMM` | `float64` |  |
+| `dntpMM` | `float64` | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `float64` | Divalent cation [Mg2+] (mM). |
+| `naMM` | `float64` | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` |  |
-| `oligoNM` | `float64` |  |
+| `oligoNM` | `float64` | Total strand concentration (nM). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `targetTm` | `float64` |  |
-| `tmTolerance` | `float64` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetTm` | `float64` | Optional target Tm (°C). |
+| `tmTolerance` | `float64` | Allowed +/- window (°C) around targetTm for the gate. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3465,15 +3465,15 @@ Create an instance: `motifFinder := client.MotifFinder(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `maxMismatches` | `int` |  |
-| `motif` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `int` | Maximum allowed mismatches per match. |
+| `motif` | `string` | Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `searchReverseStrand` | `bool` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `searchReverseStrand` | `bool` | Also search the reverse strand. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3507,12 +3507,12 @@ Create an instance: `multipleSequenceAlignment := client.MultipleSequenceAlignme
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `input` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Two or more sequences in multi-FASTA format (>name / sequence). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3545,16 +3545,16 @@ Create an instance: `oligoAnalysi := client.OligoAnalysi(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `dntpMM` | `float64` |  |
-| `gate` | `any` |  |
-| `mgMM` | `float64` |  |
-| `naMM` | `float64` |  |
+| `dntpMM` | `float64` | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `float64` | Divalent cation [Mg2+] (mM). |
+| `naMM` | `float64` | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` |  |
-| `oligoNM` | `float64` |  |
+| `oligoNM` | `float64` | Total strand concentration (nM). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3587,15 +3587,15 @@ Create an instance: `orthologMap := client.OrthologMap(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sourceSpecies` | `string` |  |
-| `symbols` | `[]any` |  |
-| `targetSpecies` | `string` |  |
-| `tool` | `string` |  |
-| `type` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sourceSpecies` | `string` | Ensembl species slug the symbols belong to (e.g. |
+| `symbols` | `[]any` | Gene symbols to look up, up to 50 (e.g. |
+| `targetSpecies` | `string` | Ensembl species slug to find homologs in (e.g. |
+| `tool` | `string` | The tool slug that ran. |
+| `type` | `string` | Homology type to return. |
 
 #### Example: Create
 
@@ -3629,17 +3629,17 @@ Create an instance: `pairwiseAlignment := client.PairwiseAlignment(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gap` | `float64` |  |
-| `gate` | `any` |  |
-| `match` | `float64` |  |
-| `mismatch` | `float64` |  |
+| `gap` | `float64` | Linear gap penalty (per gap position). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `match` | `float64` | Match score. |
+| `mismatch` | `float64` | Mismatch penalty. |
 | `mode` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `seqA` | `string` |  |
-| `seqB` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `seqA` | `string` | First sequence (raw or FASTA; nucleotide or protein). |
+| `seqB` | `string` | Second sequence (raw or FASTA; nucleotide or protein). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3673,12 +3673,12 @@ Create an instance: `parseGenbank := client.ParseGenbank(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `text` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `text` | `string` | A GenBank flat file (LOCUS … FEATURES … ORIGIN … //). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3711,13 +3711,13 @@ Create an instance: `parseSangerTrace := client.ParseSangerTrace(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fileBase64` | `string` |  |
-| `fileName` | `string` |  |
-| `gate` | `any` |  |
+| `fileBase64` | `string` | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `fileName` | `string` | Optional original file name (echoed back). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3750,12 +3750,12 @@ Create an instance: `plasmidAnnotate := client.PlasmidAnnotate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3788,13 +3788,13 @@ Create an instance: `plasmidDeepAnnotate := client.PlasmidDeepAnnotate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `circular` | `bool` |  |
-| `gate` | `any` |  |
+| `circular` | `bool` | Treat the sequence as a circular plasmid (vs. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3827,14 +3827,14 @@ Create an instance: `plasmidFullReport := client.PlasmidFullReport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `circular` | `bool` |  |
-| `gate` | `any` |  |
+| `circular` | `bool` | Treat the query as a circular molecule (most plasmids are). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
-| `topN` | `int` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
+| `topN` | `int` | How many top-ranked backbone candidates to report. |
 
 #### Example: Create
 
@@ -3867,14 +3867,14 @@ Create an instance: `plasmidIdentify := client.PlasmidIdentify(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `circular` | `bool` |  |
-| `gate` | `any` |  |
+| `circular` | `bool` | Treat the query as a circular molecule (most plasmids are). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
-| `topN` | `int` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
+| `topN` | `int` | How many top-ranked backbone candidates to report. |
 
 #### Example: Create
 
@@ -3907,18 +3907,18 @@ Create an instance: `primeEditingDesign := client.PrimeEditingDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `editEnd` | `int` |  |
-| `editStart` | `int` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
-| `insertedSeq` | `string` |  |
+| `editEnd` | `int` | 1-based inclusive end of the region being changed. |
+| `editStart` | `int` | 1-based inclusive start of the region being changed. |
+| `frameStart` | `int` | Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insertedSeq` | `string` | Replacement bases (forward strand). |
 | `ok` | `any` |  |
-| `pbsLength` | `int` |  |
+| `pbsLength` | `int` | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `rttHomology` | `int` |  |
-| `target` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `rttHomology` | `int` | Homology length (nt) 3' of the edit that the RTT should include (typically 10-16). |
+| `target` | `string` | Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -3953,17 +3953,17 @@ Create an instance: `primeEditingTwinDesign := client.PrimeEditingTwinDesign(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `newSequence` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `newSequence` | `string` | New sequence (forward strand) to install in place of [replaceStart, replaceEnd]. |
 | `ok` | `any` |  |
-| `overlapLength` | `int` |  |
-| `pbsLength` | `int` |  |
+| `overlapLength` | `int` | Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal. |
+| `pbsLength` | `int` | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `provenance` | `map[string]any` |  |
-| `replaceEnd` | `int` |  |
-| `replaceStart` | `int` |  |
-| `result` | `map[string]any` |  |
-| `target` | `string` |  |
-| `tool` | `string` |  |
+| `replaceEnd` | `int` | 1-based inclusive end of the region being replaced/deleted. |
+| `replaceStart` | `int` | 1-based inclusive start of the region being replaced/deleted. |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `target` | `string` | Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4001,28 +4001,28 @@ Create an instance: `primerDesign := client.PrimerDesign(nil)`
 | --- | --- | --- |
 | `ampliconMax` | `int` |  |
 | `ampliconMin` | `int` |  |
-| `dntpMM` | `float64` |  |
-| `gate` | `any` |  |
+| `dntpMM` | `float64` | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `gcMax` | `float64` |  |
 | `gcMin` | `float64` |  |
 | `lenMax` | `int` |  |
 | `lenMin` | `int` |  |
 | `lenOpt` | `int` |  |
-| `maxReturn` | `int` |  |
-| `mgMM` | `float64` |  |
-| `naMM` | `float64` |  |
+| `maxReturn` | `int` | Number of best pairs to return. |
+| `mgMM` | `float64` | Divalent cation [Mg2+] (mM). |
+| `naMM` | `float64` | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` |  |
-| `oligoNM` | `float64` |  |
+| `oligoNM` | `float64` | Total strand concentration (nM). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `targetEnd` | `int` |  |
-| `targetStart` | `int` |  |
-| `template` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `targetEnd` | `int` | 1-based inclusive end of the target region (optional). |
+| `targetStart` | `int` | 1-based inclusive start of a region the product must span (optional). |
+| `template` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
 | `tmMax` | `float64` |  |
-| `tmMaxDiff` | `float64` |  |
+| `tmMaxDiff` | `float64` | Max Tm difference within a pair (°C). |
 | `tmMin` | `float64` |  |
 | `tmOpt` | `float64` |  |
-| `tool` | `string` |  |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4055,15 +4055,15 @@ Create an instance: `primerSpecificity := client.PrimerSpecificity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `forwardPrimer` | `string` |  |
-| `gate` | `any` |  |
-| `maxMismatches` | `int` |  |
-| `maxProductLength` | `int` |  |
+| `forwardPrimer` | `string` | Forward primer, 5'→3'. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `int` | Mismatches tolerated per primer against a reference genome. |
+| `maxProductLength` | `int` | Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `reversePrimer` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `reversePrimer` | `string` | Reverse primer, 5'→3'. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4097,17 +4097,17 @@ Create an instance: `proteaseDigestion := client.ProteaseDigestion(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `maxMass` | `float64` |  |
-| `maxPeptides` | `int` |  |
-| `minMass` | `float64` |  |
-| `missedCleavages` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMass` | `float64` | Optional upper bound on neutral monoisotopic mass (Da). |
+| `maxPeptides` | `int` | Cap on the number of returned peptides. |
+| `minMass` | `float64` | Optional lower bound on neutral monoisotopic mass (Da). |
+| `missedCleavages` | `int` | Allowed missed internal cleavages (0–2). |
 | `ok` | `any` |  |
-| `protease` | `string` |  |
+| `protease` | `string` | Protease or chemical cleavage agent. |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4140,12 +4140,12 @@ Create an instance: `proteinAnnotatePoll := client.ProteinAnnotatePoll(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `jobId` | `string` |  |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4178,14 +4178,14 @@ Create an instance: `proteinAnnotateSubmit := client.ProteinAnnotateSubmit(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `appl` | `string` |  |
-| `gate` | `any` |  |
-| `goterms` | `bool` |  |
+| `appl` | `string` | Restrict to one member database (e.g. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `goterms` | `bool` | Include GO-term cross-references. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Protein sequence, one-letter code (FASTA header, if any, is stripped). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4218,14 +4218,14 @@ Create an instance: `proteinHydrophobicity := client.ProteinHydrophobicity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `scale` | `string` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
-| `window` | `int` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `scale` | `string` | Amino-acid scale. |
+| `sequence` | `string` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | The tool slug that ran. |
+| `window` | `int` | Sliding-window size (clamped to an odd number ≥ 1). |
 
 #### Example: Create
 
@@ -4258,13 +4258,13 @@ Create an instance: `proteinProperty := client.ProteinProperty(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `chargeStep` | `float64` |  |
-| `gate` | `any` |  |
+| `chargeStep` | `float64` | pH step for the net-charge titration curve (0–14). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4297,14 +4297,14 @@ Create an instance: `randomSequence := client.RandomSequence(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `gcContent` | `float64` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gcContent` | `float64` | Target GC percentage 0..100 (dna/rna only); omit for uniform. |
 | `kind` | `string` |  |
-| `length` | `int` |  |
+| `length` | `int` | Number of residues to generate. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4337,13 +4337,13 @@ Create an instance: `restrictionSite := client.RestrictionSite(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `enzymes` | `[]any` |  |
-| `gate` | `any` |  |
+| `enzymes` | `[]any` | Enzyme names to scan; omit to scan all curated enzymes. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4376,12 +4376,12 @@ Create an instance: `reverseComplement := client.ReverseComplement(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 | `type` | `string` |  |
 
 #### Example: Create
@@ -4415,14 +4415,14 @@ Create an instance: `reverseTranslate := client.ReverseTranslate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `mode` | `string` |  |
 | `ok` | `any` |  |
-| `organism` | `string` |  |
-| `protein` | `string` |  |
+| `organism` | `string` | Codon-usage host (ignored in degenerate mode). |
+| `protein` | `string` | Protein sequence (one-letter codes; * for stop). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4455,12 +4455,12 @@ Create an instance: `rnaFold := client.RnaFold(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4493,16 +4493,16 @@ Create an instance: `sangerVsReference := client.SangerVsReference(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `fileBase64` | `string` |  |
-| `fileName` | `string` |  |
-| `gate` | `any` |  |
-| `minCoverage` | `float64` |  |
+| `fileBase64` | `string` | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `fileName` | `string` | Optional original file name (echoed back). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minCoverage` | `float64` | Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `read` | `string` |  |
-| `reference` | `string` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `read` | `string` | Sanger read as FASTA or raw text (alternative to uploading an ABIF trace). |
+| `reference` | `string` | Expected reference sequence (FASTA or raw). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4535,12 +4535,12 @@ Create an instance: `savePermalink := client.SavePermalink(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `args` | `map[string]any` |  |
-| `gate` | `any` |  |
+| `args` | `map[string]any` | Arguments for that tool, exactly as you would pass to it directly. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4573,13 +4573,13 @@ Create an instance: `seqfileStat := client.SeqfileStat(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `input` | `string` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | FASTA or FASTQ text (raw sequence is treated as single-record FASTA). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `qualityOffset` | `int` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `qualityOffset` | `int` | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4612,14 +4612,14 @@ Create an instance: `sequenceFetch := client.SequenceFetch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `accession` | `string` |  |
-| `db` | `string` |  |
-| `format` | `string` |  |
-| `gate` | `any` |  |
+| `accession` | `string` | GenBank/RefSeq accession (e.g. |
+| `db` | `string` | Database to query; auto-detects from the accession format. |
+| `format` | `string` | Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4652,14 +4652,14 @@ Create an instance: `sequenceFormatConvert := client.SequenceFormatConvert(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `from` | `string` |  |
-| `gate` | `any` |  |
-| `input` | `string` |  |
+| `from` | `string` | Input format; 'auto' sniffs it from the first meaningful line. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | A FASTA or GenBank record to convert. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `to` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `to` | `string` | Output format. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4692,15 +4692,15 @@ Create an instance: `sequenceReport := client.SequenceReport(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `endPrimerLength` | `int` |  |
-| `gate` | `any` |  |
-| `maxOrfs` | `int` |  |
-| `minOrfAa` | `int` |  |
+| `endPrimerLength` | `int` | Length of the naive end primers taken from each end. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxOrfs` | `int` | Maximum number of ORFs to return, longest first. |
+| `minOrfAa` | `int` | Minimum ORF length in amino acids. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4734,15 +4734,15 @@ Create an instance: `sequenceSearch := client.SequenceSearch(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `db` | `string` |  |
-| `gate` | `any` |  |
-| `gene` | `string` |  |
-| `maxResults` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | Gene symbol/name, e.g. |
+| `maxResults` | `int` | Up to 20. |
 | `ok` | `any` |  |
-| `organism` | `string` |  |
+| `organism` | `string` | Organism name, e.g. |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `term` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `term` | `string` | Raw NCBI search term (advanced) — overrides gene/organism when given, e.g. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4774,14 +4774,14 @@ Create an instance: `sequencingReadbackVerify := client.SequencingReadbackVerify
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `minSupportingReads` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minSupportingReads` | `int` | Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `reads` | `string` |  |
-| `reference` | `string` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `reads` | `string` | Raw reads in FASTA or FASTQ format (auto-detected). |
+| `reference` | `string` | The claimed/expected reference sequence. |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4815,12 +4815,12 @@ Create an instance: `sessionCreate := client.SessionCreate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entries` | `map[string]any` |  |
-| `gate` | `any` |  |
+| `entries` | `map[string]any` | Initial named entries, e.g. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4852,13 +4852,13 @@ Create an instance: `sessionGet := client.SessionGet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `names` | `[]any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `names` | `[]any` | Only return these entries; omit to return all of them. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
 | `sessionId` | `string` |  |
-| `tool` | `string` |  |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4891,15 +4891,15 @@ Create an instance: `sessionRun := client.SessionRun(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `args` | `map[string]any` |  |
-| `fromSession` | `map[string]any` |  |
-| `gate` | `any` |  |
+| `args` | `map[string]any` | Additional literal arguments, merged with the ones resolved from the session. |
+| `fromSession` | `map[string]any` | Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
 | `sessionId` | `string` |  |
-| `tool` | `string` |  |
-| `writeBack` | `map[string]any` |  |
+| `tool` | `string` | The tool slug that ran. |
+| `writeBack` | `map[string]any` | Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names. |
 
 #### Example: Create
 
@@ -4932,13 +4932,13 @@ Create an instance: `sessionSet := client.SessionSet(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `entries` | `map[string]any` |  |
-| `gate` | `any` |  |
+| `entries` | `map[string]any` | Named entries to add/overwrite, e.g. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
 | `sessionId` | `string` |  |
-| `tool` | `string` |  |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -4972,14 +4972,14 @@ Create an instance: `sirnaDesign := client.SirnaDesign(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `minReynolds` | `int` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minReynolds` | `int` | Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `shRnaLoop` | `string` |  |
-| `target` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `shRnaLoop` | `string` | Loop sequence used when assembling the shRNA cassette. |
+| `target` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5012,25 +5012,25 @@ Create an instance: `siteDirectedMutagenesi := client.SiteDirectedMutagenesi(nil
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armTmTarget` | `float64` |  |
-| `dntpMM` | `float64` |  |
-| `editKind` | `string` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
-| `mgMM` | `float64` |  |
-| `naMM` | `float64` |  |
-| `newBase` | `string` |  |
+| `armTmTarget` | `float64` | Target Tm (°C) for each template-binding arm. |
+| `dntpMM` | `float64` | Total [dNTP] (mM), chelates Mg2+. |
+| `editKind` | `string` | Edit at the nucleotide or amino-acid level. |
+| `frameStart` | `int` | 1-based position of the first base of codon 1 (editKind='aa'). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `float64` | Divalent cation [Mg2+] (mM). |
+| `naMM` | `float64` | Monovalent cation [Na+]/[K+] (mM). |
+| `newBase` | `string` | Replacement base (editKind='nt'). |
 | `ok` | `any` |  |
-| `oligoNM` | `float64` |  |
-| `organism` | `string` |  |
-| `position` | `int` |  |
+| `oligoNM` | `float64` | Total strand concentration (nM). |
+| `organism` | `string` | Codon-usage table for choosing the new codon (editKind='aa'). |
+| `position` | `int` | 1-based position to substitute (editKind='nt'). |
 | `provenance` | `map[string]any` |  |
-| `residue` | `int` |  |
-| `result` | `map[string]any` |  |
-| `style` | `string` |  |
-| `targetAa` | `string` |  |
-| `template` | `string` |  |
-| `tool` | `string` |  |
+| `residue` | `int` | 1-based residue number to change (editKind='aa'). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `style` | `string` | Mutagenic primer style. |
+| `targetAa` | `string` | Target amino acid, one-letter code incl '*' (editKind='aa'). |
+| `template` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5064,13 +5064,13 @@ Create an instance: `translate := client.Translate(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `frame` | `int` |  |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `toStop` | `bool` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `toStop` | `bool` | Stop at the first stop codon. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5103,13 +5103,13 @@ Create an instance: `variantAnnotate := client.VariantAnnotate(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `assembly` | `string` |  |
-| `gate` | `any` |  |
+| `assembly` | `string` | Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
-| `variant` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
+| `variant` | `string` | An rsID ("rs1042522"), chrom:pos:ref:alt ("17:7676154:G:C", single-base substitutions only), genomic HGVS ("chr17:g.7676154G>C" or "17:g.7676154G>C"), or transcript HGVS c. |
 
 #### Example: Create
 
@@ -5142,15 +5142,15 @@ Create an instance: `variantComparator := client.VariantComparator(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `coding` | `bool` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
+| `coding` | `bool` | Treat as a coding sequence and report amino-acid effects. |
+| `frameStart` | `int` | 1-based reading-frame start (used when coding is true). |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `query` | `string` |  |
-| `reference` | `string` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `query` | `string` | Query / variant sequence (raw or FASTA). |
+| `reference` | `string` | Reference / wild-type sequence (raw or FASTA). |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5184,28 +5184,28 @@ Create an instance: `verifyAssembly := client.VerifyAssembly(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `armTmTarget` | `float64` |  |
-| `circular` | `bool` |  |
-| `claimedConstruct` | `string` |  |
-| `coding` | `bool` |  |
-| `enzyme` | `string` |  |
-| `enzyme3` | `string` |  |
-| `enzyme5` | `string` |  |
-| `fragmentPcrs` | `[]any` |  |
-| `fragments` | `[]any` |  |
-| `frameStart` | `int` |  |
-| `gate` | `any` |  |
-| `insert` | `string` |  |
-| `insertPcr` | `map[string]any` |  |
-| `method` | `string` |  |
-| `names` | `[]any` |  |
+| `armTmTarget` | `float64` | Target annealing Tm (°C) for primer arms. |
+| `circular` | `bool` | Treat the product/claimed construct as circular (most plasmids are). |
+| `claimedConstruct` | `string` | The sequence you claim you ended up with. |
+| `coding` | `bool` | Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence. |
+| `enzyme` | `string` | Type IIS enzyme for Golden Gate. |
+| `enzyme3` | `string` | 3′ enzyme (restriction method). |
+| `enzyme5` | `string` | 5′ enzyme (restriction method). |
+| `fragmentPcrs` | `[]any` | Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead. |
+| `fragments` | `[]any` | Fragments (5′→3′), assembled head-to-tail (gibson/goldengate). |
+| `frameStart` | `int` | 1-based reading-frame start on claimedConstruct, used when coding is true. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insert` | `string` | Insert sequence (restriction method). |
+| `insertPcr` | `map[string]any` | Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
+| `method` | `string` | Assembly method used. |
+| `names` | `[]any` | Optional labels for each fragment. |
 | `ok` | `any` |  |
-| `overlapLen` | `int` |  |
+| `overlapLen` | `int` | Gibson homology-arm length (bp). |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
-| `vector` | `string` |  |
-| `vectorPcr` | `map[string]any` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
+| `vector` | `string` | Vector sequence (restriction method). |
+| `vectorPcr` | `map[string]any` | Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
 
 #### Example: Create
 
@@ -5239,18 +5239,18 @@ Create an instance: `verifyConstruct := client.VerifyConstruct(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `claimedConstruct` | `string` |  |
-| `expectedFrameStart` | `int` |  |
-| `gate` | `any` |  |
-| `insertForwardPrimer` | `string` |  |
-| `insertReversePrimer` | `string` |  |
-| `insertTemplate` | `string` |  |
-| `maxPrimerMismatches` | `int` |  |
+| `claimedConstruct` | `string` | The final sequence claimed to have been built. |
+| `expectedFrameStart` | `int` | 1-based position in claimedConstruct where the intended reading frame begins. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insertForwardPrimer` | `string` | Forward primer used to amplify the insert, 5'→3'. |
+| `insertReversePrimer` | `string` | Reverse primer used to amplify the insert, 5'→3'. |
+| `insertTemplate` | `string` | PCR template the insert was amplified from. |
+| `maxPrimerMismatches` | `int` | Mismatches tolerated per primer during PCR prediction. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `templateCircular` | `bool` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `templateCircular` | `bool` | Treat insertTemplate as circular (e.g. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5286,15 +5286,15 @@ Create an instance: `virtualGel := client.VirtualGel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `circular` | `bool` |  |
-| `enzymes` | `[]any` |  |
-| `gate` | `any` |  |
-| `ladder` | `string` |  |
+| `circular` | `bool` | Treat the sequence as circular (plasmid). |
+| `enzymes` | `[]any` | Enzyme names to digest with. |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `ladder` | `string` | DNA ladder to plot alongside the sample lane. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `sequence` | `string` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `sequence` | `string` | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5327,12 +5327,12 @@ Create an instance: `volcanoPlotData := client.VolcanoPlotData(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `result` | `map[string]any` |  |
-| `rows` | `[]any` |  |
-| `tool` | `string` |  |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `rows` | `[]any` | Differential expression rows, one per gene. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 
@@ -5365,13 +5365,13 @@ Create an instance: `webSearch := client.WebSearch(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `gate` | `any` |  |
-| `max_results` | `float64` |  |
+| `gate` | `any` | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `max_results` | `float64` | Maximum number of results to return (default 5, max 10). |
 | `ok` | `any` |  |
 | `provenance` | `map[string]any` |  |
-| `query` | `string` |  |
-| `result` | `map[string]any` |  |
-| `tool` | `string` |  |
+| `query` | `string` | The search query. |
+| `result` | `map[string]any` | Tool-specific output object. |
+| `tool` | `string` | The tool slug that ran. |
 
 #### Example: Create
 

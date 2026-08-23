@@ -1,0 +1,115 @@
+# Entity: verify_construct
+
+main: kit: entity: verify_construct: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "claimedConstruct"
+      req: true
+      short: "The final sequence claimed to have been built."
+      type: "`$STRING`"
+    }
+    {
+      name: "expectedFrameStart"
+      req: false
+      short: "1-based position in claimedConstruct where the intended reading frame begins."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "insertForwardPrimer"
+      req: true
+      short: "Forward primer used to amplify the insert, 5'→3'."
+      type: "`$STRING`"
+    }
+    {
+      name: "insertReversePrimer"
+      req: true
+      short: "Reverse primer used to amplify the insert, 5'→3'."
+      type: "`$STRING`"
+    }
+    {
+      name: "insertTemplate"
+      req: true
+      short: "PCR template the insert was amplified from."
+      type: "`$STRING`"
+    }
+    {
+      name: "maxPrimerMismatches"
+      req: false
+      short: "Mismatches tolerated per primer during PCR prediction."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "templateCircular"
+      req: false
+      short: "Treat insertTemplate as circular (e.g."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "verify_construct"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/verify_construct"
+          parts: [
+            "verify_construct"
+          ]
+          transform: {
+            req: {
+              claimedConstruct: "`reqdata.claimed_construct`"
+              expectedFrameStart: "`reqdata.expected_frame_start`"
+              insertForwardPrimer: "`reqdata.insert_forward_primer`"
+              insertReversePrimer: "`reqdata.insert_reverse_primer`"
+              insertTemplate: "`reqdata.insert_template`"
+              maxPrimerMismatches: "`reqdata.max_primer_mismatch`"
+              templateCircular: "`reqdata.template_circular`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

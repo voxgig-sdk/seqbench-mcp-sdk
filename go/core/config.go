@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "SeqbenchMcp",
+			"slug": "seqbench-mcp",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -121,10 +124,12 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "accession",
 						"req": true,
+						"short": "UniProt accession, e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -145,11 +150,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -186,10 +193,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "length",
+						"short": "Total gapmer length (nt).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -210,20 +219,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "wing",
+						"short": "Modified-wing length on each side (nt); the central gap = length − 2×wing.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -262,14 +275,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "editor",
+						"short": "Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -290,20 +306,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "targetPosition",
+						"short": "Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -343,11 +363,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "args",
+						"short": "Shared tool arguments applied to every record.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "capped",
 						"req": true,
+						"short": "True if input exceeded the record limit.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
@@ -368,11 +390,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "Multi-FASTA text or one sequence per line (max ~2,000,000 chars).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "limit",
 						"req": true,
+						"short": "Maximum records per call (500).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -393,6 +417,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "A batchable tool slug (see `GET /batch`).",
 						"type": "`$STRING`",
 					},
 				},
@@ -453,6 +478,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "columns",
 						"req": true,
+						"short": "Flattened \"<step>·<tool>·<key>\" column headers.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -468,11 +494,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "Multi-FASTA text or one sequence per line.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "limit",
 						"req": true,
+						"short": "Maximum records per call (200).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -547,18 +575,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endPrimerLength",
+						"short": "Length of the naive end primers taken from each end.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxOrfs",
+						"short": "Maximum number of ORFs to return, longest first.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "minOrfAa",
+						"short": "Minimum ORF length in amino acids (nucleotide input only).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -579,16 +611,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -628,43 +663,53 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "armTmTarget",
+						"short": "Target annealing Tm (°C) for primer arms.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "circular",
+						"short": "Produce a circular product.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "enzyme",
+						"short": "Type IIS enzyme for Golden Gate (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enzyme3",
+						"short": "3′ enzyme (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enzyme5",
+						"short": "5′ enzyme (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "fragments",
+						"short": "Fragments (5′→3′), assembled head-to-tail.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "insert",
+						"short": "Insert sequence (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "method",
 						"req": true,
+						"short": "Assembly method.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "names",
+						"short": "Optional labels for each fragment.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -674,6 +719,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "overlapLen",
+						"short": "Gibson homology-arm length (bp).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -689,15 +735,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vector",
+						"short": "Vector sequence (restriction method).",
 						"type": "`$STRING`",
 					},
 				},
@@ -744,10 +793,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based position to start reading codons.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -771,21 +822,25 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "rareThreshold",
+						"short": "Relative adaptiveness (w) below this flags a codon as rare.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Coding sequence (DNA/RNA; should start in-frame at ATG).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -825,6 +880,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -839,6 +895,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "protein",
 						"req": true,
+						"short": "Protein sequence (one-letter codes).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -854,11 +911,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -896,18 +955,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avoidEnzymes",
+						"short": "Enzyme names whose internal sites should be removed (e.g.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "crypticOrfMinAa",
+						"short": "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based nucleotide where the reading frame begins.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -928,6 +991,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "maxPasses",
+						"short": "Repeat full passes until clean or no further progress.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -937,6 +1001,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "organism",
+						"short": "Codon-usage table to prefer among synonymous options.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -952,16 +1017,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1007,34 +1075,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "avoidEnzymes",
+						"short": "Enzyme names whose internal sites should be flagged as errors.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "crypticOrfMinAa",
+						"short": "Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based nucleotide where the reading frame begins.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gcHigh",
+						"short": "GC% above this flags a GC-rich window.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gcLow",
+						"short": "GC% below this flags an AT-rich window.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gcWindow",
+						"short": "Sliding-window size (nt) for GC-extreme scanning.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "homopolymerMin",
+						"short": "Minimum run length to flag a homopolymer.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -1055,16 +1131,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1108,14 +1187,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "minScore",
+						"short": "Only return guides with a heuristic score at least this high (0–100).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "nuclease",
+						"short": "Nuclease id.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1136,20 +1218,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "searchReverseStrand",
+						"short": "Also scan the reverse strand for guides.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1189,46 +1275,57 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "armLength",
+						"short": "Homology arm length (bp) on each side.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "blockPam",
+						"short": "When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "designGenotypingPrimers",
+						"short": "Also design a primer pair (on the original targetSequence) whose product spans the edit site.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "editEnd",
+						"short": "1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "editStart",
+						"short": "1-based start of the region being replaced.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "guideEnd",
+						"short": "1-based forward-strand end of the guide's protospacer.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "guideStart",
+						"short": "1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "guideStrand",
+						"short": "Strand the guide's protospacer is on.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nuclease",
+						"short": "Needed only when deriving the cut site from guideStart/guideEnd/guideStrand.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1249,21 +1346,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "replacement",
 						"req": true,
+						"short": "Sequence to insert/substitute (\"\" for a pure deletion).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "targetSequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1311,14 +1412,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxMismatches",
+						"short": "Mismatches tolerated between the protospacer and a candidate genomic site.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "nuclease",
+						"short": "Nuclease id — determines the PAM pattern/side required at each candidate site.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1329,6 +1433,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "protospacer",
 						"req": true,
+						"short": "The guide's protospacer sequence, 5'→3' (no PAM).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1344,11 +1449,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1387,6 +1494,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -1407,21 +1515,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequenceA",
 						"req": true,
+						"short": "First oligo (5'→3').",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "sequenceB",
 						"req": true,
+						"short": "Second oligo (5'→3').",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1459,14 +1571,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "length",
+						"short": "Length in bp (dsDNA) or nt (ssDNA/ssRNA).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "massNg",
+						"short": "Mass in nanograms.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -1487,23 +1602,28 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
+						"short": "Optional sequence — overrides length and gives an exact molar mass from base composition.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Molecule type.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "volumeUl",
+						"short": "Volume in microlitres (0 = unknown; needed for concentration).",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -1545,15 +1665,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "enzymeA",
 						"req": true,
+						"short": "First enzyme name (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enzymeB",
 						"req": true,
+						"short": "Second enzyme name (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -1574,11 +1697,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1616,6 +1741,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -1636,16 +1762,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "reactions",
 						"req": true,
+						"short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1682,6 +1811,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -1691,6 +1821,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "protocolName",
+						"short": "Optional protocol name (used in the script's metadata).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1706,16 +1837,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "reactions",
 						"req": true,
+						"short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1753,6 +1887,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -1773,16 +1908,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "reactions",
 						"req": true,
+						"short": "One entry per PCR reaction, up to 96 (a single 96-well plate).",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1819,27 +1957,33 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "clusterCols",
+						"short": "Cluster (reorder) samples.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "clusterRows",
+						"short": "Cluster (reorder) genes.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "distanceMetric",
+						"short": "correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "genes",
 						"req": true,
+						"short": "Row (gene) labels.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "linkage",
+						"short": "average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1860,25 +2004,30 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "samples",
 						"req": true,
+						"short": "Column (sample) labels.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "values",
 						"req": true,
+						"short": "genes x samples numeric matrix — one row per gene, in the same order as `genes`.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "zScoreRows",
+						"short": "Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization).",
 						"type": "`$BOOLEAN`",
 					},
 				},
@@ -1922,11 +2071,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -1946,16 +2097,19 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "qualityOffset",
+						"short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -1993,15 +2147,18 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "minLength",
+						"short": "Reads shorter than this after trimming are dropped.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -2021,20 +2178,24 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "qualityOffset",
+						"short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "qualityThreshold",
+						"short": "3' quality-trim threshold (Phred score).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2074,10 +2235,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "minAaLength",
+						"short": "Minimum protein length (aa) to report.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -2097,21 +2260,25 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "requireStop",
+						"short": "Only report ORFs terminated by a stop codon.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2154,10 +2321,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "convert",
+						"short": "DNA→RNA (T→U) or RNA→DNA (U→T).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -2178,28 +2347,34 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reverse",
+						"short": "Reverse the sequence (no complement).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "stripNonLetters",
+						"short": "Remove digits, spaces and gaps (keep letters only).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "width",
+						"short": "Line-wrap width; 0 = single line.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -2241,27 +2416,33 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "background",
+						"short": "Custom background/universe gene symbols.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "collections",
+						"short": "Which term collections to test.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "genes",
 						"req": true,
+						"short": "Query gene symbols (human, e.g.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "maxTermSize",
+						"short": "Skip terms/pathways with more than this many background genes (matches clusterProfiler's default).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "minTermSize",
+						"short": "Skip terms/pathways with fewer than this many background genes.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -2282,11 +2463,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2327,6 +2510,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -2347,16 +2531,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2393,11 +2580,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gene",
 						"req": true,
+						"short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2418,11 +2607,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2459,11 +2650,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gene",
 						"req": true,
+						"short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2484,11 +2677,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2525,11 +2720,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gene",
 						"req": true,
+						"short": "A human gene symbol (\"TP53\") or Ensembl gene ID (\"ENSG00000141510\").",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -2550,11 +2747,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2591,14 +2790,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "compareToNamedSet",
+						"short": "Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "dataset",
+						"short": "Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -2609,6 +2811,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "overhangs",
 						"req": true,
+						"short": "The candidate 4-base overhangs for one assembly (e.g.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -2624,15 +2827,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "riskThreshold",
+						"short": "Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2672,6 +2878,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -2692,16 +2899,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "variant",
 						"req": true,
+						"short": "A full HGVS \"c.\" variant description: \"<accession or gene symbol>:c.<edit>\", e.g.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2738,6 +2948,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -2763,11 +2974,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2805,15 +3018,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "from",
 						"req": true,
+						"short": "Source id type: \"Gene_Name\", \"Ensembl\", \"GeneID\", \"RefSeq_Protein\", or \"UniProtKB_AC-ID\".",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "ids",
 						"req": true,
+						"short": "The ids to map, up to 1000 (e.g.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -2834,20 +3050,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "taxId",
+						"short": "NCBI taxonomy id to disambiguate a gene symbol (only used when from=\"Gene_Name\").",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "to",
 						"req": true,
+						"short": "Target id type.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2887,19 +3107,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the template as circular (plasmid).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "forwardPrimer",
 						"req": true,
+						"short": "Primer 1, 5'→3'.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxMismatches",
+						"short": "Mismatches tolerated per primer.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -2920,21 +3144,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reversePrimer",
 						"req": true,
+						"short": "Primer 2, 5'→3' (order does not matter).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "template",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -2975,28 +3203,34 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "addSecondaryMismatch",
+						"short": "Engineer the internal ARMS destabilising mismatch near the 3' end.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "alleleA",
 						"req": true,
+						"short": "First allele (single base) — gets the FAM tail.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "alleleB",
 						"req": true,
+						"short": "Second allele (single base) — gets the HEX tail.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxAmplicon",
+						"short": "Maximum amplicon length for the common reverse primer.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "minAmplicon",
+						"short": "Minimum amplicon length for the common reverse primer.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -3017,25 +3251,30 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "snpPosition",
 						"req": true,
+						"short": "1-based position of the SNP on the forward strand.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "targetCoreTm",
+						"short": "Target Tm (°C) for the allele-specific primer core (before the universal tail).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3106,18 +3345,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "dntpMM",
+						"short": "Total [dNTP] (mM), chelates Mg2+.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "mgMM",
+						"short": "Divalent cation [Mg2+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "naMM",
+						"short": "Monovalent cation [Na+]/[K+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -3127,6 +3370,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "oligoNM",
+						"short": "Total strand concentration (nM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -3142,24 +3386,29 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "targetTm",
+						"short": "Optional target Tm (°C).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tmTolerance",
+						"short": "Allowed +/- window (°C) around targetTm for the gate.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3202,15 +3451,18 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxMismatches",
+						"short": "Maximum allowed mismatches per match.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "motif",
 						"req": true,
+						"short": "Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -3231,20 +3483,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "searchReverseStrand",
+						"short": "Also search the reverse strand.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3284,11 +3540,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "Two or more sequences in multi-FASTA format (>name / sequence).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -3309,11 +3567,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3350,18 +3610,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "dntpMM",
+						"short": "Total [dNTP] (mM), chelates Mg2+.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "mgMM",
+						"short": "Divalent cation [Mg2+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "naMM",
+						"short": "Monovalent cation [Na+]/[K+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -3371,6 +3635,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "oligoNM",
+						"short": "Total strand concentration (nM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -3386,16 +3651,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3436,6 +3704,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3456,29 +3725,35 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sourceSpecies",
+						"short": "Ensembl species slug the symbols belong to (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "symbols",
 						"req": true,
+						"short": "Gene symbols to look up, up to 50 (e.g.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "targetSpecies",
 						"req": true,
+						"short": "Ensembl species slug to find homologs in (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "type",
+						"short": "Homology type to return.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3518,18 +3793,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gap",
+						"short": "Linear gap penalty (per gap position).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "match",
+						"short": "Match score.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "mismatch",
+						"short": "Mismatch penalty.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -3554,21 +3833,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "seqA",
 						"req": true,
+						"short": "First sequence (raw or FASTA; nucleotide or protein).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "seqB",
 						"req": true,
+						"short": "Second sequence (raw or FASTA; nucleotide or protein).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3610,6 +3893,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3630,16 +3914,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "text",
 						"req": true,
+						"short": "A GenBank flat file (LOCUS … FEATURES … ORIGIN … //).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3677,14 +3964,17 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "fileBase64",
 						"req": true,
+						"short": "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "fileName",
+						"short": "Optional original file name (echoed back).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3705,11 +3995,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3747,6 +4039,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3767,16 +4060,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3813,10 +4109,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the sequence as a circular plasmid (vs.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3837,16 +4135,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -3884,10 +4185,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the query as a circular molecule (most plasmids are).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3908,20 +4211,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "topN",
+						"short": "How many top-ranked backbone candidates to report.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -3960,10 +4267,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the query as a circular molecule (most plasmids are).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -3984,20 +4293,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "topN",
+						"short": "How many top-ranked backbone candidates to report.",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -4037,23 +4350,28 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "editEnd",
 						"req": true,
+						"short": "1-based inclusive end of the region being changed.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "editStart",
 						"req": true,
+						"short": "1-based inclusive start of the region being changed.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "insertedSeq",
+						"short": "Replacement bases (forward strand).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -4063,6 +4381,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "pbsLength",
+						"short": "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -4078,20 +4397,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "rttHomology",
+						"short": "Homology length (nt) 3' of the edit that the RTT should include (typically 10-16).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4134,11 +4457,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "newSequence",
 						"req": true,
+						"short": "New sequence (forward strand) to install in place of [replaceStart, replaceEnd].",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -4148,10 +4473,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "overlapLength",
+						"short": "Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "pbsLength",
+						"short": "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -4167,26 +4494,31 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "replaceEnd",
 						"req": true,
+						"short": "1-based inclusive end of the region being replaced/deleted.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "replaceStart",
 						"req": true,
+						"short": "1-based inclusive start of the region being replaced/deleted.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4236,10 +4568,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "dntpMM",
+						"short": "Total [dNTP] (mM), chelates Mg2+.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -4264,14 +4598,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "maxReturn",
+						"short": "Number of best pairs to return.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "mgMM",
+						"short": "Divalent cation [Mg2+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "naMM",
+						"short": "Monovalent cation [Na+]/[K+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -4281,6 +4618,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "oligoNM",
+						"short": "Total strand concentration (nM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -4296,19 +4634,23 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "targetEnd",
+						"short": "1-based inclusive end of the target region (optional).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "targetStart",
+						"short": "1-based inclusive start of a region the product must span (optional).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "template",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -4317,6 +4659,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "tmMaxDiff",
+						"short": "Max Tm difference within a pair (°C).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -4330,6 +4673,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4385,18 +4729,22 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "forwardPrimer",
 						"req": true,
+						"short": "Forward primer, 5'→3'.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxMismatches",
+						"short": "Mismatches tolerated per primer against a reference genome.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "maxProductLength",
+						"short": "Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -4417,16 +4765,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "reversePrimer",
 						"req": true,
+						"short": "Reverse primer, 5'→3'.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4466,22 +4817,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxMass",
+						"short": "Optional upper bound on neutral monoisotopic mass (Da).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "maxPeptides",
+						"short": "Cap on the number of returned peptides.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "minMass",
+						"short": "Optional lower bound on neutral monoisotopic mass (Da).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "missedCleavages",
+						"short": "Allowed missed internal cleavages (0–2).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -4491,6 +4847,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "protease",
+						"short": "Protease or chemical cleavage agent.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -4506,16 +4863,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4557,6 +4917,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -4582,11 +4943,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4623,14 +4986,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "appl",
+						"short": "Restrict to one member database (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "goterms",
+						"short": "Include GO-term cross-references.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
@@ -4651,16 +5017,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Protein sequence, one-letter code (FASTA header, if any, is stripped).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4699,6 +5068,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -4719,24 +5089,29 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "scale",
+						"short": "Amino-acid scale.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "window",
+						"short": "Sliding-window size (clamped to an odd number ≥ 1).",
 						"type": "`$INTEGER`",
 					},
 				},
@@ -4775,10 +5150,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "chargeStep",
+						"short": "pH step for the net-charge titration curve (0–14).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -4799,16 +5176,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Protein sequence (one-letter amino-acid codes; non-AA characters ignored).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4846,10 +5226,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gcContent",
+						"short": "Target GC percentage 0..100 (dna/rna only); omit for uniform.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -4859,6 +5241,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "length",
 						"req": true,
+						"short": "Number of residues to generate.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -4879,11 +5262,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4922,10 +5307,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "enzymes",
+						"short": "Enzyme names to scan; omit to scan all curated enzymes.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -4946,16 +5333,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -4993,6 +5383,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5013,16 +5404,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -5064,6 +5458,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5077,11 +5472,13 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "organism",
+						"short": "Codon-usage host (ignored in degenerate mode).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "protein",
 						"req": true,
+						"short": "Protein sequence (one-letter codes; * for stop).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -5097,11 +5494,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5140,6 +5539,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5160,16 +5560,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5206,18 +5609,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "fileBase64",
+						"short": "The binary ABIF (.ab1 / .abi) trace file, base64-encoded.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "fileName",
+						"short": "Optional original file name (echoed back).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "minCoverage",
+						"short": "Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -5237,21 +5644,25 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "read",
+						"short": "Sanger read as FASTA or raw text (alternative to uploading an ABIF trace).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reference",
 						"req": true,
+						"short": "Expected reference sequence (FASTA or raw).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5293,10 +5704,12 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "args",
 						"req": true,
+						"short": "Arguments for that tool, exactly as you would pass to it directly.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5317,11 +5730,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5359,11 +5774,13 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "FASTA or FASTQ text (raw sequence is treated as single-record FASTA).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -5383,16 +5800,19 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "qualityOffset",
+						"short": "FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5431,18 +5851,22 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "accession",
 						"req": true,
+						"short": "GenBank/RefSeq accession (e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "db",
+						"short": "Database to query; auto-detects from the accession format.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "format",
+						"short": "Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5463,11 +5887,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5506,15 +5932,18 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "from",
+						"short": "Input format; 'auto' sniffs it from the first meaningful line.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "input",
 						"req": true,
+						"short": "A FASTA or GenBank record to convert.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -5535,15 +5964,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "to",
+						"short": "Output format.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5582,18 +6014,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "endPrimerLength",
+						"short": "Length of the naive end primers taken from each end.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "maxOrfs",
+						"short": "Maximum number of ORFs to return, longest first.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "minOrfAa",
+						"short": "Minimum ORF length in amino acids.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -5614,16 +6050,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5667,14 +6106,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "gene",
+						"short": "Gene symbol/name, e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "maxResults",
+						"short": "Up to 20.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -5684,6 +6126,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "organism",
+						"short": "Organism name, e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -5699,15 +6142,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "term",
+						"short": "Raw NCBI search term (advanced) — overrides gene/organism when given, e.g.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5748,10 +6194,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "minSupportingReads",
+						"short": "Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -5772,21 +6220,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "reads",
 						"req": true,
+						"short": "Raw reads in FASTA or FASTQ format (auto-detected).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reference",
 						"req": true,
+						"short": "The claimed/expected reference sequence.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5825,10 +6277,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "entries",
+						"short": "Initial named entries, e.g.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5849,11 +6303,13 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5890,10 +6346,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "names",
+						"short": "Only return these entries; omit to return all of them.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -5914,6 +6372,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -5924,6 +6383,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -5961,14 +6421,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "args",
+						"short": "Additional literal arguments, merged with the ones resolved from the session.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "fromSession",
+						"short": "Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -5989,6 +6452,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -5999,10 +6463,12 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "writeBack",
+						"short": "Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names.",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -6044,10 +6510,12 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "entries",
 						"req": true,
+						"short": "Named entries to add/overwrite, e.g.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -6068,6 +6536,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -6078,6 +6547,7 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6115,10 +6585,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "minReynolds",
+						"short": "Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -6139,20 +6611,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "shRnaLoop",
+						"short": "Loop sequence used when assembling the shRNA cassette.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "target",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6191,34 +6667,42 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "armTmTarget",
+						"short": "Target Tm (°C) for each template-binding arm.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "dntpMM",
+						"short": "Total [dNTP] (mM), chelates Mg2+.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "editKind",
+						"short": "Edit at the nucleotide or amino-acid level.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based position of the first base of codon 1 (editKind='aa').",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "mgMM",
+						"short": "Divalent cation [Mg2+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "naMM",
+						"short": "Monovalent cation [Na+]/[K+] (mM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "newBase",
+						"short": "Replacement base (editKind='nt').",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -6228,14 +6712,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "oligoNM",
+						"short": "Total strand concentration (nM).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "organism",
+						"short": "Codon-usage table for choosing the new codon (editKind='aa').",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "position",
+						"short": "1-based position to substitute (editKind='nt').",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -6250,29 +6737,35 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "residue",
+						"short": "1-based residue number to change (editKind='aa').",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "style",
+						"short": "Mutagenic primer style.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "targetAa",
+						"short": "Target amino acid, one-letter code incl '*' (editKind='aa').",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "template",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6326,6 +6819,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -6346,20 +6840,24 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "toStop",
+						"short": "Stop at the first stop codon.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6398,10 +6896,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "assembly",
+						"short": "Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -6422,16 +6922,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "variant",
 						"req": true,
+						"short": "An rsID (\"rs1042522\"), chrom:pos:ref:alt (\"17:7676154:G:C\", single-base substitutions only), genomic HGVS (\"chr17:g.7676154G>C\" or \"17:g.7676154G>C\"), or transcript HGVS c.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6469,14 +6972,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "coding",
+						"short": "Treat as a coding sequence and report amino-acid effects.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based reading-frame start (used when coding is true).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -6497,21 +7003,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "query",
 						"req": true,
+						"short": "Query / variant sequence (raw or FASTA).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "reference",
 						"req": true,
+						"short": "Reference / wild-type sequence (raw or FASTA).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6551,64 +7061,79 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "armTmTarget",
+						"short": "Target annealing Tm (°C) for primer arms.",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the product/claimed construct as circular (most plasmids are).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "claimedConstruct",
 						"req": true,
+						"short": "The sequence you claim you ended up with.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "coding",
+						"short": "Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "enzyme",
+						"short": "Type IIS enzyme for Golden Gate.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enzyme3",
+						"short": "3′ enzyme (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "enzyme5",
+						"short": "5′ enzyme (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "fragmentPcrs",
+						"short": "Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "fragments",
+						"short": "Fragments (5′→3′), assembled head-to-tail (gibson/goldengate).",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "frameStart",
+						"short": "1-based reading-frame start on claimedConstruct, used when coding is true.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "insert",
+						"short": "Insert sequence (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "insertPcr",
+						"short": "Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "method",
 						"req": true,
+						"short": "Assembly method used.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "names",
+						"short": "Optional labels for each fragment.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
@@ -6618,6 +7143,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "overlapLen",
+						"short": "Gibson homology-arm length (bp).",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -6633,19 +7159,23 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vector",
+						"short": "Vector sequence (restriction method).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "vectorPcr",
+						"short": "Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -6699,33 +7229,40 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "claimedConstruct",
 						"req": true,
+						"short": "The final sequence claimed to have been built.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "expectedFrameStart",
+						"short": "1-based position in claimedConstruct where the intended reading frame begins.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "insertForwardPrimer",
 						"req": true,
+						"short": "Forward primer used to amplify the insert, 5'→3'.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "insertReversePrimer",
 						"req": true,
+						"short": "Reverse primer used to amplify the insert, 5'→3'.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "insertTemplate",
 						"req": true,
+						"short": "PCR template the insert was amplified from.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "maxPrimerMismatches",
+						"short": "Mismatches tolerated per primer during PCR prediction.",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -6746,15 +7283,18 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "templateCircular",
+						"short": "Treat insertTemplate as circular (e.g.",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6797,18 +7337,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "circular",
+						"short": "Treat the sequence as circular (plasmid).",
 						"type": "`$BOOLEAN`",
 					},
 					map[string]any{
 						"name": "enzymes",
+						"short": "Enzyme names to digest with.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "ladder",
+						"short": "DNA ladder to plot alongside the sample lane.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -6829,16 +7373,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "sequence",
 						"req": true,
+						"short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6878,6 +7425,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
@@ -6898,16 +7446,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "rows",
 						"req": true,
+						"short": "Differential expression rows, one per gene.",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},
@@ -6944,10 +7495,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "gate",
+						"short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.",
 						"type": "`$ANY`",
 					},
 					map[string]any{
 						"name": "max_results",
+						"short": "Maximum number of results to return (default 5, max 10).",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -6968,16 +7521,19 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "query",
 						"req": true,
+						"short": "The search query.",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "result",
 						"req": true,
+						"short": "Tool-specific output object.",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tool",
 						"req": true,
+						"short": "The tool slug that ran.",
 						"type": "`$STRING`",
 					},
 				},

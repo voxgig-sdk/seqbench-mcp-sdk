@@ -1,0 +1,93 @@
+# Entity: codon_adaptation_index
+
+main: kit: entity: codon_adaptation_index: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "frameStart"
+      req: false
+      short: "1-based position to start reading codons."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "rareThreshold"
+      req: false
+      short: "Relative adaptiveness (w) below this flags a codon as rare."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Coding sequence (DNA/RNA; should start in-frame at ATG)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "codon_adaptation_index"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/codon_adaptation_index"
+          parts: [
+            "codon_adaptation_index"
+          ]
+          transform: {
+            req: {
+              frameStart: "`reqdata.frame_start`"
+              organism: "`reqdata.organism`"
+              rareThreshold: "`reqdata.rare_threshold`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

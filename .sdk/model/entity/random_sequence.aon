@@ -1,0 +1,86 @@
+# Entity: random_sequence
+
+main: kit: entity: random_sequence: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "gcContent"
+      req: false
+      short: "Target GC percentage 0..100 (dna/rna only); omit for uniform."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "kind"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "length"
+      req: true
+      short: "Number of residues to generate."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "random_sequence"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/random_sequence"
+          parts: [
+            "random_sequence"
+          ]
+          transform: {
+            req: {
+              gcContent: "`reqdata.gc_content`"
+              kind: "`reqdata.kind`"
+              length: "`reqdata.length`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

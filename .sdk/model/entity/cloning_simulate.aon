@@ -1,0 +1,143 @@
+# Entity: cloning_simulate
+
+main: kit: entity: cloning_simulate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "armTmTarget"
+      req: false
+      short: "Target annealing Tm (°C) for primer arms."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "circular"
+      req: false
+      short: "Produce a circular product."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "enzyme"
+      req: false
+      short: "Type IIS enzyme for Golden Gate (e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "enzyme3"
+      req: false
+      short: "3′ enzyme (restriction method)."
+      type: "`$STRING`"
+    }
+    {
+      name: "enzyme5"
+      req: false
+      short: "5′ enzyme (restriction method)."
+      type: "`$STRING`"
+    }
+    {
+      name: "fragments"
+      req: false
+      short: "Fragments (5′→3′), assembled head-to-tail."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "insert"
+      req: false
+      short: "Insert sequence (restriction method)."
+      type: "`$STRING`"
+    }
+    {
+      name: "method"
+      req: true
+      short: "Assembly method."
+      type: "`$STRING`"
+    }
+    {
+      name: "names"
+      req: false
+      short: "Optional labels for each fragment."
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "overlapLen"
+      req: false
+      short: "Gibson homology-arm length (bp)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+    {
+      name: "vector"
+      req: false
+      short: "Vector sequence (restriction method)."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "cloning_simulate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/cloning_simulate"
+          parts: [
+            "cloning_simulate"
+          ]
+          transform: {
+            req: {
+              armTmTarget: "`reqdata.arm_tm_target`"
+              circular: "`reqdata.circular`"
+              enzyme: "`reqdata.enzyme`"
+              enzyme3: "`reqdata.enzyme3`"
+              enzyme5: "`reqdata.enzyme5`"
+              fragments: "`reqdata.fragment`"
+              insert: "`reqdata.insert`"
+              method: "`reqdata.method`"
+              names: "`reqdata.name`"
+              overlapLen: "`reqdata.overlap_len`"
+              vector: "`reqdata.vector`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

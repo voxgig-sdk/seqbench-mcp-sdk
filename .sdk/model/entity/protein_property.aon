@@ -1,0 +1,80 @@
+# Entity: protein_property
+
+main: kit: entity: protein_property: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "chargeStep"
+      req: false
+      short: "pH step for the net-charge titration curve (0–14)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Protein sequence (one-letter amino-acid codes; non-AA characters ignored)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "protein_property"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/protein_properties"
+          parts: [
+            "protein_properties"
+          ]
+          transform: {
+            req: {
+              chargeStep: "`reqdata.charge_step`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

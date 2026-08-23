@@ -1,0 +1,122 @@
+# Entity: kasp_primer_design
+
+main: kit: entity: kasp_primer_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "addSecondaryMismatch"
+      req: false
+      short: "Engineer the internal ARMS destabilising mismatch near the 3' end."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "alleleA"
+      req: true
+      short: "First allele (single base) — gets the FAM tail."
+      type: "`$STRING`"
+    }
+    {
+      name: "alleleB"
+      req: true
+      short: "Second allele (single base) — gets the HEX tail."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "maxAmplicon"
+      req: false
+      short: "Maximum amplicon length for the common reverse primer."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "minAmplicon"
+      req: false
+      short: "Minimum amplicon length for the common reverse primer."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "snpPosition"
+      req: true
+      short: "1-based position of the SNP on the forward strand."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "target"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "targetCoreTm"
+      req: false
+      short: "Target Tm (°C) for the allele-specific primer core (before the universal tail)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "kasp_primer_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/kasp_primer_design"
+          parts: [
+            "kasp_primer_design"
+          ]
+          transform: {
+            req: {
+              addSecondaryMismatch: "`reqdata.add_secondary_mismatch`"
+              alleleA: "`reqdata.allele_a`"
+              alleleB: "`reqdata.allele_b`"
+              maxAmplicon: "`reqdata.max_amplicon`"
+              minAmplicon: "`reqdata.min_amplicon`"
+              snpPosition: "`reqdata.snp_position`"
+              target: "`reqdata.target`"
+              targetCoreTm: "`reqdata.target_core_tm`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

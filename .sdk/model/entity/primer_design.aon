@@ -1,0 +1,189 @@
+# Entity: primer_design
+
+main: kit: entity: primer_design: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "ampliconMax"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "ampliconMin"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "dntpMM"
+      req: false
+      short: "Total [dNTP] (mM), chelates Mg2+."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "gcMax"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gcMin"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "lenMax"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "lenMin"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "lenOpt"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "maxReturn"
+      req: false
+      short: "Number of best pairs to return."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "mgMM"
+      req: false
+      short: "Divalent cation [Mg2+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "naMM"
+      req: false
+      short: "Monovalent cation [Na+]/[K+] (mM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "oligoNM"
+      req: false
+      short: "Total strand concentration (nM)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "targetEnd"
+      req: false
+      short: "1-based inclusive end of the target region (optional)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "targetStart"
+      req: false
+      short: "1-based inclusive start of a region the product must span (optional)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "template"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tmMax"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tmMaxDiff"
+      req: false
+      short: "Max Tm difference within a pair (°C)."
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tmMin"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tmOpt"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "primer_design"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/primer_design"
+          parts: [
+            "primer_design"
+          ]
+          transform: {
+            req: {
+              ampliconMax: "`reqdata.amplicon_max`"
+              ampliconMin: "`reqdata.amplicon_min`"
+              dntpMM: "`reqdata.dntp_mm`"
+              gcMax: "`reqdata.gc_max`"
+              gcMin: "`reqdata.gc_min`"
+              lenMax: "`reqdata.len_max`"
+              lenMin: "`reqdata.len_min`"
+              lenOpt: "`reqdata.len_opt`"
+              maxReturn: "`reqdata.max_return`"
+              mgMM: "`reqdata.mg_mm`"
+              naMM: "`reqdata.na_mm`"
+              oligoNM: "`reqdata.oligo_nm`"
+              targetEnd: "`reqdata.target_end`"
+              targetStart: "`reqdata.target_start`"
+              template: "`reqdata.template`"
+              tmMax: "`reqdata.tm_max`"
+              tmMaxDiff: "`reqdata.tm_max_diff`"
+              tmMin: "`reqdata.tm_min`"
+              tmOpt: "`reqdata.tm_opt`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

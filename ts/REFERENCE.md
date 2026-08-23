@@ -1125,12 +1125,12 @@ const alphafold_lookup = client.AlphafoldLookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession` | `string` | Yes |  |
-| `gate` | `any` | No |  |
+| `accession` | `string` | Yes | UniProt accession, e.g. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1186,14 +1186,14 @@ const aso_design = client.AsoDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `length` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `length` | `number` | No | Total gapmer length (nt). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `target` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `wing` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `target` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `wing` | `number` | No | Modified-wing length on each side (nt); the central gap = length − 2×wing. |
 
 ### Operations
 
@@ -1249,15 +1249,15 @@ const base_editing_design = client.BaseEditingDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `editor` | `string` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `editor` | `string` | No | Base editor: be3/be4max (CBE, C→T) or abe7.10/abe8e (ABE, A→G). |
+| `frameStart` | `number` | No | Optional 1-based CDS reading-frame start, to classify each edit's amino-acid consequence. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `target` | `string` | Yes |  |
-| `targetPosition` | `number` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `target` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetPosition` | `number` | No | Optional 1-based forward-strand position of the base you intend to edit; only guides whose window covers it are returned. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1313,16 +1313,16 @@ const batch = client.Batch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `args` | `Record<string, any>` | No |  |
-| `capped` | `boolean` | Yes |  |
+| `args` | `Record<string, any>` | No | Shared tool arguments applied to every record. |
+| `capped` | `boolean` | Yes | True if input exceeded the record limit. |
 | `columns` | `any[]` | Yes |  |
 | `count` | `number` | Yes |  |
 | `errors` | `number` | Yes |  |
-| `input` | `string` | Yes |  |
-| `limit` | `number` | Yes |  |
+| `input` | `string` | Yes | Multi-FASTA text or one sequence per line (max ~2,000,000 chars). |
+| `limit` | `number` | Yes | Maximum records per call (500). |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `rows` | `any[]` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `tool` | `string` | Yes | A batchable tool slug (see `GET /batch`). |
 
 ### Operations
 
@@ -1391,11 +1391,11 @@ const batch__workflow = client.BatchWorkflow()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `capped` | `boolean` | Yes |  |
-| `columns` | `any[]` | Yes |  |
+| `columns` | `any[]` | Yes | Flattened "<step>·<tool>·<key>" column headers. |
 | `count` | `number` | Yes |  |
 | `errors` | `number` | Yes |  |
-| `input` | `string` | Yes |  |
-| `limit` | `number` | Yes |  |
+| `input` | `string` | Yes | Multi-FASTA text or one sequence per line. |
+| `limit` | `number` | Yes | Maximum records per call (200). |
 | `provenance` | `Record<string, any>` | Yes |  |
 | `rows` | `any[]` | Yes |  |
 | `steps` | `any[]` | Yes |  |
@@ -1466,15 +1466,15 @@ const characterize_sequence = client.CharacterizeSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endPrimerLength` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `maxOrfs` | `number` | No |  |
-| `minOrfAa` | `number` | No |  |
+| `endPrimerLength` | `number` | No | Length of the naive end primers taken from each end. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxOrfs` | `number` | No | Maximum number of ORFs to return, longest first. |
+| `minOrfAa` | `number` | No | Minimum ORF length in amino acids (nucleotide input only). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1530,22 +1530,22 @@ const cloning_simulate = client.CloningSimulate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armTmTarget` | `number` | No |  |
-| `circular` | `boolean` | No |  |
-| `enzyme` | `string` | No |  |
-| `enzyme3` | `string` | No |  |
-| `enzyme5` | `string` | No |  |
-| `fragments` | `any[]` | No |  |
-| `gate` | `any` | No |  |
-| `insert` | `string` | No |  |
-| `method` | `string` | Yes |  |
-| `names` | `any[]` | No |  |
+| `armTmTarget` | `number` | No | Target annealing Tm (°C) for primer arms. |
+| `circular` | `boolean` | No | Produce a circular product. |
+| `enzyme` | `string` | No | Type IIS enzyme for Golden Gate (e.g. |
+| `enzyme3` | `string` | No | 3′ enzyme (restriction method). |
+| `enzyme5` | `string` | No | 5′ enzyme (restriction method). |
+| `fragments` | `any[]` | No | Fragments (5′→3′), assembled head-to-tail. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insert` | `string` | No | Insert sequence (restriction method). |
+| `method` | `string` | Yes | Assembly method. |
+| `names` | `any[]` | No | Optional labels for each fragment. |
 | `ok` | `any` | Yes |  |
-| `overlapLen` | `number` | No |  |
+| `overlapLen` | `number` | No | Gibson homology-arm length (bp). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `vector` | `string` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `vector` | `string` | No | Vector sequence (restriction method). |
 
 ### Operations
 
@@ -1601,15 +1601,15 @@ const codon_adaptation_index = client.CodonAdaptationIndex()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `frameStart` | `number` | No | 1-based position to start reading codons. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `rareThreshold` | `number` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `rareThreshold` | `number` | No | Relative adaptiveness (w) below this flags a codon as rare. |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Coding sequence (DNA/RNA; should start in-frame at ATG). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1665,13 +1665,13 @@ const codon_optimize = client.CodonOptimize()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `organism` | `string` | No |  |
-| `protein` | `string` | Yes |  |
+| `protein` | `string` | Yes | Protein sequence (one-letter codes). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1727,21 +1727,21 @@ const construct_autofix = client.ConstructAutofix()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoidEnzymes` | `any[]` | No |  |
-| `crypticOrfMinAa` | `number` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `avoidEnzymes` | `any[]` | No | Enzyme names whose internal sites should be removed (e.g. |
+| `crypticOrfMinAa` | `number` | No | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `frameStart` | `number` | No | 1-based nucleotide where the reading frame begins. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `gcHigh` | `number` | No |  |
 | `gcLow` | `number` | No |  |
 | `gcWindow` | `number` | No |  |
 | `homopolymerMin` | `number` | No |  |
-| `maxPasses` | `number` | No |  |
+| `maxPasses` | `number` | No | Repeat full passes until clean or no further progress. |
 | `ok` | `any` | Yes |  |
-| `organism` | `string` | No |  |
+| `organism` | `string` | No | Codon-usage table to prefer among synonymous options. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1797,19 +1797,19 @@ const construct_qc = client.ConstructQc()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `avoidEnzymes` | `any[]` | No |  |
-| `crypticOrfMinAa` | `number` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `gcHigh` | `number` | No |  |
-| `gcLow` | `number` | No |  |
-| `gcWindow` | `number` | No |  |
-| `homopolymerMin` | `number` | No |  |
+| `avoidEnzymes` | `any[]` | No | Enzyme names whose internal sites should be flagged as errors. |
+| `crypticOrfMinAa` | `number` | No | Minimum peptide length (aa) for a hidden alternate-frame ORF to be flagged. |
+| `frameStart` | `number` | No | 1-based nucleotide where the reading frame begins. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gcHigh` | `number` | No | GC% above this flags a GC-rich window. |
+| `gcLow` | `number` | No | GC% below this flags an AT-rich window. |
+| `gcWindow` | `number` | No | Sliding-window size (nt) for GC-extreme scanning. |
+| `homopolymerMin` | `number` | No | Minimum run length to flag a homopolymer. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1865,15 +1865,15 @@ const crispr_grna_design = client.CrisprGrnaDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `minScore` | `number` | No |  |
-| `nuclease` | `string` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minScore` | `number` | No | Only return guides with a heuristic score at least this high (0–100). |
+| `nuclease` | `string` | No | Nuclease id. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `searchReverseStrand` | `boolean` | No |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `searchReverseStrand` | `boolean` | No | Also scan the reverse strand for guides. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -1929,23 +1929,23 @@ const crispr_hdr_donor = client.CrisprHdrDonor()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armLength` | `number` | No |  |
-| `blockPam` | `boolean` | No |  |
-| `designGenotypingPrimers` | `boolean` | No |  |
-| `editEnd` | `number` | No |  |
-| `editStart` | `number` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `guideEnd` | `number` | No |  |
-| `guideStart` | `number` | No |  |
-| `guideStrand` | `string` | No |  |
-| `nuclease` | `string` | No |  |
+| `armLength` | `number` | No | Homology arm length (bp) on each side. |
+| `blockPam` | `boolean` | No | When a SpCas9-family guide is supplied and the edit does not already disrupt its PAM, fold a PAM-blocking mutation (silent when a CDS frame is given) into the donor so the edited allele can't be re-cut. |
+| `designGenotypingPrimers` | `boolean` | No | Also design a primer pair (on the original targetSequence) whose product spans the edit site. |
+| `editEnd` | `number` | No | 1-based inclusive end of the region being replaced; editEnd = editStart-1 denotes a pure insertion with nothing removed. |
+| `editStart` | `number` | No | 1-based start of the region being replaced. |
+| `frameStart` | `number` | No | Optional 1-based CDS reading-frame start; makes the PAM-blocking mutation synonymous where possible. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `guideEnd` | `number` | No | 1-based forward-strand end of the guide's protospacer. |
+| `guideStart` | `number` | No | 1-based forward-strand start of the guide's protospacer (alternative to editStart/editEnd, for an insertion exactly at the cut site). |
+| `guideStrand` | `string` | No | Strand the guide's protospacer is on. |
+| `nuclease` | `string` | No | Needed only when deriving the cut site from guideStart/guideEnd/guideStrand. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `replacement` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `targetSequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `replacement` | `string` | Yes | Sequence to insert/substitute ("" for a pure deletion). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `targetSequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2002,14 +2002,14 @@ const crispr_offtarget_check = client.CrisprOfftargetCheck()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `maxMismatches` | `number` | No |  |
-| `nuclease` | `string` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `number` | No | Mismatches tolerated between the protospacer and a candidate genomic site. |
+| `nuclease` | `string` | No | Nuclease id — determines the PAM pattern/side required at each candidate site. |
 | `ok` | `any` | Yes |  |
-| `protospacer` | `string` | Yes |  |
+| `protospacer` | `string` | Yes | The guide's protospacer sequence, 5'→3' (no PAM). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2065,13 +2065,13 @@ const cross_dimer = client.CrossDimer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequenceA` | `string` | Yes |  |
-| `sequenceB` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequenceA` | `string` | Yes | First oligo (5'→3'). |
+| `sequenceB` | `string` | Yes | Second oligo (5'→3'). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2128,16 +2128,16 @@ const dna_molarity = client.DnaMolarity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `length` | `number` | No |  |
-| `massNg` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `length` | `number` | No | Length in bp (dsDNA) or nt (ssDNA/ssRNA). |
+| `massNg` | `number` | No | Mass in nanograms. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | No |  |
-| `tool` | `string` | Yes |  |
-| `type` | `string` | No |  |
-| `volumeUl` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | No | Optional sequence — overrides length and gives an exact molar mass from base composition. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `type` | `string` | No | Molecule type. |
+| `volumeUl` | `number` | No | Volume in microlitres (0 = unknown; needed for concentration). |
 
 ### Operations
 
@@ -2192,13 +2192,13 @@ const double_digest = client.DoubleDigest()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzymeA` | `string` | Yes |  |
-| `enzymeB` | `string` | Yes |  |
-| `gate` | `any` | No |  |
+| `enzymeA` | `string` | Yes | First enzyme name (e.g. |
+| `enzymeB` | `string` | Yes | Second enzyme name (e.g. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2255,12 +2255,12 @@ const export_echo_picklist = client.ExportEchoPicklist()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reactions` | `any[]` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `reactions` | `any[]` | Yes | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2316,13 +2316,13 @@ const export_opentrons_protocol = client.ExportOpentronsProtocol()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
-| `protocolName` | `string` | No |  |
+| `protocolName` | `string` | No | Optional protocol name (used in the script's metadata). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reactions` | `any[]` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `reactions` | `any[]` | Yes | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2378,12 +2378,12 @@ const export_plate_layout = client.ExportPlateLayout()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reactions` | `any[]` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `reactions` | `any[]` | Yes | One entry per PCR reaction, up to 96 (a single 96-well plate). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2439,19 +2439,19 @@ const expression_heatmap_cluster = client.ExpressionHeatmapCluster()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `clusterCols` | `boolean` | No |  |
-| `clusterRows` | `boolean` | No |  |
-| `distanceMetric` | `string` | No |  |
-| `gate` | `any` | No |  |
-| `genes` | `any[]` | Yes |  |
-| `linkage` | `string` | No |  |
+| `clusterCols` | `boolean` | No | Cluster (reorder) samples. |
+| `clusterRows` | `boolean` | No | Cluster (reorder) genes. |
+| `distanceMetric` | `string` | No | correlation = 1 - Pearson r (the standard expression-heatmap default); euclidean = straight-line distance. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `genes` | `any[]` | Yes | Row (gene) labels. |
+| `linkage` | `string` | No | average = UPGMA (standard default), complete = farthest-neighbor, single = nearest-neighbor. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `samples` | `any[]` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `values` | `any[]` | Yes |  |
-| `zScoreRows` | `boolean` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `samples` | `any[]` | Yes | Column (sample) labels. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `values` | `any[]` | Yes | genes x samples numeric matrix — one row per gene, in the same order as `genes`. |
+| `zScoreRows` | `boolean` | No | Row-wise z-score each gene's values before returning (the conventional 'relative expression' heatmap normalization). |
 
 ### Operations
 
@@ -2509,13 +2509,13 @@ const fastq_qc_report = client.FastqQcReport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `input` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Yes | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `qualityOffset` | `number` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `qualityOffset` | `number` | No | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2571,15 +2571,15 @@ const fastq_trim = client.FastqTrim()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `input` | `string` | Yes |  |
-| `minLength` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Yes | FASTQ text: records of an '@id' header, sequence, '+' separator and quality line (four lines each). |
+| `minLength` | `number` | No | Reads shorter than this after trimming are dropped. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `qualityOffset` | `number` | No |  |
-| `qualityThreshold` | `number` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `qualityOffset` | `number` | No | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3-1.7). |
+| `qualityThreshold` | `number` | No | 3' quality-trim threshold (Phred score). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2635,14 +2635,14 @@ const find_orf = client.FindOrf()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `minAaLength` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minAaLength` | `number` | No | Minimum protein length (aa) to report. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `requireStop` | `boolean` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `requireStop` | `boolean` | No | Only report ORFs terminated by a stop codon. |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2699,16 +2699,16 @@ const format_sequence = client.FormatSequence()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `caseMode` | `string` | No |  |
-| `convert` | `string` | No |  |
-| `gate` | `any` | No |  |
+| `convert` | `string` | No | DNA→RNA (T→U) or RNA→DNA (U→T). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `reverse` | `boolean` | No |  |
-| `sequence` | `string` | Yes |  |
-| `stripNonLetters` | `boolean` | No |  |
-| `tool` | `string` | Yes |  |
-| `width` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `reverse` | `boolean` | No | Reverse the sequence (no complement). |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `stripNonLetters` | `boolean` | No | Remove digits, spaces and gaps (keep letters only). |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `width` | `number` | No | Line-wrap width; 0 = single line. |
 
 ### Operations
 
@@ -2764,16 +2764,16 @@ const functional_enrichment = client.FunctionalEnrichment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `background` | `any[]` | No |  |
-| `collections` | `any[]` | No |  |
-| `gate` | `any` | No |  |
-| `genes` | `any[]` | Yes |  |
-| `maxTermSize` | `number` | No |  |
-| `minTermSize` | `number` | No |  |
+| `background` | `any[]` | No | Custom background/universe gene symbols. |
+| `collections` | `any[]` | No | Which term collections to test. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `genes` | `any[]` | Yes | Query gene symbols (human, e.g. |
+| `maxTermSize` | `number` | No | Skip terms/pathways with more than this many background genes (matches clusterProfiler's default). |
+| `minTermSize` | `number` | No | Skip terms/pathways with fewer than this many background genes. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2829,12 +2829,12 @@ const gc_content = client.GcContent()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2890,12 +2890,12 @@ const gene_dossier = client.GeneDossier()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `gene` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | Yes | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -2951,12 +2951,12 @@ const gene_expression = client.GeneExpression()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `gene` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | Yes | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3012,12 +3012,12 @@ const gene_model = client.GeneModel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `gene` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | Yes | A human gene symbol ("TP53") or Ensembl gene ID ("ENSG00000141510"). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3073,15 +3073,15 @@ const golden_gate_fidelity = client.GoldenGateFidelity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compareToNamedSet` | `string` | No |  |
-| `dataset` | `string` | No |  |
-| `gate` | `any` | No |  |
+| `compareToNamedSet` | `string` | No | Also score this published reference set (see namedSetsAvailable in the output) alongside your candidate set, for comparison. |
+| `dataset` | `string` | No | Which real ligation dataset to score against — generic T4 ligase, or an enzyme-specific one-pot dataset if that matches your actual digestion enzyme. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
-| `overhangs` | `any[]` | Yes |  |
+| `overhangs` | `any[]` | Yes | The candidate 4-base overhangs for one assembly (e.g. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `riskThreshold` | `number` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `riskThreshold` | `number` | No | Flag a pair as risky when the cross-reaction is at least this fraction of that pair's own total signal. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3137,12 +3137,12 @@ const hgvs_convert = client.HgvsConvert()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `variant` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `variant` | `string` | Yes | A full HGVS "c." variant description: "<accession or gene symbol>:c.<edit>", e.g. |
 
 ### Operations
 
@@ -3198,12 +3198,12 @@ const id_map_poll = client.IdMapPoll()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3259,15 +3259,15 @@ const id_map_submit = client.IdMapSubmit()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `from` | `string` | Yes |  |
-| `gate` | `any` | No |  |
-| `ids` | `any[]` | Yes |  |
+| `from` | `string` | Yes | Source id type: "Gene_Name", "Ensembl", "GeneID", "RefSeq_Protein", or "UniProtKB_AC-ID". |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `ids` | `any[]` | Yes | The ids to map, up to 1000 (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `taxId` | `string` | No |  |
-| `to` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `taxId` | `string` | No | NCBI taxonomy id to disambiguate a gene symbol (only used when from="Gene_Name"). |
+| `to` | `string` | Yes | Target id type. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3325,16 +3325,16 @@ const in_silico_pcr = client.InSilicoPcr()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `circular` | `boolean` | No |  |
-| `forwardPrimer` | `string` | Yes |  |
-| `gate` | `any` | No |  |
-| `maxMismatches` | `number` | No |  |
+| `circular` | `boolean` | No | Treat the template as circular (plasmid). |
+| `forwardPrimer` | `string` | Yes | Primer 1, 5'→3'. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `number` | No | Mismatches tolerated per primer. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `reversePrimer` | `string` | Yes |  |
-| `template` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `reversePrimer` | `string` | Yes | Primer 2, 5'→3' (order does not matter). |
+| `template` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3392,19 +3392,19 @@ const kasp_primer_design = client.KaspPrimerDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `addSecondaryMismatch` | `boolean` | No |  |
-| `alleleA` | `string` | Yes |  |
-| `alleleB` | `string` | Yes |  |
-| `gate` | `any` | No |  |
-| `maxAmplicon` | `number` | No |  |
-| `minAmplicon` | `number` | No |  |
+| `addSecondaryMismatch` | `boolean` | No | Engineer the internal ARMS destabilising mismatch near the 3' end. |
+| `alleleA` | `string` | Yes | First allele (single base) — gets the FAM tail. |
+| `alleleB` | `string` | Yes | Second allele (single base) — gets the HEX tail. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxAmplicon` | `number` | No | Maximum amplicon length for the common reverse primer. |
+| `minAmplicon` | `number` | No | Minimum amplicon length for the common reverse primer. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `snpPosition` | `number` | Yes |  |
-| `target` | `string` | Yes |  |
-| `targetCoreTm` | `number` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `snpPosition` | `number` | Yes | 1-based position of the SNP on the forward strand. |
+| `target` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetCoreTm` | `number` | No | Target Tm (°C) for the allele-specific primer core (before the universal tail). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3507,18 +3507,18 @@ const melting_temperature = client.MeltingTemperature()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntpMM` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `mgMM` | `number` | No |  |
-| `naMM` | `number` | No |  |
+| `dntpMM` | `number` | No | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `number` | No | Divalent cation [Mg2+] (mM). |
+| `naMM` | `number` | No | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` | Yes |  |
-| `oligoNM` | `number` | No |  |
+| `oligoNM` | `number` | No | Total strand concentration (nM). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `targetTm` | `number` | No |  |
-| `tmTolerance` | `number` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `targetTm` | `number` | No | Optional target Tm (°C). |
+| `tmTolerance` | `number` | No | Allowed +/- window (°C) around targetTm for the gate. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3574,15 +3574,15 @@ const motif_finder = client.MotifFinder()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `maxMismatches` | `number` | No |  |
-| `motif` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `number` | No | Maximum allowed mismatches per match. |
+| `motif` | `string` | Yes | Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `searchReverseStrand` | `boolean` | No |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `searchReverseStrand` | `boolean` | No | Also search the reverse strand. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3639,12 +3639,12 @@ const multiple_sequence_alignment = client.MultipleSequenceAlignment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `input` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Yes | Two or more sequences in multi-FASTA format (>name / sequence). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3700,16 +3700,16 @@ const oligo_analysi = client.OligoAnalysi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `dntpMM` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `mgMM` | `number` | No |  |
-| `naMM` | `number` | No |  |
+| `dntpMM` | `number` | No | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `number` | No | Divalent cation [Mg2+] (mM). |
+| `naMM` | `number` | No | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` | Yes |  |
-| `oligoNM` | `number` | No |  |
+| `oligoNM` | `number` | No | Total strand concentration (nM). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3765,15 +3765,15 @@ const ortholog_map = client.OrthologMap()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sourceSpecies` | `string` | No |  |
-| `symbols` | `any[]` | Yes |  |
-| `targetSpecies` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `type` | `string` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sourceSpecies` | `string` | No | Ensembl species slug the symbols belong to (e.g. |
+| `symbols` | `any[]` | Yes | Gene symbols to look up, up to 50 (e.g. |
+| `targetSpecies` | `string` | Yes | Ensembl species slug to find homologs in (e.g. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `type` | `string` | No | Homology type to return. |
 
 ### Operations
 
@@ -3830,17 +3830,17 @@ const pairwise_alignment = client.PairwiseAlignment()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gap` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `match` | `number` | No |  |
-| `mismatch` | `number` | No |  |
+| `gap` | `number` | No | Linear gap penalty (per gap position). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `match` | `number` | No | Match score. |
+| `mismatch` | `number` | No | Mismatch penalty. |
 | `mode` | `string` | No |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `seqA` | `string` | Yes |  |
-| `seqB` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `seqA` | `string` | Yes | First sequence (raw or FASTA; nucleotide or protein). |
+| `seqB` | `string` | Yes | Second sequence (raw or FASTA; nucleotide or protein). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3897,12 +3897,12 @@ const parse_genbank = client.ParseGenbank()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `text` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `text` | `string` | Yes | A GenBank flat file (LOCUS … FEATURES … ORIGIN … //). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -3958,13 +3958,13 @@ const parse_sanger_trace = client.ParseSangerTrace()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fileBase64` | `string` | Yes |  |
-| `fileName` | `string` | No |  |
-| `gate` | `any` | No |  |
+| `fileBase64` | `string` | Yes | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `fileName` | `string` | No | Optional original file name (echoed back). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4020,12 +4020,12 @@ const plasmid_annotate = client.PlasmidAnnotate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4081,13 +4081,13 @@ const plasmid_deep_annotate = client.PlasmidDeepAnnotate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `circular` | `boolean` | No |  |
-| `gate` | `any` | No |  |
+| `circular` | `boolean` | No | Treat the sequence as a circular plasmid (vs. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4143,14 +4143,14 @@ const plasmid_full_report = client.PlasmidFullReport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `circular` | `boolean` | No |  |
-| `gate` | `any` | No |  |
+| `circular` | `boolean` | No | Treat the query as a circular molecule (most plasmids are). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `topN` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `topN` | `number` | No | How many top-ranked backbone candidates to report. |
 
 ### Operations
 
@@ -4206,14 +4206,14 @@ const plasmid_identify = client.PlasmidIdentify()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `circular` | `boolean` | No |  |
-| `gate` | `any` | No |  |
+| `circular` | `boolean` | No | Treat the query as a circular molecule (most plasmids are). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `topN` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `topN` | `number` | No | How many top-ranked backbone candidates to report. |
 
 ### Operations
 
@@ -4269,18 +4269,18 @@ const prime_editing_design = client.PrimeEditingDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `editEnd` | `number` | Yes |  |
-| `editStart` | `number` | Yes |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `insertedSeq` | `string` | No |  |
+| `editEnd` | `number` | Yes | 1-based inclusive end of the region being changed. |
+| `editStart` | `number` | Yes | 1-based inclusive start of the region being changed. |
+| `frameStart` | `number` | No | Optional 1-based CDS reading-frame start, used only to annotate whether a PAM-blocking mutation would be silent. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insertedSeq` | `string` | No | Replacement bases (forward strand). |
 | `ok` | `any` | Yes |  |
-| `pbsLength` | `number` | No |  |
+| `pbsLength` | `number` | No | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `rttHomology` | `number` | No |  |
-| `target` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `rttHomology` | `number` | No | Homology length (nt) 3' of the edit that the RTT should include (typically 10-16). |
+| `target` | `string` | Yes | Forward-strand target DNA (raw or FASTA), with flanking sequence around the intended edit. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4338,17 +4338,17 @@ const prime_editing_twin_design = client.PrimeEditingTwinDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `newSequence` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `newSequence` | `string` | Yes | New sequence (forward strand) to install in place of [replaceStart, replaceEnd]. |
 | `ok` | `any` | Yes |  |
-| `overlapLength` | `number` | No |  |
-| `pbsLength` | `number` | No |  |
+| `overlapLength` | `number` | No | Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal. |
+| `pbsLength` | `number` | No | Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `replaceEnd` | `number` | Yes |  |
-| `replaceStart` | `number` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `target` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `replaceEnd` | `number` | Yes | 1-based inclusive end of the region being replaced/deleted. |
+| `replaceStart` | `number` | Yes | 1-based inclusive start of the region being replaced/deleted. |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `target` | `string` | Yes | Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4409,28 +4409,28 @@ const primer_design = client.PrimerDesign()
 | --- | --- | --- | --- |
 | `ampliconMax` | `number` | No |  |
 | `ampliconMin` | `number` | No |  |
-| `dntpMM` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `dntpMM` | `number` | No | Total [dNTP] (mM), chelates Mg2+. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `gcMax` | `number` | No |  |
 | `gcMin` | `number` | No |  |
 | `lenMax` | `number` | No |  |
 | `lenMin` | `number` | No |  |
 | `lenOpt` | `number` | No |  |
-| `maxReturn` | `number` | No |  |
-| `mgMM` | `number` | No |  |
-| `naMM` | `number` | No |  |
+| `maxReturn` | `number` | No | Number of best pairs to return. |
+| `mgMM` | `number` | No | Divalent cation [Mg2+] (mM). |
+| `naMM` | `number` | No | Monovalent cation [Na+]/[K+] (mM). |
 | `ok` | `any` | Yes |  |
-| `oligoNM` | `number` | No |  |
+| `oligoNM` | `number` | No | Total strand concentration (nM). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `targetEnd` | `number` | No |  |
-| `targetStart` | `number` | No |  |
-| `template` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `targetEnd` | `number` | No | 1-based inclusive end of the target region (optional). |
+| `targetStart` | `number` | No | 1-based inclusive start of a region the product must span (optional). |
+| `template` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
 | `tmMax` | `number` | No |  |
-| `tmMaxDiff` | `number` | No |  |
+| `tmMaxDiff` | `number` | No | Max Tm difference within a pair (°C). |
 | `tmMin` | `number` | No |  |
 | `tmOpt` | `number` | No |  |
-| `tool` | `string` | Yes |  |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4486,15 +4486,15 @@ const primer_specificity = client.PrimerSpecificity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `forwardPrimer` | `string` | Yes |  |
-| `gate` | `any` | No |  |
-| `maxMismatches` | `number` | No |  |
-| `maxProductLength` | `number` | No |  |
+| `forwardPrimer` | `string` | Yes | Forward primer, 5'→3'. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMismatches` | `number` | No | Mismatches tolerated per primer against a reference genome. |
+| `maxProductLength` | `number` | No | Ignore candidate off-target products longer than this (bp) — a search-window cap, not a biological claim. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `reversePrimer` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `reversePrimer` | `string` | Yes | Reverse primer, 5'→3'. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4551,17 +4551,17 @@ const protease_digestion = client.ProteaseDigestion()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `maxMass` | `number` | No |  |
-| `maxPeptides` | `number` | No |  |
-| `minMass` | `number` | No |  |
-| `missedCleavages` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxMass` | `number` | No | Optional upper bound on neutral monoisotopic mass (Da). |
+| `maxPeptides` | `number` | No | Cap on the number of returned peptides. |
+| `minMass` | `number` | No | Optional lower bound on neutral monoisotopic mass (Da). |
+| `missedCleavages` | `number` | No | Allowed missed internal cleavages (0–2). |
 | `ok` | `any` | Yes |  |
-| `protease` | `string` | No |  |
+| `protease` | `string` | No | Protease or chemical cleavage agent. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4617,12 +4617,12 @@ const protein_annotate_poll = client.ProteinAnnotatePoll()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `jobId` | `string` | Yes |  |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4678,14 +4678,14 @@ const protein_annotate_submit = client.ProteinAnnotateSubmit()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `appl` | `string` | No |  |
-| `gate` | `any` | No |  |
-| `goterms` | `boolean` | No |  |
+| `appl` | `string` | No | Restrict to one member database (e.g. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `goterms` | `boolean` | No | Include GO-term cross-references. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Protein sequence, one-letter code (FASTA header, if any, is stripped). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4741,14 +4741,14 @@ const protein_hydrophobicity = client.ProteinHydrophobicity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `scale` | `string` | No |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `window` | `number` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `scale` | `string` | No | Amino-acid scale. |
+| `sequence` | `string` | Yes | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `window` | `number` | No | Sliding-window size (clamped to an odd number ≥ 1). |
 
 ### Operations
 
@@ -4804,13 +4804,13 @@ const protein_property = client.ProteinProperty()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `chargeStep` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `chargeStep` | `number` | No | pH step for the net-charge titration curve (0–14). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Protein sequence (one-letter amino-acid codes; non-AA characters ignored). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4866,14 +4866,14 @@ const random_sequence = client.RandomSequence()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `gcContent` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gcContent` | `number` | No | Target GC percentage 0..100 (dna/rna only); omit for uniform. |
 | `kind` | `string` | No |  |
-| `length` | `number` | Yes |  |
+| `length` | `number` | Yes | Number of residues to generate. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4929,13 +4929,13 @@ const restriction_site = client.RestrictionSite()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `enzymes` | `any[]` | No |  |
-| `gate` | `any` | No |  |
+| `enzymes` | `any[]` | No | Enzyme names to scan; omit to scan all curated enzymes. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -4991,12 +4991,12 @@ const reverse_complement = client.ReverseComplement()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 | `type` | `string` | No |  |
 
 ### Operations
@@ -5053,14 +5053,14 @@ const reverse_translate = client.ReverseTranslate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `mode` | `string` | No |  |
 | `ok` | `any` | Yes |  |
-| `organism` | `string` | No |  |
-| `protein` | `string` | Yes |  |
+| `organism` | `string` | No | Codon-usage host (ignored in degenerate mode). |
+| `protein` | `string` | Yes | Protein sequence (one-letter codes; * for stop). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5116,12 +5116,12 @@ const rna_fold = client.RnaFold()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5177,16 +5177,16 @@ const sanger_vs_reference = client.SangerVsReference()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `fileBase64` | `string` | No |  |
-| `fileName` | `string` | No |  |
-| `gate` | `any` | No |  |
-| `minCoverage` | `number` | No |  |
+| `fileBase64` | `string` | No | The binary ABIF (.ab1 / .abi) trace file, base64-encoded. |
+| `fileName` | `string` | No | Optional original file name (echoed back). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minCoverage` | `number` | No | Fraction of the reference the read must span before a PASS is meaningful; below this the verdict is 'ambiguous_low_coverage' regardless of identity. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `read` | `string` | No |  |
-| `reference` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `read` | `string` | No | Sanger read as FASTA or raw text (alternative to uploading an ABIF trace). |
+| `reference` | `string` | Yes | Expected reference sequence (FASTA or raw). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5242,12 +5242,12 @@ const save_permalink = client.SavePermalink()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `args` | `Record<string, any>` | Yes |  |
-| `gate` | `any` | No |  |
+| `args` | `Record<string, any>` | Yes | Arguments for that tool, exactly as you would pass to it directly. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5303,13 +5303,13 @@ const seqfile_stat = client.SeqfileStat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `input` | `string` | Yes |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Yes | FASTA or FASTQ text (raw sequence is treated as single-record FASTA). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `qualityOffset` | `number` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `qualityOffset` | `number` | No | FASTQ Phred ASCII offset (33 = Sanger/Illumina 1.8+, 64 = Illumina 1.3–1.7). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5365,14 +5365,14 @@ const sequence_fetch = client.SequenceFetch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `accession` | `string` | Yes |  |
-| `db` | `string` | No |  |
-| `format` | `string` | No |  |
-| `gate` | `any` | No |  |
+| `accession` | `string` | Yes | GenBank/RefSeq accession (e.g. |
+| `db` | `string` | No | Database to query; auto-detects from the accession format. |
+| `format` | `string` | No | Output format (GenBank is only available for NCBI accessions — UniProt and Ensembl are FASTA-only). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5428,14 +5428,14 @@ const sequence_format_convert = client.SequenceFormatConvert()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `from` | `string` | No |  |
-| `gate` | `any` | No |  |
-| `input` | `string` | Yes |  |
+| `from` | `string` | No | Input format; 'auto' sniffs it from the first meaningful line. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `input` | `string` | Yes | A FASTA or GenBank record to convert. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `to` | `string` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `to` | `string` | No | Output format. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5491,15 +5491,15 @@ const sequence_report = client.SequenceReport()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `endPrimerLength` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `maxOrfs` | `number` | No |  |
-| `minOrfAa` | `number` | No |  |
+| `endPrimerLength` | `number` | No | Length of the naive end primers taken from each end. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `maxOrfs` | `number` | No | Maximum number of ORFs to return, longest first. |
+| `minOrfAa` | `number` | No | Minimum ORF length in amino acids. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5556,15 +5556,15 @@ const sequence_search = client.SequenceSearch()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `db` | `string` | No |  |
-| `gate` | `any` | No |  |
-| `gene` | `string` | No |  |
-| `maxResults` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `gene` | `string` | No | Gene symbol/name, e.g. |
+| `maxResults` | `number` | No | Up to 20. |
 | `ok` | `any` | Yes |  |
-| `organism` | `string` | No |  |
+| `organism` | `string` | No | Organism name, e.g. |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `term` | `string` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `term` | `string` | No | Raw NCBI search term (advanced) — overrides gene/organism when given, e.g. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5619,14 +5619,14 @@ const sequencing_readback_verify = client.SequencingReadbackVerify()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `minSupportingReads` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minSupportingReads` | `number` | No | Minimum number of reads agreeing on a variant position for it to count as a consensus (candidate real) variant rather than single-read noise. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `reads` | `string` | Yes |  |
-| `reference` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `reads` | `string` | Yes | Raw reads in FASTA or FASTQ format (auto-detected). |
+| `reference` | `string` | Yes | The claimed/expected reference sequence. |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5683,12 +5683,12 @@ const session_create = client.SessionCreate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entries` | `Record<string, any>` | No |  |
-| `gate` | `any` | No |  |
+| `entries` | `Record<string, any>` | No | Initial named entries, e.g. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5743,13 +5743,13 @@ const session_get = client.SessionGet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `names` | `any[]` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `names` | `any[]` | No | Only return these entries; omit to return all of them. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
 | `sessionId` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5805,15 +5805,15 @@ const session_run = client.SessionRun()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `args` | `Record<string, any>` | No |  |
-| `fromSession` | `Record<string, any>` | No |  |
-| `gate` | `any` | No |  |
+| `args` | `Record<string, any>` | No | Additional literal arguments, merged with the ones resolved from the session. |
+| `fromSession` | `Record<string, any>` | No | Map of { toolArgName: sessionEntryName } — resolves each named tool argument from the session before running. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
 | `sessionId` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `writeBack` | `Record<string, any>` | No |  |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `writeBack` | `Record<string, any>` | No | Map of { resultFieldName: sessionEntryName } — stores selected fields of the result back into the session under these names. |
 
 ### Operations
 
@@ -5869,13 +5869,13 @@ const session_set = client.SessionSet()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `entries` | `Record<string, any>` | Yes |  |
-| `gate` | `any` | No |  |
+| `entries` | `Record<string, any>` | Yes | Named entries to add/overwrite, e.g. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
 | `sessionId` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5932,14 +5932,14 @@ const sirna_design = client.SirnaDesign()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `minReynolds` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `minReynolds` | `number` | No | Minimum Reynolds score (0–8) to keep; falls back to best-ranked if none qualify. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `shRnaLoop` | `string` | No |  |
-| `target` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `shRnaLoop` | `string` | No | Loop sequence used when assembling the shRNA cassette. |
+| `target` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -5995,25 +5995,25 @@ const site_directed_mutagenesi = client.SiteDirectedMutagenesi()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armTmTarget` | `number` | No |  |
-| `dntpMM` | `number` | No |  |
-| `editKind` | `string` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `mgMM` | `number` | No |  |
-| `naMM` | `number` | No |  |
-| `newBase` | `string` | No |  |
+| `armTmTarget` | `number` | No | Target Tm (°C) for each template-binding arm. |
+| `dntpMM` | `number` | No | Total [dNTP] (mM), chelates Mg2+. |
+| `editKind` | `string` | No | Edit at the nucleotide or amino-acid level. |
+| `frameStart` | `number` | No | 1-based position of the first base of codon 1 (editKind='aa'). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `mgMM` | `number` | No | Divalent cation [Mg2+] (mM). |
+| `naMM` | `number` | No | Monovalent cation [Na+]/[K+] (mM). |
+| `newBase` | `string` | No | Replacement base (editKind='nt'). |
 | `ok` | `any` | Yes |  |
-| `oligoNM` | `number` | No |  |
-| `organism` | `string` | No |  |
-| `position` | `number` | No |  |
+| `oligoNM` | `number` | No | Total strand concentration (nM). |
+| `organism` | `string` | No | Codon-usage table for choosing the new codon (editKind='aa'). |
+| `position` | `number` | No | 1-based position to substitute (editKind='nt'). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `residue` | `number` | No |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `style` | `string` | No |  |
-| `targetAa` | `string` | No |  |
-| `template` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `residue` | `number` | No | 1-based residue number to change (editKind='aa'). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `style` | `string` | No | Mutagenic primer style. |
+| `targetAa` | `string` | No | Target amino acid, one-letter code incl '*' (editKind='aa'). |
+| `template` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6070,13 +6070,13 @@ const translate = client.Translate()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `frame` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `toStop` | `boolean` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `toStop` | `boolean` | No | Stop at the first stop codon. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6132,13 +6132,13 @@ const variant_annotate = client.VariantAnnotate()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `assembly` | `string` | No |  |
-| `gate` | `any` | No |  |
+| `assembly` | `string` | No | Genome build for rsID/chrom-pos-ref-alt/genomic-HGVS lookups (MyVariant.info's native default is hg19). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `variant` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `variant` | `string` | Yes | An rsID ("rs1042522"), chrom:pos:ref:alt ("17:7676154:G:C", single-base substitutions only), genomic HGVS ("chr17:g.7676154G>C" or "17:g.7676154G>C"), or transcript HGVS c. |
 
 ### Operations
 
@@ -6194,15 +6194,15 @@ const variant_comparator = client.VariantComparator()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `coding` | `boolean` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
+| `coding` | `boolean` | No | Treat as a coding sequence and report amino-acid effects. |
+| `frameStart` | `number` | No | 1-based reading-frame start (used when coding is true). |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `query` | `string` | Yes |  |
-| `reference` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `query` | `string` | Yes | Query / variant sequence (raw or FASTA). |
+| `reference` | `string` | Yes | Reference / wild-type sequence (raw or FASTA). |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6259,28 +6259,28 @@ const verify_assembly = client.VerifyAssembly()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `armTmTarget` | `number` | No |  |
-| `circular` | `boolean` | No |  |
-| `claimedConstruct` | `string` | Yes |  |
-| `coding` | `boolean` | No |  |
-| `enzyme` | `string` | No |  |
-| `enzyme3` | `string` | No |  |
-| `enzyme5` | `string` | No |  |
-| `fragmentPcrs` | `any[]` | No |  |
-| `fragments` | `any[]` | No |  |
-| `frameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `insert` | `string` | No |  |
-| `insertPcr` | `Record<string, any>` | No |  |
-| `method` | `string` | Yes |  |
-| `names` | `any[]` | No |  |
+| `armTmTarget` | `number` | No | Target annealing Tm (°C) for primer arms. |
+| `circular` | `boolean` | No | Treat the product/claimed construct as circular (most plasmids are). |
+| `claimedConstruct` | `string` | Yes | The sequence you claim you ended up with. |
+| `coding` | `boolean` | No | Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence. |
+| `enzyme` | `string` | No | Type IIS enzyme for Golden Gate. |
+| `enzyme3` | `string` | No | 3′ enzyme (restriction method). |
+| `enzyme5` | `string` | No | 5′ enzyme (restriction method). |
+| `fragmentPcrs` | `any[]` | No | Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead. |
+| `fragments` | `any[]` | No | Fragments (5′→3′), assembled head-to-tail (gibson/goldengate). |
+| `frameStart` | `number` | No | 1-based reading-frame start on claimedConstruct, used when coding is true. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insert` | `string` | No | Insert sequence (restriction method). |
+| `insertPcr` | `Record<string, any>` | No | Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
+| `method` | `string` | Yes | Assembly method used. |
+| `names` | `any[]` | No | Optional labels for each fragment. |
 | `ok` | `any` | Yes |  |
-| `overlapLen` | `number` | No |  |
+| `overlapLen` | `number` | No | Gibson homology-arm length (bp). |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
-| `vector` | `string` | No |  |
-| `vectorPcr` | `Record<string, any>` | No |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
+| `vector` | `string` | No | Vector sequence (restriction method). |
+| `vectorPcr` | `Record<string, any>` | No | Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}. |
 
 ### Operations
 
@@ -6337,18 +6337,18 @@ const verify_construct = client.VerifyConstruct()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `claimedConstruct` | `string` | Yes |  |
-| `expectedFrameStart` | `number` | No |  |
-| `gate` | `any` | No |  |
-| `insertForwardPrimer` | `string` | Yes |  |
-| `insertReversePrimer` | `string` | Yes |  |
-| `insertTemplate` | `string` | Yes |  |
-| `maxPrimerMismatches` | `number` | No |  |
+| `claimedConstruct` | `string` | Yes | The final sequence claimed to have been built. |
+| `expectedFrameStart` | `number` | No | 1-based position in claimedConstruct where the intended reading frame begins. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `insertForwardPrimer` | `string` | Yes | Forward primer used to amplify the insert, 5'→3'. |
+| `insertReversePrimer` | `string` | Yes | Reverse primer used to amplify the insert, 5'→3'. |
+| `insertTemplate` | `string` | Yes | PCR template the insert was amplified from. |
+| `maxPrimerMismatches` | `number` | No | Mismatches tolerated per primer during PCR prediction. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `templateCircular` | `boolean` | No |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `templateCircular` | `boolean` | No | Treat insertTemplate as circular (e.g. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6407,15 +6407,15 @@ const virtual_gel = client.VirtualGel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `circular` | `boolean` | No |  |
-| `enzymes` | `any[]` | No |  |
-| `gate` | `any` | No |  |
-| `ladder` | `string` | No |  |
+| `circular` | `boolean` | No | Treat the sequence as circular (plasmid). |
+| `enzymes` | `any[]` | No | Enzyme names to digest with. |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `ladder` | `string` | No | DNA ladder to plot alongside the sample lane. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `sequence` | `string` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `sequence` | `string` | Yes | Nucleotide sequence (raw or FASTA; IUPAC accepted). |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6471,12 +6471,12 @@ const volcano_plot_data = client.VolcanoPlotData()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `rows` | `any[]` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `rows` | `any[]` | Yes | Differential expression rows, one per gene. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 
@@ -6532,13 +6532,13 @@ const web_search = client.WebSearch()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `gate` | `any` | No |  |
-| `max_results` | `number` | No |  |
+| `gate` | `any` | No | Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. |
+| `max_results` | `number` | No | Maximum number of results to return (default 5, max 10). |
 | `ok` | `any` | Yes |  |
 | `provenance` | `Record<string, any>` | Yes |  |
-| `query` | `string` | Yes |  |
-| `result` | `Record<string, any>` | Yes |  |
-| `tool` | `string` | Yes |  |
+| `query` | `string` | Yes | The search query. |
+| `result` | `Record<string, any>` | Yes | Tool-specific output object. |
+| `tool` | `string` | Yes | The tool slug that ran. |
 
 ### Operations
 

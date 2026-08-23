@@ -1,0 +1,108 @@
+# Entity: batch
+
+main: kit: entity: batch: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "args"
+      req: false
+      short: "Shared tool arguments applied to every record."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "capped"
+      req: true
+      short: "True if input exceeded the record limit."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "columns"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "count"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "errors"
+      req: true
+      type: "`$INTEGER`"
+    }
+    {
+      name: "input"
+      req: true
+      short: "Multi-FASTA text or one sequence per line (max ~2,000,000 chars)."
+      type: "`$STRING`"
+    }
+    {
+      name: "limit"
+      req: true
+      short: "Maximum records per call (500)."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "rows"
+      req: true
+      type: "`$ARRAY`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "A batchable tool slug (see `GET /batch`)."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "batch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/batch"
+          parts: [
+            "batch"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body.result`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/batch"
+          parts: [
+            "batch"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

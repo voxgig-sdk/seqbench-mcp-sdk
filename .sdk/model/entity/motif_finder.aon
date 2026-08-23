@@ -1,0 +1,94 @@
+# Entity: motif_finder
+
+main: kit: entity: motif_finder: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "maxMismatches"
+      req: false
+      short: "Maximum allowed mismatches per match."
+      type: "`$INTEGER`"
+    }
+    {
+      name: "motif"
+      req: true
+      short: "Query motif; IUPAC ambiguity codes (R Y S W K M B D H V N) allowed."
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "searchReverseStrand"
+      req: false
+      short: "Also search the reverse strand."
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "sequence"
+      req: true
+      short: "Nucleotide sequence (raw or FASTA; IUPAC accepted)."
+      type: "`$STRING`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "motif_finder"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/motif_finder"
+          parts: [
+            "motif_finder"
+          ]
+          transform: {
+            req: {
+              maxMismatches: "`reqdata.max_mismatch`"
+              motif: "`reqdata.motif`"
+              searchReverseStrand: "`reqdata.search_reverse_strand`"
+              sequence: "`reqdata.sequence`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

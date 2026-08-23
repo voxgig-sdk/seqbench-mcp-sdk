@@ -1,0 +1,86 @@
+# Entity: reverse_translate
+
+main: kit: entity: reverse_translate: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "mode"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "organism"
+      req: false
+      short: "Codon-usage host (ignored in degenerate mode)."
+      type: "`$STRING`"
+    }
+    {
+      name: "protein"
+      req: true
+      short: "Protein sequence (one-letter codes; * for stop)."
+      type: "`$STRING`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "reverse_translate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/reverse_translate"
+          parts: [
+            "reverse_translate"
+          ]
+          transform: {
+            req: {
+              mode: "`reqdata.mode`"
+              organism: "`reqdata.organism`"
+              protein: "`reqdata.protein`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

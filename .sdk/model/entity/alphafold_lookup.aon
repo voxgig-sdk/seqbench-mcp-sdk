@@ -1,0 +1,73 @@
+# Entity: alphafold_lookup
+
+main: kit: entity: alphafold_lookup: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "accession"
+      req: true
+      short: "UniProt accession, e.g."
+      type: "`$STRING`"
+    }
+    {
+      name: "gate"
+      req: false
+      short: "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g."
+      type: "`$ANY`"
+    }
+    {
+      name: "ok"
+      req: true
+      type: "`$ANY`"
+    }
+    {
+      name: "provenance"
+      req: true
+      type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    {
+      name: "result"
+      req: true
+      short: "Tool-specific output object."
+      type: "`$OBJECT`"
+    }
+    {
+      name: "tool"
+      req: true
+      short: "The tool slug that ran."
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "alphafold_lookup"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          method: "POST"
+          orig: "/alphafold_lookup"
+          parts: [
+            "alphafold_lookup"
+          ]
+          transform: {
+            req: {
+              accession: "`reqdata.accession`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
