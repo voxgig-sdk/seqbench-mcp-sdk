@@ -78,8 +78,10 @@ main: kit: entity: in_silico_pcr: {
         {
           method: "POST"
           orig: "/in_silico_pcr"
-          parts: [
-            "in_silico_pcr"
+          segments: [
+            {
+              lit: "in_silico_pcr"
+            }
           ]
           transform: {
             req: {

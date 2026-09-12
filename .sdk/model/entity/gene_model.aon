@@ -54,8 +54,10 @@ main: kit: entity: gene_model: {
         {
           method: "POST"
           orig: "/gene_model"
-          parts: [
-            "gene_model"
+          segments: [
+            {
+              lit: "gene_model"
+            }
           ]
           transform: {
             req: {

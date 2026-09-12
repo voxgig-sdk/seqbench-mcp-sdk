@@ -68,8 +68,10 @@ main: kit: entity: batch__workflow: {
         {
           method: "POST"
           orig: "/workflow"
-          parts: [
-            "workflow"
+          segments: [
+            {
+              lit: "workflow"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -84,8 +86,10 @@ main: kit: entity: batch__workflow: {
         {
           method: "GET"
           orig: "/workflow"
-          parts: [
-            "workflow"
+          segments: [
+            {
+              lit: "workflow"
+            }
           ]
           transform: {
             req: "`reqdata`"

@@ -172,8 +172,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/alphafold_lookup",
-								"parts": []any{
-									"alphafold_lookup",
+								"segments": []any{
+									map[string]any{
+										"lit": "alphafold_lookup",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -181,6 +183,9 @@ func MakeConfig() map[string]any {
 										"accession": "`reqdata.accession`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"alphafold_lookup",
 								},
 							},
 						},
@@ -252,8 +257,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/aso_design",
-								"parts": []any{
-									"aso_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "aso_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -263,6 +270,9 @@ func MakeConfig() map[string]any {
 										"wing": "`reqdata.wing`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"aso_design",
 								},
 							},
 						},
@@ -339,8 +349,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/base_editing_design",
-								"parts": []any{
-									"base_editing_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "base_editing_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -351,6 +363,9 @@ func MakeConfig() map[string]any {
 										"targetPosition": "`reqdata.target_position`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"base_editing_design",
 								},
 							},
 						},
@@ -433,13 +448,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/batch",
-								"parts": []any{
-									"batch",
+								"segments": []any{
+									map[string]any{
+										"lit": "batch",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.result`",
+								},
+								"parts": []any{
+									"batch",
 								},
 							},
 						},
@@ -453,13 +473,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/batch",
-								"parts": []any{
-									"batch",
+								"segments": []any{
+									map[string]any{
+										"lit": "batch",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"batch",
 								},
 							},
 						},
@@ -536,13 +561,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/workflow",
-								"parts": []any{
-									"workflow",
+								"segments": []any{
+									map[string]any{
+										"lit": "workflow",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.result`",
+								},
+								"parts": []any{
+									"workflow",
 								},
 							},
 						},
@@ -556,13 +586,18 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/workflow",
-								"parts": []any{
-									"workflow",
+								"segments": []any{
+									map[string]any{
+										"lit": "workflow",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"workflow",
 								},
 							},
 						},
@@ -639,8 +674,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/characterize_sequence",
-								"parts": []any{
-									"characterize_sequence",
+								"segments": []any{
+									map[string]any{
+										"lit": "characterize_sequence",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -651,6 +688,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"characterize_sequence",
 								},
 							},
 						},
@@ -762,8 +802,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/cloning_simulate",
-								"parts": []any{
-									"cloning_simulate",
+								"segments": []any{
+									map[string]any{
+										"lit": "cloning_simulate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -781,6 +823,9 @@ func MakeConfig() map[string]any {
 										"vector": "`reqdata.vector`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"cloning_simulate",
 								},
 							},
 						},
@@ -856,8 +901,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/codon_adaptation_index",
-								"parts": []any{
-									"codon_adaptation_index",
+								"segments": []any{
+									map[string]any{
+										"lit": "codon_adaptation_index",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -868,6 +915,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"codon_adaptation_index",
 								},
 							},
 						},
@@ -933,8 +983,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/codon_optimize",
-								"parts": []any{
-									"codon_optimize",
+								"segments": []any{
+									map[string]any{
+										"lit": "codon_optimize",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -943,6 +995,9 @@ func MakeConfig() map[string]any {
 										"protein": "`reqdata.protein`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"codon_optimize",
 								},
 							},
 						},
@@ -1045,8 +1100,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/construct_autofix",
-								"parts": []any{
-									"construct_autofix",
+								"segments": []any{
+									map[string]any{
+										"lit": "construct_autofix",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1063,6 +1120,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"construct_autofix",
 								},
 							},
 						},
@@ -1159,8 +1219,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/construct_qc",
-								"parts": []any{
-									"construct_qc",
+								"segments": []any{
+									map[string]any{
+										"lit": "construct_qc",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1175,6 +1237,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"construct_qc",
 								},
 							},
 						},
@@ -1251,8 +1316,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/crispr_grna_design",
-								"parts": []any{
-									"crispr_grna_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "crispr_grna_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1263,6 +1330,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"crispr_grna_design",
 								},
 							},
 						},
@@ -1380,8 +1450,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/crispr_hdr_donor",
-								"parts": []any{
-									"crispr_hdr_donor",
+								"segments": []any{
+									map[string]any{
+										"lit": "crispr_hdr_donor",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1400,6 +1472,9 @@ func MakeConfig() map[string]any {
 										"targetSequence": "`reqdata.target_sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"crispr_hdr_donor",
 								},
 							},
 						},
@@ -1471,8 +1546,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/crispr_offtarget_check",
-								"parts": []any{
-									"crispr_offtarget_check",
+								"segments": []any{
+									map[string]any{
+										"lit": "crispr_offtarget_check",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1482,6 +1559,9 @@ func MakeConfig() map[string]any {
 										"protospacer": "`reqdata.protospacer`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"crispr_offtarget_check",
 								},
 							},
 						},
@@ -1549,8 +1629,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/cross_dimer",
-								"parts": []any{
-									"cross_dimer",
+								"segments": []any{
+									map[string]any{
+										"lit": "cross_dimer",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1559,6 +1641,9 @@ func MakeConfig() map[string]any {
 										"sequenceB": "`reqdata.sequence_b`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"cross_dimer",
 								},
 							},
 						},
@@ -1639,8 +1724,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/dna_molarity",
-								"parts": []any{
-									"dna_molarity",
+								"segments": []any{
+									map[string]any{
+										"lit": "dna_molarity",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1652,6 +1739,9 @@ func MakeConfig() map[string]any {
 										"volumeUl": "`reqdata.volume_ul`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"dna_molarity",
 								},
 							},
 						},
@@ -1719,8 +1809,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/double_digest",
-								"parts": []any{
-									"double_digest",
+								"segments": []any{
+									map[string]any{
+										"lit": "double_digest",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1729,6 +1821,9 @@ func MakeConfig() map[string]any {
 										"enzymeB": "`reqdata.enzyme_b`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"double_digest",
 								},
 							},
 						},
@@ -1790,8 +1885,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/export_echo_picklist",
-								"parts": []any{
-									"export_echo_picklist",
+								"segments": []any{
+									map[string]any{
+										"lit": "export_echo_picklist",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1799,6 +1896,9 @@ func MakeConfig() map[string]any {
 										"reactions": "`reqdata.reaction`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"export_echo_picklist",
 								},
 							},
 						},
@@ -1865,8 +1965,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/export_opentrons_protocol",
-								"parts": []any{
-									"export_opentrons_protocol",
+								"segments": []any{
+									map[string]any{
+										"lit": "export_opentrons_protocol",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1875,6 +1977,9 @@ func MakeConfig() map[string]any {
 										"reactions": "`reqdata.reaction`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"export_opentrons_protocol",
 								},
 							},
 						},
@@ -1936,8 +2041,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/export_plate_layout",
-								"parts": []any{
-									"export_plate_layout",
+								"segments": []any{
+									map[string]any{
+										"lit": "export_plate_layout",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -1945,6 +2052,9 @@ func MakeConfig() map[string]any {
 										"reactions": "`reqdata.reaction`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"export_plate_layout",
 								},
 							},
 						},
@@ -2043,8 +2153,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/expression_heatmap_cluster",
-								"parts": []any{
-									"expression_heatmap_cluster",
+								"segments": []any{
+									map[string]any{
+										"lit": "expression_heatmap_cluster",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2059,6 +2171,9 @@ func MakeConfig() map[string]any {
 										"zScoreRows": "`reqdata.z_score_row`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"expression_heatmap_cluster",
 								},
 							},
 						},
@@ -2125,8 +2240,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/fastq_qc_report",
-								"parts": []any{
-									"fastq_qc_report",
+								"segments": []any{
+									map[string]any{
+										"lit": "fastq_qc_report",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2135,6 +2252,9 @@ func MakeConfig() map[string]any {
 										"qualityOffset": "`reqdata.quality_offset`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"fastq_qc_report",
 								},
 							},
 						},
@@ -2211,8 +2331,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/fastq_trim",
-								"parts": []any{
-									"fastq_trim",
+								"segments": []any{
+									map[string]any{
+										"lit": "fastq_trim",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2223,6 +2345,9 @@ func MakeConfig() map[string]any {
 										"qualityThreshold": "`reqdata.quality_threshold`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"fastq_trim",
 								},
 							},
 						},
@@ -2294,8 +2419,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/find_orfs",
-								"parts": []any{
-									"find_orfs",
+								"segments": []any{
+									map[string]any{
+										"lit": "find_orfs",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2305,6 +2432,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"find_orfs",
 								},
 							},
 						},
@@ -2390,8 +2520,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/format_sequence",
-								"parts": []any{
-									"format_sequence",
+								"segments": []any{
+									map[string]any{
+										"lit": "format_sequence",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2404,6 +2536,9 @@ func MakeConfig() map[string]any {
 										"width": "`reqdata.width`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"format_sequence",
 								},
 							},
 						},
@@ -2485,8 +2620,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/functional_enrichment",
-								"parts": []any{
-									"functional_enrichment",
+								"segments": []any{
+									map[string]any{
+										"lit": "functional_enrichment",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2498,6 +2635,9 @@ func MakeConfig() map[string]any {
 										"minTermSize": "`reqdata.min_term_size`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"functional_enrichment",
 								},
 							},
 						},
@@ -2559,8 +2699,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/gc_content",
-								"parts": []any{
-									"gc_content",
+								"segments": []any{
+									map[string]any{
+										"lit": "gc_content",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2568,6 +2710,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"gc_content",
 								},
 							},
 						},
@@ -2629,8 +2774,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/gene_dossier",
-								"parts": []any{
-									"gene_dossier",
+								"segments": []any{
+									map[string]any{
+										"lit": "gene_dossier",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2638,6 +2785,9 @@ func MakeConfig() map[string]any {
 										"gene": "`reqdata.gene`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"gene_dossier",
 								},
 							},
 						},
@@ -2699,8 +2849,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/gene_expression",
-								"parts": []any{
-									"gene_expression",
+								"segments": []any{
+									map[string]any{
+										"lit": "gene_expression",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2708,6 +2860,9 @@ func MakeConfig() map[string]any {
 										"gene": "`reqdata.gene`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"gene_expression",
 								},
 							},
 						},
@@ -2769,8 +2924,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/gene_model",
-								"parts": []any{
-									"gene_model",
+								"segments": []any{
+									map[string]any{
+										"lit": "gene_model",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2778,6 +2935,9 @@ func MakeConfig() map[string]any {
 										"gene": "`reqdata.gene`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"gene_model",
 								},
 							},
 						},
@@ -2854,8 +3014,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/golden_gate_fidelity",
-								"parts": []any{
-									"golden_gate_fidelity",
+								"segments": []any{
+									map[string]any{
+										"lit": "golden_gate_fidelity",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2866,6 +3028,9 @@ func MakeConfig() map[string]any {
 										"riskThreshold": "`reqdata.risk_threshold`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"golden_gate_fidelity",
 								},
 							},
 						},
@@ -2927,8 +3092,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/hgvs_convert",
-								"parts": []any{
-									"hgvs_convert",
+								"segments": []any{
+									map[string]any{
+										"lit": "hgvs_convert",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -2936,6 +3103,9 @@ func MakeConfig() map[string]any {
 										"variant": "`reqdata.variant`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"hgvs_convert",
 								},
 							},
 						},
@@ -2996,8 +3166,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/id_map_poll",
-								"parts": []any{
-									"id_map_poll",
+								"segments": []any{
+									map[string]any{
+										"lit": "id_map_poll",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3005,6 +3177,9 @@ func MakeConfig() map[string]any {
 										"jobId": "`reqdata.job_id`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"id_map_poll",
 								},
 							},
 						},
@@ -3083,8 +3258,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/id_map_submit",
-								"parts": []any{
-									"id_map_submit",
+								"segments": []any{
+									map[string]any{
+										"lit": "id_map_submit",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3095,6 +3272,9 @@ func MakeConfig() map[string]any {
 										"to": "`reqdata.to`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"id_map_submit",
 								},
 							},
 						},
@@ -3178,8 +3358,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/in_silico_pcr",
-								"parts": []any{
-									"in_silico_pcr",
+								"segments": []any{
+									map[string]any{
+										"lit": "in_silico_pcr",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3191,6 +3373,9 @@ func MakeConfig() map[string]any {
 										"template": "`reqdata.template`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"in_silico_pcr",
 								},
 							},
 						},
@@ -3290,8 +3475,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/kasp_primer_design",
-								"parts": []any{
-									"kasp_primer_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "kasp_primer_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3306,6 +3493,9 @@ func MakeConfig() map[string]any {
 										"targetCoreTm": "`reqdata.target_core_tm`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"kasp_primer_design",
 								},
 							},
 						},
@@ -3328,12 +3518,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
-								"parts": []any{},
+								"segments": []any{},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{},
 							},
 						},
 					},
@@ -3424,8 +3615,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/melting_temperature",
-								"parts": []any{
-									"melting_temperature",
+								"segments": []any{
+									map[string]any{
+										"lit": "melting_temperature",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3439,6 +3632,9 @@ func MakeConfig() map[string]any {
 										"tmTolerance": "`reqdata.tm_tolerance`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"melting_temperature",
 								},
 							},
 						},
@@ -3516,8 +3712,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/motif_finder",
-								"parts": []any{
-									"motif_finder",
+								"segments": []any{
+									map[string]any{
+										"lit": "motif_finder",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3528,6 +3726,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"motif_finder",
 								},
 							},
 						},
@@ -3589,8 +3790,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/multiple_sequence_alignment",
-								"parts": []any{
-									"multiple_sequence_alignment",
+								"segments": []any{
+									map[string]any{
+										"lit": "multiple_sequence_alignment",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3598,6 +3801,9 @@ func MakeConfig() map[string]any {
 										"input": "`reqdata.input`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"multiple_sequence_alignment",
 								},
 							},
 						},
@@ -3679,8 +3885,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/oligo_analysis",
-								"parts": []any{
-									"oligo_analysis",
+								"segments": []any{
+									map[string]any{
+										"lit": "oligo_analysis",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3692,6 +3900,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"oligo_analysis",
 								},
 							},
 						},
@@ -3769,8 +3980,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/ortholog_map",
-								"parts": []any{
-									"ortholog_map",
+								"segments": []any{
+									map[string]any{
+										"lit": "ortholog_map",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3781,6 +3994,9 @@ func MakeConfig() map[string]any {
 										"type": "`reqdata.type`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"ortholog_map",
 								},
 							},
 						},
@@ -3867,8 +4083,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/pairwise_alignment",
-								"parts": []any{
-									"pairwise_alignment",
+								"segments": []any{
+									map[string]any{
+										"lit": "pairwise_alignment",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3881,6 +4099,9 @@ func MakeConfig() map[string]any {
 										"seqB": "`reqdata.seq_b`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"pairwise_alignment",
 								},
 							},
 						},
@@ -3942,8 +4163,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/parse_genbank",
-								"parts": []any{
-									"parse_genbank",
+								"segments": []any{
+									map[string]any{
+										"lit": "parse_genbank",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -3951,6 +4174,9 @@ func MakeConfig() map[string]any {
 										"text": "`reqdata.text`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"parse_genbank",
 								},
 							},
 						},
@@ -4017,8 +4243,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/parse_sanger_trace",
-								"parts": []any{
-									"parse_sanger_trace",
+								"segments": []any{
+									map[string]any{
+										"lit": "parse_sanger_trace",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4027,6 +4255,9 @@ func MakeConfig() map[string]any {
 										"fileName": "`reqdata.file_name`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"parse_sanger_trace",
 								},
 							},
 						},
@@ -4088,8 +4319,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/plasmid_annotate",
-								"parts": []any{
-									"plasmid_annotate",
+								"segments": []any{
+									map[string]any{
+										"lit": "plasmid_annotate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4097,6 +4330,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"plasmid_annotate",
 								},
 							},
 						},
@@ -4163,8 +4399,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/plasmid_deep_annotate",
-								"parts": []any{
-									"plasmid_deep_annotate",
+								"segments": []any{
+									map[string]any{
+										"lit": "plasmid_deep_annotate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4173,6 +4411,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"plasmid_deep_annotate",
 								},
 							},
 						},
@@ -4244,8 +4485,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/plasmid_full_report",
-								"parts": []any{
-									"plasmid_full_report",
+								"segments": []any{
+									map[string]any{
+										"lit": "plasmid_full_report",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4255,6 +4498,9 @@ func MakeConfig() map[string]any {
 										"topN": "`reqdata.top_n`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"plasmid_full_report",
 								},
 							},
 						},
@@ -4326,8 +4572,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/plasmid_identify",
-								"parts": []any{
-									"plasmid_identify",
+								"segments": []any{
+									map[string]any{
+										"lit": "plasmid_identify",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4337,6 +4585,9 @@ func MakeConfig() map[string]any {
 										"topN": "`reqdata.top_n`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"plasmid_identify",
 								},
 							},
 						},
@@ -4430,8 +4681,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/prime_editing_design",
-								"parts": []any{
-									"prime_editing_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "prime_editing_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4445,6 +4698,9 @@ func MakeConfig() map[string]any {
 										"target": "`reqdata.target`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"prime_editing_design",
 								},
 							},
 						},
@@ -4534,8 +4790,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/prime_editing_twin_design",
-								"parts": []any{
-									"prime_editing_twin_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "prime_editing_twin_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4548,6 +4806,9 @@ func MakeConfig() map[string]any {
 										"target": "`reqdata.target`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"prime_editing_twin_design",
 								},
 							},
 						},
@@ -4689,8 +4950,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/primer_design",
-								"parts": []any{
-									"primer_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "primer_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4716,6 +4979,9 @@ func MakeConfig() map[string]any {
 										"tmOpt": "`reqdata.tm_opt`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"primer_design",
 								},
 							},
 						},
@@ -4793,8 +5059,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/primer_specificity",
-								"parts": []any{
-									"primer_specificity",
+								"segments": []any{
+									map[string]any{
+										"lit": "primer_specificity",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4805,6 +5073,9 @@ func MakeConfig() map[string]any {
 										"reversePrimer": "`reqdata.reverse_primer`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"primer_specificity",
 								},
 							},
 						},
@@ -4891,8 +5162,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/protease_digestion",
-								"parts": []any{
-									"protease_digestion",
+								"segments": []any{
+									map[string]any{
+										"lit": "protease_digestion",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4905,6 +5178,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"protease_digestion",
 								},
 							},
 						},
@@ -4965,8 +5241,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/protein_annotate_poll",
-								"parts": []any{
-									"protein_annotate_poll",
+								"segments": []any{
+									map[string]any{
+										"lit": "protein_annotate_poll",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -4974,6 +5252,9 @@ func MakeConfig() map[string]any {
 										"jobId": "`reqdata.job_id`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"protein_annotate_poll",
 								},
 							},
 						},
@@ -5045,8 +5326,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/protein_annotate_submit",
-								"parts": []any{
-									"protein_annotate_submit",
+								"segments": []any{
+									map[string]any{
+										"lit": "protein_annotate_submit",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5056,6 +5339,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"protein_annotate_submit",
 								},
 							},
 						},
@@ -5127,8 +5413,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/protein_hydrophobicity",
-								"parts": []any{
-									"protein_hydrophobicity",
+								"segments": []any{
+									map[string]any{
+										"lit": "protein_hydrophobicity",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5138,6 +5426,9 @@ func MakeConfig() map[string]any {
 										"window": "`reqdata.window`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"protein_hydrophobicity",
 								},
 							},
 						},
@@ -5204,8 +5495,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/protein_properties",
-								"parts": []any{
-									"protein_properties",
+								"segments": []any{
+									map[string]any{
+										"lit": "protein_properties",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5214,6 +5507,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"protein_properties",
 								},
 							},
 						},
@@ -5284,8 +5580,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/random_sequence",
-								"parts": []any{
-									"random_sequence",
+								"segments": []any{
+									map[string]any{
+										"lit": "random_sequence",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5295,6 +5593,9 @@ func MakeConfig() map[string]any {
 										"length": "`reqdata.length`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"random_sequence",
 								},
 							},
 						},
@@ -5361,8 +5662,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/restriction_sites",
-								"parts": []any{
-									"restriction_sites",
+								"segments": []any{
+									map[string]any{
+										"lit": "restriction_sites",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5371,6 +5674,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"restriction_sites",
 								},
 							},
 						},
@@ -5436,8 +5742,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/reverse_complement",
-								"parts": []any{
-									"reverse_complement",
+								"segments": []any{
+									map[string]any{
+										"lit": "reverse_complement",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5446,6 +5754,9 @@ func MakeConfig() map[string]any {
 										"type": "`reqdata.type`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"reverse_complement",
 								},
 							},
 						},
@@ -5516,8 +5827,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/reverse_translate",
-								"parts": []any{
-									"reverse_translate",
+								"segments": []any{
+									map[string]any{
+										"lit": "reverse_translate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5527,6 +5840,9 @@ func MakeConfig() map[string]any {
 										"protein": "`reqdata.protein`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"reverse_translate",
 								},
 							},
 						},
@@ -5588,8 +5904,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/rna_fold",
-								"parts": []any{
-									"rna_fold",
+								"segments": []any{
+									map[string]any{
+										"lit": "rna_fold",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5597,6 +5915,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"rna_fold",
 								},
 							},
 						},
@@ -5678,8 +5999,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sanger_vs_reference",
-								"parts": []any{
-									"sanger_vs_reference",
+								"segments": []any{
+									map[string]any{
+										"lit": "sanger_vs_reference",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5691,6 +6014,9 @@ func MakeConfig() map[string]any {
 										"reference": "`reqdata.reference`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sanger_vs_reference",
 								},
 							},
 						},
@@ -5752,8 +6078,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/save_permalink",
-								"parts": []any{
-									"save_permalink",
+								"segments": []any{
+									map[string]any{
+										"lit": "save_permalink",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5762,6 +6090,9 @@ func MakeConfig() map[string]any {
 										"tool": "`reqdata.tool`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"save_permalink",
 								},
 							},
 						},
@@ -5828,8 +6159,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/seqfile_stats",
-								"parts": []any{
-									"seqfile_stats",
+								"segments": []any{
+									map[string]any{
+										"lit": "seqfile_stats",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5838,6 +6171,9 @@ func MakeConfig() map[string]any {
 										"qualityOffset": "`reqdata.quality_offset`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"seqfile_stats",
 								},
 							},
 						},
@@ -5909,8 +6245,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sequence_fetch",
-								"parts": []any{
-									"sequence_fetch",
+								"segments": []any{
+									map[string]any{
+										"lit": "sequence_fetch",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -5920,6 +6258,9 @@ func MakeConfig() map[string]any {
 										"format": "`reqdata.format`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sequence_fetch",
 								},
 							},
 						},
@@ -5991,8 +6332,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sequence_format_convert",
-								"parts": []any{
-									"sequence_format_convert",
+								"segments": []any{
+									map[string]any{
+										"lit": "sequence_format_convert",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6002,6 +6345,9 @@ func MakeConfig() map[string]any {
 										"to": "`reqdata.to`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sequence_format_convert",
 								},
 							},
 						},
@@ -6078,8 +6424,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sequence_report",
-								"parts": []any{
-									"sequence_report",
+								"segments": []any{
+									map[string]any{
+										"lit": "sequence_report",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6090,6 +6438,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sequence_report",
 								},
 							},
 						},
@@ -6169,8 +6520,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sequence_search",
-								"parts": []any{
-									"sequence_search",
+								"segments": []any{
+									map[string]any{
+										"lit": "sequence_search",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6182,6 +6535,9 @@ func MakeConfig() map[string]any {
 										"term": "`reqdata.term`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sequence_search",
 								},
 							},
 						},
@@ -6254,8 +6610,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sequencing_readback_verify",
-								"parts": []any{
-									"sequencing_readback_verify",
+								"segments": []any{
+									map[string]any{
+										"lit": "sequencing_readback_verify",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6265,6 +6623,9 @@ func MakeConfig() map[string]any {
 										"reference": "`reqdata.reference`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sequencing_readback_verify",
 								},
 							},
 						},
@@ -6325,8 +6686,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/session_create",
-								"parts": []any{
-									"session_create",
+								"segments": []any{
+									map[string]any{
+										"lit": "session_create",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6334,6 +6697,9 @@ func MakeConfig() map[string]any {
 										"entries": "`reqdata.entry`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"session_create",
 								},
 							},
 						},
@@ -6399,8 +6765,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/session_get",
-								"parts": []any{
-									"session_get",
+								"segments": []any{
+									map[string]any{
+										"lit": "session_get",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6409,6 +6777,9 @@ func MakeConfig() map[string]any {
 										"sessionId": "`reqdata.session_id`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"session_get",
 								},
 							},
 						},
@@ -6484,8 +6855,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/session_run",
-								"parts": []any{
-									"session_run",
+								"segments": []any{
+									map[string]any{
+										"lit": "session_run",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6497,6 +6870,9 @@ func MakeConfig() map[string]any {
 										"writeBack": "`reqdata.write_back`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"session_run",
 								},
 							},
 						},
@@ -6563,8 +6939,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/session_set",
-								"parts": []any{
-									"session_set",
+								"segments": []any{
+									map[string]any{
+										"lit": "session_set",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6573,6 +6951,9 @@ func MakeConfig() map[string]any {
 										"sessionId": "`reqdata.session_id`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"session_set",
 								},
 							},
 						},
@@ -6644,8 +7025,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/sirna_design",
-								"parts": []any{
-									"sirna_design",
+								"segments": []any{
+									map[string]any{
+										"lit": "sirna_design",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6655,6 +7038,9 @@ func MakeConfig() map[string]any {
 										"target": "`reqdata.target`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"sirna_design",
 								},
 							},
 						},
@@ -6781,8 +7167,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/site_directed_mutagenesis",
-								"parts": []any{
-									"site_directed_mutagenesis",
+								"segments": []any{
+									map[string]any{
+										"lit": "site_directed_mutagenesis",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6803,6 +7191,9 @@ func MakeConfig() map[string]any {
 										"template": "`reqdata.template`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"site_directed_mutagenesis",
 								},
 							},
 						},
@@ -6873,8 +7264,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/translate",
-								"parts": []any{
-									"translate",
+								"segments": []any{
+									map[string]any{
+										"lit": "translate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6884,6 +7277,9 @@ func MakeConfig() map[string]any {
 										"toStop": "`reqdata.to_stop`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"translate",
 								},
 							},
 						},
@@ -6950,8 +7346,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/variant_annotate",
-								"parts": []any{
-									"variant_annotate",
+								"segments": []any{
+									map[string]any{
+										"lit": "variant_annotate",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -6960,6 +7358,9 @@ func MakeConfig() map[string]any {
 										"variant": "`reqdata.variant`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"variant_annotate",
 								},
 							},
 						},
@@ -7037,8 +7438,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/variant_comparator",
-								"parts": []any{
-									"variant_comparator",
+								"segments": []any{
+									map[string]any{
+										"lit": "variant_comparator",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7049,6 +7452,9 @@ func MakeConfig() map[string]any {
 										"reference": "`reqdata.reference`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"variant_comparator",
 								},
 							},
 						},
@@ -7191,8 +7597,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/verify_assembly",
-								"parts": []any{
-									"verify_assembly",
+								"segments": []any{
+									map[string]any{
+										"lit": "verify_assembly",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7216,6 +7624,9 @@ func MakeConfig() map[string]any {
 										"vectorPcr": "`reqdata.vector_pcr`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"verify_assembly",
 								},
 							},
 						},
@@ -7310,8 +7721,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/verify_construct",
-								"parts": []any{
-									"verify_construct",
+								"segments": []any{
+									map[string]any{
+										"lit": "verify_construct",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7325,6 +7738,9 @@ func MakeConfig() map[string]any {
 										"templateCircular": "`reqdata.template_circular`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"verify_construct",
 								},
 							},
 						},
@@ -7401,8 +7817,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/virtual_gel",
-								"parts": []any{
-									"virtual_gel",
+								"segments": []any{
+									map[string]any{
+										"lit": "virtual_gel",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7413,6 +7831,9 @@ func MakeConfig() map[string]any {
 										"sequence": "`reqdata.sequence`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"virtual_gel",
 								},
 							},
 						},
@@ -7474,8 +7895,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/volcano_plot_data",
-								"parts": []any{
-									"volcano_plot_data",
+								"segments": []any{
+									map[string]any{
+										"lit": "volcano_plot_data",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7483,6 +7906,9 @@ func MakeConfig() map[string]any {
 										"rows": "`reqdata.row`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"volcano_plot_data",
 								},
 							},
 						},
@@ -7549,8 +7975,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "POST",
 								"orig": "/web_search",
-								"parts": []any{
-									"web_search",
+								"segments": []any{
+									map[string]any{
+										"lit": "web_search",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
@@ -7559,6 +7987,9 @@ func MakeConfig() map[string]any {
 										"query": "`reqdata.query`",
 									},
 									"res": "`body`",
+								},
+								"parts": []any{
+									"web_search",
 								},
 							},
 						},
@@ -7570,6 +8001,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

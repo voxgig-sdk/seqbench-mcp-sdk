@@ -66,8 +66,10 @@ main: kit: entity: aso_design: {
         {
           method: "POST"
           orig: "/aso_design"
-          parts: [
-            "aso_design"
+          segments: [
+            {
+              lit: "aso_design"
+            }
           ]
           transform: {
             req: {

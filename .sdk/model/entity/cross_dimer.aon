@@ -60,8 +60,10 @@ main: kit: entity: cross_dimer: {
         {
           method: "POST"
           orig: "/cross_dimer"
-          parts: [
-            "cross_dimer"
+          segments: [
+            {
+              lit: "cross_dimer"
+            }
           ]
           transform: {
             req: {

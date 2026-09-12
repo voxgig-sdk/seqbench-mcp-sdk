@@ -59,8 +59,10 @@ main: kit: entity: session_set: {
         {
           method: "POST"
           orig: "/session_set"
-          parts: [
-            "session_set"
+          segments: [
+            {
+              lit: "session_set"
+            }
           ]
           transform: {
             req: {

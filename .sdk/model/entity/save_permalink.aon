@@ -54,8 +54,10 @@ main: kit: entity: save_permalink: {
         {
           method: "POST"
           orig: "/save_permalink"
-          parts: [
-            "save_permalink"
+          segments: [
+            {
+              lit: "save_permalink"
+            }
           ]
           transform: {
             req: {

@@ -54,8 +54,10 @@ main: kit: entity: alphafold_lookup: {
         {
           method: "POST"
           orig: "/alphafold_lookup"
-          parts: [
-            "alphafold_lookup"
+          segments: [
+            {
+              lit: "alphafold_lookup"
+            }
           ]
           transform: {
             req: {

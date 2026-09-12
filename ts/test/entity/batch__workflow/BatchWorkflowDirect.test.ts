@@ -1,6 +1,4 @@
 
-const envlocal = __dirname + '/../../../.env.local'
-require('dotenv').config({ quiet: true, path: [envlocal] })
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
@@ -10,10 +8,19 @@ import { SeqbenchMcpSDK } from '../../..'
 
 import {
   envOverride,
+  liveClientOptions,
   liveDelay,
+  loadEnvLocal,
   maybeSkipControl,
   skipIfMissingIds,
 } from '../../utility'
+
+
+// AFTER the imports on purpose: TypeScript hoists `import` above any
+// statement in the emitted CommonJS, so a loader placed above them would
+// run only after every imported module had already been evaluated - and
+// anything reading process.env at module scope would miss these values.
+loadEnvLocal(__dirname + '/../../../.env.local')
 
 
 describe('BatchWorkflowDirect', async () => {
@@ -78,15 +85,18 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'SEQBENCH_MCP_TEST_BATCH_WORKFLOW_ENTID': {},
     'SEQBENCH_MCP_TEST_LIVE': 'FALSE',
-    'SEQBENCH_MCP_APIKEY': 'NONE',
+    'SEQBENCH_MCP_APIKEY': '',
   })
 
   const live = 'TRUE' === env.SEQBENCH_MCP_TEST_LIVE
 
   if (live) {
-    const client = new SeqbenchMcpSDK({
+    // Merged so the generated fields win: sdk-test-control.json's
+    // test.client.options adds to the live client, it does not redirect it.
+    const client = new SeqbenchMcpSDK(
+      Object.assign({}, liveClientOptions(), {
       apikey: env.SEQBENCH_MCP_APIKEY,
-    })
+      }))
 
     let idmap: any = env['SEQBENCH_MCP_TEST_BATCH_WORKFLOW_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {

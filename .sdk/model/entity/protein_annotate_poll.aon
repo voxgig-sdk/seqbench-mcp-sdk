@@ -53,8 +53,10 @@ main: kit: entity: protein_annotate_poll: {
         {
           method: "POST"
           orig: "/protein_annotate_poll"
-          parts: [
-            "protein_annotate_poll"
+          segments: [
+            {
+              lit: "protein_annotate_poll"
+            }
           ]
           transform: {
             req: {

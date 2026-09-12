@@ -52,7 +52,7 @@ func TestParseGenbankEntity(t *testing.T) {
 		// CREATE
 		parseGenbankRef01Ent := client.ParseGenbank(nil)
 		parseGenbankRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "parse_genbank"}, setup.data), "parse_genbank_ref01"))
+			vs.GetPath(setup.data, []any{"new", "parse_genbank"}), "parse_genbank_ref01"))
 
 		parseGenbankRef01DataResult, err := parseGenbankRef01Ent.Create(parseGenbankRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func parse_genbankBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"parse_genbank01", "parse_genbank02", "parse_genbank03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func parse_genbankBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_PARSE_GENBANK_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_PARSE_GENBANK_ENTID"])
@@ -119,11 +119,23 @@ func parse_genbankBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

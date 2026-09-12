@@ -52,7 +52,7 @@ func TestCrossDimerEntity(t *testing.T) {
 		// CREATE
 		crossDimerRef01Ent := client.CrossDimer(nil)
 		crossDimerRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "cross_dimer"}, setup.data), "cross_dimer_ref01"))
+			vs.GetPath(setup.data, []any{"new", "cross_dimer"}), "cross_dimer_ref01"))
 
 		crossDimerRef01DataResult, err := crossDimerRef01Ent.Create(crossDimerRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func cross_dimerBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"cross_dimer01", "cross_dimer02", "cross_dimer03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func cross_dimerBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_CROSS_DIMER_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_CROSS_DIMER_ENTID"])
@@ -119,11 +119,23 @@ func cross_dimerBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

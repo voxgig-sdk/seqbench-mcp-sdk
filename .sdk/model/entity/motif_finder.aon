@@ -72,8 +72,10 @@ main: kit: entity: motif_finder: {
         {
           method: "POST"
           orig: "/motif_finder"
-          parts: [
-            "motif_finder"
+          segments: [
+            {
+              lit: "motif_finder"
+            }
           ]
           transform: {
             req: {

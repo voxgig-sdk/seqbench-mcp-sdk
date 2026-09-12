@@ -66,8 +66,10 @@ main: kit: entity: sirna_design: {
         {
           method: "POST"
           orig: "/sirna_design"
-          parts: [
-            "sirna_design"
+          segments: [
+            {
+              lit: "sirna_design"
+            }
           ]
           transform: {
             req: {

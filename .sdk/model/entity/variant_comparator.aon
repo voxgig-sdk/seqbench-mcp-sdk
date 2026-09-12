@@ -72,8 +72,10 @@ main: kit: entity: variant_comparator: {
         {
           method: "POST"
           orig: "/variant_comparator"
-          parts: [
-            "variant_comparator"
+          segments: [
+            {
+              lit: "variant_comparator"
+            }
           ]
           transform: {
             req: {

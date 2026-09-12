@@ -150,8 +150,10 @@ main: kit: entity: verify_assembly: {
         {
           method: "POST"
           orig: "/verify_assembly"
-          parts: [
-            "verify_assembly"
+          segments: [
+            {
+              lit: "verify_assembly"
+            }
           ]
           transform: {
             req: {

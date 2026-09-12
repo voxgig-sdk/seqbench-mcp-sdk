@@ -54,8 +54,10 @@ main: kit: entity: export_echo_picklist: {
         {
           method: "POST"
           orig: "/export_echo_picklist"
-          parts: [
-            "export_echo_picklist"
+          segments: [
+            {
+              lit: "export_echo_picklist"
+            }
           ]
           transform: {
             req: {

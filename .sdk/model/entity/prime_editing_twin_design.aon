@@ -84,8 +84,10 @@ main: kit: entity: prime_editing_twin_design: {
         {
           method: "POST"
           orig: "/prime_editing_twin_design"
-          parts: [
-            "prime_editing_twin_design"
+          segments: [
+            {
+              lit: "prime_editing_twin_design"
+            }
           ]
           transform: {
             req: {

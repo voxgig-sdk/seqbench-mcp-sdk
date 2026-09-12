@@ -60,8 +60,10 @@ main: kit: entity: plasmid_deep_annotate: {
         {
           method: "POST"
           orig: "/plasmid_deep_annotate"
-          parts: [
-            "plasmid_deep_annotate"
+          segments: [
+            {
+              lit: "plasmid_deep_annotate"
+            }
           ]
           transform: {
             req: {

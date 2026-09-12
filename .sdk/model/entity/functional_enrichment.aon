@@ -78,8 +78,10 @@ main: kit: entity: functional_enrichment: {
         {
           method: "POST"
           orig: "/functional_enrichment"
-          parts: [
-            "functional_enrichment"
+          segments: [
+            {
+              lit: "functional_enrichment"
+            }
           ]
           transform: {
             req: {

@@ -194,8 +194,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/alphafold_lookup',
-                  'parts' => [
-                    'alphafold_lookup',
+                  'segments' => [
+                    [
+                      'lit' => 'alphafold_lookup',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -203,6 +205,9 @@ class SeqbenchMcpConfig
                       'accession' => '`reqdata.accession`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'alphafold_lookup',
                   ],
                 ],
               ],
@@ -274,8 +279,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/aso_design',
-                  'parts' => [
-                    'aso_design',
+                  'segments' => [
+                    [
+                      'lit' => 'aso_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -285,6 +292,9 @@ class SeqbenchMcpConfig
                       'wing' => '`reqdata.wing`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'aso_design',
                   ],
                 ],
               ],
@@ -361,8 +371,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/base_editing_design',
-                  'parts' => [
-                    'base_editing_design',
+                  'segments' => [
+                    [
+                      'lit' => 'base_editing_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -373,6 +385,9 @@ class SeqbenchMcpConfig
                       'targetPosition' => '`reqdata.target_position`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'base_editing_design',
                   ],
                 ],
               ],
@@ -455,13 +470,18 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/batch',
-                  'parts' => [
-                    'batch',
+                  'segments' => [
+                    [
+                      'lit' => 'batch',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.result`',
+                  ],
+                  'parts' => [
+                    'batch',
                   ],
                 ],
               ],
@@ -475,13 +495,18 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/batch',
-                  'parts' => [
-                    'batch',
+                  'segments' => [
+                    [
+                      'lit' => 'batch',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'batch',
                   ],
                 ],
               ],
@@ -558,13 +583,18 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/workflow',
-                  'parts' => [
-                    'workflow',
+                  'segments' => [
+                    [
+                      'lit' => 'workflow',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.result`',
+                  ],
+                  'parts' => [
+                    'workflow',
                   ],
                 ],
               ],
@@ -578,13 +608,18 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/workflow',
-                  'parts' => [
-                    'workflow',
+                  'segments' => [
+                    [
+                      'lit' => 'workflow',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'workflow',
                   ],
                 ],
               ],
@@ -661,8 +696,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/characterize_sequence',
-                  'parts' => [
-                    'characterize_sequence',
+                  'segments' => [
+                    [
+                      'lit' => 'characterize_sequence',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -673,6 +710,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'characterize_sequence',
                   ],
                 ],
               ],
@@ -784,8 +824,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/cloning_simulate',
-                  'parts' => [
-                    'cloning_simulate',
+                  'segments' => [
+                    [
+                      'lit' => 'cloning_simulate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -803,6 +845,9 @@ class SeqbenchMcpConfig
                       'vector' => '`reqdata.vector`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'cloning_simulate',
                   ],
                 ],
               ],
@@ -878,8 +923,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/codon_adaptation_index',
-                  'parts' => [
-                    'codon_adaptation_index',
+                  'segments' => [
+                    [
+                      'lit' => 'codon_adaptation_index',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -890,6 +937,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'codon_adaptation_index',
                   ],
                 ],
               ],
@@ -955,8 +1005,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/codon_optimize',
-                  'parts' => [
-                    'codon_optimize',
+                  'segments' => [
+                    [
+                      'lit' => 'codon_optimize',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -965,6 +1017,9 @@ class SeqbenchMcpConfig
                       'protein' => '`reqdata.protein`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'codon_optimize',
                   ],
                 ],
               ],
@@ -1067,8 +1122,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/construct_autofix',
-                  'parts' => [
-                    'construct_autofix',
+                  'segments' => [
+                    [
+                      'lit' => 'construct_autofix',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1085,6 +1142,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'construct_autofix',
                   ],
                 ],
               ],
@@ -1181,8 +1241,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/construct_qc',
-                  'parts' => [
-                    'construct_qc',
+                  'segments' => [
+                    [
+                      'lit' => 'construct_qc',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1197,6 +1259,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'construct_qc',
                   ],
                 ],
               ],
@@ -1273,8 +1338,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/crispr_grna_design',
-                  'parts' => [
-                    'crispr_grna_design',
+                  'segments' => [
+                    [
+                      'lit' => 'crispr_grna_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1285,6 +1352,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'crispr_grna_design',
                   ],
                 ],
               ],
@@ -1402,8 +1472,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/crispr_hdr_donor',
-                  'parts' => [
-                    'crispr_hdr_donor',
+                  'segments' => [
+                    [
+                      'lit' => 'crispr_hdr_donor',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1422,6 +1494,9 @@ class SeqbenchMcpConfig
                       'targetSequence' => '`reqdata.target_sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'crispr_hdr_donor',
                   ],
                 ],
               ],
@@ -1493,8 +1568,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/crispr_offtarget_check',
-                  'parts' => [
-                    'crispr_offtarget_check',
+                  'segments' => [
+                    [
+                      'lit' => 'crispr_offtarget_check',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1504,6 +1581,9 @@ class SeqbenchMcpConfig
                       'protospacer' => '`reqdata.protospacer`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'crispr_offtarget_check',
                   ],
                 ],
               ],
@@ -1571,8 +1651,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/cross_dimer',
-                  'parts' => [
-                    'cross_dimer',
+                  'segments' => [
+                    [
+                      'lit' => 'cross_dimer',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1581,6 +1663,9 @@ class SeqbenchMcpConfig
                       'sequenceB' => '`reqdata.sequence_b`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'cross_dimer',
                   ],
                 ],
               ],
@@ -1661,8 +1746,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/dna_molarity',
-                  'parts' => [
-                    'dna_molarity',
+                  'segments' => [
+                    [
+                      'lit' => 'dna_molarity',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1674,6 +1761,9 @@ class SeqbenchMcpConfig
                       'volumeUl' => '`reqdata.volume_ul`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'dna_molarity',
                   ],
                 ],
               ],
@@ -1741,8 +1831,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/double_digest',
-                  'parts' => [
-                    'double_digest',
+                  'segments' => [
+                    [
+                      'lit' => 'double_digest',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1751,6 +1843,9 @@ class SeqbenchMcpConfig
                       'enzymeB' => '`reqdata.enzyme_b`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'double_digest',
                   ],
                 ],
               ],
@@ -1812,8 +1907,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/export_echo_picklist',
-                  'parts' => [
-                    'export_echo_picklist',
+                  'segments' => [
+                    [
+                      'lit' => 'export_echo_picklist',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1821,6 +1918,9 @@ class SeqbenchMcpConfig
                       'reactions' => '`reqdata.reaction`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'export_echo_picklist',
                   ],
                 ],
               ],
@@ -1887,8 +1987,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/export_opentrons_protocol',
-                  'parts' => [
-                    'export_opentrons_protocol',
+                  'segments' => [
+                    [
+                      'lit' => 'export_opentrons_protocol',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1897,6 +1999,9 @@ class SeqbenchMcpConfig
                       'reactions' => '`reqdata.reaction`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'export_opentrons_protocol',
                   ],
                 ],
               ],
@@ -1958,8 +2063,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/export_plate_layout',
-                  'parts' => [
-                    'export_plate_layout',
+                  'segments' => [
+                    [
+                      'lit' => 'export_plate_layout',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -1967,6 +2074,9 @@ class SeqbenchMcpConfig
                       'reactions' => '`reqdata.reaction`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'export_plate_layout',
                   ],
                 ],
               ],
@@ -2065,8 +2175,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/expression_heatmap_cluster',
-                  'parts' => [
-                    'expression_heatmap_cluster',
+                  'segments' => [
+                    [
+                      'lit' => 'expression_heatmap_cluster',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2081,6 +2193,9 @@ class SeqbenchMcpConfig
                       'zScoreRows' => '`reqdata.z_score_row`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'expression_heatmap_cluster',
                   ],
                 ],
               ],
@@ -2147,8 +2262,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/fastq_qc_report',
-                  'parts' => [
-                    'fastq_qc_report',
+                  'segments' => [
+                    [
+                      'lit' => 'fastq_qc_report',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2157,6 +2274,9 @@ class SeqbenchMcpConfig
                       'qualityOffset' => '`reqdata.quality_offset`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'fastq_qc_report',
                   ],
                 ],
               ],
@@ -2233,8 +2353,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/fastq_trim',
-                  'parts' => [
-                    'fastq_trim',
+                  'segments' => [
+                    [
+                      'lit' => 'fastq_trim',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2245,6 +2367,9 @@ class SeqbenchMcpConfig
                       'qualityThreshold' => '`reqdata.quality_threshold`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'fastq_trim',
                   ],
                 ],
               ],
@@ -2316,8 +2441,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/find_orfs',
-                  'parts' => [
-                    'find_orfs',
+                  'segments' => [
+                    [
+                      'lit' => 'find_orfs',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2327,6 +2454,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'find_orfs',
                   ],
                 ],
               ],
@@ -2412,8 +2542,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/format_sequence',
-                  'parts' => [
-                    'format_sequence',
+                  'segments' => [
+                    [
+                      'lit' => 'format_sequence',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2426,6 +2558,9 @@ class SeqbenchMcpConfig
                       'width' => '`reqdata.width`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'format_sequence',
                   ],
                 ],
               ],
@@ -2507,8 +2642,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/functional_enrichment',
-                  'parts' => [
-                    'functional_enrichment',
+                  'segments' => [
+                    [
+                      'lit' => 'functional_enrichment',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2520,6 +2657,9 @@ class SeqbenchMcpConfig
                       'minTermSize' => '`reqdata.min_term_size`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'functional_enrichment',
                   ],
                 ],
               ],
@@ -2581,8 +2721,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/gc_content',
-                  'parts' => [
-                    'gc_content',
+                  'segments' => [
+                    [
+                      'lit' => 'gc_content',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2590,6 +2732,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'gc_content',
                   ],
                 ],
               ],
@@ -2651,8 +2796,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/gene_dossier',
-                  'parts' => [
-                    'gene_dossier',
+                  'segments' => [
+                    [
+                      'lit' => 'gene_dossier',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2660,6 +2807,9 @@ class SeqbenchMcpConfig
                       'gene' => '`reqdata.gene`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'gene_dossier',
                   ],
                 ],
               ],
@@ -2721,8 +2871,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/gene_expression',
-                  'parts' => [
-                    'gene_expression',
+                  'segments' => [
+                    [
+                      'lit' => 'gene_expression',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2730,6 +2882,9 @@ class SeqbenchMcpConfig
                       'gene' => '`reqdata.gene`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'gene_expression',
                   ],
                 ],
               ],
@@ -2791,8 +2946,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/gene_model',
-                  'parts' => [
-                    'gene_model',
+                  'segments' => [
+                    [
+                      'lit' => 'gene_model',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2800,6 +2957,9 @@ class SeqbenchMcpConfig
                       'gene' => '`reqdata.gene`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'gene_model',
                   ],
                 ],
               ],
@@ -2876,8 +3036,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/golden_gate_fidelity',
-                  'parts' => [
-                    'golden_gate_fidelity',
+                  'segments' => [
+                    [
+                      'lit' => 'golden_gate_fidelity',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2888,6 +3050,9 @@ class SeqbenchMcpConfig
                       'riskThreshold' => '`reqdata.risk_threshold`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'golden_gate_fidelity',
                   ],
                 ],
               ],
@@ -2949,8 +3114,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/hgvs_convert',
-                  'parts' => [
-                    'hgvs_convert',
+                  'segments' => [
+                    [
+                      'lit' => 'hgvs_convert',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -2958,6 +3125,9 @@ class SeqbenchMcpConfig
                       'variant' => '`reqdata.variant`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'hgvs_convert',
                   ],
                 ],
               ],
@@ -3018,8 +3188,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/id_map_poll',
-                  'parts' => [
-                    'id_map_poll',
+                  'segments' => [
+                    [
+                      'lit' => 'id_map_poll',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3027,6 +3199,9 @@ class SeqbenchMcpConfig
                       'jobId' => '`reqdata.job_id`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'id_map_poll',
                   ],
                 ],
               ],
@@ -3105,8 +3280,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/id_map_submit',
-                  'parts' => [
-                    'id_map_submit',
+                  'segments' => [
+                    [
+                      'lit' => 'id_map_submit',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3117,6 +3294,9 @@ class SeqbenchMcpConfig
                       'to' => '`reqdata.to`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'id_map_submit',
                   ],
                 ],
               ],
@@ -3200,8 +3380,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/in_silico_pcr',
-                  'parts' => [
-                    'in_silico_pcr',
+                  'segments' => [
+                    [
+                      'lit' => 'in_silico_pcr',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3213,6 +3395,9 @@ class SeqbenchMcpConfig
                       'template' => '`reqdata.template`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'in_silico_pcr',
                   ],
                 ],
               ],
@@ -3312,8 +3497,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/kasp_primer_design',
-                  'parts' => [
-                    'kasp_primer_design',
+                  'segments' => [
+                    [
+                      'lit' => 'kasp_primer_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3328,6 +3515,9 @@ class SeqbenchMcpConfig
                       'targetCoreTm' => '`reqdata.target_core_tm`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'kasp_primer_design',
                   ],
                 ],
               ],
@@ -3350,12 +3540,13 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],
@@ -3446,8 +3637,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/melting_temperature',
-                  'parts' => [
-                    'melting_temperature',
+                  'segments' => [
+                    [
+                      'lit' => 'melting_temperature',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3461,6 +3654,9 @@ class SeqbenchMcpConfig
                       'tmTolerance' => '`reqdata.tm_tolerance`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'melting_temperature',
                   ],
                 ],
               ],
@@ -3538,8 +3734,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/motif_finder',
-                  'parts' => [
-                    'motif_finder',
+                  'segments' => [
+                    [
+                      'lit' => 'motif_finder',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3550,6 +3748,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'motif_finder',
                   ],
                 ],
               ],
@@ -3611,8 +3812,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/multiple_sequence_alignment',
-                  'parts' => [
-                    'multiple_sequence_alignment',
+                  'segments' => [
+                    [
+                      'lit' => 'multiple_sequence_alignment',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3620,6 +3823,9 @@ class SeqbenchMcpConfig
                       'input' => '`reqdata.input`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'multiple_sequence_alignment',
                   ],
                 ],
               ],
@@ -3701,8 +3907,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/oligo_analysis',
-                  'parts' => [
-                    'oligo_analysis',
+                  'segments' => [
+                    [
+                      'lit' => 'oligo_analysis',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3714,6 +3922,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'oligo_analysis',
                   ],
                 ],
               ],
@@ -3791,8 +4002,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/ortholog_map',
-                  'parts' => [
-                    'ortholog_map',
+                  'segments' => [
+                    [
+                      'lit' => 'ortholog_map',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3803,6 +4016,9 @@ class SeqbenchMcpConfig
                       'type' => '`reqdata.type`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'ortholog_map',
                   ],
                 ],
               ],
@@ -3889,8 +4105,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/pairwise_alignment',
-                  'parts' => [
-                    'pairwise_alignment',
+                  'segments' => [
+                    [
+                      'lit' => 'pairwise_alignment',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3903,6 +4121,9 @@ class SeqbenchMcpConfig
                       'seqB' => '`reqdata.seq_b`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'pairwise_alignment',
                   ],
                 ],
               ],
@@ -3964,8 +4185,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/parse_genbank',
-                  'parts' => [
-                    'parse_genbank',
+                  'segments' => [
+                    [
+                      'lit' => 'parse_genbank',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -3973,6 +4196,9 @@ class SeqbenchMcpConfig
                       'text' => '`reqdata.text`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'parse_genbank',
                   ],
                 ],
               ],
@@ -4039,8 +4265,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/parse_sanger_trace',
-                  'parts' => [
-                    'parse_sanger_trace',
+                  'segments' => [
+                    [
+                      'lit' => 'parse_sanger_trace',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4049,6 +4277,9 @@ class SeqbenchMcpConfig
                       'fileName' => '`reqdata.file_name`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'parse_sanger_trace',
                   ],
                 ],
               ],
@@ -4110,8 +4341,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/plasmid_annotate',
-                  'parts' => [
-                    'plasmid_annotate',
+                  'segments' => [
+                    [
+                      'lit' => 'plasmid_annotate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4119,6 +4352,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'plasmid_annotate',
                   ],
                 ],
               ],
@@ -4185,8 +4421,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/plasmid_deep_annotate',
-                  'parts' => [
-                    'plasmid_deep_annotate',
+                  'segments' => [
+                    [
+                      'lit' => 'plasmid_deep_annotate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4195,6 +4433,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'plasmid_deep_annotate',
                   ],
                 ],
               ],
@@ -4266,8 +4507,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/plasmid_full_report',
-                  'parts' => [
-                    'plasmid_full_report',
+                  'segments' => [
+                    [
+                      'lit' => 'plasmid_full_report',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4277,6 +4520,9 @@ class SeqbenchMcpConfig
                       'topN' => '`reqdata.top_n`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'plasmid_full_report',
                   ],
                 ],
               ],
@@ -4348,8 +4594,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/plasmid_identify',
-                  'parts' => [
-                    'plasmid_identify',
+                  'segments' => [
+                    [
+                      'lit' => 'plasmid_identify',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4359,6 +4607,9 @@ class SeqbenchMcpConfig
                       'topN' => '`reqdata.top_n`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'plasmid_identify',
                   ],
                 ],
               ],
@@ -4452,8 +4703,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/prime_editing_design',
-                  'parts' => [
-                    'prime_editing_design',
+                  'segments' => [
+                    [
+                      'lit' => 'prime_editing_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4467,6 +4720,9 @@ class SeqbenchMcpConfig
                       'target' => '`reqdata.target`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'prime_editing_design',
                   ],
                 ],
               ],
@@ -4556,8 +4812,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/prime_editing_twin_design',
-                  'parts' => [
-                    'prime_editing_twin_design',
+                  'segments' => [
+                    [
+                      'lit' => 'prime_editing_twin_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4570,6 +4828,9 @@ class SeqbenchMcpConfig
                       'target' => '`reqdata.target`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'prime_editing_twin_design',
                   ],
                 ],
               ],
@@ -4711,8 +4972,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/primer_design',
-                  'parts' => [
-                    'primer_design',
+                  'segments' => [
+                    [
+                      'lit' => 'primer_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4738,6 +5001,9 @@ class SeqbenchMcpConfig
                       'tmOpt' => '`reqdata.tm_opt`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'primer_design',
                   ],
                 ],
               ],
@@ -4815,8 +5081,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/primer_specificity',
-                  'parts' => [
-                    'primer_specificity',
+                  'segments' => [
+                    [
+                      'lit' => 'primer_specificity',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4827,6 +5095,9 @@ class SeqbenchMcpConfig
                       'reversePrimer' => '`reqdata.reverse_primer`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'primer_specificity',
                   ],
                 ],
               ],
@@ -4913,8 +5184,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/protease_digestion',
-                  'parts' => [
-                    'protease_digestion',
+                  'segments' => [
+                    [
+                      'lit' => 'protease_digestion',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4927,6 +5200,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'protease_digestion',
                   ],
                 ],
               ],
@@ -4987,8 +5263,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/protein_annotate_poll',
-                  'parts' => [
-                    'protein_annotate_poll',
+                  'segments' => [
+                    [
+                      'lit' => 'protein_annotate_poll',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -4996,6 +5274,9 @@ class SeqbenchMcpConfig
                       'jobId' => '`reqdata.job_id`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'protein_annotate_poll',
                   ],
                 ],
               ],
@@ -5067,8 +5348,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/protein_annotate_submit',
-                  'parts' => [
-                    'protein_annotate_submit',
+                  'segments' => [
+                    [
+                      'lit' => 'protein_annotate_submit',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5078,6 +5361,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'protein_annotate_submit',
                   ],
                 ],
               ],
@@ -5149,8 +5435,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/protein_hydrophobicity',
-                  'parts' => [
-                    'protein_hydrophobicity',
+                  'segments' => [
+                    [
+                      'lit' => 'protein_hydrophobicity',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5160,6 +5448,9 @@ class SeqbenchMcpConfig
                       'window' => '`reqdata.window`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'protein_hydrophobicity',
                   ],
                 ],
               ],
@@ -5226,8 +5517,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/protein_properties',
-                  'parts' => [
-                    'protein_properties',
+                  'segments' => [
+                    [
+                      'lit' => 'protein_properties',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5236,6 +5529,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'protein_properties',
                   ],
                 ],
               ],
@@ -5306,8 +5602,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/random_sequence',
-                  'parts' => [
-                    'random_sequence',
+                  'segments' => [
+                    [
+                      'lit' => 'random_sequence',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5317,6 +5615,9 @@ class SeqbenchMcpConfig
                       'length' => '`reqdata.length`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'random_sequence',
                   ],
                 ],
               ],
@@ -5383,8 +5684,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/restriction_sites',
-                  'parts' => [
-                    'restriction_sites',
+                  'segments' => [
+                    [
+                      'lit' => 'restriction_sites',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5393,6 +5696,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'restriction_sites',
                   ],
                 ],
               ],
@@ -5458,8 +5764,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/reverse_complement',
-                  'parts' => [
-                    'reverse_complement',
+                  'segments' => [
+                    [
+                      'lit' => 'reverse_complement',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5468,6 +5776,9 @@ class SeqbenchMcpConfig
                       'type' => '`reqdata.type`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'reverse_complement',
                   ],
                 ],
               ],
@@ -5538,8 +5849,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/reverse_translate',
-                  'parts' => [
-                    'reverse_translate',
+                  'segments' => [
+                    [
+                      'lit' => 'reverse_translate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5549,6 +5862,9 @@ class SeqbenchMcpConfig
                       'protein' => '`reqdata.protein`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'reverse_translate',
                   ],
                 ],
               ],
@@ -5610,8 +5926,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/rna_fold',
-                  'parts' => [
-                    'rna_fold',
+                  'segments' => [
+                    [
+                      'lit' => 'rna_fold',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5619,6 +5937,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'rna_fold',
                   ],
                 ],
               ],
@@ -5700,8 +6021,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sanger_vs_reference',
-                  'parts' => [
-                    'sanger_vs_reference',
+                  'segments' => [
+                    [
+                      'lit' => 'sanger_vs_reference',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5713,6 +6036,9 @@ class SeqbenchMcpConfig
                       'reference' => '`reqdata.reference`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sanger_vs_reference',
                   ],
                 ],
               ],
@@ -5774,8 +6100,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/save_permalink',
-                  'parts' => [
-                    'save_permalink',
+                  'segments' => [
+                    [
+                      'lit' => 'save_permalink',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5784,6 +6112,9 @@ class SeqbenchMcpConfig
                       'tool' => '`reqdata.tool`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'save_permalink',
                   ],
                 ],
               ],
@@ -5850,8 +6181,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/seqfile_stats',
-                  'parts' => [
-                    'seqfile_stats',
+                  'segments' => [
+                    [
+                      'lit' => 'seqfile_stats',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5860,6 +6193,9 @@ class SeqbenchMcpConfig
                       'qualityOffset' => '`reqdata.quality_offset`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'seqfile_stats',
                   ],
                 ],
               ],
@@ -5931,8 +6267,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sequence_fetch',
-                  'parts' => [
-                    'sequence_fetch',
+                  'segments' => [
+                    [
+                      'lit' => 'sequence_fetch',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -5942,6 +6280,9 @@ class SeqbenchMcpConfig
                       'format' => '`reqdata.format`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sequence_fetch',
                   ],
                 ],
               ],
@@ -6013,8 +6354,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sequence_format_convert',
-                  'parts' => [
-                    'sequence_format_convert',
+                  'segments' => [
+                    [
+                      'lit' => 'sequence_format_convert',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6024,6 +6367,9 @@ class SeqbenchMcpConfig
                       'to' => '`reqdata.to`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sequence_format_convert',
                   ],
                 ],
               ],
@@ -6100,8 +6446,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sequence_report',
-                  'parts' => [
-                    'sequence_report',
+                  'segments' => [
+                    [
+                      'lit' => 'sequence_report',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6112,6 +6460,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sequence_report',
                   ],
                 ],
               ],
@@ -6191,8 +6542,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sequence_search',
-                  'parts' => [
-                    'sequence_search',
+                  'segments' => [
+                    [
+                      'lit' => 'sequence_search',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6204,6 +6557,9 @@ class SeqbenchMcpConfig
                       'term' => '`reqdata.term`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sequence_search',
                   ],
                 ],
               ],
@@ -6276,8 +6632,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sequencing_readback_verify',
-                  'parts' => [
-                    'sequencing_readback_verify',
+                  'segments' => [
+                    [
+                      'lit' => 'sequencing_readback_verify',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6287,6 +6645,9 @@ class SeqbenchMcpConfig
                       'reference' => '`reqdata.reference`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sequencing_readback_verify',
                   ],
                 ],
               ],
@@ -6347,8 +6708,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/session_create',
-                  'parts' => [
-                    'session_create',
+                  'segments' => [
+                    [
+                      'lit' => 'session_create',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6356,6 +6719,9 @@ class SeqbenchMcpConfig
                       'entries' => '`reqdata.entry`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'session_create',
                   ],
                 ],
               ],
@@ -6421,8 +6787,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/session_get',
-                  'parts' => [
-                    'session_get',
+                  'segments' => [
+                    [
+                      'lit' => 'session_get',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6431,6 +6799,9 @@ class SeqbenchMcpConfig
                       'sessionId' => '`reqdata.session_id`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'session_get',
                   ],
                 ],
               ],
@@ -6506,8 +6877,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/session_run',
-                  'parts' => [
-                    'session_run',
+                  'segments' => [
+                    [
+                      'lit' => 'session_run',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6519,6 +6892,9 @@ class SeqbenchMcpConfig
                       'writeBack' => '`reqdata.write_back`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'session_run',
                   ],
                 ],
               ],
@@ -6585,8 +6961,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/session_set',
-                  'parts' => [
-                    'session_set',
+                  'segments' => [
+                    [
+                      'lit' => 'session_set',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6595,6 +6973,9 @@ class SeqbenchMcpConfig
                       'sessionId' => '`reqdata.session_id`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'session_set',
                   ],
                 ],
               ],
@@ -6666,8 +7047,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/sirna_design',
-                  'parts' => [
-                    'sirna_design',
+                  'segments' => [
+                    [
+                      'lit' => 'sirna_design',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6677,6 +7060,9 @@ class SeqbenchMcpConfig
                       'target' => '`reqdata.target`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'sirna_design',
                   ],
                 ],
               ],
@@ -6803,8 +7189,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/site_directed_mutagenesis',
-                  'parts' => [
-                    'site_directed_mutagenesis',
+                  'segments' => [
+                    [
+                      'lit' => 'site_directed_mutagenesis',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6825,6 +7213,9 @@ class SeqbenchMcpConfig
                       'template' => '`reqdata.template`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'site_directed_mutagenesis',
                   ],
                 ],
               ],
@@ -6895,8 +7286,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/translate',
-                  'parts' => [
-                    'translate',
+                  'segments' => [
+                    [
+                      'lit' => 'translate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6906,6 +7299,9 @@ class SeqbenchMcpConfig
                       'toStop' => '`reqdata.to_stop`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'translate',
                   ],
                 ],
               ],
@@ -6972,8 +7368,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/variant_annotate',
-                  'parts' => [
-                    'variant_annotate',
+                  'segments' => [
+                    [
+                      'lit' => 'variant_annotate',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -6982,6 +7380,9 @@ class SeqbenchMcpConfig
                       'variant' => '`reqdata.variant`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'variant_annotate',
                   ],
                 ],
               ],
@@ -7059,8 +7460,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/variant_comparator',
-                  'parts' => [
-                    'variant_comparator',
+                  'segments' => [
+                    [
+                      'lit' => 'variant_comparator',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7071,6 +7474,9 @@ class SeqbenchMcpConfig
                       'reference' => '`reqdata.reference`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'variant_comparator',
                   ],
                 ],
               ],
@@ -7213,8 +7619,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/verify_assembly',
-                  'parts' => [
-                    'verify_assembly',
+                  'segments' => [
+                    [
+                      'lit' => 'verify_assembly',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7238,6 +7646,9 @@ class SeqbenchMcpConfig
                       'vectorPcr' => '`reqdata.vector_pcr`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'verify_assembly',
                   ],
                 ],
               ],
@@ -7332,8 +7743,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/verify_construct',
-                  'parts' => [
-                    'verify_construct',
+                  'segments' => [
+                    [
+                      'lit' => 'verify_construct',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7347,6 +7760,9 @@ class SeqbenchMcpConfig
                       'templateCircular' => '`reqdata.template_circular`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'verify_construct',
                   ],
                 ],
               ],
@@ -7423,8 +7839,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/virtual_gel',
-                  'parts' => [
-                    'virtual_gel',
+                  'segments' => [
+                    [
+                      'lit' => 'virtual_gel',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7435,6 +7853,9 @@ class SeqbenchMcpConfig
                       'sequence' => '`reqdata.sequence`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'virtual_gel',
                   ],
                 ],
               ],
@@ -7496,8 +7917,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/volcano_plot_data',
-                  'parts' => [
-                    'volcano_plot_data',
+                  'segments' => [
+                    [
+                      'lit' => 'volcano_plot_data',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7505,6 +7928,9 @@ class SeqbenchMcpConfig
                       'rows' => '`reqdata.row`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'volcano_plot_data',
                   ],
                 ],
               ],
@@ -7571,8 +7997,10 @@ class SeqbenchMcpConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/web_search',
-                  'parts' => [
-                    'web_search',
+                  'segments' => [
+                    [
+                      'lit' => 'web_search',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
@@ -7581,6 +8009,9 @@ class SeqbenchMcpConfig
                       'query' => '`reqdata.query`',
                     ],
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'web_search',
                   ],
                 ],
               ],

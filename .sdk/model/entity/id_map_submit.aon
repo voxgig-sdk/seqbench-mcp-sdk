@@ -72,8 +72,10 @@ main: kit: entity: id_map_submit: {
         {
           method: "POST"
           orig: "/id_map_submit"
-          parts: [
-            "id_map_submit"
+          segments: [
+            {
+              lit: "id_map_submit"
+            }
           ]
           transform: {
             req: {

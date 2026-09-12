@@ -1,3 +1,4 @@
 /dist/
 /seqbench-mcp-cli
 /go-cli
+.jostraca/

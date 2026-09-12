@@ -66,8 +66,10 @@ main: kit: entity: find_orf: {
         {
           method: "POST"
           orig: "/find_orfs"
-          parts: [
-            "find_orfs"
+          segments: [
+            {
+              lit: "find_orfs"
+            }
           ]
           transform: {
             req: {

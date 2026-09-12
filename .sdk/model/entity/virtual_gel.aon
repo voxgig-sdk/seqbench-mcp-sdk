@@ -72,8 +72,10 @@ main: kit: entity: virtual_gel: {
         {
           method: "POST"
           orig: "/virtual_gel"
-          parts: [
-            "virtual_gel"
+          segments: [
+            {
+              lit: "virtual_gel"
+            }
           ]
           transform: {
             req: {

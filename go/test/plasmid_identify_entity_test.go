@@ -52,7 +52,7 @@ func TestPlasmidIdentifyEntity(t *testing.T) {
 		// CREATE
 		plasmidIdentifyRef01Ent := client.PlasmidIdentify(nil)
 		plasmidIdentifyRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "plasmid_identify"}, setup.data), "plasmid_identify_ref01"))
+			vs.GetPath(setup.data, []any{"new", "plasmid_identify"}), "plasmid_identify_ref01"))
 
 		plasmidIdentifyRef01DataResult, err := plasmidIdentifyRef01Ent.Create(plasmidIdentifyRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func plasmid_identifyBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"plasmid_identify01", "plasmid_identify02", "plasmid_identify03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func plasmid_identifyBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_PLASMID_IDENTIFY_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_PLASMID_IDENTIFY_ENTID"])
@@ -119,11 +119,23 @@ func plasmid_identifyBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

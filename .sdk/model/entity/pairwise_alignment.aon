@@ -83,8 +83,10 @@ main: kit: entity: pairwise_alignment: {
         {
           method: "POST"
           orig: "/pairwise_alignment"
-          parts: [
-            "pairwise_alignment"
+          segments: [
+            {
+              lit: "pairwise_alignment"
+            }
           ]
           transform: {
             req: {

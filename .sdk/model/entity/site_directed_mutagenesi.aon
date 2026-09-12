@@ -132,8 +132,10 @@ main: kit: entity: site_directed_mutagenesi: {
         {
           method: "POST"
           orig: "/site_directed_mutagenesis"
-          parts: [
-            "site_directed_mutagenesis"
+          segments: [
+            {
+              lit: "site_directed_mutagenesis"
+            }
           ]
           transform: {
             req: {

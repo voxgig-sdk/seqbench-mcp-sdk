@@ -84,8 +84,10 @@ main: kit: entity: protease_digestion: {
         {
           method: "POST"
           orig: "/protease_digestion"
-          parts: [
-            "protease_digestion"
+          segments: [
+            {
+              lit: "protease_digestion"
+            }
           ]
           transform: {
             req: {

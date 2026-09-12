@@ -152,8 +152,10 @@ main: kit: entity: primer_design: {
         {
           method: "POST"
           orig: "/primer_design"
-          parts: [
-            "primer_design"
+          segments: [
+            {
+              lit: "primer_design"
+            }
           ]
           transform: {
             req: {

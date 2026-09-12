@@ -65,8 +65,10 @@ main: kit: entity: random_sequence: {
         {
           method: "POST"
           orig: "/random_sequence"
-          parts: [
-            "random_sequence"
+          segments: [
+            {
+              lit: "random_sequence"
+            }
           ]
           transform: {
             req: {

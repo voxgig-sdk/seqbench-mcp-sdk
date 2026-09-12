@@ -96,8 +96,10 @@ main: kit: entity: kasp_primer_design: {
         {
           method: "POST"
           orig: "/kasp_primer_design"
-          parts: [
-            "kasp_primer_design"
+          segments: [
+            {
+              lit: "kasp_primer_design"
+            }
           ]
           transform: {
             req: {

@@ -72,8 +72,10 @@ main: kit: entity: crispr_grna_design: {
         {
           method: "POST"
           orig: "/crispr_grna_design"
-          parts: [
-            "crispr_grna_design"
+          segments: [
+            {
+              lit: "crispr_grna_design"
+            }
           ]
           transform: {
             req: {

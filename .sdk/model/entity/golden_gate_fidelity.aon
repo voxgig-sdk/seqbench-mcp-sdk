@@ -72,8 +72,10 @@ main: kit: entity: golden_gate_fidelity: {
         {
           method: "POST"
           orig: "/golden_gate_fidelity"
-          parts: [
-            "golden_gate_fidelity"
+          segments: [
+            {
+              lit: "golden_gate_fidelity"
+            }
           ]
           transform: {
             req: {

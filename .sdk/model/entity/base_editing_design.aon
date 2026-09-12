@@ -72,8 +72,10 @@ main: kit: entity: base_editing_design: {
         {
           method: "POST"
           orig: "/base_editing_design"
-          parts: [
-            "base_editing_design"
+          segments: [
+            {
+              lit: "base_editing_design"
+            }
           ]
           transform: {
             req: {

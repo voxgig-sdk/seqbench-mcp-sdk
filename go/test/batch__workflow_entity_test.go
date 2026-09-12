@@ -52,7 +52,7 @@ func TestBatchWorkflowEntity(t *testing.T) {
 		// CREATE
 		batch_WorkflowRef01Ent := client.BatchWorkflow(nil)
 		batch_WorkflowRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "batch__workflow"}, setup.data), "batch__workflow_ref01"))
+			vs.GetPath(setup.data, []any{"new", "batch__workflow"}), "batch__workflow_ref01"))
 
 		batch_WorkflowRef01DataResult, err := batch_WorkflowRef01Ent.Create(batch_WorkflowRef01Data, nil)
 		if err != nil {
@@ -100,7 +100,7 @@ func batch__workflowBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"batch__workflow01", "batch__workflow02", "batch__workflow03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -120,7 +120,7 @@ func batch__workflowBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_BATCH_WORKFLOW_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_BATCH_WORKFLOW_ENTID"])
@@ -129,11 +129,23 @@ func batch__workflowBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

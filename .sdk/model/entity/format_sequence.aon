@@ -83,8 +83,10 @@ main: kit: entity: format_sequence: {
         {
           method: "POST"
           orig: "/format_sequence"
-          parts: [
-            "format_sequence"
+          segments: [
+            {
+              lit: "format_sequence"
+            }
           ]
           transform: {
             req: {

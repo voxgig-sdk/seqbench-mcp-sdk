@@ -72,8 +72,10 @@ main: kit: entity: sequence_report: {
         {
           method: "POST"
           orig: "/sequence_report"
-          parts: [
-            "sequence_report"
+          segments: [
+            {
+              lit: "sequence_report"
+            }
           ]
           transform: {
             req: {

@@ -60,8 +60,10 @@ main: kit: entity: variant_annotate: {
         {
           method: "POST"
           orig: "/variant_annotate"
-          parts: [
-            "variant_annotate"
+          segments: [
+            {
+              lit: "variant_annotate"
+            }
           ]
           transform: {
             req: {

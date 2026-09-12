@@ -54,8 +54,10 @@ main: kit: entity: hgvs_convert: {
         {
           method: "POST"
           orig: "/hgvs_convert"
-          parts: [
-            "hgvs_convert"
+          segments: [
+            {
+              lit: "hgvs_convert"
+            }
           ]
           transform: {
             req: {

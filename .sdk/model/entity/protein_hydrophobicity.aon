@@ -66,8 +66,10 @@ main: kit: entity: protein_hydrophobicity: {
         {
           method: "POST"
           orig: "/protein_hydrophobicity"
-          parts: [
-            "protein_hydrophobicity"
+          segments: [
+            {
+              lit: "protein_hydrophobicity"
+            }
           ]
           transform: {
             req: {

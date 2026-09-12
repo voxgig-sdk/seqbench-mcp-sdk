@@ -67,15 +67,17 @@ function batch_direct_setup($mockres)
     $env = Runner::env_override([
         "SEQBENCH_MCP_TEST_BATCH_ENTID" => [],
         "SEQBENCH_MCP_TEST_LIVE" => "FALSE",
-        "SEQBENCH_MCP_APIKEY" => "NONE",
+        "SEQBENCH_MCP_APIKEY" => "",
     ]);
 
     $live = $env["SEQBENCH_MCP_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["SEQBENCH_MCP_APIKEY"],
-        ];
+        ]);
         $client = new SeqbenchMcpSDK($merged_opts);
         return [
             "client" => $client,

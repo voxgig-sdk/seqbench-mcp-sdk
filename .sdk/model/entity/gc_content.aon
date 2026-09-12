@@ -54,8 +54,10 @@ main: kit: entity: gc_content: {
         {
           method: "POST"
           orig: "/gc_content"
-          parts: [
-            "gc_content"
+          segments: [
+            {
+              lit: "gc_content"
+            }
           ]
           transform: {
             req: {

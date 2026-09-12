@@ -78,8 +78,10 @@ main: kit: entity: dna_molarity: {
         {
           method: "POST"
           orig: "/dna_molarity"
-          parts: [
-            "dna_molarity"
+          segments: [
+            {
+              lit: "dna_molarity"
+            }
           ]
           transform: {
             req: {

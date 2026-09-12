@@ -90,8 +90,10 @@ main: kit: entity: prime_editing_design: {
         {
           method: "POST"
           orig: "/prime_editing_design"
-          parts: [
-            "prime_editing_design"
+          segments: [
+            {
+              lit: "prime_editing_design"
+            }
           ]
           transform: {
             req: {

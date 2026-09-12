@@ -65,8 +65,10 @@ main: kit: entity: reverse_translate: {
         {
           method: "POST"
           orig: "/reverse_translate"
-          parts: [
-            "reverse_translate"
+          segments: [
+            {
+              lit: "reverse_translate"
+            }
           ]
           transform: {
             req: {

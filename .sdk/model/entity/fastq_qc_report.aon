@@ -60,8 +60,10 @@ main: kit: entity: fastq_qc_report: {
         {
           method: "POST"
           orig: "/fastq_qc_report"
-          parts: [
-            "fastq_qc_report"
+          segments: [
+            {
+              lit: "fastq_qc_report"
+            }
           ]
           transform: {
             req: {

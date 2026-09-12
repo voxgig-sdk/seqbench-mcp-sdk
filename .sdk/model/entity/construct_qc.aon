@@ -96,8 +96,10 @@ main: kit: entity: construct_qc: {
         {
           method: "POST"
           orig: "/construct_qc"
-          parts: [
-            "construct_qc"
+          segments: [
+            {
+              lit: "construct_qc"
+            }
           ]
           transform: {
             req: {

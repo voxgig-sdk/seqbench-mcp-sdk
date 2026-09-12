@@ -54,8 +54,10 @@ main: kit: entity: volcano_plot_data: {
         {
           method: "POST"
           orig: "/volcano_plot_data"
-          parts: [
-            "volcano_plot_data"
+          segments: [
+            {
+              lit: "volcano_plot_data"
+            }
           ]
           transform: {
             req: {

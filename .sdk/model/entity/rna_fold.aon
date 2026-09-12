@@ -54,8 +54,10 @@ main: kit: entity: rna_fold: {
         {
           method: "POST"
           orig: "/rna_fold"
-          parts: [
-            "rna_fold"
+          segments: [
+            {
+              lit: "rna_fold"
+            }
           ]
           transform: {
             req: {

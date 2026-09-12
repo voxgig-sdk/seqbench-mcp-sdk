@@ -72,8 +72,10 @@ main: kit: entity: ortholog_map: {
         {
           method: "POST"
           orig: "/ortholog_map"
-          parts: [
-            "ortholog_map"
+          segments: [
+            {
+              lit: "ortholog_map"
+            }
           ]
           transform: {
             req: {

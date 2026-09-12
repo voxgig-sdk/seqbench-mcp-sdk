@@ -65,8 +65,10 @@ main: kit: entity: translate: {
         {
           method: "POST"
           orig: "/translate"
-          parts: [
-            "translate"
+          segments: [
+            {
+              lit: "translate"
+            }
           ]
           transform: {
             req: {

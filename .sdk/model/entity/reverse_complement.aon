@@ -59,8 +59,10 @@ main: kit: entity: reverse_complement: {
         {
           method: "POST"
           orig: "/reverse_complement"
-          parts: [
-            "reverse_complement"
+          segments: [
+            {
+              lit: "reverse_complement"
+            }
           ]
           transform: {
             req: {

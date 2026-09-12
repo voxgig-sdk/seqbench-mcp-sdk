@@ -52,7 +52,7 @@ func TestCharacterizeSequenceEntity(t *testing.T) {
 		// CREATE
 		characterizeSequenceRef01Ent := client.CharacterizeSequence(nil)
 		characterizeSequenceRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "characterize_sequence"}, setup.data), "characterize_sequence_ref01"))
+			vs.GetPath(setup.data, []any{"new", "characterize_sequence"}), "characterize_sequence_ref01"))
 
 		characterizeSequenceRef01DataResult, err := characterizeSequenceRef01Ent.Create(characterizeSequenceRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func characterize_sequenceBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"characterize_sequence01", "characterize_sequence02", "characterize_sequence03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func characterize_sequenceBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_CHARACTERIZE_SEQUENCE_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_CHARACTERIZE_SEQUENCE_ENTID"])
@@ -119,11 +119,23 @@ func characterize_sequenceBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

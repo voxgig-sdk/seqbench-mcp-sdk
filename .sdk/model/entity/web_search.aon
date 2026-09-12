@@ -60,8 +60,10 @@ main: kit: entity: web_search: {
         {
           method: "POST"
           orig: "/web_search"
-          parts: [
-            "web_search"
+          segments: [
+            {
+              lit: "web_search"
+            }
           ]
           transform: {
             req: {

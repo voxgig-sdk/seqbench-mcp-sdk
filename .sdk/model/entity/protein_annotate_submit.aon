@@ -66,8 +66,10 @@ main: kit: entity: protein_annotate_submit: {
         {
           method: "POST"
           orig: "/protein_annotate_submit"
-          parts: [
-            "protein_annotate_submit"
+          segments: [
+            {
+              lit: "protein_annotate_submit"
+            }
           ]
           transform: {
             req: {

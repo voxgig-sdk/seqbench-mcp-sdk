@@ -90,8 +90,10 @@ main: kit: entity: melting_temperature: {
         {
           method: "POST"
           orig: "/melting_temperature"
-          parts: [
-            "melting_temperature"
+          segments: [
+            {
+              lit: "melting_temperature"
+            }
           ]
           transform: {
             req: {

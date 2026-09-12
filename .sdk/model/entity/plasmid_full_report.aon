@@ -66,8 +66,10 @@ main: kit: entity: plasmid_full_report: {
         {
           method: "POST"
           orig: "/plasmid_full_report"
-          parts: [
-            "plasmid_full_report"
+          segments: [
+            {
+              lit: "plasmid_full_report"
+            }
           ]
           transform: {
             req: {

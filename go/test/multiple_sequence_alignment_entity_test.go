@@ -52,7 +52,7 @@ func TestMultipleSequenceAlignmentEntity(t *testing.T) {
 		// CREATE
 		multipleSequenceAlignmentRef01Ent := client.MultipleSequenceAlignment(nil)
 		multipleSequenceAlignmentRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "multiple_sequence_alignment"}, setup.data), "multiple_sequence_alignment_ref01"))
+			vs.GetPath(setup.data, []any{"new", "multiple_sequence_alignment"}), "multiple_sequence_alignment_ref01"))
 
 		multipleSequenceAlignmentRef01DataResult, err := multipleSequenceAlignmentRef01Ent.Create(multipleSequenceAlignmentRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func multiple_sequence_alignmentBasicSetup(extra map[string]any) *entityTestSetu
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"multiple_sequence_alignment01", "multiple_sequence_alignment02", "multiple_sequence_alignment03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func multiple_sequence_alignmentBasicSetup(extra map[string]any) *entityTestSetu
 		"SEQBENCH_MCP_TEST_MULTIPLE_SEQUENCE_ALIGNMENT_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_MULTIPLE_SEQUENCE_ALIGNMENT_ENTID"])
@@ -119,11 +119,23 @@ func multiple_sequence_alignmentBasicSetup(extra map[string]any) *entityTestSetu
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

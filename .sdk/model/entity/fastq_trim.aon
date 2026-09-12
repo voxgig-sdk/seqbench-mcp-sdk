@@ -72,8 +72,10 @@ main: kit: entity: fastq_trim: {
         {
           method: "POST"
           orig: "/fastq_trim"
-          parts: [
-            "fastq_trim"
+          segments: [
+            {
+              lit: "fastq_trim"
+            }
           ]
           transform: {
             req: {

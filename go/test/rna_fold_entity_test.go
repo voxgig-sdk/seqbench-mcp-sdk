@@ -52,7 +52,7 @@ func TestRnaFoldEntity(t *testing.T) {
 		// CREATE
 		rnaFoldRef01Ent := client.RnaFold(nil)
 		rnaFoldRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "rna_fold"}, setup.data), "rna_fold_ref01"))
+			vs.GetPath(setup.data, []any{"new", "rna_fold"}), "rna_fold_ref01"))
 
 		rnaFoldRef01DataResult, err := rnaFoldRef01Ent.Create(rnaFoldRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func rna_foldBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"rna_fold01", "rna_fold02", "rna_fold03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func rna_foldBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_RNA_FOLD_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_RNA_FOLD_ENTID"])
@@ -119,11 +119,23 @@ func rna_foldBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

@@ -104,8 +104,10 @@ main: kit: entity: construct_autofix: {
         {
           method: "POST"
           orig: "/construct_autofix"
-          parts: [
-            "construct_autofix"
+          segments: [
+            {
+              lit: "construct_autofix"
+            }
           ]
           transform: {
             req: {

@@ -60,8 +60,10 @@ main: kit: entity: export_opentrons_protocol: {
         {
           method: "POST"
           orig: "/export_opentrons_protocol"
-          parts: [
-            "export_opentrons_protocol"
+          segments: [
+            {
+              lit: "export_opentrons_protocol"
+            }
           ]
           transform: {
             req: {

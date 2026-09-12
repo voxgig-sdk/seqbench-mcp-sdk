@@ -66,8 +66,10 @@ main: kit: entity: plasmid_identify: {
         {
           method: "POST"
           orig: "/plasmid_identify"
-          parts: [
-            "plasmid_identify"
+          segments: [
+            {
+              lit: "plasmid_identify"
+            }
           ]
           transform: {
             req: {

@@ -78,8 +78,10 @@ main: kit: entity: sanger_vs_reference: {
         {
           method: "POST"
           orig: "/sanger_vs_reference"
-          parts: [
-            "sanger_vs_reference"
+          segments: [
+            {
+              lit: "sanger_vs_reference"
+            }
           ]
           transform: {
             req: {

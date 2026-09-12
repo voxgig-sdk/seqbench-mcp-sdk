@@ -60,8 +60,10 @@ main: kit: entity: double_digest: {
         {
           method: "POST"
           orig: "/double_digest"
-          parts: [
-            "double_digest"
+          segments: [
+            {
+              lit: "double_digest"
+            }
           ]
           transform: {
             req: {

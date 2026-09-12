@@ -1,6 +1,14 @@
 # SeqbenchMcp SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -189,8 +197,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/alphafold_lookup",
-                "parts": [
-                  "alphafold_lookup",
+                "segments": [
+                  {
+                    "lit": "alphafold_lookup",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -199,6 +209,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "alphafold_lookup",
+                ],
               },
             ],
           },
@@ -269,8 +282,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/aso_design",
-                "parts": [
-                  "aso_design",
+                "segments": [
+                  {
+                    "lit": "aso_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -281,6 +296,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "aso_design",
+                ],
               },
             ],
           },
@@ -356,8 +374,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/base_editing_design",
-                "parts": [
-                  "base_editing_design",
+                "segments": [
+                  {
+                    "lit": "base_editing_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -369,6 +389,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "base_editing_design",
+                ],
               },
             ],
           },
@@ -450,14 +473,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/batch",
-                "parts": [
-                  "batch",
+                "segments": [
+                  {
+                    "lit": "batch",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.result`",
                 },
+                "parts": [
+                  "batch",
+                ],
               },
             ],
           },
@@ -470,14 +498,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/batch",
-                "parts": [
-                  "batch",
+                "segments": [
+                  {
+                    "lit": "batch",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "batch",
+                ],
               },
             ],
           },
@@ -553,14 +586,19 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/workflow",
-                "parts": [
-                  "workflow",
+                "segments": [
+                  {
+                    "lit": "workflow",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.result`",
                 },
+                "parts": [
+                  "workflow",
+                ],
               },
             ],
           },
@@ -573,14 +611,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/workflow",
-                "parts": [
-                  "workflow",
+                "segments": [
+                  {
+                    "lit": "workflow",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "workflow",
+                ],
               },
             ],
           },
@@ -656,8 +699,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/characterize_sequence",
-                "parts": [
-                  "characterize_sequence",
+                "segments": [
+                  {
+                    "lit": "characterize_sequence",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -669,6 +714,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "characterize_sequence",
+                ],
               },
             ],
           },
@@ -779,8 +827,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/cloning_simulate",
-                "parts": [
-                  "cloning_simulate",
+                "segments": [
+                  {
+                    "lit": "cloning_simulate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -799,6 +849,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "cloning_simulate",
+                ],
               },
             ],
           },
@@ -873,8 +926,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/codon_adaptation_index",
-                "parts": [
-                  "codon_adaptation_index",
+                "segments": [
+                  {
+                    "lit": "codon_adaptation_index",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -886,6 +941,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "codon_adaptation_index",
+                ],
               },
             ],
           },
@@ -950,8 +1008,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/codon_optimize",
-                "parts": [
-                  "codon_optimize",
+                "segments": [
+                  {
+                    "lit": "codon_optimize",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -961,6 +1021,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "codon_optimize",
+                ],
               },
             ],
           },
@@ -1062,8 +1125,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/construct_autofix",
-                "parts": [
-                  "construct_autofix",
+                "segments": [
+                  {
+                    "lit": "construct_autofix",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1081,6 +1146,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "construct_autofix",
+                ],
               },
             ],
           },
@@ -1176,8 +1244,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/construct_qc",
-                "parts": [
-                  "construct_qc",
+                "segments": [
+                  {
+                    "lit": "construct_qc",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1193,6 +1263,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "construct_qc",
+                ],
               },
             ],
           },
@@ -1268,8 +1341,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/crispr_grna_design",
-                "parts": [
-                  "crispr_grna_design",
+                "segments": [
+                  {
+                    "lit": "crispr_grna_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1281,6 +1356,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "crispr_grna_design",
+                ],
               },
             ],
           },
@@ -1397,8 +1475,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/crispr_hdr_donor",
-                "parts": [
-                  "crispr_hdr_donor",
+                "segments": [
+                  {
+                    "lit": "crispr_hdr_donor",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1418,6 +1498,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "crispr_hdr_donor",
+                ],
               },
             ],
           },
@@ -1488,8 +1571,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/crispr_offtarget_check",
-                "parts": [
-                  "crispr_offtarget_check",
+                "segments": [
+                  {
+                    "lit": "crispr_offtarget_check",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1500,6 +1585,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "crispr_offtarget_check",
+                ],
               },
             ],
           },
@@ -1566,8 +1654,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/cross_dimer",
-                "parts": [
-                  "cross_dimer",
+                "segments": [
+                  {
+                    "lit": "cross_dimer",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1577,6 +1667,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "cross_dimer",
+                ],
               },
             ],
           },
@@ -1656,8 +1749,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/dna_molarity",
-                "parts": [
-                  "dna_molarity",
+                "segments": [
+                  {
+                    "lit": "dna_molarity",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1670,6 +1765,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "dna_molarity",
+                ],
               },
             ],
           },
@@ -1736,8 +1834,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/double_digest",
-                "parts": [
-                  "double_digest",
+                "segments": [
+                  {
+                    "lit": "double_digest",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1747,6 +1847,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "double_digest",
+                ],
               },
             ],
           },
@@ -1807,8 +1910,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/export_echo_picklist",
-                "parts": [
-                  "export_echo_picklist",
+                "segments": [
+                  {
+                    "lit": "export_echo_picklist",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1817,6 +1922,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "export_echo_picklist",
+                ],
               },
             ],
           },
@@ -1882,8 +1990,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/export_opentrons_protocol",
-                "parts": [
-                  "export_opentrons_protocol",
+                "segments": [
+                  {
+                    "lit": "export_opentrons_protocol",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1893,6 +2003,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "export_opentrons_protocol",
+                ],
               },
             ],
           },
@@ -1953,8 +2066,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/export_plate_layout",
-                "parts": [
-                  "export_plate_layout",
+                "segments": [
+                  {
+                    "lit": "export_plate_layout",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -1963,6 +2078,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "export_plate_layout",
+                ],
               },
             ],
           },
@@ -2060,8 +2178,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/expression_heatmap_cluster",
-                "parts": [
-                  "expression_heatmap_cluster",
+                "segments": [
+                  {
+                    "lit": "expression_heatmap_cluster",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2077,6 +2197,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "expression_heatmap_cluster",
+                ],
               },
             ],
           },
@@ -2142,8 +2265,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/fastq_qc_report",
-                "parts": [
-                  "fastq_qc_report",
+                "segments": [
+                  {
+                    "lit": "fastq_qc_report",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2153,6 +2278,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "fastq_qc_report",
+                ],
               },
             ],
           },
@@ -2228,8 +2356,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/fastq_trim",
-                "parts": [
-                  "fastq_trim",
+                "segments": [
+                  {
+                    "lit": "fastq_trim",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2241,6 +2371,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "fastq_trim",
+                ],
               },
             ],
           },
@@ -2311,8 +2444,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/find_orfs",
-                "parts": [
-                  "find_orfs",
+                "segments": [
+                  {
+                    "lit": "find_orfs",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2323,6 +2458,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "find_orfs",
+                ],
               },
             ],
           },
@@ -2407,8 +2545,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/format_sequence",
-                "parts": [
-                  "format_sequence",
+                "segments": [
+                  {
+                    "lit": "format_sequence",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2422,6 +2562,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "format_sequence",
+                ],
               },
             ],
           },
@@ -2502,8 +2645,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/functional_enrichment",
-                "parts": [
-                  "functional_enrichment",
+                "segments": [
+                  {
+                    "lit": "functional_enrichment",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2516,6 +2661,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "functional_enrichment",
+                ],
               },
             ],
           },
@@ -2576,8 +2724,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/gc_content",
-                "parts": [
-                  "gc_content",
+                "segments": [
+                  {
+                    "lit": "gc_content",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2586,6 +2736,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "gc_content",
+                ],
               },
             ],
           },
@@ -2646,8 +2799,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/gene_dossier",
-                "parts": [
-                  "gene_dossier",
+                "segments": [
+                  {
+                    "lit": "gene_dossier",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2656,6 +2811,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "gene_dossier",
+                ],
               },
             ],
           },
@@ -2716,8 +2874,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/gene_expression",
-                "parts": [
-                  "gene_expression",
+                "segments": [
+                  {
+                    "lit": "gene_expression",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2726,6 +2886,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "gene_expression",
+                ],
               },
             ],
           },
@@ -2786,8 +2949,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/gene_model",
-                "parts": [
-                  "gene_model",
+                "segments": [
+                  {
+                    "lit": "gene_model",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2796,6 +2961,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "gene_model",
+                ],
               },
             ],
           },
@@ -2871,8 +3039,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/golden_gate_fidelity",
-                "parts": [
-                  "golden_gate_fidelity",
+                "segments": [
+                  {
+                    "lit": "golden_gate_fidelity",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2884,6 +3054,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "golden_gate_fidelity",
+                ],
               },
             ],
           },
@@ -2944,8 +3117,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/hgvs_convert",
-                "parts": [
-                  "hgvs_convert",
+                "segments": [
+                  {
+                    "lit": "hgvs_convert",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -2954,6 +3129,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "hgvs_convert",
+                ],
               },
             ],
           },
@@ -3013,8 +3191,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/id_map_poll",
-                "parts": [
-                  "id_map_poll",
+                "segments": [
+                  {
+                    "lit": "id_map_poll",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3023,6 +3203,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "id_map_poll",
+                ],
               },
             ],
           },
@@ -3100,8 +3283,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/id_map_submit",
-                "parts": [
-                  "id_map_submit",
+                "segments": [
+                  {
+                    "lit": "id_map_submit",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3113,6 +3298,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "id_map_submit",
+                ],
               },
             ],
           },
@@ -3195,8 +3383,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/in_silico_pcr",
-                "parts": [
-                  "in_silico_pcr",
+                "segments": [
+                  {
+                    "lit": "in_silico_pcr",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3209,6 +3399,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "in_silico_pcr",
+                ],
               },
             ],
           },
@@ -3307,8 +3500,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/kasp_primer_design",
-                "parts": [
-                  "kasp_primer_design",
+                "segments": [
+                  {
+                    "lit": "kasp_primer_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3324,6 +3519,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "kasp_primer_design",
+                ],
               },
             ],
           },
@@ -3345,12 +3543,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/",
-                "parts": [],
+                "segments": [],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [],
               },
             ],
           },
@@ -3441,8 +3640,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/melting_temperature",
-                "parts": [
-                  "melting_temperature",
+                "segments": [
+                  {
+                    "lit": "melting_temperature",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3457,6 +3658,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "melting_temperature",
+                ],
               },
             ],
           },
@@ -3533,8 +3737,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/motif_finder",
-                "parts": [
-                  "motif_finder",
+                "segments": [
+                  {
+                    "lit": "motif_finder",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3546,6 +3752,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "motif_finder",
+                ],
               },
             ],
           },
@@ -3606,8 +3815,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/multiple_sequence_alignment",
-                "parts": [
-                  "multiple_sequence_alignment",
+                "segments": [
+                  {
+                    "lit": "multiple_sequence_alignment",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3616,6 +3827,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "multiple_sequence_alignment",
+                ],
               },
             ],
           },
@@ -3696,8 +3910,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/oligo_analysis",
-                "parts": [
-                  "oligo_analysis",
+                "segments": [
+                  {
+                    "lit": "oligo_analysis",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3710,6 +3926,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "oligo_analysis",
+                ],
               },
             ],
           },
@@ -3786,8 +4005,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/ortholog_map",
-                "parts": [
-                  "ortholog_map",
+                "segments": [
+                  {
+                    "lit": "ortholog_map",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3799,6 +4020,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "ortholog_map",
+                ],
               },
             ],
           },
@@ -3884,8 +4108,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/pairwise_alignment",
-                "parts": [
-                  "pairwise_alignment",
+                "segments": [
+                  {
+                    "lit": "pairwise_alignment",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3899,6 +4125,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "pairwise_alignment",
+                ],
               },
             ],
           },
@@ -3959,8 +4188,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/parse_genbank",
-                "parts": [
-                  "parse_genbank",
+                "segments": [
+                  {
+                    "lit": "parse_genbank",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -3969,6 +4200,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "parse_genbank",
+                ],
               },
             ],
           },
@@ -4034,8 +4268,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/parse_sanger_trace",
-                "parts": [
-                  "parse_sanger_trace",
+                "segments": [
+                  {
+                    "lit": "parse_sanger_trace",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4045,6 +4281,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "parse_sanger_trace",
+                ],
               },
             ],
           },
@@ -4105,8 +4344,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/plasmid_annotate",
-                "parts": [
-                  "plasmid_annotate",
+                "segments": [
+                  {
+                    "lit": "plasmid_annotate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4115,6 +4356,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "plasmid_annotate",
+                ],
               },
             ],
           },
@@ -4180,8 +4424,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/plasmid_deep_annotate",
-                "parts": [
-                  "plasmid_deep_annotate",
+                "segments": [
+                  {
+                    "lit": "plasmid_deep_annotate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4191,6 +4437,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "plasmid_deep_annotate",
+                ],
               },
             ],
           },
@@ -4261,8 +4510,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/plasmid_full_report",
-                "parts": [
-                  "plasmid_full_report",
+                "segments": [
+                  {
+                    "lit": "plasmid_full_report",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4273,6 +4524,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "plasmid_full_report",
+                ],
               },
             ],
           },
@@ -4343,8 +4597,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/plasmid_identify",
-                "parts": [
-                  "plasmid_identify",
+                "segments": [
+                  {
+                    "lit": "plasmid_identify",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4355,6 +4611,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "plasmid_identify",
+                ],
               },
             ],
           },
@@ -4447,8 +4706,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/prime_editing_design",
-                "parts": [
-                  "prime_editing_design",
+                "segments": [
+                  {
+                    "lit": "prime_editing_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4463,6 +4724,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "prime_editing_design",
+                ],
               },
             ],
           },
@@ -4551,8 +4815,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/prime_editing_twin_design",
-                "parts": [
-                  "prime_editing_twin_design",
+                "segments": [
+                  {
+                    "lit": "prime_editing_twin_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4566,6 +4832,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "prime_editing_twin_design",
+                ],
               },
             ],
           },
@@ -4706,8 +4975,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/primer_design",
-                "parts": [
-                  "primer_design",
+                "segments": [
+                  {
+                    "lit": "primer_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4734,6 +5005,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "primer_design",
+                ],
               },
             ],
           },
@@ -4810,8 +5084,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/primer_specificity",
-                "parts": [
-                  "primer_specificity",
+                "segments": [
+                  {
+                    "lit": "primer_specificity",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4823,6 +5099,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "primer_specificity",
+                ],
               },
             ],
           },
@@ -4908,8 +5187,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/protease_digestion",
-                "parts": [
-                  "protease_digestion",
+                "segments": [
+                  {
+                    "lit": "protease_digestion",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4923,6 +5204,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "protease_digestion",
+                ],
               },
             ],
           },
@@ -4982,8 +5266,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/protein_annotate_poll",
-                "parts": [
-                  "protein_annotate_poll",
+                "segments": [
+                  {
+                    "lit": "protein_annotate_poll",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -4992,6 +5278,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "protein_annotate_poll",
+                ],
               },
             ],
           },
@@ -5062,8 +5351,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/protein_annotate_submit",
-                "parts": [
-                  "protein_annotate_submit",
+                "segments": [
+                  {
+                    "lit": "protein_annotate_submit",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5074,6 +5365,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "protein_annotate_submit",
+                ],
               },
             ],
           },
@@ -5144,8 +5438,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/protein_hydrophobicity",
-                "parts": [
-                  "protein_hydrophobicity",
+                "segments": [
+                  {
+                    "lit": "protein_hydrophobicity",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5156,6 +5452,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "protein_hydrophobicity",
+                ],
               },
             ],
           },
@@ -5221,8 +5520,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/protein_properties",
-                "parts": [
-                  "protein_properties",
+                "segments": [
+                  {
+                    "lit": "protein_properties",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5232,6 +5533,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "protein_properties",
+                ],
               },
             ],
           },
@@ -5301,8 +5605,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/random_sequence",
-                "parts": [
-                  "random_sequence",
+                "segments": [
+                  {
+                    "lit": "random_sequence",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5313,6 +5619,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "random_sequence",
+                ],
               },
             ],
           },
@@ -5378,8 +5687,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/restriction_sites",
-                "parts": [
-                  "restriction_sites",
+                "segments": [
+                  {
+                    "lit": "restriction_sites",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5389,6 +5700,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "restriction_sites",
+                ],
               },
             ],
           },
@@ -5453,8 +5767,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/reverse_complement",
-                "parts": [
-                  "reverse_complement",
+                "segments": [
+                  {
+                    "lit": "reverse_complement",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5464,6 +5780,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "reverse_complement",
+                ],
               },
             ],
           },
@@ -5533,8 +5852,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/reverse_translate",
-                "parts": [
-                  "reverse_translate",
+                "segments": [
+                  {
+                    "lit": "reverse_translate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5545,6 +5866,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "reverse_translate",
+                ],
               },
             ],
           },
@@ -5605,8 +5929,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/rna_fold",
-                "parts": [
-                  "rna_fold",
+                "segments": [
+                  {
+                    "lit": "rna_fold",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5615,6 +5941,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "rna_fold",
+                ],
               },
             ],
           },
@@ -5695,8 +6024,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sanger_vs_reference",
-                "parts": [
-                  "sanger_vs_reference",
+                "segments": [
+                  {
+                    "lit": "sanger_vs_reference",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5709,6 +6040,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sanger_vs_reference",
+                ],
               },
             ],
           },
@@ -5769,8 +6103,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/save_permalink",
-                "parts": [
-                  "save_permalink",
+                "segments": [
+                  {
+                    "lit": "save_permalink",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5780,6 +6116,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "save_permalink",
+                ],
               },
             ],
           },
@@ -5845,8 +6184,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/seqfile_stats",
-                "parts": [
-                  "seqfile_stats",
+                "segments": [
+                  {
+                    "lit": "seqfile_stats",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5856,6 +6197,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "seqfile_stats",
+                ],
               },
             ],
           },
@@ -5926,8 +6270,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sequence_fetch",
-                "parts": [
-                  "sequence_fetch",
+                "segments": [
+                  {
+                    "lit": "sequence_fetch",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -5938,6 +6284,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sequence_fetch",
+                ],
               },
             ],
           },
@@ -6008,8 +6357,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sequence_format_convert",
-                "parts": [
-                  "sequence_format_convert",
+                "segments": [
+                  {
+                    "lit": "sequence_format_convert",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6020,6 +6371,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sequence_format_convert",
+                ],
               },
             ],
           },
@@ -6095,8 +6449,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sequence_report",
-                "parts": [
-                  "sequence_report",
+                "segments": [
+                  {
+                    "lit": "sequence_report",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6108,6 +6464,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sequence_report",
+                ],
               },
             ],
           },
@@ -6186,8 +6545,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sequence_search",
-                "parts": [
-                  "sequence_search",
+                "segments": [
+                  {
+                    "lit": "sequence_search",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6200,6 +6561,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sequence_search",
+                ],
               },
             ],
           },
@@ -6271,8 +6635,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sequencing_readback_verify",
-                "parts": [
-                  "sequencing_readback_verify",
+                "segments": [
+                  {
+                    "lit": "sequencing_readback_verify",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6283,6 +6649,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sequencing_readback_verify",
+                ],
               },
             ],
           },
@@ -6342,8 +6711,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/session_create",
-                "parts": [
-                  "session_create",
+                "segments": [
+                  {
+                    "lit": "session_create",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6352,6 +6723,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "session_create",
+                ],
               },
             ],
           },
@@ -6416,8 +6790,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/session_get",
-                "parts": [
-                  "session_get",
+                "segments": [
+                  {
+                    "lit": "session_get",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6427,6 +6803,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "session_get",
+                ],
               },
             ],
           },
@@ -6501,8 +6880,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/session_run",
-                "parts": [
-                  "session_run",
+                "segments": [
+                  {
+                    "lit": "session_run",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6515,6 +6896,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "session_run",
+                ],
               },
             ],
           },
@@ -6580,8 +6964,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/session_set",
-                "parts": [
-                  "session_set",
+                "segments": [
+                  {
+                    "lit": "session_set",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6591,6 +6977,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "session_set",
+                ],
               },
             ],
           },
@@ -6661,8 +7050,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/sirna_design",
-                "parts": [
-                  "sirna_design",
+                "segments": [
+                  {
+                    "lit": "sirna_design",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6673,6 +7064,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "sirna_design",
+                ],
               },
             ],
           },
@@ -6798,8 +7192,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/site_directed_mutagenesis",
-                "parts": [
-                  "site_directed_mutagenesis",
+                "segments": [
+                  {
+                    "lit": "site_directed_mutagenesis",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6821,6 +7217,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "site_directed_mutagenesis",
+                ],
               },
             ],
           },
@@ -6890,8 +7289,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/translate",
-                "parts": [
-                  "translate",
+                "segments": [
+                  {
+                    "lit": "translate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6902,6 +7303,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "translate",
+                ],
               },
             ],
           },
@@ -6967,8 +7371,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/variant_annotate",
-                "parts": [
-                  "variant_annotate",
+                "segments": [
+                  {
+                    "lit": "variant_annotate",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -6978,6 +7384,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "variant_annotate",
+                ],
               },
             ],
           },
@@ -7054,8 +7463,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/variant_comparator",
-                "parts": [
-                  "variant_comparator",
+                "segments": [
+                  {
+                    "lit": "variant_comparator",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7067,6 +7478,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "variant_comparator",
+                ],
               },
             ],
           },
@@ -7208,8 +7622,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/verify_assembly",
-                "parts": [
-                  "verify_assembly",
+                "segments": [
+                  {
+                    "lit": "verify_assembly",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7234,6 +7650,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "verify_assembly",
+                ],
               },
             ],
           },
@@ -7327,8 +7746,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/verify_construct",
-                "parts": [
-                  "verify_construct",
+                "segments": [
+                  {
+                    "lit": "verify_construct",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7343,6 +7764,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "verify_construct",
+                ],
               },
             ],
           },
@@ -7418,8 +7842,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/virtual_gel",
-                "parts": [
-                  "virtual_gel",
+                "segments": [
+                  {
+                    "lit": "virtual_gel",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7431,6 +7857,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "virtual_gel",
+                ],
               },
             ],
           },
@@ -7491,8 +7920,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/volcano_plot_data",
-                "parts": [
-                  "volcano_plot_data",
+                "segments": [
+                  {
+                    "lit": "volcano_plot_data",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7501,6 +7932,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "volcano_plot_data",
+                ],
               },
             ],
           },
@@ -7566,8 +8000,10 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/web_search",
-                "parts": [
-                  "web_search",
+                "segments": [
+                  {
+                    "lit": "web_search",
+                  },
                 ],
                 "select": {},
                 "transform": {
@@ -7577,6 +8013,9 @@ def make_config():
                   },
                   "res": "`body`",
                 },
+                "parts": [
+                  "web_search",
+                ],
               },
             ],
           },

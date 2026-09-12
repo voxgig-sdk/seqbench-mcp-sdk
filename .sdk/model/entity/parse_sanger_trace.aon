@@ -60,8 +60,10 @@ main: kit: entity: parse_sanger_trace: {
         {
           method: "POST"
           orig: "/parse_sanger_trace"
-          parts: [
-            "parse_sanger_trace"
+          segments: [
+            {
+              lit: "parse_sanger_trace"
+            }
           ]
           transform: {
             req: {

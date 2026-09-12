@@ -60,8 +60,10 @@ main: kit: entity: protein_property: {
         {
           method: "POST"
           orig: "/protein_properties"
-          parts: [
-            "protein_properties"
+          segments: [
+            {
+              lit: "protein_properties"
+            }
           ]
           transform: {
             req: {

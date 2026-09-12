@@ -54,8 +54,10 @@ main: kit: entity: parse_genbank: {
         {
           method: "POST"
           orig: "/parse_genbank"
-          parts: [
-            "parse_genbank"
+          segments: [
+            {
+              lit: "parse_genbank"
+            }
           ]
           transform: {
             req: {

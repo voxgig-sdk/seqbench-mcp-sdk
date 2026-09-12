@@ -54,8 +54,10 @@ main: kit: entity: gene_dossier: {
         {
           method: "POST"
           orig: "/gene_dossier"
-          parts: [
-            "gene_dossier"
+          segments: [
+            {
+              lit: "gene_dossier"
+            }
           ]
           transform: {
             req: {

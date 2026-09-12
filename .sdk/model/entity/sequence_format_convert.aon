@@ -66,8 +66,10 @@ main: kit: entity: sequence_format_convert: {
         {
           method: "POST"
           orig: "/sequence_format_convert"
-          parts: [
-            "sequence_format_convert"
+          segments: [
+            {
+              lit: "sequence_format_convert"
+            }
           ]
           transform: {
             req: {

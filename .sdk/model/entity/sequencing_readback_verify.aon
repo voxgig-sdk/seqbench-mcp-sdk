@@ -66,8 +66,10 @@ main: kit: entity: sequencing_readback_verify: {
         {
           method: "POST"
           orig: "/sequencing_readback_verify"
-          parts: [
-            "sequencing_readback_verify"
+          segments: [
+            {
+              lit: "sequencing_readback_verify"
+            }
           ]
           transform: {
             req: {

@@ -71,8 +71,10 @@ main: kit: entity: codon_adaptation_index: {
         {
           method: "POST"
           orig: "/codon_adaptation_index"
-          parts: [
-            "codon_adaptation_index"
+          segments: [
+            {
+              lit: "codon_adaptation_index"
+            }
           ]
           transform: {
             req: {

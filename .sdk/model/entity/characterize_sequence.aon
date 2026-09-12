@@ -72,8 +72,10 @@ main: kit: entity: characterize_sequence: {
         {
           method: "POST"
           orig: "/characterize_sequence"
-          parts: [
-            "characterize_sequence"
+          segments: [
+            {
+              lit: "characterize_sequence"
+            }
           ]
           transform: {
             req: {

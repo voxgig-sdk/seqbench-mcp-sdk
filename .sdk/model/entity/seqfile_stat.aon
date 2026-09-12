@@ -60,8 +60,10 @@ main: kit: entity: seqfile_stat: {
         {
           method: "POST"
           orig: "/seqfile_stats"
-          parts: [
-            "seqfile_stats"
+          segments: [
+            {
+              lit: "seqfile_stats"
+            }
           ]
           transform: {
             req: {

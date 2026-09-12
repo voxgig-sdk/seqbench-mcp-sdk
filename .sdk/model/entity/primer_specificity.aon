@@ -72,8 +72,10 @@ main: kit: entity: primer_specificity: {
         {
           method: "POST"
           orig: "/primer_specificity"
-          parts: [
-            "primer_specificity"
+          segments: [
+            {
+              lit: "primer_specificity"
+            }
           ]
           transform: {
             req: {

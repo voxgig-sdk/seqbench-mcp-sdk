@@ -66,8 +66,10 @@ main: kit: entity: crispr_offtarget_check: {
         {
           method: "POST"
           orig: "/crispr_offtarget_check"
-          parts: [
-            "crispr_offtarget_check"
+          segments: [
+            {
+              lit: "crispr_offtarget_check"
+            }
           ]
           transform: {
             req: {

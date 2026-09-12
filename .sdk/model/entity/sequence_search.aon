@@ -77,8 +77,10 @@ main: kit: entity: sequence_search: {
         {
           method: "POST"
           orig: "/sequence_search"
-          parts: [
-            "sequence_search"
+          segments: [
+            {
+              lit: "sequence_search"
+            }
           ]
           transform: {
             req: {

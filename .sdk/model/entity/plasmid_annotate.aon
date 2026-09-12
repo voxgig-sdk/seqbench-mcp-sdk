@@ -54,8 +54,10 @@ main: kit: entity: plasmid_annotate: {
         {
           method: "POST"
           orig: "/plasmid_annotate"
-          parts: [
-            "plasmid_annotate"
+          segments: [
+            {
+              lit: "plasmid_annotate"
+            }
           ]
           transform: {
             req: {

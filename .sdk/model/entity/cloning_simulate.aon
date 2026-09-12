@@ -114,8 +114,10 @@ main: kit: entity: cloning_simulate: {
         {
           method: "POST"
           orig: "/cloning_simulate"
-          parts: [
-            "cloning_simulate"
+          segments: [
+            {
+              lit: "cloning_simulate"
+            }
           ]
           transform: {
             req: {

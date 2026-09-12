@@ -75,8 +75,10 @@ main: kit: entity: batch: {
         {
           method: "POST"
           orig: "/batch"
-          parts: [
-            "batch"
+          segments: [
+            {
+              lit: "batch"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -91,8 +93,10 @@ main: kit: entity: batch: {
         {
           method: "GET"
           orig: "/batch"
-          parts: [
-            "batch"
+          segments: [
+            {
+              lit: "batch"
+            }
           ]
           transform: {
             req: "`reqdata`"

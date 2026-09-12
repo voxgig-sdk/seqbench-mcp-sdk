@@ -60,8 +60,10 @@ main: kit: entity: restriction_site: {
         {
           method: "POST"
           orig: "/restriction_sites"
-          parts: [
-            "restriction_sites"
+          segments: [
+            {
+              lit: "restriction_sites"
+            }
           ]
           transform: {
             req: {

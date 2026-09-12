@@ -53,8 +53,10 @@ main: kit: entity: id_map_poll: {
         {
           method: "POST"
           orig: "/id_map_poll"
-          parts: [
-            "id_map_poll"
+          segments: [
+            {
+              lit: "id_map_poll"
+            }
           ]
           transform: {
             req: {

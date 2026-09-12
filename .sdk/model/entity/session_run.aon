@@ -71,8 +71,10 @@ main: kit: entity: session_run: {
         {
           method: "POST"
           orig: "/session_run"
-          parts: [
-            "session_run"
+          segments: [
+            {
+              lit: "session_run"
+            }
           ]
           transform: {
             req: {

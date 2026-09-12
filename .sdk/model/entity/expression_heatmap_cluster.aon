@@ -96,8 +96,10 @@ main: kit: entity: expression_heatmap_cluster: {
         {
           method: "POST"
           orig: "/expression_heatmap_cluster"
-          parts: [
-            "expression_heatmap_cluster"
+          segments: [
+            {
+              lit: "expression_heatmap_cluster"
+            }
           ]
           transform: {
             req: {

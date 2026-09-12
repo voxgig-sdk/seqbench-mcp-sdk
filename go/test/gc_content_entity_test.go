@@ -52,7 +52,7 @@ func TestGcContentEntity(t *testing.T) {
 		// CREATE
 		gcContentRef01Ent := client.GcContent(nil)
 		gcContentRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "gc_content"}, setup.data), "gc_content_ref01"))
+			vs.GetPath(setup.data, []any{"new", "gc_content"}), "gc_content_ref01"))
 
 		gcContentRef01DataResult, err := gcContentRef01Ent.Create(gcContentRef01Data, nil)
 		if err != nil {
@@ -90,7 +90,7 @@ func gc_contentBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"gc_content01", "gc_content02", "gc_content03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -110,7 +110,7 @@ func gc_contentBasicSetup(extra map[string]any) *entityTestSetup {
 		"SEQBENCH_MCP_TEST_GC_CONTENT_ENTID": idmap,
 		"SEQBENCH_MCP_TEST_LIVE":      "FALSE",
 		"SEQBENCH_MCP_TEST_EXPLAIN":   "FALSE",
-		"SEQBENCH_MCP_APIKEY":         "NONE",
+		"SEQBENCH_MCP_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["SEQBENCH_MCP_TEST_GC_CONTENT_ENTID"])
@@ -119,11 +119,23 @@ func gc_contentBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["SEQBENCH_MCP_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["SEQBENCH_MCP_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewSeqbenchMcpSDK(core.ToMapAny(mergedOpts))
 	}

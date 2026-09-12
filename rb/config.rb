@@ -180,8 +180,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/alphafold_lookup",
-                  "parts" => [
-                    "alphafold_lookup",
+                  "segments" => [
+                    {
+                      "lit" => "alphafold_lookup",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -190,6 +192,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "alphafold_lookup",
+                  ],
                 },
               ],
             },
@@ -260,8 +265,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/aso_design",
-                  "parts" => [
-                    "aso_design",
+                  "segments" => [
+                    {
+                      "lit" => "aso_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -272,6 +279,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "aso_design",
+                  ],
                 },
               ],
             },
@@ -347,8 +357,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/base_editing_design",
-                  "parts" => [
-                    "base_editing_design",
+                  "segments" => [
+                    {
+                      "lit" => "base_editing_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -360,6 +372,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "base_editing_design",
+                  ],
                 },
               ],
             },
@@ -441,14 +456,19 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/batch",
-                  "parts" => [
-                    "batch",
+                  "segments" => [
+                    {
+                      "lit" => "batch",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.result`",
                   },
+                  "parts" => [
+                    "batch",
+                  ],
                 },
               ],
             },
@@ -461,14 +481,19 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/batch",
-                  "parts" => [
-                    "batch",
+                  "segments" => [
+                    {
+                      "lit" => "batch",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "batch",
+                  ],
                 },
               ],
             },
@@ -544,14 +569,19 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/workflow",
-                  "parts" => [
-                    "workflow",
+                  "segments" => [
+                    {
+                      "lit" => "workflow",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body.result`",
                   },
+                  "parts" => [
+                    "workflow",
+                  ],
                 },
               ],
             },
@@ -564,14 +594,19 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/workflow",
-                  "parts" => [
-                    "workflow",
+                  "segments" => [
+                    {
+                      "lit" => "workflow",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "workflow",
+                  ],
                 },
               ],
             },
@@ -647,8 +682,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/characterize_sequence",
-                  "parts" => [
-                    "characterize_sequence",
+                  "segments" => [
+                    {
+                      "lit" => "characterize_sequence",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -660,6 +697,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "characterize_sequence",
+                  ],
                 },
               ],
             },
@@ -770,8 +810,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/cloning_simulate",
-                  "parts" => [
-                    "cloning_simulate",
+                  "segments" => [
+                    {
+                      "lit" => "cloning_simulate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -790,6 +832,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "cloning_simulate",
+                  ],
                 },
               ],
             },
@@ -864,8 +909,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/codon_adaptation_index",
-                  "parts" => [
-                    "codon_adaptation_index",
+                  "segments" => [
+                    {
+                      "lit" => "codon_adaptation_index",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -877,6 +924,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "codon_adaptation_index",
+                  ],
                 },
               ],
             },
@@ -941,8 +991,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/codon_optimize",
-                  "parts" => [
-                    "codon_optimize",
+                  "segments" => [
+                    {
+                      "lit" => "codon_optimize",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -952,6 +1004,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "codon_optimize",
+                  ],
                 },
               ],
             },
@@ -1053,8 +1108,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/construct_autofix",
-                  "parts" => [
-                    "construct_autofix",
+                  "segments" => [
+                    {
+                      "lit" => "construct_autofix",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1072,6 +1129,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "construct_autofix",
+                  ],
                 },
               ],
             },
@@ -1167,8 +1227,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/construct_qc",
-                  "parts" => [
-                    "construct_qc",
+                  "segments" => [
+                    {
+                      "lit" => "construct_qc",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1184,6 +1246,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "construct_qc",
+                  ],
                 },
               ],
             },
@@ -1259,8 +1324,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/crispr_grna_design",
-                  "parts" => [
-                    "crispr_grna_design",
+                  "segments" => [
+                    {
+                      "lit" => "crispr_grna_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1272,6 +1339,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "crispr_grna_design",
+                  ],
                 },
               ],
             },
@@ -1388,8 +1458,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/crispr_hdr_donor",
-                  "parts" => [
-                    "crispr_hdr_donor",
+                  "segments" => [
+                    {
+                      "lit" => "crispr_hdr_donor",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1409,6 +1481,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "crispr_hdr_donor",
+                  ],
                 },
               ],
             },
@@ -1479,8 +1554,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/crispr_offtarget_check",
-                  "parts" => [
-                    "crispr_offtarget_check",
+                  "segments" => [
+                    {
+                      "lit" => "crispr_offtarget_check",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1491,6 +1568,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "crispr_offtarget_check",
+                  ],
                 },
               ],
             },
@@ -1557,8 +1637,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/cross_dimer",
-                  "parts" => [
-                    "cross_dimer",
+                  "segments" => [
+                    {
+                      "lit" => "cross_dimer",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1568,6 +1650,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "cross_dimer",
+                  ],
                 },
               ],
             },
@@ -1647,8 +1732,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/dna_molarity",
-                  "parts" => [
-                    "dna_molarity",
+                  "segments" => [
+                    {
+                      "lit" => "dna_molarity",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1661,6 +1748,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "dna_molarity",
+                  ],
                 },
               ],
             },
@@ -1727,8 +1817,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/double_digest",
-                  "parts" => [
-                    "double_digest",
+                  "segments" => [
+                    {
+                      "lit" => "double_digest",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1738,6 +1830,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "double_digest",
+                  ],
                 },
               ],
             },
@@ -1798,8 +1893,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/export_echo_picklist",
-                  "parts" => [
-                    "export_echo_picklist",
+                  "segments" => [
+                    {
+                      "lit" => "export_echo_picklist",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1808,6 +1905,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "export_echo_picklist",
+                  ],
                 },
               ],
             },
@@ -1873,8 +1973,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/export_opentrons_protocol",
-                  "parts" => [
-                    "export_opentrons_protocol",
+                  "segments" => [
+                    {
+                      "lit" => "export_opentrons_protocol",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1884,6 +1986,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "export_opentrons_protocol",
+                  ],
                 },
               ],
             },
@@ -1944,8 +2049,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/export_plate_layout",
-                  "parts" => [
-                    "export_plate_layout",
+                  "segments" => [
+                    {
+                      "lit" => "export_plate_layout",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -1954,6 +2061,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "export_plate_layout",
+                  ],
                 },
               ],
             },
@@ -2051,8 +2161,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/expression_heatmap_cluster",
-                  "parts" => [
-                    "expression_heatmap_cluster",
+                  "segments" => [
+                    {
+                      "lit" => "expression_heatmap_cluster",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2068,6 +2180,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "expression_heatmap_cluster",
+                  ],
                 },
               ],
             },
@@ -2133,8 +2248,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/fastq_qc_report",
-                  "parts" => [
-                    "fastq_qc_report",
+                  "segments" => [
+                    {
+                      "lit" => "fastq_qc_report",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2144,6 +2261,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "fastq_qc_report",
+                  ],
                 },
               ],
             },
@@ -2219,8 +2339,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/fastq_trim",
-                  "parts" => [
-                    "fastq_trim",
+                  "segments" => [
+                    {
+                      "lit" => "fastq_trim",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2232,6 +2354,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "fastq_trim",
+                  ],
                 },
               ],
             },
@@ -2302,8 +2427,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/find_orfs",
-                  "parts" => [
-                    "find_orfs",
+                  "segments" => [
+                    {
+                      "lit" => "find_orfs",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2314,6 +2441,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "find_orfs",
+                  ],
                 },
               ],
             },
@@ -2398,8 +2528,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/format_sequence",
-                  "parts" => [
-                    "format_sequence",
+                  "segments" => [
+                    {
+                      "lit" => "format_sequence",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2413,6 +2545,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "format_sequence",
+                  ],
                 },
               ],
             },
@@ -2493,8 +2628,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/functional_enrichment",
-                  "parts" => [
-                    "functional_enrichment",
+                  "segments" => [
+                    {
+                      "lit" => "functional_enrichment",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2507,6 +2644,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "functional_enrichment",
+                  ],
                 },
               ],
             },
@@ -2567,8 +2707,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/gc_content",
-                  "parts" => [
-                    "gc_content",
+                  "segments" => [
+                    {
+                      "lit" => "gc_content",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2577,6 +2719,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gc_content",
+                  ],
                 },
               ],
             },
@@ -2637,8 +2782,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/gene_dossier",
-                  "parts" => [
-                    "gene_dossier",
+                  "segments" => [
+                    {
+                      "lit" => "gene_dossier",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2647,6 +2794,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gene_dossier",
+                  ],
                 },
               ],
             },
@@ -2707,8 +2857,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/gene_expression",
-                  "parts" => [
-                    "gene_expression",
+                  "segments" => [
+                    {
+                      "lit" => "gene_expression",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2717,6 +2869,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gene_expression",
+                  ],
                 },
               ],
             },
@@ -2777,8 +2932,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/gene_model",
-                  "parts" => [
-                    "gene_model",
+                  "segments" => [
+                    {
+                      "lit" => "gene_model",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2787,6 +2944,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "gene_model",
+                  ],
                 },
               ],
             },
@@ -2862,8 +3022,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/golden_gate_fidelity",
-                  "parts" => [
-                    "golden_gate_fidelity",
+                  "segments" => [
+                    {
+                      "lit" => "golden_gate_fidelity",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2875,6 +3037,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "golden_gate_fidelity",
+                  ],
                 },
               ],
             },
@@ -2935,8 +3100,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/hgvs_convert",
-                  "parts" => [
-                    "hgvs_convert",
+                  "segments" => [
+                    {
+                      "lit" => "hgvs_convert",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -2945,6 +3112,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "hgvs_convert",
+                  ],
                 },
               ],
             },
@@ -3004,8 +3174,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/id_map_poll",
-                  "parts" => [
-                    "id_map_poll",
+                  "segments" => [
+                    {
+                      "lit" => "id_map_poll",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3014,6 +3186,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "id_map_poll",
+                  ],
                 },
               ],
             },
@@ -3091,8 +3266,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/id_map_submit",
-                  "parts" => [
-                    "id_map_submit",
+                  "segments" => [
+                    {
+                      "lit" => "id_map_submit",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3104,6 +3281,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "id_map_submit",
+                  ],
                 },
               ],
             },
@@ -3186,8 +3366,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/in_silico_pcr",
-                  "parts" => [
-                    "in_silico_pcr",
+                  "segments" => [
+                    {
+                      "lit" => "in_silico_pcr",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3200,6 +3382,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "in_silico_pcr",
+                  ],
                 },
               ],
             },
@@ -3298,8 +3483,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/kasp_primer_design",
-                  "parts" => [
-                    "kasp_primer_design",
+                  "segments" => [
+                    {
+                      "lit" => "kasp_primer_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3315,6 +3502,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "kasp_primer_design",
+                  ],
                 },
               ],
             },
@@ -3336,12 +3526,13 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },
@@ -3432,8 +3623,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/melting_temperature",
-                  "parts" => [
-                    "melting_temperature",
+                  "segments" => [
+                    {
+                      "lit" => "melting_temperature",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3448,6 +3641,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "melting_temperature",
+                  ],
                 },
               ],
             },
@@ -3524,8 +3720,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/motif_finder",
-                  "parts" => [
-                    "motif_finder",
+                  "segments" => [
+                    {
+                      "lit" => "motif_finder",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3537,6 +3735,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "motif_finder",
+                  ],
                 },
               ],
             },
@@ -3597,8 +3798,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/multiple_sequence_alignment",
-                  "parts" => [
-                    "multiple_sequence_alignment",
+                  "segments" => [
+                    {
+                      "lit" => "multiple_sequence_alignment",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3607,6 +3810,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "multiple_sequence_alignment",
+                  ],
                 },
               ],
             },
@@ -3687,8 +3893,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/oligo_analysis",
-                  "parts" => [
-                    "oligo_analysis",
+                  "segments" => [
+                    {
+                      "lit" => "oligo_analysis",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3701,6 +3909,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "oligo_analysis",
+                  ],
                 },
               ],
             },
@@ -3777,8 +3988,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/ortholog_map",
-                  "parts" => [
-                    "ortholog_map",
+                  "segments" => [
+                    {
+                      "lit" => "ortholog_map",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3790,6 +4003,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "ortholog_map",
+                  ],
                 },
               ],
             },
@@ -3875,8 +4091,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/pairwise_alignment",
-                  "parts" => [
-                    "pairwise_alignment",
+                  "segments" => [
+                    {
+                      "lit" => "pairwise_alignment",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3890,6 +4108,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "pairwise_alignment",
+                  ],
                 },
               ],
             },
@@ -3950,8 +4171,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/parse_genbank",
-                  "parts" => [
-                    "parse_genbank",
+                  "segments" => [
+                    {
+                      "lit" => "parse_genbank",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -3960,6 +4183,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "parse_genbank",
+                  ],
                 },
               ],
             },
@@ -4025,8 +4251,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/parse_sanger_trace",
-                  "parts" => [
-                    "parse_sanger_trace",
+                  "segments" => [
+                    {
+                      "lit" => "parse_sanger_trace",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4036,6 +4264,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "parse_sanger_trace",
+                  ],
                 },
               ],
             },
@@ -4096,8 +4327,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/plasmid_annotate",
-                  "parts" => [
-                    "plasmid_annotate",
+                  "segments" => [
+                    {
+                      "lit" => "plasmid_annotate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4106,6 +4339,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "plasmid_annotate",
+                  ],
                 },
               ],
             },
@@ -4171,8 +4407,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/plasmid_deep_annotate",
-                  "parts" => [
-                    "plasmid_deep_annotate",
+                  "segments" => [
+                    {
+                      "lit" => "plasmid_deep_annotate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4182,6 +4420,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "plasmid_deep_annotate",
+                  ],
                 },
               ],
             },
@@ -4252,8 +4493,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/plasmid_full_report",
-                  "parts" => [
-                    "plasmid_full_report",
+                  "segments" => [
+                    {
+                      "lit" => "plasmid_full_report",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4264,6 +4507,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "plasmid_full_report",
+                  ],
                 },
               ],
             },
@@ -4334,8 +4580,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/plasmid_identify",
-                  "parts" => [
-                    "plasmid_identify",
+                  "segments" => [
+                    {
+                      "lit" => "plasmid_identify",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4346,6 +4594,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "plasmid_identify",
+                  ],
                 },
               ],
             },
@@ -4438,8 +4689,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/prime_editing_design",
-                  "parts" => [
-                    "prime_editing_design",
+                  "segments" => [
+                    {
+                      "lit" => "prime_editing_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4454,6 +4707,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "prime_editing_design",
+                  ],
                 },
               ],
             },
@@ -4542,8 +4798,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/prime_editing_twin_design",
-                  "parts" => [
-                    "prime_editing_twin_design",
+                  "segments" => [
+                    {
+                      "lit" => "prime_editing_twin_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4557,6 +4815,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "prime_editing_twin_design",
+                  ],
                 },
               ],
             },
@@ -4697,8 +4958,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/primer_design",
-                  "parts" => [
-                    "primer_design",
+                  "segments" => [
+                    {
+                      "lit" => "primer_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4725,6 +4988,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "primer_design",
+                  ],
                 },
               ],
             },
@@ -4801,8 +5067,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/primer_specificity",
-                  "parts" => [
-                    "primer_specificity",
+                  "segments" => [
+                    {
+                      "lit" => "primer_specificity",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4814,6 +5082,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "primer_specificity",
+                  ],
                 },
               ],
             },
@@ -4899,8 +5170,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/protease_digestion",
-                  "parts" => [
-                    "protease_digestion",
+                  "segments" => [
+                    {
+                      "lit" => "protease_digestion",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4914,6 +5187,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "protease_digestion",
+                  ],
                 },
               ],
             },
@@ -4973,8 +5249,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/protein_annotate_poll",
-                  "parts" => [
-                    "protein_annotate_poll",
+                  "segments" => [
+                    {
+                      "lit" => "protein_annotate_poll",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -4983,6 +5261,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "protein_annotate_poll",
+                  ],
                 },
               ],
             },
@@ -5053,8 +5334,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/protein_annotate_submit",
-                  "parts" => [
-                    "protein_annotate_submit",
+                  "segments" => [
+                    {
+                      "lit" => "protein_annotate_submit",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5065,6 +5348,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "protein_annotate_submit",
+                  ],
                 },
               ],
             },
@@ -5135,8 +5421,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/protein_hydrophobicity",
-                  "parts" => [
-                    "protein_hydrophobicity",
+                  "segments" => [
+                    {
+                      "lit" => "protein_hydrophobicity",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5147,6 +5435,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "protein_hydrophobicity",
+                  ],
                 },
               ],
             },
@@ -5212,8 +5503,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/protein_properties",
-                  "parts" => [
-                    "protein_properties",
+                  "segments" => [
+                    {
+                      "lit" => "protein_properties",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5223,6 +5516,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "protein_properties",
+                  ],
                 },
               ],
             },
@@ -5292,8 +5588,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/random_sequence",
-                  "parts" => [
-                    "random_sequence",
+                  "segments" => [
+                    {
+                      "lit" => "random_sequence",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5304,6 +5602,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "random_sequence",
+                  ],
                 },
               ],
             },
@@ -5369,8 +5670,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/restriction_sites",
-                  "parts" => [
-                    "restriction_sites",
+                  "segments" => [
+                    {
+                      "lit" => "restriction_sites",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5380,6 +5683,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "restriction_sites",
+                  ],
                 },
               ],
             },
@@ -5444,8 +5750,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/reverse_complement",
-                  "parts" => [
-                    "reverse_complement",
+                  "segments" => [
+                    {
+                      "lit" => "reverse_complement",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5455,6 +5763,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "reverse_complement",
+                  ],
                 },
               ],
             },
@@ -5524,8 +5835,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/reverse_translate",
-                  "parts" => [
-                    "reverse_translate",
+                  "segments" => [
+                    {
+                      "lit" => "reverse_translate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5536,6 +5849,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "reverse_translate",
+                  ],
                 },
               ],
             },
@@ -5596,8 +5912,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/rna_fold",
-                  "parts" => [
-                    "rna_fold",
+                  "segments" => [
+                    {
+                      "lit" => "rna_fold",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5606,6 +5924,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "rna_fold",
+                  ],
                 },
               ],
             },
@@ -5686,8 +6007,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sanger_vs_reference",
-                  "parts" => [
-                    "sanger_vs_reference",
+                  "segments" => [
+                    {
+                      "lit" => "sanger_vs_reference",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5700,6 +6023,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sanger_vs_reference",
+                  ],
                 },
               ],
             },
@@ -5760,8 +6086,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/save_permalink",
-                  "parts" => [
-                    "save_permalink",
+                  "segments" => [
+                    {
+                      "lit" => "save_permalink",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5771,6 +6099,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "save_permalink",
+                  ],
                 },
               ],
             },
@@ -5836,8 +6167,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/seqfile_stats",
-                  "parts" => [
-                    "seqfile_stats",
+                  "segments" => [
+                    {
+                      "lit" => "seqfile_stats",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5847,6 +6180,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "seqfile_stats",
+                  ],
                 },
               ],
             },
@@ -5917,8 +6253,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sequence_fetch",
-                  "parts" => [
-                    "sequence_fetch",
+                  "segments" => [
+                    {
+                      "lit" => "sequence_fetch",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -5929,6 +6267,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sequence_fetch",
+                  ],
                 },
               ],
             },
@@ -5999,8 +6340,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sequence_format_convert",
-                  "parts" => [
-                    "sequence_format_convert",
+                  "segments" => [
+                    {
+                      "lit" => "sequence_format_convert",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6011,6 +6354,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sequence_format_convert",
+                  ],
                 },
               ],
             },
@@ -6086,8 +6432,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sequence_report",
-                  "parts" => [
-                    "sequence_report",
+                  "segments" => [
+                    {
+                      "lit" => "sequence_report",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6099,6 +6447,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sequence_report",
+                  ],
                 },
               ],
             },
@@ -6177,8 +6528,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sequence_search",
-                  "parts" => [
-                    "sequence_search",
+                  "segments" => [
+                    {
+                      "lit" => "sequence_search",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6191,6 +6544,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sequence_search",
+                  ],
                 },
               ],
             },
@@ -6262,8 +6618,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sequencing_readback_verify",
-                  "parts" => [
-                    "sequencing_readback_verify",
+                  "segments" => [
+                    {
+                      "lit" => "sequencing_readback_verify",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6274,6 +6632,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sequencing_readback_verify",
+                  ],
                 },
               ],
             },
@@ -6333,8 +6694,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/session_create",
-                  "parts" => [
-                    "session_create",
+                  "segments" => [
+                    {
+                      "lit" => "session_create",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6343,6 +6706,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "session_create",
+                  ],
                 },
               ],
             },
@@ -6407,8 +6773,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/session_get",
-                  "parts" => [
-                    "session_get",
+                  "segments" => [
+                    {
+                      "lit" => "session_get",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6418,6 +6786,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "session_get",
+                  ],
                 },
               ],
             },
@@ -6492,8 +6863,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/session_run",
-                  "parts" => [
-                    "session_run",
+                  "segments" => [
+                    {
+                      "lit" => "session_run",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6506,6 +6879,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "session_run",
+                  ],
                 },
               ],
             },
@@ -6571,8 +6947,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/session_set",
-                  "parts" => [
-                    "session_set",
+                  "segments" => [
+                    {
+                      "lit" => "session_set",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6582,6 +6960,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "session_set",
+                  ],
                 },
               ],
             },
@@ -6652,8 +7033,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/sirna_design",
-                  "parts" => [
-                    "sirna_design",
+                  "segments" => [
+                    {
+                      "lit" => "sirna_design",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6664,6 +7047,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "sirna_design",
+                  ],
                 },
               ],
             },
@@ -6789,8 +7175,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/site_directed_mutagenesis",
-                  "parts" => [
-                    "site_directed_mutagenesis",
+                  "segments" => [
+                    {
+                      "lit" => "site_directed_mutagenesis",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6812,6 +7200,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "site_directed_mutagenesis",
+                  ],
                 },
               ],
             },
@@ -6881,8 +7272,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/translate",
-                  "parts" => [
-                    "translate",
+                  "segments" => [
+                    {
+                      "lit" => "translate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6893,6 +7286,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "translate",
+                  ],
                 },
               ],
             },
@@ -6958,8 +7354,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/variant_annotate",
-                  "parts" => [
-                    "variant_annotate",
+                  "segments" => [
+                    {
+                      "lit" => "variant_annotate",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -6969,6 +7367,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "variant_annotate",
+                  ],
                 },
               ],
             },
@@ -7045,8 +7446,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/variant_comparator",
-                  "parts" => [
-                    "variant_comparator",
+                  "segments" => [
+                    {
+                      "lit" => "variant_comparator",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7058,6 +7461,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "variant_comparator",
+                  ],
                 },
               ],
             },
@@ -7199,8 +7605,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/verify_assembly",
-                  "parts" => [
-                    "verify_assembly",
+                  "segments" => [
+                    {
+                      "lit" => "verify_assembly",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7225,6 +7633,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "verify_assembly",
+                  ],
                 },
               ],
             },
@@ -7318,8 +7729,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/verify_construct",
-                  "parts" => [
-                    "verify_construct",
+                  "segments" => [
+                    {
+                      "lit" => "verify_construct",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7334,6 +7747,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "verify_construct",
+                  ],
                 },
               ],
             },
@@ -7409,8 +7825,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/virtual_gel",
-                  "parts" => [
-                    "virtual_gel",
+                  "segments" => [
+                    {
+                      "lit" => "virtual_gel",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7422,6 +7840,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "virtual_gel",
+                  ],
                 },
               ],
             },
@@ -7482,8 +7903,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/volcano_plot_data",
-                  "parts" => [
-                    "volcano_plot_data",
+                  "segments" => [
+                    {
+                      "lit" => "volcano_plot_data",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7492,6 +7915,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "volcano_plot_data",
+                  ],
                 },
               ],
             },
@@ -7557,8 +7983,10 @@ module SeqbenchMcpConfig
                   "kind" => "http",
                   "method" => "POST",
                   "orig" => "/web_search",
-                  "parts" => [
-                    "web_search",
+                  "segments" => [
+                    {
+                      "lit" => "web_search",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
@@ -7568,6 +7996,9 @@ module SeqbenchMcpConfig
                     },
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "web_search",
+                  ],
                 },
               ],
             },

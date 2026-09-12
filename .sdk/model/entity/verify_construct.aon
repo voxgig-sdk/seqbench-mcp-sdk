@@ -90,8 +90,10 @@ main: kit: entity: verify_construct: {
         {
           method: "POST"
           orig: "/verify_construct"
-          parts: [
-            "verify_construct"
+          segments: [
+            {
+              lit: "verify_construct"
+            }
           ]
           transform: {
             req: {

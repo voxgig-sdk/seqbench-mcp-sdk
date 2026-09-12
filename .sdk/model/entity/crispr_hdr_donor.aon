@@ -120,8 +120,10 @@ main: kit: entity: crispr_hdr_donor: {
         {
           method: "POST"
           orig: "/crispr_hdr_donor"
-          parts: [
-            "crispr_hdr_donor"
+          segments: [
+            {
+              lit: "crispr_hdr_donor"
+            }
           ]
           transform: {
             req: {

@@ -66,8 +66,10 @@ main: kit: entity: sequence_fetch: {
         {
           method: "POST"
           orig: "/sequence_fetch"
-          parts: [
-            "sequence_fetch"
+          segments: [
+            {
+              lit: "sequence_fetch"
+            }
           ]
           transform: {
             req: {
