@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp'
+import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp-sdk'
 
 const client = new SeqbenchMcpSDK({
   apikey: process.env.SEQBENCH_MCP_APIKEY,
@@ -5153,7 +5153,7 @@ seqbench-mcp/
 Import the SDK from the package root:
 
 ```ts
-import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp'
+import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp-sdk'
 ```
 
 ### Entity state

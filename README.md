@@ -111,7 +111,7 @@ local result, err = client:Batch():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
+| TypeScript | `@voxgig-sdk/seqbench-mcp-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
 | Python | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
 | PHP | `voxgig-sdk/seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/seqbench-mcp-sdk/go` | `go get github.com/voxgig-sdk/seqbench-mcp-sdk/go@latest` |
@@ -125,7 +125,7 @@ local result, err = client:Batch():load()
 ### TypeScript
 
 ```ts
-import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp'
+import { SeqbenchMcpSDK } from '@voxgig-sdk/seqbench-mcp-sdk'
 
 const client = new SeqbenchMcpSDK({
   apikey: process.env.SEQBENCH_MCP_APIKEY,
