@@ -40,6 +40,8 @@ const node_path_1 = __importDefault(require("node:path"));
 const Fs = __importStar(require("node:fs"));
 const node_test_1 = require("node:test");
 const node_assert_1 = __importDefault(require("node:assert"));
+const live_runner_1 = require("../../live-runner");
+const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 // AFTER the imports on purpose: TypeScript hoists `import` above any
@@ -59,16 +61,12 @@ const utility_1 = require("../../utility");
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.SEQBENCH_MCP_TEST_LIVE;
         for (const op of ['create']) {
-            if ((0, utility_1.maybeSkipControl)(t, 'entityOp', 'site_directed_mutagenesi.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'site_directed_mutagenesi.' + op, live))
                 return;
         }
         const setup = basicSetup();
-        // The basic flow consumes synthetic IDs and field values from the
-        // fixture (entity TestData.json). Those don't exist on the live API.
-        // Skip live runs unless the user provided a real ENTID env override.
-        if (setup.syntheticOnly) {
-            t.skip('live entity test uses synthetic IDs from fixture — set SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID JSON to run live');
-            return;
+        if (setup.live) {
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": [{ "active": true, "name": "armTmTarget", "req": false, "short": "Target Tm (°C) for each template-binding arm.", "type": "`$NUMBER`", "index$": 0 }, { "active": true, "name": "dntpMM", "req": false, "short": "Total [dNTP] (mM), chelates Mg2+.", "type": "`$NUMBER`", "index$": 1 }, { "active": true, "name": "editKind", "req": false, "short": "Edit at the nucleotide or amino-acid level.", "type": "`$STRING`", "index$": 2 }, { "active": true, "name": "frameStart", "req": false, "short": "1-based position of the first base of codon 1 (editKind='aa').", "type": "`$INTEGER`", "index$": 3 }, { "active": true, "name": "gate", "req": false, "short": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g.", "type": "`$ANY`", "index$": 4 }, { "active": true, "name": "mgMM", "req": false, "short": "Divalent cation [Mg2+] (mM).", "type": "`$NUMBER`", "index$": 5 }, { "active": true, "name": "naMM", "req": false, "short": "Monovalent cation [Na+]/[K+] (mM).", "type": "`$NUMBER`", "index$": 6 }, { "active": true, "name": "newBase", "req": false, "short": "Replacement base (editKind='nt').", "type": "`$STRING`", "index$": 7 }, { "active": true, "name": "ok", "req": true, "type": "`$ANY`", "index$": 8 }, { "active": true, "name": "oligoNM", "req": false, "short": "Total strand concentration (nM).", "type": "`$NUMBER`", "index$": 9 }, { "active": true, "name": "organism", "req": false, "short": "Codon-usage table for choosing the new codon (editKind='aa').", "type": "`$STRING`", "index$": 10 }, { "active": true, "name": "position", "req": false, "short": "1-based position to substitute (editKind='nt').", "type": "`$INTEGER`", "index$": 11 }, { "active": true, "name": "provenance", "req": true, "type": "`$OBJECT`", "union": { "branches": 2, "count": 1, "depth": 2 }, "index$": 12 }, { "active": true, "name": "residue", "req": false, "short": "1-based residue number to change (editKind='aa').", "type": "`$INTEGER`", "index$": 13 }, { "active": true, "name": "result", "req": true, "short": "Tool-specific output object.", "type": "`$OBJECT`", "index$": 14 }, { "active": true, "name": "style", "req": false, "short": "Mutagenic primer style.", "type": "`$STRING`", "index$": 15 }, { "active": true, "name": "targetAa", "req": false, "short": "Target amino acid, one-letter code incl '*' (editKind='aa').", "type": "`$STRING`", "index$": 16 }, { "active": true, "name": "template", "req": true, "short": "Nucleotide sequence (raw or FASTA; IUPAC accepted).", "type": "`$STRING`", "index$": 17 }, { "active": true, "name": "tool", "req": true, "short": "The tool slug that ran.", "type": "`$STRING`", "index$": 18 }], "name": "site_directed_mutagenesi", "op": { "create": { "input": "data", "name": "create", "points": [{ "active": true, "args": {}, "contract": { "id": "POST /site_directed_mutagenesis", "json": "{\"operationId\":\"site_directed_mutagenesis\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"additionalProperties\":false,\"properties\":{\"armTmTarget\":{\"default\":60,\"description\":\"Target Tm (°C) for each template-binding arm.\",\"type\":\"number\"},\"dntpMM\":{\"default\":0.2,\"description\":\"Total [dNTP] (mM), chelates Mg2+.\",\"type\":\"number\"},\"editKind\":{\"default\":\"aa\",\"description\":\"Edit at the nucleotide or amino-acid level.\",\"enum\":[\"nt\",\"aa\"],\"type\":\"string\"},\"frameStart\":{\"default\":1,\"description\":\"1-based position of the first base of codon 1 (editKind='aa').\",\"type\":\"integer\"},\"mgMM\":{\"default\":1.5,\"description\":\"Divalent cation [Mg2+] (mM).\",\"type\":\"number\"},\"naMM\":{\"default\":50,\"description\":\"Monovalent cation [Na+]/[K+] (mM).\",\"type\":\"number\"},\"newBase\":{\"description\":\"Replacement base (editKind='nt').\",\"enum\":[\"A\",\"C\",\"G\",\"T\"],\"type\":\"string\"},\"oligoNM\":{\"default\":250,\"description\":\"Total strand concentration (nM).\",\"type\":\"number\"},\"organism\":{\"default\":\"ecoli\",\"description\":\"Codon-usage table for choosing the new codon (editKind='aa').\",\"enum\":[\"ecoli\",\"human\",\"yeast\",\"cho\",\"pichia\",\"insect\",\"arabidopsis\",\"zebrafish\"],\"type\":\"string\"},\"position\":{\"description\":\"1-based position to substitute (editKind='nt').\",\"type\":\"integer\"},\"residue\":{\"description\":\"1-based residue number to change (editKind='aa').\",\"type\":\"integer\"},\"style\":{\"default\":\"quikchange\",\"description\":\"Mutagenic primer style.\",\"enum\":[\"quikchange\",\"q5\"],\"type\":\"string\"},\"targetAa\":{\"description\":\"Target amino acid, one-letter code incl '*' (editKind='aa').\",\"type\":\"string\"},\"template\":{\"description\":\"Nucleotide sequence (raw or FASTA; IUPAC accepted).\",\"type\":\"string\"}},\"required\":[\"template\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Standard success envelope returned by every single-tool call.\",\"properties\":{\"gate\":{\"description\":\"Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).\",\"oneOf\":[{\"properties\":{\"checks\":{\"items\":{\"properties\":{\"id\":{\"type\":\"string\"},\"label\":{\"type\":\"string\"},\"message\":{\"type\":\"string\"},\"pass\":{\"type\":\"boolean\"},\"severity\":{\"enum\":[\"hard\",\"soft\"],\"type\":\"string\"},\"threshold\":{\"type\":\"string\"},\"value\":{\"type\":\"number\"}},\"required\":[\"id\",\"label\",\"severity\",\"pass\",\"message\"],\"type\":\"object\"},\"type\":\"array\"},\"notChecked\":{\"description\":\"Honest list of what this gate does NOT verify.\",\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"pass\":{\"description\":\"True if and only if every hard check passed.\",\"type\":\"boolean\"}},\"required\":[\"pass\",\"checks\",\"notChecked\"],\"type\":\"object\"},{\"type\":\"null\"}]},\"ok\":{\"const\":true},\"provenance\":{\"properties\":{\"apiVersion\":{\"example\":\"1.1.0\",\"type\":\"string\"},\"generatedAt\":{\"description\":\"ISO 8601 timestamp of when the result was generated.\",\"format\":\"date-time\",\"type\":\"string\"},\"tool\":{\"description\":\"Tool slug, or an array of slugs (one per step) for a workflow.\",\"oneOf\":[{\"type\":\"string\"},{\"items\":{\"type\":\"string\"},\"type\":\"array\"}]}},\"required\":[\"apiVersion\",\"tool\",\"generatedAt\"],\"type\":\"object\"},\"result\":{\"additionalProperties\":true,\"description\":\"Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.\",\"type\":\"object\"},\"tool\":{\"description\":\"The tool slug that ran.\",\"type\":\"string\"}},\"required\":[\"ok\",\"tool\",\"result\",\"provenance\"],\"type\":\"object\"}}},\"description\":\"Tool ran successfully.\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Standard error envelope for single-tool calls.\",\"properties\":{\"code\":{\"enum\":[\"invalid_argument\",\"unsupported\",\"upstream_unavailable\",\"upstream_timeout\",\"rate_limited\",\"internal_error\"],\"type\":\"string\"},\"error\":{\"description\":\"Human-readable error message.\",\"type\":\"string\"},\"ok\":{\"const\":false},\"retryable\":{\"type\":\"boolean\"},\"suggestedAction\":{\"type\":\"string\"},\"tool\":{\"type\":\"string\"}},\"required\":[\"ok\",\"error\"],\"type\":\"object\"}}},\"description\":\"Invalid argument or the tool could not run.\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Standard error envelope for single-tool calls.\",\"properties\":{\"code\":{\"enum\":[\"invalid_argument\",\"unsupported\",\"upstream_unavailable\",\"upstream_timeout\",\"rate_limited\",\"internal_error\"],\"type\":\"string\"},\"error\":{\"description\":\"Human-readable error message.\",\"type\":\"string\"},\"ok\":{\"const\":false},\"retryable\":{\"type\":\"boolean\"},\"suggestedAction\":{\"type\":\"string\"},\"tool\":{\"type\":\"string\"}},\"required\":[\"ok\",\"error\"],\"type\":\"object\"}}},\"description\":\"Unknown tool.\"}},\"security\":[{}],\"securitySource\":\"definition\"}", "source": "openapi3", "version": 1 }, "kind": "http", "method": "POST", "orig": "/site_directed_mutagenesis", "segments": [{ "lit": "site_directed_mutagenesis" }], "select": {}, "transform": { "req": { "armTmTarget": "`reqdata.arm_tm_target`", "dntpMM": "`reqdata.dntp_mm`", "editKind": "`reqdata.edit_kind`", "frameStart": "`reqdata.frame_start`", "mgMM": "`reqdata.mg_mm`", "naMM": "`reqdata.na_mm`", "newBase": "`reqdata.new_base`", "oligoNM": "`reqdata.oligo_nm`", "organism": "`reqdata.organism`", "position": "`reqdata.position`", "residue": "`reqdata.residue`", "style": "`reqdata.style`", "targetAa": "`reqdata.target_aa`", "template": "`reqdata.template`" }, "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [] }, "key$": "site_directed_mutagenesi", "name__orig": "site_directed_mutagenesi", "Name": "SiteDirectedMutagenesi", "name_": "site_directed_mutagenesi", "name-": "site-directed-mutagenesi", "NAME": "SITE_DIRECTED_MUTAGENESI", "index$": 76 }, { "active": true, "entity": "site_directed_mutagenesi", "key$": "BasicSiteDirectedMutagenesiFlow", "kind": "basic", "name": "BasicSiteDirectedMutagenesiFlow", "param": {}, "step": [{ "active": true, "data": {}, "input": { "ref": "site_directed_mutagenesi_ref01" }, "match": {}, "op": "create", "spec": [], "valid": [], "index$": 0 }] }, 'SiteDirectedMutagenesi');
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -101,12 +99,6 @@ function basicSetup(extra) {
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
-    // Detect whether the user provided a real ENTID JSON via env var. The
-    // basic flow consumes synthetic IDs from the fixture file; without an
-    // override those synthetic IDs reach the live API and 4xx. Surface this
-    // to the test so it can skip rather than fail.
-    const idmapEnvVal = process.env['SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID'];
-    const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{');
     const env = (0, utility_1.envOverride)({
         'SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID': idmap,
         'SEQBENCH_MCP_TEST_LIVE': 'FALSE',
@@ -115,7 +107,13 @@ function basicSetup(extra) {
     });
     idmap = env['SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID'];
     const live = 'TRUE' === env.SEQBENCH_MCP_TEST_LIVE;
+    const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
+        const rawIds = process.env['SEQBENCH_MCP_TEST_SITE_DIRECTED_MUTAGENESI_ENTID'];
+        idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
+        if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+            throw new Error('Live ENTID must be a JSON object');
+        }
         client = new __1.SeqbenchMcpSDK(merge([
             // FIRST, so the generated fields below win: sdk-test-control.json's
             // test.client.options adds to the live client, it does not redirect it.
@@ -128,7 +126,8 @@ function basicSetup(extra) {
             // argument at all - so a bare 'extra' silently discarded the apikey
             // and server values above and handed the SDK undefined. Harmless
             // while there was nothing in that object; not harmless now.
-            extra || {}
+            extra || {},
+            { system: { fetch: transport.fetch } }
         ]));
     }
     const setup = {
@@ -140,7 +139,7 @@ function basicSetup(extra) {
         data: entityData,
         explain: 'TRUE' === env.SEQBENCH_MCP_TEST_EXPLAIN,
         live,
-        syntheticOnly: live && !idmapOverridden,
+        transport,
         now: Date.now(),
     };
     return setup;

@@ -16,5 +16,31 @@
     "list_tool": {
       "list_tool_ref01": {}
     }
+  },
+  "requests": {
+    "GET /": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listTools",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The API index."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
+      }
+    }
   }
 }

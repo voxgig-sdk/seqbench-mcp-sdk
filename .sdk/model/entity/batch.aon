@@ -73,6 +73,12 @@ main: kit: entity: batch: {
       name: "create"
       points: [
         {
+          contract: {
+            id: "POST /batch"
+            json: "{\"operationId\":\"runBatch\",\"parameters\":[],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"example\":{\"input\":\">seq1\\nATGGCGCGCTAA\\n>seq2\\nTTTTAAAACCCC\",\"tool\":\"gc_content\"},\"schema\":{\"properties\":{\"args\":{\"additionalProperties\":true,\"description\":\"Shared tool arguments applied to every record.\",\"type\":\"object\"},\"input\":{\"description\":\"Multi-FASTA text or one sequence per line (max ~2,000,000 chars).\",\"type\":\"string\"},\"tool\":{\"description\":\"A batchable tool slug (see `GET /batch`).\",\"type\":\"string\"}},\"required\":[\"tool\",\"input\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"ok\":{\"const\":true},\"result\":{\"properties\":{\"capped\":{\"description\":\"True if input exceeded the record limit.\",\"type\":\"boolean\"},\"columns\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"count\":{\"type\":\"integer\"},\"errors\":{\"type\":\"integer\"},\"limit\":{\"description\":\"Maximum records per call (500).\",\"type\":\"integer\"},\"provenance\":{\"properties\":{\"apiVersion\":{\"example\":\"1.1.0\",\"type\":\"string\"},\"generatedAt\":{\"description\":\"ISO 8601 timestamp of when the result was generated.\",\"format\":\"date-time\",\"type\":\"string\"},\"tool\":{\"description\":\"Tool slug, or an array of slugs (one per step) for a workflow.\",\"oneOf\":[{\"type\":\"string\"},{\"items\":{\"type\":\"string\"},\"type\":\"array\"}]}},\"required\":[\"apiVersion\",\"tool\",\"generatedAt\"],\"type\":\"object\"},\"rows\":{\"items\":{\"properties\":{\"cells\":{\"additionalProperties\":{\"type\":[\"string\",\"number\"]},\"type\":\"object\"},\"error\":{\"type\":\"string\"},\"errorCode\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"retryable\":{\"type\":\"boolean\"}},\"required\":[\"name\",\"cells\"],\"type\":\"object\"},\"type\":\"array\"},\"tool\":{\"type\":\"string\"}},\"required\":[\"tool\",\"count\",\"capped\",\"limit\",\"columns\",\"rows\",\"errors\",\"provenance\"],\"type\":\"object\"}},\"required\":[\"ok\",\"result\"],\"type\":\"object\"}}},\"description\":\"Batch completed (individual rows may carry per-record errors).\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"Error shape returned by the batch and workflow endpoints.\",\"properties\":{\"error\":{\"type\":\"string\"},\"ok\":{\"const\":false}},\"required\":[\"ok\",\"error\"],\"type\":\"object\"}}},\"description\":\"Invalid request (bad JSON, missing tool/input, or tool not batchable).\"}},\"security\":[{}],\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/batch"
           segments: [
@@ -91,6 +97,12 @@ main: kit: entity: batch: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /batch"
+            json: "{\"operationId\":\"batchInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"type\":\"object\"}}},\"description\":\"Batchable tool list and limits.\"}},\"security\":[{}],\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/batch"
           segments: [

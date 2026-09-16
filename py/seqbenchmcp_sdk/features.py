@@ -1,12 +1,18 @@
 # SeqbenchMcp SDK feature factory
 
 from seqbenchmcp_sdk.feature.base_feature import SeqbenchMcpBaseFeature
+from seqbenchmcp_sdk.feature.ratelimit_feature import SeqbenchMcpRatelimitFeature
+from seqbenchmcp_sdk.feature.retry_feature import SeqbenchMcpRetryFeature
 from seqbenchmcp_sdk.feature.test_feature import SeqbenchMcpTestFeature
+from seqbenchmcp_sdk.feature.timeout_feature import SeqbenchMcpTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: SeqbenchMcpBaseFeature(),
+    "ratelimit": lambda: SeqbenchMcpRatelimitFeature(),
+    "retry": lambda: SeqbenchMcpRetryFeature(),
     "test": lambda: SeqbenchMcpTestFeature(),
+    "timeout": lambda: SeqbenchMcpTimeoutFeature(),
 }
 
 

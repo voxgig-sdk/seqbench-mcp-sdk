@@ -5,11 +5,11 @@
         "gate": "s6e",
         "newSequence": "s6f",
         "ok": "s70",
-        "overlapLength": "s71",
-        "pbsLength": "s72",
+        "overlapLength": 113,
+        "pbsLength": 114,
         "provenance": {},
-        "replaceEnd": "s74",
-        "replaceStart": "s75",
+        "replaceEnd": 116,
+        "replaceStart": 117,
         "result": {},
         "target": "s77",
         "tool": "s78",
@@ -19,11 +19,11 @@
         "gate": "sdc",
         "newSequence": "sdd",
         "ok": "sde",
-        "overlapLength": "sdf",
-        "pbsLength": "se0",
+        "overlapLength": 223,
+        "pbsLength": 224,
         "provenance": {},
-        "replaceEnd": "se2",
-        "replaceStart": "se3",
+        "replaceEnd": 226,
+        "replaceStart": 227,
         "result": {},
         "target": "se5",
         "tool": "se6",
@@ -33,11 +33,11 @@
         "gate": "s14a",
         "newSequence": "s14b",
         "ok": "s14c",
-        "overlapLength": "s14d",
-        "pbsLength": "s14e",
+        "overlapLength": 333,
+        "pbsLength": 334,
         "provenance": {},
-        "replaceEnd": "s150",
-        "replaceStart": "s151",
+        "replaceEnd": 336,
+        "replaceStart": 337,
         "result": {},
         "target": "s153",
         "tool": "s154",
@@ -51,14 +51,295 @@
         "gate": "s1b8",
         "newSequence": "s1b9",
         "ok": "s1ba",
-        "overlapLength": "s1bb",
-        "pbsLength": "s1bc",
+        "overlapLength": 443,
+        "pbsLength": 444,
         "provenance": {},
-        "replaceEnd": "s1be",
-        "replaceStart": "s1bf",
+        "replaceEnd": 446,
+        "replaceStart": 447,
         "result": {},
         "target": "s1c1",
         "tool": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /prime_editing_twin_design": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "prime_editing_twin_design",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "newSequence": {
+                    "description": "New sequence (forward strand) to install in place of [replaceStart, replaceEnd]. Needs >= 2 bp.",
+                    "type": "string"
+                  },
+                  "overlapLength": {
+                    "default": 15,
+                    "description": "Length (bp) of the shared overlap built into both pegRNAs' 3' flaps where they meet and anneal.",
+                    "type": "integer"
+                  },
+                  "pbsLength": {
+                    "description": "Optional preferred PBS length to highlight; a full 8-17 nt sweep is always returned.",
+                    "type": "integer"
+                  },
+                  "replaceEnd": {
+                    "description": "1-based inclusive end of the region being replaced/deleted. For a pure insertion, set replaceEnd = replaceStart - 1.",
+                    "type": "integer"
+                  },
+                  "replaceStart": {
+                    "description": "1-based inclusive start of the region being replaced/deleted.",
+                    "type": "integer"
+                  },
+                  "target": {
+                    "description": "Forward-strand target DNA (raw or FASTA), with flanking sequence on both sides of the replacement window.",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "target",
+                  "replaceStart",
+                  "replaceEnd",
+                  "newSequence"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard success envelope returned by every single-tool call.",
+                  "properties": {
+                    "gate": {
+                      "description": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).",
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "boolean"
+                                  },
+                                  "severity": {
+                                    "enum": [
+                                      "hard",
+                                      "soft"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "threshold": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "severity",
+                                  "pass",
+                                  "message"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "notChecked": {
+                              "description": "Honest list of what this gate does NOT verify.",
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "pass": {
+                              "description": "True if and only if every hard check passed.",
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pass",
+                            "checks",
+                            "notChecked"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ok": {
+                      "const": true
+                    },
+                    "provenance": {
+                      "properties": {
+                        "apiVersion": {
+                          "example": "1.1.0",
+                          "type": "string"
+                        },
+                        "generatedAt": {
+                          "description": "ISO 8601 timestamp of when the result was generated.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "tool": {
+                          "description": "Tool slug, or an array of slugs (one per step) for a workflow.",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "apiVersion",
+                        "tool",
+                        "generatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    "result": {
+                      "additionalProperties": true,
+                      "description": "Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.",
+                      "type": "object"
+                    },
+                    "tool": {
+                      "description": "The tool slug that ran.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "tool",
+                    "result",
+                    "provenance"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Tool ran successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid argument or the tool could not run."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown tool."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
       }
     }
   }

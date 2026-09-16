@@ -3,7 +3,7 @@
     "crispr_offtarget_check": {
       "CRISPR_OFFTARGET_CHECK00": {
         "gate": "s50",
-        "maxMismatches": "s51",
+        "maxMismatches": 81,
         "nuclease": "s52",
         "ok": "s53",
         "protospacer": "s54",
@@ -14,7 +14,7 @@
       },
       "CRISPR_OFFTARGET_CHECK01": {
         "gate": "sa0",
-        "maxMismatches": "sa1",
+        "maxMismatches": 161,
         "nuclease": "sa2",
         "ok": "sa3",
         "protospacer": "sa4",
@@ -25,7 +25,7 @@
       },
       "CRISPR_OFFTARGET_CHECK02": {
         "gate": "sf0",
-        "maxMismatches": "sf1",
+        "maxMismatches": 241,
         "nuclease": "sf2",
         "ok": "sf3",
         "protospacer": "sf4",
@@ -40,13 +40,286 @@
     "crispr_offtarget_check": {
       "crispr_offtarget_check_ref01": {
         "gate": "s140",
-        "maxMismatches": "s141",
+        "maxMismatches": 321,
         "nuclease": "s142",
         "ok": "s143",
         "protospacer": "s144",
         "provenance": {},
         "result": {},
         "tool": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /crispr_offtarget_check": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "crispr_offtarget_check",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "maxMismatches": {
+                    "default": 2,
+                    "description": "Mismatches tolerated between the protospacer and a candidate genomic site.",
+                    "type": "integer"
+                  },
+                  "nuclease": {
+                    "default": "spcas9",
+                    "description": "Nuclease id — determines the PAM pattern/side required at each candidate site.",
+                    "enum": [
+                      "spcas9",
+                      "spcas9ng",
+                      "sacas9",
+                      "cas12a"
+                    ],
+                    "type": "string"
+                  },
+                  "protospacer": {
+                    "description": "The guide's protospacer sequence, 5'→3' (no PAM).",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "protospacer"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard success envelope returned by every single-tool call.",
+                  "properties": {
+                    "gate": {
+                      "description": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).",
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "boolean"
+                                  },
+                                  "severity": {
+                                    "enum": [
+                                      "hard",
+                                      "soft"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "threshold": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "severity",
+                                  "pass",
+                                  "message"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "notChecked": {
+                              "description": "Honest list of what this gate does NOT verify.",
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "pass": {
+                              "description": "True if and only if every hard check passed.",
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pass",
+                            "checks",
+                            "notChecked"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ok": {
+                      "const": true
+                    },
+                    "provenance": {
+                      "properties": {
+                        "apiVersion": {
+                          "example": "1.1.0",
+                          "type": "string"
+                        },
+                        "generatedAt": {
+                          "description": "ISO 8601 timestamp of when the result was generated.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "tool": {
+                          "description": "Tool slug, or an array of slugs (one per step) for a workflow.",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "apiVersion",
+                        "tool",
+                        "generatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    "result": {
+                      "additionalProperties": true,
+                      "description": "Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.",
+                      "type": "object"
+                    },
+                    "tool": {
+                      "description": "The tool slug that ran.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "tool",
+                    "result",
+                    "provenance"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Tool ran successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid argument or the tool could not run."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown tool."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
       }
     }
   }

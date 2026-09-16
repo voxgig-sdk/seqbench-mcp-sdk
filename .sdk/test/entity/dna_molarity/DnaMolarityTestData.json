@@ -3,7 +3,7 @@
     "dna_molarity": {
       "DNA_MOLARITY00": {
         "gate": "s64",
-        "length": "s65",
+        "length": 101,
         "massNg": 102,
         "ok": "s67",
         "provenance": {},
@@ -16,7 +16,7 @@
       },
       "DNA_MOLARITY01": {
         "gate": "sc8",
-        "length": "sc9",
+        "length": 201,
         "massNg": 202,
         "ok": "scb",
         "provenance": {},
@@ -29,7 +29,7 @@
       },
       "DNA_MOLARITY02": {
         "gate": "s12c",
-        "length": "s12d",
+        "length": 301,
         "massNg": 302,
         "ok": "s12f",
         "provenance": {},
@@ -46,7 +46,7 @@
     "dna_molarity": {
       "dna_molarity_ref01": {
         "gate": "s190",
-        "length": "s191",
+        "length": 401,
         "massNg": 402,
         "ok": "s193",
         "provenance": {},
@@ -55,6 +55,286 @@
         "tool": "s197",
         "type": "s198",
         "volumeUl": 409
+      }
+    }
+  },
+  "requests": {
+    "POST /dna_molarity": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "dna_molarity",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "length": {
+                    "default": 1000,
+                    "description": "Length in bp (dsDNA) or nt (ssDNA/ssRNA). Ignored when a sequence is given.",
+                    "type": "integer"
+                  },
+                  "massNg": {
+                    "default": 100,
+                    "description": "Mass in nanograms.",
+                    "type": "number"
+                  },
+                  "sequence": {
+                    "description": "Optional sequence — overrides length and gives an exact molar mass from base composition.",
+                    "type": "string"
+                  },
+                  "type": {
+                    "default": "dsDNA",
+                    "description": "Molecule type.",
+                    "enum": [
+                      "dsDNA",
+                      "ssDNA",
+                      "ssRNA"
+                    ],
+                    "type": "string"
+                  },
+                  "volumeUl": {
+                    "default": 0,
+                    "description": "Volume in microlitres (0 = unknown; needed for concentration).",
+                    "type": "number"
+                  }
+                },
+                "required": [],
+                "type": "object"
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard success envelope returned by every single-tool call.",
+                  "properties": {
+                    "gate": {
+                      "description": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).",
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "boolean"
+                                  },
+                                  "severity": {
+                                    "enum": [
+                                      "hard",
+                                      "soft"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "threshold": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "severity",
+                                  "pass",
+                                  "message"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "notChecked": {
+                              "description": "Honest list of what this gate does NOT verify.",
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "pass": {
+                              "description": "True if and only if every hard check passed.",
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pass",
+                            "checks",
+                            "notChecked"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ok": {
+                      "const": true
+                    },
+                    "provenance": {
+                      "properties": {
+                        "apiVersion": {
+                          "example": "1.1.0",
+                          "type": "string"
+                        },
+                        "generatedAt": {
+                          "description": "ISO 8601 timestamp of when the result was generated.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "tool": {
+                          "description": "Tool slug, or an array of slugs (one per step) for a workflow.",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "apiVersion",
+                        "tool",
+                        "generatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    "result": {
+                      "additionalProperties": true,
+                      "description": "Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.",
+                      "type": "object"
+                    },
+                    "tool": {
+                      "description": "The tool slug that ran.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "tool",
+                    "result",
+                    "provenance"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Tool ran successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid argument or the tool could not run."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown tool."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
       }
     }
   }

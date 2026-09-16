@@ -11,14 +11,14 @@
         "enzyme5": "se2",
         "fragmentPcrs": [],
         "fragments": [],
-        "frameStart": "se5",
+        "frameStart": 229,
         "gate": "se6",
         "insert": "se7",
         "insertPcr": {},
         "method": "se9",
         "names": [],
         "ok": "seb",
-        "overlapLen": "sec",
+        "overlapLen": 236,
         "provenance": {},
         "result": {},
         "tool": "sef",
@@ -36,14 +36,14 @@
         "enzyme5": "s1be",
         "fragmentPcrs": [],
         "fragments": [],
-        "frameStart": "s1c1",
+        "frameStart": 449,
         "gate": "s1c2",
         "insert": "s1c3",
         "insertPcr": {},
         "method": "s1c5",
         "names": [],
         "ok": "s1c7",
-        "overlapLen": "s1c8",
+        "overlapLen": 456,
         "provenance": {},
         "result": {},
         "tool": "s1cb",
@@ -61,14 +61,14 @@
         "enzyme5": "s29a",
         "fragmentPcrs": [],
         "fragments": [],
-        "frameStart": "s29d",
+        "frameStart": 669,
         "gate": "s29e",
         "insert": "s29f",
         "insertPcr": {},
         "method": "s2a1",
         "names": [],
         "ok": "s2a3",
-        "overlapLen": "s2a4",
+        "overlapLen": 676,
         "provenance": {},
         "result": {},
         "tool": "s2a7",
@@ -90,19 +90,363 @@
         "enzyme5": "s376",
         "fragmentPcrs": [],
         "fragments": [],
-        "frameStart": "s379",
+        "frameStart": 889,
         "gate": "s37a",
         "insert": "s37b",
         "insertPcr": {},
         "method": "s37d",
         "names": [],
         "ok": "s37f",
-        "overlapLen": "s380",
+        "overlapLen": 896,
         "provenance": {},
         "result": {},
         "tool": "s383",
         "vector": "s384",
         "vectorPcr": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /verify_assembly": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "verify_assembly",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "armTmTarget": {
+                    "default": 60,
+                    "description": "Target annealing Tm (°C) for primer arms.",
+                    "type": "number"
+                  },
+                  "circular": {
+                    "default": true,
+                    "description": "Treat the product/claimed construct as circular (most plasmids are).",
+                    "type": "boolean"
+                  },
+                  "claimedConstruct": {
+                    "description": "The sequence you claim you ended up with.",
+                    "type": "string"
+                  },
+                  "coding": {
+                    "default": false,
+                    "description": "Report amino-acid effects of any mismatch, assuming claimedConstruct is (or contains) a coding sequence.",
+                    "type": "boolean"
+                  },
+                  "enzyme": {
+                    "default": "BsaI",
+                    "description": "Type IIS enzyme for Golden Gate.",
+                    "type": "string"
+                  },
+                  "enzyme3": {
+                    "default": "BamHI",
+                    "description": "3′ enzyme (restriction method).",
+                    "type": "string"
+                  },
+                  "enzyme5": {
+                    "default": "EcoRI",
+                    "description": "5′ enzyme (restriction method).",
+                    "type": "string"
+                  },
+                  "fragmentPcrs": {
+                    "description": "Parallel to fragments, same length: null (or omit) to use fragments[i] directly, or a PCR spec {template, forwardPrimer, reversePrimer, maxMismatches?, circular?} to derive that fragment instead.",
+                    "items": {
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "fragments": {
+                    "description": "Fragments (5′→3′), assembled head-to-tail (gibson/goldengate). Use \"\" as a placeholder for any fragment supplied instead via the matching fragmentPcrs[i].",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "frameStart": {
+                    "default": 1,
+                    "description": "1-based reading-frame start on claimedConstruct, used when coding is true.",
+                    "type": "integer"
+                  },
+                  "insert": {
+                    "description": "Insert sequence (restriction method). Omit if insertPcr is given.",
+                    "type": "string"
+                  },
+                  "insertPcr": {
+                    "description": "Derive the insert by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
+                    "type": "object"
+                  },
+                  "method": {
+                    "description": "Assembly method used.",
+                    "enum": [
+                      "restriction",
+                      "gibson",
+                      "goldengate"
+                    ],
+                    "type": "string"
+                  },
+                  "names": {
+                    "description": "Optional labels for each fragment.",
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array"
+                  },
+                  "overlapLen": {
+                    "default": 20,
+                    "description": "Gibson homology-arm length (bp).",
+                    "type": "integer"
+                  },
+                  "vector": {
+                    "description": "Vector sequence (restriction method). Omit if vectorPcr is given.",
+                    "type": "string"
+                  },
+                  "vectorPcr": {
+                    "description": "Derive the vector by PCR instead: {template, forwardPrimer, reversePrimer, maxMismatches?, circular?}.",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "method",
+                  "claimedConstruct"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard success envelope returned by every single-tool call.",
+                  "properties": {
+                    "gate": {
+                      "description": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).",
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "boolean"
+                                  },
+                                  "severity": {
+                                    "enum": [
+                                      "hard",
+                                      "soft"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "threshold": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "severity",
+                                  "pass",
+                                  "message"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "notChecked": {
+                              "description": "Honest list of what this gate does NOT verify.",
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "pass": {
+                              "description": "True if and only if every hard check passed.",
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pass",
+                            "checks",
+                            "notChecked"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ok": {
+                      "const": true
+                    },
+                    "provenance": {
+                      "properties": {
+                        "apiVersion": {
+                          "example": "1.1.0",
+                          "type": "string"
+                        },
+                        "generatedAt": {
+                          "description": "ISO 8601 timestamp of when the result was generated.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "tool": {
+                          "description": "Tool slug, or an array of slugs (one per step) for a workflow.",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "apiVersion",
+                        "tool",
+                        "generatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    "result": {
+                      "additionalProperties": true,
+                      "description": "Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.",
+                      "type": "object"
+                    },
+                    "tool": {
+                      "description": "The tool slug that ran.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "tool",
+                    "result",
+                    "provenance"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Tool ran successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid argument or the tool could not run."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown tool."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
       }
     }
   }

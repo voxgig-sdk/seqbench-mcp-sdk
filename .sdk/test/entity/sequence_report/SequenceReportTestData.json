@@ -2,10 +2,10 @@
   "existing": {
     "sequence_report": {
       "SEQUENCE_REPORT00": {
-        "endPrimerLength": "s5a",
+        "endPrimerLength": 90,
         "gate": "s5b",
-        "maxOrfs": "s5c",
-        "minOrfAa": "s5d",
+        "maxOrfs": 92,
+        "minOrfAa": 93,
         "ok": "s5e",
         "provenance": {},
         "result": {},
@@ -14,10 +14,10 @@
         "id": "SEQUENCE_REPORT00"
       },
       "SEQUENCE_REPORT01": {
-        "endPrimerLength": "sb4",
+        "endPrimerLength": 180,
         "gate": "sb5",
-        "maxOrfs": "sb6",
-        "minOrfAa": "sb7",
+        "maxOrfs": 182,
+        "minOrfAa": 183,
         "ok": "sb8",
         "provenance": {},
         "result": {},
@@ -26,10 +26,10 @@
         "id": "SEQUENCE_REPORT01"
       },
       "SEQUENCE_REPORT02": {
-        "endPrimerLength": "s10e",
+        "endPrimerLength": 270,
         "gate": "s10f",
-        "maxOrfs": "s110",
-        "minOrfAa": "s111",
+        "maxOrfs": 272,
+        "minOrfAa": 273,
         "ok": "s112",
         "provenance": {},
         "result": {},
@@ -42,15 +42,287 @@
   "new": {
     "sequence_report": {
       "sequence_report_ref01": {
-        "endPrimerLength": "s168",
+        "endPrimerLength": 360,
         "gate": "s169",
-        "maxOrfs": "s16a",
-        "minOrfAa": "s16b",
+        "maxOrfs": 362,
+        "minOrfAa": 363,
         "ok": "s16c",
         "provenance": {},
         "result": {},
         "sequence": "s16f",
         "tool": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /sequence_report": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "sequence_report",
+        "parameters": [],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "endPrimerLength": {
+                    "default": 20,
+                    "description": "Length of the naive end primers taken from each end.",
+                    "type": "integer"
+                  },
+                  "maxOrfs": {
+                    "default": 10,
+                    "description": "Maximum number of ORFs to return, longest first.",
+                    "type": "integer"
+                  },
+                  "minOrfAa": {
+                    "default": 50,
+                    "description": "Minimum ORF length in amino acids.",
+                    "type": "integer"
+                  },
+                  "sequence": {
+                    "description": "Nucleotide sequence (raw or FASTA; IUPAC accepted).",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "sequence"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard success envelope returned by every single-tool call.",
+                  "properties": {
+                    "gate": {
+                      "description": "Typed QC verdict, or null when the tool defines no gate or the call lacked gating inputs (e.g. no targetTm).",
+                      "oneOf": [
+                        {
+                          "properties": {
+                            "checks": {
+                              "items": {
+                                "properties": {
+                                  "id": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "message": {
+                                    "type": "string"
+                                  },
+                                  "pass": {
+                                    "type": "boolean"
+                                  },
+                                  "severity": {
+                                    "enum": [
+                                      "hard",
+                                      "soft"
+                                    ],
+                                    "type": "string"
+                                  },
+                                  "threshold": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "id",
+                                  "label",
+                                  "severity",
+                                  "pass",
+                                  "message"
+                                ],
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "notChecked": {
+                              "description": "Honest list of what this gate does NOT verify.",
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "pass": {
+                              "description": "True if and only if every hard check passed.",
+                              "type": "boolean"
+                            }
+                          },
+                          "required": [
+                            "pass",
+                            "checks",
+                            "notChecked"
+                          ],
+                          "type": "object"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    },
+                    "ok": {
+                      "const": true
+                    },
+                    "provenance": {
+                      "properties": {
+                        "apiVersion": {
+                          "example": "1.1.0",
+                          "type": "string"
+                        },
+                        "generatedAt": {
+                          "description": "ISO 8601 timestamp of when the result was generated.",
+                          "format": "date-time",
+                          "type": "string"
+                        },
+                        "tool": {
+                          "description": "Tool slug, or an array of slugs (one per step) for a workflow.",
+                          "oneOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "apiVersion",
+                        "tool",
+                        "generatedAt"
+                      ],
+                      "type": "object"
+                    },
+                    "result": {
+                      "additionalProperties": true,
+                      "description": "Tool-specific output object. Its shape depends on the tool — call `GET /{tool}` or see the docs for each tool's fields.",
+                      "type": "object"
+                    },
+                    "tool": {
+                      "description": "The tool slug that ran.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "tool",
+                    "result",
+                    "provenance"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Tool ran successfully."
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Invalid argument or the tool could not run."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Standard error envelope for single-tool calls.",
+                  "properties": {
+                    "code": {
+                      "enum": [
+                        "invalid_argument",
+                        "unsupported",
+                        "upstream_unavailable",
+                        "upstream_timeout",
+                        "rate_limited",
+                        "internal_error"
+                      ],
+                      "type": "string"
+                    },
+                    "error": {
+                      "description": "Human-readable error message.",
+                      "type": "string"
+                    },
+                    "ok": {
+                      "const": false
+                    },
+                    "retryable": {
+                      "type": "boolean"
+                    },
+                    "suggestedAction": {
+                      "type": "string"
+                    },
+                    "tool": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "ok",
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Unknown tool."
+          }
+        },
+        "security": [
+          {}
+        ],
+        "securitySource": "definition"
       }
     }
   }
