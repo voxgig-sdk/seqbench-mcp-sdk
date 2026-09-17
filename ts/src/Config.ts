@@ -131,261 +131,261 @@ class Config {
 
     entity: {
       
-      alphafold_lookup: {
-      },
-
-      aso_design: {
-      },
-
-      base_editing_design: {
-      },
-
-      batch: {
-      },
-
-      batch__workflow: {
-      },
-
-      characterize_sequence: {
-      },
-
-      cloning_simulate: {
-      },
-
-      codon_adaptation_index: {
-      },
-
-      codon_optimize: {
-      },
-
-      construct_autofix: {
-      },
-
-      construct_qc: {
-      },
-
-      crispr_grna_design: {
-      },
-
-      crispr_hdr_donor: {
-      },
-
-      crispr_offtarget_check: {
-      },
-
-      cross_dimer: {
-      },
-
-      dna_molarity: {
-      },
-
-      double_digest: {
-      },
-
-      export_echo_picklist: {
-      },
-
-      export_opentrons_protocol: {
-      },
-
-      export_plate_layout: {
-      },
-
-      expression_heatmap_cluster: {
-      },
-
-      fastq_qc_report: {
-      },
-
-      fastq_trim: {
-      },
-
-      find_orf: {
-      },
-
-      format_sequence: {
-      },
-
-      functional_enrichment: {
-      },
-
-      gc_content: {
-      },
-
-      gene_dossier: {
-      },
-
-      gene_expression: {
-      },
-
-      gene_model: {
-      },
-
-      golden_gate_fidelity: {
-      },
-
-      hgvs_convert: {
-      },
-
-      id_map_poll: {
-      },
-
-      id_map_submit: {
-      },
-
-      in_silico_pcr: {
-      },
-
-      kasp_primer_design: {
-      },
-
-      list_tool: {
-      },
-
-      melting_temperature: {
-      },
-
-      motif_finder: {
-      },
-
-      multiple_sequence_alignment: {
-      },
-
-      oligo_analysi: {
-      },
-
-      ortholog_map: {
-      },
-
-      pairwise_alignment: {
-      },
-
-      parse_genbank: {
-      },
-
-      parse_sanger_trace: {
-      },
-
-      plasmid_annotate: {
-      },
-
-      plasmid_deep_annotate: {
-      },
-
-      plasmid_full_report: {
-      },
-
-      plasmid_identify: {
-      },
-
-      prime_editing_design: {
-      },
-
-      prime_editing_twin_design: {
-      },
-
-      primer_design: {
-      },
-
-      primer_specificity: {
-      },
-
-      protease_digestion: {
-      },
-
-      protein_annotate_poll: {
-      },
-
-      protein_annotate_submit: {
-      },
-
-      protein_hydrophobicity: {
-      },
-
-      protein_property: {
-      },
-
-      random_sequence: {
-      },
-
-      restriction_site: {
-      },
-
-      reverse_complement: {
-      },
-
-      reverse_translate: {
-      },
-
-      rna_fold: {
-      },
-
-      sanger_vs_reference: {
-      },
-
-      save_permalink: {
-      },
-
-      seqfile_stat: {
-      },
-
-      sequence_fetch: {
-      },
-
-      sequence_format_convert: {
-      },
-
-      sequence_report: {
-      },
-
-      sequence_search: {
-      },
-
-      sequencing_readback_verify: {
-      },
-
-      session_create: {
-      },
-
-      session_get: {
-      },
-
-      session_run: {
-      },
-
-      session_set: {
-      },
-
-      sirna_design: {
-      },
-
-      site_directed_mutagenesi: {
-      },
-
-      translate: {
-      },
-
-      variant_annotate: {
-      },
-
-      variant_comparator: {
-      },
-
-      verify_assembly: {
-      },
-
-      verify_construct: {
-      },
-
-      virtual_gel: {
-      },
-
-      volcano_plot_data: {
-      },
-
-      web_search: {
-      },
-
+        alphafold_lookup: {
+        },
+  
+        aso_design: {
+        },
+  
+        base_editing_design: {
+        },
+  
+        batch: {
+        },
+  
+        batch__workflow: {
+        },
+  
+        characterize_sequence: {
+        },
+  
+        cloning_simulate: {
+        },
+  
+        codon_adaptation_index: {
+        },
+  
+        codon_optimize: {
+        },
+  
+        construct_autofix: {
+        },
+  
+        construct_qc: {
+        },
+  
+        crispr_grna_design: {
+        },
+  
+        crispr_hdr_donor: {
+        },
+  
+        crispr_offtarget_check: {
+        },
+  
+        cross_dimer: {
+        },
+  
+        dna_molarity: {
+        },
+  
+        double_digest: {
+        },
+  
+        export_echo_picklist: {
+        },
+  
+        export_opentrons_protocol: {
+        },
+  
+        export_plate_layout: {
+        },
+  
+        expression_heatmap_cluster: {
+        },
+  
+        fastq_qc_report: {
+        },
+  
+        fastq_trim: {
+        },
+  
+        find_orf: {
+        },
+  
+        format_sequence: {
+        },
+  
+        functional_enrichment: {
+        },
+  
+        gc_content: {
+        },
+  
+        gene_dossier: {
+        },
+  
+        gene_expression: {
+        },
+  
+        gene_model: {
+        },
+  
+        golden_gate_fidelity: {
+        },
+  
+        hgvs_convert: {
+        },
+  
+        id_map_poll: {
+        },
+  
+        id_map_submit: {
+        },
+  
+        in_silico_pcr: {
+        },
+  
+        kasp_primer_design: {
+        },
+  
+        list_tool: {
+        },
+  
+        melting_temperature: {
+        },
+  
+        motif_finder: {
+        },
+  
+        multiple_sequence_alignment: {
+        },
+  
+        oligo_analysi: {
+        },
+  
+        ortholog_map: {
+        },
+  
+        pairwise_alignment: {
+        },
+  
+        parse_genbank: {
+        },
+  
+        parse_sanger_trace: {
+        },
+  
+        plasmid_annotate: {
+        },
+  
+        plasmid_deep_annotate: {
+        },
+  
+        plasmid_full_report: {
+        },
+  
+        plasmid_identify: {
+        },
+  
+        prime_editing_design: {
+        },
+  
+        prime_editing_twin_design: {
+        },
+  
+        primer_design: {
+        },
+  
+        primer_specificity: {
+        },
+  
+        protease_digestion: {
+        },
+  
+        protein_annotate_poll: {
+        },
+  
+        protein_annotate_submit: {
+        },
+  
+        protein_hydrophobicity: {
+        },
+  
+        protein_property: {
+        },
+  
+        random_sequence: {
+        },
+  
+        restriction_site: {
+        },
+  
+        reverse_complement: {
+        },
+  
+        reverse_translate: {
+        },
+  
+        rna_fold: {
+        },
+  
+        sanger_vs_reference: {
+        },
+  
+        save_permalink: {
+        },
+  
+        seqfile_stat: {
+        },
+  
+        sequence_fetch: {
+        },
+  
+        sequence_format_convert: {
+        },
+  
+        sequence_report: {
+        },
+  
+        sequence_search: {
+        },
+  
+        sequencing_readback_verify: {
+        },
+  
+        session_create: {
+        },
+  
+        session_get: {
+        },
+  
+        session_run: {
+        },
+  
+        session_set: {
+        },
+  
+        sirna_design: {
+        },
+  
+        site_directed_mutagenesi: {
+        },
+  
+        translate: {
+        },
+  
+        variant_annotate: {
+        },
+  
+        variant_comparator: {
+        },
+  
+        verify_assembly: {
+        },
+  
+        verify_construct: {
+        },
+  
+        virtual_gel: {
+        },
+  
+        volcano_plot_data: {
+        },
+  
+        web_search: {
+        },
+  
     }
   }
 

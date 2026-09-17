@@ -111,12 +111,12 @@ local result, err = client:Batch():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/seqbench-mcp-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
-| Python | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
-| PHP | `voxgig-sdk/seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
+| TypeScript | `@voxgig-sdk/seqbench-mcp-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/tags) |
+| Python | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/tags) |
+| PHP | `voxgig-sdk/seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/seqbench-mcp-sdk/go` | `go get github.com/voxgig-sdk/seqbench-mcp-sdk/go@latest` |
-| Ruby | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
-| Lua | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/releases) |
+| Ruby | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/tags) |
+| Lua | `voxgig-sdk-seqbench-mcp` | publish pending — [install from git tag](https://github.com/voxgig-sdk/seqbench-mcp-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/seqbench-mcp-sdk/go-cli` | `go install github.com/voxgig-sdk/seqbench-mcp-sdk/go-cli/cmd/seqbench-mcp@latest` |
 | Go MCP server | `github.com/voxgig-sdk/seqbench-mcp-sdk/go-mcp` | `go get github.com/voxgig-sdk/seqbench-mcp-sdk/go-mcp@latest` |
 
